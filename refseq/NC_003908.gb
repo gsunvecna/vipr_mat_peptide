@@ -1,11 +1,11 @@
-LOCUS       NC_003908              11484 bp ss-RNA     linear   VRL 22-JUL-2008
+LOCUS       NC_003908              11484 bp ss-RNA     linear   VRL 27-JUN-2012
 DEFINITION  Western equine encephalomyelitis virus, complete genome.
 ACCESSION   NC_003908
 VERSION     NC_003908.1  GI:21238454
-DBLINK      Project: 14831
+DBLINK      BioProject: PRJNA14831
 KEYWORDS    .
-SOURCE      Western equine encephalomyelitis virus
-  ORGANISM  Western equine encephalomyelitis virus
+SOURCE      Western equine encephalitis virus
+  ORGANISM  Western equine encephalitis virus
             Viruses; ssRNA positive-strand viruses, no DNA stage; Togaviridae;
             Alphavirus; WEEV complex.
 REFERENCE   1  (bases 1 to 11484)
@@ -33,7 +33,7 @@ COMMENT     REVIEWED REFSEQ: This record has been curated by NCBI staff. The
             COMPLETENESS: full length.
 FEATURES             Location/Qualifiers
      source          1..11484
-                     /organism="Western equine encephalomyelitis virus"
+                     /organism="Western equine encephalitis virus"
                      /mol_type="genomic RNA"
                      /strain="71V-1658"
                      /db_xref="taxon:11039"
@@ -208,6 +208,46 @@ FEATURES             Location/Qualifiers
                      /product="E1 protein"
                      /protein_id="NP_818942.1"
                      /db_xref="GI:29611994"
+     gene            7473..9910
+                     /locus_tag="Weevgp3"
+                     /db_xref="GeneID:13165415"
+     CDS             join(7473..9827,9827..9910)
+                     /locus_tag="Weevgp3"
+                     /note="Truncated verstion of structural polyprotein that
+                     will be produced when frameshifting occurs at nt 9827;
+                     Truncated version of structural polyprotein and transframe
+                     fusion protein have been added by NCBI Staff with the kind
+                     help of Dr. David Karlin (Department of Zoology,
+                     University of  Oxford, UK) and Dr. Andrew Firth
+                     (Department of Pathology,  University of Cambridge, UK)"
+                     /codon_start=1
+                     /product="truncated polyprotein"
+                     /protein_id="YP_006491227.1"
+                     /db_xref="GI:392972645"
+                     /db_xref="GeneID:13165415"
+                     /translation="MFPYPQLNFPPVYPTNPMAYRDPNPPRRRWRPFRPPLAAQIEDL
+                     RRSIVNLTFKQRSPNPPPGPPPKKKKSAPKPKPTQPKKKKQQAKRTKRKPKPGKRQRM
+                     CMKLESDKTFPIMLNGQVNGYACVVGGRLMKPLHVEGKIDNEQLAAVKLKKASMYDLE
+                     YGDVPQNMKSDTLQYTSDKPPGFYNWHHGAVQYENGRFTVPRGVGGKGDSGRPILDNR
+                     GRVVAIVLGGANEGTRTALSVVTWNQKGVTIRDTPEGSEPWSLVTALCVLSNVTFPCD
+                     KPPVCYSLTPERTLDVLEENVDNPNYDTLLENVLKCPSRRPKRSITDDFTLTSPYLGF
+                     CPYCRHSTPCFSPIKIENVWDESDDGSIRIQVSAQFGYNQAGTADVTKFRYMSFDHDH
+                     DIKEDSMEKIAISTSGPCRRLGHKGYFLLAQCPPGDSVTVSITSGASENSCTVEKKIR
+                     RKFVGREEYLFPPVHGKLVKCHVYDHLKETSAGYITMHRPGPHAYKSYLEEASGEVYI
+                     KPPSGKNVTYECKCGDYSTGIVSTRTKMNGCTKAKQCIAYKSDQTKWVFNSPDLIRHT
+                     DHSVQGKLHIPFRLTPTVCPVPLAHTPTVTKWFKGITLHLTAMRPTLLTTRKLGLRAD
+                     ATAEWITGSTSRNFSVGREGLEYVWGNHEPVRVWAQESAPGDPHGWPHEIIIHYYHRH
+                     PVYTVIVLCGVALAILVGTASSAACIAKARRDCLTPYALAPNATVPTALAVLCCIRPT
+                     NAETFGETLNHLWFNNQPFLWAQLCIPLAALVILFRCFSCCMPFLIGCRRLPGEGRRL
+                     RTCDHCAKCSGDPV"
+     mat_peptide     join(9699..9827,9827..9907)
+                     /locus_tag="Weevgp3"
+                     /product="transframe fusion protein"
+                     /note="Transframe fusion (TF) protein expressed via
+                     programmed ribosomal frameshifting. TF protein presumably
+                     plays a stabilizing role in the virion structure."
+                     /protein_id="YP_006491228.1"
+                     /db_xref="GI:392972646"
      3'UTR           11184..11484
 ORIGIN      
         1 accctacaaa ctaatcgatc caatatggaa agaattcacg ttgacttaga tgctgacagc

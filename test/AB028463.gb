@@ -1,0 +1,43 @@
+LOCUS       AB028463                 300 bp    RNA     linear   VRL 12-DEC-2006
+DEFINITION  Norovirus isolates gene for RNA-dependent RNA polymerase, partial
+            cds, strain: OS1421-98.
+ACCESSION   AB028463
+VERSION     AB028463.1  GI:5019622
+KEYWORDS    .
+SOURCE      Norovirus isolates
+  ORGANISM  Norovirus isolates
+            Viruses; ssRNA positive-strand viruses, no DNA stage;
+            Caliciviridae; Norovirus.
+REFERENCE   1
+  AUTHORS   Sakon,N.
+  TITLE     Human Calicivirus
+  JOURNAL   Published Only in Database (1999)
+REFERENCE   2  (bases 1 to 300)
+  AUTHORS   Sakon,N.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (04-JUN-1999) Naomi Sakon, Osaka Prefectural Institute of
+            Public Health, Laboratory of Virology; 1-3-69 Nakamichi,
+            Higashinari-ku, Osaka, Osaka 534-0025, Japan
+            (E-mail:sakon@iph.pref.osaka.jp, URL:http://www.iph.pref.osaka.jp,
+            Tel:81-6-972-1321(ex.278), Fax:81-6-972-2393)
+FEATURES             Location/Qualifiers
+     source          1..300
+                     /organism="Norovirus isolates"
+                     /mol_type="genomic RNA"
+                     /strain="OS1421-98"
+                     /db_xref="taxon:150080"
+                     /note="synonym: Human calicivirus isolates"
+     CDS             complement(<1..>300)
+                     /codon_start=1
+                     /product="RNA-dependent RNA polymerase"
+                     /protein_id="BAA78689.1"
+                     /db_xref="GI:5019623"
+                     /translation="SHLLADYSRWDSTQQRAVLAAALEIMVKFSSEPHLAQVVAEDLL
+                     SPSVVDVGDFKISINEGLPSGVPCTSQWNSIAHWLLXLCALSEVTNLSPDIIQANS"
+ORIGIN      
+        1 ggaattagcc tgtatgatgt caggggacaa gtttgtgact tcagagagcg cacagagant
+       61 gagaagccag tgggcgatgg agttccattg ggaggtgcag ggcactccag aggggagacc
+      121 ctcattgatt gatattttga agtcacccac atccaccacg ctaggagaaa gaaggtcttc
+      181 tgcgaccacc tgagccaaat gtggttctga ggagaattta accatgattt ctagggctgc
+      241 tgccaacacg gctctctgtt gtgttgagtc ccaccgagag taatctgcta ataagtggga
+//

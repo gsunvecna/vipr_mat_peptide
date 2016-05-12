@@ -39,6 +39,37 @@ refseqs.
 
 Changes
 
+Changes in V1.1.8, March 19, 2012
+1. Tweaked the sub get_new_translation, in order to handle cases like
+AF379201, and EF424619.
+=====================
+ Test #122, Flaviviridae,   AF379201.gb,  $result=diff
+./test/output/AF379201_matpept_msa.faa ./test/AF379201_matpept_msa.faa
+4c4
+< .KTYTTGGVVGRSTSGLASFLSPGPQQKIQ
+---
+> XKTYTTGGVVGRSTSGLASFLSPGPQQKIQ
+=====================
+2. Changed the way duplicate mat_peptides are detected, so that in cases like
+following where 2 mat_peptide with identical locations are created but are from 
+different reference mat_peptides, only the one without "Partial=Y" label is
+listed. The sub Annotate_Align::combineFeatures was created to handle this.
+=====================
+> src=MSA|ACC=AJ299464|Ver=AJ299464.3|CDS=GI:74381881|ref=NC_001489.1|RM=741..803|Loc=644..706||AA=1..21|symbol=1A(VP4b)|Partial=N|product=1A VP4b mature peptide (alt.)|*new*
+MSRQGIFQTVGSGLDHILSLA
+> src=MSA|ACC=AJ299464|Ver=AJ299464.3|CDS=GI:74381881|ref=NC_001489.1|RM=735..803|Loc=644..706||AA=1..21|symbol=1A(VP4a)|Partial=Y|product=1A VP4a mature peptide (alt.)|*new*
+MSRQGIFQTVGSGLDHILSLA
+=====================
+3. Improved the way to update the taxon and RefSeqs from NCBI. See following
+options:
+   -update: save the result to file. Default is only to output to screen.
+   -checkrefseq=n: to check the refseqs. n=1: use saved genbank files for each
+family; 2: live download from genbank server.
+   -checktaxon=n: to check the taxon info. n=1: use saved xml files for each
+family; 2: live download from genbank server.
+4. There are noticed "product" name change in some Refseqs in Togaviridae.
+Examples include NC_001449.
+
 Changes in V1.1.7, February 05, 2012
 1. Added NC_018138 of Bunyaviridae to approved list of refseqs.
 2. Separated the 3 versions of 1C and 1D in NC_001430 by symbols 1Cv1, 1Cv2 
@@ -47,7 +78,7 @@ and 1CV3, so that all version of the mat_peptides are retained.
 also split, unless the resulting mat_peptide is shorter than or equal to the
 longest fragment of the refseq mat_peptide. This results in potential changes 
 in all species/families with split mat_peptide.
-4. Added commandline option -checkrefseq to check any update for the taxon 
+4. Added commandline option -checktaxon to check any update for the taxon 
 structure, as this has occurred for Coronaviridae recently. Sub checkAllTaxon 
 is added for this.  To actually download the taxon from NCBI, the variable
 $DOWNLOAD_TAXON=1 needs to be set in sub checkAllTaxon. Otherwise the stored

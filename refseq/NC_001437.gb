@@ -1,8 +1,8 @@
-LOCUS       NC_001437              10976 bp ss-RNA     linear   VRL 08-DEC-2008
+LOCUS       NC_001437              10976 bp ss-RNA     linear   VRL 24-MAY-2012
 DEFINITION  Japanese encephalitis virus, genome.
 ACCESSION   NC_001437
 VERSION     NC_001437.1  GI:9626460
-DBLINK      Project:15310
+DBLINK      BioProject: PRJNA15310
 KEYWORDS    .
 SOURCE      Japanese encephalitis virus
   ORGANISM  Japanese encephalitis virus
@@ -22,6 +22,11 @@ REFERENCE   2  (bases 1 to 10976)
             Information, NIH, Bethesda, MD 20894, USA
 COMMENT     REVIEWED REFSEQ: This record has been curated by NCBI staff. The
             reference sequence was derived from M18370.
+            Truncated version of JEV polyprotein and NS1' protein have been
+            added and annotated with the kind help of Dr. David
+            Karlin(Department of Zoology,  University of Oxford, UK) and Dr.
+            Andrew Firth (Department of Pathology, University of Cambridge,
+            UK).
             Draft entry and computer-readable sequence for [1] kindly submitted
             by H.Sumiyoshi, 31-AUG-1989.
             COMPLETENESS: not full length.
@@ -172,6 +177,49 @@ FEATURES             Location/Qualifiers
                      non-structural protein NS5"
                      /protein_id="NP_775674.1"
                      /db_xref="GI:27696336"
+     gene            96..3691
+                     /locus_tag="JEVgp2"
+                     /db_xref="GeneID:12978160"
+     CDS             join(96..3560,3560..3691)
+                     /locus_tag="JEVgp2"
+                     /note="Truncated version of JEV polyprotein that will be
+                     produced when frameshifting occurs at nt 3560"
+                     /codon_start=1
+                     /product="truncated JEV polyprotein"
+                     /protein_id="YP_006355435.1"
+                     /db_xref="GI:388482365"
+                     /db_xref="GeneID:12978160"
+                     /translation="MTKKPGGPGKNRAINMLKRGLPRVFPLVGVKRVVMSLLDGRGPV
+                     RFVLALITFFKFTALAPTKALLGRWKAVEKSVAMKHLTSFKRELGTLIDAVNKRGRKQ
+                     NKRGGNEGSIMWLASLAVVIAYAGAMKLSNFQGKLLMTINNTDIADVIVIPTSKGENR
+                     CWVRAIDVGYMCEDTITYECPKLTMGNDPEDVDCWCDNQEVYVQYGRCTRTRHSKRSR
+                     RSVSVQTHGESSLVNKKEAWLDSTKATRYLMKTENWIIRNPGYAFLAATLGWMLGSNN
+                     GQRVVFTILLLLVAPAYSFNCLGMGNRDFIEGASGATWVDLVLEGDSCLTIMANDKPT
+                     LDVRMINIEASQLAEVRSYCYHASVTDISTVARCPTTGEAHNEKRADSSYVCKQGFTD
+                     RGWGNGCGLFGKGSIDTCAKFSCTSKAIGRTIQPENIKYEVGIFVHGTTTSENHGNYS
+                     AQVGASQAAKFTITPNAPSITLKLGDYGEVTLDCEPRSGLNTEAFYVMTVGSKSFLVH
+                     REWFHDLALPWTSPSSTAWRNRELLMEFEEAHATKQSVVALGSQEGGLHQALAGAIVV
+                     EYSSSVKLTSGHLKCRLKMDKLALKGTTYGMCTEKFSFAKNPADTGHGTVVIELSYSG
+                     SDGPCKIPIVSVASLNDMTPVGRLVTVNPFVATSSANSKVLVEMEPPFGDSYIVVGRG
+                     DKQINHHWHKAGSTLGKAFSTTLKGAQRLAALGDTAWDFGSIGGVFNSIGKAVHQVFG
+                     GAFRTLFGGMSWITQGLMGALLLWMGVNARDRSIALAFLATGGVLVFLATNVHADTGC
+                     AIDITRKEMRCGSGIFVHNDVEAWVDRYKYLPETPRSLAKIVHKAHKEGVCGVRSVTR
+                     LEHQMWEAVRDELNVLLKENAVDLSVVVNKPVGRYRSAPKRLSMTQEKFEMGWKAWGK
+                     SILFAPELANSTFVVDGPETKECPDEHRAWNSMQIEDFGFGITSTRVWLKIREESTDE
+                     CDGAIIGTAVKGHVAVHSDLSYWIESRYNDTWKLERAVFGEVKSCTWPETHTLWGDGV
+                     EESELIIPHTIAGPKSKHNRREGYKTQNQGPWDENGIVLDFDYCPGTKVTITEDCGKR
+                     GPSVRTTTDSGKLITDWCCRSCSLPPLRFRTENGCWYGMEIRPVRHDETTLVRSQVDA
+                     FNGEMVDPFSAGPSGDVSGHPGGPSQEVDGQIDHSCGFGGPTCADAWGHHLH"
+     mat_peptide     join(2478..3560,3560..3688)
+                     /locus_tag="JEVgp2"
+                     /product="NS1' protein"
+                     /experiment="experimental evidence, no additional details
+                     recorded"
+                     /note="transframe fusion protein expressed via programmed
+                     ribosomal frameshifting; when frameshifting occurs,
+                     cleavage between NS1 and NS2A fails to occur"
+                     /protein_id="YP_006355436.1"
+                     /db_xref="GI:388482366"
      misc_feature    10828..10847
                      /note="conserved region"
      misc_feature    10866..10888

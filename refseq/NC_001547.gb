@@ -1,8 +1,8 @@
-LOCUS       NC_001547              11703 bp ss-RNA     linear   VRL 30-NOV-2009
+LOCUS       NC_001547              11703 bp ss-RNA     linear   VRL 27-JUN-2012
 DEFINITION  Sindbis virus, complete genome.
 ACCESSION   NC_001547
 VERSION     NC_001547.1  GI:9790313
-DBLINK      Project: 15316
+DBLINK      BioProject: PRJNA15316
 KEYWORDS    .
 SOURCE      Sindbis virus
   ORGANISM  Sindbis virus
@@ -320,17 +320,57 @@ FEATURES             Location/Qualifiers
                      /product="e-1 structural protein"
                      /protein_id="NP_740677.1"
                      /db_xref="GI:25121513"
+     gene            7647..10111
+                     /locus_tag="SINVgp4"
+                     /db_xref="GeneID:13165406"
+     CDS             join(7647..10028,10028..10111)
+                     /locus_tag="SINVgp4"
+                     /note="Truncated verstion of structural polyprotein that
+                     will be produced when frameshifting occurs at nt 10028;
+                     Truncated version of structural polyprotein and transframe
+                     fusion protein have been added by NCBI Staff with the kind
+                     help of Dr. David Karlin (Department of Zoology,
+                     University of  Oxford, UK) and Dr. Andrew Firth
+                     (Department of Pathology,  University of Cambridge, UK)"
+                     /codon_start=1
+                     /product="truncated polyprotein"
+                     /protein_id="YP_006491225.1"
+                     /db_xref="GI:392947320"
+                     /db_xref="GeneID:13165406"
+                     /translation="MNRGFFNMLGRRPFPAPTAMWRPRRRRQAAPMPARNGLASQIQQ
+                     LTTAVSALVIGQATRPQPPRPRPPPRQKKQAPKQPPKPKKPKTQEKKKKQPAKPKPGK
+                     RQRMALKLEADRLFDVKNEDGDVIGHALAMEGKVMKPLHVKGTIDHPVLSKLKFTKSS
+                     AYDMEFAQLPVNMRSEAFTYTSEHPEGFYNWHHGAVQYSGGRFTIPRGVGGRGDSGRP
+                     IMDNSGRVVAIVLGGADEGTRTALSVVTWNSKGKTIKTTPEGTEEWSAAPLVTAMCLL
+                     GNVSFPCDRPPTCYTREPSRALDILEENVNHEAYDTLLNAILRCGSSGRSKRSVIDDF
+                     TLTSPYLGTCSYCHHTVPCFSPVKIEQVWDEADDNTIRIQTSAQFGYDQSGAASANKY
+                     RYMSLKQDHTVKEGTMDDIKISTSGPCRRLSYKGYFLLAKCPPGDSVTVSIVSSNSAT
+                     SCTLARKIKPKFVGREKYDLPPVHGKKIPCTVYDRLKETTAGYITMHRPRPHAYTSYL
+                     EESSGKVYAKPPSGKNITYECKCGDYKTGTVSTRTEITGCTAIKQCVAYKSDQTKWVF
+                     NSPDLIRHDDHTAQGKLHLPFKLIPSTCMVPVAHAPNVIHGFKHISLQLDTDHLTLLT
+                     TRRLGANPEPTTEWIVGKTVRNFTVDRDGLEYIWGNHEPVRVYAQESAPGDPHGWPHE
+                     IVQHYYHRHPVYTILAVASATVAMMIGVTVAVLCACKARRECLTPYALAPNAVIPTSL
+                     ALLCCVRSANAETFTETMSYLWSNSQPFFWVQLCIPLAAFIVLMRCCSCCLPFLSGCR
+                     RLPGEGRRLRTCDHCSKCATDTV"
+     mat_peptide     join(9900..10028,10028..10108)
+                     /locus_tag="SINVgp4"
+                     /product="transframe fusion protein"
+                     /note="Transframe fusion (TF) protein expressed via
+                     programmed ribosomal frameshifting. TF protein presumably
+                     plays a stabilizing role in the virion structure."
+                     /protein_id="YP_006491226.1"
+                     /db_xref="GI:392947321"
      variation       8644
-                     /locus_tag="SINVgp3"
+                     /locus_tag="SINVgp4"
                      /note="a in hrsp; g in hrlp [2],[1],[9]"
      variation       8698
-                     /locus_tag="SINVgp3"
+                     /locus_tag="SINVgp4"
                      /note="t in hrsp; a in hrlp [2],[1],[9]"
      variation       9782
-                     /locus_tag="SINVgp3"
+                     /locus_tag="SINVgp4"
                      /note="t in hrsp; c in hrlp [2],[1],[9]"
      variation       9884
-                     /locus_tag="SINVgp3"
+                     /locus_tag="SINVgp4"
                      /note="t in hrsp; c in hrlp [2],[1],[9]"
      variation       11568
                      /locus_tag="SINVgp3"

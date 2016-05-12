@@ -1,0 +1,64 @@
+LOCUS       AB705314                 916 bp    RNA     linear   VRL 18-MAY-2012
+DEFINITION  Hepatitis C virus subtype 2a gene for polyprotein, partial cds,
+            isolate: C-03.
+ACCESSION   AB705314
+VERSION     AB705314.1  GI:385861656
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 2a
+  ORGANISM  Hepatitis C virus subtype 2a
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Murayama,A., Sugiyama,N., Watashi,K., Masaki,T., Suzuki,R.,
+            Aizaki,H., Mizuochi,T., Wakita,T. and Kato,T.
+  TITLE     Japanese reference panel of blood specimens for evaluation of
+            hepatitis C virus RNA and core antigen quantitative assays
+  JOURNAL   J. Clin. Microbiol. 50 (6), 1943-1949 (2012)
+   PUBMED   22495557
+  REMARK    DOI:10.1128/JCM.00487-12
+REFERENCE   2  (bases 1 to 916)
+  AUTHORS   Kato,T., Murayama,A. and Wakita,T.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (23-MAR-2012) Contact:Takanobu Kato National Institute of
+            Infectious Diseases, Department of Virology II; Toyama 1-23-1,
+            Shinjuku-ku, Tokyo 162-8640, Japan
+FEATURES             Location/Qualifiers
+     source          1..916
+                     /organism="Hepatitis C virus subtype 2a"
+                     /mol_type="genomic RNA"
+                     /isolate="C-03"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:31649"
+                     /country="Japan"
+                     /collection_date="2007"
+                     /note="genotype: 2a"
+     CDS             1..>916
+                     /note="core - E1 region"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="BAM14430.1"
+                     /db_xref="GI:385861657"
+                     /translation="MSTNPKPQRKTKRNTLRRPQDVKFPGGGQIVGGVYLLPRRGPRL
+                     GVRTTRKTSERSQPRGRRQPIPKDRRSTGKSWGKPGYPWPLYGNEGLGWAGWLLSPRG
+                     SRPSWGPTDPRHRSRNVGKVIDTLTCGFADLMGYIPVVGAPLGGVARALAHGVRVLED
+                     GVNYATGNLPGCSFSIFLLALLSCITIPVSAVQVKNTSSIYMVTNDCSNDSITWQLEA
+                     AVLHVPGCVPCERVGNTTRCWIQVSPNVAVRQHGALTQGLRTHIDVVVMSATLCSALY
+                     VGDLCGGVMLAAQMFLVSPRRHWFVQECN"
+ORIGIN      
+        1 atgagcacaa atcctaaacc tcaaagaaaa accaaaagaa acaccctccg tcgcccacag
+       61 gacgttaagt tcccgggcgg cggccagatc gttggcggag tatacttgtt gccgcgcagg
+      121 ggccccaggt tgggtgtgcg cacgacaagg aagacttcgg agcggtccca gccacgtggg
+      181 aggcgccaac ccatccccaa agatcggcgc tccactggca agtcctgggg aaaaccagga
+      241 tacccctggc ccctatatgg gaatgagggg ctcggttggg caggatggct cctgtccccc
+      301 cgaggttccc gtccctcttg gggccccact gacccccggc ataggtcgcg caatgtgggt
+      361 aaggtcatcg ataccctaac gtgcggcttt gccgacctca tggggtacat ccccgtcgta
+      421 ggcgccccgc ttggtggcgt cgccagggct ctcgcacacg gcgtgagagt cctggaggac
+      481 ggggtcaatt atgcaacagg gaacttacct ggttgctcct tttctatctt cttgctagcc
+      541 ctactgtcct gcatcaccat tccggtgtct gctgtccaag tgaaaaacac cagcagcatc
+      601 tacatggtga ccaacgactg ctccaatgac agcattacct ggcagcttga ggccgcggtc
+      661 ctccacgtcc ccgggtgcgt cccgtgtgag agagtgggga acacaacgcg gtgctggata
+      721 caggtctcac caaacgtggc tgtgcggcag catggcgccc tcacgcaggg cttgcggaca
+      781 cacatcgacg tggttgtgat gtccgccacg ctctgctccg ccctctacgt gggggacctt
+      841 tgcggcgggg tgatgctcgc agcccagatg ttcctcgtct cgccgcggcg ccattggttt
+      901 gtgcaggaat gcaatt
+//

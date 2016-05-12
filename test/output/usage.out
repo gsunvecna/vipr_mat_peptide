@@ -1,12 +1,12 @@
-msa_annotate.pl Ver1.1.6
+msa_annotate.pl Ver1.1.8
 Usage:  -d directory to find the input genome file
         -i name of the input genbank file
         -l name of input folder
     E.g.: msa_annotate.pl -d ./ -i NC_001477.gb
     E.g.: msa_annotate.pl -d ./ -l all_genomes/ 
 
-Viral families and species covered in Ver1.1.7 are:
-Families: 8, species: 92, strains: 138
+Viral families and species covered in Ver1.1.8 are:
+Families: 14, species: 92, strains: 138
 
 Family=Arenaviridae
 Arenaviridae	#1	species=11619 	strain=----- 	ref=NC_005081 	"Junin virus"
@@ -41,6 +41,9 @@ Coronaviridae	#10	species=694005 	strain=----- 	ref=NC_001846 	"Murine coronavir
 Coronaviridae	#11	species=694009 	strain=----- 	ref=NC_004718 	"Severe acute respiratory syndrome-related coronavirus"
 Coronaviridae	#12	species=694014 	strain=----- 	ref=NC_010800 	"Avian coronavirus"
 
+Family=Filoviridae
+Family=Filoviridae 	No approved species found for family:Filoviridae
+
 Family=Flaviviridae
 Flaviviridae	#1	species=12637 	strain=11053 	ref=NC_001477 	"Dengue virus"
 Flaviviridae	#2	species=12637 	strain=11060 	ref=NC_001474 	"Dengue virus"
@@ -71,7 +74,13 @@ Flaviviridae	#26	species=64300 	strain=----- 	ref=NC_003635 	"Modoc virus"
 Flaviviridae	#27	species=64312 	strain=----- 	ref=NC_004119 	"Montana myotis leukoencephalitis virus"
 
 Family=Hepeviridae
-Family=Hepeviridae 	No species found for this family
+Family=Hepeviridae 	No approved species found for family:Hepeviridae
+
+Family=Herpesviridae
+Family=Herpesviridae 	No approved species found for family:Herpesviridae
+
+Family=Paramyxoviridae
+Family=Paramyxoviridae 	No approved species found for family:Paramyxoviridae
 
 Family=Picornaviridae
 Picornaviridae	#1	species=686985 	strain=1002918 	ref=NC_004451 	"Simian sapelovirus"
@@ -143,6 +152,15 @@ Picornaviridae	#66	species=871699 	strain=----- 	ref=NC_014411 	"Turdivirus 1"
 Picornaviridae	#67	species=871700 	strain=----- 	ref=NC_014412 	"Turdivirus 2"
 Picornaviridae	#68	species=871701 	strain=----- 	ref=NC_014413 	"Turdivirus 3"
 Picornaviridae	#69	species=928289 	strain=----- 	ref=NC_015626 	"Pigeon picornavirus B"
+
+Family=Poxviridae
+Family=Poxviridae 	No approved species found for family:Poxviridae
+
+Family=Reoviridae
+Family=Reoviridae 	No approved species found for family:Reoviridae
+
+Family=Rhabdoviridae
+Family=Rhabdoviridae 	No approved species found for family:Rhabdoviridae
 
 Family=Togaviridae
 Togaviridae	#1	species=11020 	strain=----- 	ref=NC_001786 	"Barmah Forest virus"

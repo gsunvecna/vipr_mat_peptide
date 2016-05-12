@@ -1,0 +1,84 @@
+LOCUS       AJ299461                 900 bp    RNA     linear   VRL 23-MAY-2006
+DEFINITION  Hepatitis A virus partial gene for polyprotein, genomic RNA, strain
+            NOR-26.
+ACCESSION   AJ299461
+VERSION     AJ299461.3  GI:99642235
+KEYWORDS    P2A protein; polyprotein; VP1 protein.
+SOURCE      Hepatitis A virus
+  ORGANISM  Hepatitis A virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage;
+            Picornavirales; Picornaviridae; Hepatovirus.
+REFERENCE   1
+  AUTHORS   Stene-Johansen,K., Skaug,K. and Blystad,H.
+  TITLE     [Surveillance of hepatitis A by molecular epidemiologic studies]
+  JOURNAL   Tidsskr. Nor. Laegeforen. 119 (25), 3725-3729 (1999)
+   PUBMED   10574047
+REFERENCE   2
+  AUTHORS   Stene-Johansen,K.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (17-OCT-2000) Stene-Johansen K., Department of Virology,
+            National Insitute of Public Health, Postbox 4404 Torshov, N-0403
+            Oslo, NORWAY
+  REMARK    revised by [3]
+REFERENCE   3  (bases 1 to 900)
+  AUTHORS   Stene-Johansen,K.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (03-MAY-2006) Stene-Johansen K., Department of Virology,
+            Norwegian Institute of Public Health, P.O.Box 4404, Nydalen, 0403
+            Oslo, NORWAY
+COMMENT     On May 23, 2006 this sequence version replaced gi:14488146.
+FEATURES             Location/Qualifiers
+     source          1..900
+                     /organism="Hepatitis A virus"
+                     /mol_type="genomic RNA"
+                     /strain="NOR-26"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:12092"
+                     /tissue_type="serum"
+                     /country="Norway:Oslo"
+                     /collection_date="1997"
+                     /collected_by="Kathrine Stene-Johansen"
+                     /note="genotype IA"
+     CDS             <1..>452
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="CAK22350.1"
+                     /db_xref="GI:99642236"
+                     /db_xref="UniProtKB/TrEMBL:Q1HA44"
+                     /translation="QVGDDSGGFSTTVSTEQNVPDPQVGITTMRDLKGKANRGKMDVS
+                     GVQAPVGAITTIEDPVLAKKVPETFPELKPGESRHTSDHMSIYKFMGRSHFLCTFTFN
+                     SNNKEYTFPITLSSTSNPPHGLPSTLRWFFNLFQLYRGPLDLTIIITGA"
+     mat_peptide     4..>452
+                     /product="VP1 protein"
+     gap             453..552
+                     /estimated_length=unknown
+     CDS             <553..>900
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="CAC14071.2"
+                     /db_xref="GI:14488147"
+                     /db_xref="UniProtKB/TrEMBL:Q9DWR4"
+                     /translation="NHSDEYLSFSCYLSVTEQSEFYFPRAPLNSNAMLSTESMMSRIA
+                     AGDLESSVDDPRSEEDRRFESHIECRKPYKELRLEVGKQRLKYAQEELSNEVLPPPRK
+                     MKGLFSQAKISLF"
+     mat_peptide     <553..745
+                     /product="VP1 protein"
+     mat_peptide     746..>900
+                     /product="P2A protein"
+ORIGIN      
+        1 caggttggag atgattcagg aggtttctca acaacagttt ctacagagca gaatgttcct
+       61 gatccccaag ttggcataac aaccatgagg gacttaaaag ggaaagccaa taggggaaag
+      121 atggatgttt caggagtcca agcacctgtg ggagctatca caacaattga ggatccagtt
+      181 ttagcaaaga aagtacctga gacatttcct gaattgaagc ctggagagtc cagacataca
+      241 tcagatcata tgtccattta taaattcatg ggaaggtctc acttcttgtg cacttttact
+      301 ttcaattcaa ataacaaaga gtacacattt ccaataaccc tgtcttcgac ttctaatcct
+      361 cctcatggtt taccatcaac attaaggtgg tttttcaatt tgtttcagtt gtatagagga
+      421 ccattggatt tgacaattat aatcacagga gcnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+      481 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+      541 nnnnnnnnnn nntaatcatt ctgatgagta tttgtccttt agttgttatt tgtctgtcac
+      601 agagcaatca gagttctatt ttcctagagc tccattaaat tcaaatgcta tgttgtccac
+      661 tgagtccatg atgagtagaa ttgcagctgg agatttggag tcatcagtgg atgatcccag
+      721 atcggaggag gacaggagat ttgagagtca tatagaatgt aggaaaccat acaaagaatt
+      781 gagactggag gttgggaaac aaagactcaa atatgctcag gaagagttat caaatgaagt
+      841 gcttccacct cctaggaaaa tgaaggggct attttcacaa gctaaaattt ctctttttta
+//

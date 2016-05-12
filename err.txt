@@ -1,276 +1,404 @@
-msa_annotate_test.pl: ./msa_annotate_test.pl 1.1.7 executing 02/07/2013 11:59:39
+msa_annotate_test.pl: ./msa_annotate_test.pl V1.1.8 executing 04/01/2013 09:44:50
 msa_annotate_test.pl: command='./msa_annotate_test.pl '
+msa_annotate_test.pl: requested $FAMILY=''
 msa_annotate_test.pl: Found both input directory './test' and output directory './test/output'.
-msa_annotate_test.pl: from Input directory: ./test, found 268 gbk files.
-loadTaxonTable: loaded 19187 lines from file './Annotate_taxon_records.txt'
- Testing #1,   Arenaviridae,   AY746353.gb    Test #1,   Arenaviridae,   AY746353.gb,  pass
- Testing #2,   Arenaviridae,   JF446285.gb    Test #2,   Arenaviridae,   JF446285.gb,  pass
- Testing #3,   Arenaviridae,   JF446286.gb    Test #3,   Arenaviridae,   JF446286.gb,  pass
- Testing #4,   Arenaviridae,   JF446298.gb    Test #4,   Arenaviridae,   JF446298.gb,  pass, comment=No polyprotein: Found 1 CDS, but doesnot align with refseq
- Testing #5,   Bunyaviridae,   AB127995.gb    Test #5,   Bunyaviridae,   AB127995.gb,  pass
- Testing #6,   Bunyaviridae,   AF427325.gb    Test #6,   Bunyaviridae,   AF427325.gb,  pass
- Testing #7,   Bunyaviridae,   NC_005220.gb   Test #7,   Bunyaviridae,   NC_005220.gb, pass
- Testing #8,   Caliciviridae,  AB039781.gb    Test #8,   Caliciviridae,  AB039781.gb,  pass
- Testing #9,   Caliciviridae,  AB042808.gb    Test #9,   Caliciviridae,  AB042808.gb,  pass
- Testing #10,  Caliciviridae,  AF093797.gb    Test #10,  Caliciviridae,  AF093797.gb,  pass
- Testing #11,  Caliciviridae,  AY560114.gb    Test #11,  Caliciviridae,  AY560114.gb,  pass
- Testing #12,  Caliciviridae,  AY560117.gb    Test #12,  Caliciviridae,  AY560117.gb,  pass
- Testing #13,  Caliciviridae,  EF558585.gb    Test #13,  Caliciviridae,  EF558585.gb,  pass
- Testing #14,  Caliciviridae,  GQ166866.gb    Test #14,  Caliciviridae,  GQ166866.gb,  pass
- Testing #15,  Caliciviridae,  GQ180108.gb    Test #15,  Caliciviridae,  GQ180108.gb,  pass
- Testing #16,  Caliciviridae,  GQ475301.gb    Test #16,  Caliciviridae,  GQ475301.gb,  pass
- Testing #17,  Caliciviridae,  JF320650.gb    Test #17,  Caliciviridae,  JF320650.gb,  pass
- Testing #18,  Caliciviridae,  M87661.gb      Test #18,  Caliciviridae,  M87661.gb,    pass
- Testing #19,  Caliciviridae,  U15301.gb      Test #19,  Caliciviridae,  U15301.gb,    pass
- Testing #20,  Coronaviridae,  AB257344.gb    Test #20,  Coronaviridae,  AB257344.gb,  pass
- Testing #21,  Coronaviridae,  AB354579.gb    Test #21,  Coronaviridae,  AB354579.gb,  pass
- Testing #22,  Coronaviridae,  AF201929.gb    Test #22,  Coronaviridae,  AF201929.gb,  pass
- Testing #23,  Coronaviridae,  AF220295.gb    Test #23,  Coronaviridae,  AF220295.gb,  pass
- Testing #24,  Coronaviridae,  AJ311317.gb    Test #24,  Coronaviridae,  AJ311317.gb,  pass
- Testing #25,  Coronaviridae,  AY278554.gb    Test #25,  Coronaviridae,  AY278554.gb,  pass
- Testing #26,  Coronaviridae,  AY350750.gb    Test #26,  Coronaviridae,  AY350750.gb,  pass
- Testing #27,  Coronaviridae,  AY357075.gb    Test #27,  Coronaviridae,  AY357075.gb,  pass
- Testing #28,  Coronaviridae,  AY692454.gb    Test #28,  Coronaviridae,  AY692454.gb,  pass
- Testing #29,  Coronaviridae,  DQ445911.gb    Test #29,  Coronaviridae,  DQ445911.gb,  pass, comment=DQ445911 w/ taxid=277944(Human coronavirus NL63) not covered in V1.1.7
- Testing #30,  Coronaviridae,  DQ497008.gb    Test #30,  Coronaviridae,  DQ497008.gb,  pass
- Testing #31,  Coronaviridae,  DQ898174.gb    Test #31,  Coronaviridae,  DQ898174.gb,  pass
- Testing #32,  Coronaviridae,  EF424615.gb    Test #32,  Coronaviridae,  EF424615.gb,  pass
- Testing #33,  Coronaviridae,  EF424619.gb    Test #33,  Coronaviridae,  EF424619.gb,  pass
- Testing #34,  Coronaviridae,  EU637854.gb    Test #34,  Coronaviridae,  EU637854.gb,  pass
- Testing #35,  Coronaviridae,  EU714028.gb    Test #35,  Coronaviridae,  EU714028.gb,  pass
- Testing #36,  Coronaviridae,  EU714029.gb    Test #36,  Coronaviridae,  EU714029.gb,  pass
- Testing #37,  Coronaviridae,  FJ376622.gb    Test #37,  Coronaviridae,  FJ376622.gb,  pass, comment=No polyprotein: Found 9 CDS, but doesnot align with refseq
- Testing #38,  Coronaviridae,  FJ588686.gb    Test #38,  Coronaviridae,  FJ588686.gb,  pass
- Testing #39,  Coronaviridae,  FJ884686.gb    Test #39,  Coronaviridae,  FJ884686.gb,  pass
- Testing #40,  Coronaviridae,  FV537212.gb    Test #40,  Coronaviridae,  FV537212.gb,  pass, comment=No polyprotein: No CDS defined in genome file
- Testing #41,  Coronaviridae,  HM034837.gb    Test #41,  Coronaviridae,  HM034837.gb,  pass
- Testing #42,  Coronaviridae,  JF330899.gb    Test #42,  Coronaviridae,  JF330899.gb,  pass
- Testing #43,  Coronaviridae,  JQ088078.gb    Test #43,  Coronaviridae,  JQ088078.gb,  pass
- Testing #44,  Coronaviridae,  NC_011549.gb   Test #44,  Coronaviridae,  NC_011549.gb, pass, comment=No polyprotein: Found 9 CDS, but doesnot align with refseq
- Testing #45,  Flaviviridae,   AB005686.gb    Test #45,  Flaviviridae,   AB005686.gb,  pass
- Testing #46,  Flaviviridae,   AB005702.gb    Test #46,  Flaviviridae,   AB005702.gb,  pass
- Testing #47,  Flaviviridae,   AB014488.gb    Test #47,  Flaviviridae,   AB014488.gb,  pass
- Testing #48,  Flaviviridae,   AB016785.gb    Test #48,  Flaviviridae,   AB016785.gb,  pass
- Testing #49,  Flaviviridae,   AB022290.gb    Test #49,  Flaviviridae,   AB022290.gb,  pass
- Testing #50,  Flaviviridae,   AB027652.gb    Test #50,  Flaviviridae,   AB027652.gb,  pass
- Testing #51,  Flaviviridae,   AB029292.gb    Test #51,  Flaviviridae,   AB029292.gb,  pass
- Testing #52,  Flaviviridae,   AB030907.gb    Test #52,  Flaviviridae,   AB030907.gb,  pass
- Testing #53,  Flaviviridae,   AB047643.gb    Test #53,  Flaviviridae,   AB047643.gb,  pass
- Testing #54,  Flaviviridae,   AB049090.gb    Test #54,  Flaviviridae,   AB049090.gb,  pass
- Testing #55,  Flaviviridae,   AB063394.gb    Test #55,  Flaviviridae,   AB063394.gb,  pass
- Testing #56,  Flaviviridae,   AB079079.gb    Test #56,  Flaviviridae,   AB079079.gb,  pass
- Testing #57,  Flaviviridae,   AB109543.gb    Test #57,  Flaviviridae,   AB109543.gb,  pass
- Testing #58,  Flaviviridae,   AB113467.gb    Test #58,  Flaviviridae,   AB113467.gb,  pass
- Testing #59,  Flaviviridae,   AB119282.gb    Test #59,  Flaviviridae,   AB119282.gb,  pass, comment=No polyprotein: Found 1 CDS, but doesnot align with refseq
- Testing #60,  Flaviviridae,   AB154177.gb    Test #60,  Flaviviridae,   AB154177.gb,  pass
- Testing #61,  Flaviviridae,   AB162873.gb    Test #61,  Flaviviridae,   AB162873.gb,  pass
- Testing #62,  Flaviviridae,   AB182800.gb    Test #62,  Flaviviridae,   AB182800.gb,  pass
- Testing #63,  Flaviviridae,   AB182906.gb    Test #63,  Flaviviridae,   AB182906.gb,  pass
- Testing #64,  Flaviviridae,   AB186428.gb    Test #64,  Flaviviridae,   AB186428.gb,  pass
- Testing #65,  Flaviviridae,   AB269327.gb    Test #65,  Flaviviridae,   AB269327.gb,  pass
- Testing #66,  Flaviviridae,   AB269353.gb    Test #66,  Flaviviridae,   AB269353.gb,  pass
- Testing #67,  Flaviviridae,   AB284202.gb    Test #67,  Flaviviridae,   AB284202.gb,  pass
- Testing #68,  Flaviviridae,   AB284209.gb    Test #68,  Flaviviridae,   AB284209.gb,  pass
- Testing #69,  Flaviviridae,   AB306353.gb    Test #69,  Flaviviridae,   AB306353.gb,  pass
- Testing #70,  Flaviviridae,   AB441024.gb    Test #70,  Flaviviridae,   AB441024.gb,  pass
- Testing #71,  Flaviviridae,   AB465598.gb    Test #71,  Flaviviridae,   AB465598.gb,  pass
- Testing #72,  Flaviviridae,   AB470105.gb    Test #72,  Flaviviridae,   AB470105.gb,  pass
- Testing #73,  Flaviviridae,   AB470113.gb    Test #73,  Flaviviridae,   AB470113.gb,  pass
- Testing #74,  Flaviviridae,   AB470117.gb    Test #74,  Flaviviridae,   AB470117.gb,  pass
- Testing #75,  Flaviviridae,   AB470187.gb    Test #75,  Flaviviridae,   AB470187.gb,  pass
- Testing #76,  Flaviviridae,   AB488523.gb    Test #76,  Flaviviridae,   AB488523.gb,  pass
- Testing #77,  Flaviviridae,   AB492186.gb    Test #77,  Flaviviridae,   AB492186.gb,  pass
- Testing #78,  Flaviviridae,   AB492203.gb    Test #78,  Flaviviridae,   AB492203.gb,  pass
- Testing #79,  Flaviviridae,   AB492208.gb    Test #79,  Flaviviridae,   AB492208.gb,  pass
- Testing #80,  Flaviviridae,   AB517001.gb    Test #80,  Flaviviridae,   AB517001.gb,  pass
- Testing #81,  Flaviviridae,   AB518856.gb    Test #81,  Flaviviridae,   AB518856.gb,  pass
- Testing #82,  Flaviviridae,   AB538640.gb    Test #82,  Flaviviridae,   AB538640.gb,  pass
- Testing #83,  Flaviviridae,   AB600751.gb    Test #83,  Flaviviridae,   AB600751.gb,  pass
- Testing #84,  Flaviviridae,   AB600758.gb    Test #84,  Flaviviridae,   AB600758.gb,  pass
- Testing #85,  Flaviviridae,   AB600763.gb    Test #85,  Flaviviridae,   AB600763.gb,  pass
- Testing #86,  Flaviviridae,   AB600807.gb    Test #86,  Flaviviridae,   AB600807.gb,  pass
- Testing #87,  Flaviviridae,   AB622123.gb    Test #87,  Flaviviridae,   AB622123.gb,  pass
- Testing #88,  Flaviviridae,   AB661784.gb    Test #88,  Flaviviridae,   AB661784.gb,  pass
- Testing #89,  Flaviviridae,   AF029794.gb    Test #89,  Flaviviridae,   AF029794.gb,  pass
- Testing #90,  Flaviviridae,   AF042791.gb    Test #90,  Flaviviridae,   AF042791.gb,  pass
- Testing #91,  Flaviviridae,   AF046166.gb    Test #91,  Flaviviridae,   AF046166.gb,  pass
- Testing #92,  Flaviviridae,   AF046856.gb    Test #92,  Flaviviridae,   AF046856.gb,  pass
- Testing #93,  Flaviviridae,   AF046857.gb    Test #93,  Flaviviridae,   AF046857.gb,  pass
- Testing #94,  Flaviviridae,   AF047396.gb    Test #94,  Flaviviridae,   AF047396.gb,  pass
- Testing #95,  Flaviviridae,   AF052446.gb    Test #95,  Flaviviridae,   AF052446.gb,  pass
- Testing #96,  Flaviviridae,   AF052447.gb    Test #96,  Flaviviridae,   AF052447.gb,  pass
- Testing #97,  Flaviviridae,   AF056829.gb    Test #97,  Flaviviridae,   AF056829.gb,  pass
- Testing #98,  Flaviviridae,   AF056842.gb    Test #98,  Flaviviridae,   AF056842.gb,  pass
- Testing #99,  Flaviviridae,   AF056857.gb    Test #99,  Flaviviridae,   AF056857.gb,  pass
- Testing #100, Flaviviridae,   AF056869.gb    Test #100, Flaviviridae,   AF056869.gb,  pass
- Testing #101, Flaviviridae,   AF056890.gb    Test #101, Flaviviridae,   AF056890.gb,  pass
- Testing #102, Flaviviridae,   AF089826.gb    Test #102, Flaviviridae,   AF089826.gb,  pass
- Testing #103, Flaviviridae,   AF118611.gb    Test #103, Flaviviridae,   AF118611.gb,  pass
- Testing #104, Flaviviridae,   AF130362.gb    Test #104, Flaviviridae,   AF130362.gb,  pass
- Testing #105, Flaviviridae,   AF134980.gb    Test #105, Flaviviridae,   AF134980.gb,  pass
- Testing #106, Flaviviridae,   AF163220.gb    Test #106, Flaviviridae,   AF163220.gb,  pass
- Testing #107, Flaviviridae,   AF166590.gb    Test #107, Flaviviridae,   AF166590.gb,  pass
- Testing #108, Flaviviridae,   AF166993.gb    Test #108, Flaviviridae,   AF166993.gb,  pass
- Testing #109, Flaviviridae,   AF205453.gb    Test #109, Flaviviridae,   AF205453.gb,  pass
- Testing #110, Flaviviridae,   AF207080.gb    Test #110, Flaviviridae,   AF207080.gb,  pass
- Testing #111, Flaviviridae,   AF208075.gb    Test #111, Flaviviridae,   AF208075.gb,  pass
- Testing #112, Flaviviridae,   AF211032.gb    Test #112, Flaviviridae,   AF211032.gb,  pass
- Testing #113, Flaviviridae,   AF211074.gb    Test #113, Flaviviridae,   AF211074.gb,  pass
- Testing #114, Flaviviridae,   AF218876.gb    Test #114, Flaviviridae,   AF218876.gb,  pass
- Testing #115, Flaviviridae,   AF221500.gb    Test #115, Flaviviridae,   AF221500.gb,  pass
- Testing #116, Flaviviridae,   AF271851.gb    Test #116, Flaviviridae,   AF271851.gb,  pass
- Testing #117, Flaviviridae,   AF378170.gb    Test #117, Flaviviridae,   AF378170.gb,  pass
- Testing #118, Flaviviridae,   AF425639.gb    Test #118, Flaviviridae,   AF425639.gb,  pass
- Testing #119, Flaviviridae,   AF436117.gb    Test #119, Flaviviridae,   AF436117.gb,  pass
- Testing #120, Flaviviridae,   AF454974.gb    Test #120, Flaviviridae,   AF454974.gb,  pass
- Testing #121, Flaviviridae,   AF529724.gb    Test #121, Flaviviridae,   AF529724.gb,  pass
- Testing #122, Flaviviridae,   AJ132996.gb    Test #122, Flaviviridae,   AJ132996.gb,  pass
- Testing #123, Flaviviridae,   AJ238800.gb    Test #123, Flaviviridae,   AJ238800.gb,  pass
- Testing #124, Flaviviridae,   AJ303205.gb    Test #124, Flaviviridae,   AJ303205.gb,  pass
- Testing #125, Flaviviridae,   AJ303224.gb    Test #125, Flaviviridae,   AJ303224.gb,  pass
- Testing #126, Flaviviridae,   AJ507016.gb    Test #126, Flaviviridae,   AJ507016.gb,  pass
- Testing #127, Flaviviridae,   AJ564839.gb    Test #127, Flaviviridae,   AJ564839.gb,  pass
- Testing #128, Flaviviridae,   AM272362.gb    Test #128, Flaviviridae,   AM272362.gb,  pass
- Testing #129, Flaviviridae,   AM272922.gb    Test #129, Flaviviridae,   AM272922.gb,  pass
- Testing #130, Flaviviridae,   AM274226.gb    Test #130, Flaviviridae,   AM274226.gb,  pass
- Testing #131, Flaviviridae,   AM280073.gb    Test #131, Flaviviridae,   AM280073.gb,  pass
- Testing #132, Flaviviridae,   AM281453.gb    Test #132, Flaviviridae,   AM281453.gb,  pass
- Testing #133, Flaviviridae,   AM408911.gb    Test #133, Flaviviridae,   AM408911.gb,  pass
- Testing #134, Flaviviridae,   AM708188.gb    Test #134, Flaviviridae,   AM708188.gb,  pass
- Testing #135, Flaviviridae,   AM708499.gb    Test #135, Flaviviridae,   AM708499.gb,  pass
- Testing #136, Flaviviridae,   AM708793.gb    Test #136, Flaviviridae,   AM708793.gb,  pass
- Testing #137, Flaviviridae,   AM708962.gb    Test #137, Flaviviridae,   AM708962.gb,  pass
- Testing #138, Flaviviridae,   AM710623.gb    Test #138, Flaviviridae,   AM710623.gb,  pass
- Testing #139, Flaviviridae,   AM710685.gb    Test #139, Flaviviridae,   AM710685.gb,  pass
- Testing #140, Flaviviridae,   AX472297.gb    Test #140, Flaviviridae,   AX472297.gb,  pass
- Testing #141, Flaviviridae,   AX685038.gb    Test #141, Flaviviridae,   AX685038.gb,  pass
- Testing #142, Flaviviridae,   AY217093.gb    Test #142, Flaviviridae,   AY217093.gb,  pass, comment=No polyprotein: No CDS defined in genome file
- Testing #143, Flaviviridae,   AY342476.gb    Test #143, Flaviviridae,   AY342476.gb,  pass
- Testing #144, Flaviviridae,   AY363865.gb    Test #144, Flaviviridae,   AY363865.gb,  pass
- Testing #145, Flaviviridae,   AY376737.gb    Test #145, Flaviviridae,   AY376737.gb,  pass
- Testing #146, Flaviviridae,   AY548635.gb    Test #146, Flaviviridae,   AY548635.gb,  pass
- Testing #147, Flaviviridae,   AY593210.gb    Test #147, Flaviviridae,   AY593210.gb,  pass
- Testing #148, Flaviviridae,   AY600854.gb    Test #148, Flaviviridae,   AY600854.gb,  pass
- Testing #149, Flaviviridae,   AY858050.gb    Test #149, Flaviviridae,   AY858050.gb,  pass
- Testing #150, Flaviviridae,   D11168.gb      Test #150, Flaviviridae,   D11168.gb,    pass
- Testing #151, Flaviviridae,   DQ005375.gb    Test #151, Flaviviridae,   DQ005375.gb,  pass
- Testing #152, Flaviviridae,   DQ067771.gb    Test #152, Flaviviridae,   DQ067771.gb,  pass
- Testing #153, Flaviviridae,   DQ235229.gb    Test #153, Flaviviridae,   DQ235229.gb,  pass
- Testing #154, Flaviviridae,   DQ294045.gb    Test #154, Flaviviridae,   DQ294045.gb,  pass
- Testing #155, Flaviviridae,   DQ430817.gb    Test #155, Flaviviridae,   DQ430817.gb,  pass
- Testing #156, Flaviviridae,   DQ648597.gb    Test #156, Flaviviridae,   DQ648597.gb,  pass
- Testing #157, Flaviviridae,   DQ793141.gb    Test #157, Flaviviridae,   DQ793141.gb,  pass
- Testing #158, Flaviviridae,   DQ793159.gb    Test #158, Flaviviridae,   DQ793159.gb,  pass
- Testing #159, Flaviviridae,   DQ835769.gb    Test #159, Flaviviridae,   DQ835769.gb,  pass
- Testing #160, Flaviviridae,   DQ836632.gb    Test #160, Flaviviridae,   DQ836632.gb,  pass
- Testing #161, Flaviviridae,   DQ988684.gb    Test #161, Flaviviridae,   DQ988684.gb,  pass
- Testing #162, Flaviviridae,   EF032895.gb    Test #162, Flaviviridae,   EF032895.gb,  pass
- Testing #163, Flaviviridae,   EF032897.gb    Test #163, Flaviviridae,   EF032897.gb,  pass
- Testing #164, Flaviviridae,   EF126999.gb    Test #164, Flaviviridae,   EF126999.gb,  pass
- Testing #165, Flaviviridae,   EF185924.gb    Test #165, Flaviviridae,   EF185924.gb,  pass
- Testing #166, Flaviviridae,   EF407458.gb    Test #166, Flaviviridae,   EF407458.gb,  pass
- Testing #167, Flaviviridae,   EF407467.gb    Test #167, Flaviviridae,   EF407467.gb,  pass
- Testing #168, Flaviviridae,   EF407476.gb    Test #168, Flaviviridae,   EF407476.gb,  pass
- Testing #169, Flaviviridae,   EF407495.gb    Test #169, Flaviviridae,   EF407495.gb,  pass
- Testing #170, Flaviviridae,   EF608626.gb    Test #170, Flaviviridae,   EF608626.gb,  pass
- Testing #171, Flaviviridae,   EU155347.gb    Test #171, Flaviviridae,   EU155347.gb,  pass
- Testing #172, Flaviviridae,   EU166225.gb    Test #172, Flaviviridae,   EU166225.gb,  pass
- Testing #173, Flaviviridae,   EU255958.gb    Test #173, Flaviviridae,   EU255958.gb,  pass
- Testing #174, Flaviviridae,   EU482886.gb    Test #174, Flaviviridae,   EU482886.gb,  pass
- Testing #175, Flaviviridae,   EU623019.gb    Test #175, Flaviviridae,   EU623019.gb,  pass
- Testing #176, Flaviviridae,   EU677253.gb    Test #176, Flaviviridae,   EU677253.gb,  pass
- Testing #177, Flaviviridae,   EU781803.gb    Test #177, Flaviviridae,   EU781803.gb,  pass
- Testing #178, Flaviviridae,   EU846233.gb    Test #178, Flaviviridae,   EU846233.gb,  pass
- Testing #179, Flaviviridae,   EU847445.gb    Test #179, Flaviviridae,   EU847445.gb,  pass
- Testing #180, Flaviviridae,   FJ360845.gb    Test #180, Flaviviridae,   FJ360845.gb,  pass
- Testing #181, Flaviviridae,   FJ375523.gb    Test #181, Flaviviridae,   FJ375523.gb,  pass
- Testing #182, Flaviviridae,   FJ515008.gb    Test #182, Flaviviridae,   FJ515008.gb,  pass
- Testing #183, Flaviviridae,   FJ515016.gb    Test #183, Flaviviridae,   FJ515016.gb,  pass
- Testing #184, Flaviviridae,   FJ515122.gb    Test #184, Flaviviridae,   FJ515122.gb,  pass
- Testing #185, Flaviviridae,   FJ515149.gb    Test #185, Flaviviridae,   FJ515149.gb,  pass
- Testing #186, Flaviviridae,   FJ654700.gb    Test #186, Flaviviridae,   FJ654700.gb,  pass
- Testing #187, Flaviviridae,   FJ872155.gb    Test #187, Flaviviridae,   FJ872155.gb,  pass, comment=No polyprotein: Found 1 CDS, but doesnot align with refseq
- Testing #188, Flaviviridae,   FM210239.gb    Test #188, Flaviviridae,   FM210239.gb,  pass
- Testing #189, Flaviviridae,   FM993611.gb    Test #189, Flaviviridae,   FM993611.gb,  pass
- Testing #190, Flaviviridae,   FN552941.gb    Test #190, Flaviviridae,   FN552941.gb,  pass
- Testing #191, Flaviviridae,   FN553068.gb    Test #191, Flaviviridae,   FN553068.gb,  pass
- Testing #192, Flaviviridae,   FN668603.gb    Test #192, Flaviviridae,   FN668603.gb,  pass
- Testing #193, Flaviviridae,   FN676829.gb    Test #193, Flaviviridae,   FN676829.gb,  pass
- Testing #194, Flaviviridae,   FR672301.gb    Test #194, Flaviviridae,   FR672301.gb,  pass
- Testing #195, Flaviviridae,   FR673630.gb    Test #195, Flaviviridae,   FR673630.gb,  pass
- Testing #196, Flaviviridae,   FR675153.gb    Test #196, Flaviviridae,   FR675153.gb,  pass
- Testing #197, Flaviviridae,   GQ379163.gb    Test #197, Flaviviridae,   GQ379163.gb,  pass
- Testing #198, Flaviviridae,   GU131926.gb    Test #198, Flaviviridae,   GU131926.gb,  pass
- Testing #199, Flaviviridae,   HQ113572.gb    Test #199, Flaviviridae,   HQ113572.gb,  pass
- Testing #200, Flaviviridae,   HQ541802.gb    Test #200, Flaviviridae,   HQ541802.gb,  pass
- Testing #201, Flaviviridae,   HQ852457.gb    Test #201, Flaviviridae,   HQ852457.gb,  pass
- Testing #202, Flaviviridae,   JF714988.gb    Test #202, Flaviviridae,   JF714988.gb,  pass
- Testing #203, Flaviviridae,   JF824237.gb    Test #203, Flaviviridae,   JF824237.gb,  pass
- Testing #204, Flaviviridae,   JN559741.gb    Test #204, Flaviviridae,   JN559741.gb,  pass
- Testing #205, Flaviviridae,   JQ303563.gb    Test #205, Flaviviridae,   JQ303563.gb,  pass
- Testing #206, Flaviviridae,   JQ318365.gb    Test #206, Flaviviridae,   JQ318365.gb,  pass
- Testing #207, Flaviviridae,   M19197.gb      Test #207, Flaviviridae,   M19197.gb,    pass
- Testing #208, Flaviviridae,   M23027.gb      Test #208, Flaviviridae,   M23027.gb,    pass
- Testing #209, Flaviviridae,   M55506.gb      Test #209, Flaviviridae,   M55506.gb,    pass
- Testing #210, Flaviviridae,   NC_001809.gb   Test #210, Flaviviridae,   NC_001809.gb, pass
- Testing #211, Flaviviridae,   NC_002031.gb   Test #211, Flaviviridae,   NC_002031.gb, pass
- Testing #212, Flaviviridae,   U89019.gb      Test #212, Flaviviridae,   U89019.gb,    pass
- Testing #213, Flaviviridae,   X03467.gb      Test #213, Flaviviridae,   X03467.gb,    pass
- Testing #214, Picornaviridae, AB008476.gb    Test #214, Picornaviridae, AB008476.gb,  pass
- Testing #215, Picornaviridae, AB090799.gb    Test #215, Picornaviridae, AB090799.gb,  pass
- Testing #216, Picornaviridae, AB282822.gb    Test #216, Picornaviridae, AB282822.gb,  pass
- Testing #217, Picornaviridae, AB601872.gb    Test #217, Picornaviridae, AB601872.gb,  pass
- Testing #218, Picornaviridae, AB601882.gb    Test #218, Picornaviridae, AB601882.gb,  pass
- Testing #219, Picornaviridae, AB668029.gb    Test #219, Picornaviridae, AB668029.gb,  pass
- Testing #220, Picornaviridae, AF026168.gb    Test #220, Picornaviridae, AF026168.gb,  pass
- Testing #221, Picornaviridae, AF159998.gb    Test #221, Picornaviridae, AF159998.gb,  pass
- Testing #222, Picornaviridae, AF169026.gb    Test #222, Picornaviridae, AF169026.gb,  pass
- Testing #223, Picornaviridae, AF499636.gb    Test #223, Picornaviridae, AF499636.gb,  pass
- Testing #224, Picornaviridae, AJ005695.gb    Test #224, Picornaviridae, AJ005695.gb,  pass
- Testing #225, Picornaviridae, AY896760.gb    Test #225, Picornaviridae, AY896760.gb,  pass
- Testing #226, Picornaviridae, FJ445190.gb    Test #226, Picornaviridae, FJ445190.gb,  pass
- Testing #227, Picornaviridae, HM852755.gb    Test #227, Picornaviridae, HM852755.gb,  pass
- Testing #228, Picornaviridae, HQ595343.gb    Test #228, Picornaviridae, HQ595343.gb,  pass
- Testing #229, Picornaviridae, HQ647170.gb    Test #229, Picornaviridae, HQ647170.gb,  pass
- Testing #230, Picornaviridae, JN099696.gb    Test #230, Picornaviridae, JN099696.gb,  pass
- Testing #231, Picornaviridae, JN990700.gb    Test #231, Picornaviridae, JN990700.gb,  pass
- Testing #232, Picornaviridae, JQ655151.gb    Test #232, Picornaviridae, JQ655151.gb,  pass
- Testing #233, Togaviridae,    AB003337.gb    Test #233, Togaviridae,    AB003337.gb,  pass
- Testing #234, Togaviridae,    AB047329.gb    Test #234, Togaviridae,    AB047329.gb,  pass
- Testing #235, Togaviridae,    AB047330.gb    Test #235, Togaviridae,    AB047330.gb,  pass
- Testing #236, Togaviridae,    AB204560.gb    Test #236, Togaviridae,    AB204560.gb,  pass
- Testing #237, Togaviridae,    AF079457.gb    Test #237, Togaviridae,    AF079457.gb,  pass
- Testing #238, Togaviridae,    AF126284.gb    Test #238, Togaviridae,    AF126284.gb,  pass
- Testing #239, Togaviridae,    AF159554.gb    Test #239, Togaviridae,    AF159554.gb,  pass
- Testing #240, Togaviridae,    AF339484.gb    Test #240, Togaviridae,    AF339484.gb,  pass
- Testing #241, Togaviridae,    AJ316244.gb    Test #241, Togaviridae,    AJ316244.gb,  pass
- Testing #242, Togaviridae,    AJ316246.gb    Test #242, Togaviridae,    AJ316246.gb,  pass
- Testing #243, Togaviridae,    AY823299.gb    Test #243, Togaviridae,    AY823299.gb,  pass
- Testing #244, Togaviridae,    AY973944.gb    Test #244, Togaviridae,    AY973944.gb,  pass
- Testing #245, Togaviridae,    CS227856.gb    Test #245, Togaviridae,    CS227856.gb,  pass
- Testing #246, Togaviridae,    DQ085359.gb    Test #246, Togaviridae,    DQ085359.gb,  pass
- Testing #247, Togaviridae,    DQ189086.gb    Test #247, Togaviridae,    DQ189086.gb,  pass
- Testing #248, Togaviridae,    DQ241304.gb    Test #248, Togaviridae,    DQ241304.gb,  pass
- Testing #249, Togaviridae,    EF012359.gb    Test #249, Togaviridae,    EF012359.gb,  pass
- Testing #250, Togaviridae,    EF568607.gb    Test #250, Togaviridae,    EF568607.gb,  pass
- Testing #251, Togaviridae,    EU037962.gb    Test #251, Togaviridae,    EU037962.gb,  pass
- Testing #252, Togaviridae,    EU372006.gb    Test #252, Togaviridae,    EU372006.gb,  pass
- Testing #253, Togaviridae,    EU708314.gb    Test #253, Togaviridae,    EU708314.gb,  pass
- Testing #254, Togaviridae,    FJ744526.gb    Test #254, Togaviridae,    FJ744526.gb,  pass
- Testing #255, Togaviridae,    GQ281603.gb    Test #255, Togaviridae,    GQ281603.gb,  pass
- Testing #256, Togaviridae,    GQ287645.gb    Test #256, Togaviridae,    GQ287645.gb,  pass
- Testing #257, Togaviridae,    GU361118.gb    Test #257, Togaviridae,    GU361118.gb,  pass
- Testing #258, Togaviridae,    HM210095.gb    Test #258, Togaviridae,    HM210095.gb,  pass
- Testing #259, Togaviridae,    HQ456252.gb    Test #259, Togaviridae,    HQ456252.gb,  pass, comment=No polyprotein: Problem with translation of CDS=77..7501
- Testing #260, Togaviridae,    HQ848388.gb    Test #260, Togaviridae,    HQ848388.gb,  pass
- Testing #261, Togaviridae,    NC_001449.gb   Test #261, Togaviridae,    NC_001449.gb, pass
- Testing #262, Togaviridae,    NC_003899.gb   Test #262, Togaviridae,    NC_003899.gb, pass
- Testing #263, Togaviridae,    NC_004162.gb   Test #263, Togaviridae,    NC_004162.gb, pass
- Testing #264, Togaviridae,    NC_006558.gb   Test #264, Togaviridae,    NC_006558.gb, pass
- Testing #265, Togaviridae,    U34999.gb      Test #265, Togaviridae,    U34999.gb,    pass
- Testing #266, Togaviridae,    U38304.gb      Test #266, Togaviridae,    U38304.gb,    pass
- Testing #267, Togaviridae,    U73745.gb      Test #267, Togaviridae,    U73745.gb,    pass
- Testing #268, usage,          usage          Test #268, usage,          usage,        pass
+msa_annotate_test.pl: from Input directory: ./test, found 283 gbk files.
+loadTaxonTable: loaded 22945 lines from file './Annotate_taxon_records.txt'
+ Testing Arenaviridae,   4
+ Test #1,   Arenaviridae,   AY746353.gb,  pass
+ Test #2,   Arenaviridae,   JF446285.gb,  pass
+ Test #3,   Arenaviridae,   JF446286.gb,  pass
+ Test #4,   Arenaviridae,   JF446298.gb,  pass, comment=No polyprotein: Found 1 CDS, but doesnot align with refseq
+ Testing Bunyaviridae,   3
+ Test #5,   Bunyaviridae,   AB127995.gb,  pass
+ Test #6,   Bunyaviridae,   AF427325.gb,  pass
+ Test #7,   Bunyaviridae,   NC_005220.gb, pass
+ Testing Caliciviridae,  16
+ Test #8,   Caliciviridae,  AB028463.gb,  pass
+ Test #9,   Caliciviridae,  AB039781.gb,  pass
+ Test #10,  Caliciviridae,  AB042808.gb,  pass
+ Test #11,  Caliciviridae,  AB363975.gb,  pass
+ Test #12,  Caliciviridae,  AF093797.gb,  pass
+ Test #13,  Caliciviridae,  AJ302016.gb,  pass
+ Test #14,  Caliciviridae,  AY560114.gb,  pass
+ Test #15,  Caliciviridae,  AY560117.gb,  pass
+ Test #16,  Caliciviridae,  EF558585.gb,  pass
+ Test #17,  Caliciviridae,  GQ166866.gb,  pass
+ Test #18,  Caliciviridae,  GQ180108.gb,  pass
+ Test #19,  Caliciviridae,  GQ475301.gb,  pass
+ Test #20,  Caliciviridae,  JF320650.gb,  pass
+ Test #21,  Caliciviridae,  KC175342.gb,  pass
+ Test #22,  Caliciviridae,  M87661.gb,    pass
+ Test #23,  Caliciviridae,  U15301.gb,    pass
+ Testing Coronaviridae,  26
+ Test #24,  Coronaviridae,  AB257344.gb,  pass
+ Test #25,  Coronaviridae,  AB354579.gb,  pass
+ Test #26,  Coronaviridae,  AF201929.gb,  pass
+ Test #27,  Coronaviridae,  AF220295.gb,  pass
+ Test #28,  Coronaviridae,  AJ311317.gb,  pass
+ Test #29,  Coronaviridae,  AY278554.gb,  pass
+ Test #30,  Coronaviridae,  AY350750.gb,  pass
+ Test #31,  Coronaviridae,  AY357075.gb,  pass
+ Test #32,  Coronaviridae,  AY692454.gb,  pass
+ Test #33,  Coronaviridae,  DQ445911.gb,  pass, comment=DQ445911 w/ taxid=277944(Human coronavirus NL63) not covered in V1.1.8
+ Test #34,  Coronaviridae,  DQ497008.gb,  pass
+ Test #35,  Coronaviridae,  DQ898174.gb,  pass
+ Test #36,  Coronaviridae,  EF424615.gb,  pass
+ Test #37,  Coronaviridae,  EF424619.gb,  pass
+ Test #38,  Coronaviridae,  EU637854.gb,  pass
+ Test #39,  Coronaviridae,  EU714028.gb,  pass
+ Test #40,  Coronaviridae,  EU714029.gb,  pass
+ Test #41,  Coronaviridae,  FJ376622.gb,  pass, comment=FJ376622 w/ taxid=572289(Munia coronavirus HKU13) not covered in V1.1.8
+ Test #42,  Coronaviridae,  FJ588686.gb,  pass
+ Test #43,  Coronaviridae,  FJ884686.gb,  pass
+ Test #44,  Coronaviridae,  FV537212.gb,  pass, comment=No polyprotein: No CDS defined in genome file
+ Test #45,  Coronaviridae,  HM034837.gb,  pass
+ Test #46,  Coronaviridae,  JF330899.gb,  pass
+ Test #47,  Coronaviridae,  JF699752.gb,  pass
+ Test #48,  Coronaviridae,  JQ088078.gb,  pass
+ Test #49,  Coronaviridae,  NC_011549.gb, pass, comment=NC_011549 w/ taxid=572290(Thrush coronavirus HKU12) not covered in V1.1.8
+ Testing Filoviridae,    0
+ Testing Flaviviridae,   172
+ Test #50,  Flaviviridae,   AB005686.gb,  pass
+ Test #51,  Flaviviridae,   AB005702.gb,  pass
+ Test #52,  Flaviviridae,   AB014488.gb,  pass
+ Test #53,  Flaviviridae,   AB016785.gb,  pass
+ Test #54,  Flaviviridae,   AB022290.gb,  pass
+ Test #55,  Flaviviridae,   AB027652.gb,  pass
+ Test #56,  Flaviviridae,   AB029292.gb,  pass
+ Test #57,  Flaviviridae,   AB030907.gb,  pass
+ Test #58,  Flaviviridae,   AB047643.gb,  pass
+ Test #59,  Flaviviridae,   AB049090.gb,  pass
+ Test #60,  Flaviviridae,   AB063394.gb,  pass
+ Test #61,  Flaviviridae,   AB079079.gb,  pass
+ Test #62,  Flaviviridae,   AB109543.gb,  pass
+ Test #63,  Flaviviridae,   AB113467.gb,  pass
+ Test #64,  Flaviviridae,   AB119282.gb,  pass, comment=No polyprotein: Found 1 CDS, but doesnot align with refseq
+ Test #65,  Flaviviridae,   AB154177.gb,  pass
+ Test #66,  Flaviviridae,   AB162873.gb,  pass
+ Test #67,  Flaviviridae,   AB182800.gb,  pass
+ Test #68,  Flaviviridae,   AB182906.gb,  pass
+ Test #69,  Flaviviridae,   AB186428.gb,  pass
+ Test #70,  Flaviviridae,   AB269327.gb,  pass
+ Test #71,  Flaviviridae,   AB269353.gb,  pass
+ Test #72,  Flaviviridae,   AB284202.gb,  pass
+ Test #73,  Flaviviridae,   AB284209.gb,  pass
+ Test #74,  Flaviviridae,   AB306353.gb,  pass
+ Test #75,  Flaviviridae,   AB441024.gb,  pass
+ Test #76,  Flaviviridae,   AB465598.gb,  pass
+ Test #77,  Flaviviridae,   AB470105.gb,  pass
+ Test #78,  Flaviviridae,   AB470113.gb,  pass
+ Test #79,  Flaviviridae,   AB470117.gb,  pass
+ Test #80,  Flaviviridae,   AB470187.gb,  pass
+ Test #81,  Flaviviridae,   AB488523.gb,  pass
+ Test #82,  Flaviviridae,   AB492186.gb,  pass
+ Test #83,  Flaviviridae,   AB492203.gb,  pass
+ Test #84,  Flaviviridae,   AB492208.gb,  pass
+ Test #85,  Flaviviridae,   AB517001.gb,  pass
+ Test #86,  Flaviviridae,   AB518856.gb,  pass
+ Test #87,  Flaviviridae,   AB538640.gb,  pass
+ Test #88,  Flaviviridae,   AB600751.gb,  pass
+ Test #89,  Flaviviridae,   AB600758.gb,  pass
+ Test #90,  Flaviviridae,   AB600763.gb,  pass
+ Test #91,  Flaviviridae,   AB600807.gb,  pass
+ Test #92,  Flaviviridae,   AB622123.gb,  pass
+ Test #93,  Flaviviridae,   AB661784.gb,  pass
+ Test #94,  Flaviviridae,   AB705314.gb,  pass
+ Test #95,  Flaviviridae,   AF029794.gb,  pass
+ Test #96,  Flaviviridae,   AF042791.gb,  pass
+ Test #97,  Flaviviridae,   AF046166.gb,  pass
+ Test #98,  Flaviviridae,   AF046856.gb,  pass
+ Test #99,  Flaviviridae,   AF046857.gb,  pass
+ Test #100, Flaviviridae,   AF047396.gb,  pass
+ Test #101, Flaviviridae,   AF052446.gb,  pass
+ Test #102, Flaviviridae,   AF052447.gb,  pass
+ Test #103, Flaviviridae,   AF056829.gb,  pass
+ Test #104, Flaviviridae,   AF056842.gb,  pass
+ Test #105, Flaviviridae,   AF056857.gb,  pass
+ Test #106, Flaviviridae,   AF056869.gb,  pass
+ Test #107, Flaviviridae,   AF056890.gb,  pass
+ Test #108, Flaviviridae,   AF089826.gb,  pass
+ Test #109, Flaviviridae,   AF118611.gb,  pass
+ Test #110, Flaviviridae,   AF130362.gb,  pass
+ Test #111, Flaviviridae,   AF134980.gb,  pass
+ Test #112, Flaviviridae,   AF163220.gb,  pass
+ Test #113, Flaviviridae,   AF166590.gb,  pass
+ Test #114, Flaviviridae,   AF166993.gb,  pass
+ Test #115, Flaviviridae,   AF205453.gb,  pass
+ Test #116, Flaviviridae,   AF207080.gb,  pass
+ Test #117, Flaviviridae,   AF208075.gb,  pass
+ Test #118, Flaviviridae,   AF210922.gb,  pass
+ Test #119, Flaviviridae,   AF211032.gb,  pass
+ Test #120, Flaviviridae,   AF211074.gb,  pass
+ Test #121, Flaviviridae,   AF218876.gb,  pass
+ Test #122, Flaviviridae,   AF221500.gb,  pass
+ Test #123, Flaviviridae,   AF271851.gb,  pass
+ Test #124, Flaviviridae,   AF378170.gb,  pass
+ Test #125, Flaviviridae,   AF379201.gb,  fail, comment=ERROR: Difference with old result
+ Test #125, Flaviviridae,   AF379201.gb,  $result=diff ./test/output/AF379201_matpept_msa.faa ./test/AF379201_matpept_msa.faa
+4c4
+< .KTYTTGGVVGRSTSGLASFLSPGPQQKIQ
+---
+> XKTYTTGGVVGRSTSGLASFLSPGPQQKIQ
+
+ Test #126, Flaviviridae,   AF425639.gb,  pass
+ Test #127, Flaviviridae,   AF436117.gb,  pass
+ Test #128, Flaviviridae,   AF454974.gb,  pass
+ Test #129, Flaviviridae,   AF529724.gb,  pass
+ Test #130, Flaviviridae,   AJ132996.gb,  pass
+ Test #131, Flaviviridae,   AJ238800.gb,  pass
+ Test #132, Flaviviridae,   AJ303205.gb,  pass
+ Test #133, Flaviviridae,   AJ303224.gb,  pass
+ Test #134, Flaviviridae,   AJ507016.gb,  pass
+ Test #135, Flaviviridae,   AJ564839.gb,  pass
+ Test #136, Flaviviridae,   AM272362.gb,  pass
+ Test #137, Flaviviridae,   AM272922.gb,  pass
+ Test #138, Flaviviridae,   AM274226.gb,  pass
+ Test #139, Flaviviridae,   AM280073.gb,  pass
+ Test #140, Flaviviridae,   AM281453.gb,  pass
+ Test #141, Flaviviridae,   AM408911.gb,  pass
+ Test #142, Flaviviridae,   AM708188.gb,  pass
+ Test #143, Flaviviridae,   AM708499.gb,  pass
+ Test #144, Flaviviridae,   AM708793.gb,  pass
+ Test #145, Flaviviridae,   AM708962.gb,  pass
+ Test #146, Flaviviridae,   AM710623.gb,  pass
+ Test #147, Flaviviridae,   AM710685.gb,  pass
+ Test #148, Flaviviridae,   AX472297.gb,  pass
+ Test #149, Flaviviridae,   AX685038.gb,  pass
+ Test #150, Flaviviridae,   AY217093.gb,  pass, comment=No polyprotein: No CDS defined in genome file
+ Test #151, Flaviviridae,   AY342476.gb,  pass
+ Test #152, Flaviviridae,   AY363865.gb,  pass
+ Test #153, Flaviviridae,   AY376737.gb,  pass
+ Test #154, Flaviviridae,   AY548635.gb,  pass
+ Test #155, Flaviviridae,   AY593210.gb,  pass
+ Test #156, Flaviviridae,   AY600854.gb,  pass
+ Test #157, Flaviviridae,   AY858050.gb,  pass
+ Test #158, Flaviviridae,   D11168.gb,    pass
+ Test #159, Flaviviridae,   DQ005375.gb,  pass
+ Test #160, Flaviviridae,   DQ067771.gb,  pass
+ Test #161, Flaviviridae,   DQ235229.gb,  pass
+ Test #162, Flaviviridae,   DQ294045.gb,  pass
+ Test #163, Flaviviridae,   DQ430817.gb,  pass
+ Test #164, Flaviviridae,   DQ648597.gb,  pass
+ Test #165, Flaviviridae,   DQ793141.gb,  pass
+ Test #166, Flaviviridae,   DQ793159.gb,  pass
+ Test #167, Flaviviridae,   DQ835769.gb,  pass
+ Test #168, Flaviviridae,   DQ836632.gb,  pass
+ Test #169, Flaviviridae,   DQ988684.gb,  pass
+ Test #170, Flaviviridae,   EF032895.gb,  pass
+ Test #171, Flaviviridae,   EF032897.gb,  pass
+ Test #172, Flaviviridae,   EF126999.gb,  pass
+ Test #173, Flaviviridae,   EF185924.gb,  pass
+ Test #174, Flaviviridae,   EF407458.gb,  pass
+ Test #175, Flaviviridae,   EF407467.gb,  pass
+ Test #176, Flaviviridae,   EF407476.gb,  pass
+ Test #177, Flaviviridae,   EF407495.gb,  pass
+ Test #178, Flaviviridae,   EF608626.gb,  pass
+ Test #179, Flaviviridae,   EU155347.gb,  pass
+ Test #180, Flaviviridae,   EU166225.gb,  pass
+ Test #181, Flaviviridae,   EU255958.gb,  pass
+ Test #182, Flaviviridae,   EU482886.gb,  pass
+ Test #183, Flaviviridae,   EU623019.gb,  pass
+ Test #184, Flaviviridae,   EU677253.gb,  pass
+ Test #185, Flaviviridae,   EU781803.gb,  pass
+ Test #186, Flaviviridae,   EU846233.gb,  pass
+ Test #187, Flaviviridae,   EU847445.gb,  pass
+ Test #188, Flaviviridae,   FJ360845.gb,  pass
+ Test #189, Flaviviridae,   FJ375523.gb,  pass
+ Test #190, Flaviviridae,   FJ515008.gb,  pass
+ Test #191, Flaviviridae,   FJ515016.gb,  pass
+ Test #192, Flaviviridae,   FJ515122.gb,  pass
+ Test #193, Flaviviridae,   FJ515149.gb,  pass
+ Test #194, Flaviviridae,   FJ654700.gb,  pass
+ Test #195, Flaviviridae,   FJ872155.gb,  pass, comment=No polyprotein: Found 1 CDS, but doesnot align with refseq
+ Test #196, Flaviviridae,   FM210239.gb,  pass
+ Test #197, Flaviviridae,   FM993611.gb,  pass
+ Test #198, Flaviviridae,   FN552941.gb,  pass
+ Test #199, Flaviviridae,   FN553068.gb,  pass
+ Test #200, Flaviviridae,   FN668603.gb,  pass
+ Test #201, Flaviviridae,   FN676829.gb,  pass
+ Test #202, Flaviviridae,   FR672301.gb,  pass
+ Test #203, Flaviviridae,   FR673630.gb,  pass
+ Test #204, Flaviviridae,   FR675153.gb,  pass
+ Test #205, Flaviviridae,   GQ379163.gb,  pass
+ Test #206, Flaviviridae,   GU131926.gb,  pass
+ Test #207, Flaviviridae,   HQ113572.gb,  pass
+ Test #208, Flaviviridae,   HQ541802.gb,  pass
+ Test #209, Flaviviridae,   HQ852457.gb,  pass
+ Test #210, Flaviviridae,   JF714988.gb,  pass
+ Test #211, Flaviviridae,   JF824237.gb,  pass
+ Test #212, Flaviviridae,   JN559741.gb,  pass
+ Test #213, Flaviviridae,   JQ303563.gb,  pass
+ Test #214, Flaviviridae,   JQ318365.gb,  pass
+ Test #215, Flaviviridae,   M19197.gb,    pass
+ Test #216, Flaviviridae,   M23027.gb,    pass
+ Test #217, Flaviviridae,   M55506.gb,    pass
+ Test #218, Flaviviridae,   NC_001809.gb, pass
+ Test #219, Flaviviridae,   NC_002031.gb, pass
+ Test #220, Flaviviridae,   U89019.gb,    pass
+ Test #221, Flaviviridae,   X03467.gb,    pass
+ Testing Hepeviridae,    0
+ Testing Herpesviridae,  2
+ Test #222, Herpesviridae,  AF200417.gb,  pass, comment=AF200417 w/ taxid=47929(Macacine herpesvirus 3) not covered in V1.1.8
+ Test #223, Herpesviridae,  BK001744.gb,  pass, comment=BK001744 w/ taxid=10345(Suid herpesvirus 1) not covered in V1.1.8
+ Testing Paramyxoviridae, 0
+ Testing Picornaviridae, 22
+ Test #224, Picornaviridae, AB008476.gb,  pass
+ Test #225, Picornaviridae, AB090799.gb,  pass
+ Test #226, Picornaviridae, AB282822.gb,  pass
+ Test #227, Picornaviridae, AB601872.gb,  pass
+ Test #228, Picornaviridae, AB601882.gb,  pass
+ Test #229, Picornaviridae, AB668029.gb,  pass
+ Test #230, Picornaviridae, AF026168.gb,  pass
+ Test #231, Picornaviridae, AF159998.gb,  pass
+ Test #232, Picornaviridae, AF169026.gb,  pass
+ Test #233, Picornaviridae, AF499636.gb,  pass
+ Test #234, Picornaviridae, AJ005695.gb,  pass
+ Test #235, Picornaviridae, AJ299461.gb,  pass
+ Test #236, Picornaviridae, AJ299464.gb,  pass
+ Test #237, Picornaviridae, AY896760.gb,  pass
+ Test #238, Picornaviridae, EU849137.gb,  pass
+ Test #239, Picornaviridae, FJ445190.gb,  pass
+ Test #240, Picornaviridae, HM852755.gb,  pass
+ Test #241, Picornaviridae, HQ595343.gb,  pass
+ Test #242, Picornaviridae, HQ647170.gb,  pass
+ Test #243, Picornaviridae, JN099696.gb,  pass
+ Test #244, Picornaviridae, JN990700.gb,  pass
+ Test #245, Picornaviridae, JQ655151.gb,  fail, comment=ERROR: Difference with old result
+ Test #245, Picornaviridae, JQ655151.gb,  $result=diff ./test/output/JQ655151_matpept_msa.faa ./test/JQ655151_matpept_msa.faa
+55,56d54
+< > src=MSA|ACC=JQ655151|Ver=JQ655151.1|CDS=GI:386870534|ref=NC_001489.1|RM=735..803|Loc=644..706||AA=1..21|symbol=1A(VP4a)|Partial=Y|product=1A VP4a mature peptide (alt.)|*new*
+< MSRQGIFQTVGSGLDHILSLA
+
+ Testing Poxviridae,     0
+ Testing Reoviridae,     0
+ Testing Rhabdoviridae,  1
+ Test #246, Rhabdoviridae,  NC_001560.gb, pass, comment=NC_001560 w/ taxid=11277(Vesicular stomatitis Indiana virus) not covered in V1.1.8
+ Testing Togaviridae,    36
+ Test #247, Togaviridae,    AB003337.gb,  pass
+ Test #248, Togaviridae,    AB047329.gb,  pass
+ Test #249, Togaviridae,    AB047330.gb,  pass
+ Test #250, Togaviridae,    AB204560.gb,  pass
+ Test #251, Togaviridae,    AF079457.gb,  pass
+ Test #252, Togaviridae,    AF126284.gb,  pass
+ Test #253, Togaviridae,    AF159554.gb,  pass
+ Test #254, Togaviridae,    AF339484.gb,  pass
+ Test #255, Togaviridae,    AJ316244.gb,  pass
+ Test #256, Togaviridae,    AJ316246.gb,  pass
+ Test #257, Togaviridae,    AY823299.gb,  pass
+ Test #258, Togaviridae,    AY973944.gb,  pass
+ Test #259, Togaviridae,    CS227856.gb,  pass
+ Test #260, Togaviridae,    DQ085359.gb,  pass
+ Test #261, Togaviridae,    DQ189086.gb,  pass
+ Test #262, Togaviridae,    DQ241304.gb,  pass
+ Test #263, Togaviridae,    EF012359.gb,  pass
+ Test #264, Togaviridae,    EF568607.gb,  pass
+ Test #265, Togaviridae,    EU037962.gb,  pass
+ Test #266, Togaviridae,    EU372006.gb,  pass
+ Test #267, Togaviridae,    EU708314.gb,  pass
+ Test #268, Togaviridae,    FJ744526.gb,  pass
+ Test #269, Togaviridae,    GQ281603.gb,  pass
+ Test #270, Togaviridae,    GQ287645.gb,  pass
+ Test #271, Togaviridae,    GU001915.gb,  pass
+ Test #272, Togaviridae,    GU361118.gb,  pass
+ Test #273, Togaviridae,    HM210095.gb,  pass
+ Test #274, Togaviridae,    HQ456252.gb,  pass, comment=No polyprotein: Problem with translation of CDS=77..7501
+ Test #275, Togaviridae,    HQ848388.gb,  pass
+ Test #276, Togaviridae,    NC_001449.gb, pass
+ Test #277, Togaviridae,    NC_003899.gb, pass
+ Test #278, Togaviridae,    NC_004162.gb, pass
+ Test #279, Togaviridae,    NC_006558.gb, pass
+ Test #280, Togaviridae,    U34999.gb,    pass
+ Test #281, Togaviridae,    U38304.gb,    pass
+ Test #282, Togaviridae,    U73745.gb,    pass
+ Testing usage,          1
+ Test #283, usage,          usage,        fail, comment=ERROR: Difference with old result
+ Test #283, usage,          usage,        $result=diff ./test/output/usage.out ./test/usage.out
+88,89c88,89
+< Picornaviridae	#3	species=138949 	strain=103915 	ref=NC_013114 	"Human enterovirus B"
+< Picornaviridae	#4	species=106966 	strain=----- 	ref=NC_004441 	"Porcine enterovirus B"
+---
+> Picornaviridae	#3	species=138949 	strain=103915 	ref=NC_013114 	"Enterovirus B"
+> Picornaviridae	#4	species=106966 	strain=----- 	ref=NC_004441 	"Enterovirus G"
+95,98c95,98
+< Picornaviridae	#10	species=138949 	strain=12060 	ref=NC_013114 	"Human enterovirus B"
+< Picornaviridae	#11	species=138949 	strain=12062 	ref=NC_013114 	"Human enterovirus B"
+< Picornaviridae	#12	species=12064 	strain=----- 	ref=NC_001859 	"Bovine enterovirus"
+< Picornaviridae	#13	species=138949 	strain=12067 	ref=NC_013114 	"Human enterovirus B"
+---
+> Picornaviridae	#10	species=138949 	strain=12060 	ref=NC_013114 	"Enterovirus B"
+> Picornaviridae	#11	species=138949 	strain=12062 	ref=NC_013114 	"Enterovirus B"
+> Picornaviridae	#12	species=12064 	strain=----- 	ref=NC_001859 	"Enterovirus E"
+> Picornaviridae	#13	species=138949 	strain=12067 	ref=NC_013114 	"Enterovirus B"
+105c105
+< Picornaviridae	#20	species=147712 	strain=12131 	ref=NC_001490 	"Human rhinovirus B"
+---
+> Picornaviridae	#20	species=147712 	strain=12131 	ref=NC_001490 	"Rhinovirus B"
+107,113c107,113
+< Picornaviridae	#22	species=138948 	strain=----- 	ref=NC_001612 	"Human enterovirus A"
+< Picornaviridae	#23	species=138949 	strain=----- 	ref=NC_001472 	"Human enterovirus B"
+< Picornaviridae	#24	species=138950 	strain=----- 	ref=NC_002058 	"Human enterovirus C"
+< Picornaviridae	#25	species=138951 	strain=----- 	ref=NC_001430 	"Human enterovirus D"
+< Picornaviridae	#26	species=147711 	strain=----- 	ref=NC_001617 	"Human rhinovirus A"
+< Picornaviridae	#27	species=147712 	strain=----- 	ref=NC_001490 	"Human rhinovirus B"
+< Picornaviridae	#28	species=138949 	strain=172038 	ref=NC_010411 	"Human enterovirus B"
+---
+> Picornaviridae	#22	species=138948 	strain=----- 	ref=NC_001612 	"Enterovirus A"
+> Picornaviridae	#23	species=138949 	strain=----- 	ref=NC_001472 	"Enterovirus B"
+> Picornaviridae	#24	species=138950 	strain=----- 	ref=NC_002058 	"Enterovirus C"
+> Picornaviridae	#25	species=138951 	strain=----- 	ref=NC_001430 	"Enterovirus D"
+> Picornaviridae	#26	species=147711 	strain=----- 	ref=NC_001617 	"Rhinovirus A"
+> Picornaviridae	#27	species=147712 	strain=----- 	ref=NC_001490 	"Rhinovirus B"
+> Picornaviridae	#28	species=138949 	strain=172038 	ref=NC_010411 	"Enterovirus B"
+117c117
+< Picornaviridae	#32	species=194965 	strain=----- 	ref=NC_004421 	"Bovine kobuvirus"
+---
+> Picornaviridae	#32	species=194965 	strain=----- 	ref=NC_004421 	"Aichivirus B"
+120,126c120,126
+< Picornaviridae	#35	species=138949 	strain=222887 	ref=NC_013114 	"Human enterovirus B"
+< Picornaviridae	#36	species=138949 	strain=222889 	ref=NC_013114 	"Human enterovirus B"
+< Picornaviridae	#37	species=310907 	strain=----- 	ref=NC_003988 	"Simian enterovirus A"
+< Picornaviridae	#38	species=138949 	strain=318562 	ref=NC_013114 	"Human enterovirus B"
+< Picornaviridae	#39	species=138949 	strain=318563 	ref=NC_013114 	"Human enterovirus B"
+< Picornaviridae	#40	species=138949 	strain=325446 	ref=NC_013114 	"Human enterovirus B"
+< Picornaviridae	#41	species=138949 	strain=325447 	ref=NC_009887 	"Human enterovirus B"
+---
+> Picornaviridae	#35	species=138949 	strain=222887 	ref=NC_013114 	"Enterovirus B"
+> Picornaviridae	#36	species=138949 	strain=222889 	ref=NC_013114 	"Enterovirus B"
+> Picornaviridae	#37	species=310907 	strain=----- 	ref=NC_003988 	"Enterovirus H"
+> Picornaviridae	#38	species=138949 	strain=318562 	ref=NC_013114 	"Enterovirus B"
+> Picornaviridae	#39	species=138949 	strain=318563 	ref=NC_013114 	"Enterovirus B"
+> Picornaviridae	#40	species=138949 	strain=325446 	ref=NC_013114 	"Enterovirus B"
+> Picornaviridae	#41	species=138949 	strain=325447 	ref=NC_009887 	"Enterovirus B"
+128,129c128,129
+< Picornaviridae	#43	species=138948 	strain=442855 	ref=NC_010412 	"Human enterovirus A"
+< Picornaviridae	#44	species=138948 	strain=442858 	ref=NC_010413 	"Human enterovirus A"
+---
+> Picornaviridae	#43	species=138948 	strain=442855 	ref=NC_010412 	"Enterovirus A"
+> Picornaviridae	#44	species=138948 	strain=442858 	ref=NC_010413 	"Enterovirus A"
+131c131
+< Picornaviridae	#46	species=463676 	strain=----- 	ref=NC_009996 	"Human rhinovirus C"
+---
+> Picornaviridae	#46	species=463676 	strain=----- 	ref=NC_009996 	"Rhinovirus C"
+134c134
+< Picornaviridae	#49	species=138949 	strain=47506 	ref=NC_013114 	"Human enterovirus B"
+---
+> Picornaviridae	#49	species=138949 	strain=47506 	ref=NC_013114 	"Enterovirus B"
+136,138c136,138
+< Picornaviridae	#51	species=1156769 	strain=569195 	ref=NC_011829 	"Porcine kobuvirus"
+< Picornaviridae	#52	species=138949 	strain=582384 	ref=NC_013114 	"Human enterovirus B"
+< Picornaviridae	#53	species=138949 	strain=582385 	ref=NC_013115 	"Human enterovirus B"
+---
+> Picornaviridae	#51	species=1298633 	strain=569195 	ref=NC_011829 	"Aichivirus C"
+> Picornaviridae	#52	species=138949 	strain=582384 	ref=NC_013114 	"Enterovirus B"
+> Picornaviridae	#53	species=138949 	strain=582385 	ref=NC_013115 	"Enterovirus B"
+149,150c149,150
+< Picornaviridae	#64	species=72149 	strain=----- 	ref=NC_001918 	"Aichi virus"
+< Picornaviridae	#65	species=138950 	strain=861519 	ref=NC_014336 	"Human enterovirus C"
+---
+> Picornaviridae	#64	species=72149 	strain=----- 	ref=NC_001918 	"Aichivirus A"
+> Picornaviridae	#65	species=138950 	strain=861519 	ref=NC_014336 	"Enterovirus C"
+
 
 
 msa_annotate_test.pl: finished.

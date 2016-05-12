@@ -18,7 +18,7 @@ use Annotate_Verify;
 use Annotate_Def;
 use version; our $VERSION = qv('1.1.7'); # Feb 05 2013
 
-my $debug_all = 1;
+my $debug_all = 0;
 
 ####//README//####
 #
@@ -30,6 +30,49 @@ my $debug_all = 1;
 ##################
 
 ## //EXECUTE// ##
+
+sub setDebugAll {
+    my ($debug) = @_;
+    $debug_all = $debug;
+} # sub setDebugAll
+
+
+=head2
+  sub getPerlVersions finds out the version of the important BioPerl modules used
+/perl -MBio::Root::Version -e 'print $Bio::Root::Version::VERSION,"\n"'/
+=cut
+sub getPerlVersions{
+    my $debug = 0 || $debug_all;
+    my $subname = "Annotate_Util::getPerlVersions";
+    my $msgs = [];
+    my $cmds = [ ['perl', ''],
+                 ['Bio::Root::Version', '$Bio::Root::Version::VERSION'],
+                 ['Bio::Seq',   '$Bio::Seq::VERSION'],
+                 ['Bio::SeqIO',   '$Bio::SeqIO::VERSION'],
+                 ['Bio::AlignIO', '$Bio::AlignIO::VERSION'],
+#                 ['Bio::TreeIO',  '$Bio::TreeIO::VERSION'],
+#                 ['Bio::Tools::Run',  'Bio::Tools::Run::VERSION'],
+                 ['Bio::Tools::Run::StandAloneBlast',  'Bio::Tools::Run::StandAloneBlast::VERSION'],
+               ];
+    for my $i (0 .. $#{$cmds}) {
+        my $cmd;
+        if ($cmds->[$i]->[0] eq 'perl') {
+            $cmd = 'perl -v | head -n3';
+        } else {
+            $cmd = "perl -M$cmds->[$i]->[0] -e 'print $cmds->[$i]->[1]'"
+        }
+        $cmd = ` $cmd `;
+        $cmd =~ s/(^\n|\n$)//ig; # Remove the leading return
+        push @$msgs, sprintf("%-14s'", "$cmds->[$i]->[0]="). "$cmd'";
+    }
+
+    for (@$msgs) {
+        $debug && print STDERR "$subname: $_\n";
+    }
+    return $msgs;
+} # sub getPerlVersion
+
+
 =head2
 my $TAXON = {
                taxon_loaded => 0,
@@ -44,16 +87,100 @@ my $gene_symbol2 = {
 
 =cut
 
+=head2
+sub backupFiles takes a directory path, a filename, and a number, backs up the file to <filename>.bakx with x=1..number
+=cut
+
+sub backupFiles {
+    my ($exe_dir, $filename, $numBak) = @_;
+
+    my $debug = 1 || $debug_all;
+    my $subn = 'Annotate_Util::backupFiles';
+
+    my $numCopies = 0;
+    $numBak = 1 if (!$numBak || $numBak<1);
+    $exe_dir = './' if (!$exe_dir);
+    $debug && print STDERR "$subn: \$exe_dir='$exe_dir' \$numBak=$numBak\n";
+    return $numCopies if (!$filename);
+    if (!-e "$exe_dir/$filename") {
+        print STDERR "$subn: file='$exe_dir/$filename' doesn't exist, nothing to backup\n";
+        return $numCopies;
+    }
+
+    # First, see if file $filename exists, then see if 1st backup exists, then further backups
+    my $result = '';
+    my $bak = "$filename.bak1";
+    my $cmds = [ ];
+    if (!-e "$exe_dir/$bak") {
+        $debug && print STDERR "$subn: file='$exe_dir/$bak' doesn't exist, backup one copy\n";
+        $result = ` ls -l $exe_dir/$bak 2>&1`;
+    } else {
+        $result = "diff $exe_dir/$filename $exe_dir/$bak 2>&1";
+        $result = ` $result `;
+        $debug && print STDERR "$subn: \$result='\n$result'\n";
+        chomp $result;
+    }
+    if (!$result) {
+        print STDERR "$subn: no difference between file $filename vs. $bak\n";
+    } else {
+        $cmds->[$#{$cmds}+1] = "mv $exe_dir/$filename $exe_dir/$bak 2>&1";
+    }
+    $debug && print STDERR "$subn: \$cmds=".Dumper($cmds)."\n";
+    for my $i (1 .. $numBak) {
+            $bak = sprintf("${filename}.bak%d", $i);
+            $debug && print STDERR "$subn: \$i=$i \$bak=$bak\n";
+            if (!-e"$exe_dir/$bak") {
+                $debug && print STDERR "$subn: \$i=$i \$bak=$bak doesn't exist.\n";
+                last;
+            }
+            my $bak2 = sprintf("${filename}.bak%d", $i+1);
+#            if (!-e"$exe_dir/$bak2") {
+#                $debug && print STDERR "$subn: \$i=$i \$bak=$bak2 doesn't exist.\n";
+#                last;
+#            }
+            my $cmd = "diff $exe_dir/$bak $exe_dir/$bak2 2>&1";
+            $result = ` $cmd `;
+            chomp $result;
+            $debug && print STDERR "$subn: \$cmd='$cmd' \$result='\n$result'\n";
+            if (!$result) {
+                $debug && print STDERR "$subn: \$i=$i $exe_dir/$bak $exe_dir/$bak2 have no difference.\n";
+                last;
+            }
+            $cmds->[$#{$cmds}+1] = "mv $exe_dir/$bak $exe_dir/$bak2 2>&1";
+    }
+    $debug && print STDERR "$subn: \$cmds=".Dumper($cmds)."\n";
+
+    $result = '';
+    for my $i (reverse 0 .. $#{$cmds}) {
+        my $cmd = $cmds->[$i];
+        if ($cmd) {
+            $numCopies++;
+            $debug && print STDERR "$subn: \$i=$i \$numCopies=$numCopies \$cmd='$cmd'\n";
+            $result = ` $cmd `;
+            $debug && print STDERR "$subn: \$i=$i \$numCopies=$numCopies \$result='\n$result'\n";
+            chomp $result;
+            $debug && print STDERR "$subn: \$cmd=$cmd\n";
+            print STDERR "$subn: \$result='\n$result'\n" if ($result);
+        }
+    }
+    $debug && print STDERR "$subn: \$numCopies=$numCopies \$result='$result'\n";
+
+    $result = "ls -l $exe_dir/$filename* 2>&1";
+    $result .= "\n" . `ls -l $exe_dir/$filename* 2>&1`;
+    $debug && print STDERR "$subn: \$result='\n$result'\n";
+    $debug && print STDERR "$subn: backed up $numCopies copies for file:$filename\n";
+    return $numCopies;
+} # sub backupFiles
+
+
 =head2 msa_get_aln
-
 Takes an alignment, and an id, return the gaps within the alignment with such id
-
 =cut
 
 sub msa_get_aln {
     my ($aln, $id) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'msa_get_aln';
     my $refaln = [ $aln->each_seq_with_id($id) ]; # 
     $debug && print "$subn: \$refaln=\n".Dumper($refaln)."End of \$refaln\n\n";
@@ -87,7 +214,7 @@ Takes an inseq object, and array of [CDS, mat_peptide 1, mat_peptide 2, ...]
 sub get_polyprots {
     my ($inseq, $refpolyprots) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'get_polyprots';
     my $polyprots = {};
     my $num_cds = -1;
@@ -143,7 +270,7 @@ sub get_polyprots {
             $debug && print STDERR "$subn: \$i=$i \$refseq=".$reffeat->seq->accession_number." \$refcds=$s_feat_loc\n";
             next if ($reffeat->primary_tag ne 'CDS');
 
-            my $match = Annotate_Util::match_cds_bl2seq($cds, $reffeat);
+            my $match = Annotate_Util::cmp_cds_bl2seq($cds, $reffeat);
 #            $match = 100 if ($debug);
             $matchHigh = $match if ($matchHigh < $match);
             my $s_ref_loc = $reffeat->location->to_FTstring;
@@ -167,6 +294,7 @@ sub get_polyprots {
         # Interesting case, in FJ588686: the CDS=246..12815 match with refcds very well, however, there is a large
         # gap at the middle, causing bl2seq to report 2 HSP, and neither is >0.67. This in turn causes the CDS to be
         # eliminated as candidate for annotation
+        # 0.75 seems too high, eg AB005702, AF052446. 0.667 seems a good value --10/10/2012
                 $found_polyprot = 1;
                 $debug && print STDERR "$subn: \$ct=$ct \$cds=".$cds->location->to_FTstring." \$refcds=".$refcds_set->[1]->location->to_FTstring." \$found_polyprot=$found_polyprot\n";
             } else {
@@ -256,18 +384,18 @@ sub get_polyprots {
 } # sub get_polyprots
 
 
-=head2 match_cds_bl2seq
+=head2 cmp_cds_bl2seq
 
 Takes 2 CDS feature
  Compares the translation of 2 CDS by bl2seq, see if the conserved length is at least 80% of the length of the shorter seq
  Return 1 if the 2 seqs are similar
 =cut
 
-sub match_cds_bl2seq {
+sub cmp_cds_bl2seq {
     my ($cds, $refcds) = @_;
 
-    my $debug = 0 && $debug_all;
-    my $subn = 'match_cds_bl2seq';
+    my $debug = 0 || $debug_all;
+    my $subn = 'cmp_cds_bl2seq';
 
     my $match_cds = 0;
     my $pct_conserved = 0;
@@ -311,14 +439,12 @@ sub match_cds_bl2seq {
 #    my $conserved_residues_required = 0.66667; # The target must have 66.667% residues conserved wrt refseq
     my $CONSERVED_RESIDUES_REQUIRED = 0.75; # The target must have 75% residues conserved wrt refseq
     $CONSERVED_RESIDUES_REQUIRED = 0.667 if ($debug);
-    $CONSERVED_RESIDUES_REQUIRED = 0.667; # 0.75 seems too high, eg AB005702, AF052446. --10/10/2012
-#   if ($hsp_cds_conserved >= $s1 * $conserved_residues_required) {
+    $CONSERVED_RESIDUES_REQUIRED = 0.000; # 0.75 seems too high, eg AB005702, AF052446. --10/10/2012
     # This check assumes that the target CDS should never be longer than refcds, I think this is reasonable -gsun
-#    if ($hsp_cds_conserved >= $s2 * $CONSERVED_RESIDUES_REQUIRED) {
     my $s3 = ($s1<$s2) ? $s1 : $s2;
     if ($hsp_cds_conserved >= $s3 * $CONSERVED_RESIDUES_REQUIRED) {
             $pct_conserved = $hsp_cds_conserved/$s2 if ($hsp_cds_conserved/$s2 > $pct_conserved);
-            $pct_conserved = $hsp_cds_conserved/$s3 if ($hsp_cds_conserved/$hsp_cds_hit_length > $pct_conserved);
+            $pct_conserved = $hsp_cds_conserved/$s3 if ($hsp_cds_hit_length && $hsp_cds_conserved/$hsp_cds_hit_length > $pct_conserved);
 
             if ($match_cds) {
               print STDERR "$subn: WARNING: found more matched refcds when \$match_cds=$match_cds\n";
@@ -336,15 +462,12 @@ sub match_cds_bl2seq {
             $emsgs .= " Conserved doesn't meet required $CONSERVED_RESIDUES_REQUIRED\n";
             $emsgs .= "$subn: \$match_cds=$match_cds. See following \$hit_cds\n";
             $emsgs .= "$subn: \$hit_cds=\n".Dumper($hit_cds)."end of \$hit_cds\n\n";
-#            $emsgs .= "$subn: QUERY_SEQ='".$hsp_cds->query_string."'\n";
-#            $emsgs .= "$subn:           '".$hsp_cds->homology_string."'\n";
-#            $emsgs .= "$subn:   HIT_SEQ='".$hsp_cds->hit_string."'\n";
     }
     $debug && (!$match_cds) && print STDERR "$emsgs";
 
 #    return $match_cds;
     return $pct_conserved;
-} # sub match_cds_bl2seq
+} # sub cmp_cds_bl2seq
 
 
 =head2 get_new_translation
@@ -355,7 +478,7 @@ Takes a new feature object, and a CDS
 sub get_new_translation {
     my ($feat, $cds) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'get_new_translation';
 #    my $translation = '';
     my $translation = undef; # emptry string '' suppresses error msg, but cause other problems
@@ -378,6 +501,11 @@ sub get_new_translation {
 #    } else {
         $s = Annotate_Math::get_dna_byloc( $feat, $cds->{_gsf_seq}->seq);
 #    }
+    # Add generic N to end of DNA, if the last codon has only 2 nucleotides but is able to define AA - 03/19/2013
+    if (length($s) % 3 ==2 && substr($s, length($s)-2, 2) =~/([TU]C|C[TU]|CC|CG|AC|G[TU]|GC|GG)/i ) {
+        $s .= 'N';
+        print STDERR "$subn: Appended generic nucleotide 'N' to \$s=".length($s)." \$s='$s'\n";
+    }
     $debug && print STDERR "$subn: \$s  ='$s'\n";
     my $f = Bio::PrimarySeq->new(
                          -seq      => $s,
@@ -388,10 +516,24 @@ sub get_new_translation {
 #    $f->revcom() if ($feat->strand() == -1);
     $debug && print STDERR "$subn: \$f=\n".Dumper($f)."End of \$f\n\n";
 
-    $s = $f->translate()->seq;
+# The flag '-complete => 1' is added to accommodate the change in BioPerl version. -3/08/2013
+# The '-complete' flag failed, since it translates CTG at the start of CDS to M, instead of L (eg. AB127995). -3/19/2013
+if (0) {
+    $s = $f->translate(-complete => 1); 
+    $debug && print STDERR "$subn: \$f=\n".Dumper($f)."End of \$f\n\n";
+    $debug && print STDERR "$subn: \$s=\n".Dumper($s)."End of \$s\n\n";
+    $s = $s->seq; 
+} else {
+    $s = $f->translate(); 
+    $debug && print STDERR "$subn: \$f=\n".Dumper($f)."End of \$f\n\n";
+    $debug && print STDERR "$subn: \$s=\n".Dumper($s)."End of \$s\n\n";
+    $s = $s->seq; 
+}
     $s =~ s/[*]$// if ($s =~ /[*]$/);
     $s =~ s/[*]/./g if ($s =~ /[*]/);
-    $s =~ s/[X]/./ig if ($s =~ /[X]/i);
+#    $s =~ s/[X]/./ig if ($s =~ /[X]/i);
+    my $s1 = $s;
+    $s1 =~ s/[X]/./ig if ($s1 =~ /[X]/i);
     $debug && print STDERR "$subn: \$s  ='$s'\n";
     $debug && print STDERR "$subn: \$s  =".length($s)."\n";
 
@@ -401,7 +543,9 @@ sub get_new_translation {
 #      $parent_cds_seq[0] =~ s/[X]/./;
       $debug && print STDERR "$subn: \$cds  =$parent_cds_seq[0]\n";
       $debug && print STDERR "$subn: \$cds  =".length($parent_cds_seq[0])."\n";
-      if ($parent_cds_seq[0] =~ /($s)/i || $s =~ /$parent_cds_seq[0]/i || Annotate_Verify::diff_2str( $s, substr($parent_cds_seq[0], 0, length($s))) =~ /^L[.]+$/i) {
+      if ($parent_cds_seq[0] =~ /($s1)/i
+           || $s1 =~ /$parent_cds_seq[0]/i
+           || Annotate_Verify::diff_2str( $s1, substr($parent_cds_seq[0], 0, length($s1))) =~ /^L[.]+$/i) {
         $translation = $s;
         $debug && print STDERR "$subn: \$s  ='$s'\n";
         $debug && print STDERR "$subn: \$cds='".$parent_cds_seq[0]."'\n";
@@ -436,7 +580,7 @@ Takes refcds, reffeat, loc2 of new feature, and target cds.
 sub assemble_new_feature {
     my ($refcds, $reffeat, $cds, $aln, $refcds_id, $cds_id, $note,$exe_dir) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'assemble_new_feature';
 
     my $acc = $cds->seq->accession_number;
@@ -620,7 +764,7 @@ Takes $feat, $errcode, $refcds, $reffeat, $cds, $note
 sub get_feature_id_desc {
     my ($feat, $errcode, $gene_symbol, $cds, $refcds, $reffeat) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'get_feature_id_desc';
 
     my (@id);
@@ -768,8 +912,8 @@ Takes $feat
 sub get_DNA_loc {
     my ($feat) = @_;
 
-    my $debug = 0 && $debug_all;
-    my $subn = 'get_DNA_loc';
+    my $debug = 0 || $debug_all;
+    my $subn = 'Annotate_Util::get_DNA_loc';
 
     # get the range of mat_peptide
     my $location_allow_split = 1;
@@ -799,7 +943,7 @@ Takes mat_peptide and the parent CDS
 sub get_AA_loc {
     my ($feat, $cds) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'Annotate_Util::get_AA_loc';
 
     # Add range in polyprotein. This is simply calculated by comparing the sequence of mat_peptide with
@@ -895,7 +1039,7 @@ Takes references to refset, $inset, alignment, ids of refcds and cds, and a note
 sub project_matpept {
     my ($refset, $inset, $aln, $refcds_id, $cds_id, $note,$exe_dir) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'project_matpept';
 
     my $feats_all = []; # Holds all new features for the target genome
@@ -1077,7 +1221,7 @@ sub addNoteGap {
 #    my ($feats_all, $refset, $gaps_q, $gaps_h, $note) = @_;
     my ($feat1) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'addNoteGap';
 
     my @values = $feat1->get_tag_values('note');
@@ -1107,7 +1251,7 @@ sub removeNoteGap {
 #    my ($feats_all, $refset, $gaps_q, $gaps_h, $note) = @_;
     my ($feat2) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'removeNoteGap';
 
 
@@ -1138,7 +1282,7 @@ sub removeNoteNew {
 #    my ($feats_all, $refset, $gaps_q, $gaps_h, $note) = @_;
     my ($feat2, $inset) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'removeNoteNew';
 
     # After the modification, update the dscription
@@ -1170,7 +1314,7 @@ sub removeNoteNew {
 sub getGapSeqs {
     my ($feat1, $feat2, $MAX_LENGTH, $aln, $refcds_id, $cds_id) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'getGapSeqs';
 
     # For CDS, find the C-term of 1st mat_peptide, gap, and N-term of 2nd mat_peptide
@@ -1236,7 +1380,7 @@ If the alignment is not definite, as in EF407458 EF407463 EF407467 when run toge
 sub fixCleaveGap {
     my ($feats_all, $refset, $inset, $aln, $refcds_id, $cds_id) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'fixCleaveGap';
 
     my $cds = $feats_all->[0];
@@ -1475,14 +1619,14 @@ sub fixCleaveGap {
 } # sub fixCleaveGap
 
 
-=head2 lump_gap_to_feat1
+=head2 insolatePttn
 sub insolatePttn adds a \ in front of ()
 =cut
 
 sub insolatePttn {
     my ($pttn) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'insolatePttn';
 
     my $pttn1 = $pttn;
@@ -1501,7 +1645,7 @@ sub lump_gap_to_feat1 takes the gap at the cleavage site in target sequence and 
 sub lump_gap_to_feat1 {
     my ($feat1, $feat2, $cds, $length_gap, $ts, $feat1_n, $i, $inset) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'lump_gap_to_feat1';
 
     # Move the start of next mat_peptide by the length of gap
@@ -1596,7 +1740,7 @@ sub lump_gap_to_feat2 takes the gap at the cleavage site in target sequence and 
 sub lump_gap_to_feat2 {
     my ($feat1, $feat2, $cds, $length_gap, $ts, $feat1_n, $i, $inset) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'lump_gap_to_feat2';
 
     # Move the start of next mat_peptide by the length of gap
@@ -1627,6 +1771,7 @@ sub lump_gap_to_feat2 {
             $translation = $s;
             $feat2->remove_tag('translation');
             $feat2->add_tag_value('translation', $translation);
+            $debug && print STDERR "$subn: \$translation='$translation'\n";
         } else {
             # undo the change in start if this fails
             if ($loc2->isa('Bio::Location::Simple') ) {
@@ -1641,7 +1786,6 @@ sub lump_gap_to_feat2 {
             print STDERR "$subn: \$cds='".$cds->seq->translate->seq."'\n";
             return undef;
         }
-
     }
 
     # Update the dscription
@@ -1695,7 +1839,7 @@ sub run_bl2seq_search {
     # Get the shortstring and the query string
     my ($s1string, $s2string, $debug) = @_;
 
-    $debug = $debug && $debug_all;
+    $debug = $debug || $debug_all;
     my $subn = 'run_bl2seq_search';
 
     return unless ($s1string && $s2string);
@@ -1758,7 +1902,7 @@ Takes a new annotation,
 sub is_new_annotation {
     my ($feat, $inset) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'is_new_annotation';
 
     $debug && print STDERR "\n$subn: \$feat=\n".Dumper($feat)."\$feat\n";

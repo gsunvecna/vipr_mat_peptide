@@ -1,8 +1,8 @@
-LOCUS       NC_003215              11442 bp ss-RNA     linear   VRL 08-DEC-2008
+LOCUS       NC_003215              11442 bp ss-RNA     linear   VRL 27-JUN-2012
 DEFINITION  Semliki forest virus, complete genome.
 ACCESSION   NC_003215
 VERSION     NC_003215.1  GI:16767845
-DBLINK      Project: 15282
+DBLINK      BioProject: PRJNA15282
 KEYWORDS    capsid protein; genome; nonstructural protein; polyprotein;
             structural protein.
 SOURCE      Semliki forest virus
@@ -234,6 +234,48 @@ FEATURES             Location/Qualifiers
                      /product="E1 protein"
                      /protein_id="NP_819008.1"
                      /db_xref="GI:29612016"
+     gene            7420..9911
+                     /locus_tag="SFVgp3"
+                     /db_xref="GeneID:12979101"
+     CDS             join(7420..9831,9831..9911)
+                     /locus_tag="SFVgp3"
+                     /note="Truncated verstion of structural polyprotein that
+                     will be produced when frameshifting occurs at nt 9831;
+                     Truncated version of structural polyprotein and transframe
+                     fusion protein have been added by NCBI Staff with the kind
+                     help of Dr. David Karlin(Department of Zoology,
+                     University of Oxford, UK) and Dr. Andrew Firth (Department
+                     of Pathology, University of Cambridge, UK)"
+                     /codon_start=1
+                     /product="truncated structural polyprotein"
+                     /protein_id="YP_006390078.1"
+                     /db_xref="GI:388584021"
+                     /db_xref="GeneID:12979101"
+                     /translation="MNYIPTQTFYGRRWRPRPAARPWPLQATPVAPVVPDFQAQQMQQ
+                     LISAVNALTMRQNAIAPARPPKPKKKKTTKPKPKTQPKKINGKTQQQKKKDKQADKKK
+                     KKPGKRERMCMKIENDCIFEVKHEGKVTGYACLVGDKVMKPAHVKGVIDNADLAKLAF
+                     KKSSKYDLECAQIPVHMRSDASKYTHEKPEGHYNWHHGAVQYSGGRFTIPTGAGKPGD
+                     SGRPIFDNKGRVVAIVLGGANEGSRTALSVVTWNKDMVTRVTPEGSEEWSAPLITAMC
+                     VLANATFPCFQPPCVPCCYENNAEATLRMLEDNVDRPGYYDLLQAALTCRNGTRHRRS
+                     VSQHFNVYKATRPYIAYCADCGAGHSCHSPVAIEAVRSEATDGMLKIQFSAQIGIDKS
+                     DNHDYTKIRYADGHAIENAVRSSLKVATSGDCFVHGTMGHFILAKCPPGEFLQVSIQD
+                     TRNAVRACRIQYHHDPQPVGREKFTIRPHYGKEIPCTTYQQTTAETVEEIDMHMPPDT
+                     PDRTLLSQQSGNVKITVGGKKVKYNCTCGTGNVGTTNSDMTINTCLIEQCHVSVTDHK
+                     KWQFNSPFVPRADEPARKGKVHIPFPLDNITCRVPMAREPTVIHGKREVTLHLHPDHP
+                     TLFSYRTLGEDPQYHEEWVTAAVERTIPVPVDGMEYHWGNNDPVRLWSQLTTEGKPHG
+                     WPHQIVQYYYGLYPAATVSAVVGMSLLALISIFASCYMLVAARSKCLTPYALTPGAAV
+                     PWTLGILCCAPRAHAASVAETMAYLWDQNQALFWLEFAAPVACILIITYCLRNVLCCC
+                     KSLSFLSATEPRGNRQSLRTFDSNAERGGVPV"
+     mat_peptide     join(9685..9831,9831..9908)
+                     /locus_tag="SFVgp3"
+                     /product="transframe fusion protein"
+                     /experiment="experimental evidence, no additional details
+                     recorded"
+                     /note="Transframe fusion (TF) protein expressed via
+                     programmed ribosomal frameshifting. TF protein presumably
+                     plays a stabilizing role in the virion structure."
+                     /protein_id="YP_006390079.1"
+                     /db_xref="GI:388584022"
 ORIGIN      
         1 atggcggatg tgtgacatac acgacgccaa aagattttgt tccagctcct gccacctcgg
        61 ctacgcgaga gattaaccac ccacgatggc cgccaaagtg catgttgata ttgaggctga

@@ -1,8 +1,8 @@
-LOCUS       NC_001544              11657 bp ss-RNA     linear   VRL 30-NOV-2009
+LOCUS       NC_001544              11657 bp ss-RNA     linear   VRL 27-JUN-2012
 DEFINITION  Ross River virus, complete genome.
 ACCESSION   NC_001544
 VERSION     NC_001544.1  GI:9790297
-DBLINK      Project: 15314
+DBLINK      BioProject: PRJNA15314
 KEYWORDS    .
 SOURCE      Ross River virus
   ORGANISM  Ross River virus
@@ -168,6 +168,46 @@ FEATURES             Location/Qualifiers
                      /product="E1 protein"
                      /protein_id="NP_740686.1"
                      /db_xref="GI:25121500"
+     gene            7565..10017
+                     /locus_tag="RRVgp3"
+                     /db_xref="GeneID:13179082"
+     CDS             join(7565..9979,9979..10017)
+                     /locus_tag="RRVgp3"
+                     /note="Truncated verstion of structural polyprotein that
+                     will be produced when frameshifting occurs at nt 9979;
+                     Truncated version of structural polyprotein and transframe
+                     fusion protein have been added by NCBI Staff with the kind
+                     help of Dr. David Karlin (Department of Zoology,
+                     University of  Oxford, UK) and Dr. Andrew Firth
+                     (Department of Pathology,  University of Cambridge, UK)"
+                     /codon_start=1
+                     /product="truncated polyprotein"
+                     /protein_id="YP_006491253.1"
+                     /db_xref="GI:392990019"
+                     /db_xref="GeneID:13179082"
+                     /translation="MNYIPTQTFYGRRWRPRPAFRPWQVPMQPTPTMVTPMLQAPDLQ
+                     AQQMQQLISAVSALTTKQNVKAPKGQRKQKQQKPKEKKEKQKKKPTXKKKQQQKPKPQ
+                     AKKKKPGRRERMCMKIENDCIFEVKLDGKVTGYACLVGDKVMKPAHVKGTIDNPDLAK
+                     LTYKKSSKYDLECAQIPVHMKSDASKYTHEKPEGHYNWHHGAVQYSXGRFTIPTGAGK
+                     PGDSGRPIFDNKGRVVAIVLGGANEGARTALSVVTWTKDMVTRVTPEGTEEWSAALMM
+                     CILANTSFPCSSPPCYPCCYEKQPEQTLRMLEDNVNRPGYYELLEASMTCRNRSRHRR
+                     SVIEHFNVYKATRPYLAXCADCGDGYFCYSPVAIEKIRDEASDGMLKIQVSAQIGLDK
+                     AGTHAHTKMRYMAGHDVQESKRDSLRVYTSAACSIHGTMGHFIVAHCPPGDYLKXSFE
+                     DANSHVKACKVQYKHDPLPVGREKFVVRPHFGVELPCTSYQLTTAPTDEEIDMHTPPD
+                     IPDRTLLSQTAGNVKITAGGRTIRYNCTCGRDNVGTTSTDKTINTCKIDQCHAAVTSH
+                     DKWXFTSPFVPRADQTARKGKVHVPFPLTNVTCRVPLARAPDVTYGKKEVTLRLHPDH
+                     PTXFSYRSLGAVPHPYEEWVDKFSERIIPVTEEGIEYQWGNNPPVRLWAQLTTEGKPH
+                     GWPHEIIQYYYGLYPAATIAAVSGASLMALLTLAATCCMLATARRKCLTPYALTPGAV
+                     VPLTLGLLXCAPRANAASFAETMAYLWDENKTLFWMEXXXXXXALALLACCIKSLICC
+                     CKPFSFLSVTEPGSLRKSL"
+     mat_peptide     join(9833..9979,9979..10014)
+                     /locus_tag="RRVgp3"
+                     /product="transframe fusion protein"
+                     /note="Transframe fusion (TF) protein expressed via
+                     programmed ribosomal frameshifting. TF protein presumably
+                     plays a stabilizing role in the virion structure."
+                     /protein_id="YP_006491254.1"
+                     /db_xref="GI:392990020"
 ORIGIN      
         1 nntggcggac gtgtgacatc accgttcgcc tttcttggat cccttgttac tccaccgcag
        61 tgagagataa acaacccaga atgaaggtca ctgtagatgt tgaggctgac agcccatttt

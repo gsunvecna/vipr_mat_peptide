@@ -1,8 +1,8 @@
-LOCUS       NC_001512              11835 bp ss-RNA     linear   VRL 23-NOV-2009
+LOCUS       NC_001512              11835 bp ss-RNA     linear   VRL 27-JUN-2012
 DEFINITION  O'nyong-nyong virus, complete genome.
 ACCESSION   NC_001512
 VERSION     NC_001512.1  GI:9627007
-DBLINK      Project: 15311
+DBLINK      BioProject: PRJNA15311
 KEYWORDS    .
 SOURCE      O'nyong-nyong virus
   ORGANISM  O'nyong-nyong virus
@@ -178,6 +178,46 @@ FEATURES             Location/Qualifiers
                      /product="E1 protein"
                      /protein_id="NP_740711.1"
                      /db_xref="GI:25121491"
+     gene            7670..10140
+                     /locus_tag="Ovgp3"
+                     /db_xref="GeneID:13179042"
+     CDS             join(7670..10057,10057..10140)
+                     /locus_tag="Ovgp3"
+                     /note="Truncated verstion of structural polyprotein that
+                     will be produced when frameshifting occurs at nt 10057;
+                     Truncated version of structural polyprotein and transframe
+                     fusion protein have been added by NCBI Staff with the kind
+                     help of Dr. David Karlin (Department of Zoology,
+                     University of  Oxford, UK) and Dr. Andrew Firth
+                     (Department of Pathology,  University of Cambridge, UK)"
+                     /codon_start=1
+                     /product="truncated polyprotein"
+                     /protein_id="YP_006491245.1"
+                     /db_xref="GI:392976861"
+                     /db_xref="GeneID:13179042"
+                     /translation="MEFIPAQTYYNRRYQPRPWTQRPTIQVIRPKPRRRRPAGQLAQL
+                     ISAVSRLALRTVPQKPRRTRKIKKQKQVKQEQQSTTNQKKKAPKQKQTQKKKRPGRRE
+                     RMCMKIENDCIFEVRHEGKVTGYACLVGDKVMKPAHVKGTIDNADLAKLAFKRSSKYD
+                     LECAQIPVHMKSDASKFTHEKPEGYYNWHHGAVQYSGGRFTIPTGAGKPGDSGRPIFD
+                     NKGRVVAIVLGGANEGTRTALSVVTWNKDIVTKITPEGSVEWSLALPVMCLLANTTFP
+                     CSQPPCAPCCYEKKPEETLRMLEDNVMQPGYYQLLDSALACSQRRQKRNARENFNVYK
+                     VTRPYLAHCPDCGEGHSCHSPIALERIRSEATDGTLKIQVSLQIGIKTDDSHDWTKLR
+                     YMDSHTPVDADRSGLFVRTSAPCTITGTMGHFILARCPKGETLTVGFVDSRRISHTCM
+                     HPFRHEPPLIGREKFHSRPQHGKELPCSTYVHTTAATAEEIEVHMPPDTPDYTLMTQQ
+                     AGNVKITVDGQTVRYKCKCDGSNEGLITADKVINNCKVDQCHTAVTNHKKWQYNSPLT
+                     PRNSEQGDRKGKIHIPFPLVNTTCRVPKARNPTVTYGKNRVTLLLHPDHPTLLSYRAM
+                     GRIPDYHEEWITNKKEISITVPAEGLEVTWGNNDPYKYWPQLSTNGTAHGHPHEIILY
+                     YYELYPTTTIAVLAAASIVITSLVGLSLGMCICARRRCITPYELTPGATIPFLLGVLC
+                     CARTAKAASYYEAATYLWNEQQPLFWLQLLIPLSAAIVVCNCLKLLPCCCKTLTFLSR
+                     HEHRCPHCDRVRARNSDPEHGGSTV"
+     mat_peptide     join(9911..10057,10057..10137)
+                     /locus_tag="Ovgp3"
+                     /product="transframe fusion protein"
+                     /note="Transframe fusion (TF) protein expressed via
+                     programmed ribosomal frameshifting. TF protein presumably
+                     plays a stabilizing role in the virion structure."
+                     /protein_id="YP_006491246.1"
+                     /db_xref="GI:392976862"
 ORIGIN      
         1 atagctgcgt gatacacaca cgcagcttac gggtttcata ctgctctact ctgcattgca
        61 agagattaaa gtacccatca tggattcagt gtatgtagac atagatgctg acagcgcgtt

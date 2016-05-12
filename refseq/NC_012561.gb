@@ -1,8 +1,8 @@
-LOCUS       NC_012561              11526 bp    RNA     linear   VRL 28-SEP-2009
+LOCUS       NC_012561              11526 bp ss-RNA     linear   VRL 27-JUN-2012
 DEFINITION  Highlands J virus, complete genome.
 ACCESSION   NC_012561
 VERSION     NC_012561.1  GI:226823166
-DBLINK      Project: 37281
+DBLINK      BioProject: PRJNA37281
 KEYWORDS    .
 SOURCE      Highlands J virus
   ORGANISM  Highlands J virus
@@ -10,9 +10,9 @@ SOURCE      Highlands J virus
             Alphavirus; WEEV complex.
 REFERENCE   1  (bases 1 to 11526)
   AUTHORS   Allison,A.B. and Stallknecht,D.E.
-  TITLE     Genomic sequencing of Highlands J virus: a comparison to western
+  TITLE     Genomic sequencing of Highlands J virus: A comparison to western
             and eastern equine encephalitis viruses
-  JOURNAL   Virus Res. 145 (2), 334-340 (2009)
+  JOURNAL   Virus Res. 145, 334-340 (2009)
    PUBMED   19651164
 REFERENCE   2  (bases 1 to 11526)
   CONSRTM   NCBI Genome Project
@@ -115,6 +115,9 @@ FEATURES             Location/Qualifiers
                      /db_xref="GI:226823172"
      misc_feature    7399..7439
                      /note="subgenomic UTR"
+     gene            7400..9877
+                     /locus_tag="HJV_gp3"
+                     /db_xref="GeneID:13165417"
      gene            7440..11150
                      /locus_tag="HJV_gp2"
                      /db_xref="GeneID:7755272"
@@ -172,6 +175,43 @@ FEATURES             Location/Qualifiers
                      /product="E1 protein"
                      /protein_id="YP_002802309.1"
                      /db_xref="GI:226823177"
+     CDS             join(7440..9794,9794..9877)
+                     /locus_tag="HJV_gp3"
+                     /note="Truncated verstion of structural polyprotein that
+                     will be produced when frameshifting occurs at nt 9794;
+                     Truncated version of structural polyprotein and transframe
+                     fusion protein have been added by NCBI Staff with the kind
+                     help of Dr. David Karlin (Department of Zoology,
+                     University of  Oxford, UK) and Dr. Andrew Firth
+                     (Department of Pathology,  University of Cambridge, UK)"
+                     /codon_start=1
+                     /product="truncated polyprotein"
+                     /protein_id="YP_006491229.1"
+                     /db_xref="GI:392972649"
+                     /db_xref="GeneID:13165417"
+                     /translation="MFPYPQLTFPPMYQPNPMAYRDPNPPRRRWRPFRPPLAAQIEDL
+                     RRSIANLTLKQRAPNPPAGPPAKKKKTQPKPKATPPKKKKQQVKKQKRKPKPGKRQRM
+                     CMKLESDKTFPILLNGQVNGYACVVGGRLMKPLHVEGKIDNEQLAAIKLKKASMYDLE
+                     YGDVPQNMKSDTLQYTSEKPPGFYNWHHGAVQYENGRFTVPRGVGGKGDSGRPILDNK
+                     GRVVAIVLGGANEGSRTALSVVTWNQKGVTIKDTPEGTEQWSLITAMCVLANVTFPCD
+                     KPPVCYSLAPERTLDVLEENVDNPGYDTLLENVLKCPSRRQKRSITDDFTLTSPYLGH
+                     CPYCLHATPCFSPIKIENVWDESDDGTIRIQVSAQLGYNQAGTADPTKFRYMSYEQDH
+                     DIKEASMDKIAISTSGPCSRLGHKGYFLLARCPPGDSVTVSITSGASATSCTVEKKIR
+                     RKFVGREEYLLPPVHGKLIKCHVYDHLKETTAGYITMHRPGPHAYATYVEESSGEVYI
+                     RPPSGKNVTYECKCGDYSTGTVNTRTKMPGCTKKKQCIAYKSDQTKWVFNSPDLIRHS
+                     DHAVQGKLHIPFKLTATACPVPLAHTPTVEKWFKGVTLHLTASHPTLLTTRKLGPRAE
+                     PTSEWIVGTVSRNFSVGREGLEYTWGNHDPVRVWSQESAPGDPHGWPHEIIVHYYHRH
+                     PLYTIAVLCGLVLITVIGIASAAACISKARRDCLTPYALAPNAAVPTLLAVLCCIRPT
+                     HAETLGESLGHLWLNNQPLLWAQLCLPLAALIILFRFFSCCLPFLIGCRRLPGKGRRL
+                     RTCDHCAKCSGSPV"
+     mat_peptide     join(9666..9794,9794..9874)
+                     /locus_tag="HJV_gp3"
+                     /product="transframe fusion protein"
+                     /note="Transframe fusion (TF) protein expressed via
+                     programmed ribosomal frameshifting. TF protein presumably
+                     plays a stabilizing role in the virion structure."
+                     /protein_id="YP_006491230.1"
+                     /db_xref="GI:392972650"
      3'UTR           11148..11526
 ORIGIN      
         1 atagggcatg gtatagaggc acctacccta caaaccgatc caaacatgga aaaagttcac

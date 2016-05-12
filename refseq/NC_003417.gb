@@ -1,8 +1,8 @@
-LOCUS       NC_003417              11411 bp ss-RNA     linear   VRL 08-DEC-2008
+LOCUS       NC_003417              11411 bp ss-RNA     linear   VRL 27-JUN-2012
 DEFINITION  Mayaro virus, complete genome.
 ACCESSION   NC_003417
 VERSION     NC_003417.1  GI:19073904
-DBLINK      Project: 15392
+DBLINK      BioProject: PRJNA15392
 KEYWORDS    .
 SOURCE      Mayaro virus
   ORGANISM  Mayaro virus
@@ -211,6 +211,46 @@ FEATURES             Location/Qualifiers
                      /product="envelope glycoprotein E1"
                      /protein_id="NP_740694.1"
                      /db_xref="GI:25121720"
+     gene            7417..9881
+                     /locus_tag="MAYVgp4"
+                     /db_xref="GeneID:13179055"
+     CDS             join(7417..9798,9798..9881)
+                     /locus_tag="MAYVgp4"
+                     /note="Truncated verstion of structural polyprotein that
+                     will be produced when frameshifting occurs at nt 9798;
+                     Truncated version of structural polyprotein and transframe
+                     fusion protein have been added by NCBI Staff with the kind
+                     help of Dr. David Karlin (Department of Zoology,
+                     University of  Oxford, UK) and Dr. Andrew Firth
+                     (Department of Pathology,  University of Cambridge, UK)"
+                     /codon_start=1
+                     /product="truncated polyprotein"
+                     /protein_id="YP_006491249.1"
+                     /db_xref="GI:392990021"
+                     /db_xref="GeneID:13179055"
+                     /translation="MDFLPTQVFYGRRWRPRMPPRPWRPRMPTMQRPDQQARQMQQLI
+                     AAVSTLALRQNAAAPQRGKKKQPRRKKPKPQPEKPKKQEQKPKQKKAPKRKPGRRERM
+                     CMKIEHDCIFEVKHEGKVTGYACLVGDKVMKPAHVPGVIDNADLARLSYKKSSKYDLE
+                     CAQIPVAMKSDASKYTHEKPEGHYNWHYGAVQYTGGRFTVPTGVGKPGDSGRPIFDNK
+                     GPVVAIVLGGANEGTRTALSVVTWNKDMVTKITPEGTVEWAASTVTAMCLLTNISFPC
+                     FQPSCAPCCYEKGPEPTLRMLEENVNSEGYYDLLHAAVYCRNSSRSKRSTANHFNAYK
+                     LTRPYVAYCADCGMGHSCHSPAMIENIQADATDGTLKIQFASQIGLTKTDTHDHTKIR
+                     YAEGHDIAEAARSTLKVHSSSECTVTGTMGHFILAKCPPGERISVSFVDSKNEHRTCR
+                     IAYHHEQRLIGRERFTVRPHHGIELPCTTYQLTTAETSEEIDMHMPPDIPDRTILSQQ
+                     SGNVKITVNGRTVRYSSSCGSQAVGTTTTDKTINSCTVDKCQAYVTSHTKWQFNSPFV
+                     PRRMQAERKGKVHIPFPLINTTCRVPLAPEALVRSGKREATLSLHPIHPTLLSYRTFG
+                     AERVFDEQWITAQTEVTIPVPVEGVEYQWGNHKPQRFVVALTTEGKAHGWPHEIIEYY
+                     YGLHPTTTIVVVIRVSVVVLLSFAASVYMCVVARTKCLTPYALTPGAVVPVTIGVLCC
+                     APKAHAASFAEGMAYLWDNNQSMFWMELTGPLALLILATCCARSLLSCCKGSFLSRNE
+                     HRECRCQCLRAHGNYSEPSGIPV"
+     mat_peptide     join(9655..9798,9798..9878)
+                     /locus_tag="MAYVgp4"
+                     /product="transframe fusion protein"
+                     /note="Transframe fusion (TF) protein expressed via
+                     programmed ribosomal frameshifting. TF protein presumably
+                     plays a stabilizing role in the virion structure."
+                     /protein_id="YP_006491250.1"
+                     /db_xref="GI:392990022"
 ORIGIN      
         1 atggcgggca agtgacactt gttccgccgg tcgtctctaa gctcttcctc tgcattgcaa
        61 gagtttacca ctcatcatgt cgaaagtctt tgtagacatc gaggccgaga gcccgttttt

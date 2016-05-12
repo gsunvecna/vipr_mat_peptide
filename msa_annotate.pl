@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.1.7'); # Feb 05, 2013
+use version; our $VERSION = qv('1.1.8'); # Feb 21, 2013
 #use lib ("/home/peptide/loader/ext/BioPerl"); # This is for account peptide on Northrop machine 33
 use Getopt::Long;
 use English;
@@ -52,6 +52,7 @@ my $debug = 0;
 # e.g.
 # ./msa_annotate.pl -d ./ -i NC_001477_test.gb >> out.txt 2>> err.txt
 # ./msa_annotate.pl -d ./ -l test >> test/out.txt 2>> test/err.txt
+# ./msa_annotate.pl -checkrefseq=1 -update >out1.txt 2>err1.txt
 #
 #    Authors: Chris Larsen, clarsen@vecna.com; Guangyu Sun, gsun@vecna.com;
 #    September 2011
@@ -73,46 +74,66 @@ my $progs = {
 my $infile;
 my $list_fn = '';
 my $dir_path = './';
-my $checkRefseq = 0;
-my $checkTaxon = 0;
+my $checkRefseq = '0';
+my $checkTaxon = '0';
+my $update = 0;
 
 my $exe_dir  = './';
 my $exe_name = $0;
 ($exe_dir, $exe_name) = ($1, $2) if ($exe_name =~ /^(.*[\/])([^\/]+[.]pl)$/i);
-print STDERR "$exe_name: $0 $VERSION executing from command='$0 @ARGV' ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime)."\n";
+print STDERR "$exe_name: $0 $VERSION executing ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime)."\n";
+print STDERR "$exe_name: command='$0 @ARGV'\n";
 my $useropts = GetOptions(
-                 "checkrefseq"  => \ $checkRefseq,    # Check any update for RefSeqs from genbank
-                 "checktaxon"  => \ $checkTaxon,    # Check any update for taxon from genbank
-                 "d=s"  => \ $dir_path,    # Path to directory
-                 "i=s"  => \ $infile,      # [inputFile.gbk]
-                 "l=s"  => \ $list_fn,     # list of the gbk file
-                 );
+         "checkrefseq=s" => \ $checkRefseq, # Check any update for RefSeqs from NCBI, 1: use existing files; 2: live download
+         "checktaxon=s"  => \ $checkTaxon,  # Check any update for taxon from NCBI, 1: use existing files; 2: live download
+         "update"  => \ $update,  # Used together with either checkrefseq or checktaxon, update the corresponding file if set
+         "d=s"  => \ $dir_path,    # Path to directory
+         "i=s"  => \ $infile,      # [inputFile.gbk]
+         "l=s"  => \ $list_fn,     # list of the gbk file
+         "debug"  => \ $debug,     # turn on all debug messages, see module Annotate_misc.pm for setting for each module
+         );
 $dir_path =~ s/[\/]$//;
 $list_fn =~ s/[\/]$//;
 
-$debug && print STDERR "$exe_name: \$exe_dir    = $exe_dir\n";
-$debug && print STDERR "$exe_name: input path   = $dir_path\n";
-$debug && print STDERR "$exe_name: input $checkRefseq = $checkRefseq\n";
+$debug && print STDERR "$exe_name: \$exe_dir  ='$exe_dir'\n";
+$debug && print STDERR "$exe_name: input \$dir_path   ='$dir_path'\n";
+print STDERR "$exe_name: input \$checkTaxon ='$checkTaxon'\n" if ($checkTaxon ne '0');
+print STDERR "$exe_name: input \$checkRefseq='$checkRefseq'\n" if ($checkRefseq ne '0');
 $debug && print STDERR "\n";
+
+if ($debug) {
+    Annotate_misc::setDebugAll( $debug);
+    my $msgs = Annotate_Util::getPerlVersions;
+    for (@$msgs) {
+        print STDERR "$exe_name: $_\n";
+    }
+    print STDERR "\n";
+}
 
 # Either a genbank file or a folder/list of genbank files is required
 if ($checkTaxon) {
+    $debug && Annotate_Download::setDebugAll( $debug);
 #    my $count = Annotate_Def::checkAllTaxon( $exe_dir);
     print STDERR "\n$exe_name: start to check taxon.\n";
-    my $count = Annotate_Download::checkAllTaxon( $exe_dir);
-    printf STDERR "\n$exe_name: finished checking %d taxon, exit.\n\n", $count;
-    exit(1);
+    my $download_TAXON = 0; # set to 1 in order to actually download from NCBI
+    $download_TAXON = 1 if ($checkTaxon eq '2');
+    my $count = Annotate_Download::checkAllTaxon( $exe_dir, $download_TAXON, $update);
+    printf STDERR "\n$exe_name: finished checking %d taxon, exit.\n\n", $count->{total};
+    exit(0);
 
 } elsif ($checkRefseq) {
+    $debug && Annotate_Download::setDebugAll( $debug);
 #    $count = Annotate_Def::checkAllRefseq( $exe_dir);
     print STDERR "\n$exe_name: start to check RefSeq.\n";
-    my $count = Annotate_Download::checkAllRefseq( $exe_dir);
+    my $download_REFSEQ = 0; # set to 1 in order to actually download from NCBI
+    $download_REFSEQ = 1 if ($checkRefseq eq '2');
+    my $count = Annotate_Download::checkAllRefseq( $exe_dir, $download_REFSEQ, $update);
     printf STDERR "\n$exe_name: finished checking %d RefSeqs, exit.\n\n", $count;
-    exit(1);
+    exit(0);
 
 } elsif (!$infile && !$list_fn) {
     print Annotate_misc::Usage( $exe_name, $exe_dir);
-    exit(1);
+    exit(0);
 }
 
 # Now, get all accessions (or files) to be processed

@@ -1,0 +1,57 @@
+LOCUS       AB363975                 305 bp    RNA     linear   VRL 19-OCT-2007
+DEFINITION  Norovirus Hu/GII.4/Miyagi/1/2006/JP genes for RNA dependent RNA
+            polymerase, capsid protein, partial cds.
+ACCESSION   AB363975
+VERSION     AB363975.1  GI:158455300
+KEYWORDS    .
+SOURCE      Norovirus Hu/GII.4/Miyagi/1/2006/JP
+  ORGANISM  Norovirus Hu/GII.4/Miyagi/1/2006/JP
+            Viruses; ssRNA positive-strand viruses, no DNA stage;
+            Caliciviridae; Norovirus.
+REFERENCE   1
+  AUTHORS   Ueki,Y., Shoji,M., Sato,C., Sato,Y., Okimura,Y., Saito,N., Otomo,H.
+            and Onodera,H.
+  TITLE     Norovirus GII/4 variants observed in outbreaks of gastroenteritis
+            in Miyagi prefecture between November and December of 2006
+  JOURNAL   Jpn. J. Infect. Dis. 60 (4), 240-241 (2007)
+   PUBMED   17642546
+REFERENCE   2  (bases 1 to 305)
+  AUTHORS   Ueki,Y.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (12-OCT-2007) Yo Ueki, Miyagi Prefectual Institute of
+            Public Health and Environment, Department of Microbiology;
+            Saiwai-cho 4-7-2, Miyagino, Sendai, Miyagi 983, Japan
+            (E-mail:youeki@ihe.pref.miyagi.jp, Tel:81222577228(ex.69),
+            Fax:81222563362)
+FEATURES             Location/Qualifiers
+     source          1..305
+                     /organism="Norovirus Hu/GII.4/Miyagi/1/2006/JP"
+                     /mol_type="genomic RNA"
+                     /strain="Hu/GII.4/Miyagi/1/2006/JP MI0613"
+                     /isolation_source="feces"
+                     /db_xref="taxon:477526"
+                     /country="Japan:Miyagi"
+                     /collection_date="Dec-2006"
+     CDS             <1..51
+                     /note="ORF 1"
+                     /codon_start=1
+                     /product="RNA dependent RNA polymerase"
+                     /protein_id="BAF91161.1"
+                     /db_xref="GI:158455301"
+                     /translation="GDRNLAPSFVNEDGVE"
+     CDS             32..>305
+                     /note="ORF2"
+                     /codon_start=1
+                     /product="capsid protein"
+                     /protein_id="BAF91162.1"
+                     /db_xref="GI:158455302"
+                     /translation="MKMASNDANPSDGSAANLVPEVNNEVMALEPVVGAAIAAPVAGQ
+                     QNVIDPWIRNNFVQAPGGEFTVSPRNAPGEILWSAPLGPDLNPYLSH"
+ORIGIN      
+        1 ggcgatcgca atctggctcc cagttttgtg aatgaagatg gcgtcgaatg acgccaaccc
+       61 atctgatggg tccgcagcca acctcgtccc agaggtcaac aatgaggtta tggctctgga
+      121 gcccgttgtc ggtgccgcta ttgcggcgcc tgtagcgggc caacaaaatg taattgaccc
+      181 ctggattaga aataattttg tacaagcccc tggtggagag ttcacagtat cccctagaaa
+      241 cgctccaggt gaaatactat ggagcgcgcc cttaggccct gatctgaatc cctacctatc
+      301 tcatt
+//

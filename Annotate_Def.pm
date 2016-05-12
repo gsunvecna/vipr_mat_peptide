@@ -14,9 +14,9 @@ use Bio::AlignIO;
 use Bio::Tools::Run::StandAloneBlast;
 use IO::String;
 
-use version; our $VERSION = qv('1.1.7'); # Feb 05 2013
+use version; our $VERSION = qv('1.1.8'); # Feb 18 2013
 
-my $debug_all = 1;
+my $debug_all = 0;
 
 ####//README//####
 #
@@ -85,835 +85,11 @@ my $GENE_SYM = {
 
 ## //subroutines// ##
 
-=head2
- sub downloadRefseq searches genbank for all refseqs for a family, then downloads all the refseqs
-=cut
-=head2
-sub downloadRefseq {
-    my ($fam, $exe_dir, $download_REFSEQ) = @_;
+sub setDebugAll {
+    my ($debug) = @_;
+    $debug_all = $debug;
+} # sub setDebugAll
 
-    my $debug = 0 && $debug_all;
-    my $subn = 'downloadRefseq';
-
-    my $download_SUMMARY = $download_REFSEQ;
-#    $download_REFSEQ = 0;
-
-    $exe_dir = './' if (!$exe_dir);
-    $debug && print STDERR "$subn: \$exe_dir='$exe_dir'\n";
-
-    # Search for NC_* for each family from genbank
-    my $count = 0;
-    my $web = '';
-    my $key = '';
-    my $base = 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/';
-#    my $outFileName = undef;
-    my $outFileName = '';
-    $debug && print STDERR "\n$subn: \$fam=$fam\n";
-
-    if ( $download_SUMMARY ) {
-        # modeled after http://www.ncbi.nlm.nih.gov/books/NBK25498/#chapter3.Application_3_Retrieving_large -11/28/2012
-
-        #assemble the esearch URL
-        my $query = "${fam}[orgn]+AND+srcdb_refseq[prop]";
-        $debug && print STDERR "\n$subn: \$fam=$fam \$query='$query'\n";
-        my $url = $base . "esearch.fcgi?db=nucleotide&term=$query&usehistory=y&retmax=100";
-        $debug && print STDERR "$subn: \$fam=$fam \$url=$url\n";
-
-        # post the esearch URL
-        my $output = '';
-        for my $ntry (0 .. 2) {
-            sleep(10);
-            $output = get($url);
-            $debug && print STDERR "$subn: \$fam=$fam \$output='$output'\n";
-            last if ($output !~ /Unable to obtain query/);
-        }
-        return $outFileName if ($output =~ /Unable to obtain query/);
-        # parse WebEnv, QueryKey and Count (# records retrieved)
-        $web = $1 if ($output =~ /<WebEnv>(\S+)<\/WebEnv>/);
-        $key = $1 if ($output =~ /<QueryKey>(\d+)<\/QueryKey>/);
-        $count = $1 if ($output =~ /<Count>(\d+)<\/Count>/);
-        my $time = POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime);
-        print STDERR "$subn: \$fam=$fam \$count=$count \$web=$web \$key=$key at $time\n";
-    }
-
-    # Have to get the summary before downloading gbk files
-    $outFileName = "RefSeq_${fam}.gbk";
-    if ( $download_REFSEQ  && $download_SUMMARY) {
-        # open output file for writing
-        my $bakFileName = "$outFileName.bak";
-        if (-e "$exe_dir/$outFileName") {
-                for my $i (reverse 1 .. 8) {
-                    $bakFileName = sprintf("$outFileName.bak$i");
-                    my $bakFileName1 = sprintf("$outFileName.bak%d", $i+1);
-                    if (-e "$exe_dir/$bakFileName") {
-                        `mv $exe_dir/$bakFileName $exe_dir/$bakFileName1`;
-                    }
-                }
-                my $result = `mv $exe_dir/$outFileName $exe_dir/$bakFileName`;
-                print STDERR "$subn: \$fam=$fam existing file $outFileName moved to $bakFileName \$result=$result\n";
-        }
-        open (my $OUT, ">$exe_dir/$outFileName") || die "$subn: Can't open file'$outFileName'!\n";
-        # Download the NC_* as a set
-        # retrieve data in batches of 100
-        my $retmax = 100;
-        for (my $retstart = 0; $retstart < $count; $retstart += $retmax) {
-            $debug && print STDERR "$subn: \$fam=$fam Downloading \$retstart=$retstart\n";
-            ($retstart>0) && sleep(10);
-            my $efetch_url = $base;
-            $efetch_url .= "efetch.fcgi?";
-            $efetch_url .= "db=nucleotide";
-            $efetch_url .= "&WebEnv=$web";
-            $efetch_url .= "&query_key=$key";
-            $efetch_url .= "&retstart=$retstart";
-            $efetch_url .= "&retmax=$retmax";
-            $efetch_url .= "&rettype=gb";
-            $efetch_url .= "&retmode=text";
-            my $efetch_out = '';
-            for my $ntry (0 .. 2) {
-                $efetch_out = get($efetch_url);
-                last if ($efetch_out !~ /Unable to obtain query/);
-            }
-            return undef if ($efetch_out =~ /Unable to obtain query/);
-            print $OUT "$efetch_out";
-        }
-        close $OUT;
-        $debug && print STDERR "$subn: Downloaded $count genomes for $fam, saved to $exe_dir/$outFileName\n";
-        # check if there is any difference between new and existing genbank file
-        if (-e "$bakFileName") {
-              my $result = `diff $exe_dir/$bakFileName $exe_dir/$outFileName`;
-              if ($result) {
-                print STDERR "$subn: ERROR: \$fam=$fam difference between $bakFileName and $outFileName \$result='$result'\n";
-              } else {
-                print STDERR "$subn: \$fam=$fam identical $bakFileName and $outFileName \$result='$result'\n";
-              }
-        }
-    }
-    if (!-e "$exe_dir/$outFileName") {
-        $outFileName = '';
-    }
-
-    return $outFileName;
-} # sub downloadRefseq
-=cut
-
-=head2
- sub downloadTaxon for a family downloads the the taxonnomy information for all strains/species
-=cut
-
-=head2
-sub downloadTaxon {
-    my ( $fam, $exe_dir, $download_TAXON) = @_;
-
-    my $debug = 0 && $debug_all;
-    my $subn = 'downloadTaxon';
-
-    my $count = 0;
-    $exe_dir = './' if (!$exe_dir);
-    $debug && print STDERR "$subn: \$exe_dir='$exe_dir'\n";
-
-    # Search for NC_* for each family from genbank
-    my $web = '';
-    my $key = '';
-    my $base = 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/';
-    my $outFileName = '';
-#    $outFileName = "RefSeq_${fam}.gbk";
-#    print STDERR "\n$subn: \$fam=$fam \$outFileName=$outFileName\n";
-
-    my $taxonFileName = "taxon_${fam}.xml";
-    $download_TAXON = 0 if (!$download_TAXON);
-    if ( $download_TAXON ) {
-        #assemble the esearch URL
-        my $query = "${fam}[orgn]";
-        print STDERR "\n$subn: \$fam=$fam \$outFileName=$outFileName \$query='$query'\n";
-        my $url = $base . "esearch.fcgi?db=taxonomy&term=$query&usehistory=y&retmax=10&rettype=xml";
-        $debug && print STDERR "$subn: \$fam=$fam \$url='$url'\n";
-
-        my $delay = 1;
-        # post the esearch URL
-        sleep( $delay );
-        my $output = get($url);
-        $debug && print STDERR "$subn: \$fam=$fam \$output='$output'\n";
-        # parse WebEnv, QueryKey and Count (# records retrieved)
-        $web = $1 if ($output =~ /<WebEnv>(\S+)<\/WebEnv>/);
-        $key = $1 if ($output =~ /<QueryKey>(\d+)<\/QueryKey>/);
-        $count = $1 if ($output =~ /<Count>(\d+)<\/Count>/);
-        my $time = POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime);
-        print STDERR "$subn: \$fam=$fam \$count=$count \$web=$web \$key=$key at $time\n";
-
-        # Download the TaxonSet for each id, from efetch.fcgi
-        open (my $OUT, ">$exe_dir/$taxonFileName") || die "$subn: Can't open file='$taxonFileName'!\n";
-#        for (my $i=0; $i<$count; $i++) {
-        my $retmax = 5000;
-        # download the taxon
-        for (my $retstart = 0; $retstart < $count; $retstart += $retmax) {
-            $debug && print STDERR "$subn: \$fam=$fam \$count=$count Downloading \$retstart=$retstart\n";
-            sleep( $delay );
-            my $efetch_url = $base;
-            $efetch_url .= "efetch.fcgi?";
-            $efetch_url .= "db=taxonomy";
-            $efetch_url .= "&WebEnv=$web";
-            $efetch_url .= "&query_key=$key";
-            $efetch_url .= "&retstart=$retstart";
-            $efetch_url .= "&retmax=$retmax";
-            $efetch_url .= "&rettype=xml";
-            $efetch_url .= "&retmode=xml";
-            my $efetch_out = '';
-            for my $ntry (0 .. 2) {
-                ($ntry>0) && sleep( $delay );
-                $efetch_out = get($efetch_url);
-                print STDERR "$subn: \$ntry=$ntry \$efetch_out=".substr($efetch_out, 0, 300)."\n";
-                last if ($efetch_out !~ /Unable to obtain query/);
-            }
-            if ($efetch_out =~ /Unable to obtain query/) {
-                print STDERR "$subn: ERROR: \$count=$count \$retstart=$retstart \$efetch_url='$efetch_url'\n";
-                print STDERR "$subn: \$efetch_out=$efetch_out\n";
-                return undef ;
-            } else {
-                print $OUT "$efetch_out";
-            }
-        }
-
-        close $OUT;
-        $debug && print STDERR "$subn: Downloaded $count genomes for $fam, saved to $exe_dir/$taxonFileName\n";
-    }
-    if (!-e "$exe_dir/$taxonFileName") {
-        print STDERR "$subn: ERROR: \$fam=$fam file '$exe_dir/$taxonFileName' non-existant, and no live download performed\n";
-        $taxonFileName = '';
-    }
-
-    return $taxonFileName;
-} # sub downloadTaxon
-=cut
-
-=head2
- sub loadXmlTaxon reads an XML file, searchs for each taxid, and its name, speciesid, species,
- genus, genusid, family, and familyid, to be compared with exsting data
-=cut
-=head2
-
-sub loadXmlTaxon {
-    my ($fam, $taxonFileName, $exe_dir) = @_;
-
-    my $debug = 0 && $debug_all;
-    my $subn = 'loadXmlTaxon';
-
-    my $newTax = {};
-    $exe_dir = './' if (!$exe_dir);
-    $debug && print STDERR "$subn: \$exe_dir='$exe_dir'\n";
-    if (!-e "$exe_dir/$taxonFileName") {
-        print STDERR "$subn: ERROR: \$fam=$fam file '$exe_dir/$taxonFileName' non-existant, and no live download performed\n";
-        return $newTax;
-    }
-
-    open (my $taxFile, "<$exe_dir/$taxonFileName") || die "$subn: Can't open file='$taxonFileName'!\n";
-
-    my @set = ();
-    while (<$taxFile>) {
-        chomp;
-        next if ($_ !~ /^(<TaxaSet><Taxon>|<Taxon>)/);
-        # First, identify the <Taxon></Taxon>
-        $_ =~ s/(<TaxaSet>|<\/TaxaSet>)//;
-        @set = ();
-        push @set, $_;
-        while (<$taxFile>) {
-            chomp;
-            $_ =~ s/(<TaxaSet>|<\/TaxaSet>)//;
-            push @set, $_;
-            $debug && print STDERR "$subn: \$_='$_'\n";
-            last if ($_ =~ /^<\/Taxon>/);
-        }
-        $debug && print STDERR "$subn: \@set=".Dumper(@set)."\n";
-
-        # Parse the <Taxon></Taxon>
-        # turn xml to hash
-        my $taxid = '';
-        my $tax = xml2hash( @set);
-
-        my $taxon = getTaxonString( $tax);
-        my $t = [
-                  $taxon->{'TaxId'},
-                  $taxon->{'speciesid'},
-                  $taxon->{'genusid'},
-                  $taxon->{'familyid'},
-                  $taxon->{'species'},
-                  $taxon->{'genus'},
-                  $taxon->{'family'},
-                ];
-
-        $newTax->{$taxon->{'TaxId'}} = $t;
-        $debug && print STDERR "$subn: \$tax=\n".Dumper($tax)."\n";
-
-    }
-    $debug && print STDERR "$subn: \$newTax=\n".Dumper($newTax)."\n";
-
-    return $newTax;
-} # sub loadXmlTaxon
-=cut
-
-=head2
- sub getTaxonString takes a hash of a taxon, and finds the relative info, and returns an array
-=cut
-
-=head2
-sub getTaxonString {
-    my ($tax) = @_;
-
-    my $debug = 0 && $debug_all;
-    my $subn = 'getTaxonString';
-
-    $debug && print STDERR "$subn: Just got in the sub: \$tax=\n".Dumper($tax)."\n";
-    my $taxInfo = {
-                    'TaxId' => -1,
-                    'speciesid' => -1,
-                    'species' => '',
-                    'genusid' => -1,
-                    'genus' => '',
-                    'familyid' => -1,
-                    'family' => '',
-                  };
-    my @starts = ();
-    my @tags = ();
-    @tags = keys %{$tax->{'Taxon'}};
-
-    $taxInfo->{'TaxId'} = $tax->{'Taxon'}->{'TaxId'};
-    if ($tax->{'Taxon'}->{'Rank'} eq 'species') {
-        $taxInfo->{'speciesid'} = $tax->{'Taxon'}->{'TaxId'};
-        $taxInfo->{'species'} = $tax->{'Taxon'}->{'ScientificName'};
-    }
-    if ($tax->{'Taxon'}->{'Rank'} eq 'genus') {
-            $taxInfo->{'genusid'} = $tax->{'Taxon'}->{'TaxId'};
-            $taxInfo->{'genus'} = $tax->{'Taxon'}->{'ScientificName'};
-    }
-    if ($tax->{'Taxon'}->{'Rank'} eq 'family') {
-            $taxInfo->{'familyid'} = $tax->{'Taxon'}->{'TaxId'};
-            $taxInfo->{'family'} = $tax->{'Taxon'}->{'ScientificName'};
-    }
-
-    my $ts = $tax->{'Taxon'}->{'LineageEx'}->{'Taxon'};
-    for my $t (@$ts) {
-        if ($t->{'Rank'} eq 'species') {
-            $taxInfo->{'speciesid'} = $t->{'TaxId'};
-            $taxInfo->{'species'} = $t->{'ScientificName'};
-        }
-        if ($t->{'Rank'} eq 'genus') {
-            $taxInfo->{'genusid'} = $t->{'TaxId'};
-            $taxInfo->{'genus'} = $t->{'ScientificName'};
-        }
-        if ($t->{'Rank'} eq 'family') {
-            $taxInfo->{'familyid'} = $t->{'TaxId'};
-            $taxInfo->{'family'} = $t->{'ScientificName'};
-        }
-    }
-
-    $debug && print STDERR "$subn: right before returning from subroutine \$taxInfo=\n".Dumper($taxInfo)."\n";
-
-    return $taxInfo;
-} # sub getTaxonString
-=cut
-
-=head2
- sub xml2hash takes an array of strings of XML, turns it to a hash
-=cut
-
-=head2
-sub xml2hash {
-    my (@set) = @_;
-
-    my $debug = 0 && $debug_all;
-    my $subn = 'xml2hash';
-
-    $debug && print STDERR "$subn: Just got in the sub: \@set=\n".Dumper(@set)."\n";
-    my $tax = {};
-    my @starts = ();
-    my $start = -1;
-    my @ends = ();
-    my @tags = ();
-
-    for (my $i=0; $i<=$#set; $i++) {
-        my $line = $set[$i];
-        $debug && print STDERR "$subn: \$i=$i \$line='$line'\n";
-        my $tag = '';
-#        $tag = '' if (!$tag);
-        $debug && print STDERR "$subn: \$tag='$tag' \$start=$start \@tags='@tags' \$line='$line'\n";
-        if ($#tags<0) {
-            if ($line =~ /<([^\/]+)>/) {
-                $tag = $1;
-                if ($line =~ /<$tag>(.*)<\/$tag/) {
-                    $set[$i] =~ s/<$tag>(.*)<\/$tag//;
-                    $tax->{$tag} = $1;
-                    $debug && print STDERR "$subn: 1. \$1=$1 \$start=$start \@tags='@tags' \$tax=\n".Dumper($tax)."\n";
-                    $line =~ s/<$tag>$tax->{$tag}<\/$tag>//;
-                    next;
-                }
-                push @tags, $tag;
-                $set[$i] =~ s/<([^\/]+)>//;
-                $start = $i;
-                next;
-            }
-            $debug && print STDERR "$subn: 2. \$start=$start \@tags='@tags' \$tax=\n".Dumper($tax)."\n";
-        } else {
-            if ($line =~ /<([^\/]+)>/) {
-                $tag = $1;
-                if ($line =~ /<$tag>(.*)<\/$tag/) {
-                    next;
-                }
-                push @tags, $tag;
-                next;
-            } elsif ($line =~ /<\/$tags[$#tags]>/) {
-                my @set1 = ( @set[$start .. $i] );
-                $debug && print STDERR "$subn: 3. Found last tags: \$start=$start \@tags='@tags'  \$set1=\n".Dumper(@set1)."\n";
-                $tag = pop @tags;
-                if ($#tags<0) {
-                    $set[$i] =~ s/<\/$tag>//;
-                    my $t = xml2hash( @set[$start .. $i]);
-                    for my $k ($start .. $i) { $set[$k] = ''; } # Clear up those lines already processed
-                    if (exists($tax->{$tag}) && ref($tax->{$tag}) eq 'HASH') {
-                        $tax->{$tag} = [$tax->{$tag}, $t];
-                    } elsif (exists($tax->{$tag}) && ref($tax->{$tag}) eq 'ARRAY') {
-                        push @{$tax->{$tag}}, $t;
-                    } else {
-                        $tax->{$tag} = $t;
-                    }
-                }
-                $debug && print STDERR "$subn: 4. \$tag=$tag \$start=$start \@tags='@tags' \$tax->{$tag}=".ref($tax->{$tag})."\n";
-            } else {
-                $debug && print STDERR "$subn: 1. \$i=$i problem with line='$line'\n";
-            }
-        }
-        $debug && print STDERR "$subn: \$i=$i \$tax=\n".Dumper($tax)."\n";
-    }
-
-    $debug && print STDERR "$subn: right before returning from subroutine \$tax=\n".Dumper($tax)."\n";
-    return $tax;
-} # sub xml2hash
-=cut
-
-=head2
- sub checkAllTaxon looks over each family and see if there is any update in its taxonomy from NCBI
-=cut
-
-=head2
-sub checkAllTaxon {
-    my ( $exe_dir) = @_;
-
-    my $debug = 0 && $debug_all;
-    my $subn = 'checkAllTaxon';
-
-    # Load the $REFSEQS if not already
-    if ( !$TAXON->{taxon_loaded} ) {
-        Annotate_Def::loadTaxonTable( $exe_dir);
-        my $ctLines = scalar(@{$TAXON->{taxon}});
-        $debug && print STDERR "$subn: loaded $ctLines lines from file '$exe_dir/$TAXON->{taxon_fn}'\n";
-    }
-    $debug && print STDERR "$subn: \$TAXON=\n".Dumper($TAXON)."end of \$TAXON\n\n";
-    if ( !$REFSEQS->{refseq_loaded} ) {
-        my $nstrain = Annotate_Def::initRefseq();
-        my @fam = sort keys %{$REFSEQS->{refs}};
-        printf STDERR ("$subn: loaded RefSeqs for $nstrain strains in %d families: @fam\n", $#fam+1);
-    }
-    $debug && print STDERR "$subn: \$REFSEQS=\n".Dumper($REFSEQS)."end of \$REFSEQS\n\n";
-
-    my $count = 0;
-    $exe_dir = './' if (!$exe_dir);
-    $debug && print STDERR "$subn: \$exe_dir='$exe_dir'\n";
-
-    my $taxonFileName = "Annotate_taxon_records.txt"; # plain text file storing the taxon info for all families
-    my $taxonTempName = "$taxonFileName.0";
-    my $taxonFile = undef;
-    open($taxonFile, ">$exe_dir/$taxonTempName") || die "$subn: Can't open file='$taxonTempName'!\n";
-
-    # Check strains for each family from genbank
-    my $DOWNLOAD_TAXON = 0;
-    my $genera = {};
-    my $TAXON_UPDATED = 0;
-    for my $fam (sort keys %{$REFSEQS->{refs}}){
-        my $web = '';
-        my $key = '';
-        my $base = 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/';
-        my $outFileName = '';
-
-        $outFileName = Annotate_Def::downloadTaxon( $fam, $exe_dir, $DOWNLOAD_TAXON);
-        $outFileName = Annotate_Def::downloadTaxon( $fam, $exe_dir, $DOWNLOAD_TAXON) if (!$outFileName); # Effectively try again to download
-        if ($DOWNLOAD_TAXON) {
-            print STDERR "$subn: \$fam=$fam, performed live download\n";
-        } else {
-            print STDERR "$subn: \$fam=$fam, existing file used, no live download\n";
-        }
-        print STDERR "$subn: \$outFileName=$outFileName\n";
-
-        if (!$outFileName) {
-            print STDERR "$subn: \$fam=$fam\n";
-            print STDERR "$subn: ERROR: \$fam=$fam \$taxonFileName='$outFileName' is empty.\n";
-            print STDERR "$subn: \$fam=$fam, perhaps turn on the download options in sub Annotate_Def::downloadTaxon\n\n";
-            next;
-        }
-
-        my $newTax = loadXmlTaxon( $fam, $outFileName, $exe_dir);
-        $debug && print STDERR "$subn: \$newTax=".scalar(keys %$newTax)."\n".Dumper($newTax)."end of \$newTax\n\n";
-
-        my $status = { total => 0, strain => 0, identical => 0, new => 0, };
-        my $msg = '';
-        my $str = sprintf("# Family=$fam taxon loaded from file=$outFileName \n");
-        my $time = POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime);
-        $str .= sprintf("# Saved from Annotate_Dev.pm Ver$VERSION on %s \n", $time);
-        my $str1 = '';
-        my $ct = -1;
-        for my $taxid (sort {$newTax->{$a}->[2]<=>$newTax->{$b}->[2] || $newTax->{$a}->[1]<=>$newTax->{$b}->[1]} keys %$newTax) {
-            next if ($newTax->{$taxid}->[1]<0);
-            $ct++;
-            $status->{total}++;
-            my $newStr = '';
-            $newStr = sprintf("| %7d | %7d |", $newTax->{$taxid}->[0], $newTax->{$taxid}->[1]);
-            $newStr .= sprintf(" %7d | %7d |", $newTax->{$taxid}->[2], $newTax->{$taxid}->[3]);
-            $newStr .= sprintf(" %-28s |", $newTax->{$taxid}->[4]);
-            $genera->{$newTax->{$taxid}->[6]}->{$newTax->{$taxid}->[5]}->{$newTax->{$taxid}->[4]}++;
-            $newStr .= sprintf(" %-16s |", $newTax->{$taxid}->[5]);
-            $genera->{$newTax->{$taxid}->[6]}->{$newTax->{$taxid}->[5]}->{total}++;
-            $newStr .= sprintf(" %-15s |", $newTax->{$taxid}->[6]);
-            $str .= $newStr . "\n";
-            $debug && print STDERR "$subn: \$ct=$ct \$taxid=$taxid \$newStr='$newStr'\n";
-#            if ($newTax->{$taxid}->[1] == -1) { # speciesid
-#                $msg .= "#$ct\t---\t$newStr\n";
-#                next;
-#            }
-            my $oldStr = "";
-            if (exists($TAXON->{taxon}->{$taxid})) {
-                my $oldTax = $TAXON->{taxon}->{$taxid};
-                $oldStr = sprintf("| %7d | %7d |", $oldTax->[0], $oldTax->[1]);
-                $oldStr .= sprintf(" %7d | %7d |", $oldTax->[2], $oldTax->[3]);
-                $oldStr .= sprintf(" %-28s |", $oldTax->[4]);
-                $oldStr .= sprintf(" %-16s |", $oldTax->[5]);
-                $oldStr .= sprintf(" %-15s |", $oldTax->[6]);
-            }
-            
-            $debug && print STDERR "$subn: \$taxid=$taxid\n";
-            $status->{strain}++;
-            if ($newStr eq $oldStr) {
-                $status->{identical}++;
-                $msg .= "#$ct\t---\t$newStr\n";
-                $debug && print STDERR "$subn: \$ct=$ct \$taxid=$taxid identical Taxon info found. Skip...\n";
-            } else {
-                $TAXON_UPDATED = 1;
-                $status->{new}++;
-                $msg .= "#$ct\tnew\t$newStr\n";
-                $debug && print STDERR "$subn: \$ct=$ct \$taxid=$taxid found new Taxon info from NCBI download for $fam:\n";
-            }
-            $debug && print STDERR "$subn: \$ct=$ct \$taxid=$taxid \$oldStr='$oldStr'\n";
-            $debug && print STDERR "$subn: \$ct=$ct \$taxid=$taxid \$newStr='$newStr' \$TAXON_UPDATED=$TAXON_UPDATED\n";
-        } # for my $taxid (sort {}) {
-
-        my $msg1 = "$fam found taxon from NCBI: $status->{total} total:";
-        $msg1 .= " $status->{strain} strains,";
-        $msg1 .= " $status->{identical} identical,";
-        $msg1 .= " $status->{new} new\n";
-        $msg = $msg1 . $msg;
-        # Save to Anntate_taxon_records.txt
-        $str .= sprintf("# Family=$fam taxon loaded from file=$outFileName, total=%d\n", $status->{total});
-        $count += $status->{total};
-        print $taxonFile "$str\n" || die "$subn: Can't write to file='$taxonFileName'!\n";
-#        print STDERR "$subn: \$str='\n$str'\n";
-        print STDERR "$subn: \$msg='\n$msg'\n";
-
-    } # for my $fam (sort keys %{$REFSEQS->{refs}}){
-    my @fams = ( sort keys %{$REFSEQS->{refs}} );
-    printf $taxonFile ("# Updated $count strains in %d families: @fams\n", scalar(@fams));
-    close $taxonFile || die "$subn: Can't close file='$taxonFileName'!\n";
-
-if ( 0 ) {
-    $debug && print STDERR "$subn: \$genera=\n".Dumper($genera)."\n";
-    for my $fam (sort keys %$genera) {
-      my $family = $genera->{$fam};
-      print STDERR "\n$subn: family=$fam\n";
-      for my $gen (sort keys %$family) {
-        my $genus = $family->{$gen};
-        print STDERR "$fam  '$gen'\n";
-        printf STDERR ("$fam  %-12s  total  %3d\n", "'".$gen."'", $genus->{total});
-        for my $spe (sort keys %$genus) {
-          next if ($spe eq 'total');
-          printf STDERR ("$fam  %-12s  %4d  '$spe'\n", "'".$gen."'", $genus->{$spe});
-        }
-      }
-      print STDERR "\n";
-    }
-}
-
-    # save and report the result
-    printf STDERR ("$subn: # Checked $count strains in %d families: \n%s\n\n", scalar(@fams), join("\n", @fams));
-    if ($DOWNLOAD_TAXON) {
-        print STDERR "$subn: performed live download\n";
-    } else {
-        print STDERR "$subn: existing file used, no live download\n";
-    }
-    if ( !$TAXON_UPDATED ) {
-        print STDERR "$subn: Message: No update is found between taxon from NCBI and stored in '$exe_dir/$taxonFileName'\n";
-        print STDERR "$subn: Message: No change is made to the current file '$exe_dir/$taxonFileName'\n";
-    } else {
-        print STDERR "$subn: Found update in taxon from NCBI, full info will be saved to file='$exe_dir/$taxonFileName'\n";
-        my $bak1 = "$taxonFileName.1";
-        my $result = `diff $exe_dir/$taxonFileName $exe_dir/$bak1`;
-        if (-e "$exe_dir/$taxonFileName" && $result) {
-            for my $i (reverse 1 .. 8) { # back up upto 8 earlier copies
-                $bak1 = sprintf("Annotate_taxon_records.txt.%d", $i);
-                next if (!-e "$exe_dir/$bak1");
-                my $bak2 = sprintf("Annotate_taxon_records.txt.%d", $i+1);
-                $result = `mv $exe_dir/$bak1 $exe_dir/$bak2`;
-                print STDERR "$subn: \$result='$result'" if ($result);
-            }
-            $result = `mv $exe_dir/$taxonFileName $exe_dir/$bak1`;
-            print STDERR "$subn: backing up $taxonFileName to $bak1 \$result='$result'\n" if ($result);
-        }
-        $result = `mv $exe_dir/$taxonTempName $exe_dir/$taxonFileName`;
-        print STDERR "$subn: \$result='$result'\n";
-        print STDERR "$subn: Moved $taxonTempName to $taxonFileName\n";
-    }
-
-    return $count;
-} # sub checkAllTaxon
-=cut
-
-=head2
- sub checkAllRefseq look over each RefSeq (NC_??????) in $REFSEQS and see if there is any update in the genbank file
-=cut
-
-=head2
-sub checkAllRefseq {
-    my ( $exe_dir) = @_;
-
-    my $debug = 0 && $debug_all;
-    my $subn = 'checkAllRefseq';
-
-    # Load the $REFSEQS if not already
-    if ( !$REFSEQS->{refseq_loaded} ) {
-        my $nstrain = Annotate_Def::initRefseq();
-        my @fam = sort keys %{$REFSEQS->{refs}};
-        printf STDERR ("$subn: loaded RefSeqs for $nstrain strains in %d families: \n%s\n\n", $#fam+1, join("\n", @fam));
-    }
-    $debug && print STDERR "$subn: \$REFSEQS=\n".Dumper($REFSEQS)."end of \$REFSEQS\n\n";
-
-    my $count = 0;
-    $exe_dir = './' if (!$exe_dir);
-    $debug && print STDERR "$subn: \$exe_dir='$exe_dir'\n";
-
-    my $refs = {};
-    # Collect all the refseqs
-    for my $fam (keys %{$REFSEQS->{refs}}){
-        $debug && print STDERR "$subn: \$fam=$fam\n";
-        my $list = $REFSEQS->{refs}->{$fam};
-        for my $taxid (keys %$list) {
-            $debug && print STDERR "$subn: \$taxid=$taxid refseq=$list->{$taxid}\n";
-            $refs->{$list->{$taxid}}++;
-        }
-    }
-    $debug && print STDERR "$subn: \$refs=\n".Dumper($refs)."end of \$refs\n\n";
-
-    # Change to 1 in order to actually download from genbank
-    my $DOWNLOAD_REFSEQ = 0;
-    # Search for NC_* for each family from genbank
-    for my $fam (sort keys %{$REFSEQS->{refs}}){
-        my $web = '';
-        my $key = '';
-        my $count = 0;
-        my $base = 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/';
-        my $outFileName = '';
-#        $outFileName = "RefSeq_${fam}.gbk";
-#        print STDERR "\n$subn: \$fam=$fam \$outFileName=$outFileName\n";
-
-        $outFileName = Annotate_Def::downloadRefseq( $fam, $exe_dir, $DOWNLOAD_REFSEQ);
-        if (!$outFileName) {
-            print STDERR "$subn: \$fam=$fam\n";
-            print STDERR "$subn: ERROR: \$fam=$fam \$outFileName='$outFileName' is empty.\n";
-            print STDERR "$subn: \$fam=$fam Please turn on the download options in sub Annotate_Def::downloadRefseq\n\n";
-            next;
-        }
-
-        # Check each genbank file, if it has mat_peptide, compare with stored file, alert if different
-        my $seqio = Bio::SeqIO->new( -file => "$exe_dir/$outFileName");
-        my $nseq = 0;
-        my $result = {}; # one line for each RefSeq
-        my $status = {
-                       total => 0,
-                       no_file_on_disk => 0,
-                       has_matpeptide => 0,
-                       change_in_matpeptide => 0,
-                     };
-        while (my $new = $seqio->next_seq()) {
-            $nseq++;
-            my $acc = $new->accession_number;
-            my $taxid = $new->species->ncbi_taxid;
-            my $speciesid;
-            $speciesid = Annotate_Def::getTaxonInfo( $taxid);
-            $debug && print STDERR "$subn: \$nseq=$nseq \$acc=$acc \$taxid=$taxid \$speciesid='@$speciesid'\n";
-            my $species = '';
-            $species = ($#{$speciesid}>-1) ? $speciesid->[4] : '';
-            $speciesid = ($#{$speciesid}>-1) ? $speciesid->[1] : '-1';
-            $debug && print STDERR "$subn: \$nseq=$nseq \$acc=$acc\n";
-            my $errcode = check1Refseq($new, $exe_dir);
-            $debug && print STDERR "$subn: \$nseq=$nseq \$acc=$acc \$errcode=\n".Dumper($errcode)."\n";
-
-#            print STDERR "$subn: \$nseq=$nseq \$acc=$acc\n";
-            # print out those new mat_peptides
-            if ($errcode->{change_in_matpeptide}>0) {
-              for my $newf (@{$errcode->{new_mat_peptides}}) {
-                print STDERR "$subn: \$nseq=$nseq \$acc=$acc newf='$newf'\n";
-              }
-            }
-
-            $status->{total}++;
-            $status->{no_file_on_disk}++ if ($errcode->{no_file_on_disk});
-            $status->{has_matpeptide}++ if ($errcode->{has_matpeptide});
-            $status->{change_in_matpeptide}++ if ($errcode->{change_in_matpeptide});
-            my $msg1 = "#$nseq\t";
-            $msg1 .= "$fam\t";
-            $msg1 .= "$acc\t";
-            $msg1 .= ($errcode->{has_matpeptide}) ? "$errcode->{has_matpeptide}\t" : "-\t";
-            $msg1 .= ($errcode->{no_file_on_disk}) ? "$errcode->{no_file_on_disk}\t" : "-\t";
-            $msg1 .= ($errcode->{change_in_matpeptide}) ? "$errcode->{change_in_matpeptide}\t" : "-\t";
-            $msg1 .= "$taxid\t";
-            $msg1 .= "$speciesid\t";
-            $msg1 .= "'$species'\n";
-
-            $result->{$speciesid}->{$acc} = $msg1;
-        }
-
-        # collect all summaries
-        my $msg = "#\tfamily  \taccession\thas_mat\tno_file\tchanged\ttaxid\tspeciesid\tspecies\n";
-        for my $speciesid (sort {$a<=>$b} keys %{$result}) {
-          for my $acc (sort keys %{$result->{$speciesid}}) {
-            $msg .= $result->{$speciesid}->{$acc};
-          }
-        }
-        $msg .= "$subn: ERROR: total RefSeq $status->{total} doesn't match \$count=$count" if ($count && $count!=$status->{total});
-
-        $msg .= "family=$fam\ttotal=$status->{total}\t";
-        $msg .= "$status->{has_matpeptide}\t";
-        $msg .= "$status->{no_file_on_disk}\t";
-        $msg .= "$status->{change_in_matpeptide}\n";
-
-        printf STDERR ("$msg\n");
-        printf STDERR ("$subn: family=$fam total RefSeqs checked:  $status->{total}\n");
-        printf STDERR ("$subn: family=$fam Refseqs w/ mat_peptide: $status->{has_matpeptide}/$status->{total}\n");
-        printf STDERR ("$subn: family=$fam Refseqs w/o gbk file:   $status->{no_file_on_disk}/$status->{total}\n");
-        printf STDERR ("$subn: family=$fam Refseqs w/ changes:     $status->{change_in_matpeptide}/$status->{total}\n\n");
-
-    }
-
-    return $count;
-} # sub checkAllRefseq
-=cut
-
-=head2
- sub check1Refseq Bio::Seq object based on genbank file, checks if it has same feature annotation
- as anyfile in refseq directory. returs following values:
-0: no difference, or existing gbk file
-1. found difference in term of mat_peptide annotation, alert the user
-=cut
-
-=head2
-sub check1Refseq {
-    my ( $new, $exe_dir) = @_;
-
-    my $debug = 0 && $debug_all;
-    my $subn = 'check1Refseq';
-
-    $exe_dir = './' if (!$exe_dir);
-    my $errcode = {
-                    no_file_on_disk => 0,
-                    has_matpeptide => 0,
-                    change_in_matpeptide => 0,
-                    change_in_file => 0,
-                    mat_peptides =>[],
-                    new_mat_peptides =>[],
-                  };
-
-    my $acc = $new->accession_number;
-    my $newfeats = [ $new->get_SeqFeatures ];
-    $debug && print STDERR "$subn: $acc has $#{$newfeats} features in total\n";
-
-    # Gather all mat_peptides
-    my $has_matpeptide = 0;
-    for (my $newct = 0; $newct<=$#{$newfeats}; $newct++) {
-        my $newfeat = $newfeats->[$newct];
-#        $debug && print STDERR "$subn: \$newct=$newct \$newfeat=".$newfeat->primary_tag.':'.$newfeat->location->to_FTstring."\n";
-        next if ($newfeat->primary_tag ne 'CDS'); # Looking for the first CDS
-        my $cds = $newfeat;
-        my $cdsid = '';
-        for my $tag ('db_xref', 'protein_id') {
-            if ($cds->has_tag($tag)) {
-               my @id = $cds->get_tag_values($tag);
-               $cdsid = 'CDS='. $id[0];
-               last;
-            }
-        }
-        while ($newfeats->[$newct+1] && ($newfeats->[$newct+1]->primary_tag eq 'mat_peptide'
-                 || $newfeats->[$newct+1]->primary_tag eq 'sig_peptide'
-                 || $newfeats->[$newct+1]->primary_tag eq 'misc_feature') ) {
-            $newfeat = $newfeats->[++$newct];
-            next if ($newfeat->primary_tag ne 'mat_peptide');
-            $errcode->{has_matpeptide} += 1;
-            my $str = $acc."|$cdsid|Loc=".$newfeat->location->to_FTstring;
-            push @{$errcode->{mat_peptides}}, $str;
-        }
-    }
-
-    ($errcode->{has_matpeptide}==0) && return $errcode;
-
-    my $old = undef;
-    my $oldfeats = [ ];
-    # See if genbank file exists on disk
-    if (!-e "$exe_dir/refseq/$acc.gb") {
-        $errcode->{no_file_on_disk} = 1;
-#        return $errcode;
-    } else {
-        # Check between new and old RefSeq
-        $old = Bio::SeqIO->new( -file => "$exe_dir/refseq/$acc.gb")->next_seq();
-        $oldfeats = [ $old->get_SeqFeatures ];
-    }
-    my $msg = '';
-    for (my $newct = 0; $newct<=$#{$errcode->{mat_peptides}}; $newct++) {
-        my $newfeat = $errcode->{mat_peptides}->[$newct];
-        my $newfeat1 = $newfeat;
-        $newfeat1 =~ s/[<>]//g;
-        $debug && print STDERR "$subn: \$newct=$newct \$newfeat='$newfeat'\n";
-
-        my $seen = 0;
-        for (my $oldct = 0; $oldct<=$#{$oldfeats}; $oldct++) {
-            my $oldfeat = $oldfeats->[$oldct];
-#            $debug && print STDERR "$subn: \$oldct=$oldct \$oldfeat=".$oldfeat->primary_tag.':'.$oldfeat->location->to_FTstring."\n";
-            next if ($oldfeat->primary_tag ne 'CDS'); # Looking for the first CDS
-            my $cds = $oldfeat;
-            my $cdsid = '';
-            for my $tag ('db_xref', 'protein_id') {
-                if ($cds->has_tag($tag)) {
-                    my @id = $cds->get_tag_values($tag);
-                    $cdsid = 'CDS='. $id[0];
-                    last;
-                }
-            }
-            while ($oldfeats->[$oldct+1] && ($oldfeats->[$oldct+1]->primary_tag eq 'mat_peptide'
-                    || $oldfeats->[$oldct+1]->primary_tag eq 'sig_peptide'
-                    || $oldfeats->[$oldct+1]->primary_tag eq 'misc_feature')) {
-                $oldfeat = $oldfeats->[++$oldct];
-                my $oldfeat = $acc."|$cdsid|Loc=".$oldfeat->location->to_FTstring;
-                my $oldfeat1 = $oldfeat;
-                $oldfeat1 =~ s/[<>]//g;
-                if ($newfeat eq $oldfeat) {
-                  $debug && print STDERR "$subn: \$newct=$newct \$newfeat='$newfeat' \$oldfeat='$oldfeat'\n";
-                  $seen = 1;
-                  last;
-                } elsif ($newfeat1 eq $oldfeat1) {
-                  $debug && print STDERR "$subn: \$newct=$newct \$newfeat='$newfeat' \$oldfeat='$oldfeat' are similar\n";
-                }
-            }
-        }
-        if (!$seen) {
-            $errcode->{change_in_matpeptide} += 1;
-            push @{$errcode->{new_mat_peptides}}, $newfeat;
-        }
-    }
-    
-    return $errcode;
-} # sub check1Refseq
-=cut
 
 =head2
  sub getTaxonInfo takes a taxid, returns the array of [taxid, speciesid, genusid, familyid, species, genus, family]
@@ -1024,7 +200,7 @@ sub printRefseqList {
         $debug && print STDERR "$subn: \$fam=$fam\n";
         my $strains = $REFSEQS->{refs}->{$fam};
         if (!%$strains) {
-            $t1 .= "Family=$fam \tNo species found for this family\n";
+            $t1 .= "Family=$fam \tNo approved species found for family:$fam\n";
             $debug && print STDERR "$subn: \$t1='$t1'\n";
 #            next;
         }
@@ -1100,7 +276,7 @@ sub get_refpolyprots {
         if (!$refseq) {
 #            my $species = Annotate_Def::getSpecies( $taxid);
             my $species = Annotate_Def::getTaxonInfo( $taxid);
-            $species = $species->[4];
+            $species = ($species->[4]) ? $species->[4] : '';
             print STDERR "$subn: ERROR genome=$acc w/ taxid=$taxid($species) is not covered in V$VERSION.";
             print STDERR " Please contact script author for any update.\n";
             return undef;
@@ -1388,7 +564,7 @@ sub get1RefseqAcc {
         my $taxinfo = Annotate_Def::getTaxonInfo( $taxid);
         $speciesid = $taxinfo->[1] if (scalar($taxinfo));
         $species = $taxinfo->[4] if (scalar($taxinfo));
-        if ($speciesid>0) {
+        if ($speciesid && $speciesid>0) {
             $speciesid = $TAXON->{'taxon'}->{$taxid}->[1];
             $species = $TAXON->{'taxon'}->{$taxid}->[4];
     for my $fam (keys %{$REFSEQS->{refs}}) {
@@ -1559,6 +735,7 @@ sub initRefseq {
 #           33746 => 'NC_009826', # Hepatitis C virus genotype 5
 #           42182 => 'NC_009827', # Hepatitis C virus genotype 6
 #           11082 => 'NC_009942', # West Nile virus (lineage I strain NY99), missing 2k
+#           390845 => 'NC_012932', # Aedes flavivirus; V1.1.8
            },
 
            # Family=Caliciviridae
@@ -1794,12 +971,15 @@ sub initRefseq {
          },
 
   # Family=Filoviridae
+  'Filoviridae' => {
 #  11269 => 'NC_001608', # Lake Victoria marburgvirus |  11269 | No mat_peptide in refseq
 # 186538 => 'NC_002549', # Zaire ebolavirus           | 186538 | No mat_peptide in refseq
 # 186539 => 'NC_004161', # Reston ebolavirus          | 186539 | No mat_peptide in refseq
 # 186540 => 'NC_006432', # Sudan ebolavirus           | 186540 | No mat_peptide in refseq
+         },
 
   # Family=Paramyxoviridae
+  'Paramyxoviridae' => {
 #mysql> select taxid,accession,species,taxid from genome left join taxon on taxid=taxon.id where accession like "NC_%" and taxid in (select id from taxon where family="Paramyxoviridae") ;
 #  11234 => 'NC_001498', # Measles virus                      |  11234 | No mat_peptide in refseq
 #  11191 => 'NC_001552', # Sendai virus                       |  11191 | No mat_peptide in refseq
@@ -1834,6 +1014,7 @@ sub initRefseq {
 # 341053 => 'NC_007803', # Beilong virus                      | 341053 | No mat_peptide in refseq
 #  43140 => 'NC_009489', # Mapuera virus                      |  43140 | No mat_peptide in refseq
 #  53179 => 'NC_009640', # Porcine rubulavirus                |  53179 | No mat_peptide in refseq
+    },
 
   # Family=Hepeviridae
   'Hepeviridae' => {
@@ -1842,6 +1023,7 @@ sub initRefseq {
 #| taxid   | accession | species               | taxid   |
 #+---------+-----------+-----------------------+---------+
 #    12461 => 'NC_001434', # Hepatitis E virus     |   12461 | No mat_peptide in refseq
+# NC_015521 has 4 mat_peptides, but there are huge gape between them. Not included in V1.1.4
 #  1016879 => 'NC_015521', # Cutthroat trout virus | 1016879 |  Good refseq w/ 4 mat_peptides
 #+---------+-----------+-----------------------+---------+
 #2 rows in set (0.01 sec)
@@ -1952,7 +1134,122 @@ sub initRefseq {
 #+---------+-----------+-----------+----------------------------------+
 #73 rows in set (0.01 sec)
     },
-           };
+
+  # Family=Poxviridae, V1.1.8
+# Poxviridae should not have mat_peptide. However there is at least one genomei (A19577) in genbank having mat_peptide.
+  'Poxviridae' => {
+#mysql> select taxid,accession,species,taxid from genome left join taxon on taxid=taxon.id where accession like "NC_%" and taxid in (select id from taxon where family="Poxviridae") ;
+#+--------+-----------+---------------------------------------+--------+
+#| taxid  | accession | species                               | taxid  |
+#+--------+-----------+---------------------------------------+--------+
+#  10273 => 'NC_001132', # Myxoma virus                          |  10273 | No mat_peptide in refseq
+#  10271 => 'NC_001266', # Rabbit fibroma virus                  |  10271 | No mat_peptide in refseq
+#  10255 => 'NC_001611', # Variola virus                         |  10255 | No mat_peptide in refseq
+#  10280 => 'NC_001731', # Molluscum contagiosum virus           |  10280 | No mat_peptide in refseq
+#  83191 => 'NC_001993', # Melanoplus sanguinipes entomopoxvirus |  83191 | No mat_peptide in refseq
+#  10261 => 'NC_002188', # Fowlpox virus                         |  10261 | No mat_peptide in refseq
+#  28321 => 'NC_002520', # Amsacta moorei entomopoxvirus 'L'     |  28321 | No mat_peptide in refseq
+# 132475 => 'NC_002642', # Yaba-like disease virus               | 132475 | No mat_peptide in refseq
+# 376849 => 'NC_003027', # Lumpy skin disease virus              | 376849 | No mat_peptide in refseq
+# 619591 => 'NC_003310', # Monkeypox virus                       | 619591 | No mat_peptide in refseq
+#  10276 => 'NC_003389', # Swinepox virus                        |  10276 | No mat_peptide in refseq
+#  28873 => 'NC_003391', # Camelpox virus                        |  28873 | No mat_peptide in refseq
+#  10243 => 'NC_003663', # Cowpox virus                          |  10243 | No mat_peptide in refseq
+#  10266 => 'NC_004002', # Sheeppox virus                        |  10266 | No mat_peptide in refseq
+# 376852 => 'NC_004003', # Goatpox virus                         | 376852 | No mat_peptide in refseq
+#  12643 => 'NC_004105', # Ectromelia virus                      |  12643 | No mat_peptide in refseq
+#  38804 => 'NC_005179', # Yaba monkey tumor virus               |  38804 | No mat_peptide in refseq
+#  44088 => 'NC_005309', # Canarypox virus                       |  44088 | No mat_peptide in refseq
+#  10258 => 'NC_005336', # Orf virus                             |  10258 | No mat_peptide in refseq
+# 129727 => 'NC_005337', # Bovine papular stomatitis virus       | 129727 | No mat_peptide in refseq
+# 305674 => 'NC_006966', # Mule deer poxvirus                    | 305674 | No mat_peptide in refseq
+# 305676 => 'NC_006967', # Mule deer poxvirus                    | 305676 | No mat_peptide in refseq
+#  10245 => 'NC_006998', # Vaccinia virus                        |  10245 | No mat_peptide in refseq
+# 368445 => 'NC_008030', # Crocodilepox virus                    | 368445 | No mat_peptide in refseq
+#  28871 => 'NC_008291', # Taterapox virus                       |  28871 | No mat_peptide in refseq
+#  99000 => 'NC_009888', # Tanapox virus                         |  99000 | No mat_peptide in refseq
+# 129726 => 'NC_013804', # Pseudocowpox virus                    | 129726 | No mat_peptide in refseq
+#+--------+-----------+---------------------------------------+--------+
+#27 rows in set (0.00 sec)
+    },
+
+  # Family=Herpesviridae, V1.1.8
+  'Herpesviridae' => {
+# Herpesviridae family shouldn't have any mat_peptide. However, at least one genome (BK001744)
+# has several mat_peptides annotated as such
+#mysql> select taxid,accession,species,taxid from genome left join taxon on taxid=taxon.id where accession like "NC_%" and taxid in (select id from taxon where family="Herpesviridae") ;
+#+--------+-----------+-------------------------------+--------+
+# taxid  | accession | species                       | taxid  |
+#+--------+-----------+-------------------------------+--------+
+#  10368 => 'NC_000898', # Human herpesvirus 6           |  10368 | 
+#  10359 => 'NC_001347', # Human herpesvirus 5           |  10359 | 
+#  10335 => 'NC_001348', # Human herpesvirus 3           |  10335 | 
+#  10381 => 'NC_001350', # Saimiriine herpesvirus 2      |  10381 | 
+#  10326 => 'NC_001491', # Equid herpesvirus 1           |  10326 | 
+#  10401 => 'NC_001493', # Ictalurid herpesvirus 1       |  10401 | 
+#  12657 => 'NC_001650', # Equid herpesvirus 2           |  12657 | 
+#  10368 => 'NC_001664', # Human herpesvirus 6           |  10368 | 
+#  10372 => 'NC_001716', # Human herpesvirus 7           |  10372 | 
+#  10310 => 'NC_001798', # Human herpesvirus 2           |  10310 | 
+#  10298 => 'NC_001806', # Human herpesvirus 1           |  10298 | 
+#  33708 => 'NC_001826', # Murid herpesvirus 4           |  33708 | 
+#  10331 => 'NC_001844', # Equid herpesvirus 4           |  10331 | 
+#  10320 => 'NC_001847', # Bovine herpesvirus 1          |  10320 | 
+#  85618 => 'NC_001987', # Ateline herpesvirus 3         |  85618 | 
+#  10390 => 'NC_002229', # Gallid herpesvirus 2          |  10390 | 
+#  28304 => 'NC_002512', # Murid herpesvirus 2           |  28304 | 
+#  35252 => 'NC_002531', # Alcelaphine herpesvirus 1     |  35252 | 
+#  35250 => 'NC_002577', # Gallid herpesvirus 3          |  35250 | 
+#  37108 => 'NC_002641', # Meleagrid herpesvirus 1       |  37108 | 
+#  10385 => 'NC_002665', # Bovine herpesvirus 4          |  10385 | 
+#  35246 => 'NC_002686', # Cercopithecine herpesvirus 9  |  35246 | 
+#  10397 => 'NC_002794', # Tupaiid herpesvirus 1         |  10397 | 
+# 154334 => 'NC_003401', # Cercopithecine herpesvirus 17 | 154334 | 
+# 435895 => 'NC_003409', # Human herpesvirus 8           | 435895 | 
+# 188763 => 'NC_003521', # Pongine herpesvirus 4         | 188763 | 
+#  10366 => 'NC_004065', # Murid herpesvirus 1           |  10366 | 
+# 106331 => 'NC_004367', # Callitrichine herpesvirus 3   | 106331 | 
+#  10325 => 'NC_004812', # Cercopithecine herpesvirus 1  |  10325 | 
+#  35244 => 'NC_005261', # Bovine herpesvirus 5          |  35244 | 
+#  50294 => 'NC_005264', # Psittacid herpesvirus 1       |  50294 | 
+# 261939 => 'NC_005881', # Ostreid herpesvirus 1         | 261939 | 
+#  45455 => 'NC_006146', # Cercopithecine herpesvirus 15 |  45455 | 
+#  47929 => 'NC_006150', # Cercopithecine herpesvirus 8  |  47929 | 
+#  10345 => 'NC_006151', # Suid herpesvirus 1            |  10345 | 
+#  10359 => 'NC_006273', # Human herpesvirus 5           |  10359 | 
+#  10317 => 'NC_006560', # Cercopithecine herpesvirus 2  |  10317 | 
+#  10386 => 'NC_006623', # Gallid herpesvirus 1          |  10386 | 
+# 272551 => 'NC_007016', # Cercopithecine herpesvirus 17 | 272551 | 
+#  10376 => 'NC_007605', # Human herpesvirus 4           |  10376 | 
+#  10398 => 'NC_007646', # Ovine herpesvirus 2           |  10398 | 
+# 340907 => 'NC_007653', # Cercopithecine herpesvirus 16 | 340907 | 
+# 389214 => 'NC_008210', # Ranid herpesvirus 2           | 389214 | 
+#  85655 => 'NC_008211', # Ranid herpesvirus 1           |  85655 | 
+# 180230 => 'NC_009127', # Koi herpesvirus               | 180230 | 
+#  37296 => 'NC_009333', # Human herpesvirus 8           |  37296 | 
+#  12509 => 'NC_009334', # Human herpesvirus 4           |  12509 | 
+#  33706 => 'NC_011587', # Guinea pig cytomegalovirus    |  33706 | 
+#  55744 => 'NC_011644', # Equid herpesvirus 9           |  55744 | 
+#  50292 => 'NC_012783', # Cercopithecine herpesvirus 5  |  50292 | 
+#  72150 => 'NC_013036', # Duck enteritis virus          |  72150 | 
+#  10334 => 'NC_013590', # Felid herpesvirus 1           |  10334 | 
+#+--------+-----------+-------------------------------+--------+
+#52 rows in set (0.01 sec)
+    },
+
+  # Family=Reoviridae, V1.1.8
+  'Reoviridae' => {
+#mysql> select taxid,accession,species,taxid from genome left join taxon on taxid=taxon.id where accession like "NC_%" and taxid in (select id from taxon where family="Reoviridae") ;
+#+---------+-----------+-----------------------+---------+
+    },
+
+  # Family=Rhabdoviridae, V1.1.8
+  'Rhabdoviridae' => {
+#mysql> select taxid,accession,species,taxid from genome left join taxon on taxid=taxon.id where accession like "NC_%" and taxid in (select id from taxon where family="Rhabdoviridae") ;
+#+---------+-----------+-----------------------+---------+
+    },
+
+           }; # $REFSEQS->{refs} = {
 
     # This variable is used to hold families in development
     my $tmp_ref = {
@@ -1978,6 +1275,281 @@ sub initRefseq {
 } # sub initRefseq
 
 
+=head2 load_gene_symbol
+Load the gene symbols from a text file. The gene symbols are
+ defined as hash (accession) of hash (location of matpeptide) here, since the values in genbank
+ file are inconsistent or unavailable for every mat_peptide
+=cut
+
+sub load_gene_symbol {
+    my ($exe_dir, $loadMeta) = @_;
+
+    my $debug = 0 || $debug_all;
+    my $subn = 'load_gene_symbol';
+
+    # These gene symbols are defined by CLarsen, after considering refseqs, e.g. NC_001477 & NC_009942
+
+#my $GENE_SYM = {
+#               symbol_loaded => 0,
+#               symbol_fn     => "Annotate_symbol_records.txt",
+#            };
+    # Load the definition of symbols from the text file
+    $debug && print STDERR "$subn: \$GENE_SYM->{symbol_loaded}=$GENE_SYM->{symbol_loaded}\n";
+    $debug && print STDERR "$subn: found symbol_fn=$exe_dir/$GENE_SYM->{symbol_fn}\n";
+
+    open my $symbol_file, '<', "$exe_dir/$GENE_SYM->{symbol_fn}"
+       or croak("$subn: found '$exe_dir/$GENE_SYM->{symbol_fn}', but couldn't open: $OS_ERROR");
+    my $m1 = [];
+    my $m0 = [];
+    my $accession = 1;
+    while (<$symbol_file>) {
+        chomp;
+        $debug && print STDERR "$subn: \$_='$_'\n";
+        $debug && print STDERR "$subn: \@m0=\n".Dumper($m0)."End of \@m0\n\n";
+        $debug && print STDERR "$subn: \@m1=\n".Dumper($m1)."End of \@m1\n\n";
+#        $debug && print STDERR "$subn: \$loadMeta=\n".Dumper($loadMeta)."End of \$loadMeta\n\n";
+        if (m/^\s*$/x) { # Skip empty lines
+            next if (!defined($loadMeta));
+#            if ($accession eq '1') { push @{$GENE_SYM->{meta}}, ['file', $m0]; $accession = '';
+            if (!$accession || $accession eq '1') {
+                push @{$GENE_SYM->{list}}, 'file' if (!exists($GENE_SYM->{meta}->{'file'}));
+                push @{$GENE_SYM->{meta}->{'file'}}, @$m0;
+                push @{$GENE_SYM->{meta1}->{$accession}}, @$m1;
+                $accession = '';
+            } elsif ($accession) {
+                $GENE_SYM->{meta}->{$accession} = $m0;
+                $GENE_SYM->{meta1}->{$accession} = $m1;
+                push @{$GENE_SYM->{list}}, $accession;
+                $accession = '';
+            } else {
+                ($#{$m1}>=0) && print STDERR "$subn: ERROR: while loading gene symbol, \$accession='$accession' \@\$m1='@$m1'\n";
+            }
+            { my $new1 = []; $m1 = $new1; }
+            { my $new0 = []; $m0 = $new0; }
+            next;
+        }
+        if (m/^[#]/x) {  # Skip any comment
+            (defined $loadMeta) && push(@$m0, $_) if ($_ !~ /# End of Annotate_symbol_records.txt/i);
+            next;
+        } else {
+            (defined $loadMeta) && push(@$m1, $_);
+        }
+        s/'//g; # Remove all single quotes
+        s/"//g; # Remove all single quotes
+        my $words = [split(/\s*;\s*/)];
+#        $debug && print STDERR "$subn: \$_='$_'\n";
+#        $debug && print STDERR "$subn: \$words($#{$words})='@$words'\n";
+        if ($#{$words}<2) { # skip the lines without enough fields
+            $debug && print STDERR "$subn: not enough data in gene_symbol: '@$words'\n";
+            next;
+        }
+
+        my ($acc, $loc, $sym) = @{$words}[0..2];
+        my $commt = '';
+        $commt = $words->[3] if ($words->[3]);
+#        $loc = '0..0' if (!$loc);
+        next if (!$loc); # Skip if no location
+        next if (!$sym); # Skip if no symbol
+        $debug && print STDERR "$subn: \$acc=$acc \$loc=$loc \$sym=$sym\n";
+        if (exists($GENE_SYM->{symbol}->{$acc}->{$loc}) && $sym ne $GENE_SYM->{symbol}->{$acc}->{$loc}) {
+            print STDERR "$subn: conflicting data, \$GENE_SYM->{symbol}->{$acc}->{$loc}=$GENE_SYM->{symbol}->{$acc}->{$loc}\n";
+            print STDERR "$subn: conflicting data, new \$sym=$sym\n";
+        } else {
+            $GENE_SYM->{symbol}->{$acc}->{$loc} = $sym;
+            $GENE_SYM->{comm}->{$acc}->{$loc} = $commt;
+            $accession = $acc if (!$accession);
+        }
+    }
+    close $symbol_file or croak "$subn: Couldn't close $exe_dir/$GENE_SYM->{symbol_fn}: $OS_ERROR";
+    $GENE_SYM->{symbol_loaded} = 1;
+
+    $debug && print STDERR "$subn: finished reading list file: '$exe_dir/$GENE_SYM->{symbol_fn}'.\n";
+    $debug && print STDERR "$subn: \$GENE_SYM->{symbol_loaded}=$GENE_SYM->{symbol_loaded}\n";
+    $debug && print STDERR "$subn: \$GENE_SYM=\n".Dumper($GENE_SYM)."End of \$GENE_SYM\n\n";
+
+    return;
+} # sub load_gene_symbol
+
+
+=head2 newSymbol
+Takes an accession of a RefSeq, compare the mat_peptides in old file and new file. If there is any new 
+mat_peptide in new file, update the list of gene symbols
+Store the list of gene symbols in $GENE_SYM->{meta} and $GENE_SYM->{meta1}
+returns hash with a bunch of potential error
+=cut
+
+sub newSymbol {
+    my ($feat, $acc) = @_;
+
+    my $debug = 0 || $debug_all;
+    my $subn = 'newSymbol';
+
+    my $gene_symbol = '';
+    return $gene_symbol if (!$feat);
+
+    my $oldsymbols = {};
+    for my $s (keys %{$GENE_SYM->{symbol}->{$acc}}) {
+        $oldsymbols->{$GENE_SYM->{symbol}->{$acc}->{$s}} = 1;
+    }
+    my @tags = ($feat->all_tags );
+    while (!$gene_symbol && $gene_symbol eq '') {
+        # Print essential info for the feature
+        printf STDOUT "\n$subn: $acc Found new mat_peptide in $acc, need 'gene symbol':\n";
+        printf STDOUT ":    %15s  %s\n", $feat->primary_tag, $feat->location->to_FTstring;
+        for my $tag (@tags) {
+            my @values = ($feat->get_tag_values($tag));
+            for my $v (@values) { printf STDOUT ": %19s $tag=\"$v\"\n", ' '; }
+        }
+        my @olds = sort keys %$oldsymbols;
+        print STDOUT "$subn: Existing symbols are: @olds\n";
+        print STDOUT "$subn: Please use a-z0-9+-'\() only: ";
+        # Get input from user
+        my $input = <STDIN>;
+        chomp $input;
+        print STDOUT "$subn: You entered \$input=\"$input\"\n";
+        if ($input =~ m/^[a-z0-9\+\-\'\/\(\)]+$/i) {
+            if (!exists($oldsymbols->{$input})) { # Check if the new symbol is already used
+                $gene_symbol = $input;
+            } else {
+                print STDOUT "$subn: \$input=\"$input\" already exists in the gene symbols. please try again.\n";
+            }
+        }
+    }
+
+    $debug && print STDERR "$subn: symbol=$gene_symbol\n";
+
+    return $gene_symbol;
+} # sub newSymbol
+
+
+=head2 saveSymbolText
+Saves the definition of gene symbols in $GENE_SYM to a text
+=cut
+
+sub saveSymbolText {
+    my ($none) = @_;
+
+    my $debug = 0 || $debug_all;
+    my $subn = 'saveSymbolText';
+
+    my $txt = '';
+    $txt .= "# Saved from msa_annotate.pl V$VERSION at ". POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime) ."\n";
+    $debug && print STDERR "$subn: \$acc \$GENE_SYM=\n".Dumper($GENE_SYM)."End of \$GENE_SYM\n";
+    $debug && print STDERR "$subn: \$txt=\n$txt\n";
+
+    for my $acc (@{$GENE_SYM->{list}}) {
+        $debug && print STDERR "$subn: $acc \n";
+        for my $t (@{$GENE_SYM->{meta}->{$acc}}) {
+            $txt .= $t ."\n";
+        }
+        for my $t (@{$GENE_SYM->{meta1}->{$acc}}) {
+            $txt .= $t ."\n";
+        }
+        $txt .= "\n";
+    }
+    $txt .= "# End of Annotate_symbol_records.txt\n\n";
+
+    $debug && print STDERR "$subn: \$txt=\n$txt\n";
+
+    return $txt;
+} # sub saveSymbolText
+
+
+=head2 get_gene_symbol
+
+=head2 updateGeneSymbol
+Takes an accession of a RefSeq, compare the mat_peptides in old file and new file. If there is any new 
+mat_peptide in new file, update the list of gene symbols
+Store the list of gene symbols in $GENE_SYM->{meta} and $GENE_SYM->{meta1}
+returns hash with a bunch of potential error
+=cut
+
+sub updateGeneSymbol {
+    my ($exe_dir, $acc, $errcode) = @_;
+
+    my $debug = 0 || $debug_all;
+    my $subn = 'updateGeneSymbol';
+
+    ++$errcode->{noNewGenbank} if (!-e"$exe_dir/$errcode->{newGenbank}");
+    ++$errcode->{noOldGenbank} if (!-e"$exe_dir/$errcode->{oldGenbank}");
+    return if ($errcode->{noNewGenbank} || $errcode->{noOldGenbank} );
+
+    my $newseqio = Bio::SeqIO->new( -file => "$exe_dir/$errcode->{newGenbank}");
+    my $oldseqio = Bio::SeqIO->new( -file => "$exe_dir/$errcode->{oldGenbank}");
+    my $new = $newseqio->next_seq();
+    my $old = $oldseqio->next_seq();
+    $debug && print STDERR "$subn: $acc \$GENE_SYM=\n".Dumper($GENE_SYM)."End of \$GENE_SYM\n";
+
+    my $gene_symbol = '';
+    my $symbols = {};
+    my $m0 = $GENE_SYM->{meta}->{$acc};
+    my $m1 = [];
+    my $newfeats = [ $new->get_SeqFeatures ];
+#    $debug && print STDERR "$subn: $acc \$newfeats=\n".Dumper($newfeats)."End of \$newfeats\n";
+    my $updatedSymbol = 0;
+    for (my $newct = 0; $newct<=$#{$newfeats}; $newct++) {
+        my $feat = $newfeats->[$newct];
+#        $debug && print STDERR "$subn: \$newct=$newct \$newfeat=".$newfeat->primary_tag.':'.$newfeat->location->to_FTstring."\n";
+        next if ($feat->primary_tag ne 'CDS'); # Looking for the first CDS
+        my $cds = $feat;
+        my $cdsid = '';
+        for my $tag ('db_xref', 'protein_id') {
+            if ($cds->has_tag($tag)) {
+               my @id = $cds->get_tag_values($tag);
+               $cdsid = 'CDS='. $id[0];
+               last;
+            }
+        }
+        while ($newfeats->[$newct+1] && ($newfeats->[$newct+1]->primary_tag eq 'mat_peptide'
+                 || $newfeats->[$newct+1]->primary_tag eq 'sig_peptide'
+                 || $newfeats->[$newct+1]->primary_tag eq 'misc_feature') ) {
+            $feat = $newfeats->[++$newct];
+            next if ($feat->primary_tag ne 'mat_peptide');
+
+            my $newSym = 0;
+            my $featId = $feat->location->start ."..". $feat->location->end;
+            my $comm = ($GENE_SYM->{comm}->{$acc}->{$featId}) ? $GENE_SYM->{comm}->{$acc}->{$featId} : '';
+            $gene_symbol = get_gene_symbol($feat, $exe_dir);
+            $debug && print STDERR "$subn: $acc \$featId=$featId \$gene_symbol='$gene_symbol' \$comm='$comm'\n";
+            if (!$gene_symbol) {
+                print STDERR "$subn: $acc: Found new mat_peptide, need gene symbol \$featId='$featId'\n";
+                $newSym = 1;
+                $gene_symbol = Annotate_Def::newSymbol( $feat, $acc);
+                $comm = "#msa_annotate.pl, V$VERSION, via script";
+                $updatedSymbol = 1;
+                $debug && print STDERR "$subn: Got new gene symbol: $acc \$featId=$featId \$gene_symbol='$gene_symbol' \$comm='$comm'\n";
+            }
+
+            $symbols->{$featId} = $gene_symbol;
+#            $errcode->{has_matpeptide} += 1;
+            my $str = $acc."|$cdsid|Loc=".$feat->location->to_FTstring;
+#            push @{$errcode->{mat_peptides}}, $str;
+            $debug && print STDERR "$subn: $acc \$symbols=\n".Dumper($symbols)."End of \$symbols\n";
+            my $symbolLine = sprintf("$acc; %16s; %-8s; $comm", "\"$featId\"", "\"$gene_symbol\"");
+            push @$m1, $symbolLine;
+            push @{$errcode->{newSymbols}}, $symbolLine if ($newSym);
+#            $debug && print STDERR "$subn: $acc \$m1=\n".Dumper($m1)."End of \$m1\n";
+        }
+    }
+    if ($updatedSymbol) {
+        unshift @$m0, "# Updated via msa_annotate.pl V$VERSION at ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime);
+    }
+    $GENE_SYM->{meta}->{$acc} = $m0;
+    $GENE_SYM->{meta1}->{$acc} = $m1;
+    $debug && print STDERR "$subn: $acc \$m0=\n".Dumper($m0)."End of \$m0\n";
+    $debug && print STDERR "$subn: $acc \$m1=\n".Dumper($m1)."End of \$m1\n";
+    $debug && print STDERR "$subn: $acc \$errcode=\n".Dumper($errcode)."End of \$errcode\n";
+    if (scalar(@{$errcode->{newSymbols}})>0) {
+        print STDERR "$subn: $acc: updated ".scalar(@{$errcode->{newSymbols}})." gene symbols\n";
+        for (@{$errcode->{newSymbols}}) {
+            print STDERR "$subn: $acc: $_\n";
+        }
+    }
+
+    return $gene_symbol;
+} # sub updateGeneSymbol
+
+
 =head2 get_gene_symbol
 Takes a mat_peptide feature from refseq object, returns the gene symbol. The gene symbols are
  defined as hash (accession) of hash (location of matpeptide) here, since the values in genbank
@@ -1986,7 +1558,7 @@ Returns the gene symbol in a string
 =cut
 
 sub get_gene_symbol {
-    my ($reffeat,$exe_dir) = @_;
+    my ($reffeat, $exe_dir) = @_;
 
     my $debug = 0 && $debug_all;
     my $subn = 'get_gene_symbol';
@@ -1999,56 +1571,23 @@ sub get_gene_symbol {
 #               symbol_loaded => 0,
 #               symbol_fn     => "Annotate_symbol_records.txt",
 #            };
-    # Read the definition of symbols from the text file
+    # Load the definition of symbols from the text file
     $debug && print STDERR "$subn: \$exe_dir=$exe_dir\n";
     $debug && print STDERR "$subn: \$GENE_SYM->{symbol_fn}=$GENE_SYM->{symbol_fn}\n";
     if (!$GENE_SYM->{symbol_loaded} && -f "$exe_dir/$GENE_SYM->{symbol_fn}" ) {
-        $debug && print STDERR "$subn: \$GENE_SYM->{symbol_loaded}=$GENE_SYM->{symbol_loaded}\n";
-        $debug && print STDERR "$subn: found symbol_fn=$exe_dir/$GENE_SYM->{symbol_fn}\n";
+        load_gene_symbol($exe_dir);
 
-        open my $symbol_file, '<', "$exe_dir/$GENE_SYM->{symbol_fn}"
-           or croak("$subn: found '$exe_dir/$GENE_SYM->{symbol_fn}', but couldn't open: $OS_ERROR");
-        while (<$symbol_file>) {
-            chomp;
-#            $debug && print STDERR "$subn: \$_='$_'\n";
-            next if (m/^[#]/x);  # Skip any comment
-            next if (m/^\s*$/x); # Skip empty lines
-            s/'//g; # Remove all single quotes
-            my $words = [split(/\s*;\s*/)];
-#            $debug && print STDERR "$subn: \$_='$_'\n";
-#            $debug && print STDERR "$subn: \$words($#{$words})='@$words'\n";
-            if ($#{$words}<2) { # skip the lines without enough fields
-                $debug && print STDERR "$subn: not enough data in gene_symbol: '@$words'\n";
-                next;
-            }
-
-            my ($acc, $loc, $sym) = @{$words}[0..3];
-#            $loc = '0..0' if (!$loc);
-            next if (!$loc); # Skip if no location
-            next if (!$sym); # Skip if no symbol
-            $debug && print STDERR "$subn: \$acc=$acc \$loc=$loc \$sym=$sym\n";
-            if (exists($GENE_SYM->{symbol}->{$acc}->{$loc}) && $sym ne $GENE_SYM->{symbol}->{$acc}->{$loc}) {
-                print STDERR "$subn: conflicting data, \$GENE_SYM->{symbol}->{$acc}->{$loc}=$GENE_SYM->{symbol}->{$acc}->{$loc}\n";
-                print STDERR "$subn: conflicting data, new \$sym=$sym\n";
-            } else {
-                $GENE_SYM->{symbol}->{$acc}->{$loc} = $sym;
-            }
-        }
-        close $symbol_file or croak "$subn: Couldn't close $exe_dir/$GENE_SYM->{symbol_fn}: $OS_ERROR";
-        $GENE_SYM->{symbol_loaded} = 1;
-
-        $debug && print STDERR "$subn: finished reading list file: '$exe_dir/$GENE_SYM->{symbol_fn}'.\n";
-        $debug && print STDERR "$subn: \$GENE_SYM->{symbol_loaded}=$GENE_SYM->{symbol_loaded}\n";
-        $debug && print STDERR "$subn: \$GENE_SYM=\n".Dumper($GENE_SYM)."End of \$GENE_SYM\n\n";
     }
 
     # Search for the symbol based on the start/stop of the reference mat_peptide
     my $gene_symbol;
     $gene_symbol = ''; # Make the default value of gene_symbol as ''
-    my $acc = $reffeat->seq->accession_number;
-    my $loc = $reffeat->location->to_FTstring;
-    $loc = $reffeat->location->start .'..'. $reffeat->location->end;
-    $gene_symbol = $GENE_SYM->{symbol}->{$acc}->{$loc} ? $GENE_SYM->{symbol}->{$acc}->{$loc} : $gene_symbol;
+    if ($reffeat) {
+        my $acc = $reffeat->seq->accession_number;
+        my $loc = $reffeat->location->to_FTstring;
+        $loc = $reffeat->location->start .'..'. $reffeat->location->end;
+        $gene_symbol = $GENE_SYM->{symbol}->{$acc}->{$loc} ? $GENE_SYM->{symbol}->{$acc}->{$loc} : $gene_symbol;
+    }
     $debug && print "get_gene_symbol: primary_tag=".($reffeat->seq->accession_number);
     $debug && print "\tlocation=".($reffeat->location->to_FTstring);
     $debug && print "\tsymbol=$gene_symbol\n";

@@ -1,8 +1,8 @@
-LOCUS       NC_013528              11381 bp ss-RNA     linear   VRL 02-DEC-2009
+LOCUS       NC_013528              11381 bp ss-RNA     linear   VRL 27-JUN-2012
 DEFINITION  Fort Morgan virus, complete genome.
 ACCESSION   NC_013528
 VERSION     NC_013528.1  GI:269954645
-DBLINK      Project: 42147
+DBLINK      BioProject: PRJNA42147
 KEYWORDS    .
 SOURCE      Fort Morgan virus
   ORGANISM  Fort Morgan virus
@@ -171,6 +171,46 @@ FEATURES             Location/Qualifiers
                      /product="E1 protein"
                      /protein_id="YP_003324599.1"
                      /db_xref="GI:269954656"
+     gene            7470..9913
+                     /locus_tag="FoMoV_gp3"
+                     /db_xref="GeneID:13179053"
+     CDS             join(7470..9830,9830..9913)
+                     /locus_tag="FoMoV_gp3"
+                     /note="Truncated verstion of structural polyprotein that
+                     will be produced when frameshifting occurs at nt 9830;
+                     Truncated version of structural polyprotein and transframe
+                     fusion protein have been added by NCBI Staff with the kind
+                     help of Dr. David Karlin (Department of Zoology,
+                     University of  Oxford, UK) and Dr. Andrew Firth
+                     (Department of Pathology,  University of Cambridge, UK)"
+                     /codon_start=1
+                     /product="truncated polyprotein"
+                     /protein_id="YP_006491247.1"
+                     /db_xref="GI:392990025"
+                     /db_xref="GeneID:13179053"
+                     /translation="MNMFPYPTPSFQAMYPAPPMAYRDPNPPRRRWRPFRVPLAAQIE
+                     ELRRSIANLTFKQRKPQPPAGPPAKKRKTPPKPKNQQRKKTKPHAKKQRSKPKPGKRQ
+                     RLCMKLESDKTFPVVLNGQINGYACVVGGRLMKPLHVEGKIDNEQLAAVKLKKASMYD
+                     LEYGDVPQNMKSDTLQYTSEKPPGFYNWHHGAVQYENGRFSVPRGVGGKGDSGRPILD
+                     NKGRVVAIVLGGVNEGSRTALSVVTWNQKGVTIKITPEGTEPWSLIPVMCALANITFP
+                     CNQPPVCYARNPELALDILEENADSPAYDELLQNIVRCTARRAKRSVTDTYSMTEPYL
+                     GRCPVCRHSEPCYSPVKIEHVWDESDDGTLRIQTSALFGSDSSDKADAQKYRYMTNKP
+                     TLKVAEGIMEEIKVSTSGPCRLINYSGYFLLVHCPPGDSITVSIVKGGVLHSCTVEKR
+                     VQRKFVGREQYQFPPLHGKSVPCNVYNSWKESSAGYITMHRQGPYAYSTFLEEQQGKV
+                     YVNPPSGKTVTYECNCSGHRIGTTAQRVEITLCKRTKQCIAYLSNQTKWVFNSPDLMR
+                     STDHSVKGKLHIPFNLTPTTCLVPLAHAPTVTSWFKGITLHLTSRNPTLLTTRKLGAD
+                     ADSTAEWITGTTTRNFSVGREGLEYVWGNLDPVRVWAQESAPGDPHGWPHEIIQHYYH
+                     RHPVYTIAVLTGIATFALIGLSASLHCLCRARRDCITPYALAPNATVPTIIALFCCVR
+                     PSHAETVGETLTYLWSHNQPFLWAQLCIPVAALVILLRCASCCLPFLIGCRRLPGEGR
+                     RLRTCDHCAKCTGSAV"
+     mat_peptide     join(9702..9830,9830..9910)
+                     /locus_tag="FoMoV_gp3"
+                     /product="transframe fusion protein"
+                     /note="Transframe fusion (TF) protein expressed via
+                     programmed ribosomal frameshifting. TF protein presumably
+                     plays a stabilizing role in the virion structure."
+                     /protein_id="YP_006491248.1"
+                     /db_xref="GI:392990026"
      3'UTR           11187..11381
 ORIGIN      
         1 atagggtatg gtttagaggc gcctacccta cttaaccgat ccaaacatgg agaaagtgca

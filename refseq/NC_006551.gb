@@ -1,8 +1,8 @@
-LOCUS       NC_006551              11066 bp    RNA     linear   VRL 01-DEC-2009
+LOCUS       NC_006551              11066 bp    RNA     linear   VRL 20-JUN-2012
 DEFINITION  Usutu virus, complete genome.
 ACCESSION   NC_006551
 VERSION     NC_006551.1  GI:56692441
-DBLINK      Project:15047
+DBLINK      BioProject: PRJNA15047
 KEYWORDS    .
 SOURCE      Usutu virus
   ORGANISM  Usutu virus
@@ -180,6 +180,52 @@ FEATURES             Location/Qualifiers
                      /product="NS5"
                      /protein_id="YP_164818.1"
                      /db_xref="GI:56692454"
+     gene            97..3689
+                     /locus_tag="USUV_gp2"
+                     /db_xref="GeneID:13097095"
+     CDS             join(97..3558,3558..3689)
+                     /locus_tag="USUV_gp2"
+                     /note="Truncated version of polyprotein that will be
+                     produced when frameshifting occurs at nt 3558; Truncated
+                     version of polyprotein and NS1' protein have been added
+                     and annotated with the kind help of Dr. David Karlin
+                     (Department of Zoology,  University of Oxford, UK) and Dr.
+                     Andrew Firth (Department of Pathology, University of
+                     Cambridge, UK)"
+                     /codon_start=1
+                     /product="truncated polyprotein"
+                     /protein_id="YP_006485884.1"
+                     /db_xref="GI:392357190"
+                     /db_xref="GeneID:13097095"
+                     /translation="MSKKPGGPGRNRAINMLKRGIPRVFPLVGVKRVVMGLLDGRGPV
+                     RFVLALMTFFKFTALAPTKALLGRWKRINKTTAMKHLTSFKKELGTMINVVNNRGTKK
+                     KRGNNGPGLVMIITLMTVVSMVSSLKLSNFQGKVMMTINATDMADVIVVPTQHGKNQC
+                     WIRAMDVGYMCDDTITYECPKLDAGNDPEDIDCWCDKQPMYVHYGRCTRTRHSKRSRR
+                     SIAVQTHGESMLANKKDAWLDSTKASRYLMKTENWIIRNPGYAFVAVLLGWMLGSNNG
+                     QRVVFVVLLLLVAPAYSFNCLGMSNRDFLEGVSGATWVDVVLEGDSCITIMAKDKPTI
+                     DIKMMETEATNLAEVRSYCYLATVSDVSTVSNCPTTGEAHNPKRAEDTYVCKSGVTDR
+                     GWGNGCGLFGKGSIDTCANFTCSLKAMGRMIQPENVKYEVGIFIHGSTSSDTHGNYSS
+                     QLGASQAGRFTITPNSPAITVKMGDYGEISVECEPRNGLNTEAYYIMSVGTKHFLVHR
+                     EWFNDLALPWTSPASSNWRNREILLEFEEPHATKQSVVALGSQEGALHQALAGAVPVS
+                     FSGSVKLTSGHLKCRVKMEKLTLKGTTYGMCTEKFSFAKNPADTGHGTVVLELQYTGS
+                     DGPCKIPISIVASLSDLTPIGRMVTANPYVASSEANAKVLVEMEPPFGDSYIVVGRGD
+                     KQINHHWHKAGSSIGKAFITTIKGAQRLAALGDTAWDFGSVGGIFNSVGKAVHQVFGG
+                     AFRTLFGGMSWITQGLMGALLLWMGVNARDRSIALVMLATGGVLLFLATNVHADSGCA
+                     IDVGRRELRCGQGIFIHNDVEAWVDRYKFMPETPKQLAKVIEQAHAKGICGLRSVSRL
+                     EHVMWENIRDELNTLLRENAVDLSVVVEKPKGMYKSAPQRLALTSEEFEIGWKAWGKS
+                     LVFAPELANHTFVVDGPETKECPDAKRAWNSLEIEDFGFGIMSTRVWLKVREHNTTDC
+                     DSSIIGTAVKGDIAVHSDLSYWIESHKNTTWRLERAVFGEIKSCTWPETHTLWSDGVV
+                     ESDLVVPVTLAGPKSNHNRREGYKVQSQGPWDEEDIVLDFDYCPGTTVTITEACGKRG
+                     PSIRTTTSSGRLVTDWCCRSCTLPPLRYRTKNGCWYGMEIRPMKHDETTLVKSSVSAH
+                     RSDMIDPFSVGPSGDVSGHPGGPEEEVDGQIDCSGYCGSSTRADSWGNHLH"
+     mat_peptide     join(2476..3558,3558..3686)
+                     /locus_tag="USUV_gp2"
+                     /product="NS1' protein"
+                     /note="transframe fusion protein expressed via programmed
+                     ribosomal frameshifting; when frameshifting occurs,
+                     cleavage between NS1 and NS2A fails to occur"
+                     /protein_id="YP_006485885.1"
+                     /db_xref="GI:392357191"
 ORIGIN      
         1 agtcgttcgt ctgcgtgagc tctactactt agtattgttt ttggaggatc gtgagattaa
        61 cacagtgccg gcagtttctt tgagcgttga ttttcaatgt ctaagaaacc aggagggccc

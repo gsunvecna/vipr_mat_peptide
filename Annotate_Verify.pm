@@ -13,7 +13,7 @@ use Bio::AlignIO;
 use Bio::Tools::Run::Alignment::Muscle;
 use IO::String;
 
-my $debug_all = 1;
+my $debug_all = 0;
 
 ####//README//####
 #
@@ -25,6 +25,11 @@ my $debug_all = 1;
 ##################
 
 ## //EXECUTE// ##
+
+sub setDebugAll {
+    my ($debug) = @_;
+    $debug_all = $debug;
+} # sub setDebugAll
 
 
 sub check_old_annotation {

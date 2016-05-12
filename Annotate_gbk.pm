@@ -11,7 +11,7 @@ use Data::Dumper;
 use Annotate_Util;
 use Annotate_Verify;
 
-my $debug_all = 1;
+my $debug_all = 0;
 
 ##//README//##
 #
@@ -42,6 +42,11 @@ my $debug_all = 1;
 # Oct. 28 2009
 #
 #################
+
+sub setDebugAll {
+    my ($debug) = @_;
+    $debug_all = $debug;
+} # sub setDebugAll
 
 
 =head2

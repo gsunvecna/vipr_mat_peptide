@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.1.7'); # Feb 05, 2013
+use version; our $VERSION = qv('1.1.8'); # Feb 19, 2013
 use Getopt::Long;
 use Data::Dumper;
 use English;
@@ -30,18 +30,40 @@ my $debug = 0;
 #                                                                               #
 # USAGE:                                                                        #
 # ./msa_annotate_test.pl                                                        #
+# ./msa_annotate_test.pl -f Togaviridae                                         #
+# ./msa_annotate_test.pl -f Togaviridae -debug                                  #
+# ./msa_annotate_test.pl -i DQ241304.gb (the file needs to be in ./test)        #
 #                                                                               #
 # Author: Guangyu Sun, Vecna Technologies, Inc, gsun@vecna.com;                 #
 # October 2012                                                                  #
 #                                                                               #
 #################################################################################
 
+    my $families = {
+            'Arenaviridae'    => [],
+            'Bunyaviridae'    => [],
+            'Caliciviridae'   => [],
+            'Coronaviridae'   => [],
+            'Filoviridae'     => [],
+            'Flaviviridae'    => [],
+            'Hepeviridae'     => [],
+            'Herpesviridae'   => [],
+            'Paramyxoviridae' => [],
+            'Picornaviridae'  => [],
+            'Poxviridae'      => [],
+            'Reoviridae'      => [],
+            'Rhabdoviridae'   => [],
+            'Togaviridae'     => [],
+                   };
 
 ## //EXECUTE// ##
 
 my $infile = '';
+my $FAMILY = '';
 my $useropts = GetOptions(
                  "i=s"  => \ $infile,      # [inputFile.gb]
+                 "f=s"  => \ $FAMILY,      # viral family to test
+                 "debug"=> \ $debug,       # debug
                  );
 my $exe_dir  = './';
 my $exe_name = $0;
@@ -50,9 +72,14 @@ if ($exe_name =~ /^(.*[\/])([^\/]+[.]pl)$/i) {
     $exe_name = $2;
 }
 $exe_dir =~ s/[\\\/]$//;
-print STDERR "$exe_name: $0 $VERSION executing ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime)."\n";
-print STDOUT "$exe_name: $0 $VERSION executing ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime)."\n";
+print STDERR "$exe_name: $0 V$VERSION executing ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime)."\n";
+print STDOUT "$exe_name: $0 V$VERSION executing ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime)."\n";
 print STDERR "$exe_name: command='$0 @ARGV'\n";
+if ($FAMILY && !exists($families->{$FAMILY})) {
+    print STDERR "$exe_name: \$FAMILY='$FAMILY' is entered with invalid value, all families will be tested\n";
+    $FAMILY = '';
+}
+print STDERR "$exe_name: requested \$FAMILY='$FAMILY'\n";
 
 $debug && print STDERR "$exe_name: \$exe_dir    = '$exe_dir'\n";
 $debug && print STDERR "\n";
@@ -93,7 +120,7 @@ if ($infile) {
     print STDERR "$exe_name: from Input directory: $dir_path, found $n gbk files.\n";
     print STDOUT "$exe_name: from Input directory: $dir_path, found $n gbk files.\n";
 
-    my $summ = {total=>0, pass=>0, fail=>0};
+    my $summ = {total=>0, pass=>0, fail=>0, skip=>0};
     my ($min, $max) = (0, $#{$accs});
     if ( 0 ) {
         $min = ($#{$accs}-5<0) ? 0 : $#{$accs}-5;
@@ -102,7 +129,7 @@ if ($infile) {
     printf("$exe_name: Starting to test %d genomes: %d-%d\n", $max-$min+1, $min, $max);
 
     # Separate the accessions into different families
-    my $families = {};
+#    my $families = {};
     for my $j ($min .. $max) {
         my $acc = $accs->[$j]->[1];
         $acc = $1 if ($acc =~ m/^.*[\/]([^\/]+)$/); # take only the <acc>.gb, delete directory
@@ -113,19 +140,24 @@ if ($infile) {
         push @{$families->{usage}}, [$#{$families->{usage}}+1, $acc];
       } else {
         my $in  = Bio::SeqIO->new( -file => "$dirIn/$acc", -format => 'genbank' );
+        $debug && print STDERR "$exe_name: \$exe_dir=$exe_dir \$in=$in\n";
         my $inseq = $in->next_seq();
+        $debug && print STDERR "$exe_name: \$exe_dir=$exe_dir \$inseq=$inseq\n";
         my $taxid = $inseq->species->ncbi_taxid;
 #        $debug && print STDERR "$exe_name: \$taxid=$taxid \$exe_dir=$exe_dir\n";
         my $ti = Annotate_Def::getTaxonInfo( $taxid, $exe_dir);
         $debug && print STDERR "$exe_name: \$acc=$acc \$taxid=$taxid \$ti='@$ti'\n";
-        push @{$families->{$ti->[6]}}, [$#{$families->{$ti->[6]}}+1, $acc];
+        my $fam = (defined($ti->[6])) ? $ti->[6] : 'unknown';
+
+        $debug && print STDERR "$exe_name: \$acc=$acc \$fam=$fam \$FAMILY=$FAMILY\n";
+        push @{$families->{$fam}}, [$#{$families->{$fam}}+1, $acc];
       }
     }
 for my $fam (sort keys %$families) {
-    $debug && print STDERR "$exe_name: \$family=$fam\n";
+    $debug && print STDERR "$exe_name: \$fam=$fam\n";
     my $accs = $families->{$fam};
     for my $j (0 .. $#{$accs}) {
-        $debug && print STDERR "$exe_name: \$family=$fam \$accs='@{$accs->[$j]}'\n";
+        $debug && print STDERR "$exe_name: \$fam=$fam \$accs='@{$accs->[$j]}'\n";
     }
 }
 #    $debug && print STDERR "$exe_name: \$families=\n".Dumper($families)."End of \$families\n";
@@ -134,13 +166,21 @@ for my $fam (sort keys %$families) {
     my $count = 0;
 for my $fam (sort keys %$families) {
     my $accs = $families->{$fam};
+    my $msg1 = sprintf (" Testing %-15s %d", "$fam,", scalar @$accs);
+
+    print STDERR "$msg1\n";
+    print STDOUT "$msg1\n";
     for my $j (0 .. $#{$accs}) {
         $count++;
         my $acc = $accs->[$j]->[1];
         my $result = '';
         my $err = '';
         my $msg1 = sprintf (" Testing #%-4s %-15s %-13s", "$count,", "$fam,", $acc);
-        ($result, $err) = &run_msa_annotate( $acc, $dirIn, $removeAnnotationResult);
+        if (!$FAMILY || $fam eq $FAMILY) {
+            ($result, $err) = &run_msa_annotate( $acc, $dirIn, $removeAnnotationResult);
+        } else {
+            $err = "Family not requested. Skip";
+        }
 
         if (!$err) {
             ($result, $err) = &cmp_msa_annotate( $acc, $result, $dirIn, $dirOut);
@@ -154,6 +194,11 @@ for my $fam (sort keys %$families) {
             $msg .= sprintf(" Test #%-4s %-15s %-13s \$result=$result\n", "$count,", "$fam,", "$acc,");
             $summ->{fail}++;
             $summ->{total}++;
+        } elsif ($err =~ m/Skip$/i) {
+            $msg .= sprintf(" Test #%-4s %-15s %-13s skip", "$count,", "$fam,", "$acc,");
+            $msg .= sprintf(", comment=$err") if $err;
+            $msg .= sprintf("\n");
+            $summ->{skip}++;
         } else {
 #            printf STDERR (" Test #%-4s %-15s %-13s pass", "$count,", "$fam,", "$acc,");
 #            printf STDERR (", comment=$err") if $err;
@@ -165,14 +210,14 @@ for my $fam (sort keys %$families) {
             $summ->{total}++;
         }
         print STDOUT "$msg";
-        print STDERR "$msg1 $msg";
-
+        print STDERR "$msg";
     }
+
 }
     print STDERR "\n";
 #    $debug && print STDERR "$exe_name: \$accs=\n".Dumper($accs)."End of \$accs\n\n";
 
-    print "Tests performed: total=$summ->{total}, fail=$summ->{fail}, pass=$summ->{pass}\n";
+    print "Tests performed: total=$summ->{total}, fail=$summ->{fail}, pass=$summ->{pass}; skip=$summ->{skip}\n";
 
 
 

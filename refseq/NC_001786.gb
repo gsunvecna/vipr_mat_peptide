@@ -1,8 +1,8 @@
-LOCUS       NC_001786              11488 bp ss-RNA     linear   VRL 21-APR-2009
+LOCUS       NC_001786              11488 bp ss-RNA     linear   VRL 27-JUN-2012
 DEFINITION  Barmah Forest virus, complete genome.
 ACCESSION   NC_001786
 VERSION     NC_001786.1  GI:9629246
-DBLINK      Project: 14679
+DBLINK      BioProject: PRJNA14679
 KEYWORDS    .
 SOURCE      Barmah Forest virus
   ORGANISM  Barmah Forest virus
@@ -172,6 +172,46 @@ FEATURES             Location/Qualifiers
                      /product="E1 protein"
                      /protein_id="NP_819002.1"
                      /db_xref="GI:29612010"
+     gene            7327..9773
+                     /locus_tag="BFVgp4"
+                     /db_xref="GeneID:13165580"
+     CDS             join(7327..9690,9690..9773)
+                     /locus_tag="BFVgp4"
+                     /note="Truncated verstion of structural polyprotein that
+                     will be produced when frameshifting occurs at nt 9690;
+                     Truncated version of structural polyprotein and transframe
+                     fusion protein have been added by NCBI Staff with the kind
+                     help of Dr. David Karlin (Department of Zoology,
+                     University of  Oxford, UK) and Dr. Andrew Firth
+                     (Department of Pathology,  University of Cambridge, UK)"
+                     /codon_start=1
+                     /product="truncated polyprotein"
+                     /protein_id="YP_006491241.1"
+                     /db_xref="GI:392976863"
+                     /db_xref="GeneID:13165580"
+                     /translation="MDFIPTQTFYGRRWRPAPVQRYIPQPQPPAPPRRRRGPSQLQQL
+                     VAALGALALQPKQKQKRAQKKPKKTPPPKPKKTQKPKKPTQKKKSKPGKRMRNCMKIE
+                     NDCIFPVMLDGKVNGYACLVGDKVMKPAHVKGTIDNPELAKLTFKKSSKYDLECAQVP
+                     VCMKSDASKFTHEKPEGHYNWHHGAVQFSNGRFTIPTGSGKPGDSGRPIFDNTGKVVA
+                     IVLGGANEGARTALSVVTWNKDMVTRITPEESVEWSAAALXITALCVLQNLSFPCDAP
+                     PCAPCCYEKDPAGTLRLLSDHYYHPKYYELLDSTMHCPQGRRPKRSVAHFEAYKATRP
+                     YIGWCADCGLAGSCPSPVSIEHVWSDADDGVLKIQVSMQIGIAKSNTINHAKIRYMGA
+                     NGVQEAERSTLSVSTTAPCDILATMGHFILARCRPGSQVEVSLSTDPKLLCRTPFSHK
+                     PRFIGNEKSPAPTGHKTRIPCKTYSHQTDLTREEITMHVPPDVPIQGLVSNTGKSYSL
+                     DPKTKTIKYKCTCGETVKEGTATNKITLFNCDTAPKCITYAVDNTVWQYNSQYVPRSE
+                     VTEVKGKIHVPFPLTDSTCAVSVAPEPQVTYRLGEVEFHFHPMYPTLFSIRSLGKDPS
+                     HSQEWIDTPMSKTIQVGAEGVEYVWGNNNPVRLWAQKSSSSSAHGNPISIVSHYYDLY
+                     PYWTITVLASLGLLIVISSGFSCFLCSVARTKCLTPYQLAPGAQLPTFIALLCCAKSA
+                     RADTLDDFSYLWTNNQAMFWLQLASPVAAFLCLSYCCRNLACCMKIFLRDKRPVCNCH
+                     AGLRALNHDAESGGNTV"
+     mat_peptide     join(9553..9690,9690..9770)
+                     /locus_tag="BFVgp4"
+                     /product="transframe fusion protein"
+                     /note="Transframe fusion (TF) protein expressed via
+                     programmed ribosomal frameshifting. TF protein presumably
+                     plays a stabilizing role in the virion structure."
+                     /protein_id="YP_006491242.1"
+                     /db_xref="GI:392976864"
      repeat_region   11089..11135
                      /note="IIa"
      repeat_region   11146..11192

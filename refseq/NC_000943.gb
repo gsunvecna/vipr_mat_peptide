@@ -1,8 +1,8 @@
-LOCUS       NC_000943              11014 bp ss-RNA     linear   VRL 08-DEC-2008
+LOCUS       NC_000943              11014 bp ss-RNA     linear   VRL 20-JUN-2012
 DEFINITION  Murray Valley encephalitis virus, complete genome.
 ACCESSION   NC_000943
 VERSION     NC_000943.1  GI:9633622
-DBLINK      Project: 15430
+DBLINK      BioProject: PRJNA15430
 KEYWORDS    .
 SOURCE      Murray Valley encephalitis virus
   ORGANISM  Murray Valley encephalitis virus
@@ -190,6 +190,52 @@ FEATURES             Location/Qualifiers
                      enzyme (methyltransferase); nonstructural protein 5"
                      /protein_id="NP_722539.1"
                      /db_xref="GI:24418990"
+     gene            96..3688
+                     /locus_tag="MVEVgp2"
+                     /db_xref="GeneID:13160808"
+     CDS             join(96..3557,3557..3688)
+                     /locus_tag="MVEVgp2"
+                     /note="Truncated version of polyprotein that will be
+                     produced when frameshifting occurs at nt 3557; Truncated
+                     version of polyprotein and NS1' protein have been added
+                     and annotated with the kind help of Dr. David Karlin
+                     (Department of Zoology,  University of Oxford, UK) and Dr.
+                     Andrew Firth (Department of Pathology, University of
+                     Cambridge, UK)"
+                     /codon_start=1
+                     /product="truncated polyprotein"
+                     /protein_id="YP_006485886.1"
+                     /db_xref="GI:392373137"
+                     /db_xref="GeneID:13160808"
+                     /translation="MSKKPGGPGKPRVVNMLKRGIPRVFPLVGVKRVVMNLLDGRGPI
+                     RFVLALLAFFRFTALAPTKALMRRWKSVNKTTAMKHLTSFKKELGTLIDVVNKRGKKQ
+                     KKRGGSETSVLMLIFMLIGFAAALKLSTFQGKIMMTVNATDIADVIAIPTPKGPNQCW
+                     IRAIDIGFMCDDTITYECPKLESGNDPEDIDCWCDKQAVYVNYGRCTRARHSKRSRRS
+                     ITVQTHGESTLVNKKDAWLDSTKATRYLTKTENWIIRNPGYALVAVVLGWMLGSNTGQ
+                     KVIFTVLLLLVAPAYSFNCLGMSSRDFIEGASGATWVDLVLEGDSCITIMAADKPTLD
+                     IRMMNIEATNLALVRNYCYAATVSDVSTVSNCPTTGESHNTKRADHNYLCKRGVTDRG
+                     WGNGCGLFGKGSIDTCAKFTCSNSAAGRLILPEDIKYEVGVFVHGSTDSTSHGNYSTQ
+                     IGANQAVRFTISPNAPAITAKMGDYGEVTVECEPRSGLNTEAYYVMTIGTKHFLVHRE
+                     WFNDLLLPWTSPASTEWRNREILVEFEEPHATKQSVVALGSQEGALHQALAGAIPVEF
+                     SSSTLKLTSGHLKCRVKMEKLKLKGTTYGMCTEKFTFSKNPADTGHGTVVLELQYTGS
+                     DGPCKIPISSVASLNDMTPVGRMVTANPYVASSTANAKVLVEIEPPFGDSYIVVGRGD
+                     KQINHHWHKEGSSIGKAFSTTLKGAQRLAALGDTAWDFGSVGGVFNSIGKAVHQVFGG
+                     AFRTLFGGMSWISPGLLGALLLWMGVNARDKSIALAFLATGGVLLFLATNVHADTGCA
+                     IDITRRELKCGSGIFIHNDVEAWIDRYKYLPETPKQLAKVVENAHKSGICGIRSVNRF
+                     EHQMWESVRDELNALLKENAIDLSVVVEKQKGMYRAAPNRLRLTVEELDIGWKAWGKS
+                     LLFAAELANSTFVVDGPETAECPNSKRAWNSFEIEDFGFGITSTRGWLKLREENTSEC
+                     DSTIIGTAVKGNHAVHSDLSYWIESGLNGTWKLERAIFGEVKSCTWPETHTLWGDAVE
+                     ETELIIPVTLAGPRSKHNRREGYKVQVQGPWDEEDIKLDFDYCPGTTVTVSEHCGKRG
+                     PSVRTTTDSGKLVTDWCCRSCTLPPLRFTTASGCWYGMEIRPMKHDESTLVKSRVQAF
+                     NGDMIDPFSVRPSGDVSGHPGGLEEEVDGQTYSASSGWGSASPPPWGHYLH"
+     mat_peptide     join(2475..3557,3557..3685)
+                     /locus_tag="MVEVgp2"
+                     /product="NS1' protein"
+                     /note="transframe fusion protein expressed via programmed
+                     ribosomal frameshifting; when frameshifting occurs,
+                     cleavage between NS1 and NS2A fails to occur"
+                     /protein_id="YP_006485887.1"
+                     /db_xref="GI:392373138"
 ORIGIN      
         1 agacgttcat ctgcgtgagc ttccgatctc agtattgttt ggaaggatca ttgattaacg
        61 cggtttgaac agttttttgg agcttttgat ttcaaatgtc taaaaaacca ggaggacccg

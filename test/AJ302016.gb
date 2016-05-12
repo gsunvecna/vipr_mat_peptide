@@ -1,0 +1,99 @@
+LOCUS       AJ302016                1740 bp    RNA     linear   VRL 19-DEC-2002
+DEFINITION  Rabbit hemorrhagic disease virus VP60 gene for capsid protein,
+            genomic RNA, isolate 99-05.
+ACCESSION   AJ302016
+VERSION     AJ302016.3  GI:18076497
+KEYWORDS    capsid protein; VP60 gene.
+SOURCE      Rabbit hemorrhagic disease virus
+  ORGANISM  Rabbit hemorrhagic disease virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage;
+            Caliciviridae; Lagovirus.
+REFERENCE   1
+  AUTHORS   Le Gall-Recule,G., Zwingelstein,F., Laurent,S., de Boisseson,C.,
+            Portejoie,Y. and Rasschaert,D.
+  TITLE     Phylogenetic analysis of rabbit haemorrhagic disease virus in
+            France between 1993 and 2000, and the characterisation of RHDV
+            antigenic variants
+  JOURNAL   Arch. Virol. 148 (1), 65-81 (2003)
+   PUBMED   12536296
+REFERENCE   2
+  AUTHORS   Le Gall-Recule,G.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (08-DEC-2000) Le Gall-Recule G., Laboratoire d'etudes et
+            de recherches avicoles et porcines, Agence Francaise de Securite
+            Sanitaire des Aliments AFSSA, Zoopole, BP 53, Ploufragan, 22440,
+            FRANCE
+  REMARK    revised by [3]
+REFERENCE   3  (bases 1 to 1740)
+  AUTHORS   Le Gall-Recule,G.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (03-JAN-2002) Le Gall-Recule G., Laboratoire d'etudes et
+            de recherches avicoles et porcines, Agence Francaise de Securite
+            Sanitaire des Aliments AFSSA, Zoopole, BP 53, Ploufragan, 22440,
+            FRANCE
+COMMENT     On Jan 6, 2002 this sequence version replaced gi:17529561.
+FEATURES             Location/Qualifiers
+     source          1..1740
+                     /organism="Rabbit hemorrhagic disease virus"
+                     /mol_type="genomic RNA"
+                     /isolate="99-05"
+                     /host="Oryctolagus cuniculus"
+                     /db_xref="taxon:11976"
+                     /country="France"
+                     /note="variant antigenic (RHDVa)"
+     gene            1..1740
+                     /gene="VP60"
+     CDS             1..1740
+                     /gene="VP60"
+                     /note="VP60 region"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="CAC83068.2"
+                     /db_xref="GI:17529562"
+                     /db_xref="InterPro:IPR004005"
+                     /db_xref="UniProtKB/TrEMBL:Q8UZ02"
+                     /translation="MEGKARTAPQGEAAGTATTASVPGTTTDGMDPGVVAATSVVTAE
+                     NSSASVATAGIGGPPQQVDQQETWRTNFYYNDVFTWSVADAPGSILYTVQHSPQNNPF
+                     TAVLSQMYAGWAGGMQFRFIVAGSGVFGGRLVAAVIPPGIEIGPGLEVRQFPHVVIDA
+                     RSLEPVTITMPDLRPNMYHPTGDPGLVPTLVLSVYNNLINPFGGSTNAIQVTVETRPS
+                     DDFEFVMIRAPSSKTVDSISPAGLLTTPVLTGVGNDNRWNGQIVGLQPVPGGFSTCNR
+                     HWNLNGSTYGWSSPRFADIDHRRGSASYSGNNSTNVLQFWYANAGSAIDNPISQVAPD
+                     GFPDMSFVPFNSPNIPTAGWVGFGGIWNSNNGAPAATTVQAYELGFATGAPNNLQPTT
+                     NTSGAQTVAKSIYAVVTGTNQNPTGLFVMASGVISTPNASAVTYTPQPDRIVTTPGTP
+                     AAAPVGKNTPIMFASVVRRTGDVNAAAGSTNGTQYGTGSQPLPVTIGLSLNNYSSALM
+                     PGQFFVWQLTFASGFMEIGLSVDGYFYAGTGASTTLIDLTELIDVRPVGPRPSKSTLV
+                     FNLGGTTNGFSYV"
+     mat_peptide     1..1737
+                     /gene="VP60"
+                     /product="capsid protein"
+ORIGIN      
+        1 atggagggca aagcccgcac agcgccgcaa ggcgaagcag caggcactgc taccacagca
+       61 tcagttcccg gaaccacgac cgacggcatg gatcctggcg tggtggccgc aactagtgtg
+      121 gtcactgcag aaaattcatc cgcatcggtt gcaacggcgg ggattggcgg cccaccccaa
+      181 caggtggacc aacaagaaac atggaggaca aacttttact acaatgatgt tttcacttgg
+      241 tccgtcgcgg atgcgcccgg cagcattctc tacactgtcc aacactctcc acagaacaac
+      301 ccattcacag ccgtgctgag ccagatgtac gctggctggg ctggtggcat gcagttccgc
+      361 ttcatagttg ctggatcagg tgtgtttggt gggcgactgg tcgcggctgt gataccacca
+      421 ggcatcgaga ttggaccagg gttggaggtc aggcaatttc ctcatgttgt tatcgacgcc
+      481 cgttcactcg aacctgttac catcaccatg ccagacttgc gtcccaacat gtaccatcca
+      541 actggtgacc ctggccttgt ccccacacta gtccttagtg tttacaacaa cctcatcaac
+      601 ccgtttggtg ggtccaccaa cgcaatccag gtaacagtgg aaacaaggcc aagtgatgac
+      661 tttgagttcg tgatgattag agccccctcc agcaagactg ttgactcaat ctcacccgca
+      721 ggcctcctca cgaccccagt cctcactggt gttggcaatg ataacaggtg gaacggccaa
+      781 atagtgggac tgcaaccagt acctgggggg ttttccacgt gcaacaggca ttggaacttg
+      841 aacggcagca catatggctg gtcaagccct cggtttgccg acattgacca tcgaagaggc
+      901 agtgcaagtt attctgggaa caactccacc aacgtgctcc agttttggta cgctaatgct
+      961 gggtctgcaa ttgacaaccc tatctcccag gttgcaccgg acggctttcc tgacatgtca
+     1021 ttcgtgccct ttaacagccc caacattccg accgcggggt gggtcgggtt tggtggtatt
+     1081 tggaacagta acaacggtgc ccccgctgct acgactgtgc aggcctatga gttaggtttt
+     1141 gccactgggg caccaaacaa cctccagccc accaccaaca cttcaggtgc acagactgtc
+     1201 gctaagtcca tttatgccgt ggtaaccggc acaaaccaaa acccaaccgg actgtttgtg
+     1261 atggcctcgg gtgttatctc caccccaaac gccagcgccg tcacatacac gccccaacca
+     1321 gatagaattg tgactacacc cggcactcct gccgccgcac ctgtgggtaa gaacacaccc
+     1381 atcatgttcg cgtctgttgt caggcgcacc ggtgacgtca acgccgcagc tgggtcaacc
+     1441 aacgggaccc agtacggcac aggctcccaa ccactgccag taacaattgg actttcgctc
+     1501 aacaactact cgtcagcact catgcccggg cagtttttcg tttggcagtt aacctttgca
+     1561 tctggtttca tggagattgg tttaagtgtg gacgggtact tttatgcagg aacaggagcc
+     1621 tcaaccacgc tcattgactt gactgaactc attgacgtac gccccgtggg acccaggccg
+     1681 tccaagagca cactcgtgtt caacctgggg ggcacaacca atggcttttc ttatgtctga
+//

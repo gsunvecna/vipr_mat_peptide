@@ -6,18 +6,21 @@ use English;
 use Carp;
 use Data::Dumper;
 
-use version; our $VERSION = qv('1.1.6'); # November 09 2012
+use version; our $VERSION = qv('1.1.8'); # Feb 18 2013
 use File::Temp qw/ tempfile tempdir /;
 use Bio::SeqIO;
 use Bio::Seq;
 use IO::String;
 
-use Annotate_Math;
-use Annotate_Verify;
-use Annotate_Align;
-use Annotate_gbk;		# for annotation from genbank
+use Annotate_Align;      # Ran MSA, and get ready for actually cut the mat_peptides
+use Annotate_Def;        # Have the approved RefSeqs, also load taxon info and definition of gene symbols
+use Annotate_Download;   # Download the RefSeqs and taxon info from NCBI, and check against data stored in file
+use Annotate_gbk;	 # for annotation from genbank
+use Annotate_Math;       # Get the mat_peptide location, based on alignment with reference
+use Annotate_Util;       # assemble the feature for newly annotated mat_peptide, plus other things like checking
+use Annotate_Verify;     # Check the quality of the set of annotation
 
-my $debug_all = 1;
+my $debug_all = 0;
 
 ####//README//####
 #
@@ -30,13 +33,25 @@ my $debug_all = 1;
 
 ## //EXECUTE// ##
 
+## turns on/off the debug in each module
+
+sub setDebugAll {
+    my ($debug) = @_;
+    $debug_all = $debug;
+    1 && Annotate_Align::setDebugAll( $debug);
+    0 && Annotate_gbk::setDebugAll( $debug);
+    1 && Annotate_Def::setDebugAll( $debug);
+    0 && Annotate_Download::setDebugAll( $debug);
+    1 && Annotate_Math::setDebugAll( $debug);
+    1 && Annotate_Util::setDebugAll( $debug);
+    0 && Annotate_Verify::setDebugAll( $debug);
+} # sub setDebugAll
+
 
 =head2 generate_fasta
-
 Takes an array of SeqFeature.
  Write the translations to a virtual file
  Returns the fasta file in a string
-
 =cut
 
 sub generate_fasta {

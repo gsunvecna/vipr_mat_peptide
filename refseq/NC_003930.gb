@@ -1,8 +1,8 @@
-LOCUS       NC_003930              11919 bp    RNA     linear   VRL 04-FEB-2011
+LOCUS       NC_003930              11919 bp    RNA     linear   VRL 27-JUN-2012
 DEFINITION  Salmon pancreas disease virus, complete genome.
 ACCESSION   NC_003930
 VERSION     NC_003930.1  GI:21321727
-DBLINK      Project: 15187
+DBLINK      BioProject: PRJNA15187
 KEYWORDS    6K gene; 6K protein; capside protein; complete genome; cp gene; E1
             gene; E1 protein; E2 gene; E2 protein; E3 gene; E3 protein; non
             structural protein P1; non structural protein P2; non structural
@@ -221,6 +221,47 @@ FEATURES             Location/Qualifiers
                      /product="E1 protein"
                      /protein_id="NP_740643.1"
                      /db_xref="GI:25121770"
+     gene            7869..10522
+                     /locus_tag="SPDVgp12"
+                     /db_xref="GeneID:13165427"
+     CDS             join(7869..10385,10385..10522)
+                     /locus_tag="SPDVgp12"
+                     /note="Truncated verstion of structural polyprotein that
+                     will be produced when frameshifting occurs at nt 10385;
+                     Truncated version of structural polyprotein and transframe
+                     fusion protein have been added by NCBI Staff with the kind
+                     help of Dr. David Karlin (Department of Zoology,
+                     University of  Oxford, UK) and Dr. Andrew Firth
+                     (Department of Pathology,  University of Cambridge, UK)"
+                     /codon_start=1
+                     /product="truncated polyprotein"
+                     /protein_id="YP_006491239.1"
+                     /db_xref="GI:392972647"
+                     /db_xref="GeneID:13165427"
+                     /translation="MFPMQFTNSAYRQMEPMFAPGSRGQVQPYRPRTKRRQEPQVGNA
+                     AITALANQMSALQLQVAGLAGQARVDRRGPRRVQKNKQKKKNSSNGEKPKEKKKKQKQ
+                     QEKKGSGGEKVKKTRNRPGKEVRISVKCARQSTFPVYHEGAISGYAVLIGSRVFKPAH
+                     VKGKIDHPELADIKFQVAEDMDLEAAAYPKSMRDQAAEPATMMDRVYNWEYGTIRVED
+                     NVIIDASGRGKPGDSGRAITDNSGKVVGIVLGGGPDGRRTRLSVIGFDKKMKAREIAY
+                     SDAIPWTRAPALLLLPMVIVCTYNSNTFDCSKPSCQDCCITAEPEKAMTMLKDNLNDP
+                     NYWDLLIAVTTCGSARRKRAVSTSPAAFYDTQILAAHAAASPYRAYCPDCDGTACISP
+                     IAIDEVVSSGSDHVLRMRVGSQSGVTAKGGAAGETSLRYLGRDGKVHAADNTRLVVRT
+                     TAKCDVLQATGHYILANCPVGQSLTVAATLDGTRHQCTTVFEHQVTEKFTRERSKGHH
+                     LSDMTKKCTRFSTTPKKSALYLVDVYDALPISVEISTVVTCSDSQCTVRVPPGTTVKF
+                     DKKCKSADSATVTFTSDSQTFTCEEPVLTAASITQGKPHLRSAMLPSGGKEVKARIPF
+                     PFPPETATCRVSVAPLPSITYEESDVLLAGTAKYPVLLTTRNLGFHSNATSEWIQGKY
+                     LRRIPVTPQGIELTWGNNAPMHFWSSVRYASGDADAYPWELLVYHTKHHPEYAWAFVG
+                     VACGLLAIAACMFACACSRVRYSLVANTFNSNPPPLTALTAALCCIPGARADQPYLDI
+                     IAYLWTNSKVAFGLQFAAPVACVLIITYALRHCRLCCKSFLRGKRVVSPAGHPCVCTE
+                     LQELRTHRGGPNGSKSPVVRSSDKPEWV"
+     mat_peptide     join(10242..10385,10385..10519)
+                     /locus_tag="SPDVgp12"
+                     /product="transframe fusion protein"
+                     /note="Transframe fusion (TF) protein expressed via
+                     programmed ribosomal frameshifting. TF protein presumably
+                     plays a stabilizing role in the virion structure."
+                     /protein_id="YP_006491240.1"
+                     /db_xref="GI:392972648"
      gene            7869..8714
                      /gene="cp"
                      /locus_tag="SPDVgp07"

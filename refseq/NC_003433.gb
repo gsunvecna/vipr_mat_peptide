@@ -1,8 +1,8 @@
-LOCUS       NC_003433              11900 bp ss-RNA     linear   VRL 06-MAY-2009
+LOCUS       NC_003433              11900 bp ss-RNA     linear   VRL 27-JUN-2012
 DEFINITION  Sleeping disease virus, complete genome.
 ACCESSION   NC_003433
 VERSION     NC_003433.1  GI:19352423
-DBLINK      Project: 15395
+DBLINK      BioProject: PRJNA15395
 KEYWORDS    6K gene; 6K protein; capside protein; complete genome; cp gene; E1
             gene; E1 protein; E2 gene; E2 protein; E3 gene; E3 protein; non
             structural protein P1; non structural protein P2; non structural
@@ -197,6 +197,47 @@ FEATURES             Location/Qualifiers
                      /product="E1 protein"
                      /protein_id="NP_740661.1"
                      /db_xref="GI:25121761"
+     gene            7845..10501
+                     /locus_tag="Sdvgp12"
+                     /db_xref="GeneID:13165425"
+     CDS             join(7845..10364,10364..10501)
+                     /locus_tag="Sdvgp12"
+                     /note="Truncated verstion of structural polyprotein that
+                     will be produced when frameshifting occurs at nt 10364;
+                     Truncated version of structural polyprotein and transframe
+                     fusion protein have been added by NCBI Staff with the kind
+                     help of Dr. David Karlin (Department of Zoology,
+                     University of  Oxford, UK) and Dr. Andrew Firth
+                     (Department of Pathology,  University of Cambridge, UK)"
+                     /codon_start=1
+                     /product="truncated polyprotein"
+                     /protein_id="YP_006491237.1"
+                     /db_xref="GI:392972639"
+                     /db_xref="GeneID:13165425"
+                     /translation="MFPMQFTNSAYRQMEPMFAPASRGQVQPYRPRTKRRQEPQVGNA
+                     AIAALANQMSALQLQVAGLAGQARVDRRGPRRVQKNKQKKKNSSNGEKPKEKKKKQKQ
+                     QEKKGSGGEKAKKPRNRPGKEVRISVKRARQSTFPVYHDGAISGYAVLIGSRVFKPAH
+                     VKGKFDHPELADIKFQVAEVMDLEAAAYPKCMRDQAAEPATMMDGVYNGEYGNIQEWR
+                     TILYSMRAAEASRGDSGRPFTDNSGKVVGIVLGGGPDGRRTRLSVIGFDKKLKAREIA
+                     YSEAIPWTRAPALLLLPMVIACTYNSNTFDCSKPSCQDCCITAEPKKAMTMLKDNLND
+                     PNYWDLLIAVTTCSSARKKRAVSTSPVAVYDTQILAAHAAASPYRAYCPDCDGTACIS
+                     PIAIDEVVSSGSDHVLRIRVGSQSGVTAKGGAAGETSLRYLGRDGKVYAADNTRLVVR
+                     TTAKCDVLQATGHYILANCPVGQSLTVAATLDGTRHQCTTVFEHQVTEKFTRERSKGH
+                     HLSDLTKKCTRFSTTPKKSALYLVDVYDALPTSVEISTVVTCNERQCTVRVPPGTTVK
+                     FDKRCKNAAKETVTFTSDSQTFTCEEPVLTAASITQGKPHLRSSMLPSGGKEVKARIP
+                     FPFPPETATCRVSIAPLPSITYEESDVLLAGTAKYPVLLTTRNLGFHSNATSEWIQGK
+                     YLRRIPVTPQGIELMLGNNAPLHFWSSVRYASGDADAYPWELLVHHIKHHPEYAWAFV
+                     GVACGLLAVAACMFACACNRVRYSLLANTFNPNPPPLTALTAALCCIPGARADQPYLD
+                     IIAYLWTNSKVAFGLQCAAPVACMLIVTYALRHCRLCCNSFLRGKRVVGSAGHPCVCT
+                     ELQGVRTHRGGPNGSKSPVVRGGDKPEWV"
+     mat_peptide     join(10221..10364,10364..10498)
+                     /locus_tag="Sdvgp12"
+                     /product="transframe fusion protein"
+                     /note="Transframe fusion (TF) protein expressed via
+                     programmed ribosomal frameshifting. TF protein presumably
+                     plays a stabilizing role in the virion structure."
+                     /protein_id="YP_006491238.1"
+                     /db_xref="GI:392972640"
      gene            7845..8693
                      /gene="cp"
                      /locus_tag="Sdvgp07"

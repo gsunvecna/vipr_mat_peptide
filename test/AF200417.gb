@@ -1,0 +1,91 @@
+LOCUS       AF200417                2441 bp    DNA     linear   VRL 26-MAR-2000
+DEFINITION  Rhesus cytomegalovirus interleukin-10-like protein precursor
+            (Ul11A) gene, complete cds.
+ACCESSION   AF200417
+VERSION     AF200417.1  GI:7329125
+KEYWORDS    .
+SOURCE      Macacine herpesvirus 3 (Rhesus cytomegalovirus)
+  ORGANISM  Macacine herpesvirus 3
+            Viruses; dsDNA viruses, no RNA stage; Herpesvirales; Herpesviridae;
+            Betaherpesvirinae; Cytomegalovirus.
+REFERENCE   1  (bases 1 to 2441)
+  AUTHORS   Lockridge,K.M., Zhou,S.S., Kravitz,R.H., Johnson,J.L., Sawai,E.T.,
+            Blewett,E.L. and Barry,P.A.
+  TITLE     Primate cytomegaloviruses encode and express an IL-10-like protein
+  JOURNAL   Virology 268 (2), 272-280 (2000)
+   PUBMED   10704336
+REFERENCE   2  (bases 1 to 2441)
+  AUTHORS   Kravitz,R.H., Lockridge,K.M. and Barry,P.A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (29-OCT-1999) Center for Comparative Medicine, University
+            of California-Davis, County Rd. 98 and Hutchison Dr., Davis, CA
+            95616, USA
+FEATURES             Location/Qualifiers
+     source          1..2441
+                     /organism="Macacine herpesvirus 3"
+                     /mol_type="genomic DNA"
+                     /strain="68-1"
+                     /db_xref="taxon:47929"
+     gene            1091..2441
+                     /gene="Ul11A"
+     mRNA            join(1091..1364,1459..1680,2108..2170,2255..2441)
+                     /gene="Ul11A"
+                     /product="interleukin-10-like protein precursor"
+     CDS             join(1167..1364,1459..1680,2108..2170,2255..2341)
+                     /gene="Ul11A"
+                     /codon_start=1
+                     /product="interleukin-10-like protein precursor"
+                     /protein_id="AAF59907.1"
+                     /db_xref="GI:7329126"
+                     /translation="MRRRRRSFGIIVAGAIGTLLMMAVVVLSAHDHEHKEVPPACDPV
+                     HGNLAGIFKELRATYASIREGLQKKDTVYYTSLFNDRVLHEMLSPMGCRVTNELMEHY
+                     LDGVLPRASHLDYDNSTLNGLHVFASSMQALYQHMLKCPALACTGKTPAWMYFLEVEH
+                     KLNPWRGTAKAAAEADLLLNYLETFLLQF"
+     mat_peptide     join(1257..1364,1459..1680,2108..2170,2255..2338)
+                     /gene="Ul11A"
+                     /product="interleukin-10-like protein"
+     polyA_signal    2419..2424
+                     /gene="Ul11A"
+ORIGIN      
+        1 gcttattaga tacctgttgt taaggaaggt gcaggctnag ttttttgcaa ggtaagcctt
+       61 cttctacccc ctacacatgc ggacttgttc ttgagttaag tgtttgttnt ttttttctta
+      121 atagttatcg tttncaagtc tggcttgatt gttcaggggg ggttgcatct ttttagtgag
+      181 tgtgatacca cgacgtaggg tgtggtaacc gtacaataat atctgttggt taggagaact
+      241 taaatgtgta ttaggtatta ttctcttatg ctgctaacag aattgcttct ccgtaactat
+      301 tatcgtctta cagatagatt gcgtttgttt ttttttttca agttccccag caaaaacagg
+      361 gagtctgtgg ctttttggtt cgtgtacatc cgtgttcgcg tatcgaattt gatcttcctg
+      421 cgatgatgta gggtccttga tgtaggattt cgaatatcgg tattttttct tttagcaaag
+      481 tgagggttcg tgtaagtttc tatacaaact tatgtgaagt ttatgacgtt cgtttgttat
+      541 ctcgagagcg gctcgaacct tcttctgtag agctttattt agtgcaactt tacggggtgt
+      601 agaagctaaa tgaatctctg aaggtgctac tcatttacac ttcgaagaaa catccagttc
+      661 gtgaaaaaaa caagtgtctt cgaaatcatg tttccactat ttttgcaatt acatctgtga
+      721 aagtaggcag tagataccag attctntttt anntttgtnt gtctcttata caatggacta
+      781 cgatgtttct cgagagtatg tcgtaagctt gtcngtggtg tanatngagt tgctattgtt
+      841 atttcctttt gcacacacag ttgtttcaat tagatgtttg accgtgattt tgcccacccg
+      901 gcccgggaga caaggcaagg agatntgttt tntgcgtttg ccatttatca tcgttattta
+      961 ctattagtgg tgacaatgac ctgtcagatt gttgattact ttttgggcta cagactataa
+     1021 atcttcaagg atcgaggaaa agcaaacaaa taggaaagga aaaaagggac caccttacct
+     1081 gtggcgtctc attctctgtt gcagcggcgg tcggtgctgt tgtttagcct ggagaaggag
+     1141 acgagaacga cgaatcggcg gttacaatgc ggaggaggag gaggtcnttc ggcatcatcg
+     1201 tcgccggcgc tatcggaaca ctactcatga tggcggtggt cgtgctttca gcccatgacc
+     1261 atgaacacaa agaagtacca ccggcctgtg accccgttca cggtaacttg gcaggcatct
+     1321 tcaaggagtt gcgggcgacc tacgcttcca ttagagaagg tttggtatgt taggcaacgc
+     1381 agttctcgga tgtcagtccg aatcggagga gtcacagtct gtcatgtgat gatatattgc
+     1441 ttaatttttg ttttgcagca aaagaaggac acggtgtact acacatcgct gttcaatgac
+     1501 cgcgtgctcc atgaaatgct gagtcctatg ggctgtcgcg tgaccaatga actcatggaa
+     1561 cattatttag atggtgttct gcctcgagca agtcatttag actacgataa tagcactctg
+     1621 aatggcttac atgtgtttgc ttcatccatg caggcgctgt atcagcacat gttaaagtgt
+     1681 gtaagtgttt caggttcgat aaccccgcga tatgacacgt aaatagcgat atcgtggcac
+     1741 cagacgtcag tcacagtctt ccccggtcga gacgcatctt atatcgcgat atatcgcgga
+     1801 ttatcgcagt atgtagccga tatatcgtgt caaagcactc cgaacgacat tctgatgacg
+     1861 gctatcgcct tatgtcgcgg tatatcgcgg aatatcgcag tatatcgcgg ttatgtcgcg
+     1921 acataaccgt catgtcgcga ctatcgccgc atatcgccac tatcgcgact tggcaccgtg
+     1981 ccaacgatag tcgaccttag ggtggtcgtg tggtggtggg gggctgcttg cggtttgcaa
+     2041 accggagagg tagcacacgc tgattgtcgg tttgaagcgt tgtttacaca tgtctttgtc
+     2101 ttggcagccc gcgttggcat gtactggcaa aacgccagct tggatgtact tcttggaggt
+     2161 ggaacacaag gtcagttaag gttgccaggt aggttaaaac gcagaaacca ttgttctacc
+     2221 ggtttcctaa aacgccgttc aacgtgtttt gcagctcaac ccctggaggg gcacggcaaa
+     2281 agccgcggcc gaggctgacc ttttgctgaa ctacttggaa acgttcctgc tgcagttctg
+     2341 agccagctgt caatcaaggc agccaaaagc agcgttctcc ggtttacaat tctcggatcg
+     2401 tttcgctagt taagctctaa taaacgtact gtttaaccac c
+//

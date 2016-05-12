@@ -109,7 +109,7 @@ sub generate_fasta {
 sub process_list1 {
     my ($accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $progs) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subname = 'process_list1';
 
 #    my $refseqs = {};
@@ -241,22 +241,8 @@ sub process_list1 {
             }
         }
         $debug && print STDERR "$subname: \$refcds_ids='@$refcds_ids'\n";
-        for my $id (@$refcds_ids) {
-            my $feats = $feats_msa->{$id};
-            if (!$feats->[0]) {
-                print STDERR "$subname: ERROR: NULL feature found for \$id=$id\n";
-                next;
-            }
-            $debug && print STDERR "$subname: \$feats=\n". Dumper($feats) . "End of \$feats\n\n";
 
-            # either print to STDERR or fasta file
-            $faa1 .= Annotate_misc::generate_fasta( $feats);
-            print STDERR "$subname: refcds=$id input accession='$acc' CDS=".$feats->[0]->location->to_FTstring."\n";
-#            $debug && print STDERR "$subname: \$faa1 = '\n$faa1'\n";
-
-            Annotate_Verify::check_old_annotation( $acc, $faa1);
-#            print STDERR "$subname: accession = '".$acc."'\n";
-        }
+        $faa1 = Annotate_misc::get_msa_fasta( $refcds_ids, $feats_msa, $acc);
         $debug && print STDERR "$subname: accession=$acc \$faa1 = '\n$faa1'\n";
 
         # Gets a FASTA string containing all mat_peptides from genbank file
@@ -286,11 +272,23 @@ sub process_list1 {
         } elsif ($faa1 || $feats_gbk ne '') {
             $faa = $faa1;
             $outfile = "$dir_path/$acc" . '_matpept_msa.faa';
-            if (!$faa || $feats_gbk && ($acc =~ /^NC_\d+$/i)) {
+            my $c = [ split(/> /, $faa) ];
+            $debug && print STDERR "$subname: \$c=\n". Dumper($c) . "End of \$c\n\n";
+            $c = $#{$c};
+            my $c_old = [ split(/> /, $feats_gbk) ];
+            $debug && print STDERR "$subname: \$c_old=\n". Dumper($c_old) . "End of \$c_old\n\n";
+            $c_old = $#{$c_old};
+            $debug && print STDERR "$subname: \$c=$c \$c_old=$c_old\n";
+#            if (!$faa || $feats_gbk && ($acc =~ /^NC_\d+$/i)) {
+            if (!$faa || ($acc =~ /^NC_\d+$/i) && ($c_old>=$c)) {
+                $debug && print STDERR "$subname: \$faa=\n". Dumper($faa) . "End of \$faa\n\n";
+                $debug && print STDERR "$subname: \$feats_gbk=\n". Dumper($feats_gbk) . "End of \$feats_gbk\n\n";
                 $faa = $feats_gbk;
                 $outfile = "$dir_path/$acc" . '_matpept_gbk.faa';
-            
+            } elsif (($acc =~ /^NC_\d+$/i) && ($c_old<$c)) {
+                $faa = Annotate_misc::get_msa_fasta( $refcds_ids, $feats_msa, $acc);
             }
+
             
             print STDERR "$subname: accession='#$number:$acc' \$outfile=$outfile.\n";
             print STDERR "$subname: \$acc=$acc \$faa=\n${faa}End of \$faa\n\n";
@@ -333,6 +331,34 @@ exit;
 
 } # sub process_list1
 
+
+sub get_msa_fasta {
+    my ($refcds_ids, $feats_msa, $acc) = @_;
+
+    my $debug = 0 && $debug_all;
+    my $subname = 'get_msa_fasta';
+
+    my $faa1 = '';
+    for my $id (@$refcds_ids) {
+            my $feats = $feats_msa->{$id};
+            if (!$feats->[0]) {
+                print STDERR "$subname: ERROR: NULL feature found for \$id=$id\n";
+                next;
+            }
+            $debug && print STDERR "$subname: \$feats=\n". Dumper($feats) . "End of \$feats\n\n";
+
+            # either print to STDERR or fasta file
+            $faa1 .= Annotate_misc::generate_fasta( $feats);
+            print STDERR "$subname: refcds=$id input $acc ".$feats->[0]->primary_tag."=".$feats->[0]->location->to_FTstring."\n";
+#            $debug && print STDERR "$subname: \$faa1 = '\n$faa1'\n";
+
+            Annotate_Verify::check_old_annotation( $acc, $faa1);
+#            print STDERR "$subname: accession = '".$acc."'\n";
+    }
+    $debug && print STDERR "$subname: accession=$acc \$faa1 = '\n$faa1'\n";
+
+    return $faa1;
+} # sub get_msa_fasta
 
 sub process_list3 {
     my ($accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $test1, $refseq_required) = @_;

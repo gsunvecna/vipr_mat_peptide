@@ -1,4 +1,4 @@
-LOCUS       NC_004162              11826 bp    RNA     linear   VRL 28-APR-2010
+LOCUS       NC_004162              11826 bp    RNA     linear   VRL 27-JUN-2012
 DEFINITION  Chikungunya virus, complete genome.
 ACCESSION   NC_004162
 VERSION     NC_004162.2  GI:27754751
@@ -116,8 +116,9 @@ FEATURES             Location/Qualifiers
                      /product="nonstructural protein P1"
                      /note="Annotated by VIPRBRC, MSA, refseq=NC_001512"
                      /note="Desc:src=MSA|ACC=NC_004162|Ver=NC_004162.
-                     2|CDS=GI:22789217|ref=NC_001512.1|Loc=77..1681|AA=1..
-                     535|gene_symbol=unk|product=nonstructural protein
+                     2|CDS=GI:22789217|ref=NC_001512.1|RM=80..1684|Loc=77..
+                     1681||AA=1..
+                     535|symbol=nsP1|Partial=N|product=nonstructural protein
                      P1|*new*"
      mat_peptide     1682..4075
                      /locus_tag="CHIKVgp1"
@@ -139,8 +140,9 @@ FEATURES             Location/Qualifiers
                      /product="nonstructural protein P2"
                      /note="Annotated by VIPRBRC, MSA, refseq=NC_001512"
                      /note="Desc:src=MSA|ACC=NC_004162|Ver=NC_004162.
-                     2|CDS=GI:22789217|ref=NC_001512.1|Loc=1682..4075|AA=536..
-                     1333|gene_symbol=unk|product=nonstructural protein
+                     2|CDS=GI:22789217|ref=NC_001512.1|RM=1685..4078|Loc=1682..
+                     4075||AA=536..
+                     1333|symbol=nsP2|Partial=N|product=nonstructural protein
                      P2|*new*"
      mat_peptide     4076..5665
                      /locus_tag="CHIKVgp1"
@@ -157,8 +159,9 @@ FEATURES             Location/Qualifiers
                      /product="nonstructural protein P3"
                      /note="Annotated by VIPRBRC, MSA, refseq=NC_001512"
                      /note="Desc:src=MSA|ACC=NC_004162|Ver=NC_004162.
-                     2|CDS=GI:22789217|ref=NC_001512.1|Loc=4076..5665|AA=1334..
-                     1863|gene_symbol=unk|product=nonstructural protein
+                     2|CDS=GI:22789217|ref=NC_001512.1|RM=4079..5788|Loc=4076..
+                     5665||AA=1334..
+                     1863|symbol=nsP3|Partial=N|product=nonstructural protein
                      P3|*new*"
      mat_peptide     5666..7498
                      /locus_tag="CHIKVgp1"
@@ -176,8 +179,9 @@ FEATURES             Location/Qualifiers
                      /product="nonstructural protein P4"
                      /note="Annotated by VIPRBRC, MSA, refseq=NC_001512"
                      /note="Desc:src=MSA|ACC=NC_004162|Ver=NC_004162.
-                     2|CDS=GI:22789217|ref=NC_001512.1|Loc=5666..7498|AA=1864..
-                     2474|gene_symbol=unk|product=nonstructural protein
+                     2|CDS=GI:22789217|ref=NC_001512.1|RM=5789..7621|Loc=5666..
+                     7498||AA=1864..
+                     2474|symbol=nsP4|Partial=N|product=nonstructural protein
                      P4|*new*"
      gene            7567..11313
                      /locus_tag="CHIKVgp2"
@@ -222,8 +226,9 @@ FEATURES             Location/Qualifiers
                      /product="C protein"
                      /note="Annotated by VIPRBRC, MSA, refseq=NC_001512"
                      /note="Desc:src=MSA|ACC=NC_004162|Ver=NC_004162.
-                     2|CDS=GI:27754752|ref=NC_001512.1|Loc=7567..8349|AA=1..
-                     261|gene_symbol=unk|product=C protein|*new*"
+                     2|CDS=GI:27754752|ref=NC_001512.1|RM=7670..8449|Loc=7567..
+                     8349||AA=1..261|symbol=C|Partial=N|product=C
+                     protein|*new*"
      mat_peptide     8350..8541
                      /locus_tag="CHIKVgp2"
                      /translation="SLAIPVMCLLANTTFPCSQPPCIPCCYEKEPEETLRMLEDNVMR
@@ -231,8 +236,9 @@ FEATURES             Location/Qualifiers
                      /product="E3 protein"
                      /note="Annotated by VIPRBRC, MSA, refseq=NC_001512"
                      /note="Desc:src=MSA|ACC=NC_004162|Ver=NC_004162.
-                     2|CDS=GI:27754752|ref=NC_001512.1|Loc=8350..8541|AA=262..
-                     325|gene_symbol=unk|product=E3 protein|*new*"
+                     2|CDS=GI:27754752|ref=NC_001512.1|RM=8450..8641|Loc=8350..
+                     8541||AA=262..325|symbol=E3|Partial=N|product=E3
+                     protein|*new*"
      mat_peptide     8542..9810
                      /locus_tag="CHIKVgp2"
                      /translation="STKDNFNVYKATRPYLAHCPDCGEGHSCHSPVALERIRNEATDG
@@ -246,8 +252,9 @@ FEATURES             Location/Qualifiers
                      /product="E2 protein"
                      /note="Annotated by VIPRBRC, MSA, refseq=NC_001512"
                      /note="Desc:src=MSA|ACC=NC_004162|Ver=NC_004162.
-                     2|CDS=GI:27754752|ref=NC_001512.1|Loc=8542..9810|AA=326..
-                     748|gene_symbol=unk|product=E2 protein|*new*"
+                     2|CDS=GI:27754752|ref=NC_001512.1|RM=8642..9910|Loc=8542..
+                     9810||AA=326..748|symbol=E2|Partial=N|product=E2
+                     protein|*new*"
      mat_peptide     9811..9993
                      /locus_tag="CHIKVgp2"
                      /translation="ATYQEAAVYLWNEQQPLFWLQALIPLAALIVLCNCLRLLPCCCK
@@ -255,8 +262,9 @@ FEATURES             Location/Qualifiers
                      /product="6K protein"
                      /note="Annotated by VIPRBRC, MSA, refseq=NC_001512"
                      /note="Desc:src=MSA|ACC=NC_004162|Ver=NC_004162.
-                     2|CDS=GI:27754752|ref=NC_001512.1|Loc=9811..9993|AA=749..
-                     809|gene_symbol=unk|product=6K protein|*new*"
+                     2|CDS=GI:27754752|ref=NC_001512.1|RM=9911..10093|Loc=9811.
+                     .9993||AA=749..809|symbol=6K|Partial=N|product=6K
+                     protein|*new*"
      mat_peptide     9994..11310
                      /locus_tag="CHIKVgp2"
                      /translation="YEHVTVIPNTVGVPYKTLVNRPGYSPMVLEMELLSVTLEPTLSL
@@ -270,8 +278,49 @@ FEATURES             Location/Qualifiers
                      /product="E1 protein"
                      /note="Annotated by VIPRBRC, MSA, refseq=NC_001512"
                      /note="Desc:src=MSA|ACC=NC_004162|Ver=NC_004162.
-                     2|CDS=GI:27754752|ref=NC_001512.1|Loc=9994..11310|AA=810..
-                     1248|gene_symbol=unk|product=E1 protein|*new*"
+                     2|CDS=GI:27754752|ref=NC_001512.1|RM=10094..
+                     11410|Loc=9994..11310||AA=810..
+                     1248|symbol=E1|Partial=N|product=E1 protein|*new*"
+     gene            7567..10040
+                     /locus_tag="CHIKVgp3"
+                     /db_xref="GeneID:13165582"
+     CDS             join(7567..9957,9957..10040)
+                     /locus_tag="CHIKVgp3"
+                     /db_xref="GI:392976865"
+                     /db_xref="GeneID:13165582"
+                     /codon_start=1
+                     /protein_id="YP_006491243.1"
+                     /translation="MEFIPTQTFYNRRYQPRPWTPRPTIQVIRPRPRPQRQAGQLAQL
+                     ISAVNKLTMRAVPQQKPRKNRKNKKQKQKQQAPQNNTNQKKQPPKKKPAQKKKKPGRR
+                     ERMCMKIENDCIFEVKHEGKVTGYACLVGDKVMKPAHVKGTIDNADLAKLAFKRSSKY
+                     DLECAQIPVHMKSDASKFTHEKPEGYYNWHHGAVQYSGGRFTIPTGAGKPGDSGRPIF
+                     DNKGRVVAIVLGGANEGARTALSVVTWNKDIVTKITPEGAEEWSLAIPVMCLLANTTF
+                     PCSQPPCIPCCYEKEPEETLRMLEDNVMRPGYYQLLQASLTCSPHRQRRSTKDNFNVY
+                     KATRPYLAHCPDCGEGHSCHSPVALERIRNEATDGTLKIQVSLQIGIGTDDSHDWTKL
+                     RYMDNHIPADAGRAGLFVRTSAPCTITGTMGHFILARCPKGETLTVGFTDSRKISHSC
+                     THPFHHDPPVIGREKFHSRPQHGKELPCSTYVQSNAATAEEIEVHMPPDTPDRTLLSQ
+                     QSGNVKITVNSQTVRYKCNCGGSNEGLITTDKVINNCKVDQCHAAVTNHKKWQYNSPL
+                     VPRNAELGDRKGKIHIPFPLANVTCMVPKARNPTVTYGKNQVIMLLYPDHPTLLSYRS
+                     MGEEPNYQEEWVTHKKEVVLTVPTEGLEVTWGNNEPYKYWPQLSANGTAHGHPHEIIL
+                     YYYELYPTMTVVVVSVASFILLSMVGMAVGMCMCARRRCITPYELTPGATVPFLLSLI
+                     CCIRTAKAATYQEAAVYLWNEQQPLFWLQALIPLAALIVLCNCLRLLPCCCKTLAFLS
+                     RNEHRCPHCERVRTRNSDPEHGGSTV"
+                     /product="truncated polyprotein"
+                     /note="Truncated verstion of structural polyprotein that
+                     will be produced when frameshifting occurs at nt 9957;
+                     Truncated version of structural polyprotein and
+                     transframe fusion protein have been added by NCBI Staff
+                     with the kind help of Dr. David Karlin (Department of
+                     Zoology, University of  Oxford, UK) and Dr. Andrew Firth
+                     (Department of Pathology,  University of Cambridge, UK)"
+     mat_peptide     join(9811..9957,9957..10037)
+                     /locus_tag="CHIKVgp3"
+                     /db_xref="GI:392976866"
+                     /protein_id="YP_006491244.1"
+                     /product="transframe fusion protein"
+                     /note="Transframe fusion (TF) protein expressed via
+                     programmed ribosomal frameshifting. TF protein presumably
+                     plays a stabilizing role in the virion structure."
 ORIGIN      
         1 atggctgcgt gagacacacg tagcctacca gtttcttact gctctactct gcaaagcaag
        61 agattaagaa cccatcatgg atcctgtgta cgtggacata gacgctgaca gcgccttttt

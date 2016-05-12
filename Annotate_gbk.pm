@@ -93,7 +93,7 @@ sub combine_msa_gbk {
 sub extract_mature_peptides {
     my ($seq_obj, $feats_msa,$exe_dir) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subname = 'extract_mature_peptides';
 
     my $acc = $seq_obj->accession_number;
@@ -254,6 +254,7 @@ sub extract_mature_peptides {
 
            # add the translation to the feature
            $feat_obj->add_tag_value('translation', $f->translate()->seq) if ( 0 );
+           $debug && print STDERR "$subname: #$i translation obtained from DNA\n";
 
         } else {
            print "$subname: WARNING: found sequence for mat_peptide from gb file.\n";
@@ -316,16 +317,36 @@ sub extract_mature_peptides {
             $debug && print STDERR "$subname: $acc \$str1=$str1 \$str2=$str2\n";
 #            next if ($str1 ne $str2);
 
-            foreach my $feat (@$feats) {
+            foreach my $ifeat (0 .. $#{$feats}) {
+                my $feat = $feats->[$ifeat];
+                $debug && print STDERR "$subname: \$ifeat=$ifeat \$feat=".$feat->primary_tag.":".$feat->location->to_FTstring."\n";
                 next if ($feat->primary_tag eq 'CDS'); # Exclude CDS
                 # get the translation
                 my @values = $feat->get_tag_values('translation');
                 my $s = $values[0];
-                $debug && print STDERR "$subname: $acc \$s=$s \$translation=$translation\n";
-                if ($s eq $translation) {
+                $s =~ s/X/./i;
+                $debug && print STDERR "$subname: $acc \$s          =$s\n";
+                $debug && print STDERR "$subname: $acc \$translation=$translation\n";
+                # if ($s eq $translation) {
+                if ($translation =~ m/^$s$/i) {
                     $source = 'src=MSA,GBK';
                     $debug && print STDERR "$subname: $acc \$source=$source\n";
+
+                    # update the source in note for the MSA feature
+                    my $notes = [ $feat->get_tag_values('note') ];
+                    for my $note (@$notes) {
+                        next if ($note !~ /Desc:/i);
+                        $note =~ s/src=MSA[|]/src=MSA,GBK|/i;
+                        $debug && print STDERR "$subname: \$acc=$acc \$note=$note\n";
+                        $feat->remove_tag('note');
+                        $feat->add_tag_value('note', @$notes);
+                    }
+                    $debug && print STDERR "$subname: \$acc=$acc \$feat=\n". Dumper($feat) . "End of \$feat\n\n";
+                    $debug && print STDERR "$subname: \$acc=$acc \$feats=\n". Dumper($feats) . "End of \$feats\n\n";
+
                     last CDS;
+                } elsif ($feat->location->to_FTstring eq $feat_obj->location->to_FTstring) {
+                    $debug && print STDERR "$subname: $acc         diff=".Annotate_Verify::diff_2str($s, $translation)."\n";
                 }
             }
         }

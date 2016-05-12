@@ -34,10 +34,17 @@
 #################
 
 To-do:
-1. Will check the families Flaviridae and Togaviridae for new or updated
-refseqs.
+1. What to do with the 2 RefSeqs of the Reoviridae family?
 
 Changes
+
+Changes in V1.2.0, April, 2013
+1. Add a third nucleotide if the last codon has 2 nucleotides that can
+determine the amino acid already, in order to overcome the change from BioPerl
+1.5.8 to 1.6.1 where the default behavior to deal with partial codon changed.
+2. Added 13 species in the Flaviviridae to the apporved RefSeq list.
+3. For family Reoviridae, there are 2 RefSeqs that have mat_peptides:
+NC_004278 and NC_003758. What to do with these?
 
 Changes in V1.1.8, March 19, 2012
 1. Tweaked the sub get_new_translation, in order to handle cases like

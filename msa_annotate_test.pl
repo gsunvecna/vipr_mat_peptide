@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.1.8'); # Feb 19, 2013
+use version; our $VERSION = qv('1.2.0'); # Apr 12, 2013
 use Getopt::Long;
 use Data::Dumper;
 use English;
@@ -111,10 +111,10 @@ if ($infile) {
 } elsif (-d "$dirIn") {
     my $ptn = '^\s*([^\s]+)(\.(gb|gbk|genbank))\s*$'; # pattern for genbank file name
     $accs = Annotate_misc::list_dir_files( "$dir_path", $ptn); # the returned accs already contain $dir_path/
-}
-#$debug && print STDERR "$exe_name: \$accs=\n". Dumper($accs) . "End of \$accs\n";
 
     unshift @$accs, [$#{$accs}+1, 'usage']; # add usage to test
+}
+#$debug && print STDERR "$exe_name: \$accs=\n". Dumper($accs) . "End of \$accs\n";
 
     my $n = $#{$accs}+1;
     print STDERR "$exe_name: from Input directory: $dir_path, found $n gbk files.\n";
@@ -164,7 +164,7 @@ for my $fam (sort keys %$families) {
 
     # Process each genbank file
     my $count = 0;
-for my $fam (sort keys %$families) {
+for my $fam ( sort keys %$families) {
     my $accs = $families->{$fam};
     my $msg1 = sprintf (" Testing %-15s %d", "$fam,", scalar @$accs);
 

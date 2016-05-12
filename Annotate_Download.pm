@@ -14,7 +14,7 @@ use Bio::AlignIO;
 use Bio::Tools::Run::StandAloneBlast;
 use IO::String;
 
-use version; our $VERSION = qv('1.1.8'); # Feb 20 2013
+use version; our $VERSION = qv('1.2.0'); # Apr 12 2013
 
 use Annotate_Def;
 
@@ -73,91 +73,6 @@ sub setDebugAll {
     $debug_all = $debug;
 } # sub setDebugAll
 
-=head2
-sub backupFiles takes a directory path, a filename, and a number, backs up the file to <filename>.bakx with x=1..number
-=cut
-=head2
-sub backupFiles {
-    my ($exe_dir, $filename, $numBak) = @_;
-
-    my $debug = 0 || $debug_all;
-    my $subn = 'backupFiles';
-
-    my $numCopies = 0;
-    $numBak = 1 if (!$numBak || $numBak<1);
-    $exe_dir = './' if (!$exe_dir);
-    $debug && print STDERR "$subn: \$exe_dir='$exe_dir' \$numBak=$numBak\n";
-    return $numCopies if (!$filename);
-    if (!-e "$exe_dir/$filename") {
-        $debug && print STDERR "$subn: file='$exe_dir/$filename' doesn't exist, nothing to backup\n";
-        return $numCopies;
-    }
-
-    # First, see if file $filename exists, then see if 1st backup exists, then further backups
-    my $result = '';
-    my $bak = "$filename.bak1";
-    my $cmds = [ ];
-    if (!-e "$exe_dir/$bak") {
-        $debug && print STDERR "$subn: file='$exe_dir/$bak' doesn't exist, backup one copy\n";
-        $result = ` ls -l $exe_dir/$bak 2>&1`;
-    } else {
-        $result = "diff $exe_dir/$filename $exe_dir/$bak 2>&1";
-        $result = ` $result `;
-        $debug && print STDERR "$subn: \$result='\n$result'\n";
-        chomp $result;
-    }
-    if (!$result) {
-        print STDERR "$subn: no difference between file $filename vs. $bak\n";
-    } else {
-        $cmds->[$#{$cmds}+1] = "mv $exe_dir/$filename $exe_dir/$bak 2>&1";
-    }
-    $debug && print STDERR "$subn: \$cmds=".Dumper($cmds)."\n";
-    for my $i (1 .. $numBak) {
-            $bak = sprintf("${filename}.bak%d", $i);
-            $debug && print STDERR "$subn: \$i=$i \$bak=$bak\n";
-            if (!-e"$exe_dir/$bak") {
-                $debug && print STDERR "$subn: \$i=$i \$bak=$bak doesn't exist.\n";
-                last;
-            }
-            my $bak1 = sprintf("${filename}.bak%d", $i+1);
-            if (!-e"$exe_dir/$bak1") {
-                $debug && print STDERR "$subn: \$i=$i \$bak=$bak1 doesn't exist.\n";
-                last;
-            }
-            my $cmd = "diff $exe_dir/$bak $exe_dir/$bak1 2>&1";
-            $result = ` $cmd `;
-            chomp $result;
-            $debug && print STDERR "$subn: \$cmd='$cmd' \$result='\n$result'\n";
-            if (!$result) {
-                $debug && print STDERR "$subn: \$i=$i $exe_dir/$bak $exe_dir/$bak1 have no difference.\n";
-                last;
-            }
-            $cmds->[$#{$cmds}+1] = "mv $exe_dir/$bak $exe_dir/$bak1 2>&1";
-    }
-    $debug && print STDERR "$subn: \$cmds=".Dumper($cmds)."\n";
-
-    $result = '';
-    for my $i (reverse 0 .. $#{$cmds}) {
-        my $cmd = $cmds->[$i];
-        if ($cmd) {
-            $numCopies++;
-            $debug && print STDERR "$subn: \$i=$i \$numCopies=$numCopies \$cmd='$cmd'\n";
-            $result = ` $cmd `;
-            $debug && print STDERR "$subn: \$i=$i \$numCopies=$numCopies \$result='\n$result'\n";
-            chomp $result;
-            $debug && print STDERR "$subn: \$cmd=$cmd\n";
-            print STDERR "$subn: \$result='\n$result'\n" if ($result);
-        }
-    }
-    $debug && print STDERR "$subn: \$numCopies=$numCopies \$result='$result'\n";
-
-    $result = "ls -l $exe_dir/$filename* 2>&1";
-    $result .= "\n" . `ls -l $exe_dir/$filename* 2>&1`;
-    $debug && print STDERR "$subn: \$result='\n$result'\n";
-    $debug && print STDERR "$subn: backed up $numCopies copies for file:$filename\n";
-    return $numCopies;
-} # sub backupFiles
-=cut
 
 =head2
  sub downloadRefseq searches genbank for all refseqs for a family, then downloads all the refseqs
@@ -217,7 +132,7 @@ sub downloadRefseq {
         my $bakFileName = "$outFileName.bak1";
         if (-e "$exe_dir/$outFileName") {
             my $copies = Annotate_Util::backupFiles( $exe_dir, $outFileName, 8);
-            print STDERR "$subn: \$fam=$fam subroutine backupFiles made $copies backups\n";
+            print STDERR "$subn: \$fam=$fam subroutine backupFiles made $copies backups for $outFileName\n";
 
         }
         # Download the NC_* as a set
@@ -248,10 +163,10 @@ sub downloadRefseq {
         $debug && print STDERR "$subn: Downloaded $count genomes for $fam, saved to $exe_dir/$outFileName\n";
         # check if there is any difference between new and existing genbank file
         if (-e "$bakFileName") {
-              my $dif = `diff $exe_dir/$bakFileName $exe_dir/$outFileName 2>&1`;
+              my $diff = `diff $exe_dir/$bakFileName $exe_dir/$outFileName 2>&1`;
               my $result = `ls -l $exe_dir/$outFileName*`;
               chomp $result;
-              if ($dif) {
+              if ($diff) {
                 print STDERR "$subn: ERROR: \$fam=$fam difference between $bakFileName and $outFileName\n";
                 print STDERR "$subn: \$result=\n$result\n";
               } else {
@@ -369,6 +284,7 @@ for (my $i=0; $i<3; $i++) {
 }
 
         # Move $tmpfile to $taxonFileName is there is update
+if (!-z "$exe_dir/$tmpfile") {
         my $cmd = "diff $exe_dir/$tmpfile $exe_dir/$taxonFileName 2>&1";
         my $result = ` $cmd `;
         chomp $result;
@@ -389,6 +305,7 @@ for (my $i=0; $i<3; $i++) {
             print STDERR "$subn: Downloaded $count genomes for $fam, new download saved in $tmpfile.\n";
         }
     }
+}
 
     return $taxonFileName;
 } # sub downloadTaxon
@@ -905,6 +822,8 @@ sub checkAllTaxon {
     $cmd = "ls -l $exe_dir/$taxonFileName $exe_dir/$bak1";
     $cmd .= " $exe_dir/$taxonTempName " if (!$TAXON_SAVED);
     print STDERR ` $cmd `;
+    $cmd = "ls -l $exe_dir/taxon_*xml";
+    print STDERR ` $cmd `;
 
     return $count;
 } # sub checkAllTaxon
@@ -977,7 +896,11 @@ sub checkAllRefseq {
         $count->{$fam} = $status;
 #        $outFileName = "RefSeq_${fam}.gbk";
 
-        next if ($fam ne 'Flaviviridae');
+        my $fam_tested;
+#        $fam_tested = 'Flaviviridae';
+        if ($fam_tested) {
+            next if ($fam ne $fam_tested);
+        }
 
         if ($DOWNLOAD_REFSEQ) {
             print STDERR "\n$subn: \$fam=$fam, performed live download for RefSeq\n";

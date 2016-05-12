@@ -1792,21 +1792,211 @@ NC_001560;     "3126..4610"; "G"     ; #msa_annotate.pl v1.1.8
 NC_003758;        "23..694"; "Pro"   ; #msa_annotate.pl v1.1.8
 NC_003758;      "695..1810"; "C"     ; #msa_annotate.pl v1.1.8
 
-# msa_annotate.pl v1.1.8
+# msa_annotate.pl V1.2.0
 # Aedes flavivirus, 390845, Flaviviridae
 # NC_012932
-NC_012932;        "97..486"; "ancC"  ; #msa_annotate.pl v1.1.8
-NC_012932;       "487..915"; "preM"  ; #msa_annotate.pl v1.1.8
-NC_012932;       "730..915"; "M"     ; #msa_annotate.pl v1.1.8
-NC_012932;      "916..2208"; "E"     ; #msa_annotate.pl v1.1.8
-NC_012932;     "2209..3375"; "NS1"   ; #msa_annotate.pl v1.1.8
-NC_012932;     "3376..4077"; "NS2A"  ; #msa_annotate.pl v1.1.8
-NC_012932;     "4078..4452"; "NS2B"  ; #msa_annotate.pl v1.1.8
-NC_012932;     "4453..5703"; "NS3"   ; #msa_annotate.pl v1.1.8
-NC_012932;     "5704..6684"; "NS4A"  ; #msa_annotate.pl v1.1.8
-NC_012932;     "6685..7458"; "NS4B"  ; #msa_annotate.pl v1.1.8
-NC_012932;    "7459..10119"; "NS5"   ; #msa_annotate.pl v1.1.8
-NC_012932;     "2212..4163"; "TF"    ; #msa_annotate.pl v1.1.8
+NC_012932;        "97..486"; "C"     ; #msa_annotate.pl V1.2.0
+NC_012932;       "487..915"; "preM"  ; #msa_annotate.pl V1.2.0
+NC_012932;       "730..915"; "M"     ; #msa_annotate.pl V1.2.0
+NC_012932;      "916..2208"; "E"     ; #msa_annotate.pl V1.2.0
+NC_012932;     "2209..3375"; "NS1"   ; #msa_annotate.pl V1.2.0
+NC_012932;     "3376..4077"; "NS2A"  ; #msa_annotate.pl V1.2.0
+NC_012932;     "4078..4452"; "NS2B"  ; #msa_annotate.pl V1.2.0
+NC_012932;     "4453..5703"; "NS3"   ; #msa_annotate.pl V1.2.0
+NC_012932;     "5704..6684"; "NS4A"  ; #msa_annotate.pl V1.2.0
+NC_012932;     "6685..7458"; "NS4B"  ; #msa_annotate.pl V1.2.0
+NC_012932;    "7459..10119"; "NS5"   ; #msa_annotate.pl V1.2.0
+NC_012932;     "2212..4163"; "TF"    ; #msa_annotate.pl V1.2.0
+
+# msa_annotate.pl V1.2.0
+# Culex flavivirus, 390844, Flaviviridae
+# NC_008604
+NC_008604;        "92..508"; "C"     ; #msa_annotate.pl V1.2.0
+NC_008604;       "509..937"; "preM"  ; #msa_annotate.pl V1.2.0
+NC_008604;      "938..2218"; "E"     ; #msa_annotate.pl V1.2.0
+NC_008604;     "2219..3325"; "NS1"   ; #msa_annotate.pl V1.2.0
+NC_008604;     "3326..4015"; "NS2A"  ; #msa_annotate.pl V1.2.0
+NC_008604;     "4016..4396"; "NS2B"  ; #msa_annotate.pl V1.2.0
+NC_008604;     "4397..6172"; "NS3"   ; #msa_annotate.pl V1.2.0
+NC_008604;     "6173..6670"; "NS4A"  ; #msa_annotate.pl V1.2.0
+NC_008604;     "6671..6739"; "2k"    ; #msa_annotate.pl V1.2.0
+NC_008604;     "6740..7510"; "NS4B"  ; #msa_annotate.pl V1.2.0
+NC_008604;    "7511..10177"; "NS5"   ; #msa_annotate.pl V1.2.0
+NC_008604;     "2219..4290"; "TF"    ; #msa_annotate.pl V1.2.0
+
+# msa_annotate.pl V1.2.0
+# Kamiti River virus, 218849, Flaviviridae
+# NC_005064
+NC_005064;        "97..525"; "C"     ; #msa_annotate.pl V1.2.0
+NC_005064;       "526..954"; "preM"  ; #msa_annotate.pl V1.2.0
+NC_005064;       "772..954"; "M"     ; #msa_annotate.pl V1.2.0
+NC_005064;      "955..2250"; "E"     ; #msa_annotate.pl V1.2.0
+NC_005064;     "2251..3420"; "NS1"   ; #msa_annotate.pl V1.2.0
+NC_005064;     "3421..4116"; "NS2A"  ; #msa_annotate.pl V1.2.0
+NC_005064;     "4117..4488"; "NS2B"  ; #msa_annotate.pl V1.2.0
+NC_005064;     "4489..6219"; "NS3"   ; #msa_annotate.pl V1.2.0
+NC_005064;     "6220..6723"; "NS4A"  ; #msa_annotate.pl V1.2.0
+NC_005064;     "6724..7506"; "NS4B"  ; #msa_annotate.pl V1.2.0
+NC_005064;    "7507..10167"; "NS5"   ; #msa_annotate.pl V1.2.0
+NC_005064;     "2251..4202"; "TF"    ; #msa_annotate.pl V1.2.0
+
+# msa_annotate.pl V1.2.0
+# Border disease virus X818, 358764, Flaviviridae
+# NC_003679
+NC_003679;       "373..876"; "N-Pro" ; #msa_annotate.pl V1.2.0
+NC_003679;      "877..1176"; "C"     ; #msa_annotate.pl V1.2.0
+NC_003679;     "1177..1857"; "RNAse" ; #msa_annotate.pl V1.2.0
+NC_003679;     "1858..2442"; "E1"    ; #msa_annotate.pl V1.2.0
+NC_003679;     "2443..3771"; "E2*"   ; #msa_annotate.pl V1.2.0
+NC_003679;     "2443..3561"; "E2"    ; #msa_annotate.pl V1.2.0
+NC_003679;     "3562..3771"; "p7"    ; #msa_annotate.pl V1.2.0
+NC_003679;     "3772..7179"; "NS2-3" ; #msa_annotate.pl V1.2.0
+NC_003679;     "5131..7179"; "NTPase"; #msa_annotate.pl V1.2.0
+NC_003679;     "7180..7371"; "NS4A"  ; #msa_annotate.pl V1.2.0
+NC_003679;     "7372..8412"; "NS4B"  ; #msa_annotate.pl V1.2.0
+NC_003679;     "8413..9903"; "NS5A"  ; #msa_annotate.pl V1.2.0
+NC_003679;    "9904..12057"; "NS5B"  ; #msa_annotate.pl V1.2.0
+
+# msa_annotate.pl V1.2.0
+# Pestivirus Giraffe-1, 155905, Flaviviridae
+# NC_003678
+NC_003678;       "383..886"; "N-Pro" ; #msa_annotate.pl V1.2.0
+NC_003678;      "887..1180"; "C"     ; #msa_annotate.pl V1.2.0
+NC_003678;     "1181..1861"; "RNAse" ; #msa_annotate.pl V1.2.0
+NC_003678;     "1862..2446"; "E1"    ; #msa_annotate.pl V1.2.0
+NC_003678;     "2447..3778"; "E2*"   ; #msa_annotate.pl V1.2.0
+NC_003678;     "2447..3568"; "E2"    ; #msa_annotate.pl V1.2.0
+NC_003678;     "3569..3778"; "p7"    ; #msa_annotate.pl V1.2.0
+NC_003678;     "3779..7468"; "NS2-3" ; #msa_annotate.pl V1.2.0
+NC_003678;     "5420..7468"; "NTPase"; #msa_annotate.pl V1.2.0
+NC_003678;     "7469..7660"; "NS4A"  ; #msa_annotate.pl V1.2.0
+NC_003678;     "7661..8701"; "NS4B"  ; #msa_annotate.pl V1.2.0
+NC_003678;    "8702..10192"; "NS5A"  ; #msa_annotate.pl V1.2.0
+NC_003678;   "10193..12349"; "NS5B"  ; #msa_annotate.pl V1.2.0
+
+# msa_annotate.pl V1.2.0
+# Bovine viral diarrhea virus genotype 2, 54315, Flaviviridae
+# NC_002032
+NC_002032;       "356..859"; "N-Pro" ; #msa_annotate.pl V1.2.0
+NC_002032;      "860..1165"; "C"     ; #msa_annotate.pl V1.2.0
+NC_002032;     "1166..1846"; "RNAse" ; #msa_annotate.pl V1.2.0
+NC_002032;     "1847..2431"; "E1"    ; #msa_annotate.pl V1.2.0
+NC_002032;     "2432..3757"; "E2*"   ; #msa_annotate.pl V1.2.0
+NC_002032;     "2432..3547"; "E2"    ; #msa_annotate.pl V1.2.0
+NC_002032;     "3548..3757"; "p7"    ; #msa_annotate.pl V1.2.0
+NC_002032;     "3758..7165"; "NS2-3" ; #msa_annotate.pl V1.2.0
+NC_002032;     "5117..7165"; "NTPase"; #msa_annotate.pl V1.2.0
+NC_002032;     "7166..7357"; "NS4A"  ; #msa_annotate.pl V1.2.0
+NC_002032;     "7358..8398"; "NS4B"  ; #msa_annotate.pl V1.2.0
+NC_002032;     "8399..9889"; "NS5A"  ; #msa_annotate.pl V1.2.0
+NC_002032;    "9890..12046"; "NS5B"  ; #msa_annotate.pl V1.2.0
+
+# msa_annotate.pl V1.2.0
+# Bovine viral diarrhea virus 1, 11099, Flaviviridae
+# NC_001461
+NC_001461;       "386..889"; "N-Pro" ; #msa_annotate.pl V1.2.0
+NC_001461;      "890..1195"; "C"     ; #msa_annotate.pl V1.2.0
+NC_001461;     "1196..1876"; "RNAse" ; #msa_annotate.pl V1.2.0
+NC_001461;     "1877..2461"; "E1"    ; #msa_annotate.pl V1.2.0
+NC_001461;     "2462..3793"; "E2*"   ; #msa_annotate.pl V1.2.0
+NC_001461;     "2462..3583"; "E2"    ; #msa_annotate.pl V1.2.0
+NC_001461;     "3584..3793"; "p7"    ; #msa_annotate.pl V1.2.0
+NC_001461;     "3794..7471"; "NS2-3" ; #msa_annotate.pl V1.2.0
+NC_001461;     "5423..7471"; "NTPase"; #msa_annotate.pl V1.2.0
+NC_001461;     "7472..7663"; "NS4A"  ; #msa_annotate.pl V1.2.0
+NC_001461;     "7664..8704"; "NS4B"  ; #msa_annotate.pl V1.2.0
+NC_001461;    "8705..10192"; "NS5A"  ; #msa_annotate.pl V1.2.0
+NC_001461;   "10193..12349"; "NS5B"  ; #msa_annotate.pl V1.2.0
+
+# msa_annotate.pl V1.2.0
+# Classical swine fever virus, 11096, Flaviviridae
+# NC_002657
+NC_002657;       "374..877"; "N-Pro" ; #msa_annotate.pl V1.2.0
+NC_002657;      "878..1174"; "C"     ; #msa_annotate.pl V1.2.0
+NC_002657;     "1175..1855"; "RNAse" ; #msa_annotate.pl V1.2.0
+NC_002657;     "1856..2440"; "E1"    ; #msa_annotate.pl V1.2.0
+NC_002657;     "2441..3769"; "E2*"   ; #msa_annotate.pl V1.2.0
+NC_002657;     "2441..3559"; "E2"    ; #msa_annotate.pl V1.2.0
+NC_002657;     "3560..3769"; "p7"    ; #msa_annotate.pl V1.2.0
+NC_002657;     "3770..7189"; "NS2-3" ; #msa_annotate.pl V1.2.0
+NC_002657;     "5141..7189"; "NTPase"; #msa_annotate.pl V1.2.0
+NC_002657;     "7190..7381"; "NS4A"  ; #msa_annotate.pl V1.2.0
+NC_002657;     "7382..8422"; "NS4B"  ; #msa_annotate.pl V1.2.0
+NC_002657;     "8423..9913"; "NS5A"  ; #msa_annotate.pl V1.2.0
+NC_002657;    "9914..12067"; "NS5B"  ; #msa_annotate.pl V1.2.0
+
+# msa_annotate.pl V1.2.0
+# Tamana bat virus, 161675, Flaviviridae
+# NC_003996;
+NC_003996;      "1..345"; "ancC"  ; #msa_annotate.pl V1.2.0
+NC_003996;      "1..285"; "C"     ; #msa_annotate.pl V1.2.0
+NC_003996;    "346..852"; "preM"  ; #msa_annotate.pl V1.2.0
+NC_003996;    "655..852"; "M"     ; #msa_annotate.pl V1.2.0
+NC_003996;   "853..2358"; "E"     ; #msa_annotate.pl V1.2.0
+NC_003996;  "2359..3390"; "NS1"   ; #msa_annotate.pl V1.2.0
+NC_003996;  "3391..3978"; "NS2a"  ; #msa_annotate.pl V1.2.0
+NC_003996;  "3979..4431"; "NS2b"  ; #msa_annotate.pl V1.2.0
+NC_003996;  "4432..6303"; "NS3"   ; #msa_annotate.pl V1.2.0
+NC_003996;  "6304..6687"; "NS4a"  ; #msa_annotate.pl V1.2.0
+NC_003996;  "6688..6762"; "2k"    ; #msa_annotate.pl V1.2.0
+NC_003996;  "6763..7557"; "NS4b"  ; #msa_annotate.pl V1.2.0
+NC_003996; "7558..10050"; "NS5"   ; #msa_annotate.pl V1.2.0
+
+# msa_annotate.pl V1.2.0
+# Langat virus, 11085, Flaviviridae
+# NC_003690;
+NC_003690;    "131..478"; "ancC"  ; #msa_annotate.pl V1.2.0
+NC_003690;    "131..418"; "C"     ; #msa_annotate.pl V1.2.0
+NC_003690;    "479..970"; "preM"  ; #msa_annotate.pl V1.2.0
+#NC_003690;    ""; "M"     ; #msa_annotate.pl V1.2.0
+NC_003690;   "971..2467"; "E"     ; #msa_annotate.pl V1.2.0
+NC_003690;  "2468..3514"; "NS1"   ; #msa_annotate.pl V1.2.0
+NC_003690;  "3515..4204"; "NS2a"  ; #msa_annotate.pl V1.2.0
+NC_003690;  "4205..4597"; "NS2b"  ; #msa_annotate.pl V1.2.0
+NC_003690;  "4598..6460"; "NS3"   ; #msa_annotate.pl V1.2.0
+NC_003690;  "6461..6907"; "NS4a"  ; #msa_annotate.pl V1.2.0
+#NC_003690;  ""; "2k"    ; #msa_annotate.pl V1.2.0
+NC_003690;  "6908..7663"; "NS4b"  ; #msa_annotate.pl V1.2.0
+NC_003690; "7664..10372"; "NS5"   ; #msa_annotate.pl V1.2.0
+
+# msa_annotate.pl V1.2.0
+# Hepatitis GB virus A, 1307800, Flaviviridae
+# Pegivirus A, 1307800, Flaviviridae
+# NC_001837;
+NC_001837;   "532..1443"; "E1"    ; #msa_annotate.pl V1.2.0
+NC_001837;  "1444..2658"; "E2"    ; #msa_annotate.pl V1.2.0
+NC_001837;  "2659..3417"; "p7-NS2"; #msa_annotate.pl V1.2.0
+NC_001837;  "3418..5292"; "ATPase"; #msa_annotate.pl V1.2.0
+NC_001837;  "5293..5490"; "NS4A"  ; #msa_annotate.pl V1.2.0
+NC_001837;  "5491..6354"; "NS4B"  ; #msa_annotate.pl V1.2.0
+NC_001837;  "6355..7749"; "NS5A"  ; #msa_annotate.pl V1.2.0
+NC_001837;  "7750..9432"; "NS5B"  ; #msa_annotate.pl V1.2.0
+
+# msa_annotate.pl V1.2.0
+# GB virus C/Hepatitis G virus, 54290, Flaviviridae
+# NC_001710;
+NC_001710;   "459..1538"; "E1"    ; #msa_annotate.pl V1.2.0
+NC_001710;  "1539..2474"; "E2"    ; #msa_annotate.pl V1.2.0
+NC_001710;  "2475..3233"; "p7-NS2"; #msa_annotate.pl V1.2.0
+NC_001710;  "3234..5111"; "ATPase"; #msa_annotate.pl V1.2.0
+NC_001710;  "5112..5309"; "NS4A"  ; #msa_annotate.pl V1.2.0
+NC_001710;  "5310..6152"; "NS4B"  ; #msa_annotate.pl V1.2.0
+NC_001710;  "6153..7388"; "NS5A"  ; #msa_annotate.pl V1.2.0
+NC_001710;  "7389..9077"; "NS5B"  ; #msa_annotate.pl V1.2.0
+
+# msa_annotate.pl V1.2.0
+# Hepatitis GB virus B, 39113, Flaviviridae
+# NC_001655;
+NC_001655;    "446..913"; "C"     ; #msa_annotate.pl V1.2.0
+NC_001655;   "914..1483"; "E1"    ; #msa_annotate.pl V1.2.0
+NC_001655;  "1484..2449"; "E2"    ; #msa_annotate.pl V1.2.0
+NC_001655;  "2450..2641"; "p7"    ; #msa_annotate.pl V1.2.0
+NC_001655;  "2642..3265"; "NS2"   ; #msa_annotate.pl V1.2.0
+NC_001655;  "3266..5125"; "ATPase"; #msa_annotate.pl V1.2.0
+NC_001655;  "5126..5290"; "NS4A"  ; #msa_annotate.pl V1.2.0
+NC_001655;  "5291..6034"; "NS4B"  ; #msa_annotate.pl V1.2.0
+NC_001655;  "6035..7267"; "NS5A"  ; #msa_annotate.pl V1.2.0
+NC_001655;  "7268..9037"; "NS5B"  ; #msa_annotate.pl V1.2.0
 
 # End of Annotate_symbol_records.txt
 

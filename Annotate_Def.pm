@@ -14,7 +14,7 @@ use Bio::AlignIO;
 use Bio::Tools::Run::StandAloneBlast;
 use IO::String;
 
-use version; our $VERSION = qv('1.1.8'); # Feb 18 2013
+use version; our $VERSION = qv('1.2.0'); # Apr 12 2013
 
 my $debug_all = 0;
 
@@ -239,6 +239,7 @@ sub printRefseqList {
             }
             if (!$found) {
                 print STDERR "$subn: ERROR: Species/strain=$id doesn't exist in \$TAXON, abort\n";
+                print STDOUT "$subn: ERROR: Species/strain=$id doesn't exist in \$TAXON, abort\n";
                 exit(1);
             }
             $debug && print STDERR "$subn: Families: $nfamily, species: $nspecies, strains: $nstrain\n";
@@ -536,7 +537,7 @@ Takes a taxid, determine the RefSeq from $REFSEQS
 sub get1RefseqAcc {
     my ($taxid) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'get1RefseqAcc';
 
     my $refseq_acc = '';
@@ -554,16 +555,17 @@ sub get1RefseqAcc {
         if (exists($refseq_list1->{$taxid})) {
             $refseq_acc = $refseq_list1->{$taxid};
             my $taxinfo = Annotate_Def::getTaxonInfo( $taxid);
-            $speciesid = $taxinfo->[1] if (scalar($taxinfo));
-            $species = $taxinfo->[4] if (scalar($taxinfo));
+            $debug && print STDERR "$subn: \$fam=$fam \$taxinfo=\n".Dumper($taxinfo)."\n";
+            $speciesid = $taxinfo->[1] if ($taxinfo->[1]);
+            $species = $taxinfo->[4] if ($taxinfo->[1]);
             $debug && print STDERR "$subn: Got from \$REFSEQS \$refseq_acc=$refseq_acc for \$taxid=$taxid species=$speciesid ($species)\n";
         }
     }
     # If $REFSEQS doesn't contain $taxid, try find the species and take the refseq there
     if (!$refseq_acc && $TAXON->{taxon_loaded}) {
         my $taxinfo = Annotate_Def::getTaxonInfo( $taxid);
-        $speciesid = $taxinfo->[1] if (scalar($taxinfo));
-        $species = $taxinfo->[4] if (scalar($taxinfo));
+        $speciesid = $taxinfo->[1] if ($taxinfo->[1]);
+        $species = $taxinfo->[4] if ($taxinfo->[1]);
         if ($speciesid && $speciesid>0) {
             $speciesid = $TAXON->{'taxon'}->{$taxid}->[1];
             $species = $TAXON->{'taxon'}->{$taxid}->[4];
@@ -592,6 +594,7 @@ sub get1RefseqAcc {
 
     }
 
+    $debug && print STDERR "$subn: \$refseq_acc=$refseq_acc taxid=$taxid, species=$speciesid ($species)\n";
     return ($refseq_acc, $speciesid, $species);
 } # sub get1RefseqAcc
 
@@ -659,6 +662,7 @@ if (0) {
     ($refseq_acc, $speciesid, $species) = Annotate_Def::get1RefseqAcc($taxid);
 }
 
+    $debug && print STDERR "$subn: \$refseq_acc=$refseq_acc taxid=$taxid, species=$speciesid ($species)\n";
     return ($refseq_acc, $speciesid, $species);
 } # sub get_refseq_acc
 
@@ -704,8 +708,6 @@ sub initRefseq {
            64285 => 'NC_003675', # Rio Bravo virus; Ver1.1.3
            64280 => 'NC_003676', # Apoi virus; Ver1.1.3
            11083 => 'NC_003687', # Powassan virus; Ver1.1.3
-##           11085 => 'NC_003690', # Langat virus
-##          161675 => 'NC_003996', # Tamana bat virus
            11103 => 'NC_004102', # Hepatitis C virus genotype 1
 #           11103 => 'AF211032', # Used to test complement location in reffeat, need to comment out in production
            31646 => 'NC_004102', # Hepatitis C virus genotype 1a
@@ -718,7 +720,6 @@ sub initRefseq {
           172148 => 'NC_004355', # Alkhurma hemorrhagic fever virus; Ver1.1.3
 ##           64294 => 'NC_005039', # Yokose virus
 ##           12542 => 'NC_005062', # Omsk hemorrhagic fever virus
-##          218849 => 'NC_005064', # Kamiti River virus
            64286 => 'NC_006551', # Usutu virus; Ver1.1.3
 ##           64287 => 'NC_006947', # Karshi virus
            11080 => 'NC_007580', # St. Louis encephalitis virus
@@ -730,12 +731,29 @@ sub initRefseq {
 ##           59563 => 'NC_009028', # Ilheus virus
 ##           44024 => 'NC_009029', # Kokobera virus
 #           40271 => 'NC_009823', # Hepatitis C virus genotype 2
-#          356114 => 'NC_009824', # Hepatitis C virus genotype 3
+#          356114 => 'NC_009824', # Hepatitis C virus genotype 3; has 9 mat_peptides; E2/NS1 combined at 1489..2544
 #           33745 => 'NC_009825', # Hepatitis C virus genotype 4
 #           33746 => 'NC_009826', # Hepatitis C virus genotype 5
 #           42182 => 'NC_009827', # Hepatitis C virus genotype 6
 #           11082 => 'NC_009942', # West Nile virus (lineage I strain NY99), missing 2k
-#           390845 => 'NC_012932', # Aedes flavivirus; V1.1.8
+          390845 => 'NC_012932', # Aedes flavivirus; V1.2.0
+          390844 => 'NC_008604', # Culex flavivirus; V1.2.0
+          218849 => 'NC_005064', # Kamiti River virus; V1.2.0
+          161675 => 'NC_003996', # Tamana bat virus; V1.2.0
+           11085 => 'NC_003690', # Langat virus; V1.2.0
+          # Following species have cleavage pattern different from species listed above:
+          # N-Pro,C,RNAse,E1,E2,p7,NS2-3,NTPase,NS4A,NS4B,NS5A,NS5B
+          358764 => 'NC_003679', # Border disease virus X818; V1.2.0
+           54315 => 'NC_002032', # Bovine viral diarrhea virus genotype 2; V1.2.0
+           11096 => 'NC_002657', # Classical swine fever virus; V1.2.0
+          155905 => 'NC_003678', # Pestivirus Giraffe-1; V1.2.0
+           11099 => 'NC_001461', # Bovine viral diarrhea virus 1; V1.2.0
+         # Following species has even different cleavage pattern:
+         # E1,E2,p7-NS2,ATPase,NS4A,NS4B,NS5A,NS5B
+         1307800 => 'NC_001837', # Hepatitis GB virus A; V1.2.0
+#           39112 => 'NC_001837', # Hepatitis GB virus A; old taxid=39112 before 3/22/2013; V1.2.0
+           54290 => 'NC_001710', # GB virus C/Hepatitis G virus; V1.2.0
+           39113 => 'NC_001655', # Hepatitis GB virus B; has extra C mat_peptide at start; V1.2.0
            },
 
            # Family=Caliciviridae
@@ -784,9 +802,10 @@ sub initRefseq {
   44158 => 'NC_003900', # 44158 |     44158 | Aura virus; Ver1.1.3
   11039 => 'NC_003908', # 11039 |     11039 | Western equine encephalomyelitis virus; Ver1.1.3
   84589 => 'NC_003930', # 84589 |     84589 | Salmon pancreas disease virus; Ver1.1.3
+  # Following line is used for creating annotation in NC_004162
 #  37124 => 'NC_001512', # 37124 |     37124 | Chikungunya virus, refseq=O'nyong-nyong virus
   37124 => 'NC_004162', # 37124 |     37124 | Chikungunya virus; Ver1.1.3
-#  59300 => 'NC_001544', # 59300 |     59300 | Getah virus, refseq=Ross River virus
+#  59300 => 'NC_001544', # 59300 |     59300 | Getah virus, refseq=Ross River virus; Used to created NC_006558_msaa.gb
   59300 => 'NC_006558', # 59300 |     59300 | Getah virus; Ver1.1.3
   11024 => 'NC_012561', # 11024 |     11024 | Highlands J virus; Ver1.1.3
   48544 => 'NC_013528', # 48544 |     48544 | Fort Morgan virus; Ver1.1.3

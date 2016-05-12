@@ -1,8 +1,8 @@
-LOCUS       NC_008604              10837 bp    RNA     linear   VRL 10-JUL-2009
+LOCUS       NC_008604              10837 bp    RNA     linear   VRL 25-JUN-2012
 DEFINITION  Culex flavivirus, complete genome.
 ACCESSION   NC_008604
 VERSION     NC_008604.2  GI:166159177
-DBLINK      Project:18303
+DBLINK      BioProject: PRJNA18303
 KEYWORDS    .
 SOURCE      Culex flavivirus
   ORGANISM  Culex flavivirus
@@ -109,6 +109,111 @@ FEATURES             Location/Qualifiers
                      LGFAAITSAVPVNWIPTGRISWSVHQHAEWMTTQDMLEVWNTVWIVNNPWMAVKDPVK
                      TWSEIPYLPKTKDINCGSLIGERDRAAWSKNIVATVSTTRRIIEQEAGSQKFTEGLRI
                      LGRYRAPTDDVFW"
+     mat_peptide     92..508
+                     /locus_tag="CFV_gp1"
+                     /product="capsid protein C"
+                     /protein_id="YP_006470609.1"
+                     /db_xref="GI:392002742"
+     mat_peptide     509..937
+                     /locus_tag="CFV_gp1"
+                     /product="premembrane protein PrM"
+                     /protein_id="YP_006470610.1"
+                     /db_xref="GI:392002743"
+     mat_peptide     938..2218
+                     /locus_tag="CFV_gp1"
+                     /product="envelope protein E"
+                     /protein_id="YP_006470611.1"
+                     /db_xref="GI:392002744"
+     mat_peptide     2219..3325
+                     /locus_tag="CFV_gp1"
+                     /product="nonstructural protein NS1"
+                     /protein_id="YP_006470612.1"
+                     /db_xref="GI:392002745"
+     mat_peptide     3326..4015
+                     /locus_tag="CFV_gp1"
+                     /product="nonstructural protein NS2A"
+                     /protein_id="YP_006470613.1"
+                     /db_xref="GI:392002746"
+     mat_peptide     4016..4396
+                     /locus_tag="CFV_gp1"
+                     /product="nonstructural protein NS2B"
+                     /protein_id="YP_006470614.1"
+                     /db_xref="GI:392002747"
+     mat_peptide     4397..6172
+                     /locus_tag="CFV_gp1"
+                     /product="nonstructural protein NS3"
+                     /protein_id="YP_006470615.1"
+                     /db_xref="GI:392002748"
+     mat_peptide     6173..6670
+                     /locus_tag="CFV_gp1"
+                     /product="nonstructural protein NS4A"
+                     /protein_id="YP_006470616.1"
+                     /db_xref="GI:392002749"
+     mat_peptide     6671..6739
+                     /locus_tag="CFV_gp1"
+                     /product="2K peptide"
+                     /protein_id="YP_006470617.1"
+                     /db_xref="GI:392002750"
+     mat_peptide     6740..7510
+                     /locus_tag="CFV_gp1"
+                     /product="nonstructural protein NS4B"
+                     /protein_id="YP_006470618.1"
+                     /db_xref="GI:392002751"
+     mat_peptide     7511..10177
+                     /locus_tag="CFV_gp1"
+                     /product="nonstructural protein NS5"
+                     /protein_id="YP_006470619.1"
+                     /db_xref="GI:392002752"
+     gene            92..4293
+                     /locus_tag="CFV_gp2"
+                     /db_xref="GeneID:13084588"
+     CDS             join(92..3412,3412..4293)
+                     /locus_tag="CFV_gp2"
+                     /note="Truncated version of polyprotein that will be
+                     produced when frameshifting occurs at nt 3412; Truncated
+                     version of polyprotein and NS1-NS2AN-FIFO protein have
+                     been added and annotated with the kind help of Dr. David
+                     Karlin(Department of Zoology,  University of Oxford, UK)
+                     and Dr. Andrew Firth (Department of Pathology, University
+                     of Cambridge,UK)"
+                     /codon_start=1
+                     /product="truncated polyprotein"
+                     /protein_id="YP_006470608.1"
+                     /db_xref="GI:392002741"
+                     /db_xref="GeneID:13084588"
+                     /translation="MGKDDGKKKKGPGSSGWLLPPGRAGLGRKEEKKKKEKRGVRSTS
+                     QPVSGGAQHRRGGGTGPRAGGLLGRLGAGWGSILQEDIVHALMHLVLVLHSVFIAIDR
+                     RLRSLTRRVTALEAKRSAKNAVRIAFMLTGVMMVLGAVVIDMQVSTVKGTQIFEGKTN
+                     RTDHVHLFKLPTDGCWSGTLVMKKCPKVADLAKDLEGVDCGSSWTEFTLRYHRCVPKK
+                     RERRVASTNQKLDFLAEVELVTFKAIRENKTIAIIVLLCVAIAKRWPMWVVILLAIGT
+                     RTTVKGEFVEPLYTLKAEKMTMLQTIMRPDESYVISTPNGLLEFRTGAAEIYGGQWMR
+                     ELLADCHVNASFSTDVCPGGSQLNMGEINGKERVCSTQPYNRGWGTGCFKWGIGFVAT
+                     CVELHCGEGYNVSSIARSSIVMNITAKFHSVDDVQQLISDVPVTFRFAKLGNAAVTCR
+                     LESERLLLDYYHVTGKHHEGLFVRSQIDEWPGAHATASGRAGLERIVVWGDARANEVL
+                     VKNILEPQLVWDNAIATQDGFRDVGYSCQIMLDKLVSGSFKDCPGIKSSVFVQSGFGY
+                     DGVVMTSLSKATNESCSVGLTCHGCYLLATKMVFGPGTSTARAFVGCGNHTGTLVVGG
+                     TTIHVECVLNPISQGWRMAKHVVDKYRRFGTAGVGGVWHDFVGKFSLFSLLSSSTILV
+                     GLAALVFLDKRIVFLLLLCGYFVYTKADVGCGFDPERKVVSCGSGGFVWKSLSQWPTR
+                     EHSVELDDQHLITALVTEQLKKTNKVCIICEDVLQCAAARSAVGEITHVDNEIVYVNT
+                     SLSFDRTFPRIPKKVHGVKIGDLTMQLALASVGGAVDASQYGELSSGFLSRTKIAETS
+                     EHKVIRVITSASPYEKICEQAFALQYGFVRFTRRVFGSNVVVKPVAKPTDYCPTYLAG
+                     SFVKNDIGAYTDGMMWMKSRKVNGTWTLVDLELTQSHQCIWPQAYTFDLTAFNDSSLF
+                     MPAQYGAPMSKANHIPGYKTQTEFPWYKADIVLREGVVPGTQVEESPSCDNRGSAVKV
+                     DPAIAKKWCCKTCFSADKRVFHFKVDNDYFYPMEIRPAAVQPEVTIDADGEDMDEMTS
+                     MFGTMKAVVPPVEGSYPDFPAQPICGGSFSPTGGRAFAPADHSNQTSVGSTHVWNLDF
+                     VPPVWSAIQHLCRVVLDWIIVLACCCSEWYGSVGAFLAGSSVLIIALVLFGMGATATC
+                     TIISWIRIDRVLRRVASLEVTAAVGIDIPPRPRAVPDVRDVGVQSEITVRTCGLDGTA
+                     ELCCDASCSCDGHGNRRCPGDLFHSRVQELGMLSELVEEWTSRFEALISGWNVLGGVV
+                     RALNVSRVVSDADDGIGGVPRRTTDRDSDQDGSSSALGVGSGGWNGSAVGLRGRAHNT
+                     SVWIRRNLRTGWSGIHELDGQQ"
+     mat_peptide     join(2219..3412,3412..4290)
+                     /locus_tag="CFV_gp2"
+                     /product="NS1-NS2AN-FIFO protein"
+                     /note="transframe fusion protein expressed via programmed
+                     ribosomal frameshifting; it is not known whether or not
+                     the mature peptide includes NS1"
+                     /protein_id="YP_006470620.1"
+                     /db_xref="GI:392002753"
 ORIGIN      
         1 agtttttaaa aacttcggct tggttacacc gcagattggt tacacctaca caaggcttga
        61 gttgtttata atagtcgttt ttctcgcaga aatgggaaag gacgacggta agaagaagaa
@@ -292,4 +397,3 @@ ORIGIN
     10741 cgccacctcc cgaaatgtgt atagtaacag agcatgcctg cagcagcagg tctccaccgt
     10801 taggagactt gttgcgggca agctcttgtt cacgtct
 //
-

@@ -1,0 +1,482 @@
+LOCUS       VSVCG                  11161 bp ss-RNA     linear   VRL 21-OCT-2002
+DEFINITION  Vesicular stomatitis Indiana virus, complete genome.
+ACCESSION   J02428 J02430 J02431 J02432 J02434 J02435 J02436 J02437 J02438
+            K00519 K00520 K00625 K01068 K01069 K01070 K01638 K01639
+VERSION     J02428.1  GI:335873
+KEYWORDS    G protein; NS protein; complete genome; glycoprotein; leader RNA;
+            nucleocapsid protein; polymerase; protein L; protein M; protein N.
+SOURCE      Vesicular stomatitis Indiana virus
+  ORGANISM  Vesicular stomatitis Indiana virus
+            Viruses; ssRNA negative-strand viruses; Mononegavirales;
+            Rhabdoviridae; Vesiculovirus.
+REFERENCE   1  (bases 1 to 47)
+  AUTHORS   Colonno,R.J. and Banerjee,A.K.
+  TITLE     Complete nucleotide sequence of the leader RNA synthesized in vitro
+            by vesicular stomatitis virus
+  JOURNAL   Cell 15 (1), 93-101 (1978)
+   PUBMED   212201
+REFERENCE   2  (bases 1172 to 1379)
+  AUTHORS   McGeoch,D.J. and Turnbull,N.T.
+  TITLE     Analysis of the 3'-terminal nucleotide sequence of vesicular
+            stomatitis virus N protein mRNA
+  JOURNAL   Nucleic Acids Res. 5 (11), 4007-4024 (1978)
+   PUBMED   82934
+REFERENCE   3  (bases 1285 to 1434)
+  AUTHORS   McGeoch,D.J.
+  TITLE     Structure of the gene N:gene NS intercistronic junction in the
+            genome of vesicular stomatitis virus
+  JOURNAL   Cell 17 (3), 673-681 (1979)
+   PUBMED   89911
+REFERENCE   4  (bases 1287 to 1376; 2110 to 2199)
+  AUTHORS   Rose,J.K. and Iverson,L.
+  TITLE     Nucleotide sequences from the 3'-ends of vesicular stomatitis virus
+            mRNA's as determined from cloned DNA
+  JOURNAL   J. Virol. 32 (2), 404-411 (1979)
+   PUBMED   228065
+REFERENCE   5  (bases 1 to 201)
+  AUTHORS   McGeoch,D.J. and Dolan,A.
+  TITLE     Sequence of 200 nucleotides at the 3'-terminus of the genome RNA of
+            vesicular stomatitis virus
+  JOURNAL   Nucleic Acids Res. 6 (10), 3199-3211 (1979)
+   PUBMED   90365
+REFERENCE   6  (bases 1 to 114)
+  AUTHORS   Rowlands,D.J.
+  TITLE     Sequences of vesicular stomatitis virus RNA in the region coding
+            for leader RNA, N protein mRNA, and their junction
+  JOURNAL   Proc. Natl. Acad. Sci. U.S.A. 76 (10), 4793-4797 (1979)
+   PUBMED   228265
+REFERENCE   7  (bases 51 to 219; 1337 to 1434; 2160 to 2378; 2940 to 3099; 4614
+            to 4767; 11056 to 11112)
+  AUTHORS   Rose,J.K.
+  TITLE     Complete intergenic and flanking gene sequences from the genome of
+            vesicular stomatitis virus
+  JOURNAL   Cell 19 (2), 415-421 (1980)
+   PUBMED   6244108
+REFERENCE   8  (bases 1 to 104)
+  AUTHORS   Rowlands,K., Grabau,E., Spindler,K., Jones,C., Semler,B. and
+            Holland,J.
+  TITLE     Virus protein changes and RNA termini alterations evolving during
+            persistent infection
+  JOURNAL   Cell 19 (4), 871-880 (1980)
+   PUBMED   6247073
+REFERENCE   9  (bases 1 to 81)
+  AUTHORS   Keene,J.D., Schubert,M. and Lazzarini,R.A.
+  TITLE     Intervening sequence between the leader region and the
+            nucleopcapsid gene of vesicular stomatitis virus RNA
+  JOURNAL   J. Virol. 33 (2), 789-794 (1980)
+   PUBMED   6251249
+REFERENCE   10 (bases 11032 to 11122)
+  AUTHORS   Schubert,M., Keene,J.D., Herman,R.C. and Lazzarini,R.A.
+  TITLE     Site on the vesicular stomatitis virus genome specifying
+            polyadenylation and the end of the L gene mRNA
+  JOURNAL   J. Virol. 34 (2), 550-559 (1980)
+   PUBMED   6246280
+REFERENCE   11 (bases 3049 to 3236; 4244 to 4713)
+  AUTHORS   Rose,J.K., Welch,W.J., Sefton,B.M., Esch,F.S. and Ling,N.C.
+  TITLE     Vesicular stomatitis virus glycoprotein is anchored in the viral
+            membrane by a hydrophobic domain near the COOH terminus
+  JOURNAL   Proc. Natl. Acad. Sci. U.S.A. 77 (7), 3884-3888 (1980)
+   PUBMED   6253998
+REFERENCE   12 (bases 11072 to 11161)
+  AUTHORS   Schubert,M. and Lazzarini,R.A.
+  TITLE     In vivo transcription of the 5'-terminal extracistronic region of
+            vesicular stomatitis virus RNA
+  JOURNAL   J. Virol. 38 (1), 256-262 (1981)
+   PUBMED   6264102
+REFERENCE   13 (bases 2209 to 3039; 3049 to 4713)
+  AUTHORS   Rose,J.K. and Gallione,C.J.
+  TITLE     Nucleotide sequences of the mRNA's encoding the vesicular
+            stomatitis virus G and M proteins determined from cDNA clones
+            containing the complete coding regions
+  JOURNAL   J. Virol. 39 (2), 519-528 (1981)
+   PUBMED   6268840
+REFERENCE   14 (bases 51 to 1376; 1386 to 2199)
+  AUTHORS   Gallione,C.J., Greene,J.R., Iverson,L.E. and Rose,J.K.
+  TITLE     Nucleotide sequences of the mRNA's encoding the vesicular
+            stomatitis virus N and NS proteins
+  JOURNAL   J. Virol. 39 (2), 529-535 (1981)
+   PUBMED   6268841
+REFERENCE   15 (bases 1 to 76)
+  AUTHORS   Isaac,C.L. and Keene,J.D.
+  TITLE     RNA polymerase-associated interactions near template promoter
+            sequences of defective interfering particles of vesicular
+            stomatitis virus
+  JOURNAL   J. Virol. 43 (1), 241-249 (1982)
+   PUBMED   6286999
+REFERENCE   16 (bases 4723 to 5028)
+  AUTHORS   De,B.K. and Perrault,J.
+  TITLE     Sequence signal involved in the generation of an internally deleted
+            defective interfering RNA from vesicular stomatitis virus
+  JOURNAL   Nucleic Acids Res. 10 (21), 6919-6930 (1982)
+   PUBMED   6294620
+REFERENCE   17 (bases 4637 to 4996; 10796 to 11161)
+  AUTHORS   Yang,F. and Lazzarini,R.A.
+  TITLE     Analysis of the recombination event generating a vesicular
+            stomatitis virus deletion defective interfering particle
+  JOURNAL   J. Virol. 45 (2), 766-772 (1983)
+   PUBMED   6300433
+REFERENCE   18 (bases 1 to 100; 1386 to 1435)
+  AUTHORS   Piwnica-Worms,H. and Keene,J.D.
+  TITLE     Sequential synthesis of small capped RNA transcripts in vitro by
+            vesicular stomatitis virus
+  JOURNAL   Virology 125 (1), 206-218 (1983)
+   PUBMED   6299007
+REFERENCE   19 (bases 4723 to 11102)
+  AUTHORS   Schubert,M., Harmison,G.G. and Meier,E.
+  TITLE     Primary structure of the vesicular stomatitis virus polymerase (L)
+            gene: evidence for a high frequency of mutations
+  JOURNAL   J. Virol. 51 (2), 505-514 (1984)
+   PUBMED   6086959
+REFERENCE   20 (bases 1723 to 1726; 1959 to 1961)
+  AUTHORS   Rose,J.K.
+  JOURNAL   Unpublished
+REFERENCE   21 (bases 1 to 66)
+  AUTHORS   Wilusz,J., Youngner,J.S. and Keene,J.D.
+  TITLE     Base mutations in the terminal noncoding regions of the genome of
+            vesicular stomatitis virus isolated from persistent infections of L
+            cells
+  JOURNAL   Virology 140 (2), 249-256 (1985)
+   PUBMED   2982234
+COMMENT     [20]  revises [14].
+            Vesicular stomatitis virus consists of a single-sranded RNA genome
+            in the antimessage (-) sense.  The sequence reported here is the
+            complementary (+) strand.
+            In the sequence below, positions 1-201 are from [5]; positions
+            202-1376 are from [14]; positions 1377-1385 are from [3]; positions
+            1386-2199 are from [14]; positions 2200-2208 are from [7];
+            positions 2209-3039 are from [13]; positions 3040-3048 are from
+            [7]; positions 3049-4713 are from [13]; positions 4714-4722 are
+            from [7]; positions 4723-10795 are from [19]; and positions
+            10796-11161 are from [17].
+            [19] found several variations among the clones sequenced (see table
+            4 in [19]).  These could be reverse transcriptase errors or actual
+            variations among VSV genomes.
+            [20] is a revision of [14] reported in (Gill et al.; J. Virol. 55,
+            60-66 (1985)).
+            Complete source information:
+            VSV (Indiana serotype): Colorado strain [2],[3],[5]; Mudd Summers
+            strain [6],[9],[10],[12],[19]; San Juan strain [4],[7],[11],[13],
+            [14]; tsG31 [8], heat-resistant [9],[16],[17]; wild type [21];
+            unreported strain [1],[15],[18]; viral RNA, cDNA to viral RNA,
+            mRNA, and cDNA to mRNA.
+FEATURES             Location/Qualifiers
+     source          1..11161
+                     /organism="Vesicular stomatitis Indiana virus"
+                     /mol_type="genomic RNA"
+                     /serotype="Indiana"
+                     /db_xref="taxon:11277"
+                     /note="tsG31, heat-resistant; wild type"
+     variation       4..6
+                     /note="aag in wild type; gac in PI-A"
+                     /citation=[21]
+     variation       21
+                     /note="a in wild type; c in PI-A; t in PI-B"
+                     /citation=[21]
+     variation       37
+                     /note="t in tsG31; a in CAR4"
+                     /citation=[8]
+     unsure          44..46
+                     /note="aaa or aaaa"
+                     /citation=[1]
+     variation       44
+                     /note="a in wild type; g in PI-A"
+                     /citation=[21]
+     variation       48
+                     /note="t in tsG31; g in CAR4"
+                     /citation=[8]
+     mRNA            51..1376
+                     /product="N mRNA"
+     variation       61
+                     /note="a in wild type; g in PI-A"
+                     /citation=[21]
+     CDS             64..1332
+                     /note="nucleocapsid (N) protein"
+                     /codon_start=1
+                     /protein_id="AAA48367.1"
+                     /db_xref="GI:335874"
+                     /translation="MSVTVKRIIDNTVIVPKLPANEDPVEYPADYFRKSKEIPLYINT
+                     TKSLSDLRGYVYQGLKSGNVSIIHVNSYLYGALKDIRGKLDKDWSSFGINIGKAGDTI
+                     GIFDLVSLKALDGVLPDGVSDASRTSADDKWLPLYLLGLYRVGRTQMPEYRKKLMDGL
+                     TNQCKMINEQFEPLVPEGRDIFDVWGNDSNYTKIVAAVDMFFHMFKKHECASFRYGTI
+                     VSRFKDCAALATFGHLCKITGMSTEDVTTWILNREVADEMVQMMLPGQEIDKADSYMP
+                     YLIDFGLSSKSPYSSVKNPAFHFWGQLTALLLRSTRARNARQPDDIEYTSLTTAGLLY
+                     AYAVGSSADLAQQFCVGDNKYTPDDSTGGLTTNAPPQGRDVVEWLGWFEDQNRKPTPD
+                     MMQYAKRAVMSLQGLREKTIGKYAKSEFDK"
+     mRNA            1386..2199
+                     /product="NS mRNA"
+     CDS             1396..2193
+                     /note="NS protein"
+                     /codon_start=1
+                     /protein_id="AAA48368.1"
+                     /db_xref="GI:335875"
+                     /translation="MDNLTKVREYLKSYSRLDQAVGEIDEIEAQRAEKSNYELFQEDG
+                     VEEHTKPSYFQAADDSDTESEPEIEDNQGLYAQDPEAEQVEGFIQGPLDDYADEEVDV
+                     VFTSDWKPPELESDEHGKTLRLTSPEGLSGEQKSQWLSTIKAVVQSAKYWNLAECTFE
+                     ASGEGVIMKERQITPDVYKVTPVMNTHPSQSEAVSDVWSLSKTSMTFQPKKASLQPLT
+                     ISLDELFSSRGEFISVGGDGRMSHKEAILLGLRYKKLYNQARVKYSL"
+     mRNA            2209..3039
+                     /product="M mRNA"
+     CDS             2250..2939
+                     /note="matrix (M) protein"
+                     /codon_start=1
+                     /protein_id="AAA48369.1"
+                     /db_xref="GI:335876"
+                     /translation="MSSLKKILGLKGKGKKSKKLGIAPPPYEEDTSMEYAPSAPIDKS
+                     YFGVDEMDTYDPNQLRYEKFFFTVKMTVRSNRPFRTYSDVAAAVSHWDHMYIGMAGKR
+                     PFYKILAFLGSSNLKATPAVLADQGQPEYHTHCEGRAYLPHRMGKTPPMLNVPEHFRR
+                     PFNIGLYKGTIELTMTIYDDESLEAAPMIWDHFNSSKFSDFREKALMFGLIVEKKASG
+                     AWVLDSISHFK"
+     mRNA            3049..4713
+                     /product="G mRNA"
+     CDS             3078..4613
+                     /note="glycoprotein (G protein) precursor"
+                     /codon_start=1
+                     /protein_id="AAA48370.1"
+                     /db_xref="GI:335877"
+                     /translation="MKCLLYLAFLFIGVNCKFTIVFPHNQKGNWKNVPSNYHYCPSSS
+                     DLNWHNDLIGTAIQVKMPKSHKAIQADGWMCHASKWVTTCDFRWYGPKYITQSIRSFT
+                     PSVEQCKESIEQTKQGTWLNPGFPPQSCGYATVTDAEAVIVQVTPHHVLVDEYTGEWV
+                     DSQFINGKCSNYICPTVHNSTTWHSDYKVKGLCDSNLISMDITFFSEDGELSSLGKEG
+                     TGFRSNYFAYETGGKACKMQYCKHWGVRLPSGVWFEMADKDLFAAARFPECPEGSSIS
+                     APSQTSVDVSLIQDVERILDYSLCQETWSKIRAGLPISPVDLSYLAPKNPGTGPAFTI
+                     INGTLKYFETRYIRVDIAAPILSRMVGMISGTTTERELWDDWAPYEDVEIGPNGVLRT
+                     SSGYKFPLYMIGHGMLDSDLHLSSKAQVFEHPHIQDAASQLPDDESLFFGDTGLSKNP
+                     IELVEGWFSSWKSSIASFFFIIGLIIGLFLVLRVGIHLCIKLKHTKKRQIYTDIEMNR
+                     LGK"
+     sig_peptide     3078..3125
+                     /note="glycoprotein (G protein) signal peptide"
+     mat_peptide     3126..4610
+                     /product="glycoprotein (G protein) mature peptide"
+     mRNA            4723..11095
+                     /product="L mRNA"
+     CDS             4733..11062
+                     /note="polymerase (L protein)"
+                     /codon_start=1
+                     /protein_id="AAA48371.1"
+                     /db_xref="GI:335878"
+                     /translation="MEVHDFETDEFNDFNEDDYATREFLNPDERMTYLNHADYNLNSP
+                     LISDDIDNLIRKFNSLPIPSMWDSKNWDGVLEMLTSCQANPISTSQMHKWMGSWLMSD
+                     NHDASQGYSFLHEVDKEAEITFDVVETFIRGWGNKPIEYIKKERWTDSFKILAYLCQK
+                     FLDLHKLTLILNAVSEVELLNLARTFKGKVRRSSHGTNICRIRVPSLGPTFISEGWAY
+                     FKKLDILMDRNFLLMVKDVIIGRMQTVLSMVCRIDNLFSEQDIFSLLNIYRIGDKIVE
+                     RQGNFSYDLIKMVEPICNLKLMKLARESRPLVPQFPHFENHIKTSVDEGAKIDRGIRF
+                     LHDQIMSVKTVDLTLVIYGSFRHWGHPFIDYYTGLEKLHSQVTMKKDIDVSYAKALAS
+                     DLARIVLFQQFNDHKKWFVNGDLLPHDHPFKSHVKENTWPTAAQVQDFGDKWHELPLI
+                     KCFEIPDLLDPSIIYSDKSHSMNRSEVLKHVRMNPNTPIPSKKVLQTMLDTKATNWKE
+                     FLKEIDEKGLDDDDLIIGLKGKERELKLAGRFFSLMSWKLREYFVITEYLIKTHFVPM
+                     FKGLTMADDLTAVIKKMLDSSSGQGLKSYEAICIANHIDYEKWNNHQRKLSNGPVFRV
+                     MGQFLGYPSLIERTHEFFEKSLIYYNGRPDLMRVHNNTLINSTSQRVCWQGQEGGLEG
+                     LRQKGWTILNLLVIQREAKIRNTAVKVLAQGDNQVICTQYKTKKSRNVVELQGALNQM
+                     VSNNEKIMTAIKIGTGKLGLLINDDETMQSADYLNYGKIPIFRGVIRGLETKRWSRVT
+                     CVTNDQIPTCANIMSSVSTNALTVAHFAENPINAMIQYNYFGTFARLLLMMHDPALRQ
+                     SLYEVQDKIPGLHSSTFKYAMLYLDPSIGGVSGMSLSRFLIRAFPDPVTESLSFWRFI
+                     HVHARSEHLKEMSAVFGNPEIAKFRITHIDKLVEDPTSLNIAMGMSPANLLKTEVKKC
+                     LIESRQTIRNQVIKDATIYLYHEEDRLRSFLWSINPLFPRFLSEFKSGTFLGVADGLI
+                     SLFQNSRTIRNSFKKKYHRELDDLIVRSEVSSLTHLGKLHLRRGSCKMWTCSATHADT
+                     LRYKSWGRTVIGTTVPHPLEMLGPQHRKETPCAPCNTSGFNYVSVHCPDGIHDVFSSR
+                     GPLPAYLGSKTSESTSILQPWERESKVPLIKRATRLRDAISWFVEPDSKLAMTILSNI
+                     HSLTGEEWTKRQHGFKRTGSALHRFSTSRMSHGGFASQSTAALTRLMATTDTMRDLGD
+                     QNFDFLFQATLLYAQITTTVARDGWITSCTDHYHIACKSCLRPIEEITLDSSMDYTPP
+                     DVSHVLKTWRNGEGSWGQEIKQIYPLEGNWKNLAPAEQSYQVGRCIGFLYGDLAYRKS
+                     THAEDSSLFPLSIQGRIRGRGFLKGLLDGLMRASCCQVIHRRSLAHLKRPANAVYGGL
+                     IYLIDKLSVSPPFLSLTRSGPIRDELETIPHKIPTSYPTSNRDMGVIVRNYFKYQCRL
+                     IEKGKYRSHYSQLWLFSDVLSIDFIGPFSISTTLLQILYKPFLSGKDKNELRELANLS
+                     SLLRSGEGWEDIHVKFFTKDILLCPEEIRHACKFGIAKDNNKDMSYPPWGRESRGTIT
+                     TIPVYYTTTPYPKMLEMPPRIQNPLLSGIRLGQLPTGAHYKIRSILHGMGIHYRDFLS
+                     CGDGSGGMTAALLRENVHSRGIFNSLLELSGSVMRGASPEPPSALETLGGDKSRCVNG
+                     ETCWEYPSDLCDPRTWDYFLRLKAGLGLQIDLIVMDMEVRDSSTSLKIETNVRNYVHR
+                     ILDEQGVLIYKTYGTYICESEKNAVTILGPMFKTVDLVQTEFSSSQTSEVYMVCKGLK
+                     KLIDEPNPDWSSINESWKNLYAFQSSEQEFARAKKVSTYFTLTGIPSQFIPDPFVNIE
+                     TMLQIFGVPTGVSHAAALKSSDRPADLLTISLFYMAIISYYNINHIRVGPIPPNPPSD
+                     GIAQNVGIAITGISFWLSLMEKDIPLYQQCLAVIQQSFPIRWEAVSVKGGYKQKWSTR
+                     GDGLPKDTRTSDSLAPIGNWIRSLELVRNQVRLNPFNEILFNQLCRTVDNHLKWSNLR
+                     RNTGMIEWINRRISKEDRSILMLKSDLHEENSWRD"
+ORIGIN      
+        1 acgaagacaa acaaaccatt attatcatta aaaggctcag gagaaacttt aacagtaatc
+       61 aaaatgtctg ttacagtcaa gagaatcatt gacaacacag tcatagttcc aaaacttcct
+      121 gcaaatgagg atccagtgga atacccggca gattacttca gaaaatcaaa ggagattcct
+      181 ctttacatca atactacaaa aagtttgtca gatctaagag gatatgtcta ccaaggcctc
+      241 aaatccggaa atgtatcaat catacatgtc aacagctact tgtatggagc attaaaggac
+      301 atccggggta agttggataa agattggtca agtttcggaa taaacatcgg gaaagcaggg
+      361 gatacaatcg gaatatttga ccttgtatcc ttgaaagccc tggacggcgt acttccagat
+      421 ggagtatcgg atgcttccag aaccagcgca gatgacaaat ggttgccttt gtatctactt
+      481 ggcttataca gagtgggcag aacacaaatg cctgaataca gaaaaaagct catggatggg
+      541 ctgacaaatc aatgcaaaat gatcaatgaa cagtttgaac ctcttgtgcc agaaggtcgt
+      601 gacatttttg atgtgtgggg aaatgacagt aattacacaa aaattgtcgc tgcagtggac
+      661 atgttcttcc acatgttcaa aaaacatgaa tgtgcctcgt tcagatacgg aactattgtt
+      721 tccagattca aagattgtgc tgcattggca acatttggac acctctgcaa aataaccgga
+      781 atgtctacag aagatgtaac gacctggatc ttgaaccgag aagttgcaga tgaaatggtc
+      841 caaatgatgc ttccaggcca agaaattgac aaggccgatt catacatgcc ttatttgatc
+      901 gactttggat tgtcttctaa gtctccatat tcttccgtca aaaaccctgc cttccacttc
+      961 tgggggcaat tgacagctct tctgctcaga tccaccagag caaggaatgc ccgacagcct
+     1021 gatgacattg agtatacatc tcttactaca gcaggtttgt tgtacgctta tgcagtagga
+     1081 tcctctgccg acttggcaca acagttttgt gttggagata acaaatacac tccagatgat
+     1141 agtaccggag gattgacgac taatgcaccg ccacaaggca gagatgtggt cgaatggctc
+     1201 ggatggtttg aagatcaaaa cagaaaaccg actcctgata tgatgcagta tgcgaaaaga
+     1261 gcagtcatgt cactgcaagg cctaagagag aagacaattg gcaagtatgc taagtcagaa
+     1321 tttgacaaat gaccctataa ttctcagatc acctattata tattatgcta catatgaaaa
+     1381 aaactaacag atatcatgga taatctcaca aaagttcgtg agtatctcaa gtcctattct
+     1441 cgtctggatc aggcggtagg agagatagat gagatcgaag cacaacgagc tgaaaagtcc
+     1501 aattatgagt tgttccaaga ggatggagtg gaagagcata ctaagccctc ttattttcag
+     1561 gcagcagatg attctgacac agaatctgaa ccagaaattg aagacaatca aggtttgtat
+     1621 gcacaggatc cagaagctga gcaagttgaa ggctttatac aggggccttt agatgactat
+     1681 gcagatgagg aagtggatgt tgtatttact tcggactgga aaccacctga gcttgaatct
+     1741 gacgagcatg gaaagacctt acggttgaca tcgccagagg gtttaagtgg agagcagaaa
+     1801 tcccagtggc tttcgacgat taaagcagtc gtgcaaagtg ccaaatactg gaatctggca
+     1861 gagtgcacat ttgaagcatc gggagaaggg gtcattatga aggagcgcca gataactccg
+     1921 gatgtatata aggtcactcc agtgatgaac acacatccgt cccaatcaga agcagtatca
+     1981 gatgtttggt ctctctcaaa gacatccatg actttccaac ccaagaaagc aagtcttcag
+     2041 cctctcacca tatccttgga tgaattgttc tcatctagag gagagttcat ctctgtcgga
+     2101 ggtgacggac gaatgtctca taaagaggcc atcctgctcg gcctgagata caaaaagttg
+     2161 tacaatcagg cgagagtcaa atattctctg tagactatga aaaaaagtaa cagatatcac
+     2221 gatctaagtg ttatcccaat ccattcatca tgagttcctt aaagaagatt ctcggtctga
+     2281 aggggaaagg taagaaatct aagaaattag ggatcgcacc acccccttat gaagaggaca
+     2341 ctagcatgga gtatgctccg agcgctccaa ttgacaaatc ctattttgga gttgacgaga
+     2401 tggacaccta tgatccgaat caattaagat atgagaaatt cttctttaca gtgaaaatga
+     2461 cggttagatc taatcgtccg ttcagaacat actcagatgt ggcagccgct gtatcccatt
+     2521 gggatcacat gtacatcgga atggcaggga aacgtccctt ctacaaaatc ttggcttttt
+     2581 tgggttcttc taatctaaag gccactccag cggtattggc agatcaaggt caaccagagt
+     2641 atcacactca ctgcgaaggc agggcttatt tgccacatag gatggggaag acccctccca
+     2701 tgctcaatgt accagagcac ttcagaagac cattcaatat aggtctttac aagggaacga
+     2761 ttgagctcac aatgaccatc tacgatgatg agtcactgga agcagctcct atgatctggg
+     2821 atcatttcaa ttcttccaaa ttttctgatt tcagagagaa ggccttaatg tttggcctga
+     2881 ttgtcgagaa aaaggcatct ggagcgtggg tcctggattc tatcagccac ttcaaatgag
+     2941 ctagtctaac ttctagcttc tgaacaatcc ccggtttact cagtctctcc taattccagc
+     3001 ctctcgaaca actaatatcc tgtcttttct atccctatga aaaaaactaa cagagatcga
+     3061 tctgtttcct tgacactatg aagtgccttt tgtacttagc ctttttattc attggggtga
+     3121 attgcaagtt caccatagtt tttccacaca accaaaaagg aaactggaaa aatgttcctt
+     3181 ctaattacca ttattgcccg tcaagctcag atttaaattg gcataatgac ttaataggca
+     3241 cagccataca agtcaaaatg cccaagagtc acaaggctat tcaagcagac ggttggatgt
+     3301 gtcatgcttc caaatgggtc actacttgtg atttccgctg gtatggaccg aagtatataa
+     3361 cacagtccat ccgatccttc actccatctg tagaacaatg caaggaaagc attgaacaaa
+     3421 cgaaacaagg aacttggctg aatccaggct tccctcctca aagttgtgga tatgcaactg
+     3481 tgacggatgc cgaagcagtg attgtccagg tgactcctca ccatgtgctg gttgatgaat
+     3541 acacaggaga atgggttgat tcacagttca tcaacggaaa atgcagcaat tacatatgcc
+     3601 ccactgtcca taactctaca acctggcatt ctgactataa ggtcaaaggg ctatgtgatt
+     3661 ctaacctcat ttccatggac atcaccttct tctcagagga cggagagcta tcatccctgg
+     3721 gaaaggaggg cacagggttc agaagtaact actttgctta tgaaactgga ggcaaggcct
+     3781 gcaaaatgca atactgcaag cattggggag tcagactccc atcaggtgtc tggttcgaga
+     3841 tggctgataa ggatctcttt gctgcagcca gattccctga atgcccagaa gggtcaagta
+     3901 tctctgctcc atctcagacc tcagtggatg taagtctaat tcaggacgtt gagaggatct
+     3961 tggattattc cctctgccaa gaaacctgga gcaaaatcag agcgggtctt ccaatctctc
+     4021 cagtggatct cagctatctt gctcctaaaa acccaggaac cggtcctgct ttcaccataa
+     4081 tcaatggtac cctaaaatac tttgagacca gatacatcag agtcgatatt gctgctccaa
+     4141 tcctctcaag aatggtcgga atgatcagtg gaactaccac agaaagggaa ctgtgggatg
+     4201 actgggcacc atatgaagac gtggaaattg gacccaatgg agttctgagg accagttcag
+     4261 gatataagtt tcctttatac atgattggac atggtatgtt ggactccgat cttcatctta
+     4321 gctcaaaggc tcaggtgttc gaacatcctc acattcaaga cgctgcttcg caacttcctg
+     4381 atgatgagag tttatttttt ggtgatactg ggctatccaa aaatccaatc gagcttgtag
+     4441 aaggttggtt cagtagttgg aaaagctcta ttgcctcttt tttctttatc atagggttaa
+     4501 tcattggact attcttggtt ctccgagttg gtatccatct ttgcattaaa ttaaagcaca
+     4561 ccaagaaaag acagatttat acagacatag agatgaaccg acttggaaag taactcaaat
+     4621 cctgcacaac agattcttca tgtttggacc aaatcaactt gtgataccat gctcaaagag
+     4681 gcctcaatta tatttgagtt tttaattttt atgaaaaaaa ctaacagcaa tcatggaagt
+     4741 ccacgatttt gagaccgacg agttcaatga tttcaatgaa gatgactatg ccacaagaga
+     4801 attcctgaat cccgatgagc gcatgacgta cttgaatcat gctgattaca atttgaattc
+     4861 tcctctaatt agtgatgata ttgacaattt gatcaggaaa ttcaattctc ttccgattcc
+     4921 ctcgatgtgg gatagtaaga actgggatgg agttcttgag atgttaacat catgtcaagc
+     4981 caatcccatc tcaacatctc agatgcataa atggatggga agttggttaa tgtctgataa
+     5041 tcatgatgcc agtcaagggt atagtttttt acatgaagtg gacaaagagg cagaaataac
+     5101 atttgacgtg gtggagacct tcatccgcgg ctggggcaac aaaccaattg aatacatcaa
+     5161 aaaggaaaga tggactgact cattcaaaat tctcgcttat ttgtgtcaaa agtttttgga
+     5221 cttacacaag ttgacattaa tcttaaatgc tgtctctgag gtggaattgc tcaacttggc
+     5281 gaggactttc aaaggcaaag tcagaagaag ttctcatgga acgaacatat gcaggattag
+     5341 ggttcccagc ttgggtccta cttttatttc agaaggatgg gcttacttca agaaacttga
+     5401 tattctaatg gaccgaaact ttctgttaat ggtcaaagat gtgattatag ggaggatgca
+     5461 aacggtgcta tccatggtat gtagaataga caacctgttc tcagagcaag acatcttctc
+     5521 ccttctaaat atctacagaa ttggagataa aattgtggag aggcagggaa atttttctta
+     5581 tgacttgatt aaaatggtgg aaccgatatg caacttgaag ctgatgaaat tagcaagaga
+     5641 atcaaggcct ttagtcccac aattccctca ttttgaaaat catatcaaga cttctgttga
+     5701 tgaaggggca aaaattgacc gaggtataag attcctccat gatcagataa tgagtgtgaa
+     5761 aacagtggat ctcacactgg tgatttatgg atcgttcaga cattggggtc atccttttat
+     5821 agattattac actggactag aaaaattaca ttcccaagta accatgaaga aagatattga
+     5881 tgtgtcatat gcaaaagcac ttgcaagtga tttagctcgg attgttctat ttcaacagtt
+     5941 caatgatcat aaaaagtggt tcgtgaatgg agacttgctc cctcatgatc atccctttaa
+     6001 aagtcatgtt aaagaaaata catggcccac agctgctcaa gttcaagatt ttggagataa
+     6061 atggcatgaa cttccgctga ttaaatgttt tgaaataccc gacttactag acccatcgat
+     6121 aatatactct gacaaaagtc attcaatgaa taggtcagag gtgttgaaac atgtccgaat
+     6181 gaatccgaac actcctatcc ctagtaaaaa ggtgttgcag actatgttgg acacaaaggc
+     6241 taccaattgg aaagaatttc ttaaagagat tgatgagaag ggcttagatg atgatgatct
+     6301 aattattggt cttaaaggaa aggagaggga actgaagttg gcaggtagat ttttctccct
+     6361 aatgtcttgg aaattgcgag aatactttgt aattaccgaa tatttgataa agactcattt
+     6421 cgtccctatg tttaaaggcc tgacaatggc ggacgatcta actgcagtca ttaaaaagat
+     6481 gttagattcc tcatccggcc aaggattgaa gtcatatgag gcaatttgca tagccaatca
+     6541 cattgattac gaaaaatgga ataaccacca aaggaagtta tcaaacggcc cagtgttccg
+     6601 agttatgggc cagttcttag gttatccatc cttaatcgag agaactcatg aattttttga
+     6661 gaaaagtctt atatactaca atggaagacc agacttgatg cgtgttcaca acaacacact
+     6721 gatcaattca acctcccaac gagtttgttg gcaaggacaa gagggtggac tggaaggtct
+     6781 acggcaaaaa ggatggacta tcctcaatct actggttatt caaagagagg ctaaaatcag
+     6841 aaacactgct gtcaaagtct tggcacaagg tgataatcaa gttatttgca cacagtataa
+     6901 aacgaagaaa tcgagaaacg ttgtagaatt acagggtgct ctcaatcaaa tggtttctaa
+     6961 taatgagaaa attatgactg caatcaaaat agggacaggg aagttaggac ttttgataaa
+     7021 tgacgatgag actatgcaat ctgcagatta cttgaattat ggaaaaatac cgattttccg
+     7081 tggagtgatt agagggttag agaccaagag atggtcacga gtgacttgtg tcaccaatga
+     7141 ccaaataccc acttgtgcta atataatgag ctcagtttcc acaaatgctc tcaccgtagc
+     7201 tcattttgct gagaacccaa tcaatgccat gatacagtac aattattttg ggacatttgc
+     7261 tagactcttg ttgatgatgc atgatcctgc tcttcgtcaa tcattgtatg aagttcaaga
+     7321 taagataccg ggcttgcaca gttctacttt caaatacgcc atgttgtatt tggacccttc
+     7381 cattggagga gtgtcgggca tgtctttgtc caggtttttg attagagcct tcccagatcc
+     7441 cgtaacagaa agtctctcat tctggagatt catccatgta catgctcgaa gtgagcatct
+     7501 gaaggagatg agtgcagtat ttggaaaccc cgagatagcc aagtttcgaa taactcacat
+     7561 agacaagcta gtagaagatc caacctctct gaacatcgct atgggaatga gtccagcgaa
+     7621 cttgttaaag actgaggtta aaaaatgctt aatcgaatca agacaaacca tcaggaacca
+     7681 ggtgattaag gatgcaacca tatatttgta tcatgaagag gatcggctca gaagtttctt
+     7741 atggtcaata aatcctctgt tccctagatt tttaagtgaa ttcaaatcag gcactttttt
+     7801 gggagtcgca gacgggctca tcagtctatt tcaaaattct cgtactattc ggaactcctt
+     7861 taagaaaaag tatcataggg aattggatga tttgattgtg aggagtgagg tatcctcttt
+     7921 gacacattta gggaaacttc atttgagaag gggatcatgt aaaatgtgga catgttcagc
+     7981 tactcatgct gacacattaa gatacaaatc ctggggccgt acagttattg ggacaactgt
+     8041 accccatcca ttagaaatgt tgggtccaca acatcgaaaa gagactcctt gtgcaccatg
+     8101 taacacatca gggttcaatt atgtttctgt gcattgtcca gacgggatcc atgacgtctt
+     8161 tagttcacgg ggaccattgc ctgcttatct agggtctaaa acatctgaat ctacatctat
+     8221 tttgcagcct tgggaaaggg aaagcaaagt cccactgatt aaaagagcta cacgtcttag
+     8281 agatgctatc tcttggtttg ttgaacccga ctctaaacta gcaatgacta tactttctaa
+     8341 catccactct ttaacaggcg aagaatggac caaaaggcag catgggttca aaagaacagg
+     8401 gtctgccctt cataggtttt cgacatctcg gatgagccat ggtgggttcg catctcagag
+     8461 cactgcagca ttgaccaggt tgatggcaac tacagacacc atgagggatc tgggagatca
+     8521 gaatttcgac tttttattcc aagcaacgtt gctctatgct caaattacca ccactgttgc
+     8581 aagagacgga tggatcacca gttgtacaga tcattatcat attgcctgta agtcctgttt
+     8641 gagacccata gaagagatca ccctggactc aagtatggac tacacgcccc cagatgtatc
+     8701 ccatgtgctg aagacatgga ggaatgggga aggttcgtgg ggacaagaga taaaacagat
+     8761 ctatccttta gaagggaatt ggaagaattt agcacctgct gagcaatcct atcaagtcgg
+     8821 cagatgtata ggttttctat atggagactt ggcgtataga aaatctactc atgccgagga
+     8881 cagttctcta tttcctctat ctatacaagg tcgtattaga ggtcgaggtt tcttaaaagg
+     8941 gttgctagac ggattaatga gagcaagttg ctgccaagta atacaccgga gaagtctggc
+     9001 tcatttgaag aggccggcca acgcagtgta cggaggtttg atttacttga ttgataaatt
+     9061 gagtgtatca cctccattcc tttctcttac tagatcagga cctattagag acgaattaga
+     9121 aacgattccc cacaagatcc caacctccta tccgacaagc aaccgtgata tgggggtgat
+     9181 tgtcagaaat tacttcaaat accaatgccg tctaattgaa aagggaaaat acagatcaca
+     9241 ttattcacaa ttatggttat tctcagatgt cttatccata gacttcattg gaccattctc
+     9301 tatttccacc accctcttgc aaatcctata caagccattt ttatctggga aagataagaa
+     9361 tgagttgaga gagctggcaa atctttcttc attgctaaga tcaggagagg ggtgggaaga
+     9421 catacatgtg aaattcttca ccaaggacat attattgtgt ccagaggaaa tcagacatgc
+     9481 ttgcaagttc gggattgcta aggataataa taaagacatg agctatcccc cttggggaag
+     9541 ggaatccaga gggacaatta caacaatccc tgtttattat acgaccaccc cttacccaaa
+     9601 gatgctagag atgcctccaa gaatccaaaa tcccctgctg tccggaatca ggttgggcca
+     9661 attaccaact ggcgctcatt ataaaattcg gagtatatta catggaatgg gaatccatta
+     9721 cagggacttc ttgagttgtg gagacggctc cggagggatg actgctgcat tactacgaga
+     9781 aaatgtgcat agcagaggaa tattcaatag tctgttagaa ttatcagggt cagtcatgcg
+     9841 aggcgcctct cctgagcccc ccagtgccct agaaacttta ggaggagata aatcgagatg
+     9901 tgtaaatggt gaaacatgtt gggaatatcc atctgactta tgtgacccaa ggacttggga
+     9961 ctatttcctc cgactcaaag caggcttggg gcttcaaatt gatttaattg taatggatat
+    10021 ggaagttcgg gattcttcta ctagcctgaa aattgagacg aatgttagaa attatgtgca
+    10081 ccggattttg gatgagcaag gagttttaat ctacaagact tatggaacat atatttgtga
+    10141 gagcgaaaag aatgcagtaa caatccttgg tcccatgttc aagacggtcg acttagttca
+    10201 aacagaattt agtagttctc aaacgtctga agtatatatg gtatgtaaag gtttgaagaa
+    10261 attaatcgat gaacccaatc ccgattggtc ttccatcaat gaatcctgga aaaacctgta
+    10321 cgcattccag tcatcagaac aggaatttgc cagagcaaag aaggttagta catactttac
+    10381 cttgacaggt attccctccc aattcattcc tgatcctttt gtaaacattg agactatgct
+    10441 acaaatattc ggagtaccca cgggtgtgtc tcatgcggct gccttaaaat catctgatag
+    10501 acctgcagat ttattgacca ttagcctttt ttatatggcg attatatcgt attataacat
+    10561 caatcatatc agagtaggac cgatacctcc gaacccccca tcagatggaa ttgcacaaaa
+    10621 tgtggggatc gctataactg gtataagctt ttggctgagt ttgatggaga aagacattcc
+    10681 actatatcaa cagtgtttag cagttatcca gcaatcattc ccgattaggt gggaggctgt
+    10741 ttcagtaaaa ggaggataca agcagaagtg gagtactaga ggtgatgggc tcccaaaaga
+    10801 tacccgaact tcagactcct tggccccaat cgggaactgg atcagatctc tggaattggt
+    10861 ccgaaaccaa gttcgtctaa atccattcaa tgagatcttg ttcaatcagc tatgtcgtac
+    10921 agtggataat catttgaaat ggtcaaattt gcgaagaaac acaggaatga ttgaatggat
+    10981 caatagacga atttcaaaag aagaccggtc tatactgatg ttgaagagtg acctacacga
+    11041 ggaaaactct tggagagatt aaaaaatcat gaggagactc caaactttaa gtatgaaaaa
+    11101 aactttgatc cttaagaccc tcttgtggtt tttatttttt atctggtttt gtggtcttcg
+    11161 t
+//

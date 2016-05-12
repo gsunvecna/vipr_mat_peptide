@@ -1,8 +1,8 @@
-LOCUS       NC_004162              11826 bp    RNA     linear   VRL 28-APR-2010
+LOCUS       NC_004162              11826 bp    RNA     linear   VRL 27-JUN-2012
 DEFINITION  Chikungunya virus, complete genome.
 ACCESSION   NC_004162
 VERSION     NC_004162.2  GI:27754751
-DBLINK      Project: 14998
+DBLINK      BioProject: PRJNA14998
 KEYWORDS    .
 SOURCE      Chikungunya virus
   ORGANISM  Chikungunya virus
@@ -135,6 +135,46 @@ FEATURES             Location/Qualifiers
                      IDIPDAAFTRVVDAPSLTDMSCEVPACTHSSDFGGVAIIKYAVSKKGKCAVHSMTNAV
                      TIREAEIEVEGNSQLQISFSTALASAEFRVQVCSTQVHCAAECHPPKDHIVNYPASHT
                      TLGVQDISATAMSWVQKITGGVGLVVAVAALILIVVLCVSFSRH"
+     gene            7567..10040
+                     /locus_tag="CHIKVgp3"
+                     /db_xref="GeneID:13165582"
+     CDS             join(7567..9957,9957..10040)
+                     /locus_tag="CHIKVgp3"
+                     /note="Truncated verstion of structural polyprotein that
+                     will be produced when frameshifting occurs at nt 9957;
+                     Truncated version of structural polyprotein and transframe
+                     fusion protein have been added by NCBI Staff with the kind
+                     help of Dr. David Karlin (Department of Zoology,
+                     University of  Oxford, UK) and Dr. Andrew Firth
+                     (Department of Pathology,  University of Cambridge, UK)"
+                     /codon_start=1
+                     /product="truncated polyprotein"
+                     /protein_id="YP_006491243.1"
+                     /db_xref="GI:392976865"
+                     /db_xref="GeneID:13165582"
+                     /translation="MEFIPTQTFYNRRYQPRPWTPRPTIQVIRPRPRPQRQAGQLAQL
+                     ISAVNKLTMRAVPQQKPRKNRKNKKQKQKQQAPQNNTNQKKQPPKKKPAQKKKKPGRR
+                     ERMCMKIENDCIFEVKHEGKVTGYACLVGDKVMKPAHVKGTIDNADLAKLAFKRSSKY
+                     DLECAQIPVHMKSDASKFTHEKPEGYYNWHHGAVQYSGGRFTIPTGAGKPGDSGRPIF
+                     DNKGRVVAIVLGGANEGARTALSVVTWNKDIVTKITPEGAEEWSLAIPVMCLLANTTF
+                     PCSQPPCIPCCYEKEPEETLRMLEDNVMRPGYYQLLQASLTCSPHRQRRSTKDNFNVY
+                     KATRPYLAHCPDCGEGHSCHSPVALERIRNEATDGTLKIQVSLQIGIGTDDSHDWTKL
+                     RYMDNHIPADAGRAGLFVRTSAPCTITGTMGHFILARCPKGETLTVGFTDSRKISHSC
+                     THPFHHDPPVIGREKFHSRPQHGKELPCSTYVQSNAATAEEIEVHMPPDTPDRTLLSQ
+                     QSGNVKITVNSQTVRYKCNCGGSNEGLITTDKVINNCKVDQCHAAVTNHKKWQYNSPL
+                     VPRNAELGDRKGKIHIPFPLANVTCMVPKARNPTVTYGKNQVIMLLYPDHPTLLSYRS
+                     MGEEPNYQEEWVTHKKEVVLTVPTEGLEVTWGNNEPYKYWPQLSANGTAHGHPHEIIL
+                     YYYELYPTMTVVVVSVASFILLSMVGMAVGMCMCARRRCITPYELTPGATVPFLLSLI
+                     CCIRTAKAATYQEAAVYLWNEQQPLFWLQALIPLAALIVLCNCLRLLPCCCKTLAFLS
+                     RNEHRCPHCERVRTRNSDPEHGGSTV"
+     mat_peptide     join(9811..9957,9957..10037)
+                     /locus_tag="CHIKVgp3"
+                     /product="transframe fusion protein"
+                     /note="Transframe fusion (TF) protein expressed via
+                     programmed ribosomal frameshifting. TF protein presumably
+                     plays a stabilizing role in the virion structure."
+                     /protein_id="YP_006491244.1"
+                     /db_xref="GI:392976866"
 ORIGIN      
         1 atggctgcgt gagacacacg tagcctacca gtttcttact gctctactct gcaaagcaag
        61 agattaagaa cccatcatgg atcctgtgta cgtggacata gacgctgaca gcgccttttt

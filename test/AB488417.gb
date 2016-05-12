@@ -1,0 +1,69 @@
+LOCUS       AB488417                1293 bp    RNA     linear   VRL 08-JUL-2009
+DEFINITION  Aedes flavivirus gene for polyprotein (E region), partial cds,
+            strain: Nagasaki-5.
+ACCESSION   AB488417
+VERSION     AB488417.1  GI:251823457
+KEYWORDS    .
+SOURCE      Aedes flavivirus
+  ORGANISM  Aedes flavivirus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus.
+REFERENCE   1
+  AUTHORS   Hoshino,K., Isawa,H., Tsuda,Y., Sawabe,K. and Kobayashi,M.
+  TITLE     Isolation and characterization of a new insect flavivirus from
+            Aedes albopictus and Aedes flavopictus mosquitoes in Japan
+  JOURNAL   Unpublished
+  REMARK    Publication_Status: Available-Online
+REFERENCE   2  (bases 1 to 1293)
+  AUTHORS   Hoshino,K., Isawa,H., Tsuda,Y., Kyoko,S. and Mutsuo,K.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (25-FEB-2009) Contact:Haruhiko Isawa National Institute
+            of Infectious Diseases, Department of Medical Entomology;
+            Toyama1-23-1, Shinjuku, Tokyo 1628640, Japan
+FEATURES             Location/Qualifiers
+     source          1..1293
+                     /organism="Aedes flavivirus"
+                     /mol_type="genomic RNA"
+                     /strain="Nagasaki-5"
+                     /host="Aedes albopictus"
+                     /db_xref="taxon:390845"
+                     /country="Japan:Chiba, Narita"
+                     /collection_date="2003"
+     CDS             <1..>1293
+                     /note="envelope (E) region"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="BAH83676.1"
+                     /db_xref="GI:251823458"
+                     /translation="TSIEPLYTITATGTSMSHTRILSNEMYSISTTRGLIHLDIHNIT
+                     VQGERPFKTLLTSCEIVESVSEDTCPGGSHLEMAKLRRANRTCKVDAFNRGWGTGCFE
+                     WGLGQVATCVEVQCLTMVNVSVLVDSVIQATASMELHGHQDSRAVLRDVPTVFHFGDI
+                     GTITLTCGATTDRLASQHYHVRDSSKSGLVLKEAVDAWPGVIRLGEYTSGMEKIINWG
+                     VTTANEIKVDSVNNPQIDWKGSVIQDIRSISFTCEMIFENVTFTSLPLCVGNLSGVFV
+                     QNGYGRDGVVSIILEESTPQACSIPISSRGCTVVGSTVIVAAKSQSGRAYVMCGNGTG
+                     HVELADSVVPVDCLVTPVAQAWRLMTHVAGRYSKHGMAGIGSVWEDLVRNFHFSWSWI
+                     PGGWLVPVVLIVLSIVFLGRGVTLVIVVVIASMYIRRVA"
+ORIGIN      
+        1 acttccattg aacccctgta cacgataacg gccactggaa catcaatgag tcacactcgt
+       61 attctatcga atgaaatgta ctccatctct acgactcgag ggctcatcca tcttgacatc
+      121 cacaacataa cagtgcaagg agaaagacca tttaaaacgt tgctaacatc atgtgagatc
+      181 gtcgagagtg tgtccgaaga cacatgccct ggtggatccc atctcgaaat ggccaagttg
+      241 cgacgtgcta accggacctg caaagtagat gcattcaata ggggctgggg aaccggctgt
+      301 tttgaatggg gactaggaca agttgccacg tgcgttgagg tccaatgcct gaccatggta
+      361 aatgtatctg tgctcgttga ctcagttatt caggccactg ccagtatgga actccatggg
+      421 caccaagact caagagccgt gttgcgtgat gttcccacgg tatttcattt cggggacata
+      481 ggaaccatca ccttgacttg cggtgcaacc actgacagat tggctagcca acattaccac
+      541 gtgcgtgatt cgtcaaagtc cggtctcgtt ttgaaagaag ctgttgatgc ctggcccggg
+      601 gttattcgcc tcggtgaata cacatccggg atggagaaaa taatcaactg gggcgtcaca
+      661 acagccaatg agattaaggt cgattctgtg aacaacccgc aaattgattg gaagggttct
+      721 gttatccagg acatccgctc catttcgttc acgtgcgaaa tgatttttga gaacgtgacg
+      781 tttactagtt taccgctgtg tgttggcaat ttgagtgggg tatttgtcca aaacgggtat
+      841 ggccgcgatg gcgttgtctc aatcatcctc gaagagagta ctccgcaggc ttgtagcatt
+      901 cctatatcga gccgaggatg tactgtcgtt gggtctactg tcatcgtcgc agcaaaaagt
+      961 caaagcggcc gcgcgtacgt catgtgtggg aatgggactg gccacgtaga actcgcggac
+     1021 agtgtcgtcc ctgttgactg tctcgtcaca ccggtagccc aggcttggag gcttatgact
+     1081 catgtggccg gtcgatactc aaaacatggc atggctggta ttggaagtgt ctgggaggac
+     1141 ctggtgcgaa actttcactt ttcgtggagt tggattccag gaggctggct cgttccagtt
+     1201 gtgttgattg tcttgtccat agtgttccta ggcagaggag ttacgctcgt tattgtcgtg
+     1261 gtgatagcct caatgtacat tcgtcgtgtg gcg
+//

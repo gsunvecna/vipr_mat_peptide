@@ -6,7 +6,7 @@ use English;
 use Carp;
 use Data::Dumper;
 
-use version; our $VERSION = qv('1.1.8'); # Mar 21 2013
+use version; our $VERSION = qv('1.2.0'); # Apr 12 2013
 use Bio::SeqIO;
 use Bio::Seq;
 use Bio::AlignIO;
@@ -44,7 +44,7 @@ Takes the newly annotated mat_peptides, saves to a genbank file
 sub saveNewGenbank {
     my ($inseq, $feats_all) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'saveNewGenbank';
 
     my $acc = $inseq->accession_number;
@@ -74,14 +74,22 @@ sub saveNewGenbank {
                   }
                 }
                 my $cds_id = '';
+if ( 0 ) {
                 if ($feats->[0]->has_tag('db_xref')) {
                   my @id = $feats->[0]->get_tag_values('db_xref');
                   for my $id1 (@id) {
                     $cds_id = $id1 if ($id1 =~ /^GI:/i);
                   }
                 }
+} else {
+                  my @id = $feats->[0]->get_tag_values('note'); # 4/09/2013
+                  for my $id1 (@id) {
+                    $cds_id = $1 if ($id1 =~ /[|]CDS=([^|]+)[|]/i);
+                  }
+}
+                $debug && print STDERR "$subn: \$key=$key \$k2=$k2 \$old_feats->[$i]=$old_cds_id \$cds_id=$cds_id\n";
                 next if ($cds_id ne $old_cds_id);
-                for my $j (reverse 1 .. $#{$feats}) { # Skip the CDS
+                for my $j (reverse 0 .. $#{$feats}) { # All feats are mat_peptide, CDS is not included anymore
                   my $seen = 0;
                   for my $k ($i+1 .. $#{$old_feats}) {
                       next if ($old_feats->[$k]->primary_tag ne 'mat_peptide');
@@ -125,7 +133,7 @@ Takes a genbank file, finds hash of refseqs, and an array of target genomes, in 
 sub annotate_1gbk {
     my ($gbk, $exe_dir, $aln_fn, $dir_path, $progs) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'annotate_1gbk';
 
     $aln_fn = [] if (!defined($aln_fn));

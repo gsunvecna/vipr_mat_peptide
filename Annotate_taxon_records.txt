@@ -1,5 +1,5 @@
 # Family=Arenaviridae taxon loaded from file=taxon_Arenaviridae.xml 
-# Saved from Annotate_Download.pm Ver1.1.8 on 02/27/2013 16:05:24 
+# Saved from Annotate_Download.pm Ver1.1.8 on 04/12/2013 11:54:46 
 |   41118 |   41118 |      -1 |   11617 | Arenavirus sp.               |                  | Arenaviridae    |
 |   51317 |   51317 |      -1 |   11617 | Pampa virus                  |                  | Arenaviridae    |
 |  434491 |  434491 |      -1 |   11617 | Kodoko virus                 |                  | Arenaviridae    |
@@ -10,6 +10,7 @@
 |  913013 |  913013 |      -1 |   11617 | Arenavirus Mus/TZ22285/TZA/2008 |                  | Arenaviridae    |
 | 1223561 | 1223561 |      -1 |   11617 | CAS virus                    |                  | Arenaviridae    |
 | 1223562 | 1223562 |      -1 |   11617 | Golden Gate virus            |                  | Arenaviridae    |
+| 1303019 | 1303019 |      -1 |   11617 | Boa arenavirus NL            |                  | Arenaviridae    |
 |   11619 |   11619 |   11618 |   11617 | Junin virus                  | Arenavirus       | Arenaviridae    |
 |   11620 |   11620 |   11618 |   11617 | Lassa virus                  | Arenavirus       | Arenaviridae    |
 |   11621 |   11620 |   11618 |   11617 | Lassa virus                  | Arenavirus       | Arenaviridae    |
@@ -65,12 +66,13 @@
 |  980879 |  980879 |   11618 |   11617 | Gbagroube virus              | Arenavirus       | Arenaviridae    |
 |  980880 |  980880 |   11618 |   11617 | Menekre virus                | Arenavirus       | Arenaviridae    |
 | 1134579 | 1134579 |   11618 |   11617 | Lunk virus NKS-1             | Arenavirus       | Arenaviridae    |
-# Family=Arenaviridae taxon loaded from file=taxon_Arenaviridae.xml, total=65
+# Family=Arenaviridae taxon loaded from file=taxon_Arenaviridae.xml, total=66
 
 # Family=Bunyaviridae taxon loaded from file=taxon_Bunyaviridae.xml 
-# Saved from Annotate_Download.pm Ver1.1.8 on 02/27/2013 16:05:24 
+# Saved from Annotate_Download.pm Ver1.1.8 on 04/12/2013 11:54:46 
 |   41403 |   41403 |      -1 |   11571 | Malacky virus                |                  | Bunyaviridae    |
 |  427636 |  427636 |      -1 |   11571 | Herbert virus                |                  | Bunyaviridae    |
+| 1230253 |  427636 |      -1 |   11571 | Herbert virus                |                  | Bunyaviridae    |
 |  543721 |  543721 |      -1 |   11571 | Phasi Charoen virus 1        |                  | Bunyaviridae    |
 |  603003 |  603003 |      -1 |   11571 | Gouleako virus               |                  | Bunyaviridae    |
 | 1198332 | 1198332 |      -1 |   11571 | Basiki virus                 |                  | Bunyaviridae    |
@@ -80,7 +82,6 @@
 |   35304 |   35304 |   11572 |   11571 | Bunyamwera virus             | Orthobunyavirus  | Bunyaviridae    |
 |   80935 |   35304 |   11572 |   11571 | Bunyamwera virus             | Orthobunyavirus  | Bunyaviridae    |
 |   80937 |   35304 |   11572 |   11571 | Bunyamwera virus             | Orthobunyavirus  | Bunyaviridae    |
-|   80941 |   35304 |   11572 |   11571 | Bunyamwera virus             | Orthobunyavirus  | Bunyaviridae    |
 |   80942 |   35304 |   11572 |   11571 | Bunyamwera virus             | Orthobunyavirus  | Bunyaviridae    |
 |  273341 |   35304 |   11572 |   11571 | Bunyamwera virus             | Orthobunyavirus  | Bunyaviridae    |
 |  273342 |   35304 |   11572 |   11571 | Bunyamwera virus             | Orthobunyavirus  | Bunyaviridae    |
@@ -132,7 +133,6 @@
 |   35319 |   35319 |   11572 |   11571 | Tete virus                   | Orthobunyavirus  | Bunyaviridae    |
 |  500324 |   35319 |   11572 |   11571 | Tete virus                   | Orthobunyavirus  | Bunyaviridae    |
 |   35320 |   35320 |   11572 |   11571 | Turlock virus                | Orthobunyavirus  | Bunyaviridae    |
-|  442712 |   35320 |   11572 |   11571 | Turlock virus                | Orthobunyavirus  | Bunyaviridae    |
 |  552554 |   35320 |   11572 |   11571 | Turlock virus                | Orthobunyavirus  | Bunyaviridae    |
 |   66264 |   70566 |   11572 |   11571 | Akabane virus                | Orthobunyavirus  | Bunyaviridae    |
 |   70566 |   70566 |   11572 |   11571 | Akabane virus                | Orthobunyavirus  | Bunyaviridae    |
@@ -140,6 +140,7 @@
 |  159138 |   70566 |   11572 |   11571 | Akabane virus                | Orthobunyavirus  | Bunyaviridae    |
 |   80938 |   80938 |   11572 |   11571 | Main Drain virus             | Orthobunyavirus  | Bunyaviridae    |
 |   80939 |   80939 |   11572 |   11571 | Kairi virus                  | Orthobunyavirus  | Bunyaviridae    |
+|   80941 |   80941 |   11572 |   11571 | Guaroa virus                 | Orthobunyavirus  | Bunyaviridae    |
 |  118655 |  118655 |   11572 |   11571 | Oropouche virus              | Orthobunyavirus  | Bunyaviridae    |
 |  159143 |  118655 |   11572 |   11571 | Oropouche virus              | Orthobunyavirus  | Bunyaviridae    |
 |  159139 |  159139 |   11572 |   11571 | Manzanilla virus             | Orthobunyavirus  | Bunyaviridae    |
@@ -179,6 +180,7 @@
 |  307164 |  307164 |   11572 |   11571 | Kaeng Khoi virus             | Orthobunyavirus  | Bunyaviridae    |
 |  348013 |  348013 |   11572 |   11571 | Madrid virus                 | Orthobunyavirus  | Bunyaviridae    |
 |  365047 |  365047 |   11572 |   11571 | Calovo virus                 | Orthobunyavirus  | Bunyaviridae    |
+|  442712 |  442712 |   11572 |   11571 | M'Poko virus                 | Orthobunyavirus  | Bunyaviridae    |
 |  611707 |  611707 |   11572 |   11571 | Tacaiuma virus               | Orthobunyavirus  | Bunyaviridae    |
 |  611709 |  611709 |   11572 |   11571 | Batama virus                 | Orthobunyavirus  | Bunyaviridae    |
 |  999729 |  999729 |   11572 |   11571 | Leanyer virus                | Orthobunyavirus  | Bunyaviridae    |
@@ -511,7 +513,6 @@
 |  993465 |   11608 |   11598 |   11571 | Seoul virus                  | Hantavirus       | Bunyaviridae    |
 |  993466 |   11608 |   11598 |   11571 | Seoul virus                  | Hantavirus       | Bunyaviridae    |
 |   12506 |   12506 |   11598 |   11571 | Dobrava-Belgrade virus       | Hantavirus       | Bunyaviridae    |
-|  159479 |   12506 |   11598 |   11571 | Dobrava-Belgrade virus       | Hantavirus       | Bunyaviridae    |
 |   28291 |   28291 |   11598 |   11571 | Thailand virus               | Hantavirus       | Bunyaviridae    |
 |  401485 |   28291 |   11598 |   11571 | Thailand virus               | Hantavirus       | Bunyaviridae    |
 |  401486 |   28291 |   11598 |   11571 | Thailand virus               | Hantavirus       | Bunyaviridae    |
@@ -626,6 +627,7 @@
 |  135285 |  135285 |   11598 |   11571 | Hantavirus Ca2Hu             | Hantavirus       | Bunyaviridae    |
 |  139445 |  139445 |   11598 |   11571 | Limestone Canyon virus       | Hantavirus       | Bunyaviridae    |
 |  139643 |  139643 |   11598 |   11571 | Hantavirus AH09              | Hantavirus       | Bunyaviridae    |
+|  159479 |  159479 |   11598 |   11571 | Saaremaa virus               | Hantavirus       | Bunyaviridae    |
 |  164249 |  164249 |   11598 |   11571 | Hantavirus AH211             | Hantavirus       | Bunyaviridae    |
 |  164250 |  164250 |   11598 |   11571 | Hantavirus Liu               | Hantavirus       | Bunyaviridae    |
 |  169173 |  169173 |   11598 |   11571 | Choclo virus                 | Hantavirus       | Bunyaviridae    |
@@ -820,6 +822,11 @@
 | 1244527 | 1244527 |   11598 |   11571 | RIOMV-4 Hantavirus           | Hantavirus       | Bunyaviridae    |
 | 1246675 | 1246675 |   11598 |   11571 | Boginia virus                | Hantavirus       | Bunyaviridae    |
 | 1268011 | 1268011 |   11598 |   11571 | Tigray hantavirus            | Hantavirus       | Bunyaviridae    |
+| 1283294 | 1283294 |   11598 |   11571 | Longquan virus               | Hantavirus       | Bunyaviridae    |
+| 1313091 | 1313091 |   11598 |   11571 | Tatenale virus               | Hantavirus       | Bunyaviridae    |
+| 1314972 | 1314972 |   11598 |   11571 | Huangpi virus                | Hantavirus       | Bunyaviridae    |
+| 1314973 | 1314973 |   11598 |   11571 | Lianghe virus                | Hantavirus       | Bunyaviridae    |
+| 1314974 | 1314974 |   11598 |   11571 | Yakeshi virus                | Hantavirus       | Bunyaviridae    |
 |   11612 |   11612 |   11611 |   11571 | Impatiens necrotic spot virus | Tospovirus       | Bunyaviridae    |
 |   31622 |   11612 |   11611 |   11571 | Impatiens necrotic spot virus | Tospovirus       | Bunyaviridae    |
 |   11613 |   11613 |   11611 |   11571 | Tomato spotted wilt virus    | Tospovirus       | Bunyaviridae    |
@@ -865,10 +872,10 @@
 | 1204737 | 1204737 |   11611 |   11571 | Soybean vein necrosis-associated virus | Tospovirus       | Bunyaviridae    |
 | 1260548 | 1260548 |   11611 |   11571 | Spider lily necrotic spot virus | Tospovirus       | Bunyaviridae    |
 | 1282405 | 1282405 |   11611 |   11571 | Hippeastrum chlorotic ringspot virus | Tospovirus       | Bunyaviridae    |
-# Family=Bunyaviridae taxon loaded from file=taxon_Bunyaviridae.xml, total=796
+# Family=Bunyaviridae taxon loaded from file=taxon_Bunyaviridae.xml, total=802
 
 # Family=Caliciviridae taxon loaded from file=taxon_Caliciviridae.xml 
-# Saved from Annotate_Download.pm Ver1.1.8 on 02/27/2013 16:05:24 
+# Saved from Annotate_Download.pm Ver1.1.8 on 04/12/2013 11:54:46 
 |   74724 |   74724 |      -1 |   11974 | Canine calicivirus           |                  | Caliciviridae   |
 |  292348 |   74724 |      -1 |   11974 | Canine calicivirus           |                  | Caliciviridae   |
 |  673763 |   74724 |      -1 |   11974 | Canine calicivirus           |                  | Caliciviridae   |
@@ -2439,6 +2446,86 @@
 | 1227806 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
 | 1249091 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
 | 1249092 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273458 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273459 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273460 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273461 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273462 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273463 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273464 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273465 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273466 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273467 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273468 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273469 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273470 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273471 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273472 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273473 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273474 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273475 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273476 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273477 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273478 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273479 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273480 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273481 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273482 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273483 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273484 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273485 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273486 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273487 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273488 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273489 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273490 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273491 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273492 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273493 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273494 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273495 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273496 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273497 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273498 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273499 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273500 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273501 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273502 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273503 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273504 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273505 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273506 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273507 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273508 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273509 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273510 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273511 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273512 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273513 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273514 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273515 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273516 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273517 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273518 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273519 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273520 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273521 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273522 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273523 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273524 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273525 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273526 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273527 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273528 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273529 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273530 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273531 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273532 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273533 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273534 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273535 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273536 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1273537 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
 | 1288800 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
 | 1288801 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
 | 1288802 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
@@ -2450,6 +2537,30 @@
 | 1288808 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
 | 1288809 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
 | 1288810 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1296126 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1296127 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1296128 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1296129 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1296130 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1296131 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1296132 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1296133 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1296134 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1296135 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1296136 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1296137 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1296138 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1296139 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1296140 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1296141 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1304598 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1304599 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1304600 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1304601 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1304602 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1304603 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1304604 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
+| 1305719 |   95342 |   95341 |   11974 | Sapporo virus                | Sapovirus        | Caliciviridae   |
 |  154121 |  154121 |   95341 |   11974 | Mink enteric sapovirus       | Sapovirus        | Caliciviridae   |
 | 1073970 | 1073970 |   95341 |   11974 | California sea lion sapovirus 1 | Sapovirus        | Caliciviridae   |
 | 1073971 | 1073971 |   95341 |   11974 | California sea lion sapovirus 2 | Sapovirus        | Caliciviridae   |
@@ -13003,6 +13114,53 @@
 | 1134665 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1141371 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1141372 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141528 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141529 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141530 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141531 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141532 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141533 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141534 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141535 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141536 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141537 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141538 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141539 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141540 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141541 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141542 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141543 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141544 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141545 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141546 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141547 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141548 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141549 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141550 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141551 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141552 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141553 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141554 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141555 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141556 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141557 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141558 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141559 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141560 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141561 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141562 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141563 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141564 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141565 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141566 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141567 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141568 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141569 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141570 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141571 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141572 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141573 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1141574 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1144282 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1144283 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1144284 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
@@ -13122,6 +13280,7 @@
 | 1156981 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1156982 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1156983 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1157336 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1159876 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1159877 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1159878 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
@@ -13881,6 +14040,44 @@
 | 1201312 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1201313 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1201314 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202908 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202909 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202910 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202911 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202912 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202913 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202914 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202915 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202916 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202917 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202918 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202919 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202920 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202921 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202922 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202923 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202924 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202925 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202926 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202927 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202928 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1202929 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1204232 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1204233 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1204234 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1204235 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1204236 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1204237 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1204238 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1204239 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1204240 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1204241 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1204242 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1204243 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1204244 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1204245 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1204246 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1204247 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1204256 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1204257 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1204258 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
@@ -14746,6 +14943,102 @@
 | 1223837 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1223838 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1223839 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224327 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224328 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224329 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224330 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224331 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224332 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224333 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224334 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224335 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224336 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224337 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224338 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224339 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224340 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224341 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224342 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224343 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224344 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224345 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224346 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224347 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224348 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224349 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224350 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224351 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224352 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224360 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224361 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224362 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224363 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224364 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224365 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224366 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224367 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224368 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224369 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224370 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224371 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224372 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224373 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224374 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224375 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224376 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224377 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224378 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224379 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224380 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224381 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224382 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224383 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224384 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224385 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224386 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224387 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224388 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224389 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224390 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224391 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224392 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224393 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224394 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224395 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224396 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224397 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224398 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224399 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224400 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224401 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224402 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224403 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224404 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224405 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224406 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224407 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224408 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224409 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224410 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224411 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224412 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224413 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224414 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224527 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224528 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224529 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224530 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224531 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224532 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224533 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224534 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224535 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224536 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224537 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224538 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224539 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224540 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1224541 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1226492 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1226493 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1226494 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
@@ -15118,6 +15411,14 @@
 | 1242787 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1242788 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1242789 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1242795 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1242796 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1242797 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1242798 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1242799 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1242800 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1242801 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1242802 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1244107 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1245183 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1245184 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
@@ -15287,6 +15588,75 @@
 | 1248471 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1248472 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1248473 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248646 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248647 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248648 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248649 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248650 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248651 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248652 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248653 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248654 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248655 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248656 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248657 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248658 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248659 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248660 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248661 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248662 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248663 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248664 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248665 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248666 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248667 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248668 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248669 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248670 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248671 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248672 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248673 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248674 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248675 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248676 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248677 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248678 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248679 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248680 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248681 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248682 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248683 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248684 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248685 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248686 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248687 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248688 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248689 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248690 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248691 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248692 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248693 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248694 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248695 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248696 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248697 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248698 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248699 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248700 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248701 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248702 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248703 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248704 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248705 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248706 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248707 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248708 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248709 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248710 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248711 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248712 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248713 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1248714 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1249090 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1249826 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1249827 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
@@ -15735,6 +16105,257 @@
 | 1287598 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1288348 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 | 1288349 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291808 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291809 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291810 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291811 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291812 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291813 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291814 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291815 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291816 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291817 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291818 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291819 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291820 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291821 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291822 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291823 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291824 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291825 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291826 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291827 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291828 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291829 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291830 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291831 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291832 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291833 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291834 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291835 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291836 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291837 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291838 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291839 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291840 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291841 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291842 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291843 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291844 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291845 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291846 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291847 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291848 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291849 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291850 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291851 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291852 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291853 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291854 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291855 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291856 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291857 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291858 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291859 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291860 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291861 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291862 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291863 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291864 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291865 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291866 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291867 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291868 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291869 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291870 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291871 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291872 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291873 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291874 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291875 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291876 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291877 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291878 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291879 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291880 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291881 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291882 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291883 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291884 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291885 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291886 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291887 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1291888 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1292142 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1292143 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1292144 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1292145 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1292146 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1292147 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1292148 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1292396 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1292397 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1292398 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1292399 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1292400 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1292401 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1292402 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1292403 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1292404 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293290 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293291 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293292 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293293 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293294 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293295 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293296 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293297 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293298 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293299 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293300 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293301 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293302 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293303 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293304 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293305 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293306 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293307 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293308 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293309 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293310 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1293311 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1295508 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1295509 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1295510 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1295511 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1295512 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1295513 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1295514 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1295515 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1295516 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1295517 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1295518 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1295519 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1295520 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1295521 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1295522 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1295523 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1295524 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1295525 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1295526 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296197 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296198 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296199 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296200 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296201 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296202 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296203 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296204 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296205 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296206 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296207 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296208 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296209 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296210 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296211 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296212 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296213 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296214 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296215 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296216 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296217 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296218 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296219 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296220 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296221 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296222 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296223 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296224 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296225 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296226 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296227 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296228 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296229 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296230 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296231 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296232 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296233 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296234 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296235 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296236 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296237 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296238 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296239 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296240 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296241 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296242 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296243 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296244 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296245 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296246 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296247 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296248 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296249 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296250 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296251 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296252 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296253 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296254 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296255 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296256 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296257 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296258 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296259 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296260 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296261 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296262 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296263 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296264 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1296265 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1298945 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1302373 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1306196 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1306197 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309643 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309644 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309645 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309646 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309647 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309648 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309649 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309650 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309651 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309652 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309653 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309654 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309655 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309656 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309657 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309658 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309659 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309660 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309661 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309662 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309663 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309664 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309665 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309666 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309667 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309668 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309669 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309670 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309671 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309672 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309673 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309674 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309675 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309676 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309677 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309678 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309679 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309680 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309681 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
+| 1309682 |   11983 |  142786 |   11974 | Norwalk virus                | Norovirus        | Caliciviridae   |
 |   70297 |   70297 |  142786 |   11974 | Swine norovirus              | Norovirus        | Caliciviridae   |
 |  106516 |  106516 |  142786 |   11974 | Human norovirus - Alphatron  | Norovirus        | Caliciviridae   |
 |  194422 |  194422 |  142786 |   11974 | Minireovirus                 | Norovirus        | Caliciviridae   |
@@ -15808,10 +16429,10 @@
 |  512169 |  512169 |  873551 |   11974 | Tulane virus                 | Recovirus        | Caliciviridae   |
 |  875071 |  875071 |  873551 |   11974 | Rhesus macaque recovirus     | Recovirus        | Caliciviridae   |
 | 1203029 | 1203029 |  873551 |   11974 | Recovirus Bangladesh/289/2007 | Recovirus        | Caliciviridae   |
-# Family=Caliciviridae taxon loaded from file=taxon_Caliciviridae.xml, total=14939
+# Family=Caliciviridae taxon loaded from file=taxon_Caliciviridae.xml, total=15553
 
 # Family=Coronaviridae taxon loaded from file=taxon_Coronaviridae.xml 
-# Saved from Annotate_Download.pm Ver1.1.8 on 02/27/2013 16:05:25 
+# Saved from Annotate_Download.pm Ver1.1.8 on 04/12/2013 11:54:47 
 |   28293 |   28293 |      -1 |   11118 | Enteric coronavirus          |                  | Coronaviridae   |
 |  229103 |  229103 |      -1 |   11118 | Chicken enteric coronavirus  |                  | Coronaviridae   |
 |  300190 |  300190 |      -1 |   11118 | Bird droppings coronavirus   |                  | Coronaviridae   |
@@ -16073,6 +16694,9 @@
 | 1225485 | 1225485 |      -1 |   11118 | Bat coronavirus Gabon/391/2009 |                  | Coronaviridae   |
 | 1225486 | 1225486 |      -1 |   11118 | Bat coronavirus CAR/P 25/2009 |                  | Coronaviridae   |
 | 1225487 | 1225487 |      -1 |   11118 | Bat coronavirus CAR/P 31/2009 |                  | Coronaviridae   |
+| 1261611 | 1261611 |      -1 |   11118 | Miniopterus bat coronavirus/South Africa/Irene/2009 |                  | Coronaviridae   |
+| 1261612 | 1261612 |      -1 |   11118 | Mops bat coronavirus/South Africa/1364/2011 |                  | Coronaviridae   |
+| 1261613 | 1261613 |      -1 |   11118 | Neoromicia bat coronavirus/South Africa/167/2007 |                  | Coronaviridae   |
 |   67605 |   67605 |   11155 |   11118 | Human torovirus              | Torovirus        | Coronaviridae   |
 |   46473 |   74501 |   11155 |   11118 | Bovine torovirus             | Torovirus        | Coronaviridae   |
 |   74501 |   74501 |   11155 |   11118 | Bovine torovirus             | Torovirus        | Coronaviridae   |
@@ -16284,6 +16908,22 @@
 | 1244203 | 1244203 |  693996 |   11118 | Bat coronavirus HKU10        | Alphacoronavirus | Coronaviridae   |
 | 1264898 | 1264898 |  693996 |   11118 | Ferret coronavirus           | Alphacoronavirus | Coronaviridae   |
 | 1288684 | 1288684 |  693996 |   11118 | Bat coronavirus Mr/Shanxi2011 | Alphacoronavirus | Coronaviridae   |
+| 1288687 | 1288687 |  693996 |   11118 | Bat coronavirus POA/2012/105 | Alphacoronavirus | Coronaviridae   |
+| 1288688 | 1288688 |  693996 |   11118 | Bat coronavirus POA/2012/127 | Alphacoronavirus | Coronaviridae   |
+| 1288689 | 1288689 |  693996 |   11118 | Bat coronavirus POA/2012/132 | Alphacoronavirus | Coronaviridae   |
+| 1288690 | 1288690 |  693996 |   11118 | Bat coronavirus POA/2012/143 | Alphacoronavirus | Coronaviridae   |
+| 1288691 | 1288691 |  693996 |   11118 | Bat coronavirus POA/2012/144 | Alphacoronavirus | Coronaviridae   |
+| 1288692 | 1288692 |  693996 |   11118 | Bat coronavirus POA/2012/44  | Alphacoronavirus | Coronaviridae   |
+| 1288693 | 1288693 |  693996 |   11118 | Bat coronavirus POA/2012/94  | Alphacoronavirus | Coronaviridae   |
+| 1288694 | 1288694 |  693996 |   11118 | Bat coronavirus POA/2012/96  | Alphacoronavirus | Coronaviridae   |
+| 1288695 | 1288695 |  693996 |   11118 | Bat coronavirus POA/2012/B01 | Alphacoronavirus | Coronaviridae   |
+| 1288696 | 1288696 |  693996 |   11118 | Bat coronavirus POA/2012/D09 | Alphacoronavirus | Coronaviridae   |
+| 1288697 | 1288697 |  693996 |   11118 | Bat coronavirus POA/2012/E05 | Alphacoronavirus | Coronaviridae   |
+| 1288698 | 1288698 |  693996 |   11118 | Bat coronavirus POA/2012/E07 | Alphacoronavirus | Coronaviridae   |
+| 1288699 | 1288699 |  693996 |   11118 | Bat coronavirus POA/2012/E11 | Alphacoronavirus | Coronaviridae   |
+| 1288700 | 1288700 |  693996 |   11118 | Bat coronavirus POA/2012/E9  | Alphacoronavirus | Coronaviridae   |
+| 1288701 | 1288701 |  693996 |   11118 | Bat coronavirus POA/2012/G01 | Alphacoronavirus | Coronaviridae   |
+| 1288702 | 1288702 |  693996 |   11118 | Bat coronavirus POA/2012/G03 | Alphacoronavirus | Coronaviridae   |
 | 1289544 | 1289544 |  693996 |   11118 | Coronavirus Mex_CoV-1        | Alphacoronavirus | Coronaviridae   |
 | 1289547 | 1289547 |  693996 |   11118 | Coronavirus Mex_CoV-2        | Alphacoronavirus | Coronaviridae   |
 | 1289548 | 1289548 |  693996 |   11118 | Coronavirus Mex_CoV-3        | Alphacoronavirus | Coronaviridae   |
@@ -16686,6 +17326,8 @@
 | 1160968 | 1160968 |  694002 |   11118 | Rabbit coronavirus HKU14     | Betacoronavirus  | Coronaviridae   |
 | 1235996 | 1235996 |  694002 |   11118 | Human betacoronavirus 2c EMC/2012 | Betacoronavirus  | Coronaviridae   |
 | 1263720 | 1235996 |  694002 |   11118 | Human betacoronavirus 2c EMC/2012 | Betacoronavirus  | Coronaviridae   |
+| 1298362 | 1235996 |  694002 |   11118 | Human betacoronavirus 2c EMC/2012 | Betacoronavirus  | Coronaviridae   |
+| 1306931 | 1235996 |  694002 |   11118 | Human betacoronavirus 2c EMC/2012 | Betacoronavirus  | Coronaviridae   |
 | 1269325 | 1269325 |  694002 |   11118 | Betacoronavirus BtCoV/KW2E-F53/Nyc_spec/GHA/2011 | Betacoronavirus  | Coronaviridae   |
 | 1269326 | 1269326 |  694002 |   11118 | Betacoronavirus BtCoV/KW2E-F82/Nyc_spec/GHA/2011 | Betacoronavirus  | Coronaviridae   |
 | 1269327 | 1269327 |  694002 |   11118 | Betacoronavirus BtCoV/KW2E-F93/Nyc_spec/GHA/2010 | Betacoronavirus  | Coronaviridae   |
@@ -16779,11 +17421,13 @@
 | 1159907 | 1159907 | 1159901 |   11118 | White-eye coronavirus HKU16  | Deltacoronavirus | Coronaviridae   |
 | 1159908 | 1159908 | 1159901 |   11118 | Wigeon coronavirus HKU20     | Deltacoronavirus | Coronaviridae   |
 |  572289 | 1297661 | 1159901 |   11118 | Munia coronavirus HKU13      | Deltacoronavirus | Coronaviridae   |
+| 1297661 | 1297661 | 1159901 |   11118 | Munia coronavirus HKU13      | Deltacoronavirus | Coronaviridae   |
 |  572290 | 1297662 | 1159901 |   11118 | Thrush coronavirus HKU12     | Deltacoronavirus | Coronaviridae   |
-# Family=Coronaviridae taxon loaded from file=taxon_Coronaviridae.xml, total=968
+| 1297662 | 1297662 | 1159901 |   11118 | Thrush coronavirus HKU12     | Deltacoronavirus | Coronaviridae   |
+# Family=Coronaviridae taxon loaded from file=taxon_Coronaviridae.xml, total=991
 
 # Family=Filoviridae taxon loaded from file=taxon_Filoviridae.xml 
-# Saved from Annotate_Download.pm Ver1.1.8 on 02/27/2013 16:05:25 
+# Saved from Annotate_Download.pm Ver1.1.8 on 04/12/2013 11:54:47 
 | 1104174 | 1104174 |      -1 |   11266 | Lloviu virus                 |                  | Filoviridae     |
 |  128947 |  186538 |  186536 |   11266 | Zaire ebolavirus             | Ebolavirus       | Filoviridae     |
 |  128951 |  186538 |  186536 |   11266 | Zaire ebolavirus             | Ebolavirus       | Filoviridae     |
@@ -16818,10 +17462,7 @@
 # Family=Filoviridae taxon loaded from file=taxon_Filoviridae.xml, total=31
 
 # Family=Flaviviridae taxon loaded from file=taxon_Flaviviridae.xml 
-# Saved from Annotate_Download.pm Ver1.1.8 on 02/27/2013 16:05:25 
-|   39112 |   39112 |      -1 |   11050 | GB virus A                   |                  | Flaviviridae    |
-|  126996 |   39112 |      -1 |   11050 | GB virus A                   |                  | Flaviviridae    |
-|  339847 |   39112 |      -1 |   11050 | GB virus A                   |                  | Flaviviridae    |
+# Saved from Annotate_Download.pm Ver1.1.8 on 04/12/2013 11:54:47 
 |   39113 |   39113 |      -1 |   11050 | Hepatitis GB virus B         |                  | Flaviviridae    |
 |   54290 |   54290 |      -1 |   11050 | GB virus C                   |                  | Flaviviridae    |
 |   93986 |   54290 |      -1 |   11050 | GB virus C                   |                  | Flaviviridae    |
@@ -16833,10 +17474,10 @@
 |  478577 |  478577 |      -1 |   11050 | Barkedji virus               |                  | Flaviviridae    |
 |  649187 |  649187 |      -1 |   11050 | Lammi virus                  |                  | Flaviviridae    |
 |  667516 |  667516 |      -1 |   11050 | Nakiwogo virus               |                  | Flaviviridae    |
-|  861727 |  861727 |      -1 |   11050 | GB virus D                   |                  | Flaviviridae    |
 | 1009692 | 1009692 |      -1 |   11050 | Canine hepacivirus AAK-2011  |                  | Flaviviridae    |
 | 1041933 | 1041933 |      -1 |   11050 | Flavivirus AV-2011/Spain     |                  | Flaviviridae    |
 | 1105033 | 1105033 |      -1 |   11050 | Duck flavivirus KPS54A61/THA |                  | Flaviviridae    |
+| 1307119 | 1307119 |      -1 |   11050 | Theiler's disease-associated virus |                  | Flaviviridae    |
 |   11072 |   11072 |   11051 |   11050 | Japanese encephalitis virus  | Flavivirus       | Flaviviridae    |
 |   11073 |   11072 |   11051 |   11050 | Japanese encephalitis virus  | Flavivirus       | Flaviviridae    |
 |   11074 |   11072 |   11051 |   11050 | Japanese encephalitis virus  | Flavivirus       | Flaviviridae    |
@@ -17051,6 +17692,7 @@
 | 1225490 | 1225490 |   11051 |   11050 | Bat flavivirus RC E. franqueti P 19 | Flavivirus       | Flaviviridae    |
 | 1225491 | 1225491 |   11051 |   11050 | Bat flavivirus RC E. franqueti P 21 | Flavivirus       | Flaviviridae    |
 | 1254420 | 1254420 |   11051 |   11050 | Nanay virus                  | Flavivirus       | Flaviviridae    |
+| 1302179 | 1302179 |   11051 |   11050 | Palm Creek virus             | Flavivirus       | Flaviviridae    |
 |   11096 |   11096 |   11095 |   11050 | Classical swine fever virus  | Pestivirus       | Flaviviridae    |
 |   11097 |   11096 |   11095 |   11050 | Classical swine fever virus  | Pestivirus       | Flaviviridae    |
 |   11098 |   11096 |   11095 |   11050 | Classical swine fever virus  | Pestivirus       | Flaviviridae    |
@@ -17644,11 +18286,19 @@
 | 1208062 |   11103 |   11102 |   11050 | Hepatitis C virus            | Hepacivirus      | Flaviviridae    |
 | 1208063 |   11103 |   11102 |   11050 | Hepatitis C virus            | Hepacivirus      | Flaviviridae    |
 | 1259832 |   11103 |   11102 |   11050 | Hepatitis C virus            | Hepacivirus      | Flaviviridae    |
+| 1249509 | 1249509 |   11102 |   11050 | Canine hepacivirus           | Hepacivirus      | Flaviviridae    |
 | 1263412 | 1263412 |   11102 |   11050 | Hepacivirus SMKL-2012        | Hepacivirus      | Flaviviridae    |
-# Family=Flaviviridae taxon loaded from file=taxon_Flaviviridae.xml, total=826
+|  126996 | 1307800 | 1307799 |   11050 | Pegivirus A                  | Pegivirus        | Flaviviridae    |
+|  339847 | 1307800 | 1307799 |   11050 | Pegivirus A                  | Pegivirus        | Flaviviridae    |
+| 1307800 | 1307800 | 1307799 |   11050 | Pegivirus A                  | Pegivirus        | Flaviviridae    |
+| 1307801 | 1307801 | 1307799 |   11050 | Pegivirus B                  | Pegivirus        | Flaviviridae    |
+| 1307803 | 1307803 | 1307799 |   11050 | Equine pegivirus 1           | Pegivirus        | Flaviviridae    |
+# Family=Flaviviridae taxon loaded from file=taxon_Flaviviridae.xml, total=830
 
 # Family=Hepeviridae taxon loaded from file=taxon_Hepeviridae.xml 
-# Saved from Annotate_Download.pm Ver1.1.8 on 02/27/2013 16:05:25 
+# Saved from Annotate_Download.pm Ver1.1.8 on 04/12/2013 11:54:47 
+|  172851 |  172851 |      -1 |  291484 | Avian hepatitis E virus      |                  | Hepeviridae     |
+|  516993 |  172851 |      -1 |  291484 | Avian hepatitis E virus      |                  | Hepeviridae     |
 | 1016879 | 1016879 |      -1 |  291484 | Cutthroat trout virus        |                  | Hepeviridae     |
 | 1216472 | 1216472 |      -1 |  291484 | Bat hepevirus                |                  | Hepeviridae     |
 | 1229326 | 1229326 |      -1 |  291484 | Hepelivirus                  |                  | Hepeviridae     |
@@ -17659,7 +18309,6 @@
 |   31769 |   12461 |  186677 |  291484 | Hepatitis E virus            | Hepevirus        | Hepeviridae     |
 |   33774 |   12461 |  186677 |  291484 | Hepatitis E virus            | Hepevirus        | Hepeviridae     |
 |   63421 |   12461 |  186677 |  291484 | Hepatitis E virus            | Hepevirus        | Hepeviridae     |
-|  172851 |   12461 |  186677 |  291484 | Hepatitis E virus            | Hepevirus        | Hepeviridae     |
 |  185579 |   12461 |  186677 |  291484 | Hepatitis E virus            | Hepevirus        | Hepeviridae     |
 |  185580 |   12461 |  186677 |  291484 | Hepatitis E virus            | Hepevirus        | Hepeviridae     |
 |  301242 |   12461 |  186677 |  291484 | Hepatitis E virus            | Hepevirus        | Hepeviridae     |
@@ -17670,7 +18319,6 @@
 |  512346 |   12461 |  186677 |  291484 | Hepatitis E virus            | Hepevirus        | Hepeviridae     |
 |  515412 |   12461 |  186677 |  291484 | Hepatitis E virus            | Hepevirus        | Hepeviridae     |
 |  515413 |   12461 |  186677 |  291484 | Hepatitis E virus            | Hepevirus        | Hepeviridae     |
-|  516993 |   12461 |  186677 |  291484 | Hepatitis E virus            | Hepevirus        | Hepeviridae     |
 |  652674 |   12461 |  186677 |  291484 | Hepatitis E virus            | Hepevirus        | Hepeviridae     |
 |  689698 |   12461 |  186677 |  291484 | Hepatitis E virus            | Hepevirus        | Hepeviridae     |
 |  689699 |   12461 |  186677 |  291484 | Hepatitis E virus            | Hepevirus        | Hepeviridae     |
@@ -17686,7 +18334,7 @@
 # Family=Hepeviridae taxon loaded from file=taxon_Hepeviridae.xml, total=34
 
 # Family=Herpesviridae taxon loaded from file=taxon_Herpesviridae.xml 
-# Saved from Annotate_Download.pm Ver1.1.8 on 02/27/2013 16:05:25 
+# Saved from Annotate_Download.pm Ver1.1.8 on 04/12/2013 11:54:47 
 |   10373 |   10373 |      -1 |   10292 | Macaca mulatta cytomegalovirus |                  | Herpesviridae   |
 |   10397 |   10397 |      -1 |   10292 | Tupaiid herpesvirus 1        |                  | Herpesviridae   |
 |   33706 |   33706 |      -1 |   10292 | Caviid herpesvirus 2         |                  | Herpesviridae   |
@@ -17839,6 +18487,7 @@
 | 1211015 | 1211015 |      -1 |   10292 | Myotis escalerai betaherpesvirus |                  | Herpesviridae   |
 | 1226368 | 1226368 |      -1 |   10292 | Ursid gammaherpesvirus 1     |                  | Herpesviridae   |
 | 1227348 | 1227348 |      -1 |   10292 | Mesoplodon densirostris herpesvirus |                  | Herpesviridae   |
+| 1232896 | 1232896 |      -1 |   10292 | Lagenorhynchus alphaherpesvirus 1 |                  | Herpesviridae   |
 | 1240711 | 1240711 |      -1 |   10292 | Otariid herpesvirus 4        |                  | Herpesviridae   |
 | 1282341 | 1282341 |      -1 |   10292 | Macropodid herpesvirus 4     |                  | Herpesviridae   |
 |   10295 |   10295 |   10294 |   10292 | Bovine herpesvirus 2         | Simplexvirus     | Herpesviridae   |
@@ -18310,10 +18959,10 @@
 |  179532 |  702736 | 1232637 |   10292 | Chelonid herpesvirus 5       | Scutavirus       | Herpesviridae   |
 |  256817 |  702736 | 1232637 |   10292 | Chelonid herpesvirus 5       | Scutavirus       | Herpesviridae   |
 |  702736 |  702736 | 1232637 |   10292 | Chelonid herpesvirus 5       | Scutavirus       | Herpesviridae   |
-# Family=Herpesviridae taxon loaded from file=taxon_Herpesviridae.xml, total=623
+# Family=Herpesviridae taxon loaded from file=taxon_Herpesviridae.xml, total=624
 
 # Family=Paramyxoviridae taxon loaded from file=taxon_Paramyxoviridae.xml 
-# Saved from Annotate_Download.pm Ver1.1.8 on 02/27/2013 16:05:25 
+# Saved from Annotate_Download.pm Ver1.1.8 on 04/12/2013 11:54:48 
 |   32611 |   32611 |      -1 |   11158 | Murayama virus               |                  | Paramyxoviridae |
 |   65405 |   65405 |      -1 |   11158 | Recombinant PIV3/PIV1 virus  |                  | Paramyxoviridae |
 |   70064 |   70064 |      -1 |   11158 | Ovine parainfluenza virus 3  |                  | Paramyxoviridae |
@@ -18923,6 +19572,10 @@
 |  887488 |   11234 |   11229 |   11158 | Measles virus                | Morbillivirus    | Paramyxoviridae |
 |  887489 |   11234 |   11229 |   11158 | Measles virus                | Morbillivirus    | Paramyxoviridae |
 |  931082 |   11234 |   11229 |   11158 | Measles virus                | Morbillivirus    | Paramyxoviridae |
+| 1006493 |   11234 |   11229 |   11158 | Measles virus                | Morbillivirus    | Paramyxoviridae |
+| 1006494 |   11234 |   11229 |   11158 | Measles virus                | Morbillivirus    | Paramyxoviridae |
+| 1006495 |   11234 |   11229 |   11158 | Measles virus                | Morbillivirus    | Paramyxoviridae |
+| 1006496 |   11234 |   11229 |   11158 | Measles virus                | Morbillivirus    | Paramyxoviridae |
 | 1056491 |   11234 |   11229 |   11158 | Measles virus                | Morbillivirus    | Paramyxoviridae |
 | 1056492 |   11234 |   11229 |   11158 | Measles virus                | Morbillivirus    | Paramyxoviridae |
 | 1056493 |   11234 |   11229 |   11158 | Measles virus                | Morbillivirus    | Paramyxoviridae |
@@ -18936,6 +19589,12 @@
 | 1163371 |   11234 |   11229 |   11158 | Measles virus                | Morbillivirus    | Paramyxoviridae |
 | 1274583 |   11234 |   11229 |   11158 | Measles virus                | Morbillivirus    | Paramyxoviridae |
 | 1276261 |   11234 |   11229 |   11158 | Measles virus                | Morbillivirus    | Paramyxoviridae |
+| 1292954 |   11234 |   11229 |   11158 | Measles virus                | Morbillivirus    | Paramyxoviridae |
+| 1292955 |   11234 |   11229 |   11158 | Measles virus                | Morbillivirus    | Paramyxoviridae |
+| 1292956 |   11234 |   11229 |   11158 | Measles virus                | Morbillivirus    | Paramyxoviridae |
+| 1292957 |   11234 |   11229 |   11158 | Measles virus                | Morbillivirus    | Paramyxoviridae |
+| 1292958 |   11234 |   11229 |   11158 | Measles virus                | Morbillivirus    | Paramyxoviridae |
+| 1312075 |   11234 |   11229 |   11158 | Measles virus                | Morbillivirus    | Paramyxoviridae |
 |   11240 |   11240 |   11229 |   11158 | Phocine distemper virus      | Morbillivirus    | Paramyxoviridae |
 |   28267 |   11240 |   11229 |   11158 | Phocine distemper virus      | Morbillivirus    | Paramyxoviridae |
 |  201863 |   11240 |   11229 |   11158 | Phocine distemper virus      | Morbillivirus    | Paramyxoviridae |
@@ -19005,6 +19664,7 @@
 |  270473 |   11263 |   11245 |   11158 | Murine pneumonia virus       | Pneumovirus      | Paramyxoviridae |
 |  296738 |   11263 |   11245 |   11158 | Murine pneumonia virus       | Pneumovirus      | Paramyxoviridae |
 |   12814 |   12814 |   11245 |   11158 | Respiratory syncytial virus  | Pneumovirus      | Paramyxoviridae |
+| 1290880 |   12814 |   11245 |   11158 | Respiratory syncytial virus  | Pneumovirus      | Paramyxoviridae |
 |   28869 |   28869 |   11245 |   11158 | Ovine respiratory syncytial virus | Pneumovirus      | Paramyxoviridae |
 |   79699 |   28869 |   11245 |   11158 | Ovine respiratory syncytial virus | Pneumovirus      | Paramyxoviridae |
 |  879294 |  879294 |   11245 |   11158 | Pneumovirus dog/Brne17/USA/2008 | Pneumovirus      | Paramyxoviridae |
@@ -19152,6 +19812,7 @@
 |  875624 |  875624 |  260963 |   11158 | Avian paramyxovirus 10       | Avulavirus       | Paramyxoviridae |
 | 1049185 | 1049185 |  260963 |   11158 | Avian paramyxovirus penguin/Espirito Santo-Brazil/2008 | Avulavirus       | Paramyxoviridae |
 | 1204252 | 1204252 |  260963 |   11158 | Avian paramyxovirus 11       | Avulavirus       | Paramyxoviridae |
+| 1305716 | 1305716 |  260963 |   11158 | Avian paramyxovirus 12       | Avulavirus       | Paramyxoviridae |
 |   63330 |   63330 |  260964 |   11158 | Hendra virus                 | Henipavirus      | Paramyxoviridae |
 |  928303 |   63330 |  260964 |   11158 | Hendra virus                 | Henipavirus      | Paramyxoviridae |
 |  121791 |  121791 |  260964 |   11158 | Nipah virus                  | Henipavirus      | Paramyxoviridae |
@@ -19159,10 +19820,10 @@
 | 1221391 | 1221391 |  260964 |   11158 | Cedar virus                  | Henipavirus      | Paramyxoviridae |
 |  381543 |  381543 | 1232658 |   11158 | Atlantic salmon paramyxovirus | Aquaparamyxovirus | Paramyxoviridae |
 |  122203 |  122203 | 1283308 |   11158 | Fer-de-Lance paramyxovirus   | Ferlavirus       | Paramyxoviridae |
-# Family=Paramyxoviridae taxon loaded from file=taxon_Paramyxoviridae.xml, total=845
+# Family=Paramyxoviridae taxon loaded from file=taxon_Paramyxoviridae.xml, total=857
 
 # Family=Picornaviridae taxon loaded from file=taxon_Picornaviridae.xml 
-# Saved from Annotate_Download.pm Ver1.1.8 on 02/27/2013 16:05:26 
+# Saved from Annotate_Download.pm Ver1.1.8 on 04/12/2013 11:54:48 
 |  172023 |  172023 |      -1 |   12058 | Simian picornavirus 3        |                  | Picornaviridae  |
 |  172026 |  172026 |      -1 |   12058 | Simian picornavirus 1        |                  | Picornaviridae  |
 |  172027 |  172027 |      -1 |   12058 | Simian picornavirus 6        |                  | Picornaviridae  |
@@ -19272,6 +19933,7 @@
 | 1233320 | 1233320 |      -1 |   12058 | Bovine hungarovirus          |                  | Picornaviridae  |
 | 1247839 | 1247839 |      -1 |   12058 | Parecho-like virus           |                  | Picornaviridae  |
 | 1268383 | 1268383 |      -1 |   12058 | Rosavirus M-7                |                  | Picornaviridae  |
+| 1293536 | 1293536 |      -1 |   12058 | Turkey avisivirus            |                  | Picornaviridae  |
 |   12064 |   12064 |   12059 |   12058 | Enterovirus E                | Enterovirus      | Picornaviridae  |
 |   12065 |   12064 |   12059 |   12058 | Enterovirus E                | Enterovirus      | Picornaviridae  |
 |  106607 |   12064 |   12059 |   12058 | Enterovirus E                | Enterovirus      | Picornaviridae  |
@@ -19618,6 +20280,8 @@
 | 1227558 |  138950 |   12059 |   12058 | Enterovirus C                | Enterovirus      | Picornaviridae  |
 | 1230646 |  138950 |   12059 |   12058 | Enterovirus C                | Enterovirus      | Picornaviridae  |
 | 1247477 |  138950 |   12059 |   12058 | Enterovirus C                | Enterovirus      | Picornaviridae  |
+| 1295562 |  138950 |   12059 |   12058 | Enterovirus C                | Enterovirus      | Picornaviridae  |
+| 1295563 |  138950 |   12059 |   12058 | Enterovirus C                | Enterovirus      | Picornaviridae  |
 |   12090 |  138951 |   12059 |   12058 | Enterovirus D                | Enterovirus      | Picornaviridae  |
 |   31915 |  138951 |   12059 |   12058 | Enterovirus D                | Enterovirus      | Picornaviridae  |
 |   42789 |  138951 |   12059 |   12058 | Enterovirus D                | Enterovirus      | Picornaviridae  |
@@ -20214,6 +20878,7 @@
 | 1052664 |  204711 |   12103 |   12058 | Theilovirus                  | Cardiovirus      | Picornaviridae  |
 | 1052665 |  204711 |   12103 |   12058 | Theilovirus                  | Cardiovirus      | Picornaviridae  |
 | 1214956 | 1214956 |   12103 |   12058 | Encephalomyocarditis virus type 2 | Cardiovirus      | Picornaviridae  |
+| 1281469 | 1281469 |   12103 |   12058 | Boone cardiovirus            | Cardiovirus      | Picornaviridae  |
 |   12110 |   12110 |   12109 |   12058 | Foot-and-mouth disease virus | Aphthovirus      | Picornaviridae  |
 |   12111 |   12110 |   12109 |   12058 | Foot-and-mouth disease virus | Aphthovirus      | Picornaviridae  |
 |   12112 |   12110 |   12109 |   12058 | Foot-and-mouth disease virus | Aphthovirus      | Picornaviridae  |
@@ -20422,6 +21087,12 @@
 |   72149 |   72149 |  194960 |   12058 | Aichivirus A                 | Kobuvirus        | Picornaviridae  |
 |  571505 |   72149 |  194960 |   12058 | Aichivirus A                 | Kobuvirus        | Picornaviridae  |
 |  650132 |   72149 |  194960 |   12058 | Aichivirus A                 | Kobuvirus        | Picornaviridae  |
+| 1082189 |   72149 |  194960 |   12058 | Aichivirus A                 | Kobuvirus        | Picornaviridae  |
+| 1141624 |   72149 |  194960 |   12058 | Aichivirus A                 | Kobuvirus        | Picornaviridae  |
+| 1224522 |   72149 |  194960 |   12058 | Aichivirus A                 | Kobuvirus        | Picornaviridae  |
+| 1300945 |   72149 |  194960 |   12058 | Aichivirus A                 | Kobuvirus        | Picornaviridae  |
+| 1313215 |   72149 |  194960 |   12058 | Aichivirus A                 | Kobuvirus        | Picornaviridae  |
+| 1313216 |   72149 |  194960 |   12058 | Aichivirus A                 | Kobuvirus        | Picornaviridae  |
 |  194965 |  194965 |  194960 |   12058 | Aichivirus B                 | Kobuvirus        | Picornaviridae  |
 |  571504 |  194965 |  194960 |   12058 | Aichivirus B                 | Kobuvirus        | Picornaviridae  |
 | 1048225 |  194965 |  194960 |   12058 | Aichivirus B                 | Kobuvirus        | Picornaviridae  |
@@ -20440,9 +21111,7 @@
 | 1048237 | 1048237 |  194960 |   12058 | Kobuvirus sheep/BRA11/2010/Brazil | Kobuvirus        | Picornaviridae  |
 | 1071408 | 1071408 |  194960 |   12058 | Kobuvirus dog/AN211D/USA/2009 | Kobuvirus        | Picornaviridae  |
 | 1074213 | 1074213 |  194960 |   12058 | Mouse kobuvirus M-5/USA/2010 | Kobuvirus        | Picornaviridae  |
-| 1082189 | 1082189 |  194960 |   12058 | Canine kobuvirus US-PC0082   | Kobuvirus        | Picornaviridae  |
 | 1131623 | 1131623 |  194960 |   12058 | Kobuvirus korean black goat/South Korea/2010 | Kobuvirus        | Picornaviridae  |
-| 1141624 | 1141624 |  194960 |   12058 | Murine kobuvirus             | Kobuvirus        | Picornaviridae  |
 |  578617 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
 |  652723 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
 |  703582 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
@@ -20475,9 +21144,44 @@
 | 1132022 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
 | 1136133 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
 | 1156769 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
-| 1224522 | 1224522 |  194960 |   12058 | Kobuvirus sewage Kathmandu   | Kobuvirus        | Picornaviridae  |
+| 1300981 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1300982 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1300983 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1300984 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1300985 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1300986 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1300987 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1300988 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1300989 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1300990 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1300991 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1300992 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1300993 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1300994 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1300995 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1300996 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1300997 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1300998 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1300999 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1301000 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1301001 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1301002 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1301003 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1301004 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1301005 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1301006 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1301007 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1301008 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1301009 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1301010 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1301011 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1301012 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1301013 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1301014 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
+| 1301015 | 1156769 |  194960 |   12058 | Porcine kobuvirus            | Kobuvirus        | Picornaviridae  |
 |  569195 | 1298633 |  194960 |   12058 | Aichivirus C                 | Kobuvirus        | Picornaviridae  |
 |  707153 | 1298633 |  194960 |   12058 | Aichivirus C                 | Kobuvirus        | Picornaviridae  |
+| 1298633 | 1298633 |  194960 |   12058 | Aichivirus C                 | Kobuvirus        | Picornaviridae  |
 |   47001 |  312185 |  194961 |   12058 | Equine rhinitis B virus      | Erbovirus        | Picornaviridae  |
 |  168014 |  312185 |  194961 |   12058 | Equine rhinitis B virus      | Erbovirus        | Picornaviridae  |
 |  312185 |  312185 |  194961 |   12058 | Equine rhinitis B virus      | Erbovirus        | Picornaviridae  |
@@ -20668,10 +21372,10 @@
 |  871699 |  871699 |  871697 |   12058 | Turdivirus 1                 | Orthoturdivirus  | Picornaviridae  |
 |  871700 |  871700 |  871698 |   12058 | Turdivirus 2                 | Paraturdivirus   | Picornaviridae  |
 |  871701 |  871701 |  871698 |   12058 | Turdivirus 3                 | Paraturdivirus   | Picornaviridae  |
-# Family=Picornaviridae taxon loaded from file=taxon_Picornaviridae.xml, total=1505
+# Family=Picornaviridae taxon loaded from file=taxon_Picornaviridae.xml, total=1548
 
 # Family=Poxviridae taxon loaded from file=taxon_Poxviridae.xml 
-# Saved from Annotate_Download.pm Ver1.1.8 on 02/27/2013 16:05:26 
+# Saved from Annotate_Download.pm Ver1.1.8 on 04/12/2013 11:54:48 
 |   10283 |   10283 |      -1 |   10240 | unidentified poxvirus        |                  | Poxviridae      |
 |   10291 |   10291 |      -1 |   10240 | unidentified entomopoxvirus  |                  | Poxviridae      |
 |   39444 |   39444 |      -1 |   10240 | Cotia virus                  |                  | Poxviridae      |
@@ -20681,7 +21385,7 @@
 |  109981 |  109981 |      -1 |   10240 | Diachasmimorpha longicaudata entomopoxvirus |                  | Poxviridae      |
 |  124304 |  124304 |      -1 |   10240 | Anacridium aegyptium entomopoxvirus |                  | Poxviridae      |
 |  169398 |  169398 |      -1 |   10240 | Oedaleus asiaticus entomopoxvirus |                  | Poxviridae      |
-|  240426 |  240426 |      -1 |   10240 | Squirrel poxvirus            |                  | Poxviridae      |
+|  240426 |  240426 |      -1 |   10240 | Squirrelpox virus            |                  | Poxviridae      |
 |  257630 |  257630 |      -1 |   10240 | Calliptamus italicus entomopoxvirus |                  | Poxviridae      |
 |  257631 |  257631 |      -1 |   10240 | Gomphocerus sibiricus entomopoxvirus |                  | Poxviridae      |
 |  368445 |  368445 |      -1 |   10240 | Crocodilepox virus           |                  | Poxviridae      |
@@ -20906,6 +21610,39 @@
 | 1259810 | 1259810 |   10260 |   10240 | Avipoxvirus TMPV             | Avipoxvirus      | Poxviridae      |
 | 1281441 | 1281441 |   10260 |   10240 | Avipoxvirus VIC-08           | Avipoxvirus      | Poxviridae      |
 | 1281442 | 1281442 |   10260 |   10240 | Avipoxvirus VIC-02           | Avipoxvirus      | Poxviridae      |
+| 1291378 | 1291378 |   10260 |   10240 | Brazilian penguinpox virus   | Avipoxvirus      | Poxviridae      |
+| 1294089 | 1294089 |   10260 |   10240 | Avipoxvirus isolate Alaska   | Avipoxvirus      | Poxviridae      |
+| 1294090 | 1294090 |   10260 |   10240 | Avipoxvirus isolate Antarctica | Avipoxvirus      | Poxviridae      |
+| 1294091 | 1294091 |   10260 |   10240 | Avipoxvirus isolate Argentina | Avipoxvirus      | Poxviridae      |
+| 1294092 | 1294092 |   10260 |   10240 | Avipoxvirus isolate Arizona  | Avipoxvirus      | Poxviridae      |
+| 1294093 | 1294093 |   10260 |   10240 | Avipoxvirus isolate Belgium  | Avipoxvirus      | Poxviridae      |
+| 1294094 | 1294094 |   10260 |   10240 | Avipoxvirus isolate California | Avipoxvirus      | Poxviridae      |
+| 1294095 | 1294095 |   10260 |   10240 | Avipoxvirus isolate Chile    | Avipoxvirus      | Poxviridae      |
+| 1294096 | 1294096 |   10260 |   10240 | Avipoxvirus isolate Colorado | Avipoxvirus      | Poxviridae      |
+| 1294097 | 1294097 |   10260 |   10240 | Avipoxvirus isolate Florida  | Avipoxvirus      | Poxviridae      |
+| 1294098 | 1294098 |   10260 |   10240 | Avipoxvirus isolate Galapagos Islands | Avipoxvirus      | Poxviridae      |
+| 1294099 | 1294099 |   10260 |   10240 | Avipoxvirus isolate Georgia  | Avipoxvirus      | Poxviridae      |
+| 1294100 | 1294100 |   10260 |   10240 | Avipoxvirus isolate Hungary  | Avipoxvirus      | Poxviridae      |
+| 1294101 | 1294101 |   10260 |   10240 | Avipoxvirus isolate Illinois | Avipoxvirus      | Poxviridae      |
+| 1294102 | 1294102 |   10260 |   10240 | Avipoxvirus isolate Maryland | Avipoxvirus      | Poxviridae      |
+| 1294103 | 1294103 |   10260 |   10240 | Avipoxvirus isolate Massachusetts | Avipoxvirus      | Poxviridae      |
+| 1294104 | 1294104 |   10260 |   10240 | Avipoxvirus isolate Midway Islands | Avipoxvirus      | Poxviridae      |
+| 1294105 | 1294105 |   10260 |   10240 | Avipoxvirus isolate Minnesota | Avipoxvirus      | Poxviridae      |
+| 1294106 | 1294106 |   10260 |   10240 | Avipoxvirus isolate Mississippi | Avipoxvirus      | Poxviridae      |
+| 1294107 | 1294107 |   10260 |   10240 | Avipoxvirus isolate Montana  | Avipoxvirus      | Poxviridae      |
+| 1294108 | 1294108 |   10260 |   10240 | Avipoxvirus isolate Nevada   | Avipoxvirus      | Poxviridae      |
+| 1294109 | 1294109 |   10260 |   10240 | Avipoxvirus isolate New York | Avipoxvirus      | Poxviridae      |
+| 1294110 | 1294110 |   10260 |   10240 | Avipoxvirus isolate Oregon   | Avipoxvirus      | Poxviridae      |
+| 1294111 | 1294111 |   10260 |   10240 | Avipoxvirus isolate Pennsylvania | Avipoxvirus      | Poxviridae      |
+| 1294112 | 1294112 |   10260 |   10240 | Avipoxvirus isolate South Korea | Avipoxvirus      | Poxviridae      |
+| 1294113 | 1294113 |   10260 |   10240 | Avipoxvirus isolate Spain    | Avipoxvirus      | Poxviridae      |
+| 1294114 | 1294114 |   10260 |   10240 | Avipoxvirus isolate Texas    | Avipoxvirus      | Poxviridae      |
+| 1294115 | 1294115 |   10260 |   10240 | Avipoxvirus isolate United Kingdom | Avipoxvirus      | Poxviridae      |
+| 1294116 | 1294116 |   10260 |   10240 | Avipoxvirus isolate Utah     | Avipoxvirus      | Poxviridae      |
+| 1294117 | 1294117 |   10260 |   10240 | Avipoxvirus isolate Washington | Avipoxvirus      | Poxviridae      |
+| 1294118 | 1294118 |   10260 |   10240 | Avipoxvirus isolate Washington DC | Avipoxvirus      | Poxviridae      |
+| 1294119 | 1294119 |   10260 |   10240 | Avipoxvirus isolate Wisconsin | Avipoxvirus      | Poxviridae      |
+| 1294120 | 1294120 |   10260 |   10240 | Avipoxvirus isolate the Netherlands | Avipoxvirus      | Poxviridae      |
 |   10266 |   10266 |   10265 |   10240 | Sheeppox virus               | Capripoxvirus    | Poxviridae      |
 |   10268 |   10266 |   10265 |   10240 | Sheeppox virus               | Capripoxvirus    | Poxviridae      |
 |   10269 |   10266 |   10265 |   10240 | Sheeppox virus               | Capripoxvirus    | Poxviridae      |
@@ -21006,10 +21743,11 @@
 |  662865 |  662865 |  573055 |   10240 | Cervidpoxvirus reindeer/Ontario/2008 | Cervidpoxvirus   | Poxviridae      |
 | 1107944 | 1107944 |  573055 |   10240 | Cervidpoxvirus gazelle/042751/Minnesota/2011 | Cervidpoxvirus   | Poxviridae      |
 | 1285600 | 1285600 | 1285599 |   10240 | Nile crocodilepox virus      | Crocodylidpoxvirus | Poxviridae      |
-# Family=Poxviridae taxon loaded from file=taxon_Poxviridae.xml, total=334
+| 1289473 | 1285600 | 1285599 |   10240 | Nile crocodilepox virus      | Crocodylidpoxvirus | Poxviridae      |
+# Family=Poxviridae taxon loaded from file=taxon_Poxviridae.xml, total=368
 
 # Family=Reoviridae taxon loaded from file=taxon_Reoviridae.xml 
-# Saved from Annotate_Download.pm Ver1.1.8 on 02/27/2013 16:05:26 
+# Saved from Annotate_Download.pm Ver1.1.8 on 04/12/2013 11:54:48 
 |   10891 |   10891 |      -1 |   10880 | Reovirus sp.                 |                  | Reoviridae      |
 |   12811 |   12811 |      -1 |   10880 | Reovirus S4                  |                  | Reoviridae      |
 |  259838 |  259838 |      -1 |   10880 | Reovirus sp. 02-11           |                  | Reoviridae      |
@@ -21166,16 +21904,16 @@
 | 1089208 | 1089208 |   10882 |   10880 | Orthoreovirus HK46886/09     | Orthoreovirus    | Reoviridae      |
 | 1089209 | 1089209 |   10882 |   10880 | Orthoreovirus HK50842/10     | Orthoreovirus    | Reoviridae      |
 |   10894 |   10894 |   10892 |   10880 | Tick and insect-borne orbivirus | Orbivirus        | Reoviridae      |
-|   10897 |   40050 |   10892 |   10880 | African horsesickness virus  | Orbivirus        | Reoviridae      |
-|   33714 |   40050 |   10892 |   10880 | African horsesickness virus  | Orbivirus        | Reoviridae      |
-|   36421 |   40050 |   10892 |   10880 | African horsesickness virus  | Orbivirus        | Reoviridae      |
-|   40050 |   40050 |   10892 |   10880 | African horsesickness virus  | Orbivirus        | Reoviridae      |
-|   48295 |   40050 |   10892 |   10880 | African horsesickness virus  | Orbivirus        | Reoviridae      |
-|   86059 |   40050 |   10892 |   10880 | African horsesickness virus  | Orbivirus        | Reoviridae      |
-|   86060 |   40050 |   10892 |   10880 | African horsesickness virus  | Orbivirus        | Reoviridae      |
-|   86061 |   40050 |   10892 |   10880 | African horsesickness virus  | Orbivirus        | Reoviridae      |
-|   86062 |   40050 |   10892 |   10880 | African horsesickness virus  | Orbivirus        | Reoviridae      |
-|  117204 |   40050 |   10892 |   10880 | African horsesickness virus  | Orbivirus        | Reoviridae      |
+|   10897 |   40050 |   10892 |   10880 | African horse sickness virus | Orbivirus        | Reoviridae      |
+|   33714 |   40050 |   10892 |   10880 | African horse sickness virus | Orbivirus        | Reoviridae      |
+|   36421 |   40050 |   10892 |   10880 | African horse sickness virus | Orbivirus        | Reoviridae      |
+|   40050 |   40050 |   10892 |   10880 | African horse sickness virus | Orbivirus        | Reoviridae      |
+|   48295 |   40050 |   10892 |   10880 | African horse sickness virus | Orbivirus        | Reoviridae      |
+|   86059 |   40050 |   10892 |   10880 | African horse sickness virus | Orbivirus        | Reoviridae      |
+|   86060 |   40050 |   10892 |   10880 | African horse sickness virus | Orbivirus        | Reoviridae      |
+|   86061 |   40050 |   10892 |   10880 | African horse sickness virus | Orbivirus        | Reoviridae      |
+|   86062 |   40050 |   10892 |   10880 | African horse sickness virus | Orbivirus        | Reoviridae      |
+|  117204 |   40050 |   10892 |   10880 | African horse sickness virus | Orbivirus        | Reoviridae      |
 |   10895 |   40051 |   10892 |   10880 | Bluetongue virus             | Orbivirus        | Reoviridae      |
 |   10900 |   40051 |   10892 |   10880 | Bluetongue virus             | Orbivirus        | Reoviridae      |
 |   10903 |   40051 |   10892 |   10880 | Bluetongue virus             | Orbivirus        | Reoviridae      |
@@ -22377,6 +23115,8 @@
 | 1193397 |   28875 |   10912 |   10880 | Rotavirus A                  | Rotavirus        | Reoviridae      |
 | 1193398 |   28875 |   10912 |   10880 | Rotavirus A                  | Rotavirus        | Reoviridae      |
 | 1193399 |   28875 |   10912 |   10880 | Rotavirus A                  | Rotavirus        | Reoviridae      |
+| 1204230 |   28875 |   10912 |   10880 | Rotavirus A                  | Rotavirus        | Reoviridae      |
+| 1204231 |   28875 |   10912 |   10880 | Rotavirus A                  | Rotavirus        | Reoviridae      |
 | 1211016 |   28875 |   10912 |   10880 | Rotavirus A                  | Rotavirus        | Reoviridae      |
 | 1211017 |   28875 |   10912 |   10880 | Rotavirus A                  | Rotavirus        | Reoviridae      |
 | 1211018 |   28875 |   10912 |   10880 | Rotavirus A                  | Rotavirus        | Reoviridae      |
@@ -22388,6 +23128,7 @@
 | 1265591 |   28875 |   10912 |   10880 | Rotavirus A                  | Rotavirus        | Reoviridae      |
 | 1271534 |   28875 |   10912 |   10880 | Rotavirus A                  | Rotavirus        | Reoviridae      |
 | 1271535 |   28875 |   10912 |   10880 | Rotavirus A                  | Rotavirus        | Reoviridae      |
+| 1304751 |   28875 |   10912 |   10880 | Rotavirus A                  | Rotavirus        | Reoviridae      |
 |   10942 |   28876 |   10912 |   10880 | Rotavirus B                  | Rotavirus        | Reoviridae      |
 |   12705 |   28876 |   10912 |   10880 | Rotavirus B                  | Rotavirus        | Reoviridae      |
 |   28876 |   28876 |   10912 |   10880 | Rotavirus B                  | Rotavirus        | Reoviridae      |
@@ -22627,8 +23368,8 @@
 |  649604 |   77763 |  208294 |   10880 | Banna virus                  | Seadornavirus    | Reoviridae      |
 |  104580 |  104580 |  208294 |   10880 | Kadipiro virus               | Seadornavirus    | Reoviridae      |
 |  246280 |  246280 |  208294 |   10880 | Liao ning virus              | Seadornavirus    | Reoviridae      |
-|   37368 |  311226 |  311225 |   10880 | Idnoreovirus - 1             | Idnoreovirus     | Reoviridae      |
-|  311226 |  311226 |  311225 |   10880 | Idnoreovirus - 1             | Idnoreovirus     | Reoviridae      |
+|   37368 |  311226 |  311225 |   10880 | Idnoreovirus 1               | Idnoreovirus     | Reoviridae      |
+|  311226 |  311226 |  311225 |   10880 | Idnoreovirus 1               | Idnoreovirus     | Reoviridae      |
 |  230407 |  311228 |  311227 |   10880 | Mycoreovirus 1               | Mycoreovirus     | Reoviridae      |
 |  311228 |  311228 |  311227 |   10880 | Mycoreovirus 1               | Mycoreovirus     | Reoviridae      |
 |  311229 |  311229 |  311227 |   10880 | Mycoreovirus 3               | Mycoreovirus     | Reoviridae      |
@@ -22640,28 +23381,12 @@
 |  648171 |  273810 |  699181 |   10880 | Eriocheir sinensis reovirus  | Cardoreovirus    | Reoviridae      |
 |  338781 |  338781 |  699182 |   10880 | Micromonas pusilla reovirus  | Mimoreovirus     | Reoviridae      |
 |  649596 |  338781 |  699182 |   10880 | Micromonas pusilla reovirus  | Mimoreovirus     | Reoviridae      |
-# Family=Reoviridae taxon loaded from file=taxon_Reoviridae.xml, total=1630
+# Family=Reoviridae taxon loaded from file=taxon_Reoviridae.xml, total=1633
 
 # Family=Rhabdoviridae taxon loaded from file=taxon_Rhabdoviridae.xml 
-# Saved from Annotate_Download.pm Ver1.1.8 on 02/27/2013 16:05:26 
+# Saved from Annotate_Download.pm Ver1.1.8 on 04/12/2013 11:54:48 
 |   11301 |   11301 |      -1 |   11270 | Sigma virus                  |                  | Rhabdoviridae   |
-|  666363 |   11301 |      -1 |   11270 | Sigma virus                  |                  | Rhabdoviridae   |
-|  666961 |   11301 |      -1 |   11270 | Sigma virus                  |                  | Rhabdoviridae   |
-|  666962 |   11301 |      -1 |   11270 | Sigma virus                  |                  | Rhabdoviridae   |
-|  666963 |   11301 |      -1 |   11270 | Sigma virus                  |                  | Rhabdoviridae   |
-|  671496 |   11301 |      -1 |   11270 | Sigma virus                  |                  | Rhabdoviridae   |
-|  671497 |   11301 |      -1 |   11270 | Sigma virus                  |                  | Rhabdoviridae   |
-|  671498 |   11301 |      -1 |   11270 | Sigma virus                  |                  | Rhabdoviridae   |
-|  673459 |   11301 |      -1 |   11270 | Sigma virus                  |                  | Rhabdoviridae   |
-|  948741 |   11301 |      -1 |   11270 | Sigma virus                  |                  | Rhabdoviridae   |
-| 1002359 |   11301 |      -1 |   11270 | Sigma virus                  |                  | Rhabdoviridae   |
-| 1002360 |   11301 |      -1 |   11270 | Sigma virus                  |                  | Rhabdoviridae   |
-| 1002361 |   11301 |      -1 |   11270 | Sigma virus                  |                  | Rhabdoviridae   |
-| 1002362 |   11301 |      -1 |   11270 | Sigma virus                  |                  | Rhabdoviridae   |
-| 1094373 |   11301 |      -1 |   11270 | Sigma virus                  |                  | Rhabdoviridae   |
 |   75890 |   75890 |      -1 |   11270 | Wheat rosette stunt virus    |                  | Rhabdoviridae   |
-|  170618 |  170618 |      -1 |   11270 | Trout rhabdovirus 903/87     |                  | Rhabdoviridae   |
-|  179986 |  179986 |      -1 |   11270 | Sea trout rhabdovirus        |                  | Rhabdoviridae   |
 |  200400 |  200400 |      -1 |   11270 | Flanders virus               |                  | Rhabdoviridae   |
 |  200401 |  200401 |      -1 |   11270 | Hart Park virus              |                  | Rhabdoviridae   |
 |  200402 |  200402 |      -1 |   11270 | Kamese virus                 |                  | Rhabdoviridae   |
@@ -22674,7 +23399,6 @@
 |  318840 |  318840 |      -1 |   11270 | Humpty doo virus             |                  | Rhabdoviridae   |
 |  318842 |  318842 |      -1 |   11270 | Charleville virus            |                  | Rhabdoviridae   |
 |  318843 |  318843 |      -1 |   11270 | Almpiwar virus               |                  | Rhabdoviridae   |
-|  318844 |  318844 |      -1 |   11270 | Tibrogargan virus            |                  | Rhabdoviridae   |
 |  318845 |  318845 |      -1 |   11270 | Parry Creek virus            |                  | Rhabdoviridae   |
 |  318846 |  318846 |      -1 |   11270 | Ngaingan virus               |                  | Rhabdoviridae   |
 |  318848 |  318848 |      -1 |   11270 | Le Dantec virus              |                  | Rhabdoviridae   |
@@ -22683,7 +23407,6 @@
 |  318854 |  318854 |      -1 |   11270 | Wongabel virus               |                  | Rhabdoviridae   |
 |  322052 |  322052 |      -1 |   11270 | China fish rhabdovirus QZ-2005 |                  | Rhabdoviridae   |
 |  373862 |  373862 |      -1 |   11270 | Siniperca chuatsi rhabdovirus |                  | Rhabdoviridae   |
-|  380160 |  380160 |      -1 |   11270 | Obodhiang virus              |                  | Rhabdoviridae   |
 |  380431 |  380431 |      -1 |   11270 | Kotonkon virus               |                  | Rhabdoviridae   |
 |  380432 |  380432 |      -1 |   11270 | Sandjimba virus              |                  | Rhabdoviridae   |
 |  864698 |  380432 |      -1 |   11270 | Sandjimba virus              |                  | Rhabdoviridae   |
@@ -22697,12 +23420,10 @@
 |  427634 |  427634 |      -1 |   11270 | Culex decens virus C23-K33   |                  | Rhabdoviridae   |
 |  427635 |  427635 |      -1 |   11270 | Culex eumelanomyia virus D24-K18 |                  | Rhabdoviridae   |
 |  552741 |  552741 |      -1 |   11270 | Tai Forest rhabdovirus       |                  | Rhabdoviridae   |
-|  685443 |  685443 |      -1 |   11270 | Eel virus European X         |                  | Rhabdoviridae   |
 |  698672 |  698672 |      -1 |   11270 | Moussa virus                 |                  | Rhabdoviridae   |
 |  710545 |  710545 |      -1 |   11270 | Durham virus                 |                  | Rhabdoviridae   |
 |  745716 |  745716 |      -1 |   11270 | Coffee ringspot virus        |                  | Rhabdoviridae   |
 |  758677 |  758677 |      -1 |   11270 | Raspberry vein chlorosis virus |                  | Rhabdoviridae   |
-|  764599 |  764599 |      -1 |   11270 | Coastal Plains virus         |                  | Rhabdoviridae   |
 |  864692 |  864692 |      -1 |   11270 | Ouango virus                 |                  | Rhabdoviridae   |
 |  864693 |  864693 |      -1 |   11270 | Bangoran virus               |                  | Rhabdoviridae   |
 |  864694 |  864694 |      -1 |   11270 | Bimbo virus                  |                  | Rhabdoviridae   |
@@ -22747,7 +23468,6 @@
 | 1158192 | 1158192 |      -1 |   11270 | Caiman lizard rhabdovirus    |                  | Rhabdoviridae   |
 | 1158193 | 1158193 |      -1 |   11270 | Sena Maduriera virus         |                  | Rhabdoviridae   |
 | 1231712 | 1231712 |      -1 |   11270 | Bas-Congo virus              |                  | Rhabdoviridae   |
-| 1256869 | 1256869 |      -1 |   11270 | Perch rhabdovirus            |                  | Rhabdoviridae   |
 | 1272561 | 1272561 |      -1 |   11270 | Eptesicus isabellinus rhabdovirus 1 |                  | Rhabdoviridae   |
 | 1272562 | 1272562 |      -1 |   11270 | Eptesicus isabellinus rhabdovirus 2 |                  | Rhabdoviridae   |
 | 1272563 | 1272563 |      -1 |   11270 | Eptesicus isabellinus rhabdovirus 3 |                  | Rhabdoviridae   |
@@ -22789,6 +23509,7 @@
 | 1272962 | 1272962 |      -1 |   11270 | Connecticut virus            |                  | Rhabdoviridae   |
 | 1288358 | 1288358 |      -1 |   11270 | Tench rhabdovirus S64        |                  | Rhabdoviridae   |
 | 1288359 | 1288359 |      -1 |   11270 | Grass carp rhabdovirus V76   |                  | Rhabdoviridae   |
+| 1313165 | 1313165 |      -1 |   11270 | Paralichthys olivaceus rhabdovirus |                  | Rhabdoviridae   |
 |   11272 |   11272 |   11271 |   11270 | Chandipura virus             | Vesiculovirus    | Rhabdoviridae   |
 |   11273 |   11272 |   11271 |   11270 | Chandipura virus             | Vesiculovirus    | Rhabdoviridae   |
 | 1027469 |   11272 |   11271 |   11270 | Chandipura virus             | Vesiculovirus    | Rhabdoviridae   |
@@ -22896,6 +23617,7 @@
 |  318834 |  318834 |   32613 |   11270 | Berrimah virus               | Ephemerovirus    | Rhabdoviridae   |
 |  318835 |  318835 |   32613 |   11270 | Kimberley virus              | Ephemerovirus    | Rhabdoviridae   |
 |  318836 |  318836 |   32613 |   11270 | Kotonkan virus               | Ephemerovirus    | Rhabdoviridae   |
+|  380160 |  380160 |   32613 |   11270 | Obodhiang virus              | Ephemerovirus    | Rhabdoviridae   |
 | 1229186 | 1229186 |   32613 |   11270 | Malakal virus                | Ephemerovirus    | Rhabdoviridae   |
 |   11287 |   11287 |  186778 |   11270 | Viral hemorrhagic septicemia virus | Novirhabdovirus  | Rhabdoviridae   |
 |   11288 |   11287 |  186778 |   11270 | Viral hemorrhagic septicemia virus | Novirhabdovirus  | Rhabdoviridae   |
@@ -22910,10 +23632,32 @@
 |  103603 |  103603 |  186778 |   11270 | Snakehead virus              | Novirhabdovirus  | Rhabdoviridae   |
 |  490110 |  490110 |  490109 |   11270 | Curionopolis virus           | Bracorhabdovirus | Rhabdoviridae   |
 |  490111 |  490111 |  490109 |   11270 | Itacaiunas virus             | Bracorhabdovirus | Rhabdoviridae   |
-# Family=Rhabdoviridae taxon loaded from file=taxon_Rhabdoviridae.xml, total=266
+|  170618 |  179986 | 1298653 |   11270 | Sea trout rhabdovirus        | Perhabdovirus    | Rhabdoviridae   |
+|  179986 |  179986 | 1298653 |   11270 | Sea trout rhabdovirus        | Perhabdovirus    | Rhabdoviridae   |
+| 1256869 | 1256869 | 1298653 |   11270 | Perch rhabdovirus            | Perhabdovirus    | Rhabdoviridae   |
+|  685443 | 1300113 | 1298653 |   11270 | Anguillid rhabdovirus        | Perhabdovirus    | Rhabdoviridae   |
+| 1300113 | 1300113 | 1298653 |   11270 | Anguillid rhabdovirus        | Perhabdovirus    | Rhabdoviridae   |
+|  318844 |  318844 | 1299306 |   11270 | Tibrogargan virus            | Tibrovirus       | Rhabdoviridae   |
+|  764599 |  764599 | 1299306 |   11270 | Coastal Plains virus         | Tibrovirus       | Rhabdoviridae   |
+|  666962 |  948741 | 1308858 |   11270 | Drosophila obscura sigmavirus | Sigmavirus       | Rhabdoviridae   |
+|  673459 |  948741 | 1308858 |   11270 | Drosophila obscura sigmavirus | Sigmavirus       | Rhabdoviridae   |
+|  948741 |  948741 | 1308858 |   11270 | Drosophila obscura sigmavirus | Sigmavirus       | Rhabdoviridae   |
+| 1002359 | 1002359 | 1308858 |   11270 | Drosophila ananassae sigmavirus | Sigmavirus       | Rhabdoviridae   |
+| 1002360 | 1002360 | 1308858 |   11270 | Drosophila immigrans sigmavirus | Sigmavirus       | Rhabdoviridae   |
+| 1002361 | 1002361 | 1308858 |   11270 | Drosophila tristis sigmavirus | Sigmavirus       | Rhabdoviridae   |
+| 1002362 | 1002362 | 1308858 |   11270 | Muscina stabulans sigmavirus | Sigmavirus       | Rhabdoviridae   |
+|  666363 | 1094373 | 1308858 |   11270 | Drosophila melanogaster sigmavirus | Sigmavirus       | Rhabdoviridae   |
+|  666961 | 1094373 | 1308858 |   11270 | Drosophila melanogaster sigmavirus | Sigmavirus       | Rhabdoviridae   |
+|  671496 | 1094373 | 1308858 |   11270 | Drosophila melanogaster sigmavirus | Sigmavirus       | Rhabdoviridae   |
+|  671497 | 1094373 | 1308858 |   11270 | Drosophila melanogaster sigmavirus | Sigmavirus       | Rhabdoviridae   |
+|  671498 | 1094373 | 1308858 |   11270 | Drosophila melanogaster sigmavirus | Sigmavirus       | Rhabdoviridae   |
+| 1094373 | 1094373 | 1308858 |   11270 | Drosophila melanogaster sigmavirus | Sigmavirus       | Rhabdoviridae   |
+|  666963 | 1308859 | 1308858 |   11270 | Drosophila affinis sigmavirus | Sigmavirus       | Rhabdoviridae   |
+| 1308859 | 1308859 | 1308858 |   11270 | Drosophila affinis sigmavirus | Sigmavirus       | Rhabdoviridae   |
+# Family=Rhabdoviridae taxon loaded from file=taxon_Rhabdoviridae.xml, total=269
 
 # Family=Togaviridae taxon loaded from file=taxon_Togaviridae.xml 
-# Saved from Annotate_Download.pm Ver1.1.8 on 02/27/2013 16:05:26 
+# Saved from Annotate_Download.pm Ver1.1.8 on 04/12/2013 11:54:48 
 |   11020 |   11020 |   11019 |   11018 | Barmah Forest virus          | Alphavirus       | Togaviridae     |
 |   11021 |   11021 |   11019 |   11018 | Eastern equine encephalitis virus | Alphavirus       | Togaviridae     |
 |   11022 |   11021 |   11019 |   11018 | Eastern equine encephalitis virus | Alphavirus       | Togaviridae     |
@@ -22952,7 +23696,7 @@
 |  177895 |   11036 |   11019 |   11018 | Venezuelan equine encephalitis virus | Alphavirus       | Togaviridae     |
 |  177898 |   11036 |   11019 |   11018 | Venezuelan equine encephalitis virus | Alphavirus       | Togaviridae     |
 |  376610 |   11036 |   11019 |   11018 | Venezuelan equine encephalitis virus | Alphavirus       | Togaviridae     |
-|   11039 |   11039 |   11019 |   11018 | Western equine encephalomyelitis virus | Alphavirus       | Togaviridae     |
+|   11039 |   11039 |   11019 |   11018 | Western equine encephalitis virus | Alphavirus       | Togaviridae     |
 |   37124 |   37124 |   11019 |   11018 | Chikungunya virus            | Alphavirus       | Togaviridae     |
 |  371094 |   37124 |   11019 |   11018 | Chikungunya virus            | Alphavirus       | Togaviridae     |
 |  371095 |   37124 |   11019 |   11018 | Chikungunya virus            | Alphavirus       | Togaviridae     |
@@ -22971,8 +23715,8 @@
 |   59304 |   59304 |   11019 |   11018 | Una virus                    | Alphavirus       | Togaviridae     |
 |   59305 |   59305 |   11019 |   11018 | Bebaru virus                 | Alphavirus       | Togaviridae     |
 |   60875 |   60875 |   11019 |   11018 | Mucambo virus                | Alphavirus       | Togaviridae     |
-|   60877 |   60875 |   11019 |   11018 | Mucambo virus                | Alphavirus       | Togaviridae     |
 |   60876 |   60876 |   11019 |   11018 | Pixuna virus                 | Alphavirus       | Togaviridae     |
+|   60877 |   60877 |   11019 |   11018 | Tonate virus                 | Alphavirus       | Togaviridae     |
 |   60879 |   60879 |   11019 |   11018 | Cabassou virus               | Alphavirus       | Togaviridae     |
 |   78540 |   84589 |   11019 |   11018 | Salmon pancreas disease virus | Alphavirus       | Togaviridae     |
 |   84589 |   84589 |   11019 |   11018 | Salmon pancreas disease virus | Alphavirus       | Togaviridae     |
@@ -22985,7 +23729,7 @@
 | 1159195 | 1159195 |   11019 |   11018 | Southern elephant seal virus | Alphavirus       | Togaviridae     |
 | 1159196 | 1159195 |   11019 |   11018 | Southern elephant seal virus | Alphavirus       | Togaviridae     |
 | 1194329 | 1194329 |   11019 |   11018 | Alphavirus JDD-2012          | Alphavirus       | Togaviridae     |
-| 1231903 | 1231903 |   11019 |   11018 | Eliat virus                  | Alphavirus       | Togaviridae     |
+| 1231903 | 1231903 |   11019 |   11018 | Eilat virus                  | Alphavirus       | Togaviridae     |
 |   11041 |   11041 |   11040 |   11018 | Rubella virus                | Rubivirus        | Togaviridae     |
 |   11043 |   11041 |   11040 |   11018 | Rubella virus                | Rubivirus        | Togaviridae     |
 |   11044 |   11041 |   11040 |   11018 | Rubella virus                | Rubivirus        | Togaviridae     |
@@ -22997,6 +23741,7 @@
 |  376266 |   11041 |   11040 |   11018 | Rubella virus                | Rubivirus        | Togaviridae     |
 |  376267 |   11041 |   11040 |   11018 | Rubella virus                | Rubivirus        | Togaviridae     |
 | 1136260 |   11041 |   11040 |   11018 | Rubella virus                | Rubivirus        | Togaviridae     |
-# Family=Togaviridae taxon loaded from file=taxon_Togaviridae.xml, total=83
+| 1307504 |   11041 |   11040 |   11018 | Rubella virus                | Rubivirus        | Togaviridae     |
+# Family=Togaviridae taxon loaded from file=taxon_Togaviridae.xml, total=84
 
-# Updated 22945 strains in 14 families: Arenaviridae Bunyaviridae Caliciviridae Coronaviridae Filoviridae Flaviviridae Hepeviridae Herpesviridae Paramyxoviridae Picornaviridae Poxviridae Reoviridae Rhabdoviridae Togaviridae
+# Updated 23690 strains in 14 families: Arenaviridae Bunyaviridae Caliciviridae Coronaviridae Filoviridae Flaviviridae Hepeviridae Herpesviridae Paramyxoviridae Picornaviridae Poxviridae Reoviridae Rhabdoviridae Togaviridae

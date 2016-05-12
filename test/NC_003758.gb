@@ -1,0 +1,137 @@
+LOCUS       NC_003758               1914 bp ds-RNA     linear   VRL 10-JUL-2008
+DEFINITION  Rice ragged stunt virus segment 8, complete sequence.
+ACCESSION   NC_003758
+VERSION     NC_003758.1  GI:20428604
+DBLINK      BioProject: PRJNA14794
+KEYWORDS    .
+SOURCE      Rice ragged stunt virus
+  ORGANISM  Rice ragged stunt virus
+            Viruses; dsRNA viruses; Reoviridae; Spinareovirinae; Oryzavirus.
+REFERENCE   1  (bases 1 to 1914)
+  AUTHORS   Upadhyaya,N.M., Zinkowsky,E., Kositratana,W. and Waterhouse,P.M.
+  TITLE     The M(r) 43K major capsid protein of rice ragged stunt oryzavirus
+            is a post-translationally processed product of a M(r) 67,348
+            polypeptide encoded by genome segment 8
+  JOURNAL   Arch. Virol. 141 (9), 1689-1701 (1996)
+   PUBMED   8893791
+REFERENCE   2  (bases 1 to 1914)
+  CONSRTM   NCBI Genome Project
+  TITLE     Direct Submission
+  JOURNAL   Submitted (03-MAY-2002) National Center for Biotechnology
+            Information, NIH, Bethesda, MD 20894, USA
+REFERENCE   3  (bases 1 to 1914)
+  AUTHORS   Upadhyaya,N.M.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (24-SEP-1996) Genetic Engineering for Plant Improvemet,
+            CSIRO, Plant Industry, Cnr. Clunies Ross Street and Barry Drive,
+            Canberra, ACT 2601, Australia
+COMMENT     PROVISIONAL REFSEQ: This record has not yet been subject to final
+            NCBI review. The reference sequence was derived from L46682.
+            GSDB:S:78238.
+            COMPLETENESS: full length.
+FEATURES             Location/Qualifiers
+     source          1..1914
+                     /organism="Rice ragged stunt virus"
+                     /mol_type="genomic RNA"
+                     /isolate="Thailand"
+                     /db_xref="taxon:42475"
+                     /segment="segment 8"
+     source          1..246
+                     /organism="Rice ragged stunt virus"
+                     /mol_type="genomic RNA"
+                     /db_xref="taxon:42475"
+                     /clone="MN1341"
+     source          7..1319
+                     /organism="Rice ragged stunt virus"
+                     /mol_type="genomic RNA"
+                     /db_xref="taxon:42475"
+                     /clone="RR493"
+     source          821..1052
+                     /organism="Rice ragged stunt virus"
+                     /mol_type="genomic RNA"
+                     /db_xref="taxon:42475"
+                     /clone="RR543"
+     source          1589..1914
+                     /organism="Rice ragged stunt virus"
+                     /mol_type="genomic RNA"
+                     /db_xref="taxon:42475"
+                     /clone="MNPW18"
+     gene            23..1813
+                     /locus_tag="RRSVs8gp1"
+                     /db_xref="GeneID:991200"
+     CDS             23..1813
+                     /locus_tag="RRSVs8gp1"
+                     /standard_name="major capsid"
+                     /experiment="experimental evidence, no additional details
+                     recorded"
+                     /note="evidence by viral polypeptide sequence, in vitro
+                     translation and antigen-antibody reaction; self-cleaving
+                     of 67K to 46K and 26K (possible protease), and further
+                     processing of 46K to 43K major capsid protein."
+                     /citation=[1]
+                     /codon_start=1
+                     /product="autocatalytic protease precurser"
+                     /protein_id="NP_620528.1"
+                     /db_xref="GI:20428605"
+                     /db_xref="GeneID:991200"
+                     /translation="MNTKGFAQKIQRTFHLIHQSHYTPPPNKISTHVEIFSELLTYVD
+                     YEWQRAAIGASRWVELAAEENEIHIPFNTKDERQVNFLIAIIHVAISLYSNSGVEPFA
+                     DCDLEKILNGDYESSKFDWNVVFDIVLPNDVRLKEKTLKAAVVEEERVEPRPKRREIT
+                     LGGQRPLQTRDVRSDSDLIVLSKLEAYDDVVERPRQNNTDIIIHRLGLAKMNPASNSI
+                     LPAKISRIITEQVFGAGVNVDYIARPTEGFISLSTATYTVASYFERGIANYDINAVLD
+                     NIIDKTDQLNTTDTVVELPSIPPEDSSIEVATPSHETFFDINTMIYIIMCCGSITNPM
+                     IQRLNGIVTRYNTTNYVVSYPDTDDGRKKALAERAVITVDGKYYKCYNDIKADTDKRR
+                     ILNPAVIKEVMISLRHYCGSVIHYRERMEATHISQVFCLLMGICYGGLDTKKIRCRWF
+                     EWPAVSNVPVTSSYAEFKGSNSGLPPYQCRKFTPRTVMTSFAHWNLWAWMLDLAIDKR
+                     MSSDRHLSIMKIYVLNAFSHLVLNSSLENSANILGPFPSFSGYTAFTSTSIVRDVSSC
+                     QRLAPFLLRMFSLVDYVAAAASSEASGSGV"
+     mat_peptide     23..694
+                     /locus_tag="RRSVs8gp1"
+                     /product="autocatalytic protease"
+                     /function="autocatalytic cleavage"
+                     /experiment="experimental evidence, no additional details
+                     recorded"
+                     /note="26K"
+                     /protein_id="NP_955624.1"
+                     /db_xref="GI:40796179"
+     mat_peptide     695..1810
+                     /locus_tag="RRSVs8gp1"
+                     /product="major capsid protein"
+                     /note="possibly post-translationally modified product of
+                     the 46K protein; 43K; putative"
+                     /protein_id="NP_955625.1"
+                     /db_xref="GI:40796180"
+ORIGIN      
+        1 gataaatctc ccaggaccaa gcatgaatac caagggcttc gcgcagaaga tccagagaac
+       61 cttccacttg attcaccaga gtcactacac acctccacca aacaaaatat ctacccatgt
+      121 tgaaattttc tcagaactgc taacatacgt tgactatgaa tggcagaggg cagcgatcgg
+      181 cgcttcacga tgggttgagt tagctgctga ggaaaacgaa atacacatcc cttttaatac
+      241 caaggacgag cgacaggtca acttcttaat cgccattatc catgttgcta tttcgttgta
+      301 ttcgaactca ggagtagagc ctttcgctga ttgtgatcta gagaaaattt tgaatggcga
+      361 ctatgagagt agtaagttcg attggaatgt ggtgttcgac attgttttgc caaatgatgt
+      421 aagattgaaa gaaaagacgc ttaaagcagc ggtggttgag gaagaacgtg ttgaacctcg
+      481 tccaaaacgt agagagataa cgcttggagg acagaggcct ttgcagacta gggatgtgcg
+      541 ttcggattct gatttgattg ttttgagcaa acttgaggcg tatgatgatg ttgttgaaag
+      601 accaaggcag aataacaccg acattatcat ccatcgactt ggtttagcca agatgaatcc
+      661 tgcgagtaat tcaatcctac cggccaaaat ctcgcgaatc atcactgaac aagtatttgg
+      721 agctggagtg aacgtcgatt acattgccag accaactgaa ggatttatat ctctgtcgac
+      781 cgccacctac acggtagctt cttactttga acggggcatc gccaattatg acatcaatgc
+      841 cgtcttggac aacatcattg ataagaccga tcaactgaat acaaccgata ccgtcgttga
+      901 gctaccatcc attccgccag aggactcgtc aattgaagtg gcgacgccgt cgcacgagac
+      961 gttctttgat atcaacacca tgatatacat cataatgtgc tgtggaagca tcactaatcc
+     1021 tatgatccag cgcctaaacg gtatcgtcac cagatacaac acgaccaatt acgtggtaag
+     1081 ttatcctgat actgacgatg gaaggaagaa ggcattggct gagcgtgcgg ttatcactgt
+     1141 ggacggtaag tactataagt gctacaacga tatcaaggct gacacagata agcgaagaat
+     1201 tctcaaccca gctgtcatca aagaggttat gattagtctg cgtcactatt gtggtagtgt
+     1261 cattcattac agagagagga tggaagcgac tcatattagt caagtgtttt gtcttctgat
+     1321 gggaatatgc tatggtggct tagataccaa gaagatcagg tgtcgatggt ttgagtggcc
+     1381 cgccgtatct aacgttccag tcacttctag ttacgcagag tttaaaggca gtaacagtgg
+     1441 tctgccacct taccaatgtc gcaaattcac accacgaacg gttatgacat cttttgcgca
+     1501 ttggaattta tgggcgtgga tgcttgattt agcaattgac aaacgcatgt cgtcagatcg
+     1561 tcatcttagt attatgaaga tttacgtttt gaacgctttc agtcatttag ttcttaattc
+     1621 ctcattagaa aatagcgcca acattttagg tccttttcca tcgttttcgg gctacaccgc
+     1681 ttttacatct acatctatag ttcgtgatgt ttcttcgtgt caacgtctag ctccgttcct
+     1741 actccgcatg tttagtttag ttgattatgt cgcggcagca gcgagttcag aagccagcgg
+     1801 ttccggtgta tgagagagag ggttgcttta ggtgagacgg cttagcattg cctcatgaac
+     1861 ttggtcacct gagtggctct caggcctggc actgggcaga gatagaatgg gtgc
+//

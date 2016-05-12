@@ -94,7 +94,7 @@ sub backupFiles takes a directory path, a filename, and a number, backs up the f
 sub backupFiles {
     my ($exe_dir, $filename, $numBak) = @_;
 
-    my $debug = 1 || $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'Annotate_Util::backupFiles';
 
     my $numCopies = 0;
@@ -116,6 +116,7 @@ sub backupFiles {
         $result = ` ls -l $exe_dir/$bak 2>&1`;
     } else {
         $result = "diff $exe_dir/$filename $exe_dir/$bak 2>&1";
+        $debug && print STDERR "$subn: command='$result'\n";
         $result = ` $result `;
         $debug && print STDERR "$subn: \$result='\n$result'\n";
         chomp $result;
@@ -1143,10 +1144,14 @@ sub project_matpept {
                     $symbol2 = $1 if ($tags[$ii] =~ /(symbol=[^|]+[|])/i);
                 }
                 $debug && print STDERR "$subn: \$symbol ='$symbol' \$symbol2='$symbol2'\n";
+                my $feat_loc = $feat->location->to_FTstring;
+                my $feat_old_loc = $feat_old->location->to_FTstring;
                 if ($symbol && $symbol eq $symbol2) {
                     $seen = 1;
-                } elsif ($feat->location->to_FTstring eq $feat_old->location->to_FTstring) {
+                    print STDERR "$subn: Found duplicate based on symbol: $symbol:$feat_old_loc vs $symbol2:$feat_old_loc\n";
+                } elsif ($feat_loc eq $feat_old_loc) {
                     $seen = 1;
+                    print STDERR "$subn: Found duplicate based on location: $symbol:$feat_old_loc vs $symbol2:$feat_old_loc\n";
                 }
                 next if (!$seen);
 
@@ -1154,29 +1159,26 @@ sub project_matpept {
                 my $length2 = $feat_old->location->end - $feat_old->location->start +1;
                 next if ($length < $length2); # $seen=1 if new feature is shorter
 
-
-                my $s1 = $feat_old->location->to_FTstring;
-#                my $s2 = $feat->location->to_FTstring;
-#                next if ($s1 ne $s2);
-#                $seen = 1;
-#                $debug && print STDERR "$subn: \$s1=$s1\n";
-                @tags = $feat_old->get_tag_values('note');
-                for (my $ii = 0; $ii<=$#tags; $ii++) {
-                    $debug && print STDERR "$subn: \$tags[$ii] = $tags[$ii]\n";
-                    if ($tags[$ii] =~ /=Y/i) {
-                        my @ff = @$feats_all;
-                        my @s = ();
-                        push @s, @ff[0 .. $feat_oldi-1] if ($feat_oldi>0);
-#                        push @s, $feat;  # Include the new feature
-                        push @s, @ff[$feat_oldi+1 .. $#{$feats_all}] if ($feat_oldi<$#{$feats_all});
-                        $debug && print STDERR "$subn: \@s=\n".Dumper(@s)."End of \@s\n\n";
-                        print STDERR "$subn: Found duplicate $symbol with '=Y' in mat_peptide $feat_oldi:$s1, removed\n";
-                        $feats_all = [ @s ];
-                        $seen = 0;
-                        last;
-                    } else {
-                        $debug && print STDERR "$subn: Don't see '=Y[|]\n";
-                    }
+                my $tags = [ $feat_old->get_tag_values('note') ];
+                $debug && print STDERR "$subn: \$tags=\n".Dumper($tags)."End of \$tags\n\n";
+                for my $tag (@$tags) {
+                    next if ($tag !~ /^Desc:/i);
+                    $tags = $tag;
+                }
+                $debug && print STDERR "$subn: \$tags=$tags\n";
+                if ($tags =~ /=Y/i) {
+                    my @ff = @$feats_all;
+                    my @s = ();
+                    push @s, @ff[0 .. $feat_oldi-1] if ($feat_oldi>0);
+#                    push @s, $feat;  # Include the new feature
+                    push @s, @ff[$feat_oldi+1 .. $#{$feats_all}] if ($feat_oldi<$#{$feats_all});
+                    $debug && print STDERR "$subn: \@s=\n".Dumper(@s)."End of \@s\n\n";
+                    print STDERR "$subn: Found duplicate $symbol with '=Y' in mat_peptide $feat_oldi:$feat_old_loc, removed\n";
+                    $feats_all = [ @s ];
+                    $seen = 0;
+                    last;
+                } else {
+                    $debug && print STDERR "$subn: Don't see '=Y[|]\n";
                 }
                 last;
             }

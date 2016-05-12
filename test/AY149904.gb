@@ -1,8 +1,8 @@
-LOCUS       NC_005064              11375 bp    RNA     linear   VRL 26-JUN-2012
-DEFINITION  Kamiti River virus, complete genome.
-ACCESSION   NC_005064
-VERSION     NC_005064.1  GI:33620713
-DBLINK      BioProject: PRJNA14896
+LOCUS       AY149904               11375 bp    RNA     linear   VRL 17-FEB-2004
+DEFINITION  Kamiti River virus isolate SR-75 polyprotein precursor, gene,
+            complete cds.
+ACCESSION   AY149904
+VERSION     AY149904.1  GI:30316448
 KEYWORDS    .
 SOURCE      Kamiti River virus
   ORGANISM  Kamiti River virus
@@ -15,36 +15,23 @@ REFERENCE   1  (bases 1 to 11375)
   JOURNAL   Arch. Virol. 148 (6), 1095-1118 (2003)
    PUBMED   12756617
 REFERENCE   2  (bases 1 to 11375)
-  CONSRTM   NCBI Genome Project
-  TITLE     Direct Submission
-  JOURNAL   Submitted (13-AUG-2003) National Center for Biotechnology
-            Information, NIH, Bethesda, MD 20894, USA
-REFERENCE   3  (bases 1 to 11375)
   AUTHORS   Crabtree,M.B., Sang,R.C., Stollar,V., Dunster,L.M. and Miller,B.R.
   TITLE     Direct Submission
   JOURNAL   Submitted (12-SEP-2002) Division of Vector-Borne Infectious
             Diseases, Centers for Disease Control and Prevention, P.O. Box
             2087, Fort Collins, CO 80522, USA
-COMMENT     PROVISIONAL REFSEQ: This record has not yet been subject to final
-            NCBI review. The reference sequence is identical to AY149905.
-            COMPLETENESS: full length.
 FEATURES             Location/Qualifiers
      source          1..11375
                      /organism="Kamiti River virus"
                      /mol_type="genomic RNA"
-                     /isolate="SR-82"
+                     /isolate="SR-75"
                      /db_xref="taxon:218849"
      5'UTR           1..96
-     gene            97..10170
-                     /locus_tag="KRVgp1"
-                     /db_xref="GeneID:1733752"
      CDS             97..10170
-                     /locus_tag="KRVgp1"
                      /codon_start=1
                      /product="polyprotein precursor"
-                     /protein_id="NP_891560.1"
-                     /db_xref="GI:33620714"
-                     /db_xref="GeneID:1733752"
+                     /protein_id="AAO24117.1"
+                     /db_xref="GI:30316449"
                      /translation="MNRGSLKKGPPGPTSNRPSVGPPDSAGKRVKQVAPPPTRGHMER
                      GLSLLTKNDNVSRQAKRQRNPRQQLSGIFGGGVGAWLRVLHMDIGTAILWLALATASL
                      GQRMFKQLNSLRKRVKRLEKQRSGPNLVMIIGLLALGLCYGEMLRYLSDGKGALRLER
@@ -68,7 +55,7 @@ FEATURES             Location/Qualifiers
                      STLTRLVLTILAMLIFGMPNIFSSVGLSAWVLLAASSSLRPRDVLMNLWIILQTGSSA
                      VLLLGFMIRKRMSIVLGTQHMVALVCVHFLFSVVDRHQKTLYGLLELSAAAILIGAYN
                      GISQTLPPEVLVFCLVMGWKTSLAILTVVSLMFSLHACYRFVVKFHSTKNGYRDYGAS
-                     SWFWIVSFASAGAIWAAERAQQPTIAATLAFTMIVLFLFMDQSSVSMNLEFLSKGEIP
+                     SWFWIVSFASAGAIWAAERAQQPTIAAILAFTMIVLFLFMDQSSVSMNLEFLSKGEIP
                      EGVRIEDDEGRDLADLRGRYGDEGIVVGTQQTSMHLPEMVIVVLVGCALTSVSFFLGA
                      LYVVVASSTNLPLHVVRYIRIRLSEQNRSDDLLGIGVSGGPELLTSFGELPNGVYRIT
                      VRSLFGTRQRGVGFAKNGVFHTLMHVTRGEPLNWRGKAVIPHSGSALRDVVSYGGPWQ
@@ -105,106 +92,27 @@ FEATURES             Location/Qualifiers
                      PYLHKKQDIECGSLIGSKERATWARDMENSVLSVRKILDSETGTNNSYKDELSVMSRF
                      RKGNDVI"
      mat_peptide     97..525
-                     /locus_tag="KRVgp1"
                      /product="capsid protein"
-                     /protein_id="NP_937771.1"
-                     /db_xref="GI:37695580"
      mat_peptide     526..954
-                     /locus_tag="KRVgp1"
                      /product="premembrane protein"
-                     /protein_id="NP_976250.1"
-                     /db_xref="GI:42766922"
      mat_peptide     772..954
-                     /locus_tag="KRVgp1"
                      /product="membrane protein"
-                     /protein_id="NP_937772.1"
-                     /db_xref="GI:37695581"
      mat_peptide     955..2250
-                     /locus_tag="KRVgp1"
                      /product="envelope protein"
-                     /protein_id="NP_937773.1"
-                     /db_xref="GI:37695582"
      mat_peptide     2251..3420
-                     /locus_tag="KRVgp1"
                      /product="NS1 protein"
-                     /protein_id="NP_937774.1"
-                     /db_xref="GI:37695583"
      mat_peptide     3421..4116
-                     /locus_tag="KRVgp1"
                      /product="NS2A protein"
-                     /protein_id="NP_937775.1"
-                     /db_xref="GI:37695584"
      mat_peptide     4117..4488
-                     /locus_tag="KRVgp1"
                      /product="NS2B protein"
-                     /protein_id="NP_937776.1"
-                     /db_xref="GI:37695585"
      mat_peptide     4489..6219
-                     /locus_tag="KRVgp1"
                      /product="NS3 protein"
-                     /protein_id="NP_937777.1"
-                     /db_xref="GI:37695586"
      mat_peptide     6220..6723
-                     /locus_tag="KRVgp1"
                      /product="NS4A protein"
-                     /protein_id="NP_937778.1"
-                     /db_xref="GI:37695587"
      mat_peptide     6724..7506
-                     /locus_tag="KRVgp1"
                      /product="NS4B protein"
-                     /protein_id="NP_937779.1"
-                     /db_xref="GI:37695588"
      mat_peptide     7507..10167
-                     /locus_tag="KRVgp1"
                      /product="NS5 protein"
-                     /protein_id="NP_937780.1"
-                     /db_xref="GI:37695589"
-     gene            97..4205
-                     /locus_tag="KRVgp2"
-                     /db_xref="GeneID:13161064"
-     CDS             join(97..3432,3432..4205)
-                     /locus_tag="KRVgp2"
-                     /note="Truncated version of polyprotein that will be
-                     produced when frameshifting occurs at nt 3432; Truncated
-                     version of polyprotein and NS1-NS2AN-FIFO protein have
-                     been added by NCBI Staff with the kind help of Dr. David
-                     Karlin (Department of Zoology,  University of Oxford, UK)
-                     and Dr. Andrew Firth (Department of Pathology, University
-                     of Cambridge, UK)"
-                     /codon_start=1
-                     /product="truncated polyprotein"
-                     /protein_id="YP_006491219.1"
-                     /db_xref="GI:392719535"
-                     /db_xref="GeneID:13161064"
-                     /translation="MNRGSLKKGPPGPTSNRPSVGPPDSAGKRVKQVAPPPTRGHMER
-                     GLSLLTKNDNVSRQAKRQRNPRQQLSGIFGGGVGAWLRVLHMDIGTAILWLALATASL
-                     GQRMFKQLNSLRKRVKRLEKQRSGPNLVMIIGLLALGLCYGEMLRYLSDGKGALRLER
-                     EDGSIVDVAFYKLPSDACPGGTVIEKHCPLVIRMSDLENIDCGSSVEGFHLRYHRCVP
-                     QVRRRRAPQPQVSNQVGLLEEVEMIGFRFFRENVPVIVVCLLVAAVAMRWPMWSVVLI
-                     SVLTWNVVKASSIEPLYTISATGTSLTHARLLSNEIYSISTERGLIHLDIHNVTVRGE
-                     RPFKTLLTKCDVVESFSEDTCPGGSHLDMARIRRHNRTCKVDSFNRGWGTGCFEWGLG
-                     QVATCVEVSCASHTNVSVLVDSIIQAKVSMEIHGHQDTQSIVRDVPTQFQFGDVGTIT
-                     LTCGVTTDRIAGHYYHIREGVKAGLVLREAVDSWPGMIKMGGFTSGMDKIVRWGITTA
-                     NEIKIDGLINPQIDWQTSVLRDIRSISFTCEMIFDNISFSSLPLCAANASGTFIQNGY
-                     GQDGVVAVSLEEVMEQACSFPLKCKGCTLTCPSLVIAEKSQVGRAHVICGNGTSHVEF
-                     GTTVVPVECLVTPVTQAWRLLSHVTGRYTKTGVTGLGSVWEDLLGNLRFSWSWFPSSW
-                     LVMAFIGLALFLVFGRVGSFVVFVVIIAVYVRSVSADVGCGVDTTRKTISCGSGAFVW
-                     KQLGLGATKDHAVELDDYEFTDLYIKDMFDGTNKPCLICEDSLQCAALRSAAYSAAFR
-                     MSPALVSVNDTLSRTRQFIETRKRTMTVTLNLVEYKIGSYVTHGRLEGDMGLLPTLFG
-                     SFPEKPSDKVIRIVASRPDIRRLCGKAVSFQFQYTGFRRALYGSNVQVKVSKNITNHC
-                     PTYLAGVVVKNGRTIITDGMFWMESENRDGVKQIVSLEMTQSHRCVWPEEYTPETLQD
-                     PRDMNIFIPPAWGGPISKVNHIPGYKMQTDFPWNASDITLVEGPVPGTEVKVDARCNG
-                     RMRAKVVDPKGNGSWCCQSCNRIVHFKVGDQLVYPMEIQLGTMPEIPKPKPKIVEEPI
-                     GDEYDPEVDDILHNYGKAHACSDFSLVELTDRSWVRQVHSESPVSRGVSSVDRSENTG
-                     FYTDAPGSHHPSHAHIWNAQHIFICGAFCLGLVGSIIIFAAARRPHESVDHSTNRELS
-                     STPAGVHDPEENVHRARDSTHGSPSVCAFPLLSGRSASENTLWLARTVSGSDSNRGLQ
-                     RNISDTPTGSLGILPRDGLEDVPGHSHRCVSDVQFARMLQVRREISQHEKRVQGLWGE
-                     FVVLDCLLRERWGDLGRGKSAATNNSSDSSLYHDSSVSVHGPVQREYES"
-     mat_peptide     join(2251..3432,3432..4202)
-                     /locus_tag="KRVgp2"
-                     /product="NS1-NS2AN-FIFO protein"
-                     /protein_id="YP_006491220.1"
-                     /db_xref="GI:392719536"
      3'UTR           10168..11375
 ORIGIN      
         1 agtttttgaa aacttctgtg aatgtttata tccttagtcg gatcgagcta aattttaaat
@@ -227,7 +135,7 @@ ORIGIN
      1021 tcgaatgaaa tatactcaat ctcaactgag cgtgggttga ttcacttgga catccacaat
      1081 gtaacggtgc gtggagaaag accattcaaa acccttctca caaagtgtga tgttgtggag
      1141 agtttctcag aggacacttg ccctggcgga tcacatttgg acatggcccg gatcaggcga
-     1201 cacaatcgta catgcaaagt cgactcattc aatcgcggtt ggggaactgg ctgttttgag
+     1201 cacaatcgta catgcaaagt cgactcattc aatcgcggtt ggggaactgg ctgttttgaa
      1261 tggggacttg gacaagtcgc tacttgtgtt gaagtgagtt gtgcaagcca cacaaatgtc
      1321 tctgtgctcg ttgattccat catccaagca aaggtgagta tggaaattca tggccatcag
      1381 gacacccagt ccatcgtgag ggatgtcccg acccaattcc aatttggcga cgttggcacc
@@ -246,7 +154,7 @@ ORIGIN
      2161 ggtttggcgc tattccttgt tttcggaaga gttggatctt ttgttgtttt tgtggtgatc
      2221 atagctgtgt acgtgcggtc ggtttctgct gacgtcggat gcggagtgga cacaacaagg
      2281 aagacaatct cctgcggaag tggcgctttc gtttggaaac aacttggatt gggggccaca
-     2341 aaggatcacg cagtggaact ggatgattac gagttcaccg atttgtatat caaggacatg
+     2341 aaggatcacg ctgtggaact ggatgattac gagttcaccg atttgtatat caaggacatg
      2401 ttcgatggaa ccaacaaacc ttgtctgata tgcgaggact cattgcaatg tgccgctctc
      2461 cgttcagcag cttactcggc tgcattccgt atgagcccgg ccctagtcag tgtgaacgac
      2521 accctatccc gcactcgaca gtttattgaa accaggaagc gaactatgac tgtcacattg
@@ -275,7 +183,7 @@ ORIGIN
      3901 ccaccggaag tcttggtatt ttgcctcgtg atgggttgga agacgtccct ggccattctc
      3961 accgttgtgt ctctgatgtt cagtttgcac gcatgctaca ggttcgtcgt gaaatttcac
      4021 agcacgaaaa acgggtacag ggactatggg gcgagttcgt ggttctggat tgtctccttc
-     4081 gcgagcgctg gggcgatttg ggccgcggaa agagcgcagc aaccaacaat agcagcgact
+     4081 gcgagcgctg gggcgatttg ggccgcggaa agagcgcagc aaccaacaat agcagcgatt
      4141 ctagccttta ccatgatagt tctgtttctg ttcatggacc agtccagcgt gagtatgaat
      4201 cttgaatttc tgtccaaagg tgaaatcccc gaaggtgttc gaattgaaga tgatgaaggt
      4261 agagatctcg ccgacctgcg aggacgttac ggagatgagg gaatcgtggt gggcacacag
@@ -304,7 +212,7 @@ ORIGIN
      5641 gcccaggcca gtagtgaaga gacaaccttg gtcgtgtcga cggatatctc ggagatggga
      5701 gccaaccttg gagtcgacct cgtcattgat actcggaaag cgttacgacc aatggtggac
      5761 tcagcgacga gggttaagct agaggaaacg cccataacaa catcatcgat ggtacagcgt
-     5821 agaggcagaa ccggcagacg ggaacctgga atgtacgtgt acccagtgga cagtaggaca
+     5821 agaggcagaa ccggcagacg ggaacctgga atgtacgtat acccagtgga cagtaggaca
      5881 gaggagaatc ctgtctcgtg ggtgtgttgg ccagaggcac aaatgatatt ggatcaactt
      5941 ggaatgacct ttatgctaga ggaggccact tttagccagc ccccaggtag gtttacctta
      6001 gttggggagg atcgtctccg tttctctaaa ttgatggaca gagacgacat cccaatatgg
@@ -319,7 +227,7 @@ ORIGIN
      6541 ctcacagccc ctagcgtcct ccactacatg ggagttcctc tcggattctg tgtcatcatc
      6601 tttcttgcta tgttcattgt gtatccggtc ctctataagg ctataggcaa ccgcagttac
      6661 atggacagtg accttgtcaa atgggtgatc attggatcat gttttgtctg tggggttctc
-     6721 gcatgggaaa tgcgcttgtt tcctaacata cgtggggata tcatggagat ggcttctgcc
+     6721 gcatgggaaa tgcgcttgtt ccctaacata cgtggggata tcatggagat ggcttctgcc
      6781 atgaaggaac cacaggaaac tcaaagtcaa gcatctacta tctcggggtc attcttcact
      6841 tctcgcgtta ggggggagag ggccacgatg ttggactcgc tgcaggtctt cttcttcgta
      6901 actgtgctaa tgaatgaatt catcatctgg gtgcaggaga actggatcgc acagatgtac
@@ -332,7 +240,7 @@ ORIGIN
      7321 accctggttg tcattgcatg catgtggcaa attctgcacc cacgctcacg tgtgcatgat
      7381 gtgatggact ttggatcaat gttgtcggcg attggaattt ttgagttgga tttcctgttc
      7441 tataagttca tccacatcgc tgctcgtggg ttgggcggga tgcctccatt caatcagttt
-     7501 cgcgctctgg agaaatccac agctgtaggc cttggtataa aatggaaaac tctgcttaac
+     7501 cgtgctctgg agaaatccac agctgtaggc cttggtataa aatggaaaac tctgcttaac
      7561 tctctggaca aggacacctt cgacaagtac aaggtccgag gggtcaatga gaccgaacga
      7621 ggagactatg tgtctagagg tggcttgaaa ctggatgagg tcattcggaa atacaattgg
      7681 aaaccaaacg gacgggttgt tgacctgggt tgtggtagag gcggatggag tcagagagtt
@@ -343,7 +251,7 @@ ORIGIN
      7981 ttgagtgtga atcccagcgc tgaatttgtg tgcaagattc tctccccgta ttcgttggaa
      8041 gtgctgcgga agatcgaaac tttgcaacag aagcacaagg gtcgcctagt acgcttaacg
      8101 tatagccgga acagcactgc agaaatgtac tacgtgtctg gcagcagatc caacgcagta
-     8161 agggatgtgt acatgactct ggctgccctt gttgcacgat tttctcggca cttggatagt
+     8161 agggatgtgt acatgactct ggctgccctt gttgcgcgat tttctcggca cttggatagt
      8221 atcgtcctgc cccctcccga tttactcaag ggaacccgag ccgacccaac tgccagcgta
      8281 gcttctatgg atgtgagtga tatggaggat cgtgtcaaac gaataaaaca tgaaaaccag
      8341 accacctggt ttgtcgatcc agaacatccg tacaaaagct tcaagtactt tggatcattt
@@ -357,17 +265,17 @@ ORIGIN
      8821 tgtctttaca acactatggg aaagaaggag aagaaaccga gcctggctgg tgaggccaag
      8881 ggatctcgaa ccatctggta catgtggcta ggaagccgtt tcctcgaatt tgaggctctt
      8941 ggtttcctta acgctgacca ctgggtgagc cgggaaaact tccccggtgg tgttggaggt
-     9001 ctaggagtga actacttcgg atattaccta aaagacatcg ctggtcgagg taaatatctc
+     9001 ctaggagtga actacttcgg atactaccta aaagacatcg ctggtcgagg taaatatctc
      9061 tttgctgacg acatagctgg atgggacaca aaaatcagct ctgaggacct tgaagatgag
      9121 gagaccttgt taaccgagct cacagccaat ccataccata aagctctaat tagagccacc
      9181 atgaagctcg cttaccagaa catcgttgcc atgttcccac gaacccattc aaagtatggt
      9241 agtgggacgg tcatggatgt ggtgggacgg cgagatcaac gaggctctgg gcaagtagtg
-     9301 acatatgcct tgaacactgt gaccaatggc aaagtacaag tcgctagggt attggagagc
+     9301 acatatgctt tgaacactgt gaccaatggc aaagtacaag tcgctagggt attggagagc
      9361 gaaggattgc tcaacgctga catcaatgtg attgacaagt ggcttaccaa gaacatggaa
      9421 aacgtcctga gtaacatggt tatagcaggg gatgatgtag tcgtctctac tgacaacaga
      9481 gagttctcat cctctctcga gtaccttgag ctgacgggaa agacgcggaa gaacattccc
      9541 caaggtgcac cctcccgaat ggagtgcaat tgggaaaaag tcgaattctg ctcccatcat
-     9601 taccatgaaa tgtacctaag agatgggcgt aatctaattg tgccgtgtcg acatgaagat
+     9601 taccatgaaa tgtacctaag agatggacgt aatctaattg tgccgtgtcg acatgaagat
      9661 gagatcgttg ggcggagcag gctacagaaa ggaggggttg tcagcttagc cgaaagtgct
      9721 tgcatggcaa aggcatacgc ccaaatgtgg gccttgtact tctttcaccg acgtgatctt
      9781 cgcttaggat ttgtagccat tacctcttct gtccccacaa actggtttcc cattggacgc
@@ -378,7 +286,7 @@ ORIGIN
     10081 atcctggact ccgaaacagg aaccaataat tcgtacaagg atgagctctc ggtgatgagt
     10141 cgtttccgga aggggaatga cgtcatttga gacaaaggtc cttgagtcca agttcctatc
     10201 caagaaggaa caccctcccc ctaacccccc cctccaaaag tccccatccc ttccccctct
-    10261 cctttctgga gtttgcatct gtctctatcc caagccctca gtggtttaag acagggggta
+    10261 cctttctgga gtttgcatct gtctctatcc caagccctca gtggtttgag acagggggta
     10321 tttggaactg atttccataa cccctcatgc gcgactttta gagcagggca cgaaagtgtc
     10381 gggcatgacg cacccgctcc cccgagtccc ctgaaaatag ggtgggcaat gcactcctga
     10441 gtaggacggg agcccagaat cctacaaaac cctcgccatg ggaactggca tgacacagga

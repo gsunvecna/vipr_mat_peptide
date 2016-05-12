@@ -1,4 +1,4 @@
-LOCUS       NC_006558              11597 bp    RNA     linear   VRL 01-DEC-2009
+LOCUS       NC_006558              11597 bp    RNA     linear   VRL 04-SEP-2012
 DEFINITION  Getah virus, complete genome.
 ACCESSION   NC_006558
 VERSION     NC_006558.1  GI:56692396
@@ -101,8 +101,9 @@ FEATURES             Location/Qualifiers
                      /product="nsP1 protein"
                      /note="Annotated by VIPRBRC, MSA, refseq=NC_001544"
                      /note="Desc:src=MSA|ACC=NC_006558|Ver=NC_006558.
-                     1|CDS=GI:56692397|ref=NC_001544.1|Loc=79..1680|AA=1..
-                     534|gene_symbol=nsP1|product=nsP1 protein|*new*"
+                     1|CDS=GI:56692397|ref=NC_001544.1|RM=81..1679|Loc=79..
+                     1680||AA=1..534|symbol=nsP1|Partial=N|product=nsP1
+                     protein|*new*"
      mat_peptide     1681..4074
                      /locus_tag="GETV_gp1"
                      /translation="GVVETPRNALKVTPQAHDHLIGSYLILSPQTVLKSEKLAPIHPL
@@ -123,8 +124,9 @@ FEATURES             Location/Qualifiers
                      /product="nsP2 protein"
                      /note="Annotated by VIPRBRC, MSA, refseq=NC_001544"
                      /note="Desc:src=MSA|ACC=NC_006558|Ver=NC_006558.
-                     1|CDS=GI:56692397|ref=NC_001544.1|Loc=1681..4074|AA=535..
-                     1332|gene_symbol=nsP2|product=nsP2 protein|*new*"
+                     1|CDS=GI:56692397|ref=NC_001544.1|RM=1680..4073|Loc=1681..
+                     4074||AA=535..1332|symbol=nsP2|Partial=N|product=nsP2
+                     protein|*new*"
      mat_peptide     4075..5646
                      /locus_tag="GETV_gp1"
                      /translation="APSYRVRRADISGHSEEAVVNAANAKGTVSDGVCRAVAKKWPSS
@@ -140,8 +142,9 @@ FEATURES             Location/Qualifiers
                      /product="nsP3 protein"
                      /note="Annotated by VIPRBRC, MSA, refseq=NC_001544"
                      /note="Desc:src=MSA|ACC=NC_006558|Ver=NC_006558.
-                     1|CDS=GI:56692397|ref=NC_001544.1|Loc=4075..5646|AA=1333..
-                     1856|gene_symbol=nsP3|product=nsP3 protein|*new*"
+                     1|CDS=GI:56692397|ref=NC_001544.1|RM=4074..5687|Loc=4075..
+                     5646||AA=1333..1856|symbol=nsP3|Partial=N|product=nsP3
+                     protein|*new*"
      mat_peptide     5647..7479
                      /locus_tag="GETV_gp1"
                      /translation="YIFSSDTGPGHLQQKSVRQHELPCETLYAHEDERIYPPAFDGEK
@@ -158,8 +161,9 @@ FEATURES             Location/Qualifiers
                      /product="nsP4 protein"
                      /note="Annotated by VIPRBRC, MSA, refseq=NC_001544"
                      /note="Desc:src=MSA|ACC=NC_006558|Ver=NC_006558.
-                     1|CDS=GI:56692397|ref=NC_001544.1|Loc=5647..7479|AA=1857..
-                     2467|gene_symbol=nsP4|product=nsP4 protein|*new*"
+                     1|CDS=GI:56692397|ref=NC_001544.1|RM=5688..7520|Loc=5647..
+                     7479||AA=1857..2467|symbol=nsP4|Partial=N|product=nsP4
+                     protein|*new*"
      gene            7527..11288
                      /locus_tag="GETV_gp2"
                      /db_xref="GeneID:5075853"
@@ -203,8 +207,9 @@ FEATURES             Location/Qualifiers
                      /product="C protein"
                      /note="Annotated by VIPRBRC, MSA, refseq=NC_001544"
                      /note="Desc:src=MSA|ACC=NC_006558|Ver=NC_006558.
-                     1|CDS=GI:56692398|ref=NC_001544.1|Loc=7527..8330|AA=1..
-                     268|gene_symbol=C|product=C protein|*new*"
+                     1|CDS=GI:56692398|ref=NC_001544.1|RM=7565..8374|Loc=7527..
+                     8330||AA=1..268|symbol=C|Partial=N|product=C
+                     protein|*new*"
      mat_peptide     8331..8522
                      /locus_tag="GETV_gp2"
                      /translation="SAALMMCVLANVTFPCSEPACAPCCYEKQPEQTLRMLEDNVDRP
@@ -212,8 +217,9 @@ FEATURES             Location/Qualifiers
                      /product="E3 protein"
                      /note="Annotated by VIPRBRC, MSA, refseq=NC_001544"
                      /note="Desc:src=MSA|ACC=NC_006558|Ver=NC_006558.
-                     1|CDS=GI:56692398|ref=NC_001544.1|Loc=8331..8522|AA=269..
-                     332|gene_symbol=E3|product=E3 protein|*new*"
+                     1|CDS=GI:56692398|ref=NC_001544.1|RM=8375..8566|Loc=8331..
+                     8522||AA=269..332|symbol=E3|Partial=N|product=E3
+                     protein|*new*"
      mat_peptide     8523..9788
                      /locus_tag="GETV_gp2"
                      /translation="SVTKHFNVYKATKPYLAYCADCGDGQFCYSPVAIEKIRDEASDG
@@ -227,8 +233,9 @@ FEATURES             Location/Qualifiers
                      /product="E2 protein"
                      /note="Annotated by VIPRBRC, MSA, refseq=NC_001544"
                      /note="Desc:src=MSA|ACC=NC_006558|Ver=NC_006558.
-                     1|CDS=GI:56692398|ref=NC_001544.1|Loc=8523..9788|AA=333..
-                     754|gene_symbol=E2|product=E2 protein|*new*"
+                     1|CDS=GI:56692398|ref=NC_001544.1|RM=8567..9832|Loc=8523..
+                     9788||AA=333..754|symbol=E2|Partial=N|product=E2
+                     protein|*new*"
      mat_peptide     9789..9971
                      /locus_tag="GETV_gp2"
                      /translation="ASFAESMAYLWDENQTLFWLELATPLAAIIILVCCLKNLLCCCK
@@ -236,8 +243,9 @@ FEATURES             Location/Qualifiers
                      /product="6K protein"
                      /note="Annotated by VIPRBRC, MSA, refseq=NC_001544"
                      /note="Desc:src=MSA|ACC=NC_006558|Ver=NC_006558.
-                     1|CDS=GI:56692398|ref=NC_001544.1|Loc=9789..9971|AA=755..
-                     815|gene_symbol=6K|product=6K protein|*new*"
+                     1|CDS=GI:56692398|ref=NC_001544.1|RM=9833..10012|Loc=9789.
+                     .9971||AA=755..815|symbol=6K|Partial=N|product=6K
+                     protein|*new*"
      mat_peptide     9972..11285
                      /locus_tag="GETV_gp2"
                      /translation="YEHTATIPNVVGFPYKAHIERNGFSPMTLQLEVLGTSLEPTLNL
@@ -251,8 +259,49 @@ FEATURES             Location/Qualifiers
                      /product="E1 protein"
                      /note="Annotated by VIPRBRC, MSA, refseq=NC_001544"
                      /note="Desc:src=MSA|ACC=NC_006558|Ver=NC_006558.
-                     1|CDS=GI:56692398|ref=NC_001544.1|Loc=9972..11285|AA=816..
-                     1253|gene_symbol=E1|product=E1 protein|*new*"
+                     1|CDS=GI:56692398|ref=NC_001544.1|RM=10013..
+                     11326|Loc=9972..11285||AA=816..
+                     1253|symbol=E1|Partial=N|product=E1 protein|*new*"
+     gene            7527..10018
+                     /locus_tag="GETV_gp3"
+                     /db_xref="GeneID:13179080"
+     CDS             join(7527..9935,9935..10018)
+                     /locus_tag="GETV_gp3"
+                     /db_xref="GI:392990023"
+                     /db_xref="GeneID:13179080"
+                     /codon_start=1
+                     /protein_id="YP_006491251.1"
+                     /translation="MNYIPTQTFYGRRWRPRPAYRPWRVPMQPAPPMVIPELQTPIVQ
+                     AQQMQQLISAVSALTTKQNGKAPKKPKKKPQKAKAKKNEQQKKNENKKPPPKQKNPAK
+                     KKKPGKRERMCMKIENDCIFEVKLDGKVTGYACLVGDKVMKPAHVKGVIDNPDLAKLT
+                     YKKSSKYDLECAQIPVHMKSDASKYTHEKPEGHYNWHHGAVQYSGGRFTIPTGAGKPG
+                     DSGRPIFDNKGRVVAIVLGGANEGARTALSVVTWTKDMVTRYTPEGTEEWSAALMMCV
+                     LANVTFPCSEPACAPCCYEKQPEQTLRMLEDNVDRPGYYDLLEATMTCNNSARHRRSV
+                     TKHFNVYKATKPYLAYCADCGDGQFCYSPVAIEKIRDEASDGMIKIQVAAQIGINKGG
+                     THEHNKIRYIAGHDMKEANRDSLQVHTSGVCAIRGTMGHFIVAYCPPGDELKVQFQDA
+                     ESHTQACKVQYKHAPAPVGREKFTVRPHFGIEVPCTTYQLTTAPTEEEIDMHTPPDIP
+                     DITLLSQQSGNVKITAGGKTIRYNCTCGSGNVGTTSSDKTINSCKIAQCHAAVTNHDK
+                     WQYTSSFVPRADQLSRKGKVHVPFPLTNSTCRVPVARAPGVTYGKRELTVKLHPDHPT
+                     LLTYRSLGADPRPYEEWIDRYVERTIPVTEDGIEYRWGNNPPVRLWAQLTTEGKPHGW
+                     PHEIILYYYGLYPAATIAAVSAAGLAVVLSLLASCYMFATARRKCLTPYALTPGAVVP
+                     VTLGVLCCAPRAHAASFAESMAYLWDENQTLFWLELATPLAAIIILVCCLKNLLCCCK
+                     PLSFLSAGEPGNSRRKILRTHRNDPECGGIPV"
+                     /product="truncated polyprotein"
+                     /note="Truncated verstion of structural polyprotein that
+                     will be produced when frameshifting occurs at nt 9935;
+                     Truncated version of structural polyprotein and
+                     transframe fusion protein have been added by NCBI Staff
+                     with the kind help of Dr. David Karlin (Department of
+                     Zoology, University of  Oxford, UK) and Dr. Andrew Firth
+                     (Department of Pathology,  University of Cambridge, UK)"
+     mat_peptide     join(9789..9935,9935..10015)
+                     /locus_tag="GETV_gp3"
+                     /db_xref="GI:392990024"
+                     /protein_id="YP_006491252.1"
+                     /product="transframe fusion protein"
+                     /note="Transframe fusion (TF) protein expressed via
+                     programmed ribosomal frameshifting. TF protein presumably
+                     plays a stabilizing role in the virion structure."
 ORIGIN      
         1 atggcggacg tgtgacatca ccgttcgctc tttctaggat cctttgctac tccacatagt
        61 gagagacaaa caacccaaat gaaggtaacc gtggacgttg aggctgatag cccattcctt

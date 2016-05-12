@@ -31,6 +31,138 @@ my $debug_all = 1;
 #  my $refseq = &get_refseq($refseq_fn, $dir_path);
 
 
+sub check_old_annotation {
+    my ($acc, $faa1) = @_;
+
+    my $debug = 0 && $debug_all;
+    my $subname = 'check_old_annotation';
+
+    my $refseqs = {};
+    my $inseqs  = [];
+
+        my $faa3 = '';
+            my $old_dirs = [
+                            '/net/home/gsun/northrop/matpeptide/msa_annotate-1.1.1/t1234',
+                            '/net/home/gsun/northrop/matpeptide/msa_annotate-1.0.0',
+                            '/net/home/gsun/northrop/matpeptide/msa_annotate-1.0.2',
+                            '/net/home/gsun/northrop/matpeptide/msa_annotate_profile',
+                            '/net/home/gsun/northrop/matpeptide/t1234',
+                           ];
+            my $fn = $acc.'_matpept.faa';
+#            $fn = $acc.'_matpept_muscle.faa';
+            $fn = $acc.'_muscle_matpeptide.faa';
+            $debug && print STDERR "$subname: read existing mat_peptide annotation from \$fn=$fn\n";
+            for (my $k=0; $k<=$#{@$old_dirs}; $k++) {
+              my $old_dir = $old_dirs->[$k];
+              my $fn1 = "$old_dir/" . $fn;
+              if (-e $fn1) {
+                open my $in, '<', "$fn1";
+                $faa3 = do { local $/; <$in>};
+                close $in or croak "$subname: Couldn't close $fn1: $OS_ERROR";
+                print STDERR "$subname: Found earlier result for acc=$acc in $old_dir\n";
+                last;
+              }
+            }
+
+        # See if faa1 and faa3 are same
+        my $diff_fasta; # return 1/0 for different/identical
+        $diff_fasta = &diff_fasta($faa1, $faa3) if ($faa3);
+
+
+#            print STDOUT "$subname: $acc\n";
+            $debug && print STDERR "$subname: accession=$acc\n";
+#            if ($faa1 && $faa3 && $faa1 eq $faa3) {
+            if ($faa1 && $faa3 && !$diff_fasta) {
+#                print STDOUT "$subname: accession=$acc \$faa1 == \$faa3 identical\n";
+                print STDERR "$subname: accession=$acc \$faa1 == \$faa3 identical\n";
+            } elsif ($faa1 && $faa3) {
+                print STDERR "$subname: \$faa3=\n".Dumper($faa3)."End of \$faa3\n";
+#                print STDOUT "$subname: accession=$acc \$faa1 != \$faa3 different\n";
+                print STDERR "$subname: accession=$acc \$faa1 != \$faa3 different\n";
+                print STDERR "$subname: diff = '".Annotate_Verify::diff_2str( $faa1, $faa3)."'\n";
+                print STDERR "$subname: diff shown above\n";
+                print STDERR "$subname: diff EOF\n";
+            } elsif (!$faa1 && !$faa3) {
+                print STDERR "$subname: accession=$acc \$faa1 & \$faa3 are empty\n" if (!$faa3);
+                print STDERR "$subname: Couldn't find earlier annotation for accession=$acc $fn\n";
+            } elsif (!$faa1) {
+#                print STDOUT "$subname: accession=$acc \$faa1 is empty\n" if (!$faa1);
+            } elsif (!$faa3) {
+                print STDERR "$subname: accession=$acc \$faa3 is empty\n" if (!$faa3);
+                print STDERR "$subname: Couldn't find earlier annotation for accession=$acc $fn\n";
+            }
+
+
+} # sub check_old_annotation
+
+
+## sub diff_fasta takes 2 fasta string, compare the sequences within
+## return 1/0 for different/identical
+
+sub diff_fasta {
+    my ($faa1, $faa3) = @_;
+
+    my $debug = 0 && $debug_all;
+    my $subname = 'diff_fasta';
+
+    my $faa1_all = [];
+    $faa1_all = &read_fasta($faa1);
+    $debug && print STDERR "$subname: \$faa1_all=\n".Dumper($faa1_all)."End of \$faa1_all\n";
+    my $faa3_all = [];
+    $faa3_all = &read_fasta($faa3);
+    $debug && print STDERR "$subname: \$faa3_all=\n".Dumper($faa3_all)."End of \$faa3_all\n";
+
+    my $diff_fasta = 0;
+    if (!$faa1_all) {
+        $diff_fasta = 1;
+        print STDERR "$subname: No feature found in faa1=$#{@$faa1_all}\n";
+        return $diff_fasta;
+    } elsif (!$faa1_all || !$faa3_all) {
+        $diff_fasta = 1;
+        print STDERR "$subname: No feature found in faa3=$#{@$faa3_all}\n";
+        return $diff_fasta;
+    } elsif ($#{@$faa1_all} != $#{@$faa3_all}) {
+        $diff_fasta = 1;
+        print STDERR "$subname: Numbers of seqs different between faa1=$#{@$faa1_all}+1 and faa3=$#{@$faa3_all}+1\n";
+        return $diff_fasta;
+    }
+    for my $i (0 .. $#{@$faa1_all}) {
+        my $seq1 = $faa1_all->[$i]->seq;
+        $debug && print STDERR "$subname: \$seq1#$i=$seq1\n";
+        my $seq3 = $faa3_all->[$i]->seq;
+        $debug && print STDERR "$subname: \$seq3#$i=$seq3\n";
+        if ($seq1 ne $seq3) {
+            $diff_fasta = 1;
+            print STDERR "$subname: seqs#$i different between faa1=$#{@$faa1_all}+1 and faa3=$#{@$faa3_all}+1\n";
+            print STDERR "$subname: \$seq1#$i=$seq1\n";
+            print STDERR "$subname: \$seq3#$i=$seq3\n";
+            last;
+        }
+    }
+
+    $debug && print STDERR "$subname: berween \$faa1 and \$faa3: \$diff_fasta=$diff_fasta\n";
+    return $diff_fasta;
+} # sub diff_fasta
+
+
+sub read_fasta {
+    my ($faa1) = @_;
+
+    my $debug = 0 && $debug_all;
+    my $subname = 'read_fasta';
+
+    my $faa_all;
+    my $stringio = IO::String->new($faa1);
+    my $in = Bio::SeqIO->new('-fh' => $stringio, '-format' => 'fasta');
+    while ( my $seq = $in->next_seq() ) {
+        push @$faa_all, $seq;
+    }
+    $debug && print STDERR "$subname: \$faa_all=\n".Dumper($faa_all)."\n";
+
+    return $faa_all;
+} # sub read_fasta
+
+
 =head2 check_ranges
 
 Checks the new annotations against the CDS to see if all features (in an array) are consecutive without any gap, as a gap (shown as >=?=<) indicates potential problem.
@@ -41,23 +173,25 @@ sub check_ranges {
     my ($feats) = @_;
 
     my $debug = 0 && $debug_all;
+    my $subname = 'check_ranges';
+
     my $has_gap = 0;
     my $cds = $feats->[0];
     my @str = ('');
-#    print "check_ranges: \$feats is a ".$feats."\n";
-    $debug && print "check_ranges: \$cds = \n".Dumper($cds)."\n";
+#    print STDERR "check_ranges: \$feats is a ".$feats."\n";
+    $debug && print STDERR "$subname: \$cds = \n".Dumper($cds)."\n";
     $feats = [sort {$a->location->start <=> $b->location->start} @{$feats}];
-#    print "check_ranges: \$feats is a ".$feats."\n";
+#    print STDERR "check_ranges: \$feats is a ".$feats."\n";
     my $head_tail = '';
     my $head_tail_print_length = 5;
     for (my $i=0; $i<=$#{@$feats}; $i++) {
         my $feat = $feats->[$i];
         next if ($feat->primary_tag ne 'mat_peptide' && $feat->primary_tag ne 'sig_peptide');
-#        print "check_ranges: \$feat is a ".ref($feat)."\n";
+#        print STDERR "check_ranges: \$feat is a ".ref($feat)."\n";
         my $loc = $feat->location;
-#        print "check_ranges: \$loc is a ".ref($loc)."\n";
-#        print "check_ranges: \$loc = \n".Dumper($loc)."\n";
-#        print "check_ranges: \$cds_>loc = \n".Dumper($cds->location)."\n";
+#        print STDERR "check_ranges: \$loc is a ".ref($loc)."\n";
+#        print STDERR "check_ranges: \$loc = \n".Dumper($loc)."\n";
+#        print STDERR "check_ranges: \$cds_>loc = \n".Dumper($cds->location)."\n";
         my $level = 0;
         my $loc2 = $feats->[$i+$level+1];
         my @add;
@@ -89,7 +223,7 @@ sub check_ranges {
         }
 
         if (!$loc2) {   # This indicates $loc is the last feat
-#          print "check_ranges: \$loc->end=".$loc->end." \$cds->end=".$cds->location->end."\n";
+#          print STDERR "check_ranges: \$loc->end=".$loc->end." \$cds->end=".$cds->location->end."\n";
           if ($loc->end == $cds->location->end-3 || $loc->end == $cds->location->end) {   # If there is overhang
             $gap = '';
           } else {
@@ -116,7 +250,7 @@ sub check_ranges {
         }
 
         for my $j (0 .. $#str) {
-            $debug && print "check_ranges: \$str[$j]='$str[$j]'\n";
+            $debug && print STDERR "$subname: \$str[$j]='$str[$j]'\n";
         }
 
         # check the head/tail of each mat_peptide
@@ -126,21 +260,62 @@ sub check_ranges {
             $head_tail .= substr($s,0,$head_tail_print_length).'.';
             $head_tail .= substr($s,length($s)-$head_tail_print_length);
             $head_tail .= '.^.' if ($loc2);
-#            print "check_ranges: head_tail=$s";
+#            print STDERR "check_ranges: head_tail=$s";
         }
 
         $i += $level;
     }
-    print "check_ranges: ". $cds->seq->accession_number ."\thead_tail= $head_tail\n";
+    print STDERR "$subname: ". $cds->seq->accession_number ."\thead_tail= $head_tail\n";
 
     if ( 1 ) {
         for my $j (0 .. $#str) {
-            print "check_ranges: ". $cds->seq->accession_number ."\t\$str[$j]  =$str[$j]\n";
+            print STDERR "$subname: ". $cds->seq->accession_number ."\t\$str[$j]  =$str[$j]\n";
         }
     }
 
     return ($has_gap, \@str);
 } # sub check_ranges
+
+
+=head2 check_partial
+
+Checks the new annotations for any gaps between the mat_peptides caused by deletions in target sequence.
+
+=cut
+
+sub check_partial {
+    my ($feats) = @_;
+
+    my $debug = 0 && $debug_all;
+    my $subname = 'check_partial';
+
+    my $has_gap = 0;
+    my $cds = $feats->[0];
+    my @str = ('');
+#    print STDERR "check_ranges: \$feats is a ".$feats."\n";
+    $debug && print STDERR "$subname: \$cds = \n".Dumper($cds)."\n";
+#    print STDERR "check_ranges: \$feats is a ".$feats."\n";
+    for (my $i=1; $i<=$#{@$feats}; $i++) {
+        next if ($i==1 or $i==$#{@$feats});
+        my $feat = $feats->[$i];
+        my @values = $feat->get_tag_values('note');
+        $debug && print STDERR "$subname: \@values = \n".Dumper(@values)."End of \@values\n";
+        for (my $k=0; $k<=$#values; $k++) {
+            my $value = $values[$k];
+            next if ($value !~ /^Desc:(.+)$/i);
+            my $pattn = '\|Partial=Y';
+            if ($value =~ /($pattn)/i) {
+                $has_gap = 1;
+                $debug && print STDERR "$subname: \$value = '$value'\n";
+                last;
+            }
+        }
+
+    }
+
+    $debug && print STDERR "$subname: \$has_gap=$has_gap\n";
+    return ($has_gap, \@str);
+} # sub check_partial
 
 
 =head2 print_matpept_ranges
@@ -160,15 +335,15 @@ sub print_matpept_ranges {
         }
     }
 
-    print "\n";
+    print STDERR "\n";
     if (!@{$ranges}) {
-            print "!!! New annotation for mat_peptide from $metbod and genbank\n";
+            print STDERR "!!! New annotation for mat_peptide from $metbod and genbank\n";
     } elsif ($different || $#{@{$ranges}}!=$#{@{$ranges}}) {
-            print "!!! Different mat_peptide from $metbod and genbank\n";
+            print STDERR "!!! Different mat_peptide from $metbod and genbank\n";
     } else {
-            print "!!! Identical between $metbod and genbank\n";
+            print STDERR "!!! Identical between $metbod and genbank\n";
     }
-    print "$title\n";
+    print STDERR "$title\n";
     my $str1='';
     my $str2='';
     my $str3='';
@@ -177,7 +352,7 @@ sub print_matpept_ranges {
     my $i=0;
     my $j=0;
     while ($i <= $len1 || $j <= $len2) {
-#        print "i=$i j=$j\n";
+#        print STDERR "i=$i j=$j\n";
         $str1 .= ' ' if ($str1);
         $str2 .= ' ' if ($str2);
         $str3 .= ' ' if ($str3);
@@ -185,8 +360,8 @@ sub print_matpept_ranges {
         $range = $ranges->[$i]->location if ($ranges->[$i]);
         my $range_new;
         $range_new = $ranges_new->[$j]->location if ($ranges_new->[$j]);
-#        print "print_ranges: \$range is a ".ref($range)."\n";
-#        print "print_ranges: \$range_new is a ".ref($range_new)."\n";
+#        print STDERR "print_ranges: \$range is a ".ref($range)."\n";
+#        print STDERR "print_ranges: \$range_new is a ".ref($range_new)."\n";
         my $fm1 = '%d';
         my $fm2 = '%d';
         my $s;
@@ -203,8 +378,8 @@ sub print_matpept_ranges {
               }
               $s =~ s/\S/ /g;
               $str1 .= $s;
- #             print "print_ranges: i=$i j=$j \$str1='$str1'\n";
- #             print "print_ranges: i=$i j=$j \$str2='$str2'\n\n";
+ #             print STDERR "print_ranges: i=$i j=$j \$str1='$str1'\n";
+ #             print STDERR "print_ranges: i=$i j=$j \$str2='$str2'\n\n";
               $j++;
               next;
         }
@@ -219,8 +394,8 @@ sub print_matpept_ranges {
               $s =~ s/\S/ /g;
               $str2 .= $s;
               $str3 .= $s;
- #             print "print_ranges: i=$i j=$j \$str1='$str1'\n";
- #             print "print_ranges: i=$i j=$j \$str2='$str2'\n\n";
+ #             print STDERR "print_ranges: i=$i j=$j \$str1='$str1'\n";
+ #             print STDERR "print_ranges: i=$i j=$j \$str2='$str2'\n\n";
               $i++;
               next;
         }
@@ -232,17 +407,17 @@ sub print_matpept_ranges {
         $str1 .= sprintf("($fm1..$fm2)",$range->start,$range->end) if ($range);
         $str2 .= sprintf("($fm1..$fm2)",$range_new->start,$range_new->end) if ($range_new);
         $str3 .= sprintf("($fm1..$fm2)",($range_new->start-$cds_start)/3+1,($range_new->end-$cds_start-2)/3+1) if ($range_new && $cds_start);
-#        print "print_ranges: \$ranges_new is a ".Dumper($ranges_new->[$j])."\n";
-  #      print "print_ranges: i2=$i j=$j \$str1='$str1'\n";
-  #      print "print_ranges: i2=$i j=$j \$str2='$str2'\n\n";
+#        print STDERR "print_ranges: \$ranges_new is a ".Dumper($ranges_new->[$j])."\n";
+  #      print STDERR "print_ranges: i2=$i j=$j \$str1='$str1'\n";
+  #      print STDERR "print_ranges: i2=$i j=$j \$str2='$str2'\n\n";
         $i++; $j++;
     }
 
-#    print "\n";
-    print "\$ranges    ='$str1'\n";
-    print "\$ranges_new='$str2'\n";
-    print " diff      ='". diff_2str($str1,$str2) ."'\n" if (@{$ranges});
-    print "\$ranges_new='$str3'\n" if ($cds_start);
+#    print STDERR "\n";
+    print STDERR "\$ranges    ='$str1'\n";
+    print STDERR "\$ranges_new='$str2'\n";
+    print STDERR " diff      ='". diff_2str($str1,$str2) ."'\n" if (@{$ranges});
+    print STDERR "\$ranges_new='$str3'\n" if ($cds_start);
 
     return;
 } # sub print_matpept_ranges
@@ -257,10 +432,10 @@ sub get_format {
 
     return $fmt if (!defined($n1) && !defined($n2));
 
-#    print "get_format: ".length($n1)."\n";
+#    print STDERR "get_format: ".length($n1)."\n";
     $fmt = ($n1>$n2)? length($n1) : length($n2);
     $fmt = '%'.$fmt.'d';
-#    print "get_format: fmt=$fmt\n";
+#    print STDERR "get_format: fmt=$fmt\n";
 
     return $fmt;
 } # sub get_format
@@ -284,12 +459,12 @@ sub check_alignment {
     my ($hsp_cds, $feats, $ref_mats) = @_;
 
     my (@out);
-    print STDOUT "check_alignment: \$hsp_cds=\n".Dumper($hsp_cds)."end of \$hsp_cds\n\n";
+#    print STDOUT "check_alignment: \$hsp_cds=\n".Dumper($hsp_cds)."end of \$hsp_cds\n\n";
 #    print STDOUT "check_alignment: \$feats=\n".Dumper($feats)."end of \$feats\n\n";
 
     foreach my $i (0 .. $#{@$feats}) {
         my $feat = $feats->[$i];
-        print STDOUT "check_alignment: \$i=$i \$feat=\n".Dumper($feat)."end of \$feat\n\n";
+#        print STDOUT "check_alignment: \$i=$i \$feat=\n".Dumper($feat)."end of \$feat\n\n";
         my $start = $feat->location->start - $hsp_cds->start('HIT');
         my $len   = $feat->location->end - $feat->location->start;
 
@@ -298,7 +473,7 @@ sub check_alignment {
         $out[2] .= substr($hsp_cds->hit_string, $start, $len) .'^|^';
 
         foreach my $s (@out) {
-          print "out=$s\n";
+          print STDERR "out=$s\n";
         }
     }
     return;
@@ -306,23 +481,21 @@ sub check_alignment {
 
 
 sub diff_2str {
-    my ($str1,$str2) = @_;
+    my ($str1, $str2) = @_;
 
     my $debug = 1 && $debug_all;
-    my ($diff);
+    my $diff;
+
     my (@a1, @a2);
     @a1 = split(//, $str1);
     @a2 = split(//, $str2);
-#      print "$#a1=@a1\n";
-#      print "$#a2=@a2\n";
+#      print STDERR "$#a1=@a1\n";
+#      print STDERR "$#a2=@a2\n";
     my $len = ($#a1 >= $#a2) ? $#a1 : $#a2;
     for my $i (0 .. $len) {
         if (defined($a1[$i]) && defined($a2[$i]) && $a1[$i] eq $a2[$i]) {
-            if ($a1[$i] eq "\n") {
-                $diff .= "\n";
-            } else {
-                $diff .= '.';
-            }
+            # show a dot if same
+            $diff .= ($a1[$i] eq "\n") ? "\n" : '.';
         } else {
             my $s1 = '';
             $s1 .= $a1[$i-1] ? $a1[$i-1] : ' ';
@@ -338,6 +511,7 @@ sub diff_2str {
         }
 #      print STDERR "\$i=$i \$diff=$diff\n";
     }
+
     return $diff;
 } # sub diff_2str
 

@@ -6,7 +6,7 @@ use English;
 use Carp;
 use Data::Dumper;
 
-use version; our $VERSION = qv('1.1.1'); # October 13 2010
+use version; our $VERSION = qv('1.1.2'); # February 09 2011
 use File::Temp qw/ tempfile tempdir /;
 use Bio::SeqIO;
 use Bio::Seq;
@@ -14,6 +14,7 @@ use Bio::AlignIO;
 use Bio::Tools::Run::StandAloneBlast;
 use IO::String;
 
+use Annotate_Math;
 use Annotate_Verify;
 
 my $debug_all = 1;
@@ -23,849 +24,17 @@ my $debug_all = 1;
 # Annotate_Util contains the core functions to perform annotation based on both MUSCLE and bl2seq alignment
 #
 #    Authors Chris Larsen, clarsen@vecna.com; Guangyu Sun, gsun@vecna.com
-#    April 2010
+#    December 2010
 #
 ##################
 
 ## //EXECUTE// ##
 
-# Get refseq object if $refseq_fn is given
-#  my $dbh_ref;
-#  my $refseq = &get_refseq($refseq_fn, $dir_path);
-
-my $taxon = { loaded =>0, fn =>"viprbrc_taxon_records.txt" };
-
-=head2 generate_fasta
-
-Takes an array of SeqFeature.
- Write the translations to a virtual file
- Returns the fasta file in a string
-
-=cut
-
-sub generate_fasta {
-    my ($feats_all) = @_;
-
-    my $debug = 0 && $debug_all;
-
-    my $seq_out;
-    my $faa1 = '';
-    my $vfile = IO::String->new($faa1);
-    $seq_out = Bio::SeqIO->new(
-                  '-fh'     => $vfile,
-                  '-format' => 'fasta'
-                              );
-
-    foreach my $feat (@$feats_all) {
-
-        next if ($feat->primary_tag eq 'CDS'); # Exclude CDS
-        my @values = $feat->get_tag_values('translation');
-        my $s = $values[0];
-        my $desc;
-        if ($feat->has_tag('note')) {
-            @values = $feat->get_tag_values('note');
-            foreach my $value (@values) {
-                $desc = $1 if ($value =~ /^Desc:(.+)$/i);
-            }
-        } elsif($feat->has_tag('product')) {
-            $desc = 'ACC='.$feat->seq->accession_number;
-            @values = $feat->get_tag_values('product');
-            $desc .= '|product='.$values[0];
-            $desc .= '|Loc='.$feat->location->to_FTstring;
-        }
-        my $f = Bio::PrimarySeq->new(
-                         -seq      => $s,
-                         -id       => '',	# id can't contain space
-                         -desc     => $desc,	# desc can contain space
-                         -alphabet => 'protein'
-                                     );
-        if ($f->alphabet eq 'dna') {
-            $seq_out->write_seq($f->translate());
-        } elsif($f->alphabet eq 'protein') {
-            $seq_out->write_seq($f);
-        }
-
-    }
-
-    return $faa1;
-} # sub generate_fasta
-
-
-=head2 msa_get_feature_loc_bl2seq
-
-Takes reffeat, gaps in the reffeat, and gaps (in DNA coordinate) in the target
- calculate the location of the feature in target genome
- Return a Bio::Location object for the new annotation
-
-Note: We can only deal with Bio::Location::Simple, not more complicated location types
-
-=cut
-
-sub msa_get_feature_loc_bl2seq {
-    my ($reffeat, $refcds_loc, $cds_loc, $gaps_q, $gaps_h) = @_;
-
-    my $debug = 0 && $debug_all;
-    my $subname = 'msa_get_feature_loc_bl2seq';
-
-    my $refcds_start = $refcds_loc->start;
-    my $cds_start = $cds_loc->start;
-    my @gaps_q = @$gaps_q;
-    my @gaps_h = @$gaps_h;
-#    $debug && print STDERR "$subname: \@gaps_q = '@gaps_q'\n";
-#    $debug && print STDERR "$subname: \@gaps_h = '@gaps_h'\n";
-
-    my $loc2 = undef;
-    if (!$reffeat->location->isa('Bio::Location::Simple')) {
-        print STDERR "$subname: not a Bio::Location::Simple, skip.\n";
-        return $loc2;
-    }
-
-    my $start;	# these location start and end refer to original DNA seq
-    my $end;
-    $start = $reffeat->location->start;
-    $end = $reffeat->location->end;
-    $debug && print STDERR "$subname: \$start=$start \$end=$end\n";
-
-    # need to take care of any gaps in the alignment, basically add 1 if there is a gap in query,
-    # or subtract 1 if there is a gap in hit(target)
-    my $adjust = {
-                   'start_q' => 0,
-                   'end_q'   => 0,
-                   'start_h' => 0,
-                   'end_h'   => 0,
-                 }; # hash, containing numbers of gaps
-    if ( 0 ) {
-#      if ($#gaps_q || $#gaps_h) {
-        $debug && $gaps_q->[1] && print STDERR "$subname: \@gaps_q='@gaps_q'\n";
-        $debug && $gaps_h->[1] && print STDERR "$subname: \@gaps_h='@gaps_h'\n";
-
-        $debug && print STDERR "$subname: Checking \$start=$start with \@gaps_q=@gaps_q\n";
-        $adjust->{start_q} = &adjust_from_gaps($start, $gaps_q);
-
-        $start = $start - $refcds_start + $cds_start;
-
-        $debug && print STDERR "$subname: Checking \$start=$start with \@gaps_h=@gaps_h\n";
-        $adjust->{start_h} = &adjust_from_gaps($start, $gaps_h);
-
-        $start = $start + $adjust->{start_q} - $adjust->{start_h};
-
-        $debug && print STDERR "$subname: Checking \$end=$end with \@gaps_q=@gaps_q\n";
-        $adjust->{end_q} = &adjust_from_gaps($end, $gaps_q);
-
-        $end   = $end   - $refcds_start + $cds_start;
-
-        $debug && print STDERR "$subname: Checking \$end=$end with \@gaps_h=@gaps_h\n";
-        $adjust->{end_h} = &adjust_from_gaps($end, $gaps_h);
-
-        $end = $end + $adjust->{end_q} - $adjust->{end_h};
-
-        $debug && print STDERR "$subname: \$adjust=\n".Dumper($adjust)."end of \$adjust\n\n";
-
- #     }
-    } else {
-#      if ($#gaps_q || $#gaps_h) {
-        $debug && $gaps_q->[1] && print STDERR "$subname: \@gaps_q='@gaps_q'\n";
-        $debug && $gaps_h->[1] && print STDERR "$subname: \@gaps_h='@gaps_h'\n";
-
-        for (my $i = 1; $i<=$#{@$gaps_q}; $i++) {
-#            $debug && print STDERR "$subname: \$start=$start  + $adjust->{'start_q'}\n";
-#            $debug && print STDERR "$subname: \$start=$start \t\$i=$i \$gap=$gaps_q->[$i]\n";
-            if ($gaps_q->[$i] < ($start + $adjust->{'start_q'})) { # This $position doesn't have any gap
-                $adjust->{'start_q'} = $i;
-            } else {
-                last;
-            }
-        }
-        $start = $start - $refcds_start + $cds_start;
-        for (my $i = 1; $i<=$#{@$gaps_h}; $i++) {
-#            $debug && print STDERR "$subname: \$start=$start  + $adjust->{'start_q'} - $adjust->{'start_h'}\n";
-#            $debug && print STDERR "$subname: \$start=$start \t\$i=$i \$gap=$gaps_h->[$i]\n";
-            if ($gaps_h->[$i] < ($start + $adjust->{'start_q'})) { # This $position doesn't have any gap
-                $adjust->{'start_h'} = $i;
-            } else {
-                last;
-            }
-        }
-
-        for (my $i = 1; $i<=$#{@$gaps_q}; $i++) {
-#            $debug && print STDERR "$subname: \$end=$end + $adjust->{'end_q'}\n";
-#            $debug && print STDERR "$subname: \$end=$end \t\$i=$i \$gap=$gaps_q->[$i]\n";
-            if ($gaps_q->[$i] < ($end + $adjust->{'end_q'})) { # This $position doesn't have any gap
-                $adjust->{'end_q'} = $i;
-            } else {
-                last;
-            }
-        }
-        $end   = $end   - $refcds_start + $cds_start;
-        for (my $i = 1; $i<=$#{@$gaps_h}; $i++) {
-#            $debug && print STDERR "$subname: \$end=$end  + $adjust->{'end_q'} - $adjust->{'end_h'}\n";
-#            $debug && print STDERR "$subname: \$end=$end \t\$i=$i \$gap=$gaps_h->[$i]\n";
-            if ($gaps_h->[$i] < ($end + $adjust->{'end_q'})) { # This $position doesn't have any gap
-                $adjust->{'end_h'} = $i;
-            } else {
-                last;
-            }
-        }
-
-#      }
-    }
-    $debug && print STDERR "$subname: \$start=$start \$end=$end\n";
-    $debug && print STDERR "$subname: $start += $adjust->{start_q} - $adjust->{start_h}\n";
-    $debug && print STDERR "$subname: $end   += $adjust->{end_q}   - $adjust->{end_h}\n";
-    $start = $start + $adjust->{start_q} - $adjust->{start_h};
-    $end   = $end   + $adjust->{end_q}   - $adjust->{end_h};
-    $debug && print STDERR "$subname: \$start=$start \$end=$end\n";
-
-
-    # finally, adjust the beginning of refcds and cds
-    $debug && print STDERR "$subname: \$start = $start - $refcds_start + $cds_start\n";
-    $debug && print STDERR "$subname: \$end   = $end   - $refcds_start + $cds_start\n";
-
-    $debug && print STDERR "$subname: \$cds_loc is ".ref($cds_loc).' '.$cds_loc->to_FTstring."\n";
-
-    # This just checks if $loc2 is within the CDS
-    if ($cds_start<=$start && $cds_start<$end && $start<$cds_loc->end && $end<=$cds_loc->end) {
-        $loc2 = Bio::Location::Simple->new();
-        $loc2->start($start);
-        $loc2->end  ($end);
-        $debug && print STDERR "$subname: \$cds_loc=\n".Dumper($cds_loc)."end of \$cds_loc\n\n";
-        $debug && print STDERR "$subname: \$loc2=\n".Dumper($loc2)."end of \$loc2\n\n";
-    } else {
-        $debug && print STDERR "$subname: ($start, $end) ($cds_start, ".$cds_loc->end.")\n";
-        $debug && print STDERR "$subname: \$loc2=doesn't look good, skip.\n";
-        $loc2 = undef;
-    }
-
-    # further check the validity of $loc2, this ensures the new annotated feature lie within the cds,
-    # and doesn't have more gap than 3 dna residues
-    if ($loc2) {
-        $loc2 = &msa_check_feature_loc($loc2, $reffeat, $refcds_loc, $cds_loc, $adjust, $gaps_q, $gaps_h);
-    }
-
-    return ($loc2);
-
-} # sub msa_get_feature_loc_bl2seq
-
-
-=head2 get_adjust_start
-
-Takes reffeat, gaps in the reffeat, and gaps (in DNA coordinate) in the target
- calculate the location of the feature in target genome
- Return a Bio::Location object for the new annotation
-
-Note: We can only deal with Bio::Location::Simple, not more complicated location types
-
-=cut
-=head1
-sub get_adjust_start {
-    my ($start, $refcds_start, $cds_start, $gaps_q, $gaps_h) = @_;
-
-    my $debug = 1 && $debug_all;
-    my $subname = 'get_adjust_start';
-    my ($under_water, $above_water);
-
-    my $adjust = {'start_q' => 0, 'start_h' => 0};
-
-    return undef if (!$start);
-
-    $debug && print STDERR "$subname: \$start=$start, \$refcds_start=$refcds_start, \$cds_start=$cds_start, $gaps_q, $gaps_h\n";
-    $debug && print STDERR "$subname: \$gaps_q:$#{@$gaps_q}, \$gaps_h:$#{@$gaps_h}\n";
-
-    for (my $i = 1; $i<=$#{@$gaps_q}; $i++) {
-        $debug && print STDERR "$subname: \$start=$start  + $adjust->{'start_q'}";
-        $debug && print STDERR " \$start=$start \t\$i=$i \$gap=$gaps_q->[$i]\n";
-        if ($gaps_q->[$i] <= ($start + $adjust->{'start_q'})) {
-            $adjust->{'start_q'} = $i;
-        } else {
-            last;
-        }
-    }
-    ($under_water, $above_water) = (0, 0);
-    for (my $i=1; $i<=$#{@$gaps_h}; $i++) {
-        if ($gaps_h->[$i]<=0) {
-            $under_water++;
-        } elsif ($gaps_h->[$i]+$under_water==$i) {
-            $above_water++;
-        }
-    }
-    $debug && print STDERR "$subname: \$under_water=$under_water \$above_water=$above_water\n";
-    $start = $start - $refcds_start + $cds_start + $adjust->{'start_q'} -$under_water;
-    for (my $i = 1; $i<=$#{@$gaps_h}; $i++) {
-        $debug && print STDERR "$subname: \$start=$start  - $adjust->{'start_h'}";
-        $debug && print STDERR " \$start=$start \t\$i=$i \$gap=$gaps_h->[$i]\n";
-        # Don't change this. EF407494 with refseq=NC_004102
-        if ($gaps_h->[$i] < ($start)) {
-            $adjust->{'start_h'} = $i;
-        } else {
-            last;
-        }
-    }
-    $debug && print STDERR "\n";
-
-    return ($adjust->{'start_q'}, $adjust->{'start_h'});
-
-} # sub get_adjust_start
-=cut
-
-=head2 get_adjust_end
-
-Takes reffeat, gaps in the reffeat, and gaps (in DNA coordinate) in the target
- calculate the location of the feature in target genome
- Return a Bio::Location object for the new annotation
-
-Note: We can only deal with Bio::Location::Simple, not more complicated location types
-
-=cut
-=head1
-sub get_adjust_end {
-    my ($end, $refcds_start, $cds_start, $gaps_q, $gaps_h, $adjust) = @_;
-
-    my $debug = 1 && $debug_all;
-    my $subname = 'get_adjust_end';
-    my ($under_water, $above_water);
-
-    $adjust->{'end_q'} = 0;
-    $adjust->{'end_h'} = 0;
-    return undef if (!$end);
-
-    for (my $i = 1; $i<=$#{@$gaps_q}; $i++) {
-#        $debug && print STDERR "$subname: \$end=$end + $adjust->{end_q} \$end=$end \t\$i=$i \$gap=$gaps_q->[$i]\n";
-        if ($gaps_q->[$i] <= ($end + $adjust->{'end_q'})) {
-            $adjust->{'end_q'} = $i;
-        } else {
-            last;
-        }
-    }
-    $debug && print STDERR "$subname: \n";
-    ($under_water, $above_water) = (0, 0);
-    for (my $i=1; $i<=$#{@$gaps_h}; $i++) {
-        if ($gaps_h->[$i]<=0) {
-            $under_water++;
-        } elsif ($gaps_h->[$i]+$under_water==$i) {
-            $above_water++;
-        }
-#        $debug && print STDERR "$subname: \$gaps_h->[$i]=$gaps_h->[$i] \$under_water=$under_water \$above_water=$above_water\n";
-    }
-    $debug && print STDERR "$subname: \$under_water=$under_water \$above_water=$above_water\n";
-    $end   = $end   - $refcds_start + $cds_start + $adjust->{'end_q'} -$under_water;
-    for (my $i = 1; $i<=$#{@$gaps_h}; $i++) {
-        $debug && print STDERR "$subname: \$end=$end  - $adjust->{'end_h'} ";
-        $debug && print STDERR " \$end=$end \t\$i=$i \$gap=$gaps_h->[$i]\n";
-
-        if ($gaps_h->[$i] <= ($end)) { # AF054258 with refseq=NC_004102
-            $adjust->{'end_h'} = $i;
-        } else {
-            last;
-        }
-    }
-
-    return ($adjust->{'end_q'}, $adjust->{'end_h'});
-
-} # sub get_adjust_end
-=cut
-
-
-sub adjust_start {
-    my ($qstart, $refcds_loc, $cds, $aln, $aln_q, $aln_h) = @_;
-
-    return undef if (!$qstart);
-    my $debug = 0 && $debug_all;
-    my $subname = 'adjust_start';
-
-    my $cds_loc = $cds->location;
-    # Convert to protain from DNA
-    $qstart = ($qstart - $refcds_loc->start)/3 +1;
-    $debug && print STDERR "$subname: \$qstart=$qstart\n";
-#    $debug && print STDERR "$subname: \$aln_q=\n".Dumper($aln_q)."end of $aln_q\n";
-    my $qseq = $aln_q->seq;
-    $debug && print STDERR "$subname: \$qseq='$qseq' \$qseq=".length($qseq)."\n";
-    my $gap_char = $aln->gap_char;
-    my $c;
-    for (my $n=1; $n<=$qstart && $n<=length($aln_q->seq); $n++) {
-        $c = substr($qseq, $n-1, 1);
-        $qstart++ if ($c eq $gap_char);
-        if (($n-1)%10 ==0) {
-            $debug && print STDERR "\n$subname: \$n=$n \$gap_char=$gap_char ";
-        }
-        $debug && print STDERR "\$c=$c \$qstart=$qstart ";
-    }
-    $debug && print STDERR "\n";
-
-    my $hstart = $qstart;
-    my $hseq = $aln_h->seq;
-    $hseq = substr($hseq, 0, $hstart-1);
-    $debug && print STDERR "$subname: \$hseq='$hseq' \$hseq=".length($hseq)."\n";
-    for (my $n=length($hseq);  $n>=1; $n--) {
-        $c = substr($hseq, $n-1, 1);
-        $hstart-- if ($c eq $gap_char);
-        if (($n-0)%10 ==0 || $n==length($hseq)) {
-            $debug && print STDERR "\n$subname: \$n=$n \$gap_char=$gap_char ";
-        }
-        $debug && print STDERR "\$c=$c \$hstart=$hstart ";
-    }
-    $debug && print STDERR "\n";
-    $debug && print STDERR "$subname: \$hstart=$hstart\n";
-
-    # Convert back to DNA
-    $hstart = $cds_loc->start + ($hstart-1)*3;
-
-    return $hstart;
-} # sub adjust_start
-
-sub adjust_end {
-    my ($qend, $refcds_loc, $cds, $aln, $aln_q, $aln_h) = @_;
-
-    return undef if (!$qend);
-    my $debug = 0 && $debug_all;
-    my $subname = 'adjust_end';
-
-    my $last_mat_peptide = 0;
-    $last_mat_peptide = 1 if ($qend == $refcds_loc->end || $qend == $refcds_loc->end-3);
-    $debug && print STDERR "$subname: \$last_mat_peptide=$last_mat_peptide\n";
-
-    my $cds_loc = $cds->location;
-    # Convert to protain from DNA
-    $qend = ($qend+1 - $refcds_loc->start)/3 -1 +1;
-    $debug && print STDERR "$subname: \$qend=$qend\n";
-#    $debug && print STDERR "$subname: \$aln_q=\n".Dumper($aln_q)."end of $aln_q\n";
-    my $qseq = $aln_q->seq;
-#    $qseq = substr($qseq, 0, $qend);
-    $debug && print STDERR "$subname: \$qseq='$qseq' \$qseq=".length($qseq)."\n";
-    my $gap_char = $aln->gap_char;
-    my $c;
-    for (my $n=1; $n<=$qend && $n<=length($aln_q->seq); $n++) {
-        $c = substr($qseq, $n-1, 1);
-        $qend++ if ($c eq $gap_char);
-        if (($n-1)%10 ==0) {
-            $debug && print STDERR "\n$subname: \$n=$n \$gap_char=$gap_char ";
-        }
-        $debug && print STDERR "\$c=$c \$qend=$qend ";
-    }
-    $debug && print STDERR "\n";
-    $debug && print STDERR "$subname: \$qend=$qend\n";
-
-    # If this is the last mat_peptide within refseq CDS, see if there is any trailing short sequence in target.
-    # If so, and the length is 5 AA or less, include it in the annotation.
-    if ($last_mat_peptide) {
-        if ($qend<length($qseq) && length($qseq)-$qend<=5) {
-            print STDERR "$subname: \$qend=$qend changed to include the trailing sequence after last mat_peptide\n";
-            $qend = length($qseq);
-            print STDERR "$subname: \$qend=$qend changed to include the trailing sequence after last mat_peptide\n";
-        }
-    }
-
-    my $hend = $qend;
-    my $hseq = $aln_h->seq;
-    $hseq = $aln_h->seq;
-    $hseq = substr($hseq, 0, $hend);
-    $debug && print STDERR "$subname: \$hseq='$hseq' \$hseq=".length($hseq)."\n";
-    for (my $n=length($hseq);  $n>=1; $n--) {
-        $c = substr($hseq, $n-1, 1);
-        $hend-- if ($c eq $gap_char);
-        if (($n-0)%10 ==0 || $n==length($hseq)) {
-            $debug && print STDERR "\n$subname: \$n=$n \$gap_char=$gap_char ";
-        }
-        $debug && print STDERR "\$c=$c \$hend=$hend ";
-    }
-    $debug && print STDERR "\n";
-
-    # Convert back to DNA
-    $hend = $cds_loc->start + ($hend-1)*3 +2;
-
-    my %good_tail = ( # if CDS ends with any of these DNA sequences, an extra amino acid is decided
-                      'CU'=>1, 'CT'=>1, # (Leu/L) Leucine
-                      'GU'=>1, 'GT'=>1, # (Val/V) Valine
-                      'UC'=>1, 'TC'=>1, # (Ser/S) Serine
-                      'CC'=>1, # (Pro/P) Proline
-                      'AC'=>1, # (Thr/T) Threonine
-                      'GC'=>1, # (Ala/A) Alanine
-                      'CG'=>1, # (Arg/R) Arginine
-                      'GG'=>1, # (Gly/G) Glycine
-                    );
-    if ($hend == $cds_loc->end+1) {
-            my $tail = $cds->seq->seq;
-            $tail = substr($tail, length($tail)-2, 2);
-            $debug && print STDERR "$subname: \$tail=$tail\n";
-            $hend-- if (exists($good_tail{$tail}) && $good_tail{$tail});
-    }
-
-    $debug && print STDERR "$subname: \$qend=$hend\n";
-    return $hend;
-
-} # sub adjust_end
-
-=head2 msa_get_feature_loc
-
-Takes reffeat, gaps in the reffeat, and gaps (in DNA coordinate) in the target
- calculate the location of the feature in target genome
- Return a Bio::Location object for the new annotation
-
-Note: We can only deal with Bio::Location::Simple, not more complicated location types
-
-=cut
-
-sub msa_get_feature_loc {
-    my ($reffeat_loc, $refcds_loc, $cds, $aln, $aln_q, $aln_h) = @_;
-
-    my $cds_loc = $cds->location;
-    my $debug = 0 && $debug_all;
-    my $subname = 'msa_get_feature_loc';
-
-    my $loc2 = undef;
-    my $errcode = {};
-
-    $debug && print STDERR "$subname:\n";
-    if ($reffeat_loc->isa('Bio::Location::Simple') ) {
-        my $qstart = $reffeat_loc->start;
-        my $qend = $reffeat_loc->end;
-        $debug && print STDERR "$subname: \$qstart=$qstart \$qend=$qend\n";
-
-        $qstart = Annotate_Util::adjust_start( $qstart, $refcds_loc, $cds, $aln, $aln_q, $aln_h);
-        $qend = Annotate_Util::adjust_end( $qend, $refcds_loc, $cds, $aln, $aln_q, $aln_h);
-        my $codon_start = 1;
-        if ($cds->has_tag('codon_start')) {
-            $codon_start = [$cds->get_tag_values('codon_start')];
-            $codon_start = $codon_start->[0];
-        }
-
-        $qstart = $qstart + $codon_start -1;
-        $qend = $qend + $codon_start -1;
-
-        $debug && print STDERR "$subname: \$qstart=$qstart \$qend=$qend\n";
-
-        if ($qstart<=$qend) {
-            $loc2 = Bio::Location::Simple->new();
-            $loc2->start($qstart);
-            $loc2->end  ($qend);
-        }
-
-    } elsif ($reffeat_loc->isa('Bio::Location::Fuzzy')) {
-
-
-        my $codon_start = 1;
-        if ($cds->has_tag('codon_start')) {
-            $codon_start = [$cds->get_tag_values('codon_start')];
-            $codon_start = $codon_start->[0];
-        }
-
-        my $start = 9999999;
-        my $end   = -1;
-        my $qstart_min = $reffeat_loc->min_start;
-        if (defined($qstart_min)) {
-            $debug && print STDERR "$subname: \$qstart_min=$qstart_min\n";
-            $qstart_min = Annotate_Util::adjust_start( $qstart_min, $refcds_loc, $cds, $aln, $aln_q, $aln_h);
-            $qstart_min = $qstart_min + $codon_start -1;
-            $start = $qstart_min;
-        }
-
-        my $qend_min = $reffeat_loc->min_end;
-        if (defined($qend_min)) {
-            $debug && print STDERR "$subname: \$qend_min=$qend_min\n";
-            $qend_min = Annotate_Util::adjust_end( $qend_min, $refcds_loc, $cds, $aln, $aln_q, $aln_h);
-            $qend_min = $qend_min + $codon_start -1;
-            $end = $qend_min;
-        }
-
-        my $qstart_max = $reffeat_loc->max_start;
-        if (defined($qstart_max)) {
-            $qstart_max = Annotate_Util::adjust_start( $qstart_max, $refcds_loc, $cds, $aln, $aln_q, $aln_h);
-            $qstart_max = $qstart_max + $codon_start -1;
-            $start = $qstart_max if (not $start<=$qstart_max);
-        }
-
-        my $qend_max = $reffeat_loc->max_end;
-        if (defined($qend_max)) {
-            $qend_max = Annotate_Util::adjust_end( $qend_max, $refcds_loc, $cds, $aln, $aln_q, $aln_h);
-            $qend_max = $qend_max + $codon_start -1;
-            $end = $qend_max if ($end<=$qend_max);
-        }
-
-        if ($start<=$end) {
-            $loc2 = Bio::Location::Fuzzy->new();
-            $loc2->location_type($reffeat_loc->location_type);
-            $loc2->start_pos_type($reffeat_loc->start_pos_type);
-            $loc2->end_pos_type  ($reffeat_loc->end_pos_type  );
-            $loc2->min_start($qstart_min);
-            $loc2->min_end  ($qend_min);
-            $loc2->max_start($qstart_max);
-            $loc2->max_end  ($qend_max);
-        }
-    }
-    # check the validity of $loc2, this ensures the new annotated feature lies within the cds,
-    # and doesn't have more gap than 3 dna residues
-    $errcode = &msa_check_loc($loc2, $reffeat_loc, $refcds_loc, $cds_loc, $aln, $aln_q, $aln_h);
-
-    $debug && print STDERR "$subname: \$loc2=\n".Dumper($loc2)."end of \$loc2\n";
-    $debug && print STDERR "$subname: \$errcode=\n".Dumper($errcode)."end of \$errcode\n";
-
-    return ($loc2, $errcode);
-
-} # sub msa_get_feature_loc
-
-
-=head2 msa_check_loc
-
-Takes reffeat, gaps in the reffeat, and gaps (in DNA coordinate) in the target
- calculate the location of the feature in target genome
- Return a Bio::Location object for the new annotation
-
-=cut
-
-sub msa_check_loc {
-    my ($loc2, $reffeat_loc, $refcds_loc, $cds_loc, $aln, $aln_q, $aln_h) = @_;
-
-    my $debug = 0 && $debug_all;
-    my $subname = 'msa_check_loc';
-    # error code: OutsideCDS; partial_mat_peptide; GapAtCleaveSite
-    my $errcode = {OutsideCDS=>0, partial_mat_peptide=>0};
-
-    return ($errcode) if (!$loc2);
-
-    my $msg;
-    my $max_gap_end = 3;
-    my $max_gap_middle = 3;
-
-    # See if $loc2 is outside of $cds_loc
-    if ($loc2->start < $cds_loc->start) {  # if $loc2 is outside of $cds_loc
-            print STDERR "$subname: a ".$loc2->start.' '.$cds_loc->start."\n";
-    }
-    if ($loc2->end <= $cds_loc->start) {  # if $loc2 is outside of $cds_loc
-            print STDERR "$subname: b ".$loc2->end.' '.$cds_loc->start."\n";
-    }
-    if ($loc2->start >= $cds_loc->end) {  # if $loc2 is outside of $cds_loc
-            print STDERR "$subname: c ".$loc2->start.' '.$cds_loc->end."\n";
-    }
-    if ($loc2->end > $cds_loc->end) {  # if $loc2 is outside of $cds_loc
-            print STDERR "$subname: d ".$loc2->end.' '.$cds_loc->end."\n";
-    }
-    if ($loc2->start < $cds_loc->start
-         || $loc2->end <= $cds_loc->start
-         || $loc2->start >= $cds_loc->end
-         || $loc2->end > $cds_loc->end
-       ) {  # if $loc2 is outside of $cds_loc
-            print STDERR "$subname: e \$loc2=".$loc2->to_FTstring." doesn't match \$cds=".$cds_loc->to_FTstring."\n";
-    # error code: OutsideCDS; partial_mat_peptide; GapAtCleaveSite
-            $errcode->{OutsideCDS} = 1;
-            return ($errcode);
-    }
-
-    $errcode->{partial_mat_peptide} = &msa_check_loc_start($loc2, $reffeat_loc, $refcds_loc, $cds_loc, $aln, $aln_q, $aln_h);
-
-    $errcode->{partial_mat_peptide} = $errcode->{partial_mat_peptide} || &msa_check_loc_end($loc2, $reffeat_loc, $refcds_loc, $cds_loc, $aln, $aln_q, $aln_h);
-
-    $errcode->{long_internal_gap} = &msa_check_loc_internal($loc2, $reffeat_loc, $refcds_loc, $cds_loc, $aln, $aln_q, $aln_h);
-
-    $debug && print STDERR "$subname: \$errcode=\n".Dumper($errcode)."\n";
-
-    return ($errcode);
-
-} # sub msa_check_loc
-
-sub msa_check_loc_internal {
-    my ($loc2, $reffeat_loc, $refcds_loc, $cds_loc, $aln, $aln_q, $aln_h) = @_;
-
-    my $debug = 0 && $debug_all;
-    my $subname = 'msa_check_loc_internal';
-    my $errcode = { long_internal_gap => 0 };
-
-        my $gap_char = $aln->gap_char;
-        my $qstart = $reffeat_loc->start; # get start of reffeat
-        $qstart = ($qstart - $refcds_loc->start)/3 +1; # convert to AA coordinate in CDS
-        my $qseq = $aln_q->seq;
-#        $debug && print STDERR "$subname: \$qseq='$qseq' \$qseq=".length($qseq)."\n";
-        my $char;
-        for (my $n=1; $n<=$qstart && $n<=length($qseq); $n++) {
-            $char = substr($qseq, $n-1, 1);
-            $qstart++ if ($char eq $gap_char);
-#            $debug && print STDERR "$subname: \$n=$n \$char=$char \$gap_char=$gap_char \$qstart=$qstart\n";
-        }
-
-        my $qend = $reffeat_loc->end; # get end of reffeat
-        $qend = ($qend - $refcds_loc->start +1)/3; # convert to AA coordinate in CDS
-        $qseq = $aln_q->seq;
-#        $debug && print STDERR "$subname: \$qseq='$qseq' \$qseq=".length($qseq)."\n";
-        for (my $n=1; $n<=$qend && $n<=length($qseq); $n++) {
-            $char = substr($qseq, $n-1, 1);
-            $qend++ if ($char eq $gap_char);
-#            $debug && print STDERR "$subname: \$n=$n \$char=$char \$gap_char=$gap_char \$qend=$qend\n";
-        }
-
-        # Count the number of gaps in the hit sequence
-        my $hseq = $aln_h->seq;
-        $debug && print STDERR "$subname: \$hseq='$hseq' \$hseq=".length($hseq)."\n";
-        $hseq = substr($hseq, $qstart, $qend-$qstart+1); # Any gap at the beginning of CDS, plus the 1st AA of current feat.
-        $debug && print STDERR "$subname: \$hseq='$hseq' \$hseq=".length($hseq)."\n";
-        $hseq =~ s/^[$gap_char]*//; # remove any gap at start
-        $hseq =~ s/[$gap_char]*$//; # remove any gap at end
-        my $count = 0;
-        my @chars = split(//, $hseq);
-        foreach my $c (@chars) {
-            $count++ if ($c eq $gap_char);
-        }
-        $debug && print STDERR "$subname: \$hseq='$hseq' \$hseq=".length($hseq)." \$count=$count\n";
-        if ($count > 0.333*length($hseq)) {
-            print STDERR "$subname: ERROR: \$qstart=$qstart \$qend=$qend \$gap_char=$gap_char\n";
-            print STDERR "$subname: ERROR: \$hseq='$hseq' \$hseq=".length($hseq)." \$count=$count\n";
-            $errcode->{long_internal_gap} = 1;
-        }
-    $debug && print STDERR "$subname: \$errcode=\n".Dumper($errcode)."\n";
-
-    return ($errcode->{long_internal_gap});
-
-} # sub msa_check_loc_internal
-
-
-sub msa_check_loc_start {
-    my ($loc2, $reffeat_loc, $refcds_loc, $cds_loc, $aln, $aln_q, $aln_h) = @_;
-
-    my $debug = 0 && $debug_all;
-    my $subname = 'msa_check_loc_start';
-    # error code: OutsideCDS; partial_mat_peptide; GapAtCleaveSite
-    my $errcode = { partial_mat_peptide => 0 };
-
-        my $qstart = $reffeat_loc->start; # get start of reffeat
-        $qstart = ($qstart - $refcds_loc->start)/3 +1; # convert to AA coordinate in CDS
-        my $qseq = $aln_q->seq;
-        $debug && print STDERR "$subname: \$qseq='$qseq' \$qseq=".length($qseq)."\n";
-        my $gap_char = $aln->gap_char;
-        my $char;
-        for (my $n=1; $n<=$qstart && $n<=length($qseq); $n++) {
-            $char = substr($qseq, $n-1, 1);
-            $qstart++ if ($char eq $gap_char);
-            $debug && print STDERR "$subname: \$n=$n \$char=$char \$gap_char=$gap_char \$qstart=$qstart\n";
-        }
-
-        # Any gap in hseq at the cleavage site makes the mat_peptide partial
-        my $hseq = $aln_h->seq;
-        $debug && print STDERR "$subname: \$hseq='$hseq' \$hseq=".length($hseq)."\n";
-        $char = substr($hseq, 0, $qstart); # Any gap at the beginning of CDS, plus the 1st AA of current feat.
-        $debug && print STDERR "$subname: \$char='$char' \$char=".length($char)."\n";
-        if ($char =~ /[$gap_char]+$/) {
-            $debug && print STDERR "$subname: \$qstart=$qstart \$char=$char \$gap_char=$gap_char\n";
-            $errcode->{partial_mat_peptide} = 1;
-        }
-    $debug && print STDERR "$subname: \$errcode=\n".Dumper($errcode)."\n";
-
-    return ($errcode->{partial_mat_peptide});
-
-} # sub msa_check_loc_start
-
-sub msa_check_loc_end {
-    my ($loc2, $reffeat_loc, $refcds_loc, $cds_loc, $aln, $aln_q, $aln_h) = @_;
-
-    my $debug = 0 && $debug_all;
-    my $subname = 'msa_check_loc_end';
-    # error code: OutsideCDS; partial_mat_peptide; GapAtCleaveSite
-    my $errcode = { partial_mat_peptide => 0 };
-
-        my $qend = $reffeat_loc->end; # get end of reffeat
-        $qend = ($qend - $refcds_loc->start +1)/3; # convert to AA coordinate in CDS
-        my $qseq = $aln_q->seq;
-        $debug && print STDERR "$subname: \$qseq='$qseq' \$qseq=".length($qseq)."\n";
-        my $gap_char = $aln->gap_char;
-        my $char;
-        for (my $n=1; $n<=$qend && $n<=length($qseq); $n++) {
-            $char = substr($qseq, $n-1, 1);
-            $qend++ if ($char eq $gap_char);
-            $debug && print STDERR "$subname: \$n=$n \$char=$char \$gap_char=$gap_char \$qend=$qend\n";
-        }
-        # Any gap in hseq at the cleavage site makes the mat_peptide partial
-        my $hseq = $aln_h->seq;
-        $debug && print STDERR "$subname: \$hseq='$hseq' \$hseq=".length($hseq)."\n";
-        $char = substr($hseq, $qend-1, length($hseq)-$qend+1); # Any gap at the end of CDS, plus the last AA of current feat.
-        $debug && print STDERR "$subname: \$char='$char' \$char=".length($char)."\n";
-        if ($char =~ /^[$gap_char]+/) {
-            $debug && print STDERR "$subname: \$qend=$qend \$char=$char \$gap_char=$gap_char\n";
-            $errcode->{partial_mat_peptide} = 1;
-        }
-
-    $debug && print STDERR "$subname: \$errcode=\n".Dumper($errcode)."\n";
-
-    return ($errcode->{partial_mat_peptide});
-
-} # sub msa_check_loc_end
-
-
-=head2 msa_check_loc_fuzzy
-
-Takes reffeat, gaps in the reffeat, and gaps (in DNA coordinate) in the target
- calculate the location of the feature in target genome
- Return a Bio::Location object for the new annotation
-
-Note: We can only deal with Bio::Location::Simple, not more complicated location types
-
-=cut
-=head1
-sub msa_check_loc_fuzzy {
-    my ($loc2, $reffeat, $refcds_loc, $cds_loc, $aln, $aln_q, $aln_h) = @_;
-
-    my $debug = 1 && $debug_all;
-    my $subname = 'msa_check_loc_fuzzy';
-    my $errcode = {};
-    my $msg;
-    my $max_gap_end = 3;
-    my $max_gap_middle = 3;
-
-    if ($loc2->start < $cds_loc->start
-       ) {  # if $feat starts before CDS starts
-            print STDERR "$subname: 1 ".$loc2->start.' '.$cds_loc->start."\n";
-    }
-    if ($loc2->end <= $cds_loc->start
-       ) {  # if $feat end before CDS starts
-            print STDERR "$subname: 2 ".$loc2->end.' '.$cds_loc->start."\n";
-    }
-    if ($loc2->start >= $cds_loc->end
-       ) {  # if $feat starts after CDS ends
-            print STDERR "$subname: 3 ".$loc2->start.' '.$cds_loc->end."\n";
-    }
-    if ($loc2->end > $cds_loc->end
-       ) {  # if $feat ends after CDS ends
-            print STDERR "$subname: 4 ".$loc2->end.' '.$cds_loc->end."\n";
-    }
-    if ($loc2->start < $cds_loc->start
-         || $loc2->end <= $cds_loc->start
-         || $loc2->start >= $cds_loc->end
-         || $loc2->end > $cds_loc->end
-       ) {  # if $feat is outside of CDS
-            print STDERR "$subname: \$loc2=".$loc2->to_FTstring." doesn't match \$cds=".$cds_loc->to_FTstring."\n";
-    # error code: 0: none; 1: gaps around cleavage site; 2: partial mat_peptide; 3: outside of CDS
-            $errcode->{OutsideCDS} = 1;
-            return ($errcode);
-    }
-
-    $debug && print STDERR "$subname: \n";
-
-
-    return ($errcode);
-
-} # sub msa_check_loc_fuzzy
-=cut
-
-=head2 adjust_from_gaps
-
-Takes a position, and an array of gaps, compare if any gap is before the position.
- First array element is ignored.
- Return the number of gaps before the start
-
-=cut
-
-sub adjust_from_gaps {
-        my ($position, $gaps_q) = @_;
-
-        my $debug = 0 && $debug_all;
-        my $adjust; # number of gaps
-        $adjust = 0;
-        foreach my $i (1 .. $#{@$gaps_q}) {
-            $debug && print STDERR "adjust_from_gaps: \$position=$position \t\$i=$i \$gap=$gaps_q->[$i]\n";
-            if ($gaps_q->[$i] < ($position + $adjust)) { # This $position doesn't have any gap
-                $adjust = $i;
-            } else {
-                last;
-            }
-        }
-
-        return ($adjust);
-} # sub adjust_from_gaps
+my $taxon = {
+               loaded => 0,
+#               fn     => "../msa_annotate/Annotate_taxon_records.txt",
+               fn     => "Annotate_taxon_records.txt",
+            };
 
 
 =head2 msa_get_gaps
@@ -971,7 +140,7 @@ sub get_refpolyprots {
             my $acc = $inseq->accession;
             my $id  = $inseq->species->ncbi_taxid;
             print STDERR "$subname: ERROR genome=".$acc." w/ taxid=".$id." is not covered in V$VERSION.\n";
-            print STDOUT "$subname: ERROR genome=".$acc." w/ taxid=".$id." is not covered in V$VERSION.\n";
+#            print STDOUT "$subname: ERROR genome=".$acc." w/ taxid=".$id." is not covered in V$VERSION.\n";
             print STDERR "$subname: Please contact script author for any update.\n";
             return undef;
         } else {
@@ -995,7 +164,7 @@ sub get_refpolyprots {
         next if ($reffeat->primary_tag ne 'CDS');
 
         my $is_poly = 0;
-        $is_poly = &is_polyprotein($reffeat, ['product', 'note']);
+        $is_poly = Annotate_Util::is_polyprotein( $reffeat, ['product', 'note']);
         if (!$is_poly) {
             $debug && print STDERR "$subname: \$refct=$refct \$is_poly=$is_poly is not a polyprotein, skipping\n";
             next; # only run for CDS labeled as polyprotein in refseq
@@ -1082,12 +251,14 @@ sub get_polyprots {
     my $debug = 0 && $debug_all;
     my $subname = 'get_polyprots';
     my $polyprots = {};
+    my $num_cds = -1;
+    my $comment = 'No refpolyprots provided';
     if ($#{@$refpolyprots} < 0) {
-            return $polyprots;
+            return ($polyprots, $num_cds, $comment);
     }
+    $comment = 'No CDS defined in genome file';
 
     my $acc = $inseq->accession_number;
-    my $num_cds = -1;
     for (my $i = 0; $i<=$#{@$refpolyprots}; $i++) {
         my $refset = $refpolyprots->[$i];
         my $reffeat = $refset->[1]; # [0] is CDS_id
@@ -1104,19 +275,21 @@ sub get_polyprots {
 #            $debug && print STDERR "$subname: \$ct=$ct \$feat=".$feat->primary_tag."\n";
             if ($feat->primary_tag ne 'CDS') {
                 # Skip those features such as source, gene, 5'URT
-                $debug && print STDERR "$subname: \$ct=$ct \$feat=".$feat->primary_tag." is not CDS\n";
+                $debug && print STDERR "$subname: \$ct=$ct \$feat=".$feat->primary_tag." is not CDS. Skip.\n";
                 next;
-            } else {
-                $debug && print STDERR "$subname: \$ct=$ct \$feat=".$feat->primary_tag."\n";
             }
+            $comment = 'Found CDS, but doesn\'t aligns with refseq';
+            $debug && print STDERR "$subname: \$ct=$ct \$feat=".$feat->primary_tag."\n";
 
             my $cds = $feat;
+            # polyprotein is determined by bl2seq similarity search, not by label of polyprotein
             $debug && print STDERR "$subname: Found polyprotein at \$ct=$ct\n";
 
             # double check to ensure the translation of CDS is right. For instance, DQ430819
             my $tr2 = &get_new_translation($cds, $cds);
             if (!$tr2) {
-                print STDERR "$subname: get_new_translation returned translation='$tr2'. Skip.\n";
+                print STDERR "$subname: get_new_translation returned translation='undef'. Skip.\n";
+                $comment = 'Problem with translation of CDS';
                 next; # Skip if no translation can be obtained
             }
             $debug && print STDERR "$subname: translation='$tr2'\n";
@@ -1125,6 +298,7 @@ sub get_polyprots {
             $match_refcds = &match_cds_bl2seq($cds, $refcds);
             if (!$match_refcds) {
                 print STDERR "$subname: \$ct=$ct \$feat=".$feat->primary_tag." doesn't match refcds\n";
+                $comment = "CDS sequence doesn't match refseq";
                 next;
             }
 
@@ -1134,7 +308,8 @@ sub get_polyprots {
             while ($ct<$#{@$feats} && $allowed_tags{$feats->[$ct+1]->primary_tag}) {
                 ++$ct;
                 next if ($feats->[$ct]->primary_tag eq 'misc_feature');
-                $debug && print STDERR "$subname: \$ct=$ct \$feat=".$feats->[$ct]->primary_tag.' '.$feats->[$ct]->location->to_FTstring."\n";
+                my $feat = $feats->[$ct];
+                $debug && print STDERR "$subname: \$ct=$ct \$feat=".$feat->primary_tag.' '.$feat->location->to_FTstring."\n";
                 push @$matps, $feats->[$ct];
             }
 
@@ -1147,8 +322,8 @@ sub get_polyprots {
                 my $old_cds = $polyprots->{$j}->[$k]->[0];
                 $debug && print STDERR "$subname: \$j=$j \$k=$k \$old_cds=\n".Dumper($old_cds)."end of \$old_cds\n\n";
                 $debug && print STDERR "$subname: \$j=$j \$k=$k \$cds=\n".Dumper($cds)."end of \$cds\n\n";
-                my $s1 = &get_new_translation($old_cds, $old_cds);
-                my $s2 = &get_new_translation($cds, $cds);
+                my $s1 = Annotate_Util::get_new_translation($old_cds, $old_cds);
+                my $s2 = Annotate_Util::get_new_translation($cds, $cds);
                 $debug && print STDERR "$subname: \$s1=$s1\n";
                 $debug && print STDERR "$subname: \$s2=$s2\n";
                 if ($s1 =~ /$s2/i) { # $s1 is same to or longer than $s2
@@ -1190,11 +365,12 @@ sub get_polyprots {
     $debug && print STDERR "$subname: \$polyprots=\n".Dumper($polyprots)."end of \$polyprots\n\n";
     if ($#{@$n} <0) {
         print STDERR "$subname: ERROR: Can't find any polyprotein CDS for acc=$acc \$n=$#{@$n}.\n";
-        print STDOUT "$subname: ERROR: Can't find any polyprotein CDS for acc=$acc \$n=$#{@$n}.\n";
-#        return;
+#        print STDOUT "$subname: ERROR: Can't find any polyprotein CDS for acc=$acc \$n=$#{@$n}.\n";
+    } else {
+    	$comment = "Found $#{@$n} CDS suitable for annotation"
     }
 
-    return ($polyprots, $num_cds);
+    return ($polyprots, $num_cds, $comment);
 } # sub get_polyprots
 
 
@@ -1232,7 +408,7 @@ sub match_cds_bl2seq {
 
         $s1 = $s1<$s2 ? $s1 : $s2;
         $debug && print STDERR "$subname: \$s1=$s1 length of conserved=".$hsp_cds->{'CONSERVED'}."\n";
-        my $conserved_residues_required = 0.66667;
+        my $conserved_residues_required = 0.66667; # The target must have 66.667% residues conserved wrt refseq
         $conserved_residues_required = 0.5 if ($debug);
         if ($hsp_cds->{'CONSERVED'} >= $s1 * $conserved_residues_required) {
             $match_cds = 1;
@@ -1274,7 +450,7 @@ sub get_refseq {
 
     if ($inseq->isa('Bio::Seq::RichSeq')) {
             my $refacc = undef;
-            $refacc = &get_refseq_acc($inseq);
+            $refacc = Annotate_Util::get_refseq_acc( $inseq, $exe_dir);
             return undef if (!$refacc);
             $refseq_fn = $refacc.'_matpeptide.gb';
             $debug && print STDERR "get_refseq: \$exe_dir=${exe_dir}refseq/$refseq_fn\n";
@@ -1317,13 +493,13 @@ Takes either a file name, or a Bio::Seq object based on genbank file, returns re
 =cut
 
 sub get_refseq_acc {
-    my ($inseq) = @_;
+    my ($inseq, $exe_dir) = @_;
 
     my $debug = 0 && $debug_all;
     my $subname = 'get_refseq_acc';
 
-    my $refseq_acc = undef;
-    return $refseq_acc if (!$inseq);
+#    my $refseq_acc = undef;
+#    return $refseq_acc if (!$inseq);
 
         # list of refseqs
         my $refseq_list = {
@@ -1390,12 +566,15 @@ sub get_refseq_acc {
            };
         $debug && print STDERR "$subname: \$refseq_list=\n".Dumper($refseq_list)."end of \$refseq_list\n\n";
 
-        $debug && print STDERR "$subname: Taxon=$taxon->{loaded}\n";
-        if (!$taxon->{loaded} && -f $taxon->{fn} ) {
-            $debug && print STDERR "$subname: found taxon_fn=$taxon->{fn}\n";
+    my $refseq_acc = undef;
+    return $refseq_list if (!$inseq);
 
-            open my $taxon_file, '<', $taxon->{fn}
-               or croak("$subname: Found $taxon->{fn}, but couldn't open: $OS_ERROR");
+        $debug && print STDERR "$subname: Taxon=$taxon->{loaded}\n";
+        if (!$taxon->{loaded} && -f "$exe_dir/$taxon->{fn}" ) {
+            $debug && print STDERR "$subname: found taxon_fn=$exe_dir/$taxon->{fn}\n";
+
+            open my $taxon_file, '<', "$exe_dir/$taxon->{fn}"
+               or croak("$subname: '$exe_dir/$taxon->{fn}', but couldn't open: $OS_ERROR");
             while (<$taxon_file>) {
                 s/(^[|]*\s+|\s+$)//x;
                 my $words = [split(/\s*\|\s*/x)];
@@ -1410,11 +589,11 @@ sub get_refseq_acc {
                     $taxon->{speciesid}->{$speciesid}->{$strainid} = 1;
                 }
             }
-            close $taxon_file or croak "$subname: Couldn't close $taxon->{fn}: $OS_ERROR";
+            close $taxon_file or croak "$subname: Couldn't close $exe_dir/$taxon->{fn}: $OS_ERROR";
             my @keys = keys %{$taxon->{speciesid}};
             $taxon->{loaded} = 1 if ($#keys>1);
 
-            $debug && print STDERR "$subname: finished reading list file: $taxon->{fn}.\n";
+            $debug && print STDERR "$subname: finished reading list file: '$exe_dir/$taxon->{fn}'.\n";
             $debug && print STDERR "$subname: \$taxon = \n".Dumper($taxon)."End of \$taxon\n\n";
 
 
@@ -1422,7 +601,7 @@ sub get_refseq_acc {
         $debug && print STDERR "$subname: \$taxon->{loaded}=$taxon->{loaded}\n";
 
         my $taxid = $inseq->species->ncbi_taxid;
-        $debug && print "$subname: \$taxid=$taxid \$inseq=$inseq is a ".ref($inseq)."\n";
+        $debug && print STDERR "$subname: \$taxid=$taxid \$inseq=$inseq is a ".ref($inseq)."\n";
 
 
         # Determine the refseq by a 2-step process
@@ -1438,7 +617,7 @@ sub get_refseq_acc {
                 $refacc = $taxon->{'speciesid'}->{$speciesid}->{$speciesid};
                 $debug && print "$subname: \$taxid=$taxid \$speciesid=$speciesid \$refacc=$refacc\n";
                 $refseq_acc = $refacc if ($refacc && $refacc =~ /^NC_0/i);
-                $debug && print "$subname: \$refacc=$refacc \$refseq_acc=$refseq_acc\n";
+                print STDERR "$subname: \$taxid=$taxid \$speciesid=$speciesid \$refacc=$refacc \$refseq_acc=$refseq_acc\n";
                 last;
             }
 
@@ -1459,7 +638,7 @@ Returns the gene symbol in a string
 =cut
 
 sub get_gene_symbol {
-    my ($reffeat) = @_;
+    my ($reffeat,$exe_dir) = @_;
 
     my $debug = 0 && $debug_all;
 #    print STDERR "get_gene_symbol: \$reffeat=\n".Dumper($reffeat)."end of \$reffeat\n\n";
@@ -1655,72 +834,6 @@ sub get_gene_symbol {
 } # sub get_gene_symbol
 
 
-## sub get_dna_byloc fetches the sequence directly from seq string according to
-## the location range. Sequence is always extracted from $seq_obj_seq
-sub get_dna_byloc {
-    my ($feat_obj, $seq_obj_seq) = @_;
-
-      my $debug = 0 && $debug_all;
-      $debug && print STDERR "get_dna_byloc: \$feat_obj = \n".Dumper($feat_obj)."End of \$feat_obj\n\n";
-      my ($s, $product);
-      if ($feat_obj->location->isa('Bio::Location::Simple')) {
-#           print "  Simple:DNA    :seq=". $feat_obj->seq->seq ."\n";
-#           $s = substr($seq_obj_seq, $feat_obj->location->start-1, $feat_obj->location->end - $feat_obj->location->start + 1);
-           my $start = $feat_obj->location->start-1;
-           my $len = $feat_obj->location->end - $feat_obj->location->start + 1;
-           $debug && print STDERR "get_dna_byloc: \$start = $start \$len=$len\n";
-           if ($feat_obj->has_tag('codon_start')) {
-               my $codon_start = [$feat_obj->get_tag_values('codon_start')];
-               $codon_start = $codon_start->[0];
-               $start = $start + $codon_start -1;
-               $len = $len - $codon_start +1;
-               $debug && print STDERR "get_dna_byloc: \$codon_start = $codon_start\n";
-           }
-           $debug && print STDERR "get_dna_byloc: \$start = $start \$len=$len\n";
-           $s = substr($seq_obj_seq, $start, $len);
-#           print "  Simple:protein:seq=". $feat_obj->seq->translate()->seq ."\n";
-      } elsif ($feat_obj->location->isa('Bio::Location::Split')) {
-           my $s0 = $seq_obj_seq;
-#           print "location=". $feat_obj->location->to_FTstring . "\n";
-           for my $loc ($feat_obj->location->sub_Location) {
-#              $s .= substr($s0, $loc->start -1, $loc->end +1 - $loc->start);
-               my $start = $loc->start -1;
-               my $len = $loc->end +1 - $loc->start;
-              if ($feat_obj->has_tag('codon_start')) {
-                  my $codon_start = [$feat_obj->get_tag_values('codon_start')];
-                  $codon_start = $codon_start->[0];
-                  $start = $start + $codon_start -1;
-                  $len = $len - $codon_start +1;
-                  $debug && print STDERR "get_dna_byloc: \$codon_start = $codon_start\n";
-              }
-              $s .= substr($s0, $start, $len);
-#              print "start=". $loc->start ."\tend=". $loc->end ."\n";
-#              print "  \$s=". $s ."\n";
-           }
-      } elsif ($feat_obj->location->isa('Bio::Location::Fuzzy')) {
-           my $s0 = $seq_obj_seq;
-           $debug && print STDERR "get_dna_byloc: location=". $feat_obj->location->to_FTstring . "\n";
-           for my $loc ($feat_obj->location->each_Location) {
-#              $s .= substr($s0, $loc->start -1, $loc->end +1 - $loc->start);
-               my $start = $loc->start -1;
-               my $len = $loc->end +1 - $loc->start;
-              if ($feat_obj->has_tag('codon_start')) {
-                  my $codon_start = [$feat_obj->get_tag_values('codon_start')];
-                  $codon_start = $codon_start->[0];
-                  $start = $start + $codon_start -1;
-                  $len = $len - $codon_start +1;
-                  $debug && print STDERR "get_dna_byloc: \$codon_start = $codon_start\n";
-              }
-              $s .= substr($s0, $start, $len);
-#              $debug && print STDERR "get_dna_byloc: start=". $loc->start ."\tend=". $loc->end ."\n";
-#              $debug && print STDERR "get_dna_byloc:   \$s=". $s ."\n";
-           }
-      }
-
-    return $s;
-} # sub get_dna_byloc
-
-
 =head2 check_refseq
 
 Takes 1 refseq and 1 target genome. Check is the taxid for both are same
@@ -1743,86 +856,6 @@ sub check_refseq {
     return $refseq_fit;
 } # sub check_refseq
 
-
-=head2 convert_range_protein2dna
-
-Takes a CDS, and an array of gaps from alignment,
- return the gaps converted to DNA range, taking into account the start of CDS
-
-=cut
-
-sub convert_range_protein2dna {
-    my ($f, $gaps) = @_;
-
-    my $debug = 1 && $debug_all;
-    my $subname = 'convert_range_protein2dna';
-    my @gaps2;
-    my $f_start = $f->location->start;
-    my $under_water = 0;
-    my $above_water = 0;
-    $debug && print STDERR "$subname: gaps are converted to DNA coordinates from protein coordinate.\n";
-    $debug && print STDERR "$subname: DNA coordinates include the start of CDS, also include the gaps.\n";
-    for (my $i=0; $i<=$#{@$gaps}; $i++) {
-        my $gap = $gaps->[$i];
-
-        if ($gap eq '') {
-                push @gaps2, $gap;
-                next;
-        }
-
-        # This indicates the gap at the beginning of the CDS, special case
-        if ($gap == $i) {
-            my $sss = $f_start - ($gap*3)+0;
-            $debug && print STDERR "$subname: \$i=$i \$gap=$gap start=$f_start new=". ($f_start-($gap*3)+2) ." \$under_water=$under_water \$sss=$sss\n";
-            unshift @gaps2, (shift @gaps2, $f_start - ($gap*3)+2);
-            if ($gaps2[1] <= 0) {
-                $under_water++;
-            } else {
-                $above_water++;
-            }
-            unshift @gaps2, (shift @gaps2, $f_start - ($gap*3)+1);
-            if ($gaps2[1] <= 0) {
-                $under_water++;
-            } else {
-                $above_water++;
-            }
-            unshift @gaps2, (shift @gaps2, $f_start - ($gap*3)+0);
-            if ($gaps2[1] <= 0) {
-                $under_water++;
-            } else {
-                $above_water++;
-            }
-        } else {
-            my $sss = $f_start -$under_water -$above_water + ($gap-1)*3;
-            $debug && print STDERR "$subname: \$i=$i \$gap=$gap start=$f_start new=". ($f_start + ($gap-1)*3) ." \$under_water=$under_water \$sss=$sss\n";
-            push @gaps2, $f_start -$under_water -$above_water + ($gap-1)*3;
-            push @gaps2, $f_start -$under_water -$above_water + ($gap-1)*3+1;
-            push @gaps2, $f_start -$under_water -$above_water + ($gap-1)*3+2;
-        }
-    }
-
-    # check the gaps to ensure all gaps are included
-    my $f_end = $f->location->end;
-    for (my $i=1; $i<=$#gaps2; $i++) {
-        $debug && print STDERR "$subname: \$i=$i \$gaps[$i]=$gaps2[$i] \$f_end=$f_end\n";
-        if ($gaps2[$i] < $f_end) {
-            $f_end++;
-        } elsif ($gaps2[$i] == $f_end) {
-            last;
-        } elsif ($gaps2[$i] > $f_end) {
-            @gaps2 = (@gaps2, $f_end+1 .. $gaps2[$i]-1);
-            last;
-        }
-    }
-
-    $debug && print STDERR "$subname: \$under_water=$under_water \$above_water=$above_water\n";
-    my $gap1 = shift @gaps2;
-    $debug && print STDERR "$subname: sorting \@gaps2=@gaps2\n";
-    @gaps2 = sort {$a<=>$b} @gaps2;
-    @gaps2 = ($gap1, @gaps2);
-    $debug && print STDERR "$subname: sorted \@gaps2=@gaps2\n";
-    return (\@gaps2);
-} # sub convert_range_protein2dna
 
 
 =head2 get_aln_seq
@@ -1879,8 +912,8 @@ sub get_new_translation {
         }
     }
 
-    my $s = Annotate_Util::get_dna_byloc( $feat, $cds->{_gsf_seq}->seq);
-#    $debug && print STDERR "$subname: \$s  ='$s'\n";
+    my $s = Annotate_Math::get_dna_byloc( $feat, $cds->{_gsf_seq}->seq);
+    $debug && print STDERR "$subname: \$s  ='$s'\n";
     my $f = Bio::PrimarySeq->new(
                          -seq      => $s,
                          -id       => '',	# id can't contain space
@@ -1926,12 +959,14 @@ Takes refcds, reffeat, loc2 of new feature, and target cds.
 =cut
 
 sub assemble_new_feature {
-    my ($refcds, $reffeat, $cds, $aln, $aln_q, $aln_h, $note) = @_;
+    my ($refcds, $reffeat, $cds, $aln, $refcds_id, $cds_id, $note,$exe_dir) = @_;
 
     my $debug = 0 && $debug_all;
     my $subname = 'assemble_new_feature';
 
-    my ($loc2, $errcode) = Annotate_Util::msa_get_feature_loc(
+    my $aln_q = Annotate_Util::msa_get_aln( $aln, $refcds_id);
+    my $aln_h = Annotate_Util::msa_get_aln( $aln, $cds_id);
+    my ($loc2, $errcode) = Annotate_Math::msa_get_feature_loc(
                                  $reffeat->location,
                                  $refcds->location,
                                  $cds,
@@ -1974,6 +1009,7 @@ sub assemble_new_feature {
     if ($cds->has_tag('codon_start')) {
         my $codon_start = [$cds->get_tag_values('codon_start')];
         $codon_start = $codon_start->[0];
+        # codon_start is taken care of during calculation of start/end of new feature. No need here
 #        $feat->add_tag_value('codon_start', $codon_start);
     }
 
@@ -2000,8 +1036,8 @@ sub assemble_new_feature {
         $feat->add_tag_value('locus_tag', $tag->[0]);
     }
 
-    my $gene_symbol = Annotate_Util::get_gene_symbol( $reffeat);
-    my ($id, $desc) = &get_feature_id_desc($feat, $errcode, $gene_symbol, $cds);
+    my $gene_symbol = Annotate_Util::get_gene_symbol( $reffeat,$exe_dir);
+    my ($id, $desc) = Annotate_Util::get_feature_id_desc( $feat, $errcode, $gene_symbol, $cds, $refcds);
     $feat->add_tag_value('note', 'Desc:'.$desc);
 
     $debug && print STDERR "$subname: \$loc = \n".Dumper($reffeat->location)."End of \$loc\n\n";
@@ -2021,7 +1057,7 @@ Takes $feat, $errcode, $refcds, $reffeat, $cds, $note
 =cut
 
 sub get_feature_id_desc {
-    my ($feat, $errcode, $gene_symbol, $cds) = @_;
+    my ($feat, $errcode, $gene_symbol, $cds, $refcds) = @_;
 
     my $debug = 0 && $debug_all;
     my $subname = 'get_feature_id_desc';
@@ -2058,18 +1094,40 @@ sub get_feature_id_desc {
     }
     $id = "CDS=unknown|" if (($id !~ /^CDS=/) ); # indicates a potential problem
 
-    # add the accession
+    # add the accession of target genome
     if ( 1 ) {
-        $id = 'ACC='. $cds->seq->accession_number .'|'. $id;
-    }
+        my $desc = '';
+        $desc .= 'src=MSA|'; # Add method to description
+        $desc .= 'ACC='. $cds->seq->accession_number; # Add accession to description
+        $desc .= '|Ver='. $cds->seq->accession_number; # Add accession to description
+        $desc = $desc .'.'.$cds->entire_seq->{'_version'}; # Add version of accession to description
+        $debug && print STDERR "$subname: \$cds=\n".Dumper($cds)."End of \$cds\n\n";
+        $debug && print STDERR "$subname: \$seq=\n".Dumper($cds->entire_seq)."End of \$seq\n\n";
+        $id = $desc .'|'. $id;
 
+        # add accession.version of refseq
+        $desc = 'ref='. $refcds->seq->accession_number; # Add accession to description
+        $desc .= '.'.$refcds->entire_seq->{'_version'}; # Add version of accession to description
+        $debug && print STDERR "$subname: \$refcds=\n".Dumper($refcds)."End of \$refcds\n\n";
+        $debug && print STDERR "$subname: \$refseq=\n".Dumper($refcds->entire_seq)."End of \$refseq\n\n";
+        $id .= $desc .'|';
+    }
     # add the range of mat_peptide
+=head2
     my $allow_fuzzy_location = 0;
     if ($allow_fuzzy_location) {
         $id .= 'Loc='. $feat->location->to_FTstring .'|';
     } else {
         $id .= 'Loc='. $feat->location->start .'..'. $feat->location->end .'|';
     }
+=cut
+    $id .= 'Loc='. &get_DNA_loc($feat) .'|';
+
+    # Add range in polyprotein. This is simply calculated from existing DNA coordinates.
+    # One caveat is, in some cases, the last AA of polyprotein may have 2 coden, need special handling.
+    my $s = '';
+    $s = &get_AA_loc($feat, $cds);
+    $id .= 'AA='. $s .'|';
 
     # add gene symbol
     my $desc = $id;
@@ -2097,18 +1155,240 @@ sub get_feature_id_desc {
                $desc = $desc. 'product='.$id[0];
 #               $desc = $desc. 'mat_peptide='.$id[0];
            } else {
-               $desc = $desc. $feat->primary_tag.'='. $id[0];
+               $desc = $desc. $feat->primary_tag."=". $id[0];
            }
            $id .= 'product='.$id[0];
            last;
         }
     }
+    $debug && print STDERR "$subname: \$desc='$desc'\n";
 
     return ($id, $desc);
 } # sub get_feature_id_desc
 
 
-=head2 fix_cleavage_gaps
+=head2 get_DNA_loc
+
+Takes $feat
+ Returns the location range in a string
+ This basically is $feat->location->to_FTstring, but we are turning off the <> notation
+=cut
+
+sub get_DNA_loc {
+    my ($feat) = @_;
+
+    my $debug = 0 && $debug_all;
+    my $subname = 'get_DNA_loc';
+
+    # get the range of mat_peptide
+    my $s;
+    my $allow_fuzzy_location = 0;
+    if ($allow_fuzzy_location) {
+        $s = $feat->location->to_FTstring;
+        $debug && print STDERR "$subname: may contain '<>' in \$s=$s.\n";
+    } else {
+        $s = $feat->location->start .'..'. $feat->location->end;
+        $debug && print STDERR "$subname: no '<>' in \$s=$s.\n";
+    }
+
+    return $s;
+} # sub get_DNA_loc
+
+
+=head2 get_AA_loc
+
+Takes mat_peptide and the parent CDS
+ Return the AA location
+
+=cut
+
+sub get_AA_loc {
+    my ($feat, $cds) = @_;
+
+    my $debug = 0 && $debug_all;
+    my $subname = 'get_AA_loc';
+
+    # Add range in polyprotein. This is simply calculated from existing DNA coordinates.
+    # One caveat is, in some cases, the last AA of polyprotein may have 2 coden, need special handling.
+    my $s = '';
+    {
+        my $codon_start_feat = 0;
+        $codon_start_feat = [$feat->get_tag_values('codon_start')]->[0] -1 if ($feat->has_tag('codon_start'));
+        my $codon_start_cds = 0;
+        $codon_start_cds = [$cds->get_tag_values('codon_start')]->[0] -1 if ($cds->has_tag('codon_start'));
+
+        my $b0 = $feat->location->start +$codon_start_feat - $cds->location->start -$codon_start_cds;
+        $debug && print STDERR "$subname: \$b0=$b0 \$b0/3=". $b0 % 3 ."\n";
+        $b0 = (($b0 % 3) ==0) ? $b0 /3 +1 : 0;
+        $debug && print STDERR "$subname: \$b0=$b0\n";
+
+        my $e0 = $feat->location->end +$codon_start_feat + 1 - $cds->location->start -$codon_start_cds;
+        $debug && print STDERR "$subname: \$e0=$e0\n";
+        $e0 +=1 if (($e0 +1) % 3 ==0); # some of the polyproteins have 2 nucleotides for the last codon
+        $debug && print STDERR "$subname: \$e0=$e0\n";
+        $e0 = ($e0 % 3 ==0) ? $e0 /3 : 0;
+        $debug && print STDERR "$subname: \$e0=$e0\n";
+        $debug && print STDERR "$subname: \$b0=$b0 \$e0=$e0\n";
+        $s = $e0 - $b0 +1;
+
+        my $b = $b0;
+        my $e = $e0;
+        $debug && print STDERR "$subname: \$feat=\n".Dumper($feat)."End of \$feat\n\n";
+        # check the length of existing translation against length from coordinates, just in case
+        if ($feat->has_tag('translation')) {
+            my $t = [ $feat->get_tag_values('translation') ];
+            $t = $t->[0];
+            $debug && print STDERR "$subname: \$seq=$t\n";
+            if ($s!=length($t)) {
+                print STDERR  "$subname: ".$cds->seq->accession_number ." has problem between existing translation and coordinate \$s=$s length=".length($t)."\n";
+                print STDERR "$subname: \$s=$s \$t=".length($t)."\n";
+                print STDERR "$subname: \$feat=\n".Dumper($feat)."End of \$feat\n\n";
+                print STDERR "$subname: \$cds=\n".Dumper($cds)."End of \$cds\n\n";
+                croak "$subname: ".$cds->seq->accession_number ." has problem between existing translation and coordinate \$s=$s length=".length($t)."\n";
+            }
+        }
+        $s = $b .'..'. $e;
+    }
+
+    return $s;
+} # sub get_AA_loc
+
+
+=head2 project_matpept
+
+Takes references to refset, $inset, alignment, ids of refcds and cds, and a note
+ returns the list of features of CDS, mat_peptide, sig_peptide.
+
+=cut
+
+sub project_matpept {
+    my ($refset, $inset, $aln, $refcds_id, $cds_id, $note,$exe_dir) = @_;
+
+    my $debug = 0 && $debug_all;
+    my $subname = 'project_matpept';
+
+    my $feats_all = []; # Holds all new features for the target genome
+#    $debug && print STDERR "$subname: \$refset = \n".Dumper($refset)."End of \$refset\n";
+    # Go through all features in refseq, map the corresponding features in targe genome,
+    # first, check CDS that is labeled as polyprotein, then all mat_pepride (and sig_peptide) after such CDS
+    
+    $debug && print STDERR "$subname: \$refset = \n".Dumper($refset)."End of \$refset\n\n";
+    for (my $ct = 1; $ct <= $#{@$refset}; $ct++) {
+        # First get CDS from refseq & target
+        my $reffeat = $refset->[$ct];
+        $debug && print STDERR "$subname: #$ct is ".$reffeat->primary_tag." \t$reffeat\n";
+        next if ($reffeat->primary_tag ne "CDS");
+        my @prod = $reffeat->get_tag_values('product');
+#        $debug && print STDERR "project_matpept: ct=$ct \$reffeat is ".$reffeat->primary_tag." prod=$prod[0]\n";
+        # Skip any CDS not labeled as "polyprotein". Potential problem as some polyproteins are not so labeled
+#        next if ($prod[0] !~ /polyprotein/i);
+        next if (!Annotate_Util::is_polyprotein( $reffeat, ['product', 'note']));
+        $debug && print STDERR "$subname: \$reffeat = \n".Dumper($reffeat)."End of \$reffeat\n\n";
+
+        my $refcds = $reffeat;
+        my $cds = $inset->[0];
+        $debug && print STDERR "$subname: \$cds=".$cds->seq->accession_number."\n";
+        my %allowed_feats = ('mat_peptide' => 1, 'sig_peptide' => 1);
+        while (($refset->[$ct+1]) && ($allowed_feats{$refset->[$ct+1]->primary_tag})) {
+            $reffeat = $refset->[++$ct];
+            $debug && print STDERR "$subname: #$ct is ".$reffeat->primary_tag."=\n".Dumper($reffeat)."End of \$reffeat\n\n";
+
+            $debug && print STDERR "$subname: \$refcds_id=$refcds_id \$cds_id=$cds_id\n";
+
+            # gets a Bio::SeqFeature::Generic object
+            my $feat = Annotate_Util::assemble_new_feature(
+                                 $refcds,
+                                 $reffeat,
+                                 $cds,
+                                 $aln,
+                                 $refcds_id,
+                                 $cds_id,
+                                 $note,$exe_dir,
+                                 );
+            if (!defined($feat)) {
+                $debug && print STDERR "$subname: #$ct \$feat is undef, skip\n";
+                next;
+            }
+            $debug && print STDERR "$subname: #$ct \$feat = \n".Dumper($feat)."End of \$feat\n\n";
+
+            # See if this is entirely new annotation wrt genbank
+            my $new = 1;
+            my $feat_gbk;
+            ($new, $feat_gbk) = Annotate_Util::is_new_annotation( $feat, $inset);
+            if ($new) {
+            	# add *new* to the description to indicate that GBK doesn't have this annotation
+                my @tags = $feat->get_tag_values('note');
+                $feat->remove_tag('note');
+                for (my $i = 0; $i<=$#tags; $i++) {
+                    $debug && print STDERR "$subname: \$tags[$i] = $tags[$i]\n";
+                    if ($tags[$i] =~ /^Desc:/i) {
+                        $tags[$i] = $tags[$i] .'|*new*';
+                        $feat->add_tag_value('note', $tags[$i]);
+                        $debug && print STDERR "$subname: \$tags[$i] = $tags[$i]\n";
+                    } else {
+                        $feat->add_tag_value('note', $tags[$i]);
+                    }
+                }
+            } elsif($feat_gbk) {
+            	# add source GBK and other identifiers (GI) to description
+                my $id_gbk = '';
+                for my $tag ('db_xref', 'protein_id', 'product') { # per Chris request
+                    if ($feat_gbk->has_tag($tag)) {
+                       $id_gbk = [ $feat_gbk->get_tag_values($tag) ];
+                       $id_gbk = $id_gbk->[0];
+                       last;
+                    }
+                }
+
+=head1
+                my @tags = $feat->get_tag_values('note');
+                $feat->remove_tag('note');
+                for (my $i = 0; $i<=$#tags; $i++) {
+                    $debug && print STDERR "$subname: \$tags[$i] = $tags[$i]\n";
+                    if ($tags[$i] =~ /^Desc:/i) {
+                        $tags[$i] = $tags[$i] . "|matp=$id_gbk";
+                        $tags[$i] =~ s/src=MSA/src=MSA,GBK/;
+                        $feat->add_tag_value('note', $tags[$i]);
+                        $debug && print STDERR "$subname: \$tags[$i] = $tags[$i]\n";
+                    } else {
+                        $feat->add_tag_value('note', $tags[$i]);
+                    }
+                }
+=cut
+            }
+
+            push @$feats_all, $feat;
+            $debug && print STDERR "$subname: \$feat = \n".Dumper($feat)."End of \$feat\n\n";
+        }
+        unshift @$feats_all, $cds; # prepend CDS to the array
+
+        # check if there is any gaps in new annotation, any gaps is shown as >=?=<
+        my ($has_gap, $str) = Annotate_Verify::check_ranges( $feats_all);
+        $debug && print STDERR "$subname: \$has_gap = $has_gap\n";
+        if ($has_gap) {
+            my $feats = Annotate_Util::fix_cleavage_gaps( $feats_all, $refset, $inset,);
+            ($has_gap, $str) = Annotate_Verify::check_ranges( $feats_all);
+            $debug && print STDERR "$subname: \$has_gap = $has_gap\n";
+        }
+
+        # check if there is any partial mat_peptide in the middle of polyprotein
+        ($has_gap, $str) = Annotate_Verify::check_partial( $feats_all);
+        $debug && print STDERR "$subname: \$has_gap = $has_gap\n";
+        if ($has_gap) {
+#            my $feats = Annotate_Util::fix_partial( $feats_all, $refset, $inset,);
+#            ($has_gap, $str) = Annotate_Verify::check_partial( $feats_all);
+#            $debug && print STDERR "$subname: \$has_gap = $has_gap\n";
+        }
+
+    } # while ($ct <= $#{@$reffeats})
+
+    $debug && print STDERR "$subname: \$feats_all = \n".Dumper($feats_all)."End of \$feats_all\n\n";
+
+    return $feats_all;
+} # sub project_matpept
+
+
+=head2 fix_partial
 
 Takes the new annotation in an array, refcds, cds, and the gaps.
  Check if all new mat_peptides are connected
@@ -2119,11 +1399,12 @@ If the alignment is not definite, as in EF407458 EF407463 EF407467 when run toge
 
 =cut
 
-sub fix_cleavage_gaps {
-    my ($feats_all, $refset, $gaps_q, $gaps_h, $note) = @_;
+sub fix_partial {
+#    my ($feats_all, $refset, $gaps_q, $gaps_h, $note) = @_;
+    my ($feats_all, $refset, $inset) = @_;
 
     my $debug = 0 && $debug_all;
-    my $subname = 'fix_cleavage_gaps';
+    my $subname = 'fix_partial';
 
     my $cds = $feats_all->[0];
     my $refcds = $refset->[0];
@@ -2371,6 +1652,13 @@ sub fix_cleavage_gaps {
                     $debug && print STDERR "$subname: \$value = '$value'\n";
                     $debug && print STDERR "$subname: \@values = \n".Dumper(@values)."End of \@values\n\n";
                 }
+                my $new = &is_new_annotation( $feat2, $inset);
+                $pattn = '\|[*]new[*]';
+                if (!$new && $value =~ s/($pattn)//i) {
+                    $values[$k] = $value;
+                    $debug && print STDERR "$subname: \$value = '$value'\n";
+                    $debug && print STDERR "$subname: \@values = \n".Dumper(@values)."End of \@values\n\n";
+                }
             }
             $feat2->remove_tag('note');
             $feat2->add_tag_value('note', @values);
@@ -2385,6 +1673,296 @@ sub fix_cleavage_gaps {
     }
 
     $has_gap && print STDERR "$subname: \$feats_all = \n".Dumper($feats_all)."End of \$feats_all\n\n";
+
+    return ($feats);
+} # sub fix_partial
+
+
+=head2 fix_cleavage_gaps
+
+Takes the new annotation in an array, refcds, cds, and the gaps.
+ Check if all new mat_peptides are connected
+ if not, decide if the missing sequence at the cleavage site should go to the tail of previous mat_peptide,
+ or head of the next mat_peptide
+
+If the alignment is not definite, as in EF407458 EF407463 EF407467 when run together and separately, the annotation will change according to the MSA. This is a consequence of the shifting alignment.
+
+=cut
+
+sub fix_cleavage_gaps {
+#    my ($feats_all, $refset, $gaps_q, $gaps_h, $note) = @_;
+    my ($feats_all, $refset, $inset) = @_;
+
+    my $debug = 0 && $debug_all;
+    my $subname = 'fix_cleavage_gaps';
+
+    my $cds = $feats_all->[0];
+    my $refcds = $refset->[0];
+    my $max_length = 10;
+    my $has_gap = 0;
+    my $feats;
+    $debug && print STDERR "$subname: \$feats_all=\n".Dumper($feats_all)."end of \$feats_all\n";
+    $debug && print STDERR "$subname: \$refset=\n".Dumper($refset)."end of \$refset\n";
+
+    my $feat1_n = 1;
+    for (my $i=2; $i<=$#{@$feats_all}; $i++) {
+        my ($feat1, $feat2);
+        my ($str, $l, $n, $f);
+        if ($refset->[$i]->location->end+1 == $refset->[$i+1]->location->start) {
+#            $feat1_n = $i-1;
+        }
+        $debug && print STDERR "$subname: \$i=$i \$feat1_n=$feat1_n\n";
+        $feat1 = $feats_all->[$feat1_n];
+        $feat2 = $feats_all->[$i];
+
+        # Skip if $feat2 starts before the end of $feat1, mostly indicating $feat2 is a part of $feat1
+        next if ($feat1->location->end > $feat2->location->start);
+        # Skip if there is no gap at cleavage site
+        if ($feat1->location->end+1 == $feat2->location->start) {
+            $feat1_n = $i;
+            next;
+        }
+
+        $has_gap = 1;
+        print STDERR "$subname: \$i=$i \$feat1_n=$feat1_n\n";
+        $debug && print STDERR "$subname: \$feat1=\n".Dumper($feat1)."end of \$feat1\n";
+        $debug && print STDERR "$subname: \$feat2=\n".Dumper($feat2)."end of \$feat2\n";
+
+        if ($feat1->location->end+1 != $feat2->location->start) {
+            # Update the dscription to include GapAtCleavage
+            my @values = $feat2->get_tag_values('note');
+            for (my $k=0; $k<=$#values; $k++) {
+                my $value = $values[$k];
+                next if ($value !~ /^Desc:(.+)$/i);
+                my $pattn = 'gene_symbol=[a-zA-Z0-9]+';
+                if ($value =~ s/($pattn)/$1\|GapAtCleavage=Y/i) {
+                    $values[$k] = $value;
+#                    $debug && print STDERR "$subname: \$value123 = '$value'\n";
+                    $debug && print STDERR "$subname: \@values = \n".Dumper(@values)."End of \@values\n\n";
+                }
+            }
+            $feat2->remove_tag('note');
+            $feat2->add_tag_value('note', @values);
+        }
+
+        print STDERR "$subname: Found a gap after #$i: ".$feat1->location->end ."..". $feat2->location->start."\n";
+
+        my $ts = ['', '', ''];
+        $str = [ $feat1->get_tag_values('translation') ]->[0];
+        $l = length($str);
+        $n = ($l>=$max_length) ? $max_length : $l;
+        $ts->[0] = substr($str, $l-$n, $n);
+
+        $str = [ $feat2->get_tag_values('translation') ]->[0];
+        $l = length($str);
+        $n = ($l>=$max_length) ? $max_length : $l;
+        $ts->[2] = substr($str, 0, $n);
+
+        my $loc2 = Bio::Location::Simple->new();
+        $loc2->start($feat1->location->end+1);
+        $loc2->end  ($feat2->location->start-1);
+        $debug && print STDERR "$subname: \$loc2=\n".Dumper($loc2)."end of \$loc2\n";
+
+        my $feat;
+        $feat = Bio::SeqFeature::Generic->new();
+        $feat->primary_tag('miscel');
+        $feat->location($loc2);
+        $feat->strand($cds->strand());
+
+        # now get translation
+        my $translation = Annotate_Util::get_new_translation( $feat, $cds);
+        $feat->add_tag_value('translation', $translation);
+        $ts->[1] = $translation;
+
+        print STDERR "$subname: \$ts = '@$ts'\n";
+
+
+        my $rs = ['', '', ''];
+        my $reffeat1 = $refset->[$feat1_n+1];
+        my $reffeat2 = $refset->[$i+1];
+        $debug && print STDERR "$subname: \$reffeat1=\n".Dumper($reffeat1)."end of \$reffeat1\n";
+        $debug && print STDERR "$subname: \$reffeat2=\n".Dumper($reffeat2)."end of \$reffeat2\n";
+        $str = $reffeat1->seq->seq;
+        $f = Bio::PrimarySeq->new(-seq => $str, -id => '', -alphabet => 'dna');
+        $f->revcom() if ($reffeat1->strand == -1);
+#        $debug && print STDERR "$subname: \$f=\n".Dumper($f)."end of \$f\n";
+        $str = $f->translate()->seq;
+        $l = length($str);
+        $n = ($l>=$max_length) ? $max_length : $l;
+        $rs->[0] = substr($str, $l-$n, $n);
+
+        $str = $reffeat2->seq->seq;
+        $f = Bio::PrimarySeq->new(-seq => $str, -id => '', -alphabet => 'dna');
+        $f->revcom() if ($reffeat1->strand == -1);
+        $str = $f->translate()->seq;
+        $l = length($str);
+        $n = ($l>=$max_length) ? $max_length : $l;
+        $rs->[2] = substr($str, 0, $n);
+
+        print STDERR "$subname: \$ts = '@$ts'\n";
+        print STDERR "$subname: \$rs = '@$rs'\n";
+
+        # The gap would be lumped into the beginning of next mat_peptide provided that
+        # 1) there are min. of 5 identical residues in the last 10 residues of the previous mat_peptide;
+        # 2) the last residue in refseq and target are identical or from same class: (AG) (ST) (RK) (C);
+        # 3) the gap is 5 or less residues long.
+        my $identical_last10 = 0;
+        my $id_last_residue = 0;
+        my $length_gap = 0;
+
+        $n = (length($rs->[0])<=length($ts->[0])) ? length($rs->[0]) : length($ts->[0]);
+        foreach my $j (0 .. $n-1) {
+            my $rc = uc substr($rs->[0], length($rs->[0])-$j, 1);
+            my $tc = uc substr($ts->[0], length($ts->[0])-$j, 1);
+            $identical_last10++ if ($rc eq $tc);
+        }
+
+        my $rc = uc substr($rs->[0], length($rs->[0]), 1);
+        my $tc = uc substr($ts->[0], length($ts->[0]), 1);
+        if ($rc eq $tc) {
+            $id_last_residue = 1;
+        } else {
+            my $groups = {
+                'A' => 'AG',
+                'R' => 'KR',
+                'N' => 'NQ',
+                'D' => 'DE',
+                'C' => 'C',
+                'Q' => 'NQ',
+                'E' => 'DE',
+                'G' => 'AG',
+                'H' => 'H',
+                'I' => 'ILV',
+                'L' => 'ILV',
+                'K' => 'KR',
+                'M' => 'M',
+                'F' => 'FY',
+                'P' => 'P',
+                'S' => 'ST',
+                'T' => 'ST',
+                'W' => 'W',
+                'Y' => 'FY',
+                'V' => 'ILV',
+                };
+            $id_last_residue = 1 if ($groups->{$rc} eq $groups->{$tc});
+        }
+
+        $length_gap = length($ts->[1]);
+
+        my $msg;
+        if ($identical_last10>6 && $id_last_residue && $length_gap<=5) {
+            my $loc2 = $feat2->location;
+            if ($loc2->isa('Bio::Location::Simple') ) {
+
+                my $start = $loc2->start - $length_gap*3;
+                $loc2->start($start);
+
+                $debug && print STDERR "$subname: \$loc2=\n".Dumper($loc2)."end of \$loc2\n";
+
+            } elsif ($loc2->isa('Bio::Location::Fuzzy')) {
+
+                my $min_start;
+                $min_start = $loc2->min_start - $length_gap*3;
+                $loc2->min_start($min_start);
+                my $max_start;
+                $max_start = $loc2->max_start - $length_gap*3;
+                $loc2->max_start($max_start);
+
+                $debug && print STDERR "$subname: \$loc2=\n".Dumper($loc2)."end of \$loc2\n";
+
+            }
+            my $translation = '';
+            if ($cds) {
+                my $s = Annotate_Util::get_new_translation( $feat2, $cds);
+                if ($s) {
+                    $translation = $s;
+                } else {
+                    print STDERR "$subname: \$feat = \n".Dumper($feat)."End of \$feat\n\n";
+                    print STDERR "$subname: ERROR: translation for mat_peptide doesn't match CDS.\n";
+                    print STDERR "$subname: \$s='$s'\n";
+                    print STDERR "$subname: \$cds='".$cds->seq->translate->seq."'\n";
+                    return undef;
+                }
+
+            }
+            $feat2->remove_tag('translation');
+            $feat2->add_tag_value('translation', $translation);
+
+            # Update the dscription
+            my @values = $feat2->get_tag_values('note');
+            for (my $k=0; $k<=$#values; $k++) {
+                my $value = $values[$k];
+                next if ($value !~ /^Desc:(.+)$/i);
+                if ($value =~ /(Loc=[0-9]+[.]{2,2}[0-9]+)/i) {
+                    my $loc_old = $1;
+                    my $loc_new = 'Loc='. $feat2->location->start .'..'. $feat2->location->end .'';
+                    $debug && print STDERR "$subname: \$loc_old = '$loc_old'\n";
+                    $debug && print STDERR "$subname: \$loc_new = '$loc_new'\n";
+                    $value =~ s/$loc_old/$loc_new/;
+                    $values[$k] = $value;
+                    $debug && print STDERR "$subname: \$value = '$value'\n";
+                    $debug && print STDERR "$subname: \@values = \n".Dumper(@values)."End of \@values\n\n";
+                }
+            }
+            $feat2->remove_tag('note');
+            $feat2->add_tag_value('note', @values);
+
+            $msg =  "$subname: WARNING: There is a gap ($ts->[1]) between mat_peptides #$feat1_n and #$i:'$ts->[1]'. ";
+            $msg .= " The gap has been lumped into the next mat_peptide\n";
+
+        } else {
+          $msg =  "$subname: ERROR: There is a gap between mat_peptides #".($feat1_n+1)." and #";
+          $msg .=  ($i+1) .":$ts->[1]\n";
+          if ($identical_last10<=6) {
+            $msg .= "$subname: ERROR: Only $identical_last10 identical AAs amoung the last 10 of mat_peptide #$i\n";
+            $msg .= "$subname: ERROR: This is less than required 7 or more\n";
+          }
+
+          if (!$id_last_residue) {
+            $msg .= "$subname: ERROR: Last residue of mat_peptide #$i is $tc, differs from that in refseq $rc\n";
+          }
+
+          if ($length_gap>5) {
+            $msg .= "$subname: ERROR: Length of gap between #$feat1_n-$i is $length_gap, more than required 5.\n";
+          }
+
+        }
+        print STDERR $msg;
+#        print STDOUT $msg;
+
+        if ($feat1->location->end+1 == $feat2->location->start) {
+            # Update the dscription
+            my @values = $feat2->get_tag_values('note');
+            for (my $k=0; $k<=$#values; $k++) {
+                my $value = $values[$k];
+                next if ($value !~ /^Desc:(.+)$/i);
+                my $pattn = 'GapAtCleavage=Y\|';
+                if ($value =~ s/($pattn)//i) {
+                    $values[$k] = $value;
+                    $debug && print STDERR "$subname: \$value = '$value'\n";
+                    $debug && print STDERR "$subname: \@values = \n".Dumper(@values)."End of \@values\n\n";
+                }
+                my $new = &is_new_annotation( $feat2, $inset);
+                $pattn = '\|[*]new[*]';
+                if (!$new && $value =~ s/($pattn)//i) {
+                    $values[$k] = $value;
+                    $debug && print STDERR "$subname: \$value = '$value'\n";
+                    $debug && print STDERR "$subname: \@values = \n".Dumper(@values)."End of \@values\n\n";
+                }
+            }
+            $feat2->remove_tag('note');
+            $feat2->add_tag_value('note', @values);
+
+            $msg =  "$subname: WARNING: There is a gap ($ts->[1]) between mat_peptides #$feat1_n and #$i:$ts->[1]. ";
+            $msg .= " The gap has been lumped into the next mat_peptide\n";
+
+        }
+
+        $feat1_n = $i; # Keep the current mat_peptide as starting point.
+        $debug && print STDERR "$subname: \$feat1_n = $feat1_n\n";
+    }
+
+    $has_gap && $debug && print STDERR "$subname: \$feats_all = \n".Dumper($feats_all)."End of \$feats_all\n\n";
 
     return ($feats);
 } # sub fix_cleavage_gaps
@@ -2468,10 +2046,13 @@ sub is_new_annotation {
     my ($feat, $inset) = @_;
 
     my $debug = 0 && $debug_all;
+    my $subname = 'is_new_annotation';
 
-    $debug && print STDERR "\nis_new_annotation: \$feat = \n".Dumper($feat)."\$feat\n";
+    $debug && print STDERR "\n$subname: \$feat = \n".Dumper($feat)."\$feat\n";
+    $debug && print STDERR "\n$subname: \$inset = \n".Dumper($inset)."\$inset\n";
     my $new = 1;
-    $debug && print STDERR "is_new_annotation: \$new = $new\n";
+    my $feat_gbk;
+    $debug && print STDERR "$subname: \$new = $new\n";
     for my $gbmatp (@$inset) {
         next if ($gbmatp->primary_tag eq 'CDS');
         my ($str1, $str2);
@@ -2482,14 +2063,15 @@ sub is_new_annotation {
             $str1 = $gbmatp->location->start .'..'. $gbmatp->location->end;
             $str2 = $feat->location->start .'..'. $feat->location->end;
         }
-        $debug && print STDERR "is_new_annotation: \$str2='$str2' \$str1='$str1'\n";
+        $debug && print STDERR "$subname: \$str2='$str2' \$str1='$str1'\n";
         if ($str1 eq $str2) {
             $new = 0;
+            $feat_gbk = $gbmatp;
             last;
         }
     }
 
-    return $new;
+    return ($new, $feat_gbk);
 } # sub is_new_annotation
 
 

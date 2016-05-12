@@ -6,7 +6,7 @@ use English;
 use Carp;
 use Data::Dumper;
 
-use version; our $VERSION = qv('1.1.1');
+use version; our $VERSION = qv('1.1.2'); # December 01 2010
 use Bio::SeqIO;
 use Bio::Seq;
 use Bio::AlignIO;
@@ -23,7 +23,7 @@ my $debug_all = 1;
 # The alignment is done with AA sequences of ref CDS and target CDS
 #
 #    Authors Chris Larsen, clarsen@vecna.com; Guangyu Sun, gsun@vecna.com
-#    May 2010
+#    December 2010
 #
 ##################
 
@@ -49,6 +49,8 @@ sub annotate_1gbk {
     # Only take 1st sequence from each gbk (Note: gbk can hold multiple sequences, we ignore all after 1st)
     my $inseq = $in->next_seq();
 
+    my $comment = '';
+    my $acc = $inseq->accession_number;
     my $refseqs = {};
     my $inseqs  = [];
     my $refpolyprots = [];
@@ -61,9 +63,30 @@ sub annotate_1gbk {
 
     # According to refseq, get the CDS/mat_peptides in inseq, use bl2seq to determine if the CDS matches
     my $num_cds;
-    ($polyprots, $num_cds) = Annotate_Util::get_polyprots( $inseq, $refpolyprots);
+    ($polyprots, $num_cds, $comment) = Annotate_Util::get_polyprots( $inseq, $refpolyprots);
     $debug && print STDERR "$subname:    \$num_cds = $num_cds\n";
     $debug && print STDERR "$subname: \$polyprots = \n".Dumper($polyprots)."End of \$polyprots\n\n";
+    # Skip the refseqs that has mat_peptide annotation from genbank
+    if ($acc =~ /^NC_\d+$/i) {
+    	if ( 1 ) {
+            $comment = 'Refseq with mat_peptide annotation from NCBI, skip';
+            return (undef, $comment);
+    	}
+        my $has_mat_peptide = 0;
+        CHECK: for my $key (keys %$polyprots) {
+            my $sets = $polyprots->{$key};
+            $debug && print STDERR "$subname: \$sets=\n".Dumper($sets)."End of \$sets\n\n";
+            for my $j (0 .. $#{@$sets}) {
+                my $set = $sets->[$j];
+                $debug && print STDERR "$subname: \$set=\n".Dumper($set)."End of \$set\n\n";
+                for my $k (1 .. $#{@$set}) {
+                    next if ($set->[$k]->primary_tag ne 'mat_peptide');
+                    $has_mat_peptide = 1;
+                    last CHECK;
+                }
+            }
+        }
+    }
 
     # add refseq to hash, add inseq to array
     if ($#{@$refpolyprots} >=0) {
@@ -71,19 +94,24 @@ sub annotate_1gbk {
             $refseqs->{$refpolyprots->[0]->[1]->seq->accession_number} = $refpolyprots;
         }
     } else {
-        return undef;
+    	$comment = 'No suitable refseq was found for taxid='. $inseq->species->ncbi_taxid;
+    	return (undef, $comment);
     }
     if ($num_cds<0) {
-        print STDERR "$subname: no polyprotein was found in ".$inseq->accession_number."\n";
-        print STDERR "$subname: \$polyprots = $num_cds\n";
-        return undef;
+        print STDERR "$subname: no polyprotein (suitable CDS) found in ".$inseq->accession_number." \$polyprots=$num_cds\n";
+    	$comment = "No polyprotein: ". $comment;
+    	return (undef, $comment);
     }
     push @$inseqs, [$inseq->accession_number, $polyprots];
 
     my $feats_all;
-    $feats_all = Annotate_Muscle::muscle_profile( $refseqs, $inseqs, $aln_fn);
+    $feats_all = Annotate_Muscle::muscle_profile( $refseqs, $inseqs, $aln_fn,$exe_dir);
 
-    return $feats_all->[0];
+    my $fs = $feats_all->[0]->[0];
+    my $n = $#{@$fs};
+  	$comment = "MSA returned $n mat_peptides";
+  	
+    return ($feats_all->[0], $comment);
 
 } # sub annotate_1gbk
 
@@ -98,7 +126,7 @@ Takes a hash of refseqs, and an array of target genomes, in the form of
 =cut
 
 sub muscle_profile {
-    my ($refseqs, $inseqs, $aln_fn) = @_;
+    my ($refseqs, $inseqs, $aln_fn,$exe_dir) = @_;
 
     my $debug = 0 && $debug_all;
     my $subname = 'muscle_profile';
@@ -158,10 +186,8 @@ sub muscle_profile {
             my @values = $refcds->get_tag_values('translation');
             my $s1 = $values[0];
             $s1 = $1 if ($s1 =~ /([^*]+)[*]$/); # to remove any trailing * in CDS
-#            my $str1 = $refcds->seq->accession_number .'|';
-#            $str1 .= $refcds->primary_tag.'='.$refcds->location->to_FTstring;
-            my $str1 = 'refseq='.$refcds->seq->accession_number .'|';
-            $str1 .= $refcds->primary_tag.'='.$refcds->location->to_FTstring;
+            my $str1 = 'refseq='.$refcds->seq->accession_number;
+            $str1 .= '|'. $refcds->primary_tag.'='.$refcds->location->to_FTstring;
 #            $debug && print "$subname: \$str=$str\n";
             my $f1 = Bio::PrimarySeq->new(
                          -seq      => $s1,
@@ -199,10 +225,8 @@ sub muscle_profile {
                 print STDOUT "$subname: translation tag and translate don't match in CDS of ".$cds->seq->accession_number.". Skip.\n";
                 next;
               }
-#              my $str2 = $cds->seq->accession_number .'|';
-#              $str2 .= $cds->primary_tag.'='.$cds->location->to_FTstring;
-              my $str2 = 'ACC='.$cds->seq->accession_number .'|';
-              $str2 .= $cds->primary_tag.'='.$cds->location->to_FTstring;
+              my $str2 = 'ACC='.$cds->seq->accession_number;
+              $str2 .= '|'. $cds->primary_tag.'='.$cds->location->to_FTstring;
               my $f2 = Bio::PrimarySeq->new(
                          -seq      => $s2,
                          -id       => $str2,	# id can't contain space
@@ -218,13 +242,14 @@ sub muscle_profile {
 
         # Run MUSCLE for each CDS in refseq
         # Returns a SimpleAlign object
-        print STDERR "\n$subname: \$cds_all has $#{@$cds_all}+1 genomes for \$n_set=$n_set\n";
+        print STDERR "$subname: \$cds_all has $#{@$cds_all}+1 genomes for \$n_set=$n_set\n";
         $debug && print STDOUT "\n$subname: \$cds_all has $#{@$cds_all}+1 genomes for \$n_set=$n_set\n";
         if ($#{@$cds_all}<1) {
             print STDERR "$subname: Not enough genomes in \$cds_all $#{@$cds_all}+1. Skip \$n_set=$n_set\n";
             print STDERR "$subname: \$cds_all=\n". Dumper($cds_all) . "End of \$cds_all\n";
             next;
         }
+        #  Returns : Reference to a SimpleAlign object containing the sequence alignment
         $aln = $factory->align(
                          [@$cds_all]
                          );
@@ -235,7 +260,7 @@ sub muscle_profile {
       next if (!$aln);
       push @$alns, $aln;
 
-      $feats = &MSA_annotate($refseqs, $inseqs, $n_set, $aln);
+      $feats = &MSA_annotate($refseqs, $inseqs, $n_set, $aln,$exe_dir);
 
       push @$feats_all, $feats;
 
@@ -250,13 +275,13 @@ sub muscle_profile {
 
 Takes a hash of refseqs, in the form of { accession => [ [CDS, mat_peptides] ... ], []... }
  and an array of target genomes, in the form of [ accession, [ [CDS, mat_peptides, ...], []... ] ]
- run muscle on each CDS,
+ and alignment from MUSCLE
  Return an array of alignments CDS1, CDS2, CDS3 ...
 
 =cut
 
 sub MSA_annotate {
-    my ($refseqs, $inseqs, $n_set, $aln) = @_;
+    my ($refseqs, $inseqs, $n_set, $aln,$exe_dir) = @_;
 
     my $debug = 0 && $debug_all;
     my $subname = 'MSA_annotate';
@@ -303,7 +328,7 @@ sub MSA_annotate {
           $debug && print STDERR "$subname: \$i=$i \$inset=\n". Dumper($inset) . "End of \$inset\n";
 
           # find the new annotations
-          my $feats_new = &MSA_annotate_1cds($refset, $inset, $aln);
+          my $feats_new = Annotate_Muscle::MSA_annotate_1cds( $refset, $inset, $aln,$exe_dir);
 
           push @$feats_all, $feats_new;
 
@@ -321,13 +346,13 @@ sub MSA_annotate {
 
 Takes a hash of refseqs, in the form of { accession => [ [CDS, mat_peptides] ... ], []... }
  and an array of target genomes, in the form of [ accession, [ [CDS, mat_peptides, ...], []... ] ]
- run muscle on each CDS,
+ and alignment from MUSCLE
  Return an array of alignments CDS1, CDS2, CDS3 ...
 
 =cut
 
 sub MSA_annotate_1cds {
-    my ($refset, $inset, $aln) = @_;
+    my ($refset, $inset, $aln,$exe_dir) = @_;
 
     my $debug = 0 && $debug_all;
     my $subname = 'MSA_annotate_1cds';
@@ -339,21 +364,16 @@ sub MSA_annotate_1cds {
     my @values = $refcds->get_tag_values('translation');
     my $s1 = $values[0];
     $s1 = $1 if ($s1 =~ /([^*]+)[*]$/); # to remove any trailing * in CDS
-    my $str1 = 'refseq='.$refcds->seq->accession_number .'|';
-    $str1 .= $refcds->primary_tag.'='.$refcds->location->to_FTstring;
-    my $refcds_id = $str1;
-    my $aln_q = Annotate_Util::msa_get_aln( $aln, $refcds_id);
+    my $refcds_id = 'refseq='.$refcds->seq->accession_number;
+    $refcds_id .= '|'. $refcds->primary_tag.'='.$refcds->location->to_FTstring;
 
 
     my $cds = $inset->[0];
-    my $acc = $cds->seq->accession_number;
-    $debug && print STDERR "$subname: \$cds='$acc'\n";
     next if (!$cds);
+    my $acc = $cds->seq->accession_number;
 #    $debug && print STDERR "$subname: \$cds=\n". Dumper($cds) . "End of \$cds\n";
-
 #    $debug && print STDERR "$subname: \$inset=\n". Dumper($inset) . "End of \$inset\n";
 
-#    my $s3 = $cds->seq->translate->seq;
     my $s3 = Annotate_Util::get_new_translation( $cds, $cds);
     if (!defined $s3) {
        print STDERR "$subname: sub get_new_translation returned undef result. Skip accession=$acc\n";
@@ -367,140 +387,29 @@ sub MSA_annotate_1cds {
     if ($s2 ne $s3) {
         print STDERR "$subname: \$s2='$s2'\n";
         print STDERR "$subname: \$s3='$s3'\n";
-        print STDERR "$subname: translation tag and translate don't match in CDS of ".$cds->seq->accession_number.".\n";
+        print STDERR "$subname: translation tag and translate don't match in CDS of '$acc'.\n";
         print STDERR "$subname: Skip.\n\n";
         next;
     }
-    my $str2 = 'ACC='.$cds->seq->accession_number .'|';
-    $str2 .= $cds->primary_tag.'='.$cds->location->to_FTstring;
-    my $cds_id = $str2;
-#    $debug && print STDERR "$subname: \$cds_all=\n". Dumper($cds_all) . "End of \$cds_all\n";
-    my $aln_h = Annotate_Util::msa_get_aln( $aln, $cds_id);
-    $debug && print STDERR "$subname: \$refcds_id='$refcds_id' \$aln_q=\n".Dumper($aln_q)."End of \$aln_q\n";
-    $debug && print STDERR "$subname: \$cds_id='$cds_id' \$aln_h=\n".Dumper($aln_h)."End of \$aln_h\n";
+    my $cds_id = "ACC=$acc";
+    $cds_id .= '|'. $cds->primary_tag.'='.$cds->location->to_FTstring;
+    $debug && print STDERR "$subname: \$refcds_id='$refcds_id' \$cds_id='$cds_id'\n";
 
+    my $note = "Annotated by VIPRBRC, MSA, refseq=".$refcds->seq->accession_number();
     my $feats_all;
-
-        $feats_all = &project_matpept(
+    $feats_all = Annotate_Util::project_matpept(
                          $refset,
                          $inset,
                          $aln,
-                         $aln_q,
-                         $aln_h,
+                         $refcds_id,
+                         $cds_id,
+                         $note,$exe_dir,
                          );
 
     $debug && print STDERR "$subname: \$feats_all=\n". Dumper($feats_all) . "End of \$feats_all\n";
 
     return $feats_all;
 } # sub MSA_annotate_1cds
-
-
-=head2 project_matpept
-
-Takes references to refset, $inset, gaps in query & hit, refaln
- returns the list of features of CDS, mat_peptide, sig_peptide.
-
-=cut
-
-sub project_matpept {
-    my ($refset, $inset, $aln, $aln_q, $aln_h) = @_;
-
-    my $debug = 0 && $debug_all;
-    my $subname = 'project_matpept';
-
-    my @feats_all = (); # Holds all new features for the target genome
-#    $debug && print STDERR "$subname: \$refset = \n".Dumper($refset)."End of \$refset\n";
-    # Go through all features in refseq, map the corresponding features in targe genome,
-    # first, check CDS that is labeled as polyprotein, then all mat_pepride (and sig_peptide) after such CDS
-    
-    $debug && print STDERR "$subname: \$refset = \n".Dumper($refset)."End of \$refset\n\n";
-    for (my $ct = 1; $ct <= $#{@$refset}; $ct++) {
-        # First get CDS from refseq & target
-        my $reffeat = $refset->[$ct];
-        $debug && print STDERR "$subname: #$ct is ".$reffeat->primary_tag." \t$reffeat\n";
-        next if ($reffeat->primary_tag ne "CDS");
-        my @prod = $reffeat->get_tag_values('product');
-#        $debug && print STDERR "project_matpept: ct=$ct \$reffeat is ".$reffeat->primary_tag." prod=$prod[0]\n";
-        # Skip any CDS not labeled as "polyprotein". Potential problem as some polyproteins are not so labeled
-#        next if ($prod[0] !~ /polyprotein/i);
-        next if (!Annotate_Util::is_polyprotein( $reffeat, ['product', 'note']));
-        $debug && print STDERR "$subname: \$reffeat = \n".Dumper($reffeat)."End of \$reffeat\n\n";
-
-        my $refcds = $reffeat;
-        my $cds = $inset->[0];
-        $debug && print STDERR "$subname: \$cds=".$cds->seq->accession_number."\n";
-        my %allowed_feats = ('mat_peptide' => 1, 'sig_peptide' => 1);
-        while (($refset->[$ct+1]) && ($allowed_feats{$refset->[$ct+1]->primary_tag})) {
-            $reffeat = $refset->[++$ct];
-            $debug && print STDERR "$subname: #$ct is ".$reffeat->primary_tag."=\n".Dumper($reffeat)."End of \$reffeat\n\n";
-
-            $debug && print STDERR "$subname: \$aln_q=\n".Dumper($aln_q)."End of \$aln_q\n\n";
-            $debug && print STDERR "$subname: \$aln_h=\n".Dumper($aln_h)."End of \$aln_h\n\n";
-
-            my $note = "Annotated by VIPRBRC, MSA, refseq=".$refcds->seq->accession_number();
-            my $feat = Annotate_Util::assemble_new_feature(
-                                 $refcds,
-                                 $reffeat,
-                                 $cds,
-                                 $aln,
-                                 $aln_q,
-                                 $aln_h,
-                                 $note,
-                                 );
-            if (!defined($feat)) {
-                $debug && print STDERR "$subname: \$feat is undef, skip\n";
-                next;
-            }
-            $debug && print STDERR "$subname: \$feat = \n".Dumper($feat)."End of \$feat\n\n";
-
-            # See if this is entirely new annotation wrt genbank
-            my $new = 1;
-            $new = Annotate_Util::is_new_annotation($feat, $inset);
-            if ($new) {
-                my @tags = $feat->get_tag_values('note');
-                $feat->remove_tag('note');
-                for (my $i = 0; $i<=$#tags; $i++) {
-                    $debug && print STDERR "$subname: \$tags[$i] = $tags[$i]\n";
-                    if ($tags[$i] =~ /^Desc:/i) {
-                        $tags[$i] = $tags[$i] .'|*new*';
-                        $feat->add_tag_value('note', $tags[$i]);
-                        $debug && print STDERR "$subname: \$tags[$i] = $tags[$i]\n";
-                    } else {
-                        $feat->add_tag_value('note', $tags[$i]);
-                    }
-                }
-            }
-
-            push @feats_all, $feat;
-            $debug && print STDERR "$subname: \$feat = \n".Dumper($feat)."End of \$feat\n\n";
-        }
-        unshift @feats_all, $cds; # prepend CDS to the array
-
-        # check if there is any gaps in new annotation, any gaps is shown as >=?=<
-        my ($has_gap, $str) = Annotate_Verify::check_ranges( \@feats_all);
-        $debug && print STDERR "$subname: \$has_gap = $has_gap\n";
-
-        if ($has_gap) {
-            my $note = "Annotated by VIPRBRC, MSA, refseq=".$refcds->seq->accession_number();
-            my $feats = Annotate_Util::fix_cleavage_gaps(
-                                 \@feats_all,
-#                                 $cds,
-                                 $refset,
-                                 $aln_q,
-                                 $aln_h,
-                                 $note,
-                                 );
-#            @feats_all = @$feats;
-            ($has_gap, $str) = Annotate_Verify::check_ranges( \@feats_all);
-            $debug && print STDERR "$subname: \$has_gap = $has_gap\n";
-        }
-
-    } # while ($ct <= $#{@$reffeats})
-
-    $debug && print STDERR "$subname: \@feats_all = \n".Dumper(\@feats_all)."End of \@feats_all\n\n";
-
-    return \@feats_all;
-} # sub project_matpept
 
 
 1;

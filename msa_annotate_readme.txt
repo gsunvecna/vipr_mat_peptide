@@ -37,6 +37,8 @@ To-do:
 1. What to do with the 2 RefSeqs of the Reoviridae family?
 
 Changes
+V1.3.0
+1. Re-structured the program.
 
 Changes in V1.2.1, May, 2013
 1. Add the family to the output, so that it's clear what family the genome

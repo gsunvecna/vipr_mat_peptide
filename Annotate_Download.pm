@@ -14,7 +14,8 @@ use Bio::AlignIO;
 use Bio::Tools::Run::StandAloneBlast;
 use IO::String;
 
-use version; our $VERSION = qv('1.2.0'); # Apr 12 2013
+#use version;
+our $VERSION = qw('1.2.0'); # Apr 12 2013
 
 use Annotate_Def;
 

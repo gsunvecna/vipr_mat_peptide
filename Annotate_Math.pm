@@ -365,7 +365,7 @@ Takes reffeat, gaps in the reffeat, and gaps (in DNA coordinate) in the target
 sub msa_get_feature_loc {
     my ($reffeat, $refcds, $cds, $aln, $aln_q, $aln_h) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 1 && $debug_all;
     my $subn = 'msa_get_feature_loc';
 
     my $reffeat_loc = $reffeat->location;

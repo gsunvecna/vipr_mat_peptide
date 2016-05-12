@@ -58,6 +58,9 @@ my $debug = 0;
 
 ## //EXECUTE// ##
 
+print STDERR "command='$0 @ARGV'\n";
+print STDERR "$0 V$VERSION executing ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime)."\n";
+print STDOUT "$0 V$VERSION executing ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime)."\n";
 my $infile = '';
 my $FAMILY = '';
 my $useropts = GetOptions(
@@ -72,9 +75,6 @@ if ($exe_name =~ /^(.*[\/])([^\/]+[.]pl)$/i) {
     $exe_name = $2;
 }
 $exe_dir =~ s/[\\\/]$//;
-print STDERR "$exe_name: $0 V$VERSION executing ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime)."\n";
-print STDOUT "$exe_name: $0 V$VERSION executing ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime)."\n";
-print STDERR "$exe_name: command='$0 @ARGV'\n";
 if ($FAMILY && !exists($families->{$FAMILY})) {
     print STDERR "$exe_name: \$FAMILY='$FAMILY' is entered with invalid value, all families will be tested\n";
     $FAMILY = '';
@@ -104,6 +104,9 @@ if ($infile) {
         $accs = [[0, "$dir_path/$infile"]];
         $removeAnnotationResult = 0;
         $debug && print STDERR ("$exe_name: Found required input gbk file at '$dir_path/$infile'\n");
+    } elsif ($infile =~ /usage/i) {
+        unshift @$accs, [$#{$accs}+1, 'usage']; # add usage to test
+        $debug && print STDERR ("$exe_name: added 'usage' to list of accessions\n");
     } else {
         print STDERR ("$exe_name: Can't find required input gbk file at '$dir_path/$infile', abort\n");
         exit(1);
@@ -153,13 +156,13 @@ if ($infile) {
         push @{$families->{$fam}}, [$#{$families->{$fam}}+1, $acc];
       }
     }
-for my $fam (sort keys %$families) {
-    $debug && print STDERR "$exe_name: \$fam=$fam\n";
-    my $accs = $families->{$fam};
-    for my $j (0 .. $#{$accs}) {
-        $debug && print STDERR "$exe_name: \$fam=$fam \$accs='@{$accs->[$j]}'\n";
+    for my $fam (sort keys %$families) {
+        $debug && print STDERR "$exe_name: \$fam=$fam\n";
+        my $accs = $families->{$fam};
+        for my $j (0 .. $#{$accs}) {
+            $debug && print STDERR "$exe_name: \$fam=$fam \$accs='@{$accs->[$j]}'\n";
+        }
     }
-}
 #    $debug && print STDERR "$exe_name: \$families=\n".Dumper($families)."End of \$families\n";
 
     # Process each genbank file
@@ -187,6 +190,8 @@ for my $fam ( sort keys %$families) {
         }
         $debug && print STDERR "$exe_name: \$acc='$acc' New:OLd \$result='$result' \$err='$err'\n";
 
+        my $accOut = $acc;
+        $accOut = $1 . "_matpept_msa.faa" if ($acc =~ /^(.+)[.]gb/i);
         my $msg = '';
         if ($err =~ m/ERROR/) {
             $debug && print STDERR "$exe_name: Problem with \$acc=$acc\n";
@@ -199,6 +204,13 @@ for my $fam ( sort keys %$families) {
             $msg .= sprintf(", comment=$err") if $err;
             $msg .= sprintf("\n");
             $summ->{skip}++;
+        } elsif ($err && -e "$dirOut/$accOut") {
+            $err .= ", but found $dirOut/$accOut";
+            $debug && print STDERR "$exe_name: Problem with \$acc=$acc\n";
+            $msg .= sprintf(" Test #%-4s %-15s %-13s fail, comment=$err\n", "$count,", "$fam,", "$acc,");
+            $msg .= sprintf(" Test #%-4s %-15s %-13s \$result=$result\n", "$count,", "$fam,", "$acc,") if ($result);
+            $summ->{fail}++;
+            $summ->{total}++;
         } else {
 #            printf STDERR (" Test #%-4s %-15s %-13s pass", "$count,", "$fam,", "$acc,");
 #            printf STDERR (", comment=$err") if $err;

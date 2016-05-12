@@ -2483,5 +2483,20 @@ NC_023988;     "4972..5061"; "3B"; #msa_annotate.pl v1.2.1
 NC_023988;     "5062..5706"; "3C"; #msa_annotate.pl v1.2.1
 NC_023988;     "5707..7134"; "3D"; #msa_annotate.pl v1.2.1
 
+# msa_annotate.pl v1.2.3
+# Human enterovirus D68, 42789, Picornaviridae
+# AY426531
+AY426531;        "733..939"; "VP4"; #msa_annotate.pl v1.2.3
+AY426531;       "940..1683"; "VP2"; #msa_annotate.pl v1.2.3
+AY426531;      "1684..2388"; "VP3"; #msa_annotate.pl v1.2.3
+AY426531;      "2389..3315"; "VP1"; #msa_annotate.pl v1.2.3
+AY426531;      "3316..3756"; "2A"; #msa_annotate.pl v1.2.3
+AY426531;      "3757..4053"; "2B"; #msa_annotate.pl v1.2.3
+AY426531;      "4054..5043"; "2C"; #msa_annotate.pl v1.2.3
+AY426531;      "5044..5310"; "3A"; #msa_annotate.pl v1.2.3
+AY426531;      "5311..5376"; "3B"; #msa_annotate.pl v1.2.3
+AY426531;      "5377..5925"; "3C"; #msa_annotate.pl v1.2.3
+AY426531;      "5926..7296"; "3D"; #msa_annotate.pl v1.2.3
+
 # End of Annotate_symbol_records.txt
 

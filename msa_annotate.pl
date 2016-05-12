@@ -2,8 +2,12 @@
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.2.2'); # Jul 08, 2013
+#use version;
+our $VERSION = qw(1.3.0); # Apr 08, 2015
 #use lib ("/home/peptide/loader/ext/BioPerl"); # This is for account peptide on Northrop machine 33
+#use lib ("/net/home/gsun/lib/ext/BioPerl"); # need to fix this
+#use lib "/usr/lib/perl5";
+use lib "~/prog/lib/perl5/"; # bunsen -- 4/08/2015
 use Getopt::Long;
 use English;
 use Carp;
@@ -71,6 +75,9 @@ my $progs = {
 };
 
 # Get user-defined options
+my $inTaxon = ''; # taxonomy of input sequence, required for fasta input. For gbk input, taxon is read from "source"
+my $outFormat = ''; # output format is same as input; for gbk input, fasta is also available, which is legacy
+my $inFormat = ''; # determined by filename
 my $infile;
 my $list_fn = '';
 my $dir_path = './';
@@ -81,12 +88,14 @@ my $update = 0;
 my $exe_dir  = './';
 my $exe_name = $0;
 ($exe_dir, $exe_name) = ($1, $2) if ($exe_name =~ /^(.*[\/])([^\/]+[.]pl)$/i);
-print STDERR "$exe_name: $0 $VERSION executing ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime)."\n";
 print STDERR "$exe_name: command='$0 @ARGV'\n";
+print STDERR "$exe_name: $0 $VERSION executing ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime)."\n";
 my $useropts = GetOptions(
          "checkrefseq=s" => \ $checkRefseq, # Check any update for RefSeqs from NCBI, 1: use existing files; 2: live download
          "checktaxon=s"  => \ $checkTaxon,  # Check any update for taxon from NCBI, 1: use existing files; 2: live download
          "update"  => \ $update,  # Used together with either checkrefseq or checktaxon, update the corresponding file if set
+         "taxon=s" => \ $inTaxon, # taxonomy of input sequence, required for fasta input. For gbk input, taxon is read from "source"
+         "outFormat=s"   => \ $outFormat, # output format is same as input; for gbk input, fasta is also available, which is legacy
          "d=s"  => \ $dir_path,    # Path to directory
          "i=s"  => \ $infile,      # [inputFile.gbk]
          "l=s"  => \ $list_fn,     # list of the gbk file
@@ -143,8 +152,14 @@ my $accs = [];
 if ($infile) {
 
     print STDERR "$exe_name: Input genbank file '$dir_path/$infile'\n";
-    if ($infile !~ m/[.](gb|gbk|genbank)/i) {
-        print STDERR "$exe_name: WARNING: please make sure input genbank file '$infile' is in genbank format\n";
+    if ($infile =~ m/[.](gb|gbk|genbank)$/i) {
+        $inFormat = 'genbank';
+        $inTaxon = ''; # taxon will be obtained from gbk file
+    } elsif ($infile =~ m/[.](fa|faa|fasta)/i) {
+        $inFormat = 'fasta';
+        (!$inTaxon) && die "$exe_name: need taxonomy info for FASTA input\n";
+    } else {
+        die "$exe_name: WARNING: please make sure input sequence '$infile' is in genbank/FASTA format\n";
     }
 
     # Now run the annotation
@@ -152,7 +167,7 @@ if ($infile) {
     push @$accs, [$#{$accs}+1, "$dir_path/$infile"];
 
     $dbh_ref = undef;
-    Annotate_misc::process_list1( $accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $progs);
+    Annotate_misc::process_list1( $accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $progs, $inFormat, $inTaxon, $outFormat);
 
 } elsif ("$dir_path/$list_fn") {
 
@@ -176,7 +191,7 @@ if ($infile) {
 
     if ( 1 ) {
         # MSA for each genome
-        Annotate_misc::process_list1( $accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $progs);
+        Annotate_misc::process_list1( $accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $progs, $inFormat, $inTaxon, $outFormat);
     }
 
 }

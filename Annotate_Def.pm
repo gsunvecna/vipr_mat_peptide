@@ -14,7 +14,9 @@ use Bio::AlignIO;
 use Bio::Tools::Run::StandAloneBlast;
 use IO::String;
 
-use version; our $VERSION = qv('1.2.2'); # May 10 2013
+#use version;
+#our $VERSION = qw('1.2.2'); # May 10 2013
+our $VERSION = qw(1.3.0); # May 01 2014
 
 my $debug_all = 0;
 
@@ -474,7 +476,8 @@ sub add_extra_refCDS {
     my $debug = 0 || $debug_all;
     my $subn = 'add_extra_refCDS';
 
-    $debug && print STDERR "$subn: \$cds_all=\n". Dumper($cds_all) . "End of \$cds_all\n";
+#    $debug && print STDERR "$subn: \$cds_all=\n". Dumper($cds_all) . "End of \$cds_all\n";
+    for my $i (0 .. $#{$cds_all}) { $debug && print STDERR "$subn: #$i \$cds='". $cds_all->[$i]->display_name . "'\n"; }
     my $refacc = '';
     $refacc = $cds_all->[0]->{display_id};
     $refacc = $1 if ($refacc =~ m/ref=([^|]+)[|]/i); # Used to identify the file with extra CDS, and avoid duplicate refseq
@@ -507,7 +510,8 @@ sub add_extra_refCDS {
         $cds=$cds_obj->next_seq();
     }
 
-    $debug && print STDERR "$subn: \$cds_all=\n". Dumper($cds_all) . "End of \$cds_all\n";
+#    $debug && print STDERR "$subn: \$cds_all=\n". Dumper($cds_all) . "End of \$cds_all\n";
+    for my $i (0 .. $#{$cds_all}) { $debug && print STDERR "$subn: #$i \$cds='". $cds_all->[$i]->display_name . "'\n"; }
     ($n_extraCDS>0) && print STDERR "$subn: For RefSeq=$refacc, found $n_extraCDS extra reference CDS: \$extraCDS=$extraCDS\n";
     return;
 } # sub add_extra_refCDS
@@ -1111,7 +1115,7 @@ sub initRefseq {
 #| taxid   | accession | species               | taxid   |
 #+---------+-----------+-----------------------+---------+
 #    12461 => 'NC_001434', # Hepatitis E virus     |   12461 | No mat_peptide in refseq
-# NC_015521 has 4 mat_peptides, but there are huge gape between them. Not included in V1.1.4
+# NC_015521 has 4 mat_peptides, but there are huge gap between them. Not included in V1.1.4
 #  1016879 => 'NC_015521', # Cutthroat trout virus | 1016879 |  Good refseq w/ 4 mat_peptides
 #+---------+-----------+-----------------------+---------+
 #2 rows in set (0.01 sec)
@@ -1167,8 +1171,12 @@ sub initRefseq {
   138950 => 'NC_002058', #  138950 | Human enterovirus C              | Good refseq w/ 11 mat_peptides, "REVIEWED", V1.1.6
   861519 => 'NC_014336', #  138950 | Human enterovirus C              | Good refseq w/ 11 mat_peptides, V1.1.6
 # Refseq NC_001430 has been determined to be wrong in the cleavage between 1C-1D, and 1D-2A by scientists.
-# Excluded on 10/23/2014
+# Excluded in V1.2.2 on 10/23/2014
 #  138951 => 'NC_001430', #  138951 | Human enterovirus D              | Good refseq w/ 15 mat_peptides, V1.1.6
+# AY426531 was deemed suitable reference for Human enterovirus D68 (42789) in V1.2.3 on 12/05/2014
+   42789 =>  'AY426531', #  138951 | Human enterovirus D              | Good refseq w/ 15 mat_peptides, V1.2.3
+# AY426531 was deemed suitable reference for Human enterovirus D (138951) in V1.2.3 on 12/05/2014
+  138951 =>  'AY426531', #  138951 | Human enterovirus D              | Good refseq w/ 15 mat_peptides, V1.2.3
   147711 => 'NC_001617', #  147711 | Human rhinovirus A               | Good refseq w/ 11 mat_peptides, V1.1.6
    12131 => 'NC_001490', #  147712 | Human rhinovirus B               | Good refseq w/ 11 mat_peptides, V1.1.6
   147712 => 'NC_001490', #  147712 | Human rhinovirus B               | Good refseq w/ 11 mat_peptides, V1.1.6
@@ -1410,7 +1418,7 @@ sub load_gene_symbol {
     my $accession = 1;
     while (<$symbol_file>) {
         chomp;
-if (1) {
+if (0) {
         $debug && print STDERR "$subn: \$_='$_'\n";
         $debug && print STDERR "$subn: \@m0=\n".Dumper($m0)."End of \@m0\n\n";
         $debug && print STDERR "$subn: \@m1=\n".Dumper($m1)."End of \@m1\n\n";
@@ -1696,11 +1704,11 @@ sub get_gene_symbol {
         my $loc = $reffeat->location->to_FTstring;
         $loc = $reffeat->location->start .'..'. $reffeat->location->end;
         $gene_symbol = $GENE_SYM->{symbol}->{$acc}->{$loc} ? $GENE_SYM->{symbol}->{$acc}->{$loc} : $gene_symbol;
-        $debug && print "$subn: Found gene symbol for \$loc='$loc': \$gene_symbol='$gene_symbol'\n";
+        $debug && print STDERR "$subn: Found gene symbol for \$loc='$loc': \$gene_symbol='$gene_symbol'\n";
     }
-    $debug && print "$subn: primary_tag=".($reffeat->seq->accession_number);
-    $debug && print "\tlocation=".($reffeat->location->to_FTstring);
-    $debug && print "\tsymbol=$gene_symbol\n";
+    $debug && print STDERR "$subn: primary_tag=".($reffeat->seq->accession_number);
+    $debug && print STDERR "\tlocation=".($reffeat->location->to_FTstring);
+    $debug && print STDERR "\tsymbol=$gene_symbol\n";
 
     return $gene_symbol;
 } # sub get_gene_symbol
@@ -1762,13 +1770,57 @@ sub similarAA {
                 };
 
     my $similar = 0;
-
-    $rc = uc $rc;
-    $tc = uc $tc;
-    $similar = 1 if ($AA_groups->{$rc} eq $AA_groups->{$tc});
+    $similar = 1 if ($AA_groups->{uc $rc} eq $AA_groups->{uc $tc});
 
     return $similar;
 } # sub similarAA
+
+
+=head2 conservedAA
+  Takes 2 AA, decides if they are conserved. Returns 1 if conserved
+=cut
+
+sub conservedAA {
+    my ($rc, $tc) = @_;
+
+    my $debug = 0 && $debug_all;
+    my $subn = 'conservedAA';
+
+    my $pair = ($rc lt $tc) ? "$rc$tc" : "$tc$rc";
+    my $AA_groups = {
+                'AS' => 1,
+                'DE' => 1,
+                'DN' => 1,
+                'EK' => 1,
+                'EQ' => 1,
+                'FW' => 1,
+                'FY' => 1,
+                'HN' => 1,
+                'HY' => 1,
+                'IL' => 1,
+                'IM' => 1,
+                'IV' => 1,
+                'KQ' => 1,
+                'KR' => 1,
+                'LM' => 1,
+                'LV' => 1,
+                'MV' => 1,
+                'NS' => 1,
+                'QR' => 1,
+                'ST' => 1,
+                '' => 1,
+                '' => 1,
+                '' => 1,
+                '' => 1,
+                '' => 1,
+                '' => 1,
+                };
+
+    my $conserved = 0;
+    $conserved = 1 if (exists($AA_groups->{$pair}) && $AA_groups->{$pair});
+
+    return $conserved;
+} # sub conservedAA
 
 
 1;

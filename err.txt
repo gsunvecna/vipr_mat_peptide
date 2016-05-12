@@ -1,4 +1,1477 @@
-Can't locate version/vpp.pm in @INC (you may need to install the version::vpp module) (@INC contains: /usr/lib/perl5 /usr/lib/perl5/site_perl/5.8.8/ /usr/lib/perl5/site_perl/5.8.8 /net/home/gsun/lib/perl5 /net/home/gsun/lib/perl5/i386-linux-thread-multi /net/home/gsun/lib/perl5/lib64/perl5/site_perl/5.8.8/x86_64-linux-thread-multi /net/home/gsun/lib/perl5/Bio /etc/perl /usr/local/lib/perl/5.18.2 /usr/local/share/perl/5.18.2 /usr/lib/perl5 /usr/share/perl5 /usr/lib/perl/5.18 /usr/share/perl/5.18 /usr/local/lib/site_perl .) at (eval 2) line 1.
-BEGIN failed--compilation aborted at (eval 2) line 1.
-Compilation failed in require at ./msa_annotate.pl line 5.
-BEGIN failed--compilation aborted at ./msa_annotate.pl line 5.
+msa_annotate_test.pl: ./msa_annotate_test.pl V1.2.1 executing 04/16/2015 13:41:36
+msa_annotate_test.pl: command='./msa_annotate_test.pl '
+msa_annotate_test.pl: requested $FAMILY=''
+msa_annotate_test.pl: Found both input directory './test' and output directory './test/output'.
+msa_annotate_test.pl: from Input directory: ./test, found 320 gbk files.
+loadTaxonTable: loaded 26890 lines from file './Annotate_taxon_records.txt'
+ Testing Arenaviridae,   4
+ Test #1,   Arenaviridae,   AY746353.gb,  fail, comment=ERROR: Difference with old result
+ Test #1,   Arenaviridae,   AY746353.gb,  $result=diff ./test/output/AY746353_matpept_msa.faa ./test/AY746353_matpept_msa.faa
+1,11c1,12
+< > src=MSA|ACC=AY746353|Ver=AY746353.1|CDS=GI:52222816|ref=NC_005081.1|RM=87..827|Loc=89..829||AA=1..247|symbol=G1|Partial=N|product=glycoprotein G1|*new*
+< MGQFISFMQEIPTFLQEALNIALVAVSLIAIIKGIVNLYKSGLFQFFVFLALAGRSCTEE
+< AFKIGLHTEFQTVSFSMVGLFSNNPHDLPLLCTLNKSHLYIKGGNASFQISFDDIAVLLP
+< QYDVIIQHPADMSWCSKSDDQIWLSQWFMNAVGHDWHLDPPFLCRNRAKTEGFIFQVNTS
+< KTGVNGNYAKKFKTGMHHLYREYPDPCLNGKLCLMKAQPTSWPLQCPLDHVNTLHFLTRG
+< KNIQLPR
+< > src=MSA|ACC=AY746353|Ver=AY746353.1|CDS=GI:52222816|ref=NC_005081.1|RM=828..1541|Loc=830..1543||AA=248..485|symbol=G2|Partial=N|product=glycoprotein G2|*new*
+< RSLKAFFSWSLTDSSGKDTPGGYCLEEWMLVAAKMKCFGNTAVAKCNLNHDSEFCDMLRL
+< FDYNKNAIKTLNDETKKQVNLMGQTINALISDNLLMKNKIRELMSVPYCNYTKFWYVNHT
+< LSGQHSLPRCWLIKNNSYLNISDFRNDWILESDFLISEMLSKEYSDRQGKTPLTLVDICI
+< WSTVFFTASLFLHLVGIPSHRHIRGEACPLPHRLNSLGGCRCGKYPNLKKPTVWRRGH
+---
+> > src=MSA|ACC=AY746353|Ver=AY746353.1|CDS=GI:52222817|ref=NC_005081.1|RM=87..827|Loc=complement(2541..3332)||AA=1..264|symbol=G1|Partial=Y|product=glycoprotein G1|*new*
+> MAHSKEVPSFRWTQSLRRGLSQFTQTVKSDVLKDAKLIADSIDFNQVAQVQRALRKTKKG
+> EEDLNKLRDLNKEVDRLMSMRSVQRNTVFKVGDLGRDELMELASDLEKLKNKIRRAETGS
+> QGVYMGNLSQSQLAKRSEILRTLGFQQQGTGGNGVVRIWDVKDPSKLNNQFGSVPALTIA
+> CMTVQGGETMNSVIQALTSLGLLYTVKYPNLSDLDRLTQEHDCLQIVTKDESSINISGYN
+> FSLSAAVKAGASILDGGNMLETIR
+> > src=MSA|ACC=AY746353|Ver=AY746353.1|CDS=GI:52222817|ref=NC_005081.1|RM=828..1541|Loc=complement(1695..2540)||AA=265..546|symbol=G2|Partial=N|product=glycoprotein G2|*new*
+> VTPENFSSLIKSTIQVKRREGMFIDEKPGNRNPYENLLYKLCLSGDGWPYIGSRSQITGR
+> SWDNTSIDLTRKPVAGPRQPEKNGQNLRLANLTEIQEAVIREAVGKLDPTNTLWLDIEGP
+> ATDPVEMALFQPAGKQYIHCFRKPHDEKGFKNGSRHSHGILMKDIEDAMPGVLSYVIGLL
+> PPDMVVTTQGSDDIRKLFDLHGRRDLKLVDVKLTSEQARQFDQQVWEKYGHLCKYHNGVV
+> VNKKKREKDTPFKLASSEPHCALLDCIMFQSVLDGKLYEEEP
+
+ Test #2,   Arenaviridae,   JF446285.gb,  pass
+ Test #3,   Arenaviridae,   JF446286.gb,  pass
+ Test #4,   Arenaviridae,   JF446298.gb,  pass, comment=MSA returned 0/2 mat_peptides vs refseq
+ Testing Bunyaviridae,   4
+ Test #5,   Bunyaviridae,   AB127995.gb,  pass
+ Test #6,   Bunyaviridae,   AF123485.gb,  pass, comment=AF123485 w/ taxid=45270(Bunyaviridae:California encephalitis virus) not covered in V'1.2.2'
+ Test #7,   Bunyaviridae,   AF427325.gb,  pass
+ Test #8,   Bunyaviridae,   NC_005220.gb, pass
+ Testing Caliciviridae,  20
+ Test #9,   Caliciviridae,  AB028463.gb,  pass
+ Test #10,  Caliciviridae,  AB039781.gb,  pass
+ Test #11,  Caliciviridae,  AB042808.gb,  pass
+ Test #12,  Caliciviridae,  AB363975.gb,  fail, comment=ERROR: Difference with old result
+ Test #12,  Caliciviridae,  AB363975.gb,  $result=diff ./test/output/AB363975_matpept_msa.faa ./test/AB363975_matpept_msa.faa
+1,2c1,2
+< > src=MSA|ACC=AB363975|Ver=AB363975.1|CDS=GI:158455301|ref=NC_001959.2|RM=3848..5371|Loc=1..48||AA=1..16|symbol=Pol|Partial=Y|product=Pol|*new*
+< GDRNLAPSFVNEDGVE
+---
+> > src=MSA|ACC=AB363975|Ver=AB363975.1|CDS=GI:158455302|ref=NC_001959.2|RM=3848..5371|Loc=215..305||AA=62..91|symbol=Pol|Partial=Y|product=Pol|*new*
+> GEFTVSPRNAPGEILWSAPLGPDLNPYLSH
+
+ Test #13,  Caliciviridae,  AB541266.gb,  pass
+ Test #14,  Caliciviridae,  AF093797.gb,  pass
+ Test #15,  Caliciviridae,  AF097917.gb,  pass
+ Test #16,  Caliciviridae,  AJ302016.gb,  pass
+ Test #17,  Caliciviridae,  AY560114.gb,  pass
+ Test #18,  Caliciviridae,  AY560117.gb,  fail, comment=ERROR: Difference with old result
+ Test #18,  Caliciviridae,  AY560117.gb,  $result=diff ./test/output/AY560117_matpept_msa.faa ./test/AY560117_matpept_msa.faa
+53a54,67
+> > src=MSA|ACC=AY560117|Ver=AY560117.1|CDS=GI:49458070|ref=NC_001481.2|RM=5686..7317|Loc=1007..3283||AA=330..1088|symbol=C|Partial=N|product=capsid protein|*new*
+> AEDVSNSFWYMAAAVLCYLITGLLPNNGRFSKIKACLSGATTLVSGIIATQKLAAMFAAW
+> NSESIVNELSARTVALSELNNPTTTSDTDSVEKLLELAKILHEEIKVHTLNPIMQSYNPI
+> LRNLMSTLDGVMTSCNKRKAIARKRPVPVCYILTGPPGCGKTTAAHALAKKLSEQEPSII
+> NLDVDHHDTYTGNEVCIIDEFDSSDKVDYANFVIGMVNSAPMVLNCDMLENKGKLFTSKY
+> IIMTSNSETPVKPASKRAGAFYRRVTIIDVTNPLVESHKRARPGSAVPRSCYKKNFSHLS
+> LAKRGAECWCKEYVLDPKGLQHQSIKALLPTSLNIDSLAQTMKQDFTLKNMSFEAEDGCS
+> DHRYGFVCQREEIETVRRLLNAVRTRLNATFTVCVGPEASPSVGCTAHVITPDEPFNGKR
+> FVVSRCNEASLSALEGNCVQSALGVCMSDKDLTHLCHFIKGKIVNDSVRLDELPANQHVV
+> TVNSVFDLAWALRRHLTLSGQFQAIKAAYDVLTAPDKVPAMLRHWMDDTSFSDEHVVTQF
+> VTPGGIVILESCGGARIWALGHNVIRAGGVTATPTGGCVRLMGLSATTMPWSELFRELFS
+> LLGRIWSSVKVSTLVLTALGIYASRFRPKSEAKGKTKNKTAYRGRGVALTDDEYDEWREH
+> NATRKLDLSVEDFLMLRHRAALGADDADAVKFRSWWNSRSKLADDFEDVTVIGKGGVKHE
+> KIRTNTLRAVDRGYDVSFAEESGPGTKFHKNAIGSVTDV
+58,68d71
+< > src=MSA|ACC=AY560117|Ver=AY560117.1|CDS=GI:49458071|ref=NC_001481.2|RM=5686..7317|Loc=5683..7314||AA=125..668|symbol=C|Partial=N|product=capsid protein|*new*
+< ADDGSITTPEQGTAVGGVIAQPSAQMSAAADMASGKSVDSEWEEFFSFHTSVNWSTTETQ
+< GKILFKQSLGPLLNPYLEHLSKLYVAWSGSIDVRFSISGSGVFGGKLAAIVVPPGVDPVQ
+< STSMLQYPHVLFDARQVEPVIFSLPDLRNSLYHLISDTDTTSLVIMVYNDLINPYANEAN
+< SSGCIVTVETKPGPDFKFHLLKPPGSMLTHGSIPSDLIPRSSSLWIGNRHWTDITDFVIR
+< PFVFQANRHFDFNQETAGWSTPRFRPITINISQKEGARLGTAIAVDTILPGIPDGWPDTT
+< IPTVLTPAGKYAITSGNNSDILTRNDYENADVIKNNTNFRSMYICGSLQRAWGDKDISNT
+< AFITTGTVNGNNIEPSNTIDPTKLAVFQDNHVKSEVQTSDVTLSVLGYTGIGEEAVGADR
+< DKVVRISVLPETGARGGNHPIFYKNSMKLGYVISSIDVFNSQILHTSRQLSLNHYLLPPD
+< SFAVYRITDSNGSWFDIGIDNDGFSFVGVSHIGKLEFPLSASYMGIQLAKIRLASNIRSS
+< MIKL
+
+ Test #19,  Caliciviridae,  AY741811.gb,  pass
+ Test #20,  Caliciviridae,  EF558585.gb,  pass
+ Test #21,  Caliciviridae,  GQ166866.gb,  pass
+ Test #22,  Caliciviridae,  GQ180108.gb,  pass
+ Test #23,  Caliciviridae,  GQ475301.gb,  pass
+ Test #24,  Caliciviridae,  JF320650.gb,  pass
+ Test #25,  Caliciviridae,  KC175342.gb,  pass
+ Test #26,  Caliciviridae,  KC175410.gb,  pass
+ Test #27,  Caliciviridae,  M87661.gb,    pass
+ Test #28,  Caliciviridae,  U15301.gb,    pass
+ Testing Coronaviridae,  29
+ Test #29,  Coronaviridae,  AB257344.gb,  pass
+ Test #30,  Coronaviridae,  AB354579.gb,  pass
+ Test #31,  Coronaviridae,  AF201929.gb,  pass
+ Test #32,  Coronaviridae,  AF220295.gb,  pass
+ Test #33,  Coronaviridae,  AJ311317.gb,  pass
+ Test #34,  Coronaviridae,  AY278554.gb,  pass
+ Test #35,  Coronaviridae,  AY350750.gb,  pass
+ Test #36,  Coronaviridae,  AY357075.gb,  pass
+ Test #37,  Coronaviridae,  AY692454.gb,  pass
+ Test #38,  Coronaviridae,  DQ497008.gb,  pass
+ Test #39,  Coronaviridae,  DQ898174.gb,  pass
+ Test #40,  Coronaviridae,  EF424615.gb,  pass
+ Test #41,  Coronaviridae,  EF424619.gb,  pass
+ Test #42,  Coronaviridae,  EU637854.gb,  pass
+ Test #43,  Coronaviridae,  EU714028.gb,  pass
+ Test #44,  Coronaviridae,  EU714029.gb,  pass
+ Test #45,  Coronaviridae,  FJ588686.gb,  pass
+ Test #46,  Coronaviridae,  FJ884686.gb,  pass
+ Test #47,  Coronaviridae,  FV537212.gb,  pass, comment=No polyprotein: No CDS defined in genome file
+ Test #48,  Coronaviridae,  HM034837.gb,  pass
+ Test #49,  Coronaviridae,  JF330899.gb,  pass
+ Test #50,  Coronaviridae,  JF699752.gb,  pass
+ Test #51,  Coronaviridae,  JQ088078.gb,  pass
+ Test #52,  Coronaviridae,  KC875821.gb,  fail, comment=ERROR: Difference with old result
+ Test #52,  Coronaviridae,  KC875821.gb,  $result=diff ./test/output/KC875821_matpept_msa.faa ./test/KC875821_matpept_msa.faa
+16a17,18
+> > src=MSA|ACC=KC875821|Ver=KC875821.1|CDS=GI:512779642|ref=NC_019843.2|RM=8498..10018|Loc=3445..3546||AA=173..206|symbol=nsp4|Partial=Y|product=nsp4-pp1a/pp1ab|*new*
+> VTDFSLNGNVSTVFVPATRDSVPLHIIAPSSLIV
+
+ Test #53,  Coronaviridae,  KF186565.gb,  pass
+ Test #54,  Coronaviridae,  KF192507.gb,  pass
+ Test #55,  Coronaviridae,  KF430219.gb,  pass
+ Test #56,  Coronaviridae,  NC_011549.gb, pass, comment=NC_011549 w/ taxid=572290(Coronaviridae:Thrush coronavirus HKU12) not covered in V'1.2.2'
+ Test #57,  Coronaviridae,  NC_019843.gb, pass
+ Testing Filoviridae,    0
+ Testing Flaviviridae,   186
+ Test #58,  Flaviviridae,   AB005686.gb,  pass
+ Test #59,  Flaviviridae,   AB005702.gb,  pass
+ Test #60,  Flaviviridae,   AB014488.gb,  pass
+ Test #61,  Flaviviridae,   AB016785.gb,  pass
+ Test #62,  Flaviviridae,   AB022290.gb,  pass
+ Test #63,  Flaviviridae,   AB027652.gb,  pass
+ Test #64,  Flaviviridae,   AB029292.gb,  pass
+ Test #65,  Flaviviridae,   AB030907.gb,  pass
+ Test #66,  Flaviviridae,   AB047643.gb,  pass
+ Test #67,  Flaviviridae,   AB049090.gb,  pass
+ Test #68,  Flaviviridae,   AB063394.gb,  pass
+ Test #69,  Flaviviridae,   AB079079.gb,  pass
+ Test #70,  Flaviviridae,   AB109543.gb,  pass
+ Test #71,  Flaviviridae,   AB113467.gb,  pass
+ls: cannot access ./test/output/AB119282_matpept_???.faa: No such file or directory
+ Test #72,  Flaviviridae,   AB119282.gb,  pass, comment=No standard output for AB119282 in ./test/output/
+ Test #73,  Flaviviridae,   AB154177.gb,  pass
+ Test #74,  Flaviviridae,   AB162873.gb,  pass
+ Test #75,  Flaviviridae,   AB182800.gb,  pass
+ Test #76,  Flaviviridae,   AB182906.gb,  pass
+ Test #77,  Flaviviridae,   AB186428.gb,  pass
+ Test #78,  Flaviviridae,   AB269327.gb,  pass
+ Test #79,  Flaviviridae,   AB269353.gb,  pass
+ Test #80,  Flaviviridae,   AB284202.gb,  pass
+ Test #81,  Flaviviridae,   AB284209.gb,  pass
+ Test #82,  Flaviviridae,   AB306353.gb,  pass
+ Test #83,  Flaviviridae,   AB441024.gb,  pass
+ Test #84,  Flaviviridae,   AB465598.gb,  pass
+ Test #85,  Flaviviridae,   AB470105.gb,  pass
+ Test #86,  Flaviviridae,   AB470113.gb,  pass
+ Test #87,  Flaviviridae,   AB470117.gb,  pass
+ Test #88,  Flaviviridae,   AB470187.gb,  pass
+ Test #89,  Flaviviridae,   AB488417.gb,  pass
+ Test #90,  Flaviviridae,   AB488523.gb,  pass
+ Test #91,  Flaviviridae,   AB492186.gb,  pass
+ Test #92,  Flaviviridae,   AB492203.gb,  pass
+ Test #93,  Flaviviridae,   AB492208.gb,  pass
+ Test #94,  Flaviviridae,   AB517001.gb,  pass
+ Test #95,  Flaviviridae,   AB518856.gb,  pass
+ Test #96,  Flaviviridae,   AB538640.gb,  fail, comment=ERROR: Difference with old result
+ Test #96,  Flaviviridae,   AB538640.gb,  $result=diff ./test/output/AB538640_matpept_msa.faa ./test/AB538640_matpept_msa.faa
+0a1,2
+> > src=MSA|ACC=AB538640|Ver=AB538640.1|CDS=GI:281370030|ref=NC_001437.1|RM=2478..3688|Loc=1..178|cstart=2|AA=1..59|symbol=NS1'|Partial=Y|product=NS1' protein|*new*
+> REDIWCGSLIGTRSRATWAENIYAAINQVRAIIGKENYVDYMTSLRRYEDVLIQEDRVI
+
+ Test #97,  Flaviviridae,   AB600751.gb,  pass
+ Test #98,  Flaviviridae,   AB600758.gb,  pass
+ Test #99,  Flaviviridae,   AB600763.gb,  pass
+ Test #100, Flaviviridae,   AB600807.gb,  pass
+ Test #101, Flaviviridae,   AB622123.gb,  pass
+ Test #102, Flaviviridae,   AB661784.gb,  pass
+ Test #103, Flaviviridae,   AB701775.gb,  pass
+ Test #104, Flaviviridae,   AB705314.gb,  pass
+ Test #105, Flaviviridae,   AF023424.gb,  pass
+ Test #106, Flaviviridae,   AF029794.gb,  pass
+ Test #107, Flaviviridae,   AF042791.gb,  pass
+ Test #108, Flaviviridae,   AF046166.gb,  pass
+ Test #109, Flaviviridae,   AF046856.gb,  pass
+ Test #110, Flaviviridae,   AF046857.gb,  pass
+ Test #111, Flaviviridae,   AF047396.gb,  pass
+ Test #112, Flaviviridae,   AF052446.gb,  pass
+ Test #113, Flaviviridae,   AF052447.gb,  pass
+ Test #114, Flaviviridae,   AF056829.gb,  pass
+ Test #115, Flaviviridae,   AF056842.gb,  pass
+ Test #116, Flaviviridae,   AF056857.gb,  pass
+ Test #117, Flaviviridae,   AF056869.gb,  pass
+ Test #118, Flaviviridae,   AF056890.gb,  pass
+ Test #119, Flaviviridae,   AF089826.gb,  pass
+ Test #120, Flaviviridae,   AF118611.gb,  pass
+ Test #121, Flaviviridae,   AF130362.gb,  pass
+ Test #122, Flaviviridae,   AF134980.gb,  pass
+ Test #123, Flaviviridae,   AF163220.gb,  pass
+ Test #124, Flaviviridae,   AF166590.gb,  pass
+ Test #125, Flaviviridae,   AF166993.gb,  pass
+ Test #126, Flaviviridae,   AF205453.gb,  pass
+ Test #127, Flaviviridae,   AF207080.gb,  pass
+ Test #128, Flaviviridae,   AF208075.gb,  pass
+ Test #129, Flaviviridae,   AF210922.gb,  pass
+ Test #130, Flaviviridae,   AF211032.gb,  pass
+ Test #131, Flaviviridae,   AF211074.gb,  pass
+ Test #132, Flaviviridae,   AF218876.gb,  pass
+ Test #133, Flaviviridae,   AF221500.gb,  pass
+ Test #134, Flaviviridae,   AF271851.gb,  pass
+ Test #135, Flaviviridae,   AF378170.gb,  pass
+ Test #136, Flaviviridae,   AF379041.gb,  pass, comment=MSA returned 0/10 mat_peptides vs refseq
+ Test #137, Flaviviridae,   AF379201.gb,  pass
+ Test #138, Flaviviridae,   AF425639.gb,  pass
+ Test #139, Flaviviridae,   AF436117.gb,  pass
+ Test #140, Flaviviridae,   AF454974.gb,  pass
+ Test #141, Flaviviridae,   AF529724.gb,  pass
+ Test #142, Flaviviridae,   AJ132996.gb,  pass
+ Test #143, Flaviviridae,   AJ238800.gb,  pass
+ Test #144, Flaviviridae,   AJ303205.gb,  pass
+ Test #145, Flaviviridae,   AJ303224.gb,  pass
+ Test #146, Flaviviridae,   AJ428955.gb,  pass
+ Test #147, Flaviviridae,   AJ507016.gb,  pass
+ Test #148, Flaviviridae,   AJ564839.gb,  pass
+ Test #149, Flaviviridae,   AM272362.gb,  pass
+ Test #150, Flaviviridae,   AM272922.gb,  pass
+ Test #151, Flaviviridae,   AM274226.gb,  pass
+ Test #152, Flaviviridae,   AM280073.gb,  pass
+ Test #153, Flaviviridae,   AM281453.gb,  pass
+ Test #154, Flaviviridae,   AM408911.gb,  pass
+ Test #155, Flaviviridae,   AM708188.gb,  pass
+ Test #156, Flaviviridae,   AM708499.gb,  pass
+ Test #157, Flaviviridae,   AM708793.gb,  pass
+ Test #158, Flaviviridae,   AM708962.gb,  pass
+ Test #159, Flaviviridae,   AM710623.gb,  pass
+ Test #160, Flaviviridae,   AM710685.gb,  pass
+ Test #161, Flaviviridae,   AX472297.gb,  pass
+ Test #162, Flaviviridae,   AX685038.gb,  pass
+ Test #163, Flaviviridae,   AY149904.gb,  pass
+ Test #164, Flaviviridae,   AY217093.gb,  pass, comment=No polyprotein: No CDS defined in genome file
+ Test #165, Flaviviridae,   AY342476.gb,  pass
+ Test #166, Flaviviridae,   AY363865.gb,  pass
+ Test #167, Flaviviridae,   AY376737.gb,  pass
+ Test #168, Flaviviridae,   AY442521.gb,  pass
+ Test #169, Flaviviridae,   AY548635.gb,  pass
+ Test #170, Flaviviridae,   AY593210.gb,  pass
+ Test #171, Flaviviridae,   AY600854.gb,  pass
+ Test #172, Flaviviridae,   AY858050.gb,  pass
+ Test #173, Flaviviridae,   CQ867027.gb,  pass
+ Test #174, Flaviviridae,   D11168.gb,    pass
+ Test #175, Flaviviridae,   DQ005375.gb,  pass
+ Test #176, Flaviviridae,   DQ067771.gb,  pass
+ Test #177, Flaviviridae,   DQ235229.gb,  pass
+ Test #178, Flaviviridae,   DQ294045.gb,  pass
+ Test #179, Flaviviridae,   DQ430817.gb,  pass
+ Test #180, Flaviviridae,   DQ648597.gb,  pass
+ Test #181, Flaviviridae,   DQ793141.gb,  pass
+ Test #182, Flaviviridae,   DQ793159.gb,  pass
+ Test #183, Flaviviridae,   DQ835769.gb,  pass
+ Test #184, Flaviviridae,   DQ836632.gb,  pass
+ Test #185, Flaviviridae,   DQ988684.gb,  pass
+ Test #186, Flaviviridae,   EF032895.gb,  pass
+ Test #187, Flaviviridae,   EF032897.gb,  pass
+ Test #188, Flaviviridae,   EF126999.gb,  pass
+ Test #189, Flaviviridae,   EF185924.gb,  pass
+ Test #190, Flaviviridae,   EF407458.gb,  pass
+ Test #191, Flaviviridae,   EF407467.gb,  pass
+ Test #192, Flaviviridae,   EF407476.gb,  pass
+ Test #193, Flaviviridae,   EF407495.gb,  pass
+ Test #194, Flaviviridae,   EF434785.gb,  pass
+ Test #195, Flaviviridae,   EF608626.gb,  pass
+ Test #196, Flaviviridae,   EU155347.gb,  pass
+ Test #197, Flaviviridae,   EU166225.gb,  pass
+ Test #198, Flaviviridae,   EU255958.gb,  pass
+ Test #199, Flaviviridae,   EU482886.gb,  pass
+ Test #200, Flaviviridae,   EU623019.gb,  pass
+ Test #201, Flaviviridae,   EU677253.gb,  pass
+ Test #202, Flaviviridae,   EU781803.gb,  pass
+ Test #203, Flaviviridae,   EU846233.gb,  pass
+ Test #204, Flaviviridae,   EU847445.gb,  pass
+ Test #205, Flaviviridae,   FJ360845.gb,  pass
+ Test #206, Flaviviridae,   FJ375523.gb,  pass
+ Test #207, Flaviviridae,   FJ515008.gb,  pass
+ Test #208, Flaviviridae,   FJ515016.gb,  pass
+ Test #209, Flaviviridae,   FJ515122.gb,  fail, comment=ERROR: Difference with old result
+ Test #209, Flaviviridae,   FJ515122.gb,  $result=diff ./test/output/FJ515122_matpept_msa.faa ./test/FJ515122_matpept_msa.faa
+0a1,3
+> > src=MSA|ACC=FJ515122|Ver=FJ515122.1|CDS=GI:253912804|ref=NC_004102.1|RM=342..914|Loc=1..267|cstart=3|AA=1..88|symbol=C|Partial=Y|product=core protein
+> ESPDEEVRCLCIFITAEQQSRVGCRRRNTNSERFYFMKRLLPIHTFPGRRAGFWPVPRYP
+> LSLNKNQGLGWGGWLPSPLGSNWIWGPT
+
+ Test #210, Flaviviridae,   FJ515149.gb,  pass
+ Test #211, Flaviviridae,   FJ654700.gb,  pass
+ls: cannot access ./test/output/FJ872155_matpept_???.faa: No such file or directory
+ Test #212, Flaviviridae,   FJ872155.gb,  pass, comment=No standard output for FJ872155 in ./test/output/
+ Test #213, Flaviviridae,   FM210239.gb,  pass
+ Test #214, Flaviviridae,   FM993611.gb,  pass
+ Test #215, Flaviviridae,   FN552941.gb,  pass
+ Test #216, Flaviviridae,   FN553068.gb,  pass
+ Test #217, Flaviviridae,   FN668603.gb,  pass
+ Test #218, Flaviviridae,   FN676829.gb,  pass
+ Test #219, Flaviviridae,   FR672301.gb,  pass
+ Test #220, Flaviviridae,   FR673630.gb,  pass
+ Test #221, Flaviviridae,   FR675153.gb,  pass
+ Test #222, Flaviviridae,   FR675275.gb,  pass
+ Test #223, Flaviviridae,   GQ379163.gb,  pass
+ Test #224, Flaviviridae,   GU131926.gb,  pass
+ Test #225, Flaviviridae,   HQ113572.gb,  pass
+ Test #226, Flaviviridae,   HQ541802.gb,  pass
+ Test #227, Flaviviridae,   HQ852457.gb,  pass
+ Test #228, Flaviviridae,   JF714988.gb,  pass
+ Test #229, Flaviviridae,   JF824237.gb,  pass
+ Test #230, Flaviviridae,   JN559741.gb,  pass
+ Test #231, Flaviviridae,   JQ303563.gb,  pass
+ Test #232, Flaviviridae,   JQ318365.gb,  pass
+ Test #233, Flaviviridae,   KC815310.gb,  pass
+ Test #234, Flaviviridae,   KC815311.gb,  pass
+ Test #235, Flaviviridae,   M19197.gb,    pass
+ Test #236, Flaviviridae,   M23027.gb,    pass
+ Test #237, Flaviviridae,   M55506.gb,    pass
+ Test #238, Flaviviridae,   NC_001809.gb, pass
+ Test #239, Flaviviridae,   NC_002031.gb, pass
+ Test #240, Flaviviridae,   S35365.gb,    pass
+ Test #241, Flaviviridae,   U63715.gb,    pass
+ Test #242, Flaviviridae,   U89019.gb,    pass
+ Test #243, Flaviviridae,   X03467.gb,    pass
+ Testing Hepeviridae,    0
+ Testing Herpesviridae,  2
+ Test #244, Herpesviridae,  AF200417.gb,  pass, comment=AF200417 w/ taxid=47929(Herpesviridae:Macacine herpesvirus 3) not covered in V'1.2.2'
+ Test #245, Herpesviridae,  BK001744.gb,  pass, comment=BK001744 w/ taxid=10345(Herpesviridae:Suid herpesvirus 1) not covered in V'1.2.2'
+ Testing Paramyxoviridae, 0
+ Testing Picornaviridae, 33
+ Test #246, Picornaviridae, AB008476.gb,  pass
+ Test #247, Picornaviridae, AB084788.gb,  pass
+ Test #248, Picornaviridae, AB090799.gb,  pass
+ Test #249, Picornaviridae, AB282822.gb,  pass
+ Test #250, Picornaviridae, AB601872.gb,  pass, comment=AB601872 w/ taxid=42789(Picornaviridae:Enterovirus D) not covered in V'1.2.2'
+ Test #251, Picornaviridae, AB601882.gb,  pass, comment=AB601882 w/ taxid=42789(Picornaviridae:Enterovirus D) not covered in V'1.2.2'
+ Test #252, Picornaviridae, AB668029.gb,  pass
+ Test #253, Picornaviridae, AF026168.gb,  fail, comment=ERROR: Difference with old result
+ Test #253, Picornaviridae, AF026168.gb,  $result=diff ./test/output/AF026168_matpept_msa.faa ./test/AF026168_matpept_msa.faa
+0a1,9
+> > src=MSA|ACC=AF026168|Ver=AF026168.2|CDS=GI:5921458|ref=NC_004004.1|RM=6615..8024|Loc=6218..7627||AA=1851..2320|symbol=3D|Partial=N|product=3D
+> GLIVDTRDVEERVHVMRKTKLAPTVAHGVFNPEFGPAALSNKDPRLNEGVVLDDVIFSKH
+> KGDTRMSEEDKALFRRCAADYASRLHSVLGTANAPLSVYEAIKGVDGLDAMEPDTRPGLP
+> WALQGKRRGVLIDFENGTVGPEVEAALKLMESREYKFVCQTFLKDEIRPLEKVRAGKTRI
+> VDVLPVEHILYTRMMIGRFCAQMHSNNGPQIGSAVGCNPDVDWQRFGTHFAQYKNVWDVD
+> YSAFDANHCSDAMNIMFEEVFRTEFGFHPNAEWILKTLVNTEHAYENKRIVVEGGMPSGC
+> SATSIINTILNNIYVLYALRRHYEGVELDTYTMISYGDDIVVASDYDLDFEALKPHFKSL
+> GQTITPADKSDKGFVLGHSITDVTFLKRHFHMDYGTGFYKPVMASKTLEAILSFARRGTI
+> QEKLISVAGLAVHSGPDEYRRLFEPFQGLFEIPSYRSLYLRWVNAVCGDA
+49,57d57
+< > src=MSA|ACC=AF026168|Ver=AF026168.2|CDS=GI:5921458|ref=NC_004004.1|RM=6615..8024|Loc=6218..7627||AA=1851..2320|symbol=3D|Partial=N|product=3D
+< GLIVDTRDVEERVHVMRKTKLAPTVAHGVFNPEFGPAALSNKDPRLNEGVVLDDVIFSKH
+< KGDTRMSEEDKALFRRCAADYASRLHSVLGTANAPLSVYEAIKGVDGLDAMEPDTRPGLP
+< WALQGKRRGVLIDFENGTVGPEVEAALKLMESREYKFVCQTFLKDEIRPLEKVRAGKTRI
+< VDVLPVEHILYTRMMIGRFCAQMHSNNGPQIGSAVGCNPDVDWQRFGTHFAQYKNVWDVD
+< YSAFDANHCSDAMNIMFEEVFRTEFGFHPNAEWILKTLVNTEHAYENKRIVVEGGMPSGC
+< SATSIINTILNNIYVLYALRRHYEGVELDTYTMISYGDDIVVASDYDLDFEALKPHFKSL
+< GQTITPADKSDKGFVLGHSITDVTFLKRHFHMDYGTGFYKPVMASKTLEAILSFARRGTI
+< QEKLISVAGLAVHSGPDEYRRLFEPFQGLFEIPSYRSLYLRWVNAVCGDA
+
+ Test #254, Picornaviridae, AF159998.gb,  pass
+ Test #255, Picornaviridae, AF169026.gb,  pass
+ Test #256, Picornaviridae, AF414373.gb,  pass
+ Test #257, Picornaviridae, AF499636.gb,  pass
+ Test #258, Picornaviridae, AJ005695.gb,  pass
+ Test #259, Picornaviridae, AJ299461.gb,  pass
+ Test #260, Picornaviridae, AJ299464.gb,  fail, comment=ERROR: Difference with old result
+ Test #260, Picornaviridae, AJ299464.gb,  $result=diff ./test/output/AJ299464_matpept_msa.faa ./test/AJ299464_matpept_msa.faa
+0a1,2
+> > src=MSA|ACC=AJ299464|Ver=AJ299464.3|CDS=GI:74381881|ref=NC_001489.1|RM=735..803|Loc=644..706||AA=1..21|symbol=1A(VP4a)|Partial=Y|product=1A VP4a mature peptide (alt.)|*new*
+> MSRQGIFQTVGSGLDHILSLA
+
+ Test #261, Picornaviridae, AY896760.gb,  pass
+ Test #262, Picornaviridae, DQ092770.gb,  pass
+ Test #263, Picornaviridae, EU849137.gb,  fail, comment=ERROR: Difference with old result
+ Test #263, Picornaviridae, EU849137.gb,  $result=diff ./test/output/EU849137_matpept_msa.faa ./test/EU849137_matpept_msa.faa
+21a22,23
+> > src=MSA|ACC=EU849137|Ver=EU849137.1|CDS=GI:194396089|ref=NC_001489.1|RM=735..803|Loc=94..156||AA=1..21|symbol=1A(VP4a)|Partial=Y|product=1A VP4a mature peptide (alt.)|*new*
+> MSRQGIFQTVGSGLDHILSLA
+
+ Test #264, Picornaviridae, FJ445190.gb,  pass
+ Test #265, Picornaviridae, HF677705.gb,  pass
+ Test #266, Picornaviridae, HM852755.gb,  pass
+ Test #267, Picornaviridae, HQ595343.gb,  pass
+ Test #268, Picornaviridae, HQ647170.gb,  pass
+ Test #269, Picornaviridae, JN099696.gb,  pass
+ Test #270, Picornaviridae, JN819202.gb,  fail, comment=ERROR: Difference with old result
+ Test #270, Picornaviridae, JN819202.gb,  $result=diff ./test/output/JN819202_matpept_msa.faa ./test/JN819202_matpept_msa.faa
+3,7c3,8
+< > src=MSA|ACC=JN819202|Ver=JN819202.1|CDS=GI:377824214|ref=NC_021178.1|RM=1115..1828|Loc=1115..1828||AA=45..282|symbol=VP2|Partial=N|product=VP2
+< SGFEIGHGTSDRLLALTAGTGCISSQEAVTVRSGWAGVEPTTVPNPSTDTPTDPGPAGNR
+< FTYTRSGEWSTDTAVDSMIFELDLPGEVMTSTLSAPGTTFGPTADRHALGRFDFVVTVTV
+< NANPFTSGCMLLVALPMYPSVSYTTNSLYSPSQLPIFPHQFINLRTTNQATLYLPFVSPS
+< PLMDPSIGNIYKVVALVYAKLRKTTELSGGPVTYTISVAPIESKFHGVHYPINKASLQ
+---
+> > src=MSA|ACC=JN819202|Ver=JN819202.1|CDS=GI:377824215|ref=NC_021178.1|RM=1115..1828|Loc=4520..5419||AA=139..438|symbol=VP2|GapAtCleavage=Y|Partial=N|product=VP2|*new*
+> ACESIAEKIARGFIKVISAFAIIAANPSPITLLGLAGMFAADYVDVTKVVSFTESLKMFI
+> LEKLGLSEFSDILELPDKVSEFITDKISSIKDYTSDTISEAYDKVKSIVMEAGDDKEHLK
+> HYRKKVDKEDLFAKATKGVKLINDTATAVKNVKMFIDLIMWLLDEIKKWRTKVEDTPKYF
+> VESNKDKVFEYLELSYTFENGCNIDKSKVDEVLYFLKKMSVAANKIDDRHTVTLVNGLYN
+> TYSKIKAKYNSRLYMERFEPVVIYLHGKPGCGKSLASAELAKAFARYFKLDFEECVYASP
+14,25c15,24
+< > src=MSA|ACC=JN819202|Ver=JN819202.1|CDS=GI:377824214|ref=NC_021178.1|RM=2579..3514|Loc=2579..3514||AA=533..844|symbol=VP1|Partial=N|product=VP1
+< SDVKVSMGXADAARATSAPTQSSVDAEPVLYTSNEDGQPHDVAADDVWAGVSSISQFTSP
+< DMLLSNFFGRSRLYKTLDMPKCETSGLNYTKVPIQWGSRSATLSEYEVIDTIMNWFQFCQ
+< ADLRVEFVIYPATGSFNPPTGLVSDHPFDASAHGSGFVAVSNIPPGALIGPFDMNQMSAF
+< PTVVQPVSGPITTFSVYIPFQSVWSALSCSYSSAKDYINTNWISSVAPAYYAKNFGLLPT
+< PEFCTLYFATGLPFDSRTEIYVSFHNIKMYIPRPIVTGTTEVTLSSIDAAFANNNGFTAH
+< TVARVGEFINTE
+< > src=MSA|ACC=JN819202|Ver=JN819202.1|CDS=GI:377824215|ref=NC_021178.1|RM=4106..4528|Loc=4106..4528||AA=1..141|symbol=2A|Partial=N|product=2A
+< MAALKEIVIRFSSRTNRKVIHDIGVTALNLCSDYELFPTLPMKECERTGTIELILRPGMY
+< IPKTPNKATLEMGLFDNLSTSASNIDRTTKMLSSTLTETNIKKVFDAVDSFKDTADNLNT
+< VIPKVSALVDEVTRIFGPACE
+< > src=MSA|ACC=JN819202|Ver=JN819202.1|CDS=GI:377824215|ref=NC_021178.1|RM=4529..4906|Loc=4529..4906||AA=142..267|symbol=2B|Partial=N|product=2B
+---
+> > src=MSA|ACC=JN819202|Ver=JN819202.1|CDS=GI:377824215|ref=NC_021178.1|RM=2579..3514|Loc=6629..8002||AA=842..1299|symbol=VP1|GapAtCleavage=Y|Partial=N|product=VP1|*new*
+> GNFNLDVLGDNVRNFSVINTDTTAYHDVISYRAMTTRGFCGSPVVSTNNAESVIFGIHMA
+> SNGYGTGFAVPIYLSDIPVTLEGVRKKVGEVPTPFAPTHTKLKRSPVYGVYPVTKEPAPL
+> KPTDRRIDEGVDFNEAVFGKYGADMKEPFRNLDVGRDVVIARLKKVLPTKKFAPCTVSEA
+> LNGKDGLPKLDLKQASGYPYNLSAIKRKHLIESDKDGFLTATPKLLADIEESKKHPEKFP
+> YTSFLKDELRSVKKVKAGKTRVVEAGSLPVIVEGRMIFGNLFAYFNTHPGFETMAAVGCD
+> PEVCWTDWYYKMREKAHTWDYDYTGFDGSIPSCSFDALADLLCEFVENEDDVRRYISNIK
+> NSYHAHDGNLYLIEGAMPSGCAGTSVFNCLINAMLCFSCFMDLEPEMDPFEPLLIAYGDD
+> ILVSSDHDLFPSRVSEWMKKNTTFKITPADKGEIFNDD
+> > src=MSA|ACC=JN819202|Ver=JN819202.1|CDS=GI:377824215|ref=NC_021178.1|RM=4529..4906|Loc=4529..4906||AA=142..267|symbol=2B|Partial=N|product=2B|*new*
+29c28
+< > src=MSA|ACC=JN819202|Ver=JN819202.1|CDS=GI:377824215|ref=NC_021178.1|RM=4907..5929|Loc=4907..5929||AA=268..608|symbol=2C|Partial=N|product=2C
+---
+> > src=MSA|ACC=JN819202|Ver=JN819202.1|CDS=GI:377824215|ref=NC_021178.1|RM=4907..5929|Loc=4907..5929||AA=268..608|symbol=2C|Partial=N|product=2C|*new*
+36c35
+< > src=MSA|ACC=JN819202|Ver=JN819202.1|CDS=GI:377824215|ref=NC_021178.1|RM=5930..6190|Loc=5930..6190||AA=609..695|symbol=3A|Partial=N|product=3A
+---
+> > src=MSA|ACC=JN819202|Ver=JN819202.1|CDS=GI:377824215|ref=NC_021178.1|RM=5930..6190|Loc=5930..6190||AA=609..695|symbol=3A|Partial=N|product=3A|*new*
+39c38
+< > src=MSA|ACC=JN819202|Ver=JN819202.1|CDS=GI:377824215|ref=NC_021178.1|RM=6191..6268|Loc=6191..6268||AA=696..721|symbol=3B|Partial=N|product=3B
+---
+> > src=MSA|ACC=JN819202|Ver=JN819202.1|CDS=GI:377824215|ref=NC_021178.1|RM=6191..6268|Loc=6191..6268||AA=696..721|symbol=3B|Partial=N|product=3B|*new*
+41,46c40
+< > src=MSA|ACC=JN819202|Ver=JN819202.1|CDS=GI:377824215|ref=NC_021178.1|RM=6269..6874|Loc=6269..6874||AA=722..923|symbol=3C|Partial=N|product=3C
+< MIPNIYPRVCNNTFPIKFIDADPNSEDPKFMHMTTLGLKDWMYAVNTHALEDTLWIELRN
+< VFIPLAECKRYDIKHDGKLTDLTILEVPRKYFSAVKDITKYLRKTPEIPSYNDPVVLCVR
+< GNFNLDVLGDNVRNFSVINTDTTAYHDVISYRAMTTRGFCGSPVVSTNNAESVIFGIHMA
+< SNGYGTGFAVPIYLSDIPVTLE
+< > src=MSA|ACC=JN819202|Ver=JN819202.1|CDS=GI:377824215|ref=NC_021178.1|RM=6875..8323|Loc=6875..8323||AA=924..1406|symbol=3D|Partial=N|product=3D
+---
+> > src=MSA|ACC=JN819202|Ver=JN819202.1|CDS=GI:377824215|ref=NC_021178.1|RM=6875..8323|Loc=6875..8323||AA=924..1406|symbol=3D|Partial=N|product=3D|*new*
+55a50,58
+> > src=MSA|ACC=JN819202|Ver=JN819202.1|CDS=GI:377824215|ref=NC_021178.1|RM=4106..4528|Loc=4106..4528||AA=1..141|symbol=2A|Partial=N|product=2A|*new*
+> MAALKEIVIRFSSRTNRKVIHDIGVTALNLCSDYELFPTLPMKECERTGTIELILRPGMY
+> IPKTPNKATLEMGLFDNLSTSASNIDRTTKMLSSTLTETNIKKVFDAVDSFKDTADNLNT
+> VIPKVSALVDEVTRIFGPACE
+> > src=MSA|ACC=JN819202|Ver=JN819202.1|CDS=GI:377824215|ref=NC_021178.1|RM=6269..6874|Loc=6269..6874||AA=722..923|symbol=3C|Partial=N|product=3C|*new*
+> MIPNIYPRVCNNTFPIKFIDADPNSEDPKFMHMTTLGLKDWMYAVNTHALEDTLWIELRN
+> VFIPLAECKRYDIKHDGKLTDLTILEVPRKYFSAVKDITKYLRKTPEIPSYNDPVVLCVR
+> GNFNLDVLGDNVRNFSVINTDTTAYHDVISYRAMTTRGFCGSPVVSTNNAESVIFGIHMA
+> SNGYGTGFAVPIYLSDIPVTLE
+
+ Test #271, Picornaviridae, JN990700.gb,  pass
+ Test #272, Picornaviridae, JQ655151.gb,  fail, comment=ERROR: Difference with old result
+ Test #272, Picornaviridae, JQ655151.gb,  $result=diff ./test/output/JQ655151_matpept_msa.faa ./test/JQ655151_matpept_msa.faa
+54a55,56
+> > src=MSA|ACC=JQ655151|Ver=JQ655151.1|CDS=GI:386870534|ref=NC_001489.1|RM=735..803|Loc=644..706||AA=1..21|symbol=1A(VP4a)|Partial=Y|product=1A VP4a mature peptide (alt.)|*new*
+> MSRQGIFQTVGSGLDHILSLA
+
+ Test #273, Picornaviridae, JQ941880.gb,  pass
+ Test #274, Picornaviridae, KC843627.gb,  pass
+ Test #275, Picornaviridae, KF387721.gb,  pass
+ Test #276, Picornaviridae, KF741227.gb,  pass
+ Test #277, Picornaviridae, KF793927.gb,  pass
+ Test #278, Picornaviridae, KJ415177.gb,  pass
+ Testing Poxviridae,     0
+ Testing Reoviridae,     1
+ Test #279, Reoviridae,     NC_003758.gb, pass, comment=NC_003758 w/ taxid=42475(Reoviridae:Rice ragged stunt virus) not covered in V'1.2.2'
+ Testing Rhabdoviridae,  2
+ Test #280, Rhabdoviridae,  J02428.gb,    pass, comment=J02428 w/ taxid=11277(Rhabdoviridae:Vesicular stomatitis Indiana virus) not covered in V'1.2.2'
+ Test #281, Rhabdoviridae,  NC_001560.gb, pass, comment=NC_001560 w/ taxid=11277(Rhabdoviridae:Vesicular stomatitis Indiana virus) not covered in V'1.2.2'
+ Testing Togaviridae,    38
+ Test #282, Togaviridae,    AB003337.gb,  pass
+ Test #283, Togaviridae,    AB047329.gb,  fail, comment=ERROR: Difference with old result
+ Test #283, Togaviridae,    AB047329.gb,  $result=diff ./test/output/AB047329_matpept_msa.faa ./test/AB047329_matpept_msa.faa
+39,44c39,47
+< > src=MSA|ACC=AB047329|Ver=AB047329.1|CDS=GI:12862437|ref=NC_001545.2|RM=6512..7411|Loc=6512..7411||AA=1..300|symbol=C|Partial=N|product=capsid protein|*new*
+< MASTTPITMEDLQKALEAQSRALRAELAAGASQSRRPRPPRQRDSSTSGDDSGRDSGGPR
+< RRRGNRGRGQLRDWSRAPPPPEERQESRSQTPAPKPSRAPPQQPQPPRMQTGRGGSAPRP
+< ELGPPTNPFQAAVARGLRPPLHDPDTEAPTEACVTSWLWSEGEGAVFYRVDLHFTNLGTP
+< PLDEDGRWDPALMYNPCGPEPPAHVVRAYNQPAGDVRGVWGKGERTYAEQDFRVGGTRWH
+< RLLRMPVRGLDGDSAPLPPHTTERIETRSARHPWRIRFGAPQAFLAGLLLAAVAVGTARA
+---
+> > src=MSA|ACC=AB047329|Ver=AB047329.1|CDS=GI:12862436|ref=NC_001545.2|RM=6512..7411|Loc=1346..2620||AA=436..860|symbol=C|Partial=N|product=capsid protein|*new*
+> VPLAERMEEWEQDAAVAAFDRGPLEDGGRHLDTVQPPKSPPRPEIAATWIVHAASADRHC
+> ACAPRRDAPRERPSAPAGPPDDEALIPPWLFAERRALRCREWDFEALRARADTAAAPAPL
+> APRPARCPTVLYRHPAHYGPWLTLDEPGEADAALVLCDPLGQPLRGPERHFAAGAHMCAQ
+> ARGLQAFVRVVPPPERPWADGGARAWAKFFRGCAWAQRLLGEPAVMHLPYTDGDVPQLIA
+> LALRTLAQQGAALALSVRDLPGGAAFDANAVTAAVRAGPGQSAATSPPPGDPPPPRRARR
+> SQRHLDARGTPPPAPARDPPPPAPSPPAPPRAGDPVLPTSAGPADRARHAELEVAYEPSD
+> PPTPTKADPDSDIVESYARAAGPVHLRVRDIMDPPPGCKVVVNAANEGLLAGSGVCGAIF
+> ANATA
+
+ Test #284, Togaviridae,    AB047330.gb,  pass
+ Test #285, Togaviridae,    AB204560.gb,  pass
+ Test #286, Togaviridae,    AF079457.gb,  fail, comment=ERROR: Difference with old result
+ Test #286, Togaviridae,    AF079457.gb,  $result=diff ./test/output/AF079457_matpept_msa.faa ./test/AF079457_matpept_msa.faa
+49,67c49,70
+< > src=MSA|ACC=AF079457|Ver=AF079457.1|CDS=GI:3396060|ref=NC_001512.1|RM=7670..8449|Loc=7668..8447||AA=1..260|symbol=C|Partial=N|product=C protein
+< MEFIPAQTYYNRRYQPRPWTQRPTIQVIRPKPRRRRPAGQLAQLISAVSRLALRTVPQKP
+< RRTRKIKKQKQVKQEQQSTRNQKKKAPKQKQTQKKKRPGRRERMCMKIENDCIFEVKHEG
+< KVTGYACLVGDKVMKPAHVKGTIDNADLAKLAFKRSSKYDLECAQIPVHMKSDASKFTHE
+< KPEGYYNWHHGAVQYSGGRFTIPTGAGKPGDSGRPIFDNKGRVVAIVLGGANEGTRTALS
+< VVTWNKDIVTKITPEGSVEW
+< > src=MSA|ACC=AF079457|Ver=AF079457.1|CDS=GI:3396060|ref=NC_001512.1|RM=8450..8641|Loc=8448..8639||AA=261..324|symbol=E3|Partial=N|product=E3 protein
+< SLALPVMCLLANTTFPCSQPPCAPCCYEKKPEETLRMLEDNVMQPGYYQLLDSALACSQH
+< RQRR
+< > src=MSA|ACC=AF079457|Ver=AF079457.1|CDS=GI:3396060|ref=NC_001512.1|RM=8642..9910|Loc=8640..9908||AA=325..747|symbol=E2|Partial=N|product=E2 protein
+< NARENFNVYKVTRPYLAHCPDCGEGHSCHSPIALERIRSEATDGTLKIQVSLQIGIKTAD
+< SHDWTKLRYMDSHTPVDADRSGLFVRTSAPCTITGTMGHFILARCPKGETLTVGFVDSRR
+< ISHTCMHPFHHEPPLIGREKFHSRPQHGKELPCSTYVHTTAATTEEIEVHMPPDTPDYTL
+< MTQQAGNVKITVDGQTVRYKCKCDGSNEGLITTDKVINNCKVDQCHTAVTNHKKWQYNSP
+< LTPRNSEQGDRKGKIHIPFPLVNTTCRVPKARNPTVTYGKNRVTLLLYPDHPTLLSYRAM
+< GRIPDYHEEWITSKKEISITVPAEGLEVTWGNNDPYKYWPQLSTNGTAHGHPHEIILYYY
+< ELYPTTTIAVLAAASIVVASLVGLSLGMCICARRRCITPYELTPGATIPFLLGILCCVKT
+< AKA
+< > src=MSA|ACC=AF079457|Ver=AF079457.1|CDS=GI:3396060|ref=NC_001512.1|RM=9911..10093|Loc=9909..10091||AA=748..808|symbol=6K|Partial=N|product=6K protein
+---
+> > src=MSA|ACC=AF079457|Ver=AF079457.1|CDS=GI:3396059|ref=NC_001512.1|RM=7670..8449|Loc=95..1153||AA=6..358|symbol=C|Partial=N|product=C protein|*new*
+> VDIDADSAFLKALQRAYPMFEVEPKQVTPNDHANARAFSHLAIKLIEQEIDPGSTILGIG
+> SAPARRMMSDRKYHCVCPMRSAEDPERLANYARKLASAAGKVTDKNISGKINDLQAVMAV
+> PNMETSTFCLHTDATCKQRGDVAIYQDVYAVHAPTSLYHQAIKGVHVAYWIGFDTTPFMY
+> NAMAGAYPSYSTNWADEQVLKAKNIGLCSTDLSEGRRGKLSIMRGKKFKPCDRVLFSVGS
+> TLYPESRKLLQSWHLPSVFHLKGKLSFTCRCDTIVSCEGYVVKRVTMSPGIYGKTSGYAV
+> THHADGFLMCKTTDTVDGERVSFSVCTYVPATICDQMTGILATEVTPEDAQKL
+> > src=MSA|ACC=AF079457|Ver=AF079457.1|CDS=GI:3396059|ref=NC_001512.1|RM=8450..8641|Loc=1154..1402||AA=359..441|symbol=E3|Partial=N|product=E3 protein|*new*
+> LVGLNQRIVVNGRTQRNTNTMKNYLLPIVAQAFSKWAKECRKDMEDEKLLGVRERTLTCC
+> CLWAFRKHKTHTVYKRPDTQSIQ
+> > src=MSA|ACC=AF079457|Ver=AF079457.1|CDS=GI:3396059|ref=NC_001512.1|RM=8642..9910|Loc=1403..3064||AA=442..995|symbol=E2|Partial=N|product=E2 protein|*new*
+> KVPAEFDSFVIPSLWSSGLSIPLRTRIKWLLSKAPKHEQLPHSGNAEEAAQAETDAVEER
+> EAELTREAMPPLQATQDDVQVEIDVEQLEDRAGAGIVETPRGAIKVTAQPSDLVVGEYLV
+> LTPQAVLRSQKLGLIHALAEQVKTCTHSGRAGRYAVEAYDGRVLVPSGYAIPQEDFQSLS
+> ESATMVFNEREFVNRKLHHIAMHGPALNTDEESYELVRVEKTEHEYVYDVDQKKCCKREE
+> ATGLVLVGDLTSPPYHEFAYEGLKIRPACPYKTAVIGVFGVPGSGKSAIIKNLVTRQDLV
+> TSGKKENCQEISNDVMRQRKLEISARTVDSLLLNGCNKPVEVLYVDEAFACHSGTLLALI
+> AMVRPRQKVVLCGDPKQCGFFNMMQMKVNYNHNICTQVYHKSISRRCTLPVTAIVSSLHY
+> ESKMRTTNEYNQPIVVDTTGTTKPEPGDLVLTCFRGWVKQLQIDYRGNEVMTAAASQGLT
+> RKGVYAVRQKVNENPLYASTSEHVNVLLTRTEGKLIWKTLSGDPWIKILQNPPKGNFKAT
+> IKEWEAEHASIMAG
+> > src=MSA|ACC=AF079457|Ver=AF079457.1|CDS=GI:3396060|ref=NC_001512.1|RM=9911..10093|Loc=9909..10091||AA=748..808|symbol=6K|Partial=N|product=6K protein|*new*
+70c73
+< > src=MSA|ACC=AF079457|Ver=AF079457.1|CDS=GI:3396060|ref=NC_001512.1|RM=10094..11410|Loc=10092..11408||AA=809..1247|symbol=E1|Partial=N|product=E1 protein
+---
+> > src=MSA|ACC=AF079457|Ver=AF079457.1|CDS=GI:3396060|ref=NC_001512.1|RM=10094..11410|Loc=10092..11408||AA=809..1247|symbol=E1|Partial=N|product=E1 protein|*new*
+
+ Test #287, Togaviridae,    AF126284.gb,  fail, comment=ERROR: Difference with old result
+ Test #287, Togaviridae,    AF126284.gb,  $result=diff ./test/output/AF126284_matpept_msa.faa ./test/AF126284_matpept_msa.faa
+81a82,86
+> > src=MSA|ACC=AF126284|Ver=AF126284.1|CDS=GI:4240568|ref=NC_003900.1|RM=8429..8611|Loc=1314..1571||AA=413..498|symbol=E3|GapAtCleavage=Y|Partial=N|product=E3 protein|*new*
+> ERKLAFGCLWAFKTKKIHSFYRPPGTQTIVKVAAEFSAFPMSSVWTTSLPMSLRQKVKLL
+> LVKKTNKPVVTITDTAVKNAQEAYNE
+> > src=MSA|ACC=AF126284|Ver=AF126284.1|CDS=GI:4240568|ref=NC_003900.1|RM=9884..10045|Loc=3546..3707||AA=1157..1210|symbol=6K|GapAtCleavage=Y|Partial=N|product=6K protein|*new*
+> HSLTASLQKKEAAPLHKFLNQLPGHSMLLVSKETCYCVSKRITWVAPLGVRGAD
+88,90d92
+< > src=MSA|ACC=AF126284|Ver=AF126284.1|CDS=GI:4240569|ref=NC_003900.1|RM=8429..8611|Loc=8429..8611||AA=268..328|symbol=E3|Partial=N|product=E3 protein|*new*
+< SRAITAMCILQNVTFPCDRPPTCYNRNPDLTLTMLETNVNHPSYDVLLDAALRCPTRRHV
+< R
+100,101d101
+< > src=MSA|ACC=AF126284|Ver=AF126284.1|CDS=GI:4240569|ref=NC_003900.1|RM=9884..10045|Loc=9884..10045||AA=753..806|symbol=6K|Partial=N|product=6K protein|*new*
+< DEFTDTMGYLWQHSQTMFWIQLVIPLAAVITLVRCCSCCLPFLLVASPPNKADA
+
+ Test #288, Togaviridae,    AF159554.gb,  fail, comment=ERROR: Difference with old result
+ Test #288, Togaviridae,    AF159554.gb,  $result=diff ./test/output/AF159554_matpept_msa.faa ./test/AF159554_matpept_msa.faa
+38a39,89
+> > src=MSA|ACC=AF159554|Ver=AF159554.1|CDS=GI:6166365|ref=NC_003899.1|RM=47..5680|Loc=59..3211||AA=1..1051|symbol=nsP123|Partial=Y|product=p123 protein|*new*
+> MFPYPTLNYPPMAPINPMAYRDPNPPRRRWRPFKPPLAAQIEDLRRSIANLTLKQRAPNP
+> PAGPPAKRKKPAPKPKPAQTKKKRPPPPAKKQKRKPKPGKRQRMCMKLESDKTFPIMLNG
+> QVNGYACVVGGRMFKPLHVEGRIDNEQLAAIKLKKASIYDLEYGDVPQCMKSDTLQYTSD
+> KPPGFYNWHHGAVQYENNRFTVPRGVGGKGDSGRPILDNKGRVVAIVLGGVNEGSRTALS
+> VVTWNQKGVTVKDTPEGSEPWSLATVMCVLANITFPCDQPPCMPCCYEKNPHETLTMLEQ
+> NYDSRTYDQLLDAAVKCNARRTRRDLDTHFTRYKLARPYIADCPNCGHSRCDSPIAIEEV
+> RGDAHAGAIRIQTSAMFGLKTDGVDLAYMSFMNGKTQKSIKIDNLHVRTSAPCSLVSHHG
+> YYILAQCPPGDTVTVGFHDGPNRHTCTVAHKVEFRPVGREEYRHPPEHGVELPCNRYTHK
+> RADQGHYVEMHQPGLVADHSLLSIHSAKVKITVPSGAQVKYYCKCPDVREGITSSDHTTT
+> CTDVKQCRAYLIDNKKWVYNFGRLLRGEGDTFKGKLHVPFVPVKAKCIATLAPELLVEHK
+> HRTLILHLHPDHPTLLTTRSLGSDANPIRQWIERPTTVNFTVTGEGLEYTWGNHPPKRVW
+> AQESGEGNPHGWPHEVVVYYYNRYPLTTIIGLCTCVAIIMVSCVTSVWLLCRARNLCITP
+> YKLAPNAQVPILLALLCCIKPTKADDTLQVLNYLWNNNQNFFWMQTLIPLAALIVSMRML
+> RCLFCCGPAFLLVCGALGAAAYEHTAVMPNKVGIPYKALVERPGYAPVHLQIQLVNTRII
+> PSTNLEYITCKYKTKVPSPVVKCCGATQCSSKPHPDYQCQVFTGVYPFMWGGAYCFCDTE
+> NTQMSEAYVERSEECSIDHAKAYKVHTGTVQAMVNITYGSVSWRSADVYVNGETPAKIGD
+> AKLIIGPLSSAWSPFDNKVVVYGHEVYNYDFPEYGTGKAGSFGDLQSRTSTSNDLYANTN
+> LKLQRPQAGIVHTPFTQAPSGFERWKRDKGA
+> > src=MSA|ACC=AF159554|Ver=AF159554.1|CDS=GI:6166365|ref=NC_003899.1|RM=1643..4024|Loc=1157..2815||AA=367..919|symbol=nsP2|Partial=N|product=nsP2 protein|*new*
+> GAIRIQTSAMFGLKTDGVDLAYMSFMNGKTQKSIKIDNLHVRTSAPCSLVSHHGYYILAQ
+> CPPGDTVTVGFHDGPNRHTCTVAHKVEFRPVGREEYRHPPEHGVELPCNRYTHKRADQGH
+> YVEMHQPGLVADHSLLSIHSAKVKITVPSGAQVKYYCKCPDVREGITSSDHTTTCTDVKQ
+> CRAYLIDNKKWVYNFGRLLRGEGDTFKGKLHVPFVPVKAKCIATLAPELLVEHKHRTLIL
+> HLHPDHPTLLTTRSLGSDANPIRQWIERPTTVNFTVTGEGLEYTWGNHPPKRVWAQESGE
+> GNPHGWPHEVVVYYYNRYPLTTIIGLCTCVAIIMVSCVTSVWLLCRARNLCITPYKLAPN
+> AQVPILLALLCCIKPTKADDTLQVLNYLWNNNQNFFWMQTLIPLAALIVSMRMLRCLFCC
+> GPAFLLVCGALGAAAYEHTAVMPNKVGIPYKALVERPGYAPVHLQIQLVNTRIIPSTNLE
+> YITCKYKTKVPSPVVKCCGATQCSSKPHPDYQCQVFTGVYPFMWGGAYCFCDTENTQMSE
+> AYVERSEECSIDH
+> > src=MSA|ACC=AF159554|Ver=AF159554.1|CDS=GI:6166365|ref=NC_003899.1|RM=4025..5680|Loc=2018..3211||AA=654..1051|symbol=nsP3|Partial=N|product=nsP3 protein|*new*
+> HPPKRVWAQESGEGNPHGWPHEVVVYYYNRYPLTTIIGLCTCVAIIMVSCVTSVWLLCRA
+> RNLCITPYKLAPNAQVPILLALLCCIKPTKADDTLQVLNYLWNNNQNFFWMQTLIPLAAL
+> IVSMRMLRCLFCCGPAFLLVCGALGAAAYEHTAVMPNKVGIPYKALVERPGYAPVHLQIQ
+> LVNTRIIPSTNLEYITCKYKTKVPSPVVKCCGATQCSSKPHPDYQCQVFTGVYPFMWGGA
+> YCFCDTENTQMSEAYVERSEECSIDHAKAYKVHTGTVQAMVNITYGSVSWRSADVYVNGE
+> TPAKIGDAKLIIGPLSSAWSPFDNKVVVYGHEVYNYDFPEYGTGKAGSFGDLQSRTSTSN
+> DLYANTNLKLQRPQAGIVHTPFTQAPSGFERWKRDKGA
+> > src=MSA|ACC=AF159554|Ver=AF159554.1|CDS=GI:6166365|ref=NC_003899.1|RM=5684..7525|Loc=3215..3784||AA=1053..1242|symbol=nsP4|Partial=Y|product=nsP4 protein|*new*
+> LNDVAPFGCSIALEPLRAENCAVGSIPISIDIPDAAFTRISETPTVSDLECKITECTYAS
+> DFGGIATVAYKSSKAGNCPIHSPSGVAVIKENDVTLAESGSFTFHFSTANIHPAFKLQVC
+> TSAVTCKGDCKPPKDHIVDYPAQHTDLLTSAISATAWSWLKVLVGGTSAFIVLGLIATAV
+> VALVLFFHRH
+> > src=MSA|ACC=AF159554|Ver=AF159554.1|CDS=GI:6166365|ref=NC_003899.1|RM=47..1642|Loc=59..1156||AA=1..366|symbol=nsP1|Partial=Y|product=nsP1 protein|*new*
+> MFPYPTLNYPPMAPINPMAYRDPNPPRRRWRPFKPPLAAQIEDLRRSIANLTLKQRAPNP
+> PAGPPAKRKKPAPKPKPAQTKKKRPPPPAKKQKRKPKPGKRQRMCMKLESDKTFPIMLNG
+> QVNGYACVVGGRMFKPLHVEGRIDNEQLAAIKLKKASIYDLEYGDVPQCMKSDTLQYTSD
+> KPPGFYNWHHGAVQYENNRFTVPRGVGGKGDSGRPILDNKGRVVAIVLGGVNEGSRTALS
+> VVTWNQKGVTVKDTPEGSEPWSLATVMCVLANITFPCDQPPCMPCCYEKNPHETLTMLEQ
+> NYDSRTYDQLLDAAVKCNARRTRRDLDTHFTRYKLARPYIADCPNCGHSRCDSPIAIEEV
+> RGDAHA
+
+ Test #289, Togaviridae,    AF339484.gb,  fail, comment=ERROR: Difference with old result
+ Test #289, Togaviridae,    AF339484.gb,  $result=diff ./test/output/AF339484_matpept_msa.faa ./test/AF339484_matpept_msa.faa
+6c6,17
+< > src=MSA|ACC=AF339484|Ver=AF339484.1|CDS=GI:28193961|ref=NC_006558.1|RM=7527..8330|Loc=618..1421||AA=1..268|symbol=C|Partial=N|product=C protein
+---
+> > src=MSA|ACC=AF339484|Ver=AF339484.1|CDS=GI:28193961|ref=NC_006558.1|RM=79..1680|Loc=618..971||AA=1..118|symbol=nsP1|GapAtCleavage=Y|Partial=Y|product=nsP1 protein|*new*
+> MNYIPSQTFYGRRWRPRPAFRPWRVPLQPAPPMMIPELQTPIVQAQQMQQLISAVSALTT
+> KQNGKAPKKSKKKPQKTKTKKNEQQKKNENKKPPPKQKNPAKKKKPGKRERMCMKIEN
+> > src=MSA|ACC=AF339484|Ver=AF339484.1|CDS=GI:28193961|ref=NC_006558.1|RM=4075..5646|Loc=2373..3512||AA=586..965|symbol=nsP3|GapAtCleavage=Y|Partial=Y|product=nsP3 protein|*new*
+> VHVPFPLTDSTCRVPLARAPGVTYGKRELTVKLHPDHPTLLTYRSLGADPRPYEEWIDRY
+> AERTIPVTEEGIEYRWGNNPPVRLWAQLTTEGKPHGWPHEIILYYYGLYPAATIAAVSAA
+> GLAVVLSLLASCYMFATARRKCLTPYALTPGAIVPVTLGVLCCAPRAHAASFAESMAYLW
+> DENQTLFWLELATPLAAIIILVCCLKNLLCCCKPLSFLVLVSLGTPVVKSYEHTATIPNV
+> VGFPYKAHIERNGFSPMTLQLEVLGTSLEPTLNLEYITCEYKTVVPSPYIKCCGTSECRS
+> KERPDYQCQVYTGVYPFMWGGAYCFCDTENTQLSEAYVDRSDVCKHDHAAAYKAHTAAMK
+> ATIRISYGNLNQTTTAFVNG
+> > src=MSA|ACC=AF339484|Ver=AF339484.1|CDS=GI:28193961|ref=NC_006558.1|RM=7527..8330|Loc=618..1421||AA=1..268|symbol=C|Partial=N|product=C protein|*new*
+12c23
+< > src=MSA|ACC=AF339484|Ver=AF339484.1|CDS=GI:28193961|ref=NC_006558.1|RM=8331..8522|Loc=1422..1613||AA=269..332|symbol=E3|Partial=N|product=E3 protein
+---
+> > src=MSA|ACC=AF339484|Ver=AF339484.1|CDS=GI:28193961|ref=NC_006558.1|RM=8331..8522|Loc=1422..1613||AA=269..332|symbol=E3|Partial=N|product=E3 protein|*new*
+15c26
+< > src=MSA|ACC=AF339484|Ver=AF339484.1|CDS=GI:28193961|ref=NC_006558.1|RM=8523..9788|Loc=1614..2879||AA=333..754|symbol=E2|Partial=N|product=E2 protein
+---
+> > src=MSA|ACC=AF339484|Ver=AF339484.1|CDS=GI:28193961|ref=NC_006558.1|RM=8523..9788|Loc=1614..2879||AA=333..754|symbol=E2|Partial=N|product=E2 protein|*new*
+24c35
+< > src=MSA|ACC=AF339484|Ver=AF339484.1|CDS=GI:28193961|ref=NC_006558.1|RM=9789..9971|Loc=2880..3062||AA=755..815|symbol=6K|Partial=N|product=6K protein
+---
+> > src=MSA|ACC=AF339484|Ver=AF339484.1|CDS=GI:28193961|ref=NC_006558.1|RM=9789..9971|Loc=2880..3062||AA=755..815|symbol=6K|Partial=N|product=6K protein|*new*
+27c38
+< > src=MSA|ACC=AF339484|Ver=AF339484.1|CDS=GI:28193961|ref=NC_006558.1|RM=9972..11285|Loc=3063..4376||AA=816..1253|symbol=E1|Partial=N|product=E1 protein
+---
+> > src=MSA|ACC=AF339484|Ver=AF339484.1|CDS=GI:28193961|ref=NC_006558.1|RM=9972..11285|Loc=3063..4376||AA=816..1253|symbol=E1|Partial=N|product=E1 protein|*new*
+
+ Test #290, Togaviridae,    AJ316244.gb,  fail, comment=ERROR: Difference with old result
+ Test #290, Togaviridae,    AJ316244.gb,  $result=diff ./test/output/AJ316244_matpept_msa.faa ./test/AJ316244_matpept_msa.faa
+51,57c51,59
+< > src=MSA|ACC=AJ316244|Ver=AJ316244.1|CDS=GI:21262139|ref=NC_003930.1|RM=7869..8714|Loc=7869..8714||AA=1..282|symbol=C|Partial=N|product=capside protein
+< MFPMQFTNSAYRQMEPMFAPGSRGQVQPYRPRTKRRQEPQVGNAAITALANQMSALQLQV
+< AGLAGQARVDRRGPRRVQKNKQKKKNSSNGEKPKEKKKKQKQQEKKGSGGEKVKKTRNRP
+< GKEVRISVKCARQSTFPVYHEGAISGYAVLIGSRVFKPAHVKGKIDHPELADIKFQVAED
+< MDLEAAAYPKSMRDQAAEPATMMDRVYNWEYGTIRVEDNVIIDASGRGKPGDSGRAITDN
+< SGKVVGIVLGGGPDGRRTRLSVIGFDKKMKAREIAYSDAIPW
+< > src=MSA|ACC=AJ316244|Ver=AJ316244.1|CDS=GI:21262139|ref=NC_003930.1|RM=8715..8927|Loc=8715..8927||AA=283..353|symbol=E3|Partial=N|product=E3 protein
+---
+> > src=MSA|ACC=AJ316244|Ver=AJ316244.1|CDS=GI:21262138|ref=NC_003930.1|RM=7869..8714|Loc=1246..2454||AA=407..809|symbol=C|Partial=N|product=capside protein|*new*
+> RALCSWADEVRRDMEDEQDLYGITSVTTWICICRAYDKRQQHTFYRRPKQSSGIYVPAKF
+> TGSLRAALSATYLNLPLKQLLLNTLKRAIKPMDQAIADETEALAHDAAEVHELTEEERRQ
+> QAANPSYIADVLGQDDDEEEAGDGMSDVDLGEEDGAGATIIDCQRGTVKVITAFGDNMMG
+> EYLVLSPVTVLRTRKLAILLGPLAEEVMQYVHKGRTGRYAIEKNNLKVLIPTGVSLKTDH
+> FQALAESATLTYNDYLFTCRTLDQLATRGSARNTDEVYYKLVDAAKARDEYVYELSSKQC
+> VKKEDATGTVLQGDICNPPYHQFAYEALRKRPAHTHDVHTIGIYGVPGAGKTAIITTEVT
+> TRDLVASGKKENCEDIKRCVLERRGLKIAARTVDSLFYGAYRG
+> > src=MSA|ACC=AJ316244|Ver=AJ316244.1|CDS=GI:21262139|ref=NC_003930.1|RM=8715..8927|Loc=8715..8927||AA=283..353|symbol=E3|Partial=N|product=E3 protein|*new*
+60c62
+< > src=MSA|ACC=AJ316244|Ver=AJ316244.1|CDS=GI:21262139|ref=NC_003930.1|RM=8928..10241|Loc=8928..10241||AA=354..791|symbol=E2|Partial=N|product=E2 protein
+---
+> > src=MSA|ACC=AJ316244|Ver=AJ316244.1|CDS=GI:21262139|ref=NC_003930.1|RM=8928..10241|Loc=8928..10241||AA=354..791|symbol=E2|Partial=N|product=E2 protein|*new*
+69c71
+< > src=MSA|ACC=AJ316244|Ver=AJ316244.1|CDS=GI:21262139|ref=NC_003930.1|RM=10242..10445|Loc=10242..10445||AA=792..859|symbol=6K|Partial=N|product=6K protein
+---
+> > src=MSA|ACC=AJ316244|Ver=AJ316244.1|CDS=GI:21262139|ref=NC_003930.1|RM=10242..10445|Loc=10242..10445||AA=792..859|symbol=6K|Partial=N|product=6K protein|*new*
+72c74
+< > src=MSA|ACC=AJ316244|Ver=AJ316244.1|CDS=GI:21262139|ref=NC_003930.1|RM=10446..11828|Loc=10446..11828||AA=860..1320|symbol=E1|Partial=N|product=E1 protein
+---
+> > src=MSA|ACC=AJ316244|Ver=AJ316244.1|CDS=GI:21262139|ref=NC_003930.1|RM=10446..11828|Loc=10446..11828||AA=860..1320|symbol=E1|Partial=N|product=E1 protein|*new*
+
+ Test #291, Togaviridae,    AJ316246.gb,  fail, comment=ERROR: Difference with old result
+ Test #291, Togaviridae,    AJ316246.gb,  $result=diff ./test/output/AJ316246_matpept_msa.faa ./test/AJ316246_matpept_msa.faa
+51c51,78
+< > src=MSA|ACC=AJ316246|Ver=AJ316246.1|CDS=GI:19171522|ref=NC_003433.1|RM=7845..8693|Loc=7845..8693||AA=1..283|symbol=C|Partial=N|product=capsid protein
+---
+> > src=MSA|ACC=AJ316246|Ver=AJ316246.1|CDS=GI:19171521|ref=NC_003433.1|RM=8907..10220|Loc=3178..5013||AA=1051..1662|symbol=E2|Partial=N|product=E2 protein|*new*
+> VLHEAGVLITPEDFNRIFPAFREDKPHSALAALDAVAALVWGLDTSSGILSGKGSFMRLE
+> NSHWSNSNRGYEYGLNLDALEGYEIANPRMIKALKQRRGRECYDIETGKLVPMDPGRVQV
+> PINRVVPHVLVDTSAAAKPGFLENRLSVDRWDQVHSFKTRAAVKFAELTKRVSYNSVLDL
+> GAARGGVTDYCVKKGKTVTCVSEQWDSKPRGAVVITADINGPLNNLGIFDLVFCDAAGPR
+> RYHHYAQCEDHARRSTSACKHGVERTAKGGVFIVKAYGMADRRTERAVECTARYFKSVSV
+> EKPVSSRITNVEVFFKFSGRCRPHARSIAHLGPQLTDIYARTRKAYKMLARGSVADKVKV
+> AEILNSMVGAAPGYRVLNKNIITAEEEVLVNAANSNGRPGDGVCGALYGAFGDAFPNGAI
+> GAGNAVLVRGLEATIIHAAGADFREVDEETGARQLRAAYRAAATLVTANGITSAAIPLLS
+> THIFSNGRNRLEQSFGALVEAFDTTECDVTIYCLANNMAARIQQLIDDHAREEFDEEVVV
+> EEEEEHEANAMCDTETLSSFGDETVWVPKHSTLAGRPGYSATYGDRRSLFVGTKFHRAAV
+> AMSSIEAAWPRT
+> > src=MSA|ACC=AJ316246|Ver=AJ316246.1|CDS=GI:19171521|ref=NC_003433.1|RM=10221..10424|Loc=5014..5250||AA=1663..1741|symbol=6K|Partial=N|product=6K protein|*new*
+> KEANAKLIEYIRGQHLVDVLKSCPVNDIPVGRPPSSLPCGCIYAMTPERVTVLKQRPQEG
+> FVVCSAFKLPLTNIQDVTK
+> > src=MSA|ACC=AJ316246|Ver=AJ316246.1|CDS=GI:19171521|ref=NC_003433.1|RM=10425..11810|Loc=5251..7179||AA=1742..2384|symbol=E1|Partial=N|product=E1 protein|*new*
+> VECTVRAPAEEPRPVRYLQERRPVQAAARQPRPAIVAASVAGTATSRRTPAPGSVQVRLL
+> PPRDGTVSRSSRTSSQSSVTSSAGPIMPVPRRAPVAPAASLAGSVHSHSVRSAPAILRAA
+> STGARSVRSVQSGLTGHRDDAVSVAGSVRQPSGPPSSVSTPAAPRGLTREQFGAVRARAR
+> RDLELEGSEHGSQASFRSGSLVVGSTASSYSQRPDDQDTGSEPSGRGAAVRTRRRGQRDG
+> PGGYIFSSDQGTAHLSQHNTQTNNTTEVLMRTSVLPSNDHGTPDLLAEMKKRLAYQMRPT
+> QKNKSRYLSAKVHNMKHKIVQCLQRGAGHYLREQHALPLWKNTFPKPRYSDACVVKFESV
+> NTAIVAANMFIGCNYPTLSSFGVTDKYDAYLDMVDGLNCNLDTVTFEPAKVRSLPKKSKY
+> NQPLIQSQVPGPMASTLQSILMAATKRNCNVTQMRELPTMDSAAMNVEAFKKFACKDTDL
+> WTEFAEKPVRLSPGQIEEYVFHLQGAKANVMHSRVEAACPDLSEVAMDRFTLDMKRDVKV
+> TPGTKHVEERPKVQVIQAADPMATAYLCAIHRELVRRLKAVLKPSIHVLFDMSSEDFDAI
+> VGHGMKLGDKVLETDISSFDKSQDQAMAVTALMLLEDLGVEED
+> > src=MSA|ACC=AJ316246|Ver=AJ316246.1|CDS=GI:19171522|ref=NC_003433.1|RM=7845..8693|Loc=7845..8693||AA=1..283|symbol=C|Partial=N|product=capsid protein|*new*
+57c84
+< > src=MSA|ACC=AJ316246|Ver=AJ316246.1|CDS=GI:19171522|ref=NC_003433.1|RM=8694..8906|Loc=8694..8906||AA=284..354|symbol=E3|Partial=N|product=E3 protein
+---
+> > src=MSA|ACC=AJ316246|Ver=AJ316246.1|CDS=GI:19171522|ref=NC_003433.1|RM=8694..8906|Loc=8694..8906||AA=284..354|symbol=E3|Partial=N|product=E3 protein|*new*
+60,80d86
+< > src=MSA|ACC=AJ316246|Ver=AJ316246.1|CDS=GI:19171522|ref=NC_003433.1|RM=8907..10220|Loc=8907..10220||AA=355..792|symbol=E2|Partial=N|product=E2 protein
+< AVSTSPVAVYDTQILAAHAAASPYRAYCPDCDGTACISPIAIDEVVSSGSDHVLRIRVGS
+< QSGVTAKGGAAGETSLRYLGRDGKVYAADNTRLVVRTTAKCDVLQATGHYILANCPVGQS
+< LTVAATLDGTRHQCTTVFEHQVTEKFTRERSKGHHLSDLTKKCTRFSTTPKKSALYLVDV
+< YDALPTSVEISTVVTCNERQCTVRVPPGTTVKFDKRCKNAAKETVTFTSDSQTFTCEEPV
+< LTAASITQGKPHLRSSMLPSGGKEVKARIPFPFPPETATCRVSIAPLPSITYEESDVLLA
+< GTAKYPVLLTTRNLGFHSNATSEWIQGKYLRRIPVTPQGIELMLGNNAPLHFWSSVRYAS
+< GDADAYPWELLVHHIKHHPEYAWAFVGVACGLLAVAACMFACACNRVRYSLLANTFNPNP
+< PPLTALTAALCCIPGARA
+< > src=MSA|ACC=AJ316246|Ver=AJ316246.1|CDS=GI:19171522|ref=NC_003433.1|RM=10221..10424|Loc=10221..10424||AA=793..860|symbol=6K|Partial=N|product=6K protein
+< DQPYLDIIAYLWTNSKVAFGLQCAAPVACMLIVTYALRHCRLCCNSFLGVRGWSALLVIL
+< AYVQSCKA
+< > src=MSA|ACC=AJ316246|Ver=AJ316246.1|CDS=GI:19171522|ref=NC_003433.1|RM=10425..11810|Loc=10425..11810||AA=861..1322|symbol=E1|Partial=N|product=E1 protein
+< YEHTVVVPMDPRAPSYEAVINRNGYDPLKLTIAVNFTVISPTTALEYWTCAGVPVVEPPH
+< VGCCTSVSCPSDLSTLHAFTGKAVSDVHCDVHTNVYPLLWGAAHCFCSTENTQVSAVAAT
+< VSEFCAQDSERAEAFSVHSSSVTAEILVTLGEVVTAVHVYVDGVTSARGTDLKIVAGPIT
+< TDYSPFDRKVVRIGEEVYNYDWPPYGAGRPGTFGDIQARSTNYVKPNDLYGDIGIEVLQP
+< TNDHVHVAYTYTTSGLLRWLQDAPKPLSVTAPHGCKISANPLLALDCGVGAVPMSINIPD
+< AKFTRKLKDPKPSALKCVVDSCEYGVDYGGAATITYEGHEAGKCGIHSLTPGVPLRTSVV
+< EVVAGANTVKTTFSSPTPEVTLEVEICSAIVKCASECTPPKEHVVAARPRHGSDTGGYIS
+< GPAMRWAGRIVGNPSGPVSSSLAVTYCVVKKCRSKRIRIVKS
+
+ Test #292, Togaviridae,    AY823299.gb,  fail, comment=ERROR: Difference with old result
+ Test #292, Togaviridae,    AY823299.gb,  $result=diff ./test/output/AY823299_matpept_msa.faa ./test/AY823299_matpept_msa.faa
+48a49,61
+> > src=MSA|ACC=AY823299|Ver=AY823299.1|CDS=GI:56789994|ref=NC_001449.1|RM=8564..9832|Loc=2285..3907||AA=748..1288|symbol=E2|Partial=N|product=E2 envelope glycoprotein|*new*
+> NCAEIIRDVKKMKGLDVNARTVDSVLLNGCKHPVETLYIDEAFACHAGTLRALIAIIRPK
+> KAVLCGDPKQCGFFNMMCLKVHFNHEICTQVFHKSISRRCTKSVTSVVSTLFYDKRMRTT
+> NPRDSKIEIDTTGSTKPKKDDLILTCFRGWVKQLQIDYKGNEIMTAAASQGLTRKGVYAV
+> RYKVNENPLYAPTSEHVNVLLTRTEDKIVWKTLAGDPWIKTLTAKYPGDFTATMEEWQAE
+> HDAIMRHILEKPDPTDVFQNKANVCWAKALVPVLKTAGIDLTTEQWNTVDYFKEDKAHSA
+> EIVLNQLCVRFFGLDLDSGLFSAPTVPLSIRNNHWDNSPSPNMYGLNQEVVRQLSRRYPQ
+> LPRAVTTGRAYDMNTGTLRNYDPRINLVPVNRRLPHALVTQHADYPPSDFSAFVSKLKGR
+> TVLVVGEKMSISGKTVDWLSETPDSTFRARLDLGIPSELPKYDIVFVNVRTQYRYHHYQQ
+> CEDHAIKLSMLTKKACLHLNPGGTCVSIGYGYADRASESIIGAVARQFKFSRVCKPKVSK
+> E
+> > src=MSA|ACC=AY823299|Ver=AY823299.1|CDS=GI:56789994|ref=NC_001449.1|RM=9833..10000|Loc=3908..4084||AA=1289..1347|symbol=6K|Partial=N|product=6K membrane protein|*new*
+> ETEVLFVFIGFDRKTRTHNPYKLSSTLTNIYTGSRLHEAGCAPSYHVVRGDIATATEGV
+57,67d69
+< > src=MSA|ACC=AY823299|Ver=AY823299.1|CDS=GI:56789995|ref=NC_001449.1|RM=8564..9832|Loc=8575..9843||AA=334..756|symbol=E2|Partial=N|product=E2 envelope glycoprotein|*new*
+< STEELFKEYKLTRPYMARCIRCAVGSCHSPIAIEAVRSEGHDGYVRLQTSSQYGLDPSGN
+< LKGRTMRYDMHGTIEEIPLHQVSVHTSRPCHIIDGHGYFLLARCPAGDSITMEFKKESVT
+< HSCSVPYEVKFNPAGRELYTHPPEHGAEQPCHVYAHDAQNRGAYVEMHLPGSEVDSTLLS
+< MSGSSVHVTPPAGQSVQVECECGGTKISETINSAKQYNQCSKTSQCRAYRTQNDKWVYNS
+< DKLPKASGETLKGKLHVPFVLTEAKCTVPLAPEPIITFGFRSVSLKLHPKNPTFLTTRQL
+< DGEPAYTHELITHPVVRNFSVTEKGWEFVWGNHPPQRYWSQETAPGNPHGLPHEVITHYY
+< HRYPMSTILGLSICTAIVTTSIAASVWLFCKSRISCLTPYRLTPNARMPLCLAVLCCART
+< AKA
+< > src=MSA|ACC=AY823299|Ver=AY823299.1|CDS=GI:56789995|ref=NC_001449.1|RM=9833..10000|Loc=9844..10011||AA=757..812|symbol=6K|Partial=N|product=6K membrane protein|*new*
+< ETTWESLDHLWNHNQQMFWSQLLIPLAALIVATRLLKCVCCVVPFLVVAGAVGAGA
+
+ Test #293, Togaviridae,    AY973944.gb,  fail, comment=ERROR: Difference with old result
+ Test #293, Togaviridae,    AY973944.gb,  $result=diff ./test/output/AY973944_matpept_msa.faa ./test/AY973944_matpept_msa.faa
+49,54c49,57
+< > src=MSA|ACC=AY973944|Ver=AY973944.1|CDS=GI:62824835|ref=NC_001449.1|RM=7562..8386|Loc=7529..8353||AA=1..275|symbol=C|Partial=N|product=core protein|*new*
+< MFPFQPMYPMQPMPYRNPFAAPRRPWFPRTDPFLAMQVQELTRSMANLTFKQRRDAPPEG
+< PPAKKPKREAPQKQKGGGQGKKKKNQGKKKAKTGPPNPKAQSGNKKKPNKKPGKRQRMVM
+< KLESDKTFPIMLEGKINGYACVVGGKLFRPMHVEGKIDNDVLAALKTKKASKYDLEYADV
+< PQNMRADTFKYTHEKPQGYYSWHHGAVQYENGRFTVPKGVGAKGDSGRPILDNQGRVVAI
+< VLGGVNEGSRTALSVVMWNEKGVTVKYTPENCEQW
+---
+> > src=MSA|ACC=AY973944|Ver=AY973944.1|CDS=GI:62824834|ref=NC_001449.1|RM=7562..8386|Loc=63..1085||AA=18..358|symbol=C|GapAtCleavage=Y|Partial=N|product=core protein|*new*
+> LQRSFPQFEVEAKQVTDNDHANARAFSHLASKLIETEVDPSDTILDIGSAPARRMYSKHK
+> YHCICPMRCAEDPDRLYKYATKLKKNCKEITDKELDKKMKELAAVMSDPDLETETMCLHD
+> DESCRYEGQVAVYQDVYAVDGPTSLYHQANKGVRVAYWIGFDTTPFMFKNLAGAYPSYST
+> NWADETVLTARNIGLCSSDVMERSRRGMSILRKKYLKPSNNVLFSVGSTIYHEKRDLLRS
+> WHLPSVFHLRGKQNYTCRCETIVSCDGYVVKRIAISPGLYGKPSGYAATMHREGFLCCKV
+> TDTLNGERVSFPVCTYVPATLCDQMTGILATDVSADDAQKL
+> > src=MSA|ACC=AY973944|Ver=AY973944.1|CDS=GI:62824834|ref=NC_001449.1|RM=9833..10000|Loc=3876..4052||AA=1289..1347|symbol=6K|GapAtCleavage=Y|Partial=N|product=6K membrane protein|*new*
+> ETEVLFVFIGYDRKARTHNPYKLSSTLTNIYTGSRLHEAGCAPSYHVVRGDIATATEGV
+66,67d68
+< > src=MSA|ACC=AY973944|Ver=AY973944.1|CDS=GI:62824835|ref=NC_001449.1|RM=9833..10000|Loc=9800..9967||AA=758..813|symbol=6K|Partial=N|product=6K membrane protein|*new*
+< ETTWESLDHLWNNNQQMFWIQLLIPLAALIVVTRLLKCVCCVVPFLVVAGAAGAGA
+
+ Test #294, Togaviridae,    CS227856.gb,  fail, comment=ERROR: Difference with old result
+ Test #294, Togaviridae,    CS227856.gb,  $result=diff ./test/output/CS227856_matpept_msa.faa ./test/CS227856_matpept_msa.faa
+12a13,18
+> > src=MSA|ACC=CS227856|Ver=CS227856.1|CDS=GI:83695091|ref=NC_001547.1|RM=1680..4100|Loc=8631..9122||AA=1..164|symbol=nsP2|Partial=Y|product=nsp2 nonstructural protein|*new*
+> SVIDDFTLTSPYLGTCSYCHHTVPCFSPVKIEQVWDEADDNTIRIQTSAQFGYDQSGAAS
+> ANKYRYMSLKQDHTVKEGTMDDIKISTSGPCRRLSYKGYFLLAKCPPGDSVTVSIVSSNS
+> ATSCTLARKIKPKFVGREKYDLPPVHGKKIPCTVYDRLKETTAG
+> > src=MSA|ACC=CS227856|Ver=CS227856.1|CDS=GI:83695091|ref=NC_001547.1|RM=5751..7598|Loc=9831..9899||AA=401..423|symbol=nsP4|Partial=Y|product=nsp4 nonstructural protein (putative start); putative|*new*
+> ALAPNAVIPTSLALLCCVRSANA
+
+ Test #295, Togaviridae,    DQ085359.gb,  pass
+ Test #296, Togaviridae,    DQ189086.gb,  fail, comment=ERROR: Difference with old result
+ Test #296, Togaviridae,    DQ189086.gb,  $result=diff ./test/output/DQ189086_matpept_msa.faa ./test/DQ189086_matpept_msa.faa
+80,97c80,101
+< > src=MSA|ACC=DQ189086|Ver=DQ189086.1|CDS=GI:75859978|ref=NC_003215.1|RM=7420..8220|Loc=7338..8138||AA=1..267|symbol=C|Partial=N|product=C protein|*new*
+< MNYIPTQTFYGRRWRPRPAARPWPLQATPVAPVVPDFQAQQMQQLISAVNALTMRQNAIA
+< PARPPKPKKKKTTKPKPKTQPKKINGKTQQQKKKDKQADKKKKKPGKRERMCMKIENDCI
+< FEVKHEGKVTGYACLVGDKVMKPAHVKGVIDNADLAKLAFKKSSKYDLECAQIPVHMRSD
+< ASKYTHEKPEGHYNWHHGAVQYSGGRFTIPTGAGKPGDSGRPIFDNKGRVVAIVLGGANE
+< GSRTALSVVTWNKDMVTRVTPEGSEEW
+< > src=MSA|ACC=DQ189086|Ver=DQ189086.1|CDS=GI:75859978|ref=NC_003215.1|RM=8221..8418|Loc=8139..8336||AA=268..333|symbol=E3|Partial=N|product=E3 protein|*new*
+< SAPLITAMCVLANATFPCFQPPCVPCCYENNAEATLRMLEDNVDRPGYYDLLQAALTCRN
+< GTRHRR
+< > src=MSA|ACC=DQ189086|Ver=DQ189086.1|CDS=GI:75859978|ref=NC_003215.1|RM=8419..9684|Loc=8337..9602||AA=334..755|symbol=E2|Partial=N|product=E2 protein|*new*
+< SVSQHFNVYKATRPYIAYCADCGAGHSCHSPVAIEAVRSEATDGMLKIQFSAQIGIDKSD
+< NHDYTKIRYADGHAIENAVRSSLKVATSGDCFVHGTMGHFILAKCPPGEFLQVSIQDTRN
+< AVRACRIQYHHDPQPVGREKFTIRPHYGKEIPCTTYQQTTAETVEEIDMRMPPDTPDRTL
+< LSQQSGNVKITVGGKKVKYNCTCGTGNVGTTNSDMTINTCLIEQCHVSVTDHKKWQFNSP
+< FVPRADEPARKGKVHIPFPLDNITCRVPMAREPTVIHGKREVTLHLHPDHPTLFSYRTLG
+< EDPQYHEEWVTAAVERTIPVPVDGMEYHWGNNDPVRLWSQLTTEGKPHGWPHQIVQYYYG
+< LYPAATVSAVVGMSLLALISIFASCYMLVAARSKCLTPYALTPGAAVPWTLGILCCAPRA
+< HA
+---
+> > src=MSA|ACC=DQ189086|Ver=DQ189086.1|CDS=GI:75859977|ref=NC_003215.1|RM=7420..8220|Loc=19..1077||AA=7..359|symbol=C|Partial=N|product=C protein|*new*
+> VDIEADSPFIKSLQKAFPSFEVESLQVTPNDHANARAFSHLATKLIEQETDKDTLILDIG
+> SAPSRRMMSTHKYHCVCPMRSAEDPERLVCYAKKLAAASGKVLDREIAGKITDLQTVMAT
+> PDAESPTFCLHTDVTCRTAAEVAVYQDVYAVHAPTSLYHQAMKGVRTAYWIGFDTTPFMF
+> DALAGAYPTYATNWADEQVLQARNIGLCAASLTEGRLGKLSILRKKQLKPCDTVMFSVGS
+> TLYTESRKLLRSWHLPSVFHLKGKQSFTCRCDTIVSCEGYVVKKITMCPGLYGKTVGYAV
+> TYHAEGFLVCKTTDTVKGERVSFPVCTYVPSTICDQMTGILATDVTPEDAQKL
+> > src=MSA|ACC=DQ189086|Ver=DQ189086.1|CDS=GI:75859977|ref=NC_003215.1|RM=8221..8418|Loc=1078..1305||AA=360..435|symbol=E3|Partial=N|product=E3 protein|*new*
+> LVGLNQRIVVNGRTQRNTNTMKNYLLPIVAVAFSKWAREYKADLDDEKPLGVRERSLTCC
+> CLWAFKTRKMHTMYKK
+> > src=MSA|ACC=DQ189086|Ver=DQ189086.1|CDS=GI:75859977|ref=NC_003215.1|RM=8419..9684|Loc=1306..3120||AA=436..1040|symbol=E2|Partial=N|product=E2 protein|*new*
+> PDTQTIVKVPSEFNSFVIPSLWSTGLAIPVRSRIKMLLAKKTKRELIPVLDASSARDAEQ
+> EEKERLEAELTREALPPLVPIAPAETGVVDVDVEELEYHAGAGVVETPRSALKVTAQPND
+> VLLGNYVVLSPQTVLKSSKLAPVHPLAEQVKIITHNGRAGRYQVDGYDGRVLLPCGSAIP
+> VPEFQALSESATMVYNEREFVNRKLYHIAVHGPSLNTDEENYEKVRAERTDAEYVFDVDK
+> KCCVKREEASGLVLVGELTNPPFHEFAYEGLKIRPSAPYKTTVVGVFGVPGSGKSAIIKS
+> LVTKHDLVTSGKKENCQEIVNDVKKHRGLDIQAKTVDSILLNGCRRAVDILYVDEAFACH
+> SGTLLALIALVKPRSKVVLCGDPKQCGFFNMMQLKVNFNHNICTEVCHKSISRRCTRPVT
+> AIVSTLHYGGKMRTTNPCNKPIIIDTTGQTKPKPGDIVLTCFRGWVKQLQLDYRGHEVMT
+> AAASQGLTRKGVYAVRQKVNENPLYAPASEHVNVLLTRTEDRLVWKTLAGDPWIKVLSNI
+> PQGNFTATLEEWQEEHDKIMKVIEGPAAPVDAFQNKANVCWAKSLVPVLDTAGIRLTAEE
+> WSTII
+
+ Test #297, Togaviridae,    DQ241304.gb,  fail, comment=ERROR: Difference with old result
+ Test #297, Togaviridae,    DQ241304.gb,  $result=diff ./test/output/DQ241304_matpept_msa.faa ./test/DQ241304_matpept_msa.faa
+80c80
+< > src=MSA|ACC=DQ241304|Ver=DQ241304.1|CDS=GI:78499743|ref=NC_003899.1|RM=7592..8371|Loc=7538..8320||AA=1..261|symbol=C|Partial=N|product=C protein
+---
+> > src=MSA|ACC=DQ241304|Ver=DQ241304.1|CDS=GI:78499743|ref=NC_003899.1|RM=7592..8371|Loc=7538..8320||AA=1..261|symbol=C|Partial=N|product=C protein|*new*
+96c96
+< > src=MSA|ACC=DQ241304|Ver=DQ241304.1|CDS=GI:78499743|ref=NC_003899.1|RM=8372..8560|Loc=8321..8509||AA=262..324|symbol=E3|Partial=N|product=E3 protein
+---
+> > src=MSA|ACC=DQ241304|Ver=DQ241304.1|CDS=GI:78499743|ref=NC_003899.1|RM=8372..8560|Loc=8321..8509||AA=262..324|symbol=E3|Partial=N|product=E3 protein|*new*
+99c99
+< > src=MSA|ACC=DQ241304|Ver=DQ241304.1|CDS=GI:78499743|ref=NC_003899.1|RM=8561..9820|Loc=8510..9769||AA=325..744|symbol=E2|Partial=N|product=E2 protein
+---
+> > src=MSA|ACC=DQ241304|Ver=DQ241304.1|CDS=GI:78499743|ref=NC_003899.1|RM=8561..9820|Loc=8510..9769||AA=325..744|symbol=E2|Partial=N|product=E2 protein|*new*
+107c107
+< > src=MSA|ACC=DQ241304|Ver=DQ241304.1|CDS=GI:78499743|ref=NC_003899.1|RM=9821..9991|Loc=9770..9940||AA=745..801|symbol=6K|Partial=N|product=6K protein
+---
+> > src=MSA|ACC=DQ241304|Ver=DQ241304.1|CDS=GI:78499743|ref=NC_003899.1|RM=9821..9991|Loc=9770..9940||AA=745..801|symbol=6K|Partial=N|product=6K protein|*new*
+109c109
+< > src=MSA|ACC=DQ241304|Ver=DQ241304.1|CDS=GI:78499743|ref=NC_003899.1|RM=9992..11314|Loc=9941..11263||AA=802..1242|symbol=E1|Partial=N|product=E1 protein
+---
+> > src=MSA|ACC=DQ241304|Ver=DQ241304.1|CDS=GI:78499743|ref=NC_003899.1|RM=9992..11314|Loc=9941..11263||AA=802..1242|symbol=E1|Partial=N|product=E1 protein|*new*
+
+ Test #298, Togaviridae,    EF012359.gb,  fail, comment=ERROR: Difference with old result
+ Test #298, Togaviridae,    EF012359.gb,  $result=diff ./test/output/EF012359_matpept_msa.faa ./test/EF012359_matpept_msa.faa
+48,53c48,57
+< > src=MSA|ACC=EF012359|Ver=EF012359.1|CDS=GI:116295205|ref=NC_004162.2|RM=7567..8349|Loc=7567..8349||AA=1..261|symbol=C|Partial=N|product=C protein|*new*
+< MEFIPTQTFYNRRYQPRPWTPRPTIQVIRPRPRPQRQAGQLAQLISAVNKLTMRAVPQQK
+< PRRNRKNKKQKQKQQAPQNNTNQKKQPPKKKPAQKKKKPGRRERMCMKIENDCIFEVKHE
+< GKVTGYACLVGDKVMKPAHVKGTIDNADLAKLAFKRSSKYDLECAQIPVHMKSDASKFTH
+< EKPEGYYNWHHGAVQYSGGRFTIPTGAGKPGDSGRPIFDNKGRVVAIVLGGANEGARTAL
+< SVVTWNKDIVTKITPEGAEEW
+---
+> > src=MSA|ACC=EF012359|Ver=EF012359.1|CDS=GI:116295204|ref=NC_004162.2|RM=7567..8349|Loc=149..1150||AA=25..358|symbol=C|GapAtCleavage=Y|Partial=N|product=C protein|*new*
+> FEVEPRQVTPNDHANARAFSHLAIKLIEQEIDPDSTILDIGSAPARRMMSDRKYHCVCPM
+> RSAEDPERLANYARKLASAAGKVLDRNISGKIGDLQAVMAVPDTETPTFCLHTDVSCRQR
+> ADVAIYQDVYAVHAPTSLYHQAIKGVRVAYWVGFDTTPFMYNAMAGAYPSYSTNWADEQV
+> LKAKNIGLCSTDLTEGRRGKLSIMRGKKLKPCDRVLFSVGSTLYPESRKLLKSWHLPSVF
+> HLKGKLSFTCRCDTVVSCEGYVVKRITMSPGLYGKTTGYAVTHHADGFLMCKTTDTVDGE
+> RVSFSVCTYVPATICDQMTGILATEVTPEDAQKL
+> > src=MSA|ACC=EF012359|Ver=EF012359.1|CDS=GI:116295204|ref=NC_004162.2|RM=9811..9993|Loc=4157..4339||AA=1361..1421|symbol=6K|GapAtCleavage=Y|Partial=N|product=6K protein|*new*
+> LPGDGVCKAVYKKWPESFKNSATPVGTAKTVMCGTYPVIHAVGPNFSNYSESEGDRELAA
+> A
+66,68d69
+< > src=MSA|ACC=EF012359|Ver=EF012359.1|CDS=GI:116295205|ref=NC_004162.2|RM=9811..9993|Loc=9811..9993||AA=749..809|symbol=6K|Partial=N|product=6K protein|*new*
+< ATYQEAAIYLWNEQQPLFWLQALIPLAALIVLCNCLRLLPCCCKTLAFLAVMSVGAHTVS
+< A
+
+ Test #299, Togaviridae,    EF568607.gb,  fail, comment=ERROR: Difference with old result
+ Test #299, Togaviridae,    EF568607.gb,  $result=diff ./test/output/EF568607_matpept_msa.faa ./test/EF568607_matpept_msa.faa
+82c82
+< > src=MSA|ACC=EF568607|Ver=EF568607.1|CDS=GI:148372329|ref=NC_003899.1|RM=7592..8371|Loc=7595..8377||AA=1..261|symbol=C|Partial=N|product=C protein
+---
+> > src=MSA|ACC=EF568607|Ver=EF568607.1|CDS=GI:148372329|ref=NC_003899.1|RM=7592..8371|Loc=7595..8377||AA=1..261|symbol=C|Partial=N|product=C protein|*new*
+98c98
+< > src=MSA|ACC=EF568607|Ver=EF568607.1|CDS=GI:148372329|ref=NC_003899.1|RM=8372..8560|Loc=8378..8566||AA=262..324|symbol=E3|Partial=N|product=E3 protein
+---
+> > src=MSA|ACC=EF568607|Ver=EF568607.1|CDS=GI:148372329|ref=NC_003899.1|RM=8372..8560|Loc=8378..8566||AA=262..324|symbol=E3|Partial=N|product=E3 protein|*new*
+101c101
+< > src=MSA|ACC=EF568607|Ver=EF568607.1|CDS=GI:148372329|ref=NC_003899.1|RM=8561..9820|Loc=8567..9826||AA=325..744|symbol=E2|Partial=N|product=E2 protein
+---
+> > src=MSA|ACC=EF568607|Ver=EF568607.1|CDS=GI:148372329|ref=NC_003899.1|RM=8561..9820|Loc=8567..9826||AA=325..744|symbol=E2|Partial=N|product=E2 protein|*new*
+109c109
+< > src=MSA|ACC=EF568607|Ver=EF568607.1|CDS=GI:148372329|ref=NC_003899.1|RM=9821..9991|Loc=9827..9997||AA=745..801|symbol=6K|Partial=N|product=6K protein
+---
+> > src=MSA|ACC=EF568607|Ver=EF568607.1|CDS=GI:148372329|ref=NC_003899.1|RM=9821..9991|Loc=9827..9997||AA=745..801|symbol=6K|Partial=N|product=6K protein|*new*
+111c111
+< > src=MSA|ACC=EF568607|Ver=EF568607.1|CDS=GI:148372329|ref=NC_003899.1|RM=9992..11314|Loc=9998..11320||AA=802..1242|symbol=E1|Partial=N|product=E1 protein
+---
+> > src=MSA|ACC=EF568607|Ver=EF568607.1|CDS=GI:148372329|ref=NC_003899.1|RM=9992..11314|Loc=9998..11320||AA=802..1242|symbol=E1|Partial=N|product=E1 protein|*new*
+
+ Test #300, Togaviridae,    EU037962.gb,  fail, comment=ERROR: Difference with old result
+ Test #300, Togaviridae,    EU037962.gb,  $result=diff ./test/output/EU037962_matpept_msa.faa ./test/EU037962_matpept_msa.faa
+48,53c48,57
+< > src=MSA|ACC=EU037962|Ver=EU037962.1|CDS=GI:156751974|ref=NC_004162.2|RM=7567..8349|Loc=7567..8349||AA=1..261|symbol=C|Partial=N|product=C protein|*new*
+< MEFIPTQTFYNRRYQPRPWTPRPTIQVIRPRPRPQRQAGQLAQLISAVNKLTMCAVPQQK
+< PRRNRKNKKQKQKQQAPQNNTNXKKQPPKKKPAQKKKKPGRRERMCMKIENDCXFEVKHE
+< GKVTGYXCLVGNKVMKPAHVKGTIDNADLAKLAFKRSSKYDLECAQIPVHMKSDASKFTH
+< EKPEGYYNWHHGAVQYSGGRFTIPTGAGKPGDSGRPIFDNKGRVVAIVLGGANEGARTAL
+< SVVTWNKDIVTKITPEGAEEW
+---
+> > src=MSA|ACC=EU037962|Ver=EU037962.1|CDS=GI:156751973|ref=NC_004162.2|RM=7567..8349|Loc=149..1150||AA=25..358|symbol=C|GapAtCleavage=Y|Partial=N|product=C protein|*new*
+> FEVEPRQVTPNDHANARAFSHLAIKLIEQEIDPDSTILDIGSAPARRMMSDRKYHCVCPM
+> RSAEDPERLANYARKLASAAGKVLDRNISGKIGDLQAVMAVPDTETPTFCLHTDVSCRQR
+> ADVAIYQDVYAVHAPTSLYHQAIKGVRVAYWVGFDTTPFMYNAMAGAYPSYSTNWADEQV
+> LKAKNIGLCSTDLTEGRRGKLSIMRGKKLKPCDRVLFSVGSTLYPESRKLLKSWHLPSVF
+> HLKGKLSFTCRCDTVVSCEGYVVKRITMSPGLYGKTTGYAVTHHADGFLLCKTTDTVDGE
+> RVSFSVCTYVPATICDQMTGILATEVTPEDAQKL
+> > src=MSA|ACC=EU037962|Ver=EU037962.1|CDS=GI:156751973|ref=NC_004162.2|RM=9811..9993|Loc=4157..4339||AA=1361..1421|symbol=6K|GapAtCleavage=Y|Partial=N|product=6K protein|*new*
+> LPGDGVCKAVYKKWPESFKNSATPVGTAKTVMCGTYPVIHAVGPNFSNYSESEGDRELAA
+> A
+66,68d69
+< > src=MSA|ACC=EU037962|Ver=EU037962.1|CDS=GI:156751974|ref=NC_004162.2|RM=9811..9993|Loc=9811..9993||AA=749..809|symbol=6K|Partial=N|product=6K protein|*new*
+< ATYQEAAIYLWNEQQPLFWLQALIPLAALIVLCNCLRLLPCCCKTLAFLAVMSVGAHTVS
+< A
+
+ Test #301, Togaviridae,    EU372006.gb,  fail, comment=ERROR: Difference with old result
+ Test #301, Togaviridae,    EU372006.gb,  $result=diff ./test/output/EU372006_matpept_msa.faa ./test/EU372006_matpept_msa.faa
+48,53c48,57
+< > src=MSA|ACC=EU372006|Ver=EU372006.1|CDS=GI:169798712|ref=NC_004162.2|RM=7567..8349|Loc=7567..8349||AA=1..261|symbol=C|Partial=N|product=C protein|*new*
+< MEFIPTQTFYNRRYQPRPWTPRSTIQVIRPRPRPQRQAGQLAQLISAVNKLTMRAVPQQK
+< PRRNRKNKKQKQKQQAPQNNTNQKKQPPKKKPAQKKKKPGRRERMCMKIENDCIFEVKHE
+< GKVTGYACLVGDKVMKPAHVKGTIDNADLAKLAFKRSSKYDLECAQIPVHMKSDASKFTH
+< EKPEGYYNWHHGAVQYSGGRFTIPTGAGKPGDSGRPIFDNKGRVVAIVLGGANEGARTAL
+< SVVTWNKDIVTKITPEGAEEW
+---
+> > src=MSA|ACC=EU372006|Ver=EU372006.1|CDS=GI:169798711|ref=NC_004162.2|RM=7567..8349|Loc=149..1150||AA=25..358|symbol=C|GapAtCleavage=Y|Partial=N|product=C protein|*new*
+> FEVEPRQVTPNDHANARAFSHLAIKLIEQEIDPDSTILDIGSAPARRMMSDRKYHCVCPM
+> RSAEDPERLANYARKLASAAGKVLDRNISGKIGDLQAVMAVPDKETPTFCLHTDVSCRQR
+> ADVAIYQDVYAVHAPTSLYHQAIKGVRVAYWVGFDTTPFTYNAMAGAYPSYSTNWADEQV
+> LKAKNIGLCSTDLTEGRRGKLSIMRGKKLKPCDRVLFSVGSTLYPESRKLLKSWHLPSVF
+> HLKGKLSFTCRCDTVVSCEGYVVKRITMSPGLYGKTTGYAVTHHADGFLLCKTTDTVDGE
+> RVSFSVCTYVPATICDQMTGILATEVTPEDAQKL
+> > src=MSA|ACC=EU372006|Ver=EU372006.1|CDS=GI:169798711|ref=NC_004162.2|RM=9811..9993|Loc=4157..4339||AA=1361..1421|symbol=6K|GapAtCleavage=Y|Partial=N|product=6K protein|*new*
+> LPGDGVCKAVYKKWPESFKNSATPVGTAKTVMCGTYPVIHAVGPNFSNYSESEGDRELAA
+> A
+66,68d69
+< > src=MSA|ACC=EU372006|Ver=EU372006.1|CDS=GI:169798712|ref=NC_004162.2|RM=9811..9993|Loc=9811..9993||AA=749..809|symbol=6K|Partial=N|product=6K protein|*new*
+< ATYQEAAIYLWNEQQPLFWLQALIPLAALIVLCNCLRLLPCCCKTLAFLAVMSVGAHTVS
+< A
+
+ Test #302, Togaviridae,    EU708314.gb,  pass
+ Test #303, Togaviridae,    FJ744526.gb,  fail, comment=ERROR: Difference with old result
+ Test #303, Togaviridae,    FJ744526.gb,  $result=diff ./test/output/FJ744526_matpept_msa.faa ./test/FJ744526_matpept_msa.faa
+21a22,34
+> > src=MSA|ACC=FJ744526|Ver=FJ744526.1|CDS=GI:255654016|ref=NC_001547.1|RM=4101..5747|Loc=1341..2351||AA=447..783|symbol=nsP3|Partial=Y|product=nsp3 nonstructural protein|*new*
+> GDPHGWPHEIVQHYYHRHPVYTVMVLVAATLAIVLGVSVASACVCRARRECLTPYALAPN
+> AVVPTSIALLCCIRPTSAEPFSETMTYLWTNSQPFFWAQLCIPLAVIIVLVRCCSCCLPF
+> LVVAGAYLAKVDAFEHATTVPNVPRIPYKALVERAGYAPLNLEITVMSSELIPSTNLEYV
+> TCKYTTVVPSPKVKCCGTLECSSARHADYNCKVFGGVYPFMWGGAQCFCDSENSQMSEAY
+> VEFSADCAADHAQAVKVHTAALKVGLRVVYGNTTSMLDVYVNGVTPGTSKDLKVIAGPIS
+> AAYTPFDHKVIIHKGKVYNYDFPEYGAMKPGAFVDIQ
+> > src=MSA|ACC=FJ744526|Ver=FJ744526.1|CDS=GI:255654016|ref=NC_001547.1|RM=5751..7598|Loc=1605..2351||AA=535..783|symbol=nsP4|Partial=Y|product=nsp4 nonstructural protein (putative start); putative|*new*
+> WTNSQPFFWAQLCIPLAVIIVLVRCCSCCLPFLVVAGAYLAKVDAFEHATTVPNVPRIPY
+> KALVERAGYAPLNLEITVMSSELIPSTNLEYVTCKYTTVVPSPKVKCCGTLECSSARHAD
+> YNCKVFGGVYPFMWGGAQCFCDSENSQMSEAYVEFSADCAADHAQAVKVHTAALKVGLRV
+> VYGNTTSMLDVYVNGVTPGTSKDLKVIAGPISAAYTPFDHKVIIHKGKVYNYDFPEYGAM
+> KPGAFVDIQ
+
+ Test #304, Togaviridae,    GQ281603.gb,  fail, comment=ERROR: Difference with old result
+ Test #304, Togaviridae,    GQ281603.gb,  $result=diff ./test/output/GQ281603_matpept_msa.faa ./test/GQ281603_matpept_msa.faa
+48,54c48,56
+< > src=MSA|ACC=GQ281603|Ver=GQ281603.1|CDS=GI:254574625|ref=NC_013528.1|RM=7470..8252|Loc=7470..8252||AA=1..261|symbol=C|Partial=N|product=capsid protein
+< MNMFPYPTPSFQAMYPAPPMAYRDPNPPRRRWRPFRVPLAAQIEELRRSIANLTFKQRKP
+< QPPAGPPAKKRKTPPKPKNQQRKKTKPHAKKQRSKPKPGKRQRLCMKLESDKTFPVVLNG
+< QINGYACVVGGRLMKPLHVEGKIDNEQLAAVKLKKASMYDLEYGDVPQNMKSDTLQYTSE
+< KPPGFYNWHHGAVQYENGRFSVPRGVGGKGDSGRPILDNKGRVVAIVLGGVNEGSRTALS
+< VVTWNQKGVTIKITPEGTEPW
+< > src=MSA|ACC=GQ281603|Ver=GQ281603.1|CDS=GI:254574625|ref=NC_013528.1|RM=8253..8432|Loc=8253..8432||AA=262..321|symbol=E3|Partial=N|product=E3 protein
+---
+> > src=MSA|ACC=GQ281603|Ver=GQ281603.1|CDS=GI:254574624|ref=NC_013528.1|RM=7470..8252|Loc=68..1183||AA=8..379|symbol=C|Partial=N|product=capsid protein|*new*
+> LDVDSPFVKSLQKSFPQFEIEAKQVTDNDHANARAFSHLATKLIESEVDREQVILDIGSA
+> PVRHAHSSHNYHCVCPMISAEDPDRLQRYAERLRRSDITNKRIASKAADLLQVLSAPDSE
+> TQSLCMHTDATCSYQGTVAVYQDVYAVHAPTSIYYQAMKGVRTIYWIGFDTTPFMYKSMA
+> GAYPSYNTNWADESVLEARNIGLGDADVQESKLRRVPTFCRKKLRPTDKVVFSVGSTIYT
+> EDRSLLESWHLPNVFHLKGKNNFTGRCGTLVSCEGYVIKKITISPGLYGRVDNLASTMHR
+> EGFLCCKVTDTLRGERVSFAVCTYVPATLCDQMTGILATDVSVDDAQKLLVGLNQRIVVN
+> GRTQRNANTMQN
+> > src=MSA|ACC=GQ281603|Ver=GQ281603.1|CDS=GI:254574625|ref=NC_013528.1|RM=8253..8432|Loc=8253..8432||AA=262..321|symbol=E3|Partial=N|product=E3 protein|*new*
+56c58
+< > src=MSA|ACC=GQ281603|Ver=GQ281603.1|CDS=GI:254574625|ref=NC_013528.1|RM=8433..9701|Loc=8433..9701||AA=322..744|symbol=E2|Partial=N|product=E2 protein
+---
+> > src=MSA|ACC=GQ281603|Ver=GQ281603.1|CDS=GI:254574625|ref=NC_013528.1|RM=8433..9701|Loc=8433..9701||AA=322..744|symbol=E2|Partial=N|product=E2 protein|*new*
+65c67
+< > src=MSA|ACC=GQ281603|Ver=GQ281603.1|CDS=GI:254574625|ref=NC_013528.1|RM=9702..9866|Loc=9702..9866||AA=745..799|symbol=6K|Partial=N|product=6K protein
+---
+> > src=MSA|ACC=GQ281603|Ver=GQ281603.1|CDS=GI:254574625|ref=NC_013528.1|RM=9702..9866|Loc=9702..9866||AA=745..799|symbol=6K|Partial=N|product=6K protein|*new*
+67c69
+< > src=MSA|ACC=GQ281603|Ver=GQ281603.1|CDS=GI:254574625|ref=NC_013528.1|RM=9867..11183|Loc=9867..11183||AA=800..1238|symbol=E1|Partial=N|product=E1 protein
+---
+> > src=MSA|ACC=GQ281603|Ver=GQ281603.1|CDS=GI:254574625|ref=NC_013528.1|RM=9867..11183|Loc=9867..11183||AA=800..1238|symbol=E1|Partial=N|product=E1 protein|*new*
+
+ Test #305, Togaviridae,    GQ287645.gb,  fail, comment=ERROR: Difference with old result
+ Test #305, Togaviridae,    GQ287645.gb,  $result=diff ./test/output/GQ287645_matpept_msa.faa ./test/GQ287645_matpept_msa.faa
+79a80,82
+> > src=MSA|ACC=GQ287645|Ver=GQ287645.1|CDS=GI:254595934|ref=NC_003908.1|RM=8250..8429|Loc=2674..2904||AA=876..952|symbol=E3|Partial=N|product=E3 protein|*new*
+> TTGTTKPHKDDLILTCFRGWVKQLQIDYKNHEIMTAAASQGLTRKGVYAVRYKVNENPLY
+> SQTSEHVNVLLTRTEKR
+86,87d88
+< > src=MSA|ACC=GQ287645|Ver=GQ287645.1|CDS=GI:254595935|ref=NC_003908.1|RM=8250..8429|Loc=8274..8453||AA=260..319|symbol=E3|Partial=N|product=E3 protein|*new*
+< SLVTALCVLSNVTFPCDKPPVCYSLTPERTLDVLEENVDNPNYDTLLENVLKCPSRRPKR
+
+ Test #306, Togaviridae,    GU001915.gb,  fail, comment=ERROR: Difference with old result
+ Test #306, Togaviridae,    GU001915.gb,  $result=diff ./test/output/GU001915_matpept_msa.faa ./test/GU001915_matpept_msa.faa
+38a39,60
+> > src=MSA|ACC=GU001915|Ver=GU001915.1|CDS=GI:283101012|ref=NC_003899.1|RM=47..1642|Loc=1..1098||AA=1..366|symbol=nsP1|GapAtCleavage=Y|Partial=Y|product=nsP1 protein|*new*
+> MFPYPTLNYPPMAPVNPMAYRDPNPPRRRWRPFRPPLAAQIEDLRRSIANLTFKQRAPNP
+> PAGPPAKRKKPAPKPKPAAPKKKRQPPPAKKQKRKQKPGKRQRMCMKLESDKTFPIMLNG
+> QVNGYACVVGGRVFKPLHVEGKIDNEQLAAIKLKKASIYDLEYGDVPQCMKSDTLQYTSE
+> KPPGFYNWHHGAVQYENNRFTVPRGVGGKGDSGRPILDNRGRVVAIVLGGANEGSRTALS
+> VVTWNQKGVTVKDTPEGSEPWSLTTVMCVLANITFPCDQPPCMPCCYEKNPHETLTMLEQ
+> NYDSQAYDQLLEAAVKCNGRRTRRDLETHFTQYKLARPYIADCSNCGHGRCDSPIAIEDV
+> RGDAHA
+> > src=MSA|ACC=GU001915|Ver=GU001915.1|CDS=GI:283101012|ref=NC_003899.1|RM=5684..7525|Loc=3157..3726||AA=1053..1242|symbol=nsP4|GapAtCleavage=Y|Partial=Y|product=nsP4 protein|*new*
+> LNDIAPFGCTIALDPLRAENCAVGNIPLSIDIPDAAFTRISETPTVSDLECKITECTYAS
+> DFGGIATVAYKASKAGNCPIHSPSGIAVIKENDVTLADSGSFTFHFSTASIHPAFKMQVC
+> TSVVTCKGDCKPPKDHIVDYPAQHTETFTSAVSATAWSWLKVLVGSTSAFIVLGLIATAV
+> VALVLFTHKH
+> > src=MSA|ACC=GU001915|Ver=GU001915.1|CDS=GI:283101012|ref=NC_003899.1|RM=4025..5680|Loc=2359..3726||AA=787..1242|symbol=nsP3|GapAtCleavage=Y|Partial=Y|product=nsP3 protein|*new*
+> GPAFLLVCGALGAAAYEHTAVMPNKVGIPYKALVERPGYAPVHLQIQLVTTKIIPSANLE
+> YITCKYKTKVPSPVVKCCGATQCTSKQHPDYQCQVFAGVYPFMWGGAYCFCDTENTQMSE
+> AYIERAEECSVDQAKAYKVHTGTVQAVVNITYGSVSWRSADVYVNGETPAKIGDAKLTIG
+> PLSSAWTPFDSKVVVYGHEVYNYDFPEYGTGKAGSFGDLQSRTLTSNDLYANTNLKLQRP
+> QPGVVHTPYTQAPSGFERWKKDRGAPLNDIAPFGCTIALDPLRAENCAVGNIPLSIDIPD
+> AAFTRISETPTVSDLECKITECTYASDFGGIATVAYKASKAGNCPIHSPSGIAVIKENDV
+> TLADSGSFTFHFSTASIHPAFKMQVCTSVVTCKGDCKPPKDHIVDYPAQHTETFTSAVSA
+> TAWSWLKVLVGSTSAFIVLGLIATAVVALVLFTHKH
+
+ Test #307, Togaviridae,    GU361118.gb,  pass
+ Test #308, Togaviridae,    HM210095.gb,  fail, comment=ERROR: Difference with old result
+ Test #308, Togaviridae,    HM210095.gb,  $result=diff ./test/output/HM210095_matpept_msa.faa ./test/HM210095_matpept_msa.faa
+82c82
+< > src=MSA|ACC=HM210095|Ver=HM210095.1|CDS=GI:321446631|ref=NC_003899.1|RM=7592..8371|Loc=7547..8329||AA=1..261|symbol=C|Partial=N|product=C protein
+---
+> > src=MSA|ACC=HM210095|Ver=HM210095.1|CDS=GI:321446631|ref=NC_003899.1|RM=7592..8371|Loc=7547..8329||AA=1..261|symbol=C|Partial=N|product=C protein|*new*
+98c98
+< > src=MSA|ACC=HM210095|Ver=HM210095.1|CDS=GI:321446631|ref=NC_003899.1|RM=8372..8560|Loc=8330..8518||AA=262..324|symbol=E3|Partial=N|product=E3 protein
+---
+> > src=MSA|ACC=HM210095|Ver=HM210095.1|CDS=GI:321446631|ref=NC_003899.1|RM=8372..8560|Loc=8330..8518||AA=262..324|symbol=E3|Partial=N|product=E3 protein|*new*
+101c101
+< > src=MSA|ACC=HM210095|Ver=HM210095.1|CDS=GI:321446631|ref=NC_003899.1|RM=8561..9820|Loc=8519..9778||AA=325..744|symbol=E2|Partial=N|product=E2 protein
+---
+> > src=MSA|ACC=HM210095|Ver=HM210095.1|CDS=GI:321446631|ref=NC_003899.1|RM=8561..9820|Loc=8519..9778||AA=325..744|symbol=E2|Partial=N|product=E2 protein|*new*
+109c109
+< > src=MSA|ACC=HM210095|Ver=HM210095.1|CDS=GI:321446631|ref=NC_003899.1|RM=9821..9991|Loc=9779..9949||AA=745..801|symbol=6K|Partial=N|product=6K protein
+---
+> > src=MSA|ACC=HM210095|Ver=HM210095.1|CDS=GI:321446631|ref=NC_003899.1|RM=9821..9991|Loc=9779..9949||AA=745..801|symbol=6K|Partial=N|product=6K protein|*new*
+111c111
+< > src=MSA|ACC=HM210095|Ver=HM210095.1|CDS=GI:321446631|ref=NC_003899.1|RM=9992..11314|Loc=9950..11272||AA=802..1242|symbol=E1|Partial=N|product=E1 protein
+---
+> > src=MSA|ACC=HM210095|Ver=HM210095.1|CDS=GI:321446631|ref=NC_003899.1|RM=9992..11314|Loc=9950..11272||AA=802..1242|symbol=E1|Partial=N|product=E1 protein|*new*
+
+ Test #309, Togaviridae,    HQ456252.gb,  pass, comment=No polyprotein: Problem with translation of CDS=77..7501
+ Test #310, Togaviridae,    HQ848388.gb,  fail, comment=ERROR: Difference with old result
+ Test #310, Togaviridae,    HQ848388.gb,  $result=diff ./test/output/HQ848388_matpept_msa.faa ./test/HQ848388_matpept_msa.faa
+67,86c67,90
+< > src=MSA|ACC=HQ848388|Ver=HQ848388.1|CDS=GI:328495128|ref=NC_003215.1|RM=7420..8220|Loc=7490..8226|cstart=3|AA=1..245|symbol=C|Partial=Y|product=C protein|*new*
+< WPLQATPVAPVVPDFQAQQMQQLISAVNALTMRQNAIAPARPPKPKKKKTTKPKPKTQPK
+< KSKGKTQQQKKKDKQADKKKKKPGKRERMCMKIENDCIFEVKYEGKVTGYACLVGDKVMK
+< PAHVKGVIDNADLAKLAFKKSSKYDLECAQIPVHMRSDASKYTHEKPEGHYNWHHGAVQY
+< SGGRFTIPTGAGKPGDSGRPIFDNKGRVVAIVLGGANEGSRTALSVVTWNKDMVTRVTPE
+< GSEEW
+< > src=MSA|ACC=HQ848388|Ver=HQ848388.1|CDS=GI:328495128|ref=NC_003215.1|RM=8221..8418|Loc=8227..8424||AA=246..311|symbol=E3|Partial=N|product=E3 protein|*new*
+< SAPLITAMCVLANATFPCFQPPCAPCCYENNAEATLRMLEDNVDRPGYYDLLQAALTCRN
+< GTRHRR
+< > src=MSA|ACC=HQ848388|Ver=HQ848388.1|CDS=GI:328495128|ref=NC_003215.1|RM=8419..9684|Loc=8425..9690||AA=312..733|symbol=E2|Partial=N|product=E2 protein|*new*
+< SVSQHFNVYKATRPYIAYCADCGAGHSCHSPVAIEAIRSEATDGMLKIQFSAQIGIDKSD
+< NHDYTKIRYADGHAIENAVRSSLKVATSGDCFVHGTMGHFILATCPPGEFLQVSIQDTRN
+< AVRACRIQYHYDPQPVGREKFTIRPHYGKEIPCTTYQQTTAETVEEIDMHMPPDTPDRTL
+< LSQQSGNVKITVGGKKVKYNCTCGTGNVGTTNSDKTINACLIEQCHVSVTDHKKWQFNSP
+< FVPRADEPARKGKVHIPFPLDNITCRVPMAREPTVIHGKREVTLHLHPDHPTLFSYRTLG
+< EDPQYHEEWVTAAVERTIPVPVEGMEYHWGNNDPVRLWSQLTTEGKPHGWPHQIVQYYYG
+< LYPAATVSAVAGMSLLALISIFASCYMLAAARSKCLTPYALTPGAAVPWTLGILCCAPRA
+< HA
+< > src=MSA|ACC=HQ848388|Ver=HQ848388.1|CDS=GI:328495128|ref=NC_003215.1|RM=9685..9864|Loc=9691..9870||AA=734..793|symbol=6K|Partial=N|product=6K protein|*new*
+< ASVAETMAYLWDQNQALFWLEFAAPVACILIITYCLRNVLCCCKSLSFLVLLSLGATARA
+---
+> > src=MSA|ACC=HQ848388|Ver=HQ848388.1|CDS=GI:328495127|ref=NC_003215.1|RM=7420..8220|Loc=104..1162||AA=7..359|symbol=C|Partial=N|product=C protein|*new*
+> VDIEADSPFIKSLQKAFPSFEVESLQVTPNDHANARAFSHLATKLIEQETDKDTLILDIG
+> SAPSRRMMSTHKYHCVCPMRSAEDPERLVCYAKKLAAASGKVLDREIAGKITDLQTVMAT
+> PDAESPTFCLHTDVTCRKAAEVAVYQDVYAVHAPTSLYHQAMKGVRTAYWIGFDTTPFMF
+> DALAGAYPTYATNWADEQVLQARNIGLCAASLTEGRLGKLSILRKKQLKPSDTVMFSVGS
+> TLYTESRKLLRSWHLPSVFHLKGKQSFTCRCDTIVSCEGYVVKKITMCPGLYGKTVGYAV
+> THHAEGFLVCKTTDTVKGERVSFPVCTYVPSTICDQMTGILATDVTPEDAQKL
+> > src=MSA|ACC=HQ848388|Ver=HQ848388.1|CDS=GI:328495127|ref=NC_003215.1|RM=8221..8418|Loc=1163..1390||AA=360..435|symbol=E3|Partial=N|product=E3 protein|*new*
+> LVGLNQRIVVNGRTQRNTNTMKNYLLPIVAVAFSKWAREYKADLDDEKPLGVRERSLTCC
+> CLWAFKTKKMHTMYKK
+> > src=MSA|ACC=HQ848388|Ver=HQ848388.1|CDS=GI:328495127|ref=NC_003215.1|RM=8419..9684|Loc=1391..3025||AA=436..980|symbol=E2|Partial=N|product=E2 protein|*new*
+> PDTQTIVKVPSEFNSFVIPSLWSTGLAIPVRSRIKMLLAKKTKRELIPALDASSARDAEQ
+> EEKERLEAELTREALPPLIPIAPAETGVVDVDVEELEYRAGAGVVETPRSALKVTAQPND
+> VLLGNYVVLSPQTVLKSSKLAPVHPLAEQVKIITHNGRAGRYQVDGYDGRVLLPCGSAIP
+> VPEFQALSESATMVYNEREFVNRKLYHIAVHGPSLNTDEENYEKVRAERTDAEYVFDVDK
+> KCCIKREEASGLVLVGELTNPPFHEFAYEGLKIRPSAPYKTTVVGVFGVPGSGKSAIIKS
+> LVTKHDLVTSGKKENCQEIVNDVKKHRGLDIQAKTVDSILLNGCRRAVDILYVDEAFACH
+> SGTLLALIALVKPRSKVVLCGDPKQCGFFNMMQLKVNFNHNICTEVCHKSISRRCTRPVT
+> AIVSTLHYGGKMRTTNPCNKPIIIDTTGQTKPKPGDIVLTCFRGWVKQLQLDYRGHEVMT
+> AAASQGLTRKGVYAVRQKVNENPLYAPASEHVNVLLTRTEDRLVWKTLAGDPWIKVLSNI
+> PQGNF
+> > src=MSA|ACC=HQ848388|Ver=HQ848388.1|CDS=GI:328495127|ref=NC_003215.1|RM=9685..9864|Loc=3026..3229||AA=981..1048|symbol=6K|Partial=N|product=6K protein|*new*
+> TATLEEWQEEHDKIMKVIEGPAAPVDAFQNKANVCWAKSLVPVLDTAGIRLTAEEWSTII
+> TAFKEDRA
+
+ Test #311, Togaviridae,    KC344458.gb,  fail, comment=ERROR: Difference with old result
+ Test #311, Togaviridae,    KC344458.gb,  $result=diff ./test/output/KC344458_matpept_msa.faa ./test/KC344458_matpept_msa.faa
+49,55c49,58
+< > src=MSA|ACC=KC344458|Ver=KC344458.1|CDS=GI:449535867|ref=NC_001449.1|RM=7562..8386|Loc=7572..8393||AA=11..284|symbol=C|Partial=N|product=core protein|*new*
+< MFPYQPMYPMQPMPFRNPFATPRRPWFPRTDPFLAMQVQELARSMANLTFKQRRDVPPEG
+< PPAKKKKKDNSQQGGRNQNGKKKNKLVKKKKKTGPPPPKNNVGKKKVNRKPGKRQRMVMK
+< LESDKTFPIMLDGKVNGYACVVGGKLFRPLHVEGKIDNDVLSSLKTKKASKYDLEYADVP
+< QSMRADTFKYTHEKPQGYYSWHHGAVQYENGRFTVPKGVGAKGDSGRPILDNQGRVVAIV
+< LGGVNEGSRTALSVVTWNEKGVTVKYTPENSEQW
+< > src=MSA|ACC=KC344458|Ver=KC344458.1|CDS=GI:449535867|ref=NC_001449.1|RM=8387..8563|Loc=8394..8570||AA=285..343|symbol=E3|Partial=N|product=E3 envelope protein
+---
+> > src=MSA|ACC=KC344458|Ver=KC344458.1|CDS=GI:449535866|ref=NC_001449.1|RM=7562..8386|Loc=76..1107||AA=15..358|symbol=C|GapAtCleavage=Y|Partial=N|product=core protein|*new*
+> LRALQRSFPQFEVEAKQVTDNDHANARAFSHLASKLIETEVEPSDTILDIGSAPARRMYS
+> KHKYHCICPMKCAEDPDRLFKYAAKLKKNCKEITDKELDKKMKELAEVMSDPDLETETIC
+> LHDDETCRFEGQVAVYQDVYAVDGPTSLYHQANKGVRVAYWIGFDTTPFMFKNLAGAYPS
+> YSTNWADETVLTARNIGLCSSDVMERSRRGMSILRKKFLKPSNNVLFSVGSTIYHEKRDL
+> LRSWHLPSVFHLRGKQNYTCRCETIVSCDGYVVKRIAISPGLYGKPSGYAATMHREGFLC
+> CKVTDTLNGERVSFPVCTYVPATLCDQMTGILATDVSADDAQKL
+> > src=MSA|ACC=KC344458|Ver=KC344458.1|CDS=GI:449535866|ref=NC_001449.1|RM=9833..10000|Loc=3898..4074||AA=1289..1347|symbol=6K|GapAtCleavage=Y|Partial=N|product=6K membrane protein|*new*
+> ETEVLFVFIGFDRKTRTHNPYKLSSTLTNIYTGSRLHEAGCAPSYHVVRGDIATATEGV
+> > src=MSA|ACC=KC344458|Ver=KC344458.1|CDS=GI:449535867|ref=NC_001449.1|RM=8387..8563|Loc=8394..8570||AA=285..343|symbol=E3|Partial=N|product=E3 envelope protein|*new*
+57c60
+< > src=MSA|ACC=KC344458|Ver=KC344458.1|CDS=GI:449535867|ref=NC_001449.1|RM=8564..9832|Loc=8571..9839||AA=344..766|symbol=E2|Partial=N|product=E2 envelope glycoprotein
+---
+> > src=MSA|ACC=KC344458|Ver=KC344458.1|CDS=GI:449535867|ref=NC_001449.1|RM=8564..9832|Loc=8571..9839||AA=344..766|symbol=E2|Partial=N|product=E2 envelope glycoprotein|*new*
+66,68c69
+< > src=MSA|ACC=KC344458|Ver=KC344458.1|CDS=GI:449535867|ref=NC_001449.1|RM=9833..10000|Loc=9840..10007||AA=767..822|symbol=6K|Partial=N|product=6K membrane protein
+< ETTWESLDHLWNHNQQMFWSQLLIPLAALIVATRLLKCVCCVVPFLVVAGAVGAGA
+< > src=MSA|ACC=KC344458|Ver=KC344458.1|CDS=GI:449535867|ref=NC_001449.1|RM=10001..11326|Loc=10008..11333||AA=823..1264|symbol=E1|Partial=N|product=E1 envelope glycoprotein
+---
+> > src=MSA|ACC=KC344458|Ver=KC344458.1|CDS=GI:449535867|ref=NC_001449.1|RM=10001..11326|Loc=10008..11333||AA=823..1264|symbol=E1|Partial=N|product=E1 envelope glycoprotein|*new*
+
+ Test #312, Togaviridae,    KJ469640.gb,  fail, comment=ERROR: Difference with old result
+ Test #312, Togaviridae,    KJ469640.gb,  $result=diff ./test/output/KJ469640_matpept_msa.faa ./test/KJ469640_matpept_msa.faa
+48c48,60
+< > src=MSA|ACC=KJ469640|Ver=KJ469640.1|CDS=GI:594139916|ref=NC_023812.1|RM=7541..8323|Loc=7541..8323||AA=1..261|symbol=C|Partial=N|product=capsid protein
+---
+> > src=MSA|ACC=KJ469640|Ver=KJ469640.1|CDS=GI:594139915|ref=NC_023812.1|RM=9944..11266|Loc=4906..6864||AA=1622..2274|symbol=E1|Partial=N|product=E1 envelope glycoprotein|*new*
+> YRITGVQKIQCNKPVIFSGVVPPAIHPRKFSAIEETVPVTIERLVPRRPAPPVPVPARIP
+> SPRCSPAVSMQSLGGSSTSDVVISEAEVHDSDSECSVPPMPFVVEAEVHASQGSHWSIPS
+> ASGFEIRELPEDRSIPGSPTRTSVISDHSVNLITFDSVTDIFENFKQAPFQFLSEIRPIP
+> APRRRVGGLETDTKRYDKTEEKPIPKPRTRTMKYKQPPGVARSISEAELDEFIRRHSNXR
+> YEAGAYIFSSETGQGHLQQKSTRQCKLQNPILERSVHEKFYAPRLDLEREKLLQKKLQLC
+> ASEGNRSRYQSRKVENMKAITAERLLQGIGAYLSAESQPVECYKVNYPVPIYSTTRSNRF
+> SSADVAVRVCNLVLQENFPTVASYTITDEYNAYLDMVDGASCCLDTATFCPAKLRSFPKK
+> HSYLRPEIRSAVPSPIQNTLQNVLAAATKRNCNVTQMRELPVLDSAAFNVECFKKYACND
+> EYWDTFKNNPIRLTTENVTQYVTKLKGPKAAALFAKTHNLQPLHEIPMDRFVMDLKRDVK
+> VTPGTKHTEERPKVQVIQAADPLATAYLCGIHRELVRRLNAVLLPNIHTLFDMSAEDFDA
+> IIAEHFQFGDAVLETDIASFDKSEDDAIAMSALMILEDLGVDQALLDLIEAAF
+> > src=MSA|ACC=KJ469640|Ver=KJ469640.1|CDS=GI:594139916|ref=NC_023812.1|RM=7541..8323|Loc=7541..8323||AA=1..261|symbol=C|Partial=N|product=capsid protein|*new*
+54c66
+< > src=MSA|ACC=KJ469640|Ver=KJ469640.1|CDS=GI:594139916|ref=NC_023812.1|RM=8324..8512|Loc=8324..8512||AA=262..324|symbol=E3|Partial=N|product=E3 protein
+---
+> > src=MSA|ACC=KJ469640|Ver=KJ469640.1|CDS=GI:594139916|ref=NC_023812.1|RM=8324..8512|Loc=8324..8512||AA=262..324|symbol=E3|Partial=N|product=E3 protein|*new*
+57c69
+< > src=MSA|ACC=KJ469640|Ver=KJ469640.1|CDS=GI:594139916|ref=NC_023812.1|RM=8513..9772|Loc=8513..9772||AA=325..744|symbol=E2|Partial=N|product=E2 envelope glycoprotein
+---
+> > src=MSA|ACC=KJ469640|Ver=KJ469640.1|CDS=GI:594139916|ref=NC_023812.1|RM=8513..9772|Loc=8513..9772||AA=325..744|symbol=E2|Partial=N|product=E2 envelope glycoprotein|*new*
+65c77
+< > src=MSA|ACC=KJ469640|Ver=KJ469640.1|CDS=GI:594139916|ref=NC_023812.1|RM=9773..9943|Loc=9773..9943||AA=745..801|symbol=6K|Partial=N|product=6K membrane protein
+---
+> > src=MSA|ACC=KJ469640|Ver=KJ469640.1|CDS=GI:594139916|ref=NC_023812.1|RM=9773..9943|Loc=9773..9943||AA=745..801|symbol=6K|Partial=N|product=6K membrane protein|*new*
+67,75d78
+< > src=MSA|ACC=KJ469640|Ver=KJ469640.1|CDS=GI:594139916|ref=NC_023812.1|RM=9944..11266|Loc=9944..11266||AA=802..1242|symbol=E1|Partial=N|product=E1 envelope glycoprotein
+< YEHTAVMPNKVGIPYKALVERPGYAPVHLQIQLVTTKIIPSANLEYITCKYKTKVPSPVV
+< KCCGSTQCSAKSHPDYQCQVFTGVYPFMWGGAYCFCDTENTQMSEVYIERAEECSVDQAK
+< AYKVHTGTVQAVVNITYGSVSWRSADVYVNGETPAKIGDAKLTIGPLSSAWSPFDSKVVV
+< YGHEVYNYDFPEYGTGKAGSFGDLQSRTPTSNDLYANTNLKLQRPQPGVVHTPYTQAPSG
+< FERWKKDRGAPLNDIAPFGCTIALDPLRAENCAVGNIPLSIDIPDAAFTRIAETPTVSDL
+< ECKVTECTYASDFGGIATISYKASKSGNCPIHSPSGIAVIKENDVTLADSGAFTFHFSTA
+< SIHPAFKMQVCTSVVTCKGDCKPPKDHIVDYPAQHTETYTSAVSATAWSWLKVLVGSTSA
+< FIVLGLIATAVVALVLFTHRH
+
+ Test #313, Togaviridae,    NC_001449.gb, fail, comment=ERROR: Difference with old result
+ Test #313, Togaviridae,    NC_001449.gb, $result=diff ./test/output/NC_001449_matpept_gbk.faa ./test/NC_001449_matpept_gbk.faa
+49c49
+< > src=MSA,GBK|ACC=NC_001449|Ver=NC_001449.1|CDS=GI:9626528||Loc=7562..8386||AA=1..275|symbol=C|mat_pept=GI:25140294|product=core protein
+---
+> > src=GBK|ACC=NC_001449|Ver=NC_001449.1|CDS=GI:9626528||Loc=7562..8386||AA=1..275|symbol=C|mat_pept=GI:25140294|product=core protein
+57c57
+< > src=MSA,GBK|ACC=NC_001449|Ver=NC_001449.1|CDS=GI:9626528||Loc=8564..9832||AA=335..757|symbol=E2|mat_pept=GI:25140296|product=E2 envelope glycoprotein
+---
+> > src=GBK|ACC=NC_001449|Ver=NC_001449.1|CDS=GI:9626528||Loc=8564..9832||AA=335..757|symbol=E2|mat_pept=GI:25140296|product=E2 envelope glycoprotein
+66c66
+< > src=MSA,GBK|ACC=NC_001449|Ver=NC_001449.1|CDS=GI:9626528||Loc=9833..10000||AA=758..813|symbol=6K|mat_pept=GI:29612002|product=6K membrane protein
+---
+> > src=GBK|ACC=NC_001449|Ver=NC_001449.1|CDS=GI:9626528||Loc=9833..10000||AA=758..813|symbol=6K|mat_pept=GI:29612002|product=6K membrane protein
+
+ Test #314, Togaviridae,    NC_003899.gb, fail, comment=ERROR: Difference with old result
+ Test #314, Togaviridae,    NC_003899.gb, $result=diff ./test/output/NC_003899_matpept_gbk.faa ./test/NC_003899_matpept_gbk.faa
+82c82
+< > src=MSA,GBK|ACC=NC_003899|Ver=NC_003899.1|CDS=GI:21218485||Loc=7592..8371||AA=1..260|symbol=C|mat_pept=GI:25121474|product=C protein
+---
+> > src=GBK|ACC=NC_003899|Ver=NC_003899.1|CDS=GI:21218485||Loc=7592..8371||AA=1..260|symbol=C|mat_pept=GI:25121474|product=C protein
+88c88
+< > src=MSA,GBK|ACC=NC_003899|Ver=NC_003899.1|CDS=GI:21218485||Loc=8372..9820||AA=261..743|symbol=PE2|mat_pept=GI:119380830|product=PE2 protein
+---
+> > src=GBK|ACC=NC_003899|Ver=NC_003899.1|CDS=GI:21218485||Loc=8372..9820||AA=261..743|symbol=PE2|mat_pept=GI:119380830|product=PE2 protein
+98c98
+< > src=MSA,GBK|ACC=NC_003899|Ver=NC_003899.1|CDS=GI:21218485||Loc=8372..8560||AA=261..323|symbol=E3|mat_pept=GI:25121475|product=E3 protein
+---
+> > src=GBK|ACC=NC_003899|Ver=NC_003899.1|CDS=GI:21218485||Loc=8372..8560||AA=261..323|symbol=E3|mat_pept=GI:25121475|product=E3 protein
+101c101
+< > src=MSA,GBK|ACC=NC_003899|Ver=NC_003899.1|CDS=GI:21218485||Loc=8561..9820||AA=324..743|symbol=E2|mat_pept=GI:25121476|product=E2 protein
+---
+> > src=GBK|ACC=NC_003899|Ver=NC_003899.1|CDS=GI:21218485||Loc=8561..9820||AA=324..743|symbol=E2|mat_pept=GI:25121476|product=E2 protein
+109c109
+< > src=MSA,GBK|ACC=NC_003899|Ver=NC_003899.1|CDS=GI:21218485||Loc=9821..9991||AA=744..800|symbol=6K|mat_pept=GI:25121477|product=6K protein
+---
+> > src=GBK|ACC=NC_003899|Ver=NC_003899.1|CDS=GI:21218485||Loc=9821..9991||AA=744..800|symbol=6K|mat_pept=GI:25121477|product=6K protein
+
+ Test #315, Togaviridae,    NC_004162.gb, fail, comment=ERROR: Difference with old result
+ Test #315, Togaviridae,    NC_004162.gb, $result=diff ./test/output/NC_004162_matpept_msa.faa ./test/NC_004162_matpept_msa.faa
+48,53c48,57
+< > src=MSA|ACC=NC_004162|Ver=NC_004162.2|CDS=GI:27754752|ref=NC_004162.2|RM=7567..8349|Loc=7567..8349||AA=1..261|symbol=C|Partial=N|product=C protein|*new*
+< MEFIPTQTFYNRRYQPRPWTPRPTIQVIRPRPRPQRQAGQLAQLISAVNKLTMRAVPQQK
+< PRKNRKNKKQKQKQQAPQNNTNQKKQPPKKKPAQKKKKPGRRERMCMKIENDCIFEVKHE
+< GKVTGYACLVGDKVMKPAHVKGTIDNADLAKLAFKRSSKYDLECAQIPVHMKSDASKFTH
+< EKPEGYYNWHHGAVQYSGGRFTIPTGAGKPGDSGRPIFDNKGRVVAIVLGGANEGARTAL
+< SVVTWNKDIVTKITPEGAEEW
+---
+> > src=MSA|ACC=NC_004162|Ver=NC_004162.2|CDS=GI:22789217|ref=NC_004162.2|RM=7567..8349|Loc=149..1150||AA=25..358|symbol=C|GapAtCleavage=Y|Partial=N|product=C protein|*new*
+> FEVEPRQVTPNDHANARAFSHLAIKLIEQEIDPDSTILDIGSAPARRMMSDRKYHCVCPM
+> RSAEDPERLANYARKLASAAGKVLDRNISGKIGDLQAVMAVPDTETPTFCLHTDVSCRQR
+> ADVAIYQDVYAVHAPTSLYHQAIKGVRLAYWVGFDTTPFMYNAMAGAYPSYSTNWADEQV
+> LKAKNIGLCSTDLTEGRRGKLSIMRGKKLEPCDRVLFSVGSTLYPESRKLLKSWHLPSVF
+> HLKGKLSFTCRCDTVVSCEGYVVKRITMSPGLYGKTTGYAVTHHADGFLMCKTTDTVDGE
+> RVSFSVCTYVPATICDQMTGILATEVTPEDAQKL
+> > src=MSA|ACC=NC_004162|Ver=NC_004162.2|CDS=GI:22789217|ref=NC_004162.2|RM=9811..9993|Loc=4157..4339||AA=1361..1421|symbol=6K|GapAtCleavage=Y|Partial=N|product=6K protein|*new*
+> LPGDGVCKAVYKKWPESFKNSATPVGTAKTVMCGTYPVIHAVGPNFSNYSESEGDRELAA
+> A
+66,68d69
+< > src=MSA|ACC=NC_004162|Ver=NC_004162.2|CDS=GI:27754752|ref=NC_004162.2|RM=9811..9993|Loc=9811..9993||AA=749..809|symbol=6K|Partial=N|product=6K protein|*new*
+< ATYQEAAVYLWNEQQPLFWLQALIPLAALIVLCNCLRLLPCCCKTLAFLAVMSIGAHTVS
+< A
+
+ Test #316, Togaviridae,    NC_006558.gb, fail, comment=ERROR: Difference with old result
+ Test #316, Togaviridae,    NC_006558.gb, $result=diff ./test/output/NC_006558_matpept_msa.faa ./test/NC_006558_matpept_msa.faa
+47a48,53
+> > src=MSA|ACC=NC_006558|Ver=NC_006558.1|CDS=GI:56692397|ref=NC_006558.1|RM=8331..8522|Loc=2404..2604||AA=776..842|symbol=E3|GapAtCleavage=Y|Partial=N|product=E3 protein|*new*
+> CKKGVENLYVDEAFACHSGTLLALIALVRPSGKVVLCGDPKQCGFFNLMQLKVHYNHNIC
+> TRVLHKS
+> > src=MSA|ACC=NC_006558|Ver=NC_006558.1|CDS=GI:56692397|ref=NC_006558.1|RM=9789..9971|Loc=4954..5136||AA=1626..1686|symbol=6K|GapAtCleavage=Y|Partial=N|product=6K protein|*new*
+> KYRIEGVQKVKCDRVLIFDQTVPSLVSPRKYIQQPPEQLDNVSLTSTTSTGSAWSFPSET
+> T
+54,56d59
+< > src=MSA|ACC=NC_006558|Ver=NC_006558.1|CDS=GI:56692398|ref=NC_006558.1|RM=8331..8522|Loc=8331..8522||AA=269..332|symbol=E3|Partial=N|product=E3 protein|*new*
+< SAALMMCVLANVTFPCSEPACAPCCYEKQPEQTLRMLEDNVDRPGYYDLLEATMTCNNSA
+< RHRR
+66,68d68
+< > src=MSA|ACC=NC_006558|Ver=NC_006558.1|CDS=GI:56692398|ref=NC_006558.1|RM=9789..9971|Loc=9789..9971||AA=755..815|symbol=6K|Partial=N|product=6K protein|*new*
+< ASFAESMAYLWDENQTLFWLELATPLAAIIILVCCLKNLLCCCKPLSFLVLVSLGTPVVK
+< S
+
+ Test #317, Togaviridae,    U34999.gb,    fail, comment=ERROR: Difference with old result
+ Test #317, Togaviridae,    U34999.gb,    $result=diff ./test/output/U34999_matpept_msa.faa ./test/U34999_matpept_msa.faa
+48a49,61
+> > src=MSA|ACC=U34999|Ver=U34999.1|CDS=GI:1144528|ref=NC_001449.1|RM=8564..9832|Loc=2285..3907||AA=748..1288|symbol=E2|Partial=N|product=E2 envelope glycoprotein|*new*
+> NCAEIIRDVKKMKGLDVNARTVDSVLLNGCKHPVETLYIDEAFACHAGTLRALIAIIRPK
+> KAVLCGDPKQCGFFNMMCLKVHFNHEICTQVFHKSISRRCTKSVTSVVSTLFYDKRMRTT
+> NPRDSKIEIDTTGSTKPKKDDLILTCFRGWVKQLQIDYKGNEIMTAAASQGLTRKGVYAV
+> RYKVNENPLYAPTSEHVNVLLTRTEDKIVWKTLAGDPWIKTLTAKYPGDFTATMEEWQAE
+> HDAIMRHILEKPDPTDVFQNKANVCWAKALVPVLKTAGIDLTTEQWNTVDYFKEDKAHSA
+> EIVLNQLCVRFFGLDLDSGLFSAPTVPLSIRNNHWDNSPSPNMYGLNQEVVRQLSRRYPQ
+> LPRAVTTGRAYDMNTGTLRNYDPRINLVPVNRRLPHALVTQHADHPPSDFSAFVSKLKGR
+> TVLVVGEKMSISGKTVDWLSETPDSTFRARLDLGIPNELPKYDIVFVNVRTQYRYHHYQQ
+> CEDHAIKLSMLTKKACLHLNPGGTCVSIGYGYADRASESIIGAVARQFKFSRVCKPKVSK
+> E
+> > src=MSA|ACC=U34999|Ver=U34999.1|CDS=GI:1144528|ref=NC_001449.1|RM=9833..10000|Loc=3908..4084||AA=1289..1347|symbol=6K|Partial=N|product=6K membrane protein|*new*
+> ETEVLFVFIGFDRKTRTHNPYKLSSTLTNIYTGSRLHEAGCAPSYHVVRGDIATATEGV
+57,67d69
+< > src=MSA|ACC=U34999|Ver=U34999.1|CDS=GI:1144529|ref=NC_001449.1|RM=8564..9832|Loc=8575..9843||AA=334..756|symbol=E2|Partial=N|product=E2 envelope glycoprotein|*new*
+< STEELFKEYKLTRPYMARCIRCAVGSCHSPIAIEAVRSEGHDGYVRLQTSSQYGLDPSGN
+< LKGRTMRYDMHGTIEEIPLHQVSVHTSRPCHIIDGHGYFLLARCPAGDSITMEFKKESVT
+< HSCSVPYEVKFNPAGRELYTHPPEHGAEQPCHVYAHDAQNRGAYVEMHLPGSEVDSTLLS
+< MSGSSVHVTPPAGQSVQVECECGGTKISETINSAKQYSQCSKTSQCRAYRTQNDKWVYNS
+< DKLPKASGETLKGKLHVPFVLTEAKCTVPLAPEPIITFGFRSVSLKLHPKNPTFLTTRQL
+< DGEPAYTHELITHPVVRNFSVTEKGWEFVWGNHPPQRYWSQETAPGNPHGLPHEVITHYY
+< HRYPMSTILGLSICAAIVTTSIAASVWLFCKSRISCLTPYRLTPNASMPLCLAVLCCART
+< AKA
+< > src=MSA|ACC=U34999|Ver=U34999.1|CDS=GI:1144529|ref=NC_001449.1|RM=9833..10000|Loc=9844..10011||AA=757..812|symbol=6K|Partial=N|product=6K membrane protein|*new*
+< ETTWESLDHLWNHNQQMFWSQLLIPLAALIVATRLLKCVCCVVPFLVVAGAVGAGA
+
+ Test #318, Togaviridae,    U38304.gb,    fail, comment=ERROR: Difference with old result
+ Test #318, Togaviridae,    U38304.gb,    $result=diff ./test/output/U38304_matpept_msa.faa ./test/U38304_matpept_msa.faa
+37,65c37,80
+< > src=MSA|ACC=U38304|Ver=U38304.1|CDS=GI:1125068|ref=NC_001547.1|RM=7647..8438|Loc=7662..8453||AA=1..264|symbol=C|Partial=N|product=capsid (c) protein|*new*
+< MNRGFFNMLGRRPFPAPTAMWRPRRRRQAAPMPARNGLASQIQQLTTAVSALVIGQATRP
+< QTPRPRPPPRQKKQAPKQPPKPKKPKTQEKKKKQPAKPKPGKRQRMALKLEADRLFDVKN
+< EDGDVIGHALAMEGKVMKPLHVKGTIDHPVLSKLKFTKSSAYDMEFAQLPVNMRSEAFTY
+< TSEHPEGFYNWHHGAVQYSGGRFTIPRGVGGRGDSGRPIMDNSGRVVAIVLGGADEGTRT
+< ALSVVTWNSKGKTIKTTPEGTEEW
+< > src=MSA|ACC=U38304|Ver=U38304.1|CDS=GI:1125068|ref=NC_001547.1|RM=8439..8630|Loc=8454..8645||AA=265..328|symbol=E3|Partial=N|product=e-3 structural protein
+< SAAPLVTAMCLLGNVSFPCNRPPTCYTREPSRALDILEENVNHEAYDTLLNAILRCGSSG
+< RSKR
+< > src=MSA|ACC=U38304|Ver=U38304.1|CDS=GI:1125068|ref=NC_001547.1|RM=8631..9899|Loc=8646..9914||AA=329..751|symbol=E2|Partial=N|product=e-2 structural protein
+< SVTDDFTLTSPYLGTCSYCHHTEPCFSPIKIEQVWDEADDNTIRIQTSAQFGYDQSGAAS
+< SNKYRYMSLEQDHTVKEGTMDDIKISTSGPCRRLSYKGYFLLAKCPPGDSVTVSIASSNS
+< ATSCTMARKIKPKFVGREKYDLPPVHGKKIPCTVYDRLKETTAGYITMHRPGPHAYTSYL
+< EESSGKVYAKPPSGKNITYECKCGDYKTGTVTTRTEITGCTAIKQCVAYKSDQTKWVFNS
+< PDLIRHADHTAQGKLHLPFKLIPSTCMVPVAHAPNVVHGFKHISLQLDTDHLTLLTTRRL
+< GANPEPTTEWIIGKTVRNFTVDRDGLEYIWGNHEPVRVYAQESAPGDPHGWPHEIVQHYY
+< HRHPVYTILAVASAAVAMMIGVTVAALCACKARRECLTPYALAPNAVIPTSLALLCCVRS
+< ANA
+< > src=MSA|ACC=U38304|Ver=U38304.1|CDS=GI:1125068|ref=NC_001547.1|RM=9900..10064|Loc=9915..10079||AA=752..806|symbol=6K|Partial=N|product=6k structural protein|*new*
+< ETFTETMSYLWSNSQPFFWVQLCIPLAAVIVLMRCCSCCLPFLVVAGAYLAKVDA
+< > src=MSA|ACC=U38304|Ver=U38304.1|CDS=GI:1125068|ref=NC_001547.1|RM=10065..11381|Loc=10080..11396||AA=807..1245|symbol=E1|Partial=N|product=e-1 structural protein|*new*
+< YEHATTVPNVPQIPYKALVERAGYAPLNLEITVMSSEVLPSTNQEYITCKFTTVVPSPKV
+< KCCGSLECQPAAHADYTCKVFGGVYPFMWGGAQCFCDSENSQMSEAYVELSADCATDHAQ
+< AIKVHTAAMKVGLRIVYGNTTSFLDVYVNGVTPGTSKDLKVIAGPISASFTPFDHKVVIH
+< RGLVYNYDFPEYGAMKPGAFGDIQATSLTSKDLIASTDIRLLKPSAKNVHVPYTQAASGF
+< EMWKNNSGRPLQETAPFGCKIAVNPLRAVDCSYGNIPISIDIPNAAFIRTSDAPLVSTVK
+< CDVSECTYSADFGGMATLQYVSDREGQCPVHSHSSTATLQESTVHVLEKGAVTVHFSTAS
+< PQANFIVSLCGKKTTCNAECKPPADHIVSTPHKNDQEFQAAISKTSWSWLFALFGGASSL
+< LIIGLMIFACSMMLTSTRR
+---
+> > src=MSA|ACC=U38304|Ver=U38304.1|CDS=GI:1125067|ref=NC_001547.1|RM=7647..8438|Loc=90..1244||AA=11..395|symbol=C|Partial=N|product=capsid (c) protein|*new*
+> DPQSPFVVQLQKSFPQFEVVAQQVTPNDHANARAFSHLASKLIELEVPTTATILDIGSAP
+> ARRMFSEHQYHCVCPMRSPEDPDRMMKYASKLAEKACKITNKNLHEKIKDLRTVLDTPDA
+> ETPSLCFHNDVTCNTRAEYSVMQDVYINAPGTIYHQAMKGVRTLYWIGFDTTQFMFSAMA
+> GSYPAYNTNWADEKVLEARNIGLCSTKLSEGRTGKLSIMRKKELKPGSRVYFSVGSTLYP
+> EHRASLQSWHLPSVFHLKGKQSYTCRCDTVVSCEGYVVKKITISPGITGETVGYAVTNNS
+> EGFLLCKVTDTVKGERVSFPVCTYIPATICDQMTGIMATDISPDDAQKLLVGLNQRIVIN
+> GKTNRNTNTMQNYLLPIIAQGFSKW
+> > src=MSA|ACC=U38304|Ver=U38304.1|CDS=GI:1125067|ref=NC_001547.1|RM=8439..8630|Loc=1245..1856||AA=396..599|symbol=E3|Partial=N|product=e-3 structural protein|*new*
+> AKERKEDLDNEKMLGTRERKLTYGCLWAFRTKKVHSFYRPPGTQTIVKVPASFSAFPMSS
+> VWTTSLPMSLRQKIKLALQPKKEEKLLQVPEELVMEAKAAFEDAQEESRAEKLREALPPL
+> VADKGIEAAAEVVCEVEGLQADIGAALVETPRGHVRIIPQANDRMIGQYIVVSPTSVLKN
+> AKLAPAHPLADQVKIITHSGRSGR
+> > src=MSA|ACC=U38304|Ver=U38304.1|CDS=GI:1125067|ref=NC_001547.1|RM=8631..9899|Loc=1857..3731||AA=600..1224|symbol=E2|Partial=N|product=e-2 structural protein|*new*
+> YAVEPYDAKVLMPAGSAVPWPEFLALSESATLVYNEREFVNRKLYHIAMHGPAKNTEEEQ
+> YKVTKAELAETEYVFDVDKKRCVKKEEASGLVLSGELTNPPYHELALEGLKTRPVVPYKV
+> ETIGVIGAPGSGKSAIIKSTVTARDLVTSGKKENCREIQADVLRLRGMQITSKTVDSVML
+> NGCRKAVEVLYVDEAFACHAGALLALIAIVRPRHKVVLCGDPKQCGFFNMMQLKVYFNHP
+> EKDICTKTFYKFISRRCTQPVTAIVSTLHYDGKMKTTNPCKKNIEIDITGATKPKPGDII
+> LTCFRGWVKQLQIDYPGHEVMTAAASQGLTRKGVYAVRQKVNENPLYAITSEHVNVLLTR
+> TEDRLVWKTLQGDPWIKQLTNVPKGNFQATIEDWEAEHKGIIAAINSPAPRTNPFSCKTN
+> VCWAKRLEPILATAGIVLTGCQWSELFPQFADDKPHSAIYALDVICIKFFGMDLTSGLFS
+> KQSIPLTYHPADSARPVAHWDNSPGTRKYGYDHAVAAELSRRFPVFQLAGKGTQLDLQTG
+> RTRVISAQHNLVPVNRNLPHALVPEHKEKQPGPVKKFLSQFKHHSVLVVSEEKIEAPHKR
+> IEWIAPIGIAGADKNYNLAFGFPPQ
+> > src=MSA|ACC=U38304|Ver=U38304.1|CDS=GI:1125067|ref=NC_001547.1|RM=9900..10064|Loc=3732..3896||AA=1225..1279|symbol=6K|Partial=N|product=6k structural protein|*new*
+> ARYDLVFINIGTKYRNHHFQQCEDHAATLKTLSRSALNCLNPGGTLVVKSYGYAD
+> > src=MSA|ACC=U38304|Ver=U38304.1|CDS=GI:1125067|ref=NC_001547.1|RM=10065..11381|Loc=3897..5741||AA=1280..1894|symbol=E1|Partial=N|product=e-1 structural protein|*new*
+> RNSEDVVTALARKFVRVSAARPECVSSNTEMYLIFRQLDNSRTRQFTPHHLNCVISSVYE
+> GTRDGVGAAPSYRTKRENIADCQEEAVVNAANPLGRPGEGVCRAIYKRWPNSFTDSATET
+> GTAKLTVCQGKKVIHAVGPDFRKHPEAEALKLLQNAYHAVADLVNEHNIKSVAIPLLSTG
+> IYAAGKDRLEVSLNCLTTALDRTDADVTIYCLDKKWKERIDAVLQLKESVIELKDEDMEI
+> DDELVWIHPDSCLKGRKGFSTTKGKLYSYFEGTKFHQAAKDMAEIKVLFPNDQESNEQLC
+> AYILGETMEAIREKCPVDHNPSSSPPKTLPCLCMYAMTPERVHRLRSNNVKEVTVCSSTP
+> LPKYKIKNVQKVQCTKVVLFNPHTPAFVPARKYIEAPEQPAAPPAQAEEAPEVAATPTPP
+> AADNTSLDVTDISLDMEDSSEGSLFSSFSGSDNSITSMDSWSSGPSSLEIVDRRQVVVAD
+> VHAVQEPAPVPPPRLKKMARLAAARMQEEPTPPASTSSADESLHLSFGGVSMSFGSLFDG
+> EMGALAAAQPPASTCPTDVPMSFGSFSDGEIEELSRRVTESEPVLFGSFEPGEVNSIISS
+> RSVVSFPPRKQRRRR
+> > src=MSA|ACC=U38304|Ver=U38304.1|CDS=GI:1125068|ref=NC_001547.1|RM=5751..7598|Loc=10782..11396||AA=1041..1245|symbol=nsP4|Partial=Y|product=nsp4 nonstructural protein (putative start); putative|*new*
+> QAASGFEMWKNNSGRPLQETAPFGCKIAVNPLRAVDCSYGNIPISIDIPNAAFIRTSDAP
+> LVSTVKCDVSECTYSADFGGMATLQYVSDREGQCPVHSHSSTATLQESTVHVLEKGAVTV
+> HFSTASPQANFIVSLCGKKTTCNAECKPPADHIVSTPHKNDQEFQAAISKTSWSWLFALF
+> GGASSLLIIGLMIFACSMMLTSTRR
+
+ Test #319, Togaviridae,    U73745.gb,    fail, comment=ERROR: Difference with old result
+ Test #319, Togaviridae,    U73745.gb,    $result=diff ./test/output/U73745_matpept_msa.faa ./test/U73745_matpept_msa.faa
+35,54c35,57
+< > src=MSA|ACC=U73745|Ver=U73745.1|CDS=GI:1778360|ref=NC_001786.1|RM=7327..8085|Loc=7327..8085||AA=1..253|symbol=C|Partial=N|product=C protein|*new*
+< MDFIPTQTFYGRRWRPAPVQRYIPQPQPPAPPRRRRGPSQLQQLVAALGALALQPKQKQK
+< RAQKKPKKTPPPKPKKTQKPKKPTQKKKSKPGKRMRNCMKIENDCIFPVMLDGKVNGYAC
+< LVGDKVMKPAHVKGTIDNPELAKLTFKKSSKYDLECAQVPVCMKSDASKFTHEKPEGHYN
+< WHHGAVQFSNGRFTIPTGSGKPGDSGRPIFDNTGKVVAIVLGGANEGARTALSVVTWNKD
+< MVTRITPEESVEW
+< > src=MSA|ACC=U73745|Ver=U73745.1|CDS=GI:1778360|ref=NC_001786.1|RM=8086..8289|Loc=8086..8289||AA=254..321|symbol=E3|Partial=N|product=E3 protein|*new*
+< SAAALXITALCVLQNLSFPCDAPPCAPCCYEKDPAGTLRLLSDHYYHPKYYELLDSTMHC
+< PQGRRPKR
+< > src=MSA|ACC=U73745|Ver=U73745.1|CDS=GI:1778360|ref=NC_001786.1|RM=8290..9552|Loc=8290..9552||AA=322..742|symbol=E2|Partial=N|product=E2 protein|*new*
+< SVAHFEAYKATRPYIGWCADCGLAGSCPSPVSIEHVWSDADDGVLKIQVSMQIGIAKSNT
+< INHAKIRYMGANGVQEAERSTLSVSTTAPCDILATMGHFILARCRPGSQVEVSLSTDPKL
+< LCRTPFSHKPRFIGNEKSPAPTGHKTRIPCKTYSHQTDLTREEITMHVPPDVPIQGLVSN
+< TGKSYSLDPKTKTIKYKCTCGETVKEGTATNKITLFNCDTAPKCITYAVDNTVWQYNSQY
+< VPRSEVTEVKGKIHVPFPLTDSTCAVSVAPEPQVTYRLGEVEFHFHPMYPTLFSIRSLGK
+< DPSHSQEWIDTPMSKTIQVGAEGVEYVWGNNNPVRLWAQKSSSSSAHGNPISIVSHYYDL
+< YPYWTITVLASLGLLIVISSGFSCFLCSVARTKCLTPYQLAPGAQLPTFIALLCCAKSAR
+< A
+< > src=MSA|ACC=U73745|Ver=U73745.1|CDS=GI:1778360|ref=NC_001786.1|RM=9553..9726|Loc=9553..9726||AA=743..800|symbol=6K|Partial=N|product=6K protein|*new*
+< DTLDDFSYLWTNNQAMFWLQLASPVAAFLCLSYCCRNLACCMKIFLGISGLCVIATQA
+---
+> > src=MSA|ACC=U73745|Ver=U73745.1|CDS=GI:1778359|ref=NC_001786.1|RM=7327..8085|Loc=225..1118||AA=55..352|symbol=C|Partial=N|product=C protein|*new*
+> METAKDQIILDIGSAPARRLYSEHKYHCVCPMKCTEDPERMLGYARKLIAGSAKGKAEKL
+> RDLRDVLATPDIETQSLCLHTDASCRYRGDVAVYQDVYAIDAPTTLYHQALKGVRTAYWI
+> GFDTTPFMYDALAGAYPLYSTNWADEQVLESRNIGLCSDKVSEGGKKGRSILRKKFLKQS
+> DRVMFSVGSTLYTESRKLLQSWHLPSTFHLKGKSSFTCRCDTIVSCEGYVLKKITMCPGV
+> TGKPIGYAVTHHKEGFVVGKVTDTIRGERVSFAVCTYVPTTLCDQMTGILATEVTADD
+> > src=MSA|ACC=U73745|Ver=U73745.1|CDS=GI:1778359|ref=NC_001786.1|RM=8086..8289|Loc=1119..1370||AA=353..436|symbol=E3|Partial=N|product=E3 protein|*new*
+> AQKLLVGLNQRIVVNGRTQRNTNTMKNYLLPLVAQALAKWAKEAKQDMEDERPLNERQRT
+> LTCLCCWAFKRNKRHAIYKRPDTQ
+> > src=MSA|ACC=U73745|Ver=U73745.1|CDS=GI:1778359|ref=NC_001786.1|RM=8290..9552|Loc=1371..3035||AA=437..991|symbol=E2|Partial=N|product=E2 protein|*new*
+> SIVKVPCEFTSFPLVSLWSAGMSISLRQKLKMMLQARQPTQIAAVTEELIQEAAAVEQEA
+> VDTANAELDHAAWPSIVDTTERHVEVEVEELDQRAGEGVVETPRNSIKVSTQIGDALIGS
+> YLILSPQAVLRSEKLACIHDLAEQVKLVTHSGRSGRYAVDKYXGRVLVPTGVAIDIQSFQ
+> ALSESATLVYNEREFVNRKLWHIAVYGAALNTDEEGYEKVPVERAESDYVFDVDQKMCLK
+> KEQASGWVLCGELVNPPFHEFAYEGLRTRPSAPYKVHTVGVYGVPGSGKSAIIKNTVTMS
+> DLVLSGKKENCLEIMNDVLKHRALRITAKTVDSVLLNGVKHTPNILYIDEAFSCHAGTLL
+> ATIAIVRPKQKVVLCGDPKQCGFFNMMQLKVNYNHDICSEVFHKSISRRCTQDITAIVSK
+> LHYQDRMRTTNPRKGDIIIDTTGTTKPAKTDLILTCFRGWVKQLQQDYRGNEVMTAAASQ
+> GLTRASVYAVRTKVNENPLYAQTSEHVNVLLTRTENKLVWKTLSTDPWIKTLTNPPRGHY
+> TATIAEWEAEHQGIM
+> > src=MSA|ACC=U73745|Ver=U73745.1|CDS=GI:1778359|ref=NC_001786.1|RM=9553..9726|Loc=3036..3236||AA=992..1058|symbol=6K|Partial=N|product=6K protein|*new*
+> KAIQGYAPPVNTFMNKVNVCWAKTLTPVLETAGISLSAEDWSELLPPFAQDVAYSPEVAL
+> NIICTKM
+
+ Testing usage,          1
+ Test #320, usage,          usage,        fail, comment=ERROR: Difference with old result
+ Test #320, usage,          usage,        $result=diff ./test/output/usage.out ./test/usage.out
+1c1
+< msa_annotate.pl Ver1.2.1
+---
+> msa_annotate.pl Ver'1.2.1'
+8c8
+< Viral families and species covered in Ver1.2.2 are:
+---
+> Viral families and species covered in Ver'1.2.2' are:
+
+
+Tests performed: total=320, fail=43, pass=277; skip=0
+
+msa_annotate_test.pl: finished.
+

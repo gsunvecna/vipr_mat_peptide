@@ -6,7 +6,8 @@ use English;
 use Carp;
 use Data::Dumper;
 
-use version; our $VERSION = qv('1.2.1'); # May 10 2013
+#use version;
+our $VERSION = qw('1.2.1'); # May 10 2013
 use File::Temp qw/ tempfile tempdir /;
 use Bio::SeqIO;
 use Bio::Seq;
@@ -106,30 +107,16 @@ sub generate_fasta {
 } # sub generate_fasta
 
 
-sub process_list1 {
-    my ($accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $progs) = @_;
+sub readGenbank {
+    my ($acc, $number, $dbh_ref) = @_;
 
     my $debug = 0 || $debug_all;
-    my $subname = 'process_list1';
+    my $subname = 'readGenbank';
 
-#    my $refseqs = {};
-
-   my $msgs = [];
-   my $count = {
-         MSA=>{Success=>0, Fail=>0, Empty=>0},
-         GBK=>{Success=>0, Fail=>0, Empty=>0},
-   };
-   for (my $ct = 0; $ct<=$#{$accs}; $ct++) {
-        my $msg_msa = '';
-        my $msg_gbk = '';
-        my $faa = '';
-        my $number = $accs->[$ct]->[0];
-        my $acc = $accs->[$ct]->[1];
-
-        # get genbank file from MySQL database
+        # get genbank file
         my $result;
         print STDERR "\n";
-#        print STDERR "$subname: \$acc='$acc'\n";
+        $debug && print STDERR "$subname: \$acc='$acc'\n";
         if ($dbh_ref && $dbh_ref->isa('GBKUpdate::Database')) {
             # get genome gbk from MySQL database
             $result = $dbh_ref->get_genbank($acc);
@@ -152,36 +139,50 @@ sub process_list1 {
             close $in or croak "$0: Couldn't close $acc: $OS_ERROR";
             print STDERR "$subname: \$acc='#$number:$acc' Found record in file=$acc\n";
         }
-        if (!$result) {
-            print STDERR "$subname: #$number:$acc result is empty\n";
-#            print STDOUT "$subname: #$number:$acc result is empty\n";
-            my $msg = "$acc \ttaxid=---- \tsrc=MSA \tstatus=---- \tcomment=Empty genome file";
-            print STDERR "$subname: \$msg=$msg\n";
-            push @$msgs, $msg;
-            $msg = "$acc \ttaxid=---- \tsrc=GBK \tstatus=---- \tcomment=Empty genome file";
-            print STDERR "$subname: \$msg=$msg\n";
-            push @$msgs, $msg;
-#            $count->{MSA}->{Fail}++;
-            $count->{MSA}->{Empty}++;
-#            $count->{GBK}->{Fail}++;
-            $count->{GBK}->{Empty}++;
-            next;
-        } else {
-            print STDERR "$subname: \$result='".substr($result,0,79)."'\n";
-#            print STDERR "$subname: \$result='$result'\n";
-        }
+
+    return $result;
+
+} # sub readGenbank
+
+
+sub process_list1 {
+    my ($accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $progs, $inFormat, $inTaxon, $outFormat) = @_;
+
+    my $debug = 0 || $debug_all;
+    my $subname = 'process_list1';
+
+#    my $refseqs = {};
+
+   my $msgs = [];
+   my $count = {
+         MSA=>{Success=>0, Fail=>0, Empty=>0},
+         GBK=>{Success=>0, Fail=>0, Empty=>0},
+   };
+   for (my $ct = 0; $ct<=$#{$accs}; $ct++) {
+        my $msg_msa = '';
+        my $msg_gbk = '';
+        my $faa = '';
+        my $number = $accs->[$ct]->[0];
+        my $acc = $accs->[$ct]->[1];
+
+        print STDERR "\n";
+        # get genbank file
+        my $result = &readGenbank($acc, $number, $dbh_ref);
 
         print STDERR "$subname: #$number:\t$acc processing\n";
-#        print STDOUT "$subname: #$number:\t$acc processing\n";
 
-        # Now run the annotation by MUSCLE or CLUSTALW alignment
         my $gbk = $result;
         my $in_file2 = IO::String->new($gbk);
-        my $in  = Bio::SeqIO->new( -fh => $in_file2, -format => 'genbank' );
-        $debug && print STDERR "$subname: \$in='\n". Dumper($in) . "End of \$in\n\n";
+        my $in;
+        if ($inFormat =~ m/genbank/i) {
+            $in  = Bio::SeqIO->new( -fh => $in_file2, -format => 'genbank' );
+        } elsif ($inFormat =~ m/fasta/i) {
+            $in  = Bio::SeqIO->new( -fh => $in_file2, -format => 'fasta' );
+        }
+#        $debug && print STDERR "$subname: \$in='\n". Dumper($in) . "End of \$in\n\n";
         my $inseq = $in->next_seq();
-        $debug && print STDERR "$subname: \$inseq='\n". Dumper($inseq) . "End of \$inseq\n\n";
-        if (!$inseq) {
+#        $debug && print STDERR "$subname: \$inseq='\n". Dumper($inseq) . "End of \$inseq\n\n";
+        if (!$result || !$inseq) {
             print STDERR "$subname: \$acc=$acc \$inseq is undef, skip\n";
             my $msg = "$acc \ttaxid=---- \tsrc=MSA \tstatus=---- \tcomment=Empty genome file";
             print STDERR "$subname: \$msg=$msg\n";
@@ -192,17 +193,33 @@ sub process_list1 {
             $count->{MSA}->{Empty}++;
             $count->{GBK}->{Empty}++;
             next;
+        } elsif ($result) {
+            print STDERR "$subname: \$result='".substr($result,0,(length($result)>79)?79:length($result))."'\n";
+            $debug && print STDERR "$subname: \$result='$result'\n";
         }
-        $acc = $inseq->accession_number;
-        my $taxid = $inseq->species->ncbi_taxid;
+        my $taxid;
+        if ($inFormat =~ m/genbank/i) {
+            $acc = $inseq->accession_number;
+            $taxid = $inseq->species->ncbi_taxid;
+        } elsif ($inFormat =~ m/fasta/i) {
+            $taxid = $inTaxon;
+        }
         $debug && print STDERR "$subname: accession='$acc' \$taxid=$taxid.\n";
         my $outfile = '';
         $outfile = "$dir_path/$acc" . '_matpept_msagbk.faa' if (!$debug);
         $debug && print STDERR "$subname: accession='#$number:$acc' \$outfile=$outfile.\n";
         
-        my ($feats_msa, $comment_msa) = Annotate_Align::annotate_1gbk( $gbk, $exe_dir, $aln_fn, $dir_path, $progs);
+        # Now run the annotation by MUSCLE or CLUSTALW alignment
+        my ($feats_msa, $comment_msa);
+        if ($inFormat =~ m/genbank/i) {
+            ($feats_msa, $comment_msa) = Annotate_Align::annotate_1gbk( $gbk, $exe_dir, $aln_fn, $dir_path, $progs);
+        } elsif ($inFormat =~ m/fasta/i) {
+            ($feats_msa, $comment_msa) = Annotate_Align::annotate_1faa( $gbk, $inTaxon, $exe_dir, $aln_fn, $dir_path, $progs);
+        }
 #        $feats_msa = undef; # Used to test the subroutines in Annotate_gbk
-        my $status_msa = $feats_msa ? 'Success' : ($comment_msa eq 'Refseq with mat_peptide annotation from NCBI, skip') ? 'Skip   ' : 'Fail   ';
+        my $status_msa = ($feats_msa)                                                           ? 'Success'
+                       : ($comment_msa eq 'Refseq with mat_peptide annotation from NCBI, skip') ? 'Skip   '
+                       :                                                                          'Fail   ';
         if (!$feats_msa) {
             $count->{MSA}->{Fail}++;
             print STDERR "$subname: no result from Annotate_Align::annotate_1gbk comment=$comment_msa\n";
@@ -247,7 +264,9 @@ sub process_list1 {
 
         # Gets a FASTA string containing all mat_peptides from genbank file
         my ($feats_gbk, $comment_gbk) = Annotate_gbk::get_matpeptide( $gbk, $feats_msa,$exe_dir);
-        my $status_gbk = $feats_gbk ? 'Success' : ($comment_gbk eq 'Not refseq, skip') ? 'Skip   ' : 'Fail   ';
+        my $status_gbk = ($feats_gbk)                         ? 'Success'
+                       : ($comment_gbk eq 'Not refseq, skip') ? 'Skip   '
+                       :                                        'Fail   ';
         if (!$feats_gbk) {
             $count->{GBK}->{Fail}++;
             print STDERR "$subname: \$acc=$acc Empty result from Annotate_gbk::get_matpeptide comment=$comment_gbk\n";
@@ -567,7 +586,7 @@ sub Usage {
     my $usages = {};
     $usages = {
                 'msa_annotate.pl' =>
-	"$source Ver$VERSION
+	"$source Ver$Annotate_Def::VERSION
 Usage:  -d directory to find the input genome file
         -i name of the input genbank file
         -l name of input folder",

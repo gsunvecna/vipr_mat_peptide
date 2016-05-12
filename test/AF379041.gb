@@ -1,0 +1,48 @@
+LOCUS       AF379041                 158 bp    RNA     linear   VRL 10-JUN-2002
+DEFINITION  Hepatitis C virus isolate LC2 polyprotein gene, core protein
+            region, partial cds.
+ACCESSION   AF379041
+VERSION     AF379041.1  GI:14486766
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 158)
+  AUTHORS   Gimenez-Barcons,M., Franco,S., Suarez,Y., Forns,X., Ampurdanes,S.,
+            Puig-Basagoiti,F., Sanchez-Fueyo,A., Barrera,J.M., Llovet,J.M.,
+            Bruix,J., Sanchez-Tapias,J.M., Rodes,J. and Saiz,J.C.
+  TITLE     High amino acid variability within the NS5A of hepatitis C virus
+            (HCV) is associated with hepatocellular carcinoma in patients with
+            HCV-1b-related cirrhosis
+  JOURNAL   Hepatology 34 (1), 158-167 (2001)
+   PUBMED   11431747
+REFERENCE   2  (bases 1 to 158)
+  AUTHORS   Gimenez-Barcons,M., Franco,S., Suarez,Y., Forns,X., Ampurdanes,S.,
+            Puig-Basagoiti,F., Sanchez-Fueyo,A., Barrera,J.M., Llovet,J.M.,
+            Bruix,J., Sanchez-Tapias,J.M., Rodes,J. and Saiz,J.C.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (11-MAY-2001) Hepatology, Hospital Clinic, 170
+            Villarroel, Barcelona 08036, Spain
+FEATURES             Location/Qualifiers
+     source          1..158
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="LC2"
+                     /db_xref="taxon:11103"
+                     /note="isolated from cirrhotic patient without HCC;
+                     genotype: 1b"
+     CDS             <1..>158
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="AAK63260.1"
+                     /db_xref="GI:14486767"
+                     /translation="RPQDVKFPGGGQIVGGVYLLLSPRLASPREGPGLSPGTLGPSMA
+                     MRAWGGQDG"
+     mat_peptide     <1..>158
+                     /product="core protein"
+ORIGIN      
+        1 cgcccacagg acgtcaagtt cccgggcggt ggtcagatcg ttggtggagt ttacctgttg
+       61 ctatccccaa ggctcgccag cccgagggaa gggcctgggc tcagcccggg tacccttggc
+      121 ccctctatgg caatgagggc atggggtggg caggatgg
+//

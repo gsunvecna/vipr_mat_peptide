@@ -402,7 +402,7 @@ Takes 2 CDS feature
 sub cmp_cds_bl2seq {
     my ($cds, $refcds) = @_;
 
-    my $debug = 0 || $debug_all;
+    my $debug = 1 || $debug_all;
     my $subn = 'cmp_cds_bl2seq';
 
     my $match_cds = 0;
@@ -417,12 +417,12 @@ sub cmp_cds_bl2seq {
     my $bl2seq_result = &run_bl2seq_search($s1, $s2, $debug);
     $s1 = length($s1);
     $s2 = length($s2);
-#    $debug && print STDERR "$subn: \$bl2seq_result=\n".Dumper($bl2seq_result)."end of \$bl2seq_result\n\n";
+    $debug && print STDERR "$subn: \$bl2seq_result=\n".Dumper($bl2seq_result)."end of \$bl2seq_result\n\n";
     $debug && print STDERR "$subn: refcds: \$s1=$s1 cds: \$s2=$s2\n\n";
 
     # Look at the hit
     my $hit_cds = $bl2seq_result->next_hit;
-#    $debug && print STDERR "$subn: \$hit_cds=\n".Dumper($hit_cds)."end of \$hit_cds\n\n";
+    $debug && print STDERR "$subn: \$hit_cds=\n".Dumper($hit_cds)."end of \$hit_cds\n\n";
     return $match_cds if (!defined($hit_cds));
     my $hsp_cds_conserved = 0;
     my $hsp_cds_hit_length = 0;
@@ -906,6 +906,7 @@ sub get_feature_id_desc {
     my $subn = 'get_feature_id_desc';
 
     $debug && print STDERR "$subn: \$feat=\n".Dumper($feat)."end of \$feat\n";
+    $debug && print STDERR "$subn: \$gene_symbol='$gene_symbol'\n";
     my (@id);
     my $id = 0;
     if ($cds) {

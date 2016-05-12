@@ -14,7 +14,7 @@ use Bio::AlignIO;
 use Bio::Tools::Run::StandAloneBlast;
 use IO::String;
 
-use version; our $VERSION = qv('1.2.1'); # May 10 2013
+use version; our $VERSION = qv('1.2.2'); # May 10 2013
 
 my $debug_all = 0;
 
@@ -1166,7 +1166,9 @@ sub initRefseq {
 #  138950 => 'NC_001428', #  138950 | Human enterovirus C              | Good refseq w/ 11 mat_peptides, "PROVISIONAL"
   138950 => 'NC_002058', #  138950 | Human enterovirus C              | Good refseq w/ 11 mat_peptides, "REVIEWED", V1.1.6
   861519 => 'NC_014336', #  138950 | Human enterovirus C              | Good refseq w/ 11 mat_peptides, V1.1.6
-  138951 => 'NC_001430', #  138951 | Human enterovirus D              | Good refseq w/ 15 mat_peptides, V1.1.6
+# Refseq NC_001430 has been determined to be wrong in the cleavage between 1C-1D, and 1D-2A by scientists.
+# Excluded on 10/23/2014
+#  138951 => 'NC_001430', #  138951 | Human enterovirus D              | Good refseq w/ 15 mat_peptides, V1.1.6
   147711 => 'NC_001617', #  147711 | Human rhinovirus A               | Good refseq w/ 11 mat_peptides, V1.1.6
    12131 => 'NC_001490', #  147712 | Human rhinovirus B               | Good refseq w/ 11 mat_peptides, V1.1.6
   147712 => 'NC_001490', #  147712 | Human rhinovirus B               | Good refseq w/ 11 mat_peptides, V1.1.6
@@ -1408,9 +1410,11 @@ sub load_gene_symbol {
     my $accession = 1;
     while (<$symbol_file>) {
         chomp;
+if (1) {
         $debug && print STDERR "$subn: \$_='$_'\n";
         $debug && print STDERR "$subn: \@m0=\n".Dumper($m0)."End of \@m0\n\n";
         $debug && print STDERR "$subn: \@m1=\n".Dumper($m1)."End of \@m1\n\n";
+}
 #        $debug && print STDERR "$subn: \$loadMeta=\n".Dumper($loadMeta)."End of \$loadMeta\n\n";
         if (m/^\s*$/x) { # Skip empty lines
             next if (!defined($loadMeta));
@@ -1438,7 +1442,8 @@ sub load_gene_symbol {
         } else {
             (defined $loadMeta) && push(@$m1, $_);
         }
-        s/'//g; # Remove all single quotes
+# commented out since all single quotes has been changed to ", and some symbols are NS1'
+#        s/'//g; # Remove all single quotes
         s/"//g; # Remove all single quotes
         my $words = [split(/\s*;\s*/)];
 #        $debug && print STDERR "$subn: \$_='$_'\n";
@@ -1447,6 +1452,7 @@ sub load_gene_symbol {
             $debug && print STDERR "$subn: not enough data in gene_symbol: '@$words'\n";
             next;
         }
+        $debug && print STDERR "$subn: \@\$words='@$words'\n";
 
         my ($acc, $loc, $sym) = @{$words}[0..2];
         my $commt = '';
@@ -1664,7 +1670,7 @@ Returns the gene symbol in a string
 sub get_gene_symbol {
     my ($reffeat, $exe_dir) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 1 && $debug_all;
     my $subn = 'get_gene_symbol';
 #    print STDERR "get_gene_symbol: \$reffeat=\n".Dumper($reffeat)."end of \$reffeat\n\n";
 
@@ -1680,7 +1686,6 @@ sub get_gene_symbol {
     $debug && print STDERR "$subn: \$GENE_SYM->{symbol_fn}=$GENE_SYM->{symbol_fn}\n";
     if (!$GENE_SYM->{symbol_loaded} && -f "$exe_dir/$GENE_SYM->{symbol_fn}" ) {
         load_gene_symbol($exe_dir);
-
     }
 
     # Search for the symbol based on the start/stop of the reference mat_peptide
@@ -1691,8 +1696,9 @@ sub get_gene_symbol {
         my $loc = $reffeat->location->to_FTstring;
         $loc = $reffeat->location->start .'..'. $reffeat->location->end;
         $gene_symbol = $GENE_SYM->{symbol}->{$acc}->{$loc} ? $GENE_SYM->{symbol}->{$acc}->{$loc} : $gene_symbol;
+        $debug && print "$subn: Found gene symbol for \$loc='$loc': \$gene_symbol='$gene_symbol'\n";
     }
-    $debug && print "get_gene_symbol: primary_tag=".($reffeat->seq->accession_number);
+    $debug && print "$subn: primary_tag=".($reffeat->seq->accession_number);
     $debug && print "\tlocation=".($reffeat->location->to_FTstring);
     $debug && print "\tsymbol=$gene_symbol\n";
 

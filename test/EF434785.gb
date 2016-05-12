@@ -1,0 +1,101 @@
+LOCUS       EF434785                2515 bp    RNA     linear   VRL 07-MAR-2007
+DEFINITION  Japanese encephalitis virus isolate TS00 polyprotein gene, partial
+            cds.
+ACCESSION   EF434785
+VERSION     EF434785.1  GI:126508803
+KEYWORDS    .
+SOURCE      Japanese encephalitis virus
+  ORGANISM  Japanese encephalitis virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Japanese encephalitis virus group.
+REFERENCE   1  (bases 1 to 2515)
+  AUTHORS   Pyke,A.T.
+  TITLE     Structural genes of Japanese encephalitis virus isolate TS00
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 2515)
+  AUTHORS   Pyke,A.T.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (13-FEB-2007) Public Health Virology, Queensland Health
+            Scientific Services, 39 Kessels Road, Coopers Plains, QLD 4108,
+            Australia
+FEATURES             Location/Qualifiers
+     source          1..2515
+                     /organism="Japanese encephalitis virus"
+                     /mol_type="genomic RNA"
+                     /isolate="TS00"
+                     /host="pig"
+                     /db_xref="taxon:11072"
+                     /country="Australia: Badu Island, Torres Strait"
+                     /collection_date="2000"
+     CDS             82..>2515
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="ABO15575.1"
+                     /db_xref="GI:126508804"
+                     /translation="MTKKPGGPGKNRAINMLKRGLPRVFPLVGVKRVVMSLLDGRGPV
+                     RFVLALITFFKFTALAPTKALLGRWRAVEKSVAMKHLTSFKRELGTLIDAVNKRGKKQ
+                     NKRGGNESSIMWLVSLAIVTACAGAMKLSNFQGKLLMTINNTDIADVIVIPTSKGENR
+                     CWVRAIDVGYMCEDTITYECPKLAVGNDPEDVDCWCDNQEVFVQYGRCTRTRHSKRSR
+                     RSVSVQTHGESSLVNKKEAWLDSTKATRYLMKTENWIIRNPGYAFLAAALGWMLGSNS
+                     GQRVVFTILLLLVAPAYSFNCLGMGNRDFIEGASGATWVDLVLEGDSCLTIMANDKPT
+                     LDVRMINIEASQLAEVRSYCYHASVTDISTVARCPTTGEAHNEKRADSSYVCKQGFTD
+                     RGWGNGCGLFGKGSIDTCAKFTCNNKAIGRTIQPENIKYEVGVFVHGTTTSENHGNYS
+                     AQVGASQAAKFTVTPNAPSITLKLGDYGEVTLDCEPRSGLNTEAFYVMTVGSKSFLVH
+                     REWFHDLSLPWTSPSSTAWRNRELLMEFEEAHATKQSVVALGSQEGGLHQALAGAIVV
+                     EYSSSVKLTSGHLKCRLKMDKLALKGTTYGMCTEKFSFAKNPADTGHGTVVIELTYSG
+                     SDGPCKIPIVSVASLNDMTPVGRLVTVNPFVATSSSNSKVLVEMEPPFGDSYIVVGRG
+                     DKQINHHWHKAGSTLGKAFSTTLKGAQRLAALGDTAWDFGSIGGVLNSIGKAVHQVFG
+                     GAFRTLFGGMSWITQGLMGALLLWMGVNARDRSIALAFLATGGVLVFLATNVHADTGC
+                     AIDITRKEMRCGS"
+     mat_peptide     82..462
+                     /product="C protein"
+     mat_peptide     463..738
+                     /product="prM protein"
+     mat_peptide     739..963
+                     /product="M protein"
+     mat_peptide     964..2463
+                     /product="E protein"
+ORIGIN      
+        1 tgaacttctt ggcttagtat cgttgagaag aatcgagaga ttagtgcagt ttaaacagtt
+       61 ttttagaacg gaagaacaac catgactaaa aaaccaggag ggcccgggaa aaaccgggcc
+      121 atcaatatgc tgaaacgcgg attaccccgc gtattcccac tagtgggagt gaagagggta
+      181 gtgatgagct tgttggacgg cagagggccg gtgcgatttg tactggctct tatcacgttc
+      241 ttcaagttca cagcattagc cccgaccaag gcgcttttgg gccgatggag agcagtggag
+      301 aagagtgtgg caatgaaaca tcttaccagt ttcaaacgag aacttggaac actcatcgac
+      361 gccgtgaaca aacggggcaa aaaacaaaac aaaagaggag ggaatgagag ctcgatcatg
+      421 tggcttgtca gtttggcaat cgtaacagct tgtgccggag ctatgaagct atcaaacttt
+      481 caaggaaagc ttctgatgac catcaacaac acggacattg cggacgttat cgtgatcccc
+      541 acctcaaaag gcgaaaacag atgttgggtt cgagcgatcg acgttggtta catgtgtgaa
+      601 gacaccatta cgtacgaatg tccgaagcta gcagtgggca acgacccaga agacgtggat
+      661 tgctggtgcg acaatcaaga agtcttcgtg cagtatggtc gctgcacacg gaccaggcat
+      721 tccaaacgaa gcagaagatc cgtttcggtc caaacgcatg gtgaaagttc actggtgaac
+      781 aaaaaagagg cttggctgga ttcaacgaag gccacgcgat acctcatgaa aacggagaat
+      841 tggatcataa ggaaccctgg ttatgctttc ctggcggcgg cacttggttg gatgctcggc
+      901 agcaatagtg gtcaacgtgt ggtgtttacc atcctcctgc tgttggttgc tccggcttac
+      961 agttttaact gtctgggaat ggggaatcga gattttatag aaggagccag tggagccact
+     1021 tgggtggatt tggtattaga aggagacagt tgtttgacaa tcatggcaaa cgataaacca
+     1081 acactagatg tccgcatgat caacattgaa gccagccaac tcgctgaagt taggagctac
+     1141 tgctatcacg cttcagtcac tgacatttca acggtggctc gatgtcccac gactggagaa
+     1201 gctcacaacg agaaacgtgc tgacagcagc tatgtgtgca aacaaggctt tactgaccgc
+     1261 ggatggggaa atggatgtgg acttttcggg aaaggaagca ttgacacttg cgcaaagttt
+     1321 acttgtaata ataaggccat tggaagaaca atccaaccag agaacatcaa gtatgaagtt
+     1381 ggtgtatttg tgcacggaac caccacctcg gaaaaccatg ggaattattc agcgcaggtt
+     1441 ggagcgtctc aagcagcaaa gttcactgta actccaaacg ctccctcaat aaccctcaag
+     1501 cttggtgatt atggagaagt tacactggat tgtgaaccaa ggagtggact gaacactgaa
+     1561 gcgttctacg tcatgactgt gggttcgaag tcattcttag tccataggga atggttccat
+     1621 gacctttctc tgccctggac gtccccctca agcacggcgt ggaggaacag agaactcctc
+     1681 atggaatttg aagaggcaca tgccacaaaa caatctgtcg tagcccttgg ttcacaggag
+     1741 ggaggcctcc atcaagcgtt agcaggagcc atcgtggtgg agtactcgag ctcagtgaag
+     1801 ttgacatcag gtcacctgaa atgcaggctg aaaatggaca aactggctct gaagggcacg
+     1861 acttatggca tgtgcacaga aaaattctcg tttgcgaaaa acccagcgga cacaggccat
+     1921 ggaacagttg tcattgagct tacatactct ggaagcgatg gtccctgcaa aattccgatt
+     1981 gtttcagtcg cgagtttaaa cgacatgacc cccgtgggaa ggctggtaac agtaaacccc
+     2041 ttcgtcgcga catccagctc caactcgaag gtgctggttg agatggaacc tcctttcgga
+     2101 gactcttata ttgtggttgg aagaggagac aagcagatta atcaccactg gcacaaagct
+     2161 ggaagcacgt taggcaaagc cttctcaaca actttgaaag gagctcaaag actggcagcg
+     2221 ctaggagaca cagcctggga ctttggttcc attggggggg tactcaactc cataggaaaa
+     2281 gctgttcacc aagtatttgg cggtgcattt agaacgctct ttgggggaat gtcttggatc
+     2341 acgcaagggc taatgggggc cctacttctc tggatgggtg tcaacgcacg agatcggtca
+     2401 atcgccttgg cttttttggc cacgggaggt gtgctcgttt ttttagcgac caacgtgcat
+     2461 gctgacactg gctgtgccat tgacatcacg agaaaagaaa tgaggtgtgg aagtg
+//

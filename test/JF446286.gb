@@ -1,0 +1,57 @@
+LOCUS       JF446286                 485 bp    RNA     linear   VRL 07-SEP-2011
+DEFINITION  Junin virus isolate H_p1879_G glycoprotein precursor (GPC) gene,
+            partial cds.
+ACCESSION   JF446286
+VERSION     JF446286.1  GI:334717193
+KEYWORDS    .
+SOURCE      Junin virus
+  ORGANISM  Junin virus
+            Viruses; ssRNA negative-strand viruses; Arenaviridae; Arenavirus;
+            New world arenaviruses.
+REFERENCE   1  (bases 1 to 485)
+  AUTHORS   Goni,S.E., Stephan,B.I., Iserte,J.A., Contigiani,M.S., Lozano,M.E.
+            and Tenorio,A.
+  TITLE     Viral diversity of Junin virus field strains
+  JOURNAL   Virus Res. 160 (1-2), 150-158 (2011)
+   PUBMED   21689697
+REFERENCE   2  (bases 1 to 485)
+  AUTHORS   Goni,S.E., Stephan,B.I., Iserte,J.A., Contigiani,M.S., Lozano,M.E.
+            and Tenorio,A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (01-MAR-2011) Ciencia y Tecnologia, Universidad Nacional
+            de Quilmes, Roque Saenz Pena, Bernal, Buenos Aires B1876BXD,
+            Argentina
+FEATURES             Location/Qualifiers
+     source          1..485
+                     /organism="Junin virus"
+                     /mol_type="genomic RNA"
+                     /isolate="H_p1879_G"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11619"
+                     /segment="S"
+                     /country="Argentina"
+                     /collection_date="1971"
+     gene            <1..>485
+                     /gene="GPC"
+     CDS             <1..>485
+                     /gene="GPC"
+                     /codon_start=2
+                     /product="glycoprotein precursor"
+                     /protein_id="AEG91035.1"
+                     /db_xref="GI:334717194"
+                     /translation="ATFMITFDDIAVLLPQYDVVIQHPADMSWCSKSDDQIRLSQWFM
+                     NVVGHDWHLDPPFLCRNRTKTEGFIFQVNTSKTGVNENYAKKFKTGMHHLYREYPDSC
+                     LSGKLCLMKAQPTSWPLQCPLDHVNTLHFLTRGKNIQLPRRSLKAFFSWSLTDSSGKA
+                     P"
+ORIGIN      
+        1 tgctacattt atgataacct ttgatgacat tgcagtactg ttaccacaat atgatgttgt
+       61 aattcaacac ccggcagata tgagctggtg ttccaaaagt gatgatcaaa ttcggttgtc
+      121 tcaatggttc atgaatgttg tgggacatga ctggcattta gacccaccat ttctgtgtag
+      181 gaaccgtaca aagacagaag gcttcatctt tcaagtcaac acctccaaga ctggtgttaa
+      241 tgaaaactat gccaagaagt tcaagactgg catgcaccat ttatatagag aataccctga
+      301 ctcttgcttg agtggaaaac tgtgtttgat gaaggcacaa cccaccagtt ggcctctcca
+      361 gtgtccactc gaccacgtca acacattgca tttcctcaca agaggtaaga acattcaact
+      421 tccaaggagg tctttgaaag cattcttttc ctggtcactg accgactcat ccggaaaagc
+      481 accgg
+//
+

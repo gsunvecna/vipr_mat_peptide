@@ -1,0 +1,130 @@
+LOCUS       AY746353                3413 bp ss-RNA     linear   VRL 14-FEB-2011
+DEFINITION  Junin virus strain Candid-1 segment S, complete sequence.
+ACCESSION   AY746353
+VERSION     AY746353.1  GI:52222815
+KEYWORDS    .
+SOURCE      Junin virus
+  ORGANISM  Junin virus
+            Viruses; ssRNA negative-strand viruses; Arenaviridae; Arenavirus;
+            New world arenaviruses.
+REFERENCE   1  (bases 1 to 3413)
+  AUTHORS   Emonet,S.F., Seregin,A.V., Yun,N.E., Poussard,A.L., Walker,A.G., de
+            la Torre,J.C. and Paessler,S.
+  TITLE     Rescue from cloned cDNAs and in vivo characterization of
+            recombinant pathogenic Romero and live-attenuated Candid #1 strains
+            of Junin virus, the causative agent of Argentine hemorrhagic fever
+            disease
+  JOURNAL   J. Virol. 85 (4), 1473-1483 (2011)
+   PUBMED   21123388
+REFERENCE   2  (bases 1 to 3413)
+  AUTHORS   Walton,A.H., Droll,D.A. and Chambers,T.J.
+  TITLE     Complete sequence analysis of the Candid-1 virus and expression of
+            encoded proteins
+  JOURNAL   Unpublished
+REFERENCE   3  (bases 1 to 3413)
+  AUTHORS   Walton,A.H., Droll,D.A. and Chambers,T.J.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (24-AUG-2004) Molecular Microbiology and Immunology,
+            Saint Louis University School of Medicine, 1402 South Grand Avenue,
+            St. Louis, MO 63140, USA
+FEATURES             Location/Qualifiers
+     source          1..3413
+                     /organism="Junin virus"
+                     /mol_type="genomic RNA"
+                     /strain="Candid-1"
+                     /db_xref="taxon:11619"
+                     /segment="S"
+                     /country="Argentina"
+     CDS             89..1546
+                     /note="GP-C"
+                     /codon_start=1
+                     /product="glycoprotein"
+                     /protein_id="AAU34180.1"
+                     /db_xref="GI:52222816"
+                     /translation="MGQFISFMQEIPTFLQEALNIALVAVSLIAIIKGIVNLYKSGLF
+                     QFFVFLALAGRSCTEEAFKIGLHTEFQTVSFSMVGLFSNNPHDLPLLCTLNKSHLYIK
+                     GGNASFQISFDDIAVLLPQYDVIIQHPADMSWCSKSDDQIWLSQWFMNAVGHDWHLDP
+                     PFLCRNRAKTEGFIFQVNTSKTGVNGNYAKKFKTGMHHLYREYPDPCLNGKLCLMKAQ
+                     PTSWPLQCPLDHVNTLHFLTRGKNIQLPRRSLKAFFSWSLTDSSGKDTPGGYCLEEWM
+                     LVAAKMKCFGNTAVAKCNLNHDSEFCDMLRLFDYNKNAIKTLNDETKKQVNLMGQTIN
+                     ALISDNLLMKNKIRELMSVPYCNYTKFWYVNHTLSGQHSLPRCWLIKNNSYLNISDFR
+                     NDWILESDFLISEMLSKEYSDRQGKTPLTLVDICIWSTVFFTASLFLHLVGIPSHRHI
+                     RGEACPLPHRLNSLGGCRCGKYPNLKKPTVWRRGH"
+     misc_feature    1547..1637
+                     /note="hairpin intergenic region"
+     CDS             complement(1638..3332)
+                     /note="NP"
+                     /codon_start=1
+                     /product="nucleoprotein"
+                     /protein_id="AAU34181.1"
+                     /db_xref="GI:52222817"
+                     /translation="MAHSKEVPSFRWTQSLRRGLSQFTQTVKSDVLKDAKLIADSIDF
+                     NQVAQVQRALRKTKKGEEDLNKLRDLNKEVDRLMSMRSVQRNTVFKVGDLGRDELMEL
+                     ASDLEKLKNKIRRAETGSQGVYMGNLSQSQLAKRSEILRTLGFQQQGTGGNGVVRIWD
+                     VKDPSKLNNQFGSVPALTIACMTVQGGETMNSVIQALTSLGLLYTVKYPNLSDLDRLT
+                     QEHDCLQIVTKDESSINISGYNFSLSAAVKAGASILDGGNMLETIRVTPENFSSLIKS
+                     TIQVKRREGMFIDEKPGNRNPYENLLYKLCLSGDGWPYIGSRSQITGRSWDNTSIDLT
+                     RKPVAGPRQPEKNGQNLRLANLTEIQEAVIREAVGKLDPTNTLWLDIEGPATDPVEMA
+                     LFQPAGKQYIHCFRKPHDEKGFKNGSRHSHGILMKDIEDAMPGVLSYVIGLLPPDMVV
+                     TTQGSDDIRKLFDLHGRRDLKLVDVKLTSEQARQFDQQVWEKYGHLCKYHNGVVVNKK
+                     KREKDTPFKLASSEPHCALLDCIMFQSVLDGKLYEEEPTPLLPPSLLFLPKAAYAL"
+ORIGIN      
+        1 gtgcagtaag gggatcctag gcgattttgg ttacgctata attgtaactg ttttctgttt
+       61 ggacaacatc aaaaacatcc attgcacaat ggggcagttc attagcttca tgcaagaaat
+      121 accaaccttt ttgcaggagg ctctgaacat tgctcttgtt gcagtcagtc tcattgccat
+      181 cattaagggt atagtgaact tgtacaaaag tggtttattc caattctttg tattcctagc
+      241 gcttgcagga agatcctgca cagaagaagc tttcaaaatc ggactgcaca ctgagttcca
+      301 gactgtgtcc ttctcaatgg tgggtctctt ttccaacaat ccacatgacc tacctttgtt
+      361 gtgtacctta aacaagagcc atctttacat taaggggggc aatgcttcat ttcagatcag
+      421 ctttgatgat attgcagtat tgttgccaca gtatgatgtt ataatacaac atccagcaga
+      481 tatgagctgg tgttccaaaa gtgatgatca aatttggttg tctcagtggt tcatgaatgc
+      541 tgtggggcat gattggcatc tagacccacc atttctgtgt aggaaccgtg caaagacaga
+      601 aggcttcatc tttcaagtca acacctccaa gactggtgtc aatggaaatt atgctaagaa
+      661 gtttaagact ggcatgcatc atttatatag agaatatcct gacccttgct tgaatggcaa
+      721 actgtgctta atgaaggcac aacctaccag ttggcctctc caatgtccac tcgaccacgt
+      781 taacacatta cacttcctta caagaggtaa aaacattcaa cttccaagga ggtccttgaa
+      841 agcattcttc tcctggtctt tgacagactc atccggcaag gatacccctg gaggctattg
+      901 tctagaagag tggatgctcg tagcagccaa aatgaagtgt tttggcaata ctgctgtagc
+      961 aaaatgcaat ttgaatcatg actctgaatt ctgtgacatg ttgaggctct ttgattacaa
+     1021 caaaaatgct atcaaaaccc taaatgatga aactaagaaa caagtaaatc tgatggggca
+     1081 gacaatcaat gccctgatat ctgacaattt attgatgaaa aacaaaatta gggaactgat
+     1141 gagtgtccct tactgcaatt acacaaaatt ttggtatgtc aaccacacac tttcaggaca
+     1201 acactcatta ccaaggtgct ggttaataaa aaacaacagc tatttgaaca tctctgactt
+     1261 ccgtaatgac tggatattag aaagtgactt cttaatttct gaaatgctaa gcaaagagta
+     1321 ttcggacagg cagggtaaaa ctcctttgac tttagttgac atctgtattt ggagcacagt
+     1381 attcttcaca gcgtcactct tccttcactt ggtgggtata ccctcccaca gacacatcag
+     1441 gggcgaagca tgccctttgc cacacaggtt gaacagcttg ggtggttgca gatgtggtaa
+     1501 gtaccccaat ctaaagaaac caacagtttg gcgtagagga cactaagacc tcctgagggt
+     1561 ccccaccagc ccgggcactg cccgggctgg tgtggccccc cagtccgcgg cctggccgcg
+     1621 gactggggag gcactgctta cagtgcatag gctgccttcg ggaggaacag caagctcggt
+     1681 ggtaatagag gtgtaggttc ctcctcatag agcttcccat ctagcactga ctgaaacatt
+     1741 atgcagtcta gcagagcaca gtgtggttca ctggaggcca acttgaaggg agtatccttt
+     1801 tccctctttt tcttattgac aaccactcca ttgtgatatt tgcataagtg accatatttc
+     1861 tcccagacct gttgatcaaa ctgcctggct tgttcagatg tgagcttaac atcaaccagt
+     1921 ttaagatctc ttcttccatg gaggtcaaac aacttcctga tgtcatcgga tccttgagta
+     1981 gtcacaacca tgtctggagg cagcaagccg atcacgtaac taagaactcc tggcattgca
+     2041 tcttctatgt ccttcattaa gatgccgtga gagtgtctgc taccattttt aaaccctttc
+     2101 tcatcatgtg gttttctgaa gcagtgaatg tactgcttac ctgcaggttg gaataatgcc
+     2161 atctcaacag ggtcagtggc tggtccttca atgtcgagcc aaagggtgtt ggtggggtcg
+     2221 agtttcccca ctgcctctct gatgacagct tcttgtatct ctgtcaagtt agccaatctc
+     2281 aaattctgac cgtttttttc cggctgtcta ggaccagcaa ctggtttcct tgtcagatca
+     2341 atacttgtgt tgtcccatga cctgcctgtg atttgtgatc tagaaccaat ataaggccaa
+     2401 ccatcgccag aaagacaaag tttgtacaaa aggttttcat aaggatttct attgcctggt
+     2461 ttctcatcaa taaacatgcc ttctcttcgt ttaacctgaa tggttgattt tatgagggaa
+     2521 gagaagtttt ctggggtgac tctgattgtt tccaacatgt ttccaccatc aagaatagat
+     2581 gctccagcct ttactgcagc tgaaagactg aagttgtaac cagaaatatt gatggagctt
+     2641 tcatctttag tcacaatctg aaggcagtca tgttcctgag tcagtctgtc aaggtcactt
+     2701 aagtttggat acttcacagt gtatagaagc ccaagtgagg ttaaagcttg tatgacactg
+     2761 ttcattgtct cacctccttg aacagtcatg catgcaattg tcaatgcagg aacagagcca
+     2821 aactgattgt ttagctttga agggtcttta acatcccata tcctcaccac accatttccc
+     2881 ccagtccctt gctgttgaaa tcccagtgtt ctcaatatct ctgatctttt agcaagttgt
+     2941 gactgggaca agttacccat gtaaaccccc tgagagcctg tctctgctct tcttatcttg
+     3001 ttttttaatt tctcaaggtc agacgccaac tccatcagtt catccctccc cagatctccc
+     3061 accttgaaaa ctgtgtttcg ttgaacactc ctcatggaca tgagtctgtc aacctcttta
+     3121 ttcaggtccc tcaacttgtt gaggtcttct tccccctttt tagtctttct gagtgcccgc
+     3181 tgcacctgtg ccacttggtt gaagtcgatg ctgtcagcaa ttagcttggc gtccttcaaa
+     3241 acatctgact tgacagtctg agtgaattgg ctcaaacctc tccttaagga ctgagtccat
+     3301 ctaaagcttg gaacctcctt ggagtgtgcc atgccagaag ttctggtgat tttgatctag
+     3361 aatagagttg ctcagtgaaa gtgttagaca ctatgcctag gatccactgt gcg
+//
+

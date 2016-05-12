@@ -1,8 +1,8 @@
-LOCUS       NC_003900              11824 bp ss-RNA     linear   VRL 27-JUN-2012
+LOCUS       NC_003900              11824 bp ss-RNA     linear   VRL 06-MAY-2009
 DEFINITION  Aura virus, complete genome.
 ACCESSION   NC_003900
 VERSION     NC_003900.1  GI:21218488
-DBLINK      BioProject: PRJNA14830
+DBLINK      Project: 14830
 KEYWORDS    .
 SOURCE      Aura virus
   ORGANISM  Aura virus
@@ -202,46 +202,6 @@ FEATURES             Location/Qualifiers
                      /product="E1 protein"
                      /protein_id="NP_819019.1"
                      /db_xref="GI:29653361"
-     gene            7628..10032
-                     /locus_tag="AURAVgp3"
-                     /db_xref="GeneID:13165419"
-     CDS             join(7628..10012,10012..10032)
-                     /locus_tag="AURAVgp3"
-                     /note="Truncated verstion of structural polyprotein that
-                     will be produced when frameshifting occurs at nt 10012;
-                     Truncated version of structural polyprotein and transframe
-                     fusion protein have been added by NCBI Staff with the kind
-                     help of Dr. David Karlin (Department of Zoology,
-                     University of  Oxford, UK) and Dr. Andrew Firth
-                     (Department of Pathology,  University of Cambridge, UK)"
-                     /codon_start=1
-                     /product="truncated polyprotein"
-                     /protein_id="YP_006491231.1"
-                     /db_xref="GI:392972643"
-                     /db_xref="GeneID:13165419"
-                     /translation="MNSVFYNPFGRGAYAQPPIAWRPRRRAAPAPRPSGLTTQIQQLT
-                     RAVRALVLDNATRRQRPAPRTRPRKPKTQKPKPKKQNQKPPQQQKKGKNQPQQPKKPK
-                     PGKRQRTALKFEADRTFVGKNEDGKIMGYAVAMEGKVIKPLHVKGTIDHPALAKLKFT
-                     KSSSYDMEFAKLPTEMKSDAFGYTTEHPEVFYNWHHGAVQFSGGRFTIPTGVGGPGDS
-                     GRPILDNSGKVVAIVLGGANEVPGTALSVVTWNKKGAAIKTTHEDTVEWSRAITAMCI
-                     LQNVTFPCDRPPTCYNRNPDLTLTMLETNVNHPSYDVLLDAALRCPTRRHVRSTPTDD
-                     FTLTAPYLGLCHRCKTMEPCYSPIKIEKVWDDADDGVLRIQVSAQLGYNRAGTAASAR
-                     LRFMGGGVPPEIQEGAIADFKVFTSKPCLHLSHKGYFVIVKCPPGDSITTSLKVHGSD
-                     QTCTIPMRVGYKFVGREKYTLPPMHGTQIPCLTYERTREKSAGYVTMHRPGQQSITML
-                     MEESGGEVYVQPTSGRNVTYECKCGDFKTGTVTARTKIDGCTERKQCIAISADHVKWV
-                     FNSPDLIRHTDHTAQGKLHIPFPLQQAQCTVPLAHLPGVKHAYRSMSLTLHAEHPTLL
-                     TTRHLGENPQPTAEWIVGSVTRNFSITIQGFEYTWGNQKPVRVYAQESAPGNPHGWPH
-                     EIVRHYYHLYPFYTVTVLSGMGLAICAGLVISILCCCKARRDCLTPYQLAPNATVPFL
-                     VTLCCCFQRTSADEFTDTMGYLWQHSQTMFWIQLVIPLAAVITLVRCCSCCLPFLIGC
-                     QSS"
-     mat_peptide     join(9884..10012,10012..10029)
-                     /locus_tag="AURAVgp3"
-                     /product="transframe fusion polyprotein"
-                     /note="Transframe fusion (TF) protein expressed via
-                     programmed ribosomal frameshifting. TF protein presumably
-                     plays a stabilizing role in the virion structure."
-                     /protein_id="YP_006491232.1"
-                     /db_xref="GI:392972644"
 ORIGIN      
         1 atagcggacg gactagtact tgtactacag aattaactgc cgtgtgccgc ccgctaaact
        61 agccccaatc atcgaaaatg gagaaaccga cagtgcacgt tgacgtagac ccccaaagtc

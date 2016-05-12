@@ -183,6 +183,7 @@ sub check_ranges {
     $debug && print STDERR "check_ranges: \$feats is a ".Dumper($feats)."\n";
     my $head_tail = '';
     my $head_tail_print_length = 5;
+    my $gap = ' ';
     for (my $i=0; $i<=$#{$feats}; $i++) {
         my $feat = $feats->[$i];
         next if ($feat->primary_tag ne 'mat_peptide' && $feat->primary_tag ne 'sig_peptide');
@@ -205,9 +206,11 @@ sub check_ranges {
           $loc2 = $feats->[$i+$level+1];
         }
 
-#        my $s = ' ('.$loc->start.'..'.$loc->end.')';
-        my $s = sprintf(" (%4s..%4s)", $loc->start, $loc->end);
-        my $gap = '';
+        my $s = ' ' if (!$gap || $gap eq ' ');
+        $s .= sprintf("(%4s..%4s)", $loc->start, $loc->end);
+        $debug && print STDERR "$subname: \$i=$i \$gap='$gap' \$s=$s\n";
+#        my $gap = '';
+        $gap = '';
 
         # if the first feature doesn't start at 1st residue of CDS
         if ($i == 0 && ($cds->location->isa('Bio::Location::Simple') || $cds->location->isa('Bio::Location::Split')) && $loc->start != $cds->location->start) {
@@ -249,7 +252,7 @@ sub check_ranges {
         }
 
         for my $j (0 .. $#str) {
-            $debug && print STDERR "$subname: \$str[$j]='$str[$j]'\n";
+            $debug && print STDERR "$subname: \$i=$i \$str[$j]='$str[$j]'\n";
         }
 
         # check the head/tail of each mat_peptide
@@ -258,7 +261,9 @@ sub check_ranges {
             $s = $s->[0];
             $head_tail .= substr($s,0,$head_tail_print_length).'.';
             $head_tail .= substr($s,length($s)-$head_tail_print_length);
+            $head_tail .= '..' if ($gap && $gap ne ' ');
             $head_tail .= '.^.' if ($loc2);
+            $head_tail .= '..' if ($gap && $gap ne ' ');
 #            print STDERR "check_ranges: head_tail=$s";
         }
 

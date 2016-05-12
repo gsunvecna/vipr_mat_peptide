@@ -1,0 +1,67 @@
+LOCUS       DQ005375                1220 bp    RNA     linear   VRL 03-MAY-2005
+DEFINITION  Hepatitis C virus clone P4B2 nonstructural protein 5A gene, partial
+            cds.
+ACCESSION   DQ005375
+VERSION     DQ005375.1  GI:62952663
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 1220)
+  AUTHORS   Fan,W., Zhu,W., Wei,L., Wang,Q., Yin,L., Du,S. and Zhuang,H.
+  TITLE     Nonstructural 5A gene variability of hepatitis C virus (HCV) during
+            a 10-year follow up
+  JOURNAL   J. Gastroenterol. 40 (1), 43-51 (2005)
+   PUBMED   15692788
+REFERENCE   2  (bases 1 to 1220)
+  AUTHORS   Fan,W., Zhu,W., Wei,L., Wang,Q., Yin,L., Du,S. and Zhuang,H.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (11-APR-2005) Beijing Ditan Hospital, Institute of
+            Infectious Disease, Ditan Park 13, Anwai Street, Beijing 100011,
+            China
+FEATURES             Location/Qualifiers
+     source          1..1220
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /db_xref="taxon:11103"
+                     /clone="P4B2"
+                     /note="genotype: 1b"
+     CDS             <1..>1220
+                     /note="NS5A"
+                     /codon_start=1
+                     /product="nonstructural protein 5A"
+                     /protein_id="AAY23090.1"
+                     /db_xref="GI:62952664"
+                     /translation="GYKGVWRGDGIMHTTCPCGAQITGHVKNGSMRIAGPKTCSNTWH
+                     GTFPINAYTTGPCTPSPAPNYSRALWRVAAEEYVEVTRVGDFHYVTGMTTDNVKCPCQ
+                     VPAPEFFTEVDGVRLHRYAPACKPLLREEVVFQVGLNQYLVGSQLPCEPEPDVTVLTS
+                     MLTDPSHITAETAKRRLARGSPPSLASSSASQSSAPSLKATCTTHHDSPDADLIEANL
+                     LWRQEMGGNITRVESENKVVILDSFEPLRAEEDEREVSVPAEILRKSRKFPSALPIWA
+                     RPDYNPPLLESWKDPDYVPPVVHGCPLPPTKAPPIPPPRRKRTVVLTESTVSSALAEL
+                     ATKTFGSSGSSVVDSGTATAPPDEASDDGDKGSDVGSYSSMPPLEGEPGDPDLSDGSW
+                     STVSEEAGEDVVCCS"
+ORIGIN      
+        1 gggtacaagg gagtctggcg gggagacggt atcatgcata ccacctgtcc atgtggagca
+       61 cagattactg gacatgtcaa aaatggttcc atgaggatcg ctgggcctaa aacttgtagc
+      121 aacacgtggc atggaacatt ccccattaac gcgtatacca caggcccctg cacaccctcc
+      181 ccggcgccaa actattctag ggcgctgtgg cgggtggctg ctgaggagta cgtggaagtc
+      241 acgcgggtgg gggatttcca ttacgtgacg ggcatgacca ccgacaacgt gaaatgccca
+      301 tgccaagtcc cggcccccga attcttcacg gaggtggatg gagtacggct gcacaggtac
+      361 gctccggcgt gcaaacctct cctacgggag gaggtcgtgt tccaggtcgg gctcaaccaa
+      421 tacctggttg gatcacagct cccatgcgag cccgagccgg acgtaacagt gcttacttcc
+      481 atgcttaccg acccctccca catcacagca gaaacggcca agcgtaggct ggccaggggg
+      541 tctcctccct ccttggccag ctcttcagct agccagtcgt ctgcgccttc tttgaaggcg
+      601 acatgtacta ctcatcatga ctccccggac gccgacctca ttgaggccaa cctcctgtgg
+      661 cggcaggaga tgggcggaaa catcacccgt gtggagtcag aaaataaggt agtgatcctg
+      721 gactctttcg aaccacttcg agcggaggag gacgagaggg aagtatccgt tccggcggag
+      781 atcctgcgga aatccaggaa gttcccctca gcgctgccca tatgggcacg cccagactac
+      841 aaccctccac tgctagagtc ctggaaggac ccagactatg tccctccggt ggtacatggg
+      901 tgcccgctgc cgcctaccaa ggcccctcca ataccacctc cacggagaaa gaggacggtg
+      961 gtcctaacag agtccaccgt ctcttctgcc ttggcggaac tcgctactaa gaccttcggc
+     1021 agctccggat cgtcggtcgt cgacagcggc acggcgaccg cccctcctga cgaggcctcc
+     1081 gacgacggcg acaaaggatc cgacgttggg tcgtactcct ccatgccccc ccttgaggga
+     1141 gagccggggg accccgacct cagcgacggg tcctggtcta ccgtgagtga ggaggccggt
+     1201 gaggacgtcg tctgctgctc
+//
+

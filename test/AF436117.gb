@@ -1,0 +1,40 @@
+LOCUS       AF436117                 225 bp ss-RNA     linear   VRL 31-OCT-2005
+DEFINITION  Dengue virus type 2 isolate 8700363-98Tha polyprotein gene, partial
+            cds.
+ACCESSION   AF436117
+VERSION     AF436117.1  GI:33315377
+KEYWORDS    .
+SOURCE      Dengue virus 2
+  ORGANISM  Dengue virus 2
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Dengue virus group.
+REFERENCE   1  (bases 1 to 225)
+  AUTHORS   Jan,L.-R., Yueh,Y.-Y. and Wu,Y.-C.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (22-OCT-2001) Center for Disease Control, Department of
+            Health, 161 Kun-Yang Street, Nan-Kang, Taipei 105, Taiwan, Republic
+            of China.
+FEATURES             Location/Qualifiers
+     source          1..225
+                     /organism="Dengue virus 2"
+                     /mol_type="genomic RNA"
+                     /isolate="8700363-98Tha"
+                     /db_xref="taxon:11060"
+                     /country="Taiwan"
+                     /note="isolated in 1998 from patient that contracted
+                     dengue in Thailand"
+     CDS             <1..>225
+                     /note="E-NS1 junction"
+                     /codon_start=3
+                     /product="polyprotein"
+                     /protein_id="AAQ04502.1"
+                     /db_xref="GI:33315378"
+                     /translation="TMKILIGVVITWIGMNSRSTSMSVSLVLVGVVTLYLGVMVQADS
+                     GCVVSWKNKELKCGSGIFITDNVHTWTEQY"
+ORIGIN      
+        1 ggactatgaa aatcctcata ggagtcgtca tcacatggat aggaatgaat tcacgcagca
+       61 cctcaatgtc tgtgtcacta gtattagtgg gggtcgtgac actgtatttg ggagtcatgg
+      121 tgcaagccga tagtggttgt gttgtgagtt ggaaaaacaa agaactgaaa tgtggcagtg
+      181 ggatttttat cacagacaac gtgcacacat ggacagaaca ataca
+//
+

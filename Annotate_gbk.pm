@@ -60,6 +60,10 @@ sub combine_msa_gbk {
 
     my $faa = '';
 
+    # Add to MSA result any extra mat_peptide in gbk that doesn't show up in MSA result 
+    if ($faa1 && $faa3) {
+    }
+
         # $faa1 vs. $feats_gbk,
         # Take $faa1 if exists and not refseq
         # Tame gbk if the genome is refseq, or no $faa1
@@ -139,14 +143,14 @@ sub extract_mature_peptides {
                 @id = $parent_cds->get_tag_values('db_xref');
                 for my $id1 (@id) {
                    if ($id1 =~ /^GI:/i) {
-                	$id = 'CDS='. $id1 ."|";
+                	$id = 'CDS='. $id1 .'|';
                 	last;
                    }
                 }
         }
         if (($id !~ /^CDS=GI:/) && $parent_cds->has_tag('protein_id')) {
                 @id = $parent_cds->get_tag_values('protein_id');
-                $id = 'CDS='. $id[0] ."|";
+                $id = 'CDS='. $id[0] .'|';
         }
 
         # In case $id is still empty
@@ -155,7 +159,7 @@ sub extract_mature_peptides {
              for my $tag (@tags) {
                 if ($parent_cds->has_tag($tag)) {
                    @id = $feat_obj->get_tag_values($tag);
-                   $id .= 'CDS='. $id[0] ."|";
+                   $id .= 'CDS='. $id[0] .'|';
                    last;
                 }
              }
@@ -163,26 +167,53 @@ sub extract_mature_peptides {
         $id = "CDS=unknown|" if (($id !~ /^CDS=/) ); # indicates a potential problem
 	    $id = "Ver=$acc.".$parent_cds->entire_seq->{'_version'}.'|' .$id;
 	    $id = "ACC=$acc|" .$id;
+        $id .= '|'; # Save the space for refseq=
 
+        # Take care of codon_start if CDS has it, this is only needed for the first mat_peptide
+        if ($feat_obj->location->start == $parent_cds->location->start) {
+            my $codon_start = 1;
+            if ($parent_cds->has_tag('codon_start')) {
+                $codon_start = [$parent_cds->get_tag_values('codon_start')];
+                $codon_start = $codon_start->[0];
+            }
+            if ($codon_start != 1 && !$feat_obj->has_tag('codon_start')) {
+                $feat_obj->add_tag_value('codon_start', $codon_start);
+            }
+        }
         # add the range of mat_peptide
         my $s = '';
         $s = Annotate_Util::get_DNA_loc( $feat_obj);
 #        $id .= 'Loc='. $feat_obj->location->to_FTstring ."|";
-        $id .= 'Loc='. $s ."|";
+        $id .= 'Loc='. $s .'|';
 
         $s = Annotate_Util::get_AA_loc( $feat_obj, $parent_cds);
         $id .= 'AA='. $s .'|';
 
         # add gene_symbol
         my $gene_symbol = Annotate_Util::get_gene_symbol( $feat_obj,$exe_dir);
-        $id .= 'gene_symbol='. $gene_symbol ."|";
+    my $productName = '';
+  if (1) {
+    my @tags = ('product');
+    for my $tag (@tags) {
+        if ($feat_obj->has_tag($tag)) {
+           @id = $feat_obj->get_tag_values($tag);
+           $productName = $id[0];
+           last;
+        }
+    }
+    if ((!$gene_symbol || $gene_symbol eq 'unk') && length($productName)<=6 && length($productName)>0) {
+#        $gene_symbol = $productName;
+    }
+  }
+
+        $id .= 'gene_symbol='. $gene_symbol .'|';
 
         # add the id of mat_peptide
         my @tags = ('db_xref', 'protein_id'); # per Client request
         for my $tag (@tags) {
              if ($feat_obj->has_tag($tag)) {
                    @id = $feat_obj->get_tag_values($tag);
-                   $id .= 'mat_pept='.$id[0];
+                   $id .= 'mat_pept='.$id[0] .'|';
                    last;
              }
         }
@@ -190,7 +221,7 @@ sub extract_mature_peptides {
         for my $tag (@tags) {
              if ($feat_obj->has_tag($tag)) {
                    @id = $feat_obj->get_tag_values($tag);
-                   $id .= '|product='.$id[0];
+                   $id .= 'product='.$id[0];
                    last;
              }
         }
@@ -199,7 +230,12 @@ sub extract_mature_peptides {
         # get the translation, either from DNA or directly from the feature
         my $translation = '';
         if ( ! $feat_obj->has_tag('translation') ) {
-           my $s = get_feature_nuc($feat_obj, $seq_obj->seq);
+           my $s;
+           if ( 0 ) {
+               $s = get_feature_nuc($feat_obj, $seq_obj->seq);
+           } else {
+               $s = Annotate_Math::get_dna_byloc( $feat_obj, $seq_obj->seq);
+           }
            $debug && print STDERR "$subname: feat_obj #$i \n\$s=$s\n";
 
            my $f = Bio::PrimarySeq->new(-seq => $s, -desc => $id, -alphabet => 'dna');
@@ -213,7 +249,7 @@ sub extract_mature_peptides {
            $feat_obj->add_tag_value('translation', $f->translate()->seq) if ( 0 );
 
         } else {
-           print "WARNING: gbk_matpeptide.pl found sequence for mat_peptide from gb file.\n";
+           print "$subname: WARNING: found sequence for mat_peptide from gb file.\n";
            my @s = $feat_obj->get_tag_values('translation');
            $translation = $s[0];
         }
@@ -271,7 +307,7 @@ sub extract_mature_peptides {
             }
             my $str2 = $cds->location->start .'..'. $cds->location->end;
             $debug && print STDERR "$subname: $acc \$str1=$str1 \$str2=$str2\n";
-            next if ($str1 ne $str2);
+#            next if ($str1 ne $str2);
 
             foreach my $feat (@$feats) {
                 next if ($feat->primary_tag eq 'CDS'); # Exclude CDS
@@ -507,7 +543,7 @@ sub get_feature_nuc {
 
 =head2
  sub get_matpeptide takes a genome genbank file, searches for the mat_peptide in it
-   returns the mat_peptide sequences to a string.
+   returns the mat_peptide sequences to a FASTA string.
 =cut
 
 sub get_matpeptide {
@@ -527,6 +563,7 @@ sub get_matpeptide {
      $debug && print STDERR "$subname: \$seq_obj=\n".Dumper($seq_obj)."end of \$seq_obj\n\n";
 
      my $r1;
+     # Gets an array of Bio::PrimarySeq objects, directly from genbank file
      ($r1, $comment) = extract_mature_peptides($seq_obj, $feats_msa,$exe_dir);
      $debug && print STDERR "$subname: \$r1=\n".Dumper($r1)."end of \$r1\n\n";
      push @records, @$r1;

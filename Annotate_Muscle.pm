@@ -6,11 +6,12 @@ use English;
 use Carp;
 use Data::Dumper;
 
-use version; our $VERSION = qv('1.1.4'); # May 09 2012
+use version; our $VERSION = qv('1.1.5'); # Sep 27 2012
 use Bio::SeqIO;
 use Bio::Seq;
 use Bio::AlignIO;
 use Bio::Tools::Run::Alignment::Muscle;
+use Bio::Tools::Run::Alignment::Clustalw;
 use IO::String;
 use Annotate_Util;
 use Annotate_Verify;
@@ -38,7 +39,7 @@ Takes a genbank file, finds hash of refseqs, and an array of target genomes, in 
 =cut
 
 sub annotate_1gbk {
-    my ($gbk, $exe_dir, $aln_fn, $dir_path) = @_;
+    my ($gbk, $exe_dir, $aln_fn, $dir_path, $progs) = @_;
 
     my $debug = 0 && $debug_all;
     my $subname = 'annotate_1gbk';
@@ -63,12 +64,12 @@ sub annotate_1gbk {
     }
 
     $debug && print STDERR "$subname: \$refpolyprots = $#{$refpolyprots}\n";
-    $debug && print STDERR "$subname: \$refpolyprots = \n".Dumper($refpolyprots)."End of \$refpolyprots\n\n";
+#    $debug && print STDERR "$subname: \$refpolyprots = \n".Dumper($refpolyprots)."End of \$refpolyprots\n\n";
 
     # According to refseq, get the CDS/mat_peptides in inseq, use bl2seq to determine if the CDS matches
     my $num_cds;
     ($polyprots, $num_cds, $comment) = Annotate_Util::get_polyprots( $inseq, $refpolyprots);
-    $debug && print STDERR "$subname:    \$num_cds = $num_cds\n";
+    $debug && print STDERR "$subname:  ".$inseq->accession_number."  \$num_cds = $num_cds\n";
     $debug && print STDERR "$subname: \$polyprots = \n".Dumper($polyprots)."End of \$polyprots\n\n";
     # Skip the refseqs that has mat_peptide annotation from genbank
     if ($acc =~ /^NC_\d+$/i) {
@@ -110,7 +111,11 @@ sub annotate_1gbk {
     $debug && print STDERR "$subname: \$inseqs=\n". Dumper($inseqs) . "End of \$inseqs\n";
 
     my $feats_all;
-    $feats_all = Annotate_Muscle::muscle_profile( $refseqs, $inseqs, $aln_fn,$exe_dir, $dir_path);
+    if ( 0 ) {
+        $feats_all = Annotate_Muscle::muscle_profile( $refseqs, $inseqs, $aln_fn,$exe_dir, $dir_path, $progs);
+    } else {
+        $feats_all = Annotate_Muscle::clustalw_align( $refseqs, $inseqs, $aln_fn,$exe_dir, $dir_path, $progs);
+    }
     $debug && print STDERR "$subname: \$feats_all=\n". Dumper($feats_all) . "End of \$feats_all\n";
 
     my $n = 0;
@@ -122,7 +127,7 @@ sub annotate_1gbk {
         $debug && print STDERR "$subname: \$refcds_ids=\n". Dumper(@$refcds_ids) . "End of \$refcds_ids\n";
         for my $k2 (@$refcds_ids) {
           $debug && print STDERR "$subname: \$key=$key \$k2=$k2 \$feats_all=\n". Dumper($feats_all->{$key}->{$k2}) . "End of \$feats_all\n";
-          $n += $#{$feats_all->{$key}->{$k2}};
+          $n += $#{$feats_all->{$key}->{$k2}}; # array $feats_all->{$key}->{$k2} contains CDS as 0th element
         }
     }
     $comment = "MSA returned $n mat_peptides";
@@ -189,20 +194,32 @@ sub annotate_1gbk {
 } # sub annotate_1gbk
 
 
-=head2 muscle_profile
+=head2 clustalw_align
 
 Takes a hash of refseqs, and an array of target genomes, in the form of
  [ accession, [CDS, mat_peptides] ... ], []... ]
- run muscle on each CDS,
+ run clustalw on each CDS,
  Return an array of alignments CDS1, CDS2, CDS3 ...
 
 =cut
 
-sub muscle_profile {
-    my ($refseqs, $inseqs, $aln_fn,$exe_dir, $dir_path) = @_;
+sub clustalw_align {
+    my ($refseqs, $inseqs, $aln_fn,$exe_dir, $dir_path, $progs) = @_;
 
     my $debug = 0 && $debug_all;
-    my $subname = 'muscle_profile';
+    my $subname = 'clustalw_align';
+
+    # Check if CLUSTALW is accessible either from prompt or from user-defined location
+    # on gsun's workstation, clustalw is a softlink to clustalw2 for v2.0
+    $progs->{clustalw}  = (defined($progs) && $progs->{clustalw})  ? $progs->{clustalw}  : "clustalw";
+    foreach my $k (keys %$progs) {
+        my $err = Annotate_Util::check_program($progs->{$k});
+        $debug && print STDERR "$subname: \$err='$err'\n";
+        if ($err) {
+            print STDERR "$subname: \$err='$err'\n";
+            exit(1);
+        }
+    }
 
     my $feats_all;
 
@@ -303,7 +320,264 @@ sub muscle_profile {
                   $s2 = $1 if ($s2 =~ /([^*]+)[*]$/); # to remove any trailing * in CDS
                   $s3 = s/[*]/./g if $s3 =~ /[*]/;
 #                  if ($s2 ne $s3) {
-                  if ($s2 !~ /$s3/) {
+                  if ($s2 !~ /$s3/ && Annotate_Verify::diff_2str( $s3, $s2) !~ /^L[.]+$/i) {
+                    print STDERR "$subname: \$s2='$s2'\n";
+                    print STDERR "$subname: \$s3='$s3'\n";
+                    print STDERR "$subname: translation tag and translate don't match in CDS of ".$cds->seq->accession_number.". Skip.\n";
+                    print STDOUT "$subname: translation tag and translate don't match in CDS of ".$cds->seq->accession_number.". Skip.\n";
+                    next;
+                  }
+                  my $str2 = 'ACC='.$cds->seq->accession_number;
+                  $str2 .= '|'. $cds->primary_tag.'='.$cds->location->to_FTstring;
+                  my $f2 = Bio::PrimarySeq->new(
+                         -seq      => $s2,
+                         -id       => $str2,	# id can't contain space
+                         -alphabet => 'protein'
+                                    );
+                  push @$cds_all, $f2;
+#                } # foreach my $j (0 .. $#{$cds_set})
+#            } # for (my $i = 0; $i<=$#{$inseqs}; $i++) {
+
+#        } # foreach my $key (keys %$refseqs) {
+#        $debug && print STDERR "$subname: Finished reading CDS for \$n_set=$n_set\n";
+                $debug && print STDERR "$subname: \$cds_all=\n". Dumper($cds_all) . "End of \$cds_all\n";
+
+        # Run CLUSTALW for each CDS in refseq
+        # Returns a SimpleAlign object
+                print STDERR "$subname: \$cds_all has $#{$cds_all}+1 genomes for \$n_set=$n_set\n";
+                $debug && print STDOUT "\n$subname: \$cds_all has $#{$cds_all}+1 genomes for \$n_set=$n_set\n";
+                for my $iii ( 0 .. $#{$cds_all}) {
+                    print STDERR "$subname: \$cds_all->[$iii]=".$cds_all->[$iii]->display_id."\n";
+                }
+                if ($#{$cds_all}<1) {
+                    print STDERR "$subname: Not enough sequences in \$cds_all $#{$cds_all}+1. Skip \$n_set=$n_set\n";
+                    print STDERR "$subname: \$cds_all=\n". Dumper($cds_all) . "End of \$cds_all\n";
+                    next;
+                }
+                #  Returns : Reference to a SimpleAlign object containing the sequence alignment
+                my $factory;
+                my $outfile_name = "$dir_path/test.msf";
+                if ($debug) {
+                    my $display_id = $cds_all->[1]->display_id;
+                    my $display_id2 = '';
+                    $display_id2 = $1 if $display_id =~ /ACC=(.+)[|]/;
+                    if ($display_id =~ /\|CDS=\D*(\d+[.]).*([.][<>]*\d+)\D*$/) {
+                        $display_id2 .= "_${1}${2}";
+                    }
+#                    $display_id =~ s/\|CDS=/_/i;
+                    $display_id2 =~ s/[.]{2}/_/i;
+                    $display_id2 =~ s/[<>]//i;
+                    my $count = 1;
+                    while (-f $outfile_name && $count <10) {
+                        $debug && print STDERR "$subname: \$display_id2=$display_id2 \$count=$count\n";
+                        $outfile_name = sprintf("$dir_path/test_%s_%02d.msf", $display_id2, $count);
+                        $count++;
+                    }
+                }
+                @param = (
+#                   '-quiet' => '',
+                   '-OUTFILE' => "$outfile_name",
+                         );
+                $factory = Bio::Tools::Run::Alignment::Clustalw->new(@param);
+                $aln = $factory->align(
+                         [@$cds_all]
+                         );
+                # Print out the resulting MSA file
+                $debug && print STDERR "$subname: `cat $outfile_name`\n". `cat $outfile_name` . "End of $outfile_name\n";
+#                $debug && print STDERR "$subname: \$aln=\n". Dumper($aln) . "End of \$aln\n\n";
+                $debug && print STDERR "$subname: \$aln->gap_char='". $aln->gap_char . "'\n";
+                $aln->gap_char('.'); # gap_char='.' for clustalw, '-' for MUSCLE
+                $debug && print STDERR "$subname: \$aln->gap_char='". $aln->gap_char . "'\n";
+
+#      } # if
+
+      next if (!$aln);
+      push @$alns, $aln;
+
+              $feats = Annotate_Muscle::MSA_annotate($refseqs, $inseqs, $n_set, $aln, $exe_dir);
+#              print STDERR "$subname: \$n_set=$n_set MSA returned \$feats=$#{$feats}\n";
+              $debug && print STDERR "$subname: \$n_set=$n_set \$feats=\n". Dumper($feats) . "End of \$feats\n";
+
+#              push @$feats_all, $feats;
+              # reverse the indexes
+              for my $key (keys %$feats) {
+                  for my $k2 (keys %{$feats->{$key}}) {
+                    if (exists($feats_all->{$k2}->{$key})) {
+                      for (my $kk = 1; $kk<=$#{$feats->{$key}->{$k2}}; $kk++) {
+                        my $feat_kk = $feats->{$key}->{$k2}->[$kk];
+                        my $product_kk = [ $feat_kk->get_tag_values('product') ];
+                        $product_kk = $product_kk->[0];
+                        $debug && print STDERR "$subname: \$key=$key \$k2=$k2 \$product_kk=$product_kk ".$feat_kk->location->to_FTstring." is being checked\n";
+                        my $seen = 0;
+                        my $feat_ff;
+                        # Check if the product name has been seen
+                        for my $ff (1 .. $#{$feats_all->{$k2}->{$key}}) {
+                          $feat_ff = $feats_all->{$k2}->{$key}->[$ff];
+                          my $product_f = [ $feat_ff->get_tag_values('product') ];
+                          $product_f = $product_f->[0];
+                          $debug && print STDERR "$subname: \$ff=$ff \$product_f =$product_f ". $feat_ff->location->to_FTstring . "\n";
+#                          $debug && print STDERR "$subname: \$ff=$ff \$f=\n". Dumper($f) . "End of $f\n";
+                          next if ($product_f ne $product_kk);
+                          $seen = 1;
+                          my $len_kk = $feat_kk->location->end   - $feat_kk->location->start +1;
+                          my $len_ff = $feat_ff->location->end   - $feat_kk->location->start +1;
+                          $debug && print STDERR "$subname: \$len_kk=$len_kk \$len_ff=$len_ff\n";
+                          if ( $len_kk > $len_ff ) {
+                            $feats_all->{$k2}->{$key}->[$ff] = $feat_kk;
+                          }
+                          last;
+                        }
+                        $debug && print STDERR "$subname: \$key=$key \$k2=$k2 ". $feats->{$key}->{$k2}->[$kk]->location->to_FTstring . " \$seen=$seen\n";
+                        if ($seen) {
+                          next;
+                        }
+                        $debug && print STDERR "$subname: \$key=$key \$k2=$k2 ". $feats->{$key}->{$k2}->[$kk]->location->to_FTstring . " \$seen=$seen, keep\n";
+                        push @{$feats_all->{$k2}->{$key}}, $feats->{$key}->{$k2}->[$kk];
+                      }
+                    } else {
+                      $feats_all->{$k2}->{$key} = $feats->{$key}->{$k2};
+                    }
+                  }
+              }
+              $debug && print STDERR "$subname: \$n_set=$n_set \$feats_all=\n". Dumper($feats_all) . "End of \$feats_all\n";
+                } # foreach my $j (0 .. $#{$cds_set})
+            } # for (my $i = 0; $i<=$#{$inseqs}; $i++) {
+
+        } # foreach my $key (keys %$refseqs) {
+
+    } # for my $n_set (0 .. $n_sets)
+
+  return $feats_all;
+
+} # sub clustalw_align
+
+
+=head2 muscle_profile
+
+Takes a hash of refseqs, and an array of target genomes, in the form of
+ [ accession, [CDS, mat_peptides] ... ], []... ]
+ run muscle on each CDS,
+ Return an array of alignments CDS1, CDS2, CDS3 ...
+
+=cut
+
+sub muscle_profile {
+    my ($refseqs, $inseqs, $aln_fn,$exe_dir, $dir_path, $progs) = @_;
+
+    my $debug = 0 && $debug_all;
+    my $subname = 'muscle_profile';
+
+    # Check if MUSCLE is accessible either from prompt or from user-defined location
+    $progs->{muscle}  = (defined($progs) && $progs->{muscle})  ? $progs->{muscle}  : "muscle";
+    foreach my $k (keys %$progs) {
+        my $err = Annotate_Util::check_program($progs->{$k});
+        $debug && print STDERR "$subname: \$err='$err'\n";
+        if ($err) {
+            print STDERR "$subname: \$err='$err'\n";
+            exit(1);
+        }
+    }
+
+    my $feats_all;
+
+    $debug && print STDERR "$subname: \$refseqs=\n". Dumper($refseqs) . "End of \$refseqs\n";
+    $debug && print STDERR "$subname: \$inseqs=\n". Dumper($inseqs) . "End of \$inseqs\n";
+    my $feats;
+    my $alns = [];
+    my $cds_all = [];
+    my $vfile1 = IO::String->new('');
+    my $seq_out = Bio::SeqIO->new(
+                          '-fh'     => $vfile1,
+                          '-format' => 'fasta'
+                          );
+
+    my $n_sets; # holds the number of [CDS, mat_peptides] ... ] in each genome. Since each CDS is unique, separate MUSCLE run has to be carried out
+    foreach my $key (keys %$refseqs) {
+        my $refseq = $refseqs->{$key};
+        $debug && print STDERR "$subname: \$key=$key \$refseq=\n".Dumper($refseq)."End of \$refseq\n";
+        $n_sets = $#{$refseq};
+        $debug && print STDERR "$subname: \$n_sets=$n_sets\n";
+    }
+    $debug && print STDERR "$subname: \$n_sets=$n_sets\n";
+    if ($aln_fn->[0] && $#{$aln_fn}!=$n_sets) {
+        $debug && print STDERR "$subname: \$n_sets=$n_sets not equal to # of aln files $#{$aln_fn}\n";
+        $debug && print STDERR "$subname: please check aln files, and re-try\n";
+        return undef;
+    }
+
+
+    # for each unique CDS in refseq
+    for my $n_set (0 .. $n_sets) {
+      $debug && print STDERR "$subname: \$n_set=$n_set\n";
+      $cds_all = [];
+      my $aln;
+#      if ($aln_fn->[$n_set] && -f $aln_fn->[$n_set] && $debug) {
+#        print STDERR "$subname: \$n_set=$n_set alignment read from $aln_fn->[$n_set]\n";
+#        my $str = Bio::AlignIO->new('-file' => $aln_fn->[$n_set]);
+#        $debug && print STDERR "$subname: \$str=\n".Dumper($str)."End of \$str\n";
+#        $aln = $str->next_aln();
+#        $debug && print STDERR "$subname: \$aln=\n".Dumper($aln)."End of \$aln\n";
+#
+#      } else {
+        my @param;
+
+        # First, get the CDS from refseq
+        foreach my $key (keys %$refseqs) {
+            my $refcds = $refseqs->{$key}->[$n_set]->[1];
+            $debug && print STDERR "$subname: \$n_set=$n_set \$key=$key \$refcds=\n". Dumper($refcds) . "End of \$refcds\n";
+
+            my @values = $refcds->get_tag_values('translation');
+            my $s1 = $values[0];
+            $s1 = $1 if ($s1 =~ /([^*]+)[*]$/); # to remove any trailing * in CDS
+            my $str1 = 'refseq='.$refcds->seq->accession_number;
+            $str1 .= '|'. $refcds->primary_tag.'='.$refcds->location->to_FTstring;
+#            $debug && print "$subname: \$str=$str\n";
+            my $f1 = Bio::PrimarySeq->new(
+                         -seq      => $s1,
+                         -id       => $str1,	# id can't contain space
+                         -alphabet => 'protein'
+                                    );
+
+#            $cds_all = []; # Clear all cds, run MUSCLE separately for each input CDS
+#            push @$cds_all, $f1;
+
+            # Second, add CDS from target genomes
+            for (my $i = 0; $i<=$#{$inseqs}; $i++) {
+#                $cds_all = []; # Clear all cds, run MUSCLE separately for each input CDS
+#                push @$cds_all, $f1;
+#                my $cds_set = $inseqs->[$i]->[$n_set+1]->{'GI:22129793'};
+                $debug && print STDERR "$subname: \$key=$key \$i=$i \$inseqs=\n". Dumper($inseqs) . "End of \$inseqs\n";
+                $debug && print STDERR "$subname: \$key=$key \$i=$i \$n_set=$n_set \$key=$key $refseqs->{$key}->[$n_set]->[0]\n";
+                if (!exists($inseqs->[$i]->[1]->{$refseqs->{$key}->[$n_set]->[0]})) {
+                  $debug && print STDERR "$subname: $refseqs->{$key}->[$n_set]->[0] not found in \$inseqs\n";
+                  $debug && print STDERR "$subname: \$key=$key \$i=$i \$inseqs=\n". Dumper($inseqs) . "End of \$inseqs\n";
+                  next;
+                }
+#                my $cds_set = $inseqs->[$i]->[$n_set+1]->{$refseqs->{$key}->[$n_set]->[0]};
+                my $cds_set = $inseqs->[$i]->[1]->{$refseqs->{$key}->[$n_set]->[0]};
+                $debug && print STDERR "$subname: \$key=$key \$i=$i \$cds_set=\n". Dumper($cds_set) . "End of \$cds_set\n";
+                $debug && print STDERR "$subname: \$key=$key \$i=$i \$inseqs=\n". Dumper($inseqs) . "End of \$inseqs\n";
+                foreach my $j (0 .. $#{$cds_set}) {
+                  $cds_all = []; # Clear all cds, run MUSCLE separately for each input CDS
+                  push @$cds_all, $f1;
+                  my $cds = $cds_set->[$j]->[0];
+                  next if (!$cds);
+                  $debug && print STDERR "$subname: \$j=$j \$cds=\n". Dumper($cds) . "End of \$cds\n";
+                  my $acc = $cds->seq->accession_number;
+#                  my $s3 = $cds->seq->translate->seq;
+                  my $s3 = Annotate_Util::get_new_translation( $cds, $cds);
+                  if (!defined $s3) {
+                    print STDERR "$subname: sub get_new_translation returned undef result. Skip \$j=$j accession=$acc\n";
+                    print STDOUT "$subname: sub get_new_translation returned undef result. Skip \$j=$j accession=$acc\n";
+                    next;
+                  }
+                  $s3 = $1 if ($s3 =~ /([^*]+)[*]$/); # to remove any trailing * in CDS
+                  my @values = $cds->get_tag_values('translation');
+                  my $s2 = $values[0];
+                  $s2 = $1 if ($s2 =~ /([^*]+)[*]$/); # to remove any trailing * in CDS
+                  $s3 = s/[*]/./g if $s3 =~ /[*]/;
+#                  if ($s2 ne $s3) {
+                  if ($s2 !~ /$s3/ && Annotate_Verify::diff_2str( $s3, $s2) !~ /^L[.]+$/i) {
                     print STDERR "$subname: \$s2='$s2'\n";
                     print STDERR "$subname: \$s3='$s3'\n";
                     print STDERR "$subname: translation tag and translate don't match in CDS of ".$cds->seq->accession_number.". Skip.\n";
@@ -359,6 +633,7 @@ sub muscle_profile {
                 }
                 @param = (
                    '-stable' => '',
+#                   '-quiet' => '',
                    '-outfile_name' => "$outfile_name",
                          );
                 $factory = Bio::Tools::Run::Alignment::Muscle->new(@param);
@@ -375,7 +650,7 @@ sub muscle_profile {
 
               $feats = &MSA_annotate($refseqs, $inseqs, $n_set, $aln, $exe_dir);
 #              print STDERR "$subname: \$n_set=$n_set MSA returned \$feats=$#{$feats}\n";
-              $debug && print STDERR "$subname: \$n_set=$n_set \$feats=\n". Dumper($feats) . "End of \$feats\n";
+              $debug && print STDERR "$subname: \$n_set=$n_set \$feats=$#{$feats}\n". Dumper($feats) . "End of \$feats\n";
 
 #              push @$feats_all, $feats;
               # reverse the indexes
@@ -448,6 +723,7 @@ sub MSA_annotate {
 
     my $refset = [];    # [CDS, mat_peptides] ... ]
 
+    $debug && print STDERR "$subname: \$aln=\n". Dumper($aln) . "End of \$aln\n";
     # get $refset
     foreach my $key (sort keys %$refseqs) {
         $debug && print STDERR "$subname: \$key=$key\n";
@@ -482,7 +758,7 @@ sub MSA_annotate {
 
           # find the new annotations
           my $feats_new = Annotate_Muscle::MSA_annotate_1cds( $refset, $inset, $aln,$exe_dir);
-          $debug && print STDERR "$subname: \$feats_new=\n". Dumper($feats_new) . "End of \$feats_new\n";
+          $debug && print STDERR "$subname: MSA_annotate_1cds returned \$feats_new=\n". Dumper($feats_new) . "End of \$feats_new\n";
           $debug && print STDERR "$subname: \$feats_all=\n". Dumper($feats_all) . "End of \$feats_all\n";
 
 #          push @$feats_all, $feats_new;
@@ -535,6 +811,7 @@ sub MSA_annotate_1cds {
 
     my $debug = 0 && $debug_all;
     my $subname = 'MSA_annotate_1cds';
+    my $feats_all = [];
 
     my $refcds = $refset->[1];
     $debug && print STDERR "$subname: \$refcds='".$refcds->seq->accession_number."'\n";
@@ -545,6 +822,13 @@ sub MSA_annotate_1cds {
     $s1 = $1 if ($s1 =~ /([^*]+)[*]$/); # to remove any trailing * in CDS
     my $refcds_id = 'refseq='.$refcds->seq->accession_number;
     $refcds_id .= '|'. $refcds->primary_tag.'='.$refcds->location->to_FTstring;
+    my $aln_h = Annotate_Util::msa_get_aln( $aln, $refcds_id);
+    if (!$aln_h) {
+        $refcds_id =~ s/[(]/_/g;
+        $refcds_id =~ s/[)]/_/g;
+        $refcds_id =~ s/[,]/_/g;
+        $aln_h = Annotate_Util::msa_get_aln( $aln, $refcds_id);
+    }
 
 
     my $cds = $inset->[0];
@@ -565,20 +849,26 @@ sub MSA_annotate_1cds {
     $s2 = $1 if ($s2 =~ /([^*]+)[*]$/); # to remove any trailing * in CDS
     $s3 = s/[*]/./g if $s3 =~ /[*]/;
 #    if ($s2 ne $s3) {
-    if ($s2 !~ /$s3/) {
+    if ($s2 !~ /$s3/ && Annotate_Verify::diff_2str( $s3, $s2) !~ /^L[.]+$/i) {
         print STDERR "$subname: \$s2='$s2'\n";
         print STDERR "$subname: \$s3='$s3'\n";
         print STDERR "$subname: translation tag and translate don't match in CDS of '$acc'.\n";
         print STDERR "$subname: Skip.\n\n";
-        next;
+        return $feats_all;
+#        next;
     }
     my $cds_id = "ACC=$acc";
     $cds_id .= '|'. $cds->primary_tag.'='.$cds->location->to_FTstring;
     $debug && print STDERR "$subname: \$refcds_id='$refcds_id' \$cds_id='$cds_id'\n";
 
     my $note = "Annotated by VIPRBRC, MSA, refseq=".$refcds->seq->accession_number();
-    my $feats_all = [];
-    my $aln_h = Annotate_Util::msa_get_aln( $aln, $cds_id);
+    $aln_h = Annotate_Util::msa_get_aln( $aln, $cds_id);
+    if (!$aln_h) {
+        $cds_id =~ s/[(]/_/g;
+        $cds_id =~ s/[)]/_/g;
+        $cds_id =~ s/[,]/_/g;
+        $aln_h = Annotate_Util::msa_get_aln( $aln, $cds_id);
+    }
     $debug && print STDERR "$subname: \$aln_h=\n". Dumper($aln_h) . "End of \$aln_h\n";
 #    if ( !$aln_h || !$aln_h->isa('Bio::LocatableSeq')) {
     if ( !$aln_h ) {

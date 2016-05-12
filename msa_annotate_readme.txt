@@ -124,6 +124,25 @@ NC_005219: Hantaan virus. Has 2 mat_peptides, and sig_peptide. Included in
 V1.1.4
 NC_004158: Dugbe virus. Has only 1 mat_peptide. Excluded from V1.1.4
 
+Hepeviridae:
+  Found 2 refseqs:
+=======================================================================
+|   12461 | NC_001434 |              181 | Hepatitis E virus     |   12461 |
+No mat_peptide in refseq
+| 1016879 | NC_015521 |                2 | Cutthroat trout virus | 1016879 |
+Has 4 mat_peptide, but has gaps at every cleavage site
+=======================================================================
+  Because of the problems with the refseqs, don't annotate this family.
+
+Picornaviridae:
+  Found 70 refseqs (NC_0*) for this family, of which 56 have mat_peptides in
+the genbank file.
+  This family has many common viruses, such as polio, foot-and-mouth diease,
+enterovirus, etc.
+  There are quite some mat_peptide annotation for Foot-and-mouth diease,
+however, they are of low quality, some might be from 20 years ago. The newly
+available refseqs should improve the quality of mat_peptide annotation.
+
 
 Further direction
 Validate more species/families: 
@@ -133,7 +152,7 @@ SS+ RNA
  (x) Caliciviridae
  (x) Coronaviridae
  (x) Flaviviridae
- ( ) Hepeviridae
+ (*) Hepeviridae
  ( ) Picornaviridae
  (x) Togaviridae
 SS- RNA

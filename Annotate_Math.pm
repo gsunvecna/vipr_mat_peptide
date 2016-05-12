@@ -263,6 +263,7 @@ sub msa_get_feature_loc {
     my $loc2 = undef;
     my $errcode = {};
 
+    $debug && print STDERR "$subname: \$aln=\n".Dumper($aln)."end of \$aln\n\n";
     $debug && print STDERR "\n$subname: starting with reffeat ".$reffeat_loc->to_FTstring."\n";
     if ($reffeat_loc->isa('Bio::Location::Simple') || $reffeat_loc->isa('Bio::Location::Split')) {
         my $qstart = $reffeat_loc->start;
@@ -294,6 +295,7 @@ sub msa_get_feature_loc {
             $loc2 = Bio::Location::Simple->new();
             $loc2->start($qstart);
             $loc2->end  ($qend);
+#            $loc2->strand(-1) if ($cds_loc->strand() == -1);
           } elsif ( $cds_loc->isa('Bio::Location::Split')) {
             my $locs = [ $cds->location->sub_Location ];
             $debug && print STDERR "$subname: \$locs=\n".Dumper($cds->location)."end of \$locs\n\n";
@@ -492,6 +494,11 @@ sub msa_check_loc_internal {
         }
 
         # Count the number of gaps in the hit sequence
+        $debug && print STDERR "$subname: \$qseq='$qseq' \$qseq=".length($qseq)."\n";
+        $qseq = substr($qseq, $qstart, $qend-$qstart+1); # Any gap at the beginning of CDS, plus the 1st AA of current feat.
+        $debug && print STDERR "$subname: \$qseq='$qseq' \$qseq=".length($qseq)."\n";
+        $qseq =~ s/^[$gap_char]*//; # remove any gap at start
+        $qseq =~ s/[$gap_char]*$//; # remove any gap at end
         my $hseq = $aln_h->seq;
         $debug && print STDERR "$subname: \$hseq='$hseq' \$hseq=".length($hseq)."\n";
         $hseq = substr($hseq, $qstart, $qend-$qstart+1); # Any gap at the beginning of CDS, plus the 1st AA of current feat.
@@ -499,7 +506,20 @@ sub msa_check_loc_internal {
         $hseq =~ s/^[$gap_char]*//; # remove any gap at start
         $hseq =~ s/[$gap_char]*$//; # remove any gap at end
         my $count = 0;
-        my @chars = split(//, $hseq);
+        my @chars = split(//, $qseq);
+        # Count the gaps in querry
+        foreach my $c (@chars) {
+            $count++ if ($c eq $gap_char);
+        }
+        $debug && print STDERR "$subname: \$hseq='$hseq' \$hseq=".length($hseq)." \$count=$count\n";
+        if ($count > 0.333*length($qseq)) {
+            print STDERR "$subname: ERROR: \$qstart=$qstart \$qend=$qend \$gap_char=$gap_char\n";
+            print STDERR "$subname: ERROR: \$qseq='$qseq' \$qseq=".length($qseq)." \$count=$count\n";
+            $errcode->{long_internal_gap} = 1;
+        }
+        $count = 0;
+        @chars = split(//, $hseq);
+        # Count the gaps in hit
         foreach my $c (@chars) {
             $count++ if ($c eq $gap_char);
         }
@@ -600,7 +620,7 @@ Note: We can only deal with Bio::Location::Simple, not more complicated location
 sub msa_check_loc_fuzzy {
     my ($loc2, $reffeat, $refcds_loc, $cds_loc, $aln, $aln_q, $aln_h) = @_;
 
-    my $debug = 1 && $debug_all;
+    my $debug = 0 && $debug_all;
     my $subname = 'msa_check_loc_fuzzy';
     my $errcode = {};
     my $msg;
@@ -756,41 +776,41 @@ sub get_dna_byloc {
     my ($feat_obj, $seq_obj_seq) = @_;
 
       my $debug = 0 && $debug_all;
-      my $subname = 'get_dna_byloc';
+      my $subname = 'Annotate_Math::get_dna_byloc';
       
-      $debug && print STDERR "get_dna_byloc: \$feat_obj = \n".Dumper($feat_obj)."End of \$feat_obj\n\n";
+      $debug && print STDERR "$subname: \$feat_obj = \n".Dumper($feat_obj)."End of \$feat_obj\n\n";
       my ($s, $product);
       if ($feat_obj->location->isa('Bio::Location::Simple')) {
-           $debug && print STDERR "get_dna_byloc: \$loc = \n".Dumper($feat_obj->location)."End of \$loc\n\n";
-           $debug && print STDERR "get_dna_byloc: \$loc = \n".Dumper($feat_obj)."End of \$loc\n\n";
+           $debug && print STDERR "$subname: \$loc = \n".Dumper($feat_obj->location)."End of \$loc\n\n";
+           $debug && print STDERR "$subname: \$loc = \n".Dumper($feat_obj)."End of \$loc\n\n";
 #           print "  Simple:DNA    :seq=". $feat_obj->seq->seq ."\n";
 #           $s = substr($seq_obj_seq, $feat_obj->location->start-1, $feat_obj->location->end - $feat_obj->location->start + 1);
            my $start = $feat_obj->location->start-1;
            my $len = $feat_obj->location->end - $feat_obj->location->start + 1;
-           $debug && print STDERR "get_dna_byloc: \$start = $start \$len=$len\n";
+           $debug && print STDERR "$subname: \$start = $start \$len=$len\n";
            if ($feat_obj->has_tag('codon_start')) {
                my $codon_start = [$feat_obj->get_tag_values('codon_start')];
                $codon_start = $codon_start->[0];
                $start = $start + $codon_start -1;
                $len = $len - $codon_start +1;
-               $debug && print STDERR "get_dna_byloc: \$codon_start = $codon_start\n";
+               $debug && print STDERR "$subname: \$codon_start = $codon_start\n";
            }
-           $debug && print STDERR "get_dna_byloc: \$start = $start \$len=$len\n";
+           $debug && print STDERR "$subname: \$start = $start \$len=$len\n";
            $s = substr($seq_obj_seq, $start, $len);
-           $debug && print STDERR "get_dna_byloc: \$s = \n".Dumper($s)."End of \$s\n\n";
+           $debug && print STDERR "$subname: \$s = \n".Dumper($s)."End of \$s\n\n";
            if ($feat_obj->strand() == -1) {
                $s = revcom($s);
                $s = $s->seq;
-               $debug && print STDERR "get_dna_byloc: after revcom \$s = \n".Dumper($s)."End of \$s\n\n";
+               $debug && print STDERR "$subname: after revcom \$s = \n".Dumper($s)."End of \$s\n\n";
            }
 #           print "  Simple:protein:seq=". $feat_obj->seq->translate()->seq ."\n";
       } elsif ($feat_obj->location->isa('Bio::Location::Split')) {
            my $s0 = $seq_obj_seq;
 #           print "location=". $feat_obj->location->to_FTstring . "\n";
            for my $loc ($feat_obj->location->sub_Location) {
-               $debug && print STDERR "get_dna_byloc: \$loc = \n".Dumper($loc)."End of \$loc\n\n";
-               $debug && print STDERR "get_dna_byloc: \$loc->strand()=".$loc->strand()."\n";
-               $debug && print STDERR "get_dna_byloc: \$loc->strand()=".$feat_obj->location->strand()."\n";
+               $debug && print STDERR "$subname: \$loc = \n".Dumper($loc)."End of \$loc\n\n";
+               $debug && print STDERR "$subname: \$loc->strand()=".$loc->strand()."\n";
+               $debug && print STDERR "$subname: \$loc->strand()=".$feat_obj->location->strand()."\n";
 #              $s .= substr($s0, $loc->start -1, $loc->end +1 - $loc->start);
                my $start = $loc->start -1;
                my $len = $loc->end +1 - $loc->start;
@@ -799,13 +819,13 @@ sub get_dna_byloc {
                   $codon_start = $codon_start->[0];
                   $start = $start + $codon_start -1;
                   $len = $len - $codon_start +1;
-                  $debug && print STDERR "get_dna_byloc: \$codon_start = $codon_start\n";
+                  $debug && print STDERR "$subname: \$codon_start = $codon_start\n";
               }
               my $stemp = substr($s0, $start, $len);
            if ($loc->strand() == -1) {
                $stemp = revcom($stemp);
                $stemp = $stemp->seq;
-               $debug && print STDERR "get_dna_byloc: after revcom \$stemp = \n".Dumper($stemp)."End of \$stemp\n\n";
+               $debug && print STDERR "$subname: after revcom \$stemp = \n".Dumper($stemp)."End of \$stemp\n\n";
            }
               $s .= $stemp;
 #              print "start=". $loc->start ."\tend=". $loc->end ."\n";
@@ -813,7 +833,7 @@ sub get_dna_byloc {
            }
       } elsif ($feat_obj->location->isa('Bio::Location::Fuzzy')) {
            my $s0 = $seq_obj_seq;
-           $debug && print STDERR "get_dna_byloc: location=". $feat_obj->location->to_FTstring . "\n";
+           $debug && print STDERR "$subname: location=". $feat_obj->location->to_FTstring . "\n";
            for my $loc ($feat_obj->location->each_Location) {
 #              $s .= substr($s0, $loc->start -1, $loc->end +1 - $loc->start);
                my $start = $loc->start -1;
@@ -823,20 +843,20 @@ sub get_dna_byloc {
                   $codon_start = $codon_start->[0];
                   $start = $start + $codon_start -1;
                   $len = $len - $codon_start +1;
-                  $debug && print STDERR "get_dna_byloc: \$codon_start = $codon_start\n";
+                  $debug && print STDERR "$subname: \$codon_start = $codon_start\n";
               }
               $s .= substr($s0, $start, $len);
            if ($feat_obj->strand() == -1) {
                $s = revcom($s);
                $s = $s->seq;
-               $debug && print STDERR "get_dna_byloc: after revcom \$s = \n".Dumper($s)."End of \$s\n\n";
+               $debug && print STDERR "$subname: after revcom \$s = \n".Dumper($s)."End of \$s\n\n";
            }
 #              $debug && print STDERR "get_dna_byloc: start=". $loc->start ."\tend=". $loc->end ."\n";
 #              $debug && print STDERR "get_dna_byloc:   \$s=". $s ."\n";
            }
       }
 
-    $debug && print STDERR "get_dna_byloc: \$s = $s\n";
+    $debug && print STDERR "$subname: \$s = $s\n";
     return $s;
 } # sub get_dna_byloc
 

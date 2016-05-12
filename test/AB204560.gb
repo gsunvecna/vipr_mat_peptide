@@ -1,0 +1,51 @@
+LOCUS       AB204560                 283 bp    RNA     linear   VRL 05-OCT-2006
+DEFINITION  Rubella virus E1 gene for envelope glycoprotein, partial cds,
+            isolate:490.
+ACCESSION   AB204560
+VERSION     AB204560.1  GI:90265764
+KEYWORDS    .
+SOURCE      Rubella virus
+  ORGANISM  Rubella virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Togaviridae;
+            Rubivirus.
+REFERENCE   1
+  AUTHORS   Saitoh,M., Shinkawa,N., Shimada,S., Segawa,Y., Sadamasu,K.,
+            Hasegawa,M., Kato,M., Kozawa,K., Kuramoto,T., Nishio,O. and
+            Kimura,H.
+  TITLE     Phylogenetic analysis of envelope glycoprotein (E1) gene of rubella
+            viruses prevalent in Japan in 2004
+  JOURNAL   Microbiol. Immunol. 50 (3), 179-185 (2006)
+   PUBMED   16547415
+REFERENCE   2  (bases 1 to 283)
+  AUTHORS   Saitoh,M. and Kimura,H.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (15-FEB-2005) Mika Saitoh, Gunma Prefectural Institute of
+            Public Health and Environmental Sciences; 378 Kamioki, Maebashi,
+            Gunma 371-0052, Japan (E-mail:saito-mika@pref.gunma.jp,
+            Tel:81-27-232-4881, Fax:81-27-234-8438)
+FEATURES             Location/Qualifiers
+     source          1..283
+                     /organism="Rubella virus"
+                     /mol_type="genomic RNA"
+                     /isolate="490"
+                     /db_xref="taxon:11041"
+                     /country="Japan:Gunma"
+     gene            <1..>283
+                     /gene="E1"
+     CDS             <1..>283
+                     /gene="E1"
+                     /note="Positions 8568 to 8850 of the Rubella virus"
+                     /codon_start=3
+                     /product="envelope glycoprotein"
+                     /protein_id="BAE91908.1"
+                     /db_xref="GI:90265765"
+                     /translation="GSYYKQYHPTACEVEPAFGHSDAACWGFPTDTVMSVFALASYVQ
+                     HPHKTVRVKFHTETRTVWQLSVAGVSCNVTTEHPFCNTPHGQLEVQVPP"
+ORIGIN      
+        1 gcggcagcta ctacaagcag taccacccta ccgcgtgcga ggttgaacct gccttcgggc
+       61 acagcgacgc ggcctgctgg ggcttcccca ccgacaccgt gatgagcgtg ttcgcccttg
+      121 ctagctacgt ccagcaccct cacaagaccg tccgggtcaa gttccataca gagaccagga
+      181 ccgtctggca gctctccgtt gccggcgtgt cgtgcaacgt caccaccgaa cacccgttct
+      241 gcaacacgcc gcacggacaa ctcgaggtcc aggtcccgcc cga
+//
+

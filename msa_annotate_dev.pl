@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.1.3'); # Sep 26, 2011
+use version; our $VERSION = qv('1.1.5'); # Sep 20, 2012
 use File::Temp qw/ tempfile tempdir /;
 use Getopt::Long;
 use English;
@@ -20,11 +20,17 @@ use IO::String;
 use GBKUpdate::Configuration;
 use GBKUpdate::Database;
 
+## Path to the CLUSTALW binaries. You need to configure this, if clustalw is not in the path already
+#	BEGIN {$ENV{MUSCLEDIR} = '/net/home/gsun/prog/clustalw/clustalw-2.0.12'}
+#Check for CLUSTALW installation on start:
+$ENV{CLUSTALDIR} or croak 'CLUSTALDIR must be defined in your environment';
+(-e $ENV{CLUSTALDIR}) or croak "CLUSTALDIR ($ENV{CLUSTALDIR}) does not exist";
+
 ## Path to the MUSCLE binaries. You need to configure this, if muscle is not in the path already
 #	BEGIN {$ENV{MUSCLEDIR} = '/net/home/gsun/prog/muscle/mus37'}
 #Check for MUSCLE installation on start:
-$ENV{MUSCLEDIR} or croak 'MUSCLEDIR must be defined in your environment';
-(-e $ENV{MUSCLEDIR}) or croak "MUSCLEDIR ($ENV{MUSCLEDIR}) does not exist";
+#$ENV{MUSCLEDIR} or croak 'MUSCLEDIR must be defined in your environment';
+#(-e $ENV{MUSCLEDIR}) or croak "MUSCLEDIR ($ENV{MUSCLEDIR}) does not exist";
 
 use Annotate_gbk;		# for annotation from genbank
 use Annotate_Muscle;		# for live MUSCLE run
@@ -74,6 +80,14 @@ my $test1      = 0;
 ## Path to the BLAST binaries. You must configure this!
 my $blast_path = '/home/gsun/prog/blast/blast-2.2.20/bin';
 my $td = tempdir( CLEANUP => 1 );  # temp dir (threadsafe)
+
+# Program locations, may leave blank if the programs are accessible from the prompt
+my $progs = {
+    # Location of MUSCLE executible, such as /net/home/gsun/prog/muscle/mus37/muscle
+#    muscle  => '/home/dbadmin/loader/ext/muscle3.7/muscle',
+    # Location of CLUSTALW executible, such as /net/home/gsun/prog/clustalw/clustalw-2.0.12/clustalw2
+#    clustalw  => '/home/dbadmin/loader/ext/autoCuration/clustalw';
+};
 
 # Get user-defined options
 my $refseq_required = 0;
@@ -138,7 +152,7 @@ if ("$infile") {
     push @$accs, [$#{$accs}+1, "$dir_path/$infile"];
 
     $dbh_ref = undef;
-    Annotate_misc::process_list1( $accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $test1, $refseq_required);
+    Annotate_misc::process_list1( $accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $progs);
 
 } elsif ("$dir_path/$list_fn") {
 
@@ -215,13 +229,13 @@ if ("$infile") {
     if ( 1 ) {
         # MSA for each genome
         $debug && print STDERR "$exe_name: sub Annotate_misc::process_list1 called\n";
-        Annotate_misc::process_list1( $accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path);
+        Annotate_misc::process_list1( $accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $progs);
     } else {
         # Giant MSA. For large set, requires long time, run out of time/memory, and possibly give wrong result b/c of gaps
         if ( !$debug ) {
             croak("$exe_name: sub Annotate_misc::process_list3 is for debug only. Quit.\n");
         }
-        Annotate_misc::process_list3( $accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path);
+        Annotate_misc::process_list3( $accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $progs);
     }
 }
 

@@ -52,7 +52,7 @@ sub check_old_annotation {
 #            $fn = $acc.'_matpept_muscle.faa';
             $fn = $acc.'_muscle_matpeptide.faa';
             $debug && print STDERR "$subname: read existing mat_peptide annotation from \$fn=$fn\n";
-            for (my $k=0; $k<=$#{@$old_dirs}; $k++) {
+            for (my $k=0; $k<=$#{$old_dirs}; $k++) {
               my $old_dir = $old_dirs->[$k];
               my $fn1 = "$old_dir/" . $fn;
               if (-e $fn1) {
@@ -113,25 +113,25 @@ sub diff_fasta {
     my $diff_fasta = 0;
     if (!$faa1_all) {
         $diff_fasta = 1;
-        print STDERR "$subname: No feature found in faa1=$#{@$faa1_all}\n";
+        print STDERR "$subname: No feature found in faa1=$#{$faa1_all}\n";
         return $diff_fasta;
     } elsif (!$faa1_all || !$faa3_all) {
         $diff_fasta = 1;
-        print STDERR "$subname: No feature found in faa3=$#{@$faa3_all}\n";
+        print STDERR "$subname: No feature found in faa3=$#{$faa3_all}\n";
         return $diff_fasta;
-    } elsif ($#{@$faa1_all} != $#{@$faa3_all}) {
+    } elsif ($#{$faa1_all} != $#{$faa3_all}) {
         $diff_fasta = 1;
-        print STDERR "$subname: Numbers of seqs different between faa1=$#{@$faa1_all}+1 and faa3=$#{@$faa3_all}+1\n";
+        print STDERR "$subname: Numbers of seqs different between faa1=$#{$faa1_all}+1 and faa3=$#{$faa3_all}+1\n";
         return $diff_fasta;
     }
-    for my $i (0 .. $#{@$faa1_all}) {
+    for my $i (0 .. $#{$faa1_all}) {
         my $seq1 = $faa1_all->[$i]->seq;
         $debug && print STDERR "$subname: \$seq1#$i=$seq1\n";
         my $seq3 = $faa3_all->[$i]->seq;
         $debug && print STDERR "$subname: \$seq3#$i=$seq3\n";
         if ($seq1 ne $seq3) {
             $diff_fasta = 1;
-            print STDERR "$subname: seqs#$i different between faa1=$#{@$faa1_all}+1 and faa3=$#{@$faa3_all}+1\n";
+            print STDERR "$subname: seqs#$i different between faa1=$#{$faa1_all}+1 and faa3=$#{$faa3_all}+1\n";
             print STDERR "$subname: \$seq1#$i=$seq1\n";
             print STDERR "$subname: \$seq3#$i=$seq3\n";
             last;
@@ -183,7 +183,7 @@ sub check_ranges {
     $debug && print STDERR "check_ranges: \$feats is a ".Dumper($feats)."\n";
     my $head_tail = '';
     my $head_tail_print_length = 5;
-    for (my $i=0; $i<=$#{@$feats}; $i++) {
+    for (my $i=0; $i<=$#{$feats}; $i++) {
         my $feat = $feats->[$i];
         next if ($feat->primary_tag ne 'mat_peptide' && $feat->primary_tag ne 'sig_peptide');
 #        print STDERR "check_ranges: \$feat is a ".ref($feat)."\n";
@@ -294,8 +294,8 @@ sub check_partial {
 #    print STDERR "check_ranges: \$feats is a ".$feats."\n";
     $debug && print STDERR "$subname: \$cds = \n".Dumper($cds)."\n";
 #    print STDERR "check_ranges: \$feats is a ".$feats."\n";
-    for (my $i=1; $i<=$#{@$feats}; $i++) {
-        next if ($i==1 or $i==$#{@$feats});
+    for (my $i=1; $i<=$#{$feats}; $i++) {
+        next if ($i==1 or $i==$#{$feats});
         my $feat = $feats->[$i];
         my @values = $feat->get_tag_values('note');
         $debug && print STDERR "$subname: \@values = \n".Dumper(@values)."End of \@values\n";
@@ -327,7 +327,7 @@ sub print_matpept_ranges {
     my ($title, $metbod, $ranges, $ranges_new, $cds_start) = @_;
 
     my $different = 0 && $debug_all;
-    foreach my $ct (0 ..$#{@{$ranges_new}}) {
+    foreach my $ct (0 ..$#{{$ranges_new}}) {
         if (!defined($ranges->[$ct]) || !defined($ranges_new->[$ct]) || $ranges->[$ct]->location->start != $ranges_new->[$ct]->location->start || $ranges->[$ct]->location->end != $ranges_new->[$ct]->location->end) {
               $different = 1;
               last;
@@ -337,7 +337,7 @@ sub print_matpept_ranges {
     print STDERR "\n";
     if (!@{$ranges}) {
             print STDERR "!!! New annotation for mat_peptide from $metbod and genbank\n";
-    } elsif ($different || $#{@{$ranges}}!=$#{@{$ranges}}) {
+    } elsif ($different || $#{{$ranges}}!=$#{{$ranges}}) {
             print STDERR "!!! Different mat_peptide from $metbod and genbank\n";
     } else {
             print STDERR "!!! Identical between $metbod and genbank\n";
@@ -346,8 +346,8 @@ sub print_matpept_ranges {
     my $str1='';
     my $str2='';
     my $str3='';
-    my $len1 = $#{@$ranges};
-    my $len2 = $#{@$ranges_new};
+    my $len1 = $#{$ranges};
+    my $len2 = $#{$ranges_new};
     my $i=0;
     my $j=0;
     while ($i <= $len1 || $j <= $len2) {
@@ -461,7 +461,7 @@ sub check_alignment {
 #    print STDOUT "check_alignment: \$hsp_cds=\n".Dumper($hsp_cds)."end of \$hsp_cds\n\n";
 #    print STDOUT "check_alignment: \$feats=\n".Dumper($feats)."end of \$feats\n\n";
 
-    foreach my $i (0 .. $#{@$feats}) {
+    foreach my $i (0 .. $#{$feats}) {
         my $feat = $feats->[$i];
 #        print STDOUT "check_alignment: \$i=$i \$feat=\n".Dumper($feat)."end of \$feat\n\n";
         my $start = $feat->location->start - $hsp_cds->start('HIT');

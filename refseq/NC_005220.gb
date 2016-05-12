@@ -1,0 +1,141 @@
+LOCUS       NC_005220               3229 bp ss-RNA     linear   VRL 30-NOV-2009
+DEFINITION  Uukuniemi virus chromosome segment M, complete genome.
+ACCESSION   NC_005220
+VERSION     NC_005220.1  GI:38371703
+DBLINK      Project:14902
+KEYWORDS    .
+SOURCE      Uukuniemi virus
+  ORGANISM  Uukuniemi virus
+            Viruses; ssRNA negative-strand viruses; Bunyaviridae; Phlebovirus.
+REFERENCE   1  (bases 1 to 3229)
+  AUTHORS   Ronnholm,R.
+  TITLE     Localization to the Golgi complex of Uukuniemi virus glycoproteins
+            G1 and G2 expressed from cloned cDNAs
+  JOURNAL   J. Virol. 66 (7), 4525-4531 (1992)
+   PUBMED   1602557
+REFERENCE   2  (bases 1 to 3229)
+  AUTHORS   Ronnholm,R. and Pettersson,R.F.
+  TITLE     Complete nucleotide sequence of the M RNA segment of Uukuniemi
+            virus encoding the membrane glycoproteins G1 and G2
+  JOURNAL   Virology 160 (1), 191-202 (1987)
+   PUBMED   3629974
+REFERENCE   3  (bases 1 to 3229)
+  CONSRTM   NCBI Genome Project
+  TITLE     Direct Submission
+  JOURNAL   Submitted (18-NOV-2003) National Center for Biotechnology
+            Information, NIH, Bethesda, MD 20894, USA
+COMMENT     PROVISIONAL REFSEQ: This record has not yet been subject to final
+            NCBI review. The reference sequence is identical to M17417.
+            Draft entry and computer-readable sequence for [1] kindly provided
+            by R.Roennholm, 14-DEC-1987.
+            COMPLETENESS: full length.
+FEATURES             Location/Qualifiers
+     source          1..3229
+                     /organism="Uukuniemi virus"
+                     /mol_type="genomic RNA"
+                     /strain="S23"
+                     /db_xref="taxon:11591"
+                     /chromosome="segment M"
+                     /clone="pUM[40,187]"
+                     /note="passed in secondary chicken embryo fibroblasts"
+     gene            18..3044
+                     /locus_tag="UUKVsMgp1"
+                     /db_xref="GeneID:2943072"
+     CDS             18..3044
+                     /locus_tag="UUKVsMgp1"
+                     /codon_start=1
+                     /product="membrane glycoprotein polyprotein"
+                     /protein_id="NP_941979.1"
+                     /db_xref="GI:38371704"
+                     /db_xref="GeneID:2943072"
+                     /translation="MVRTYLLLLLLCGPATPFFNHLMDVTRRLLDSSNATWQRDQPDT
+                     HRLSRLDAHVMSMLGVGSHIDEVSVNHSQHLHNFRSYNCEEGRRTLTMMDPKSGKFKR
+                     LKCNENQTLSKDCASCIEKKSSIMKSEHLVYDDAICQSDYSSPEAMPDHETHLCRIGP
+                     LHIQHCTHEAKRVQHVSWFWIDGKLRVYDDFSVSWTEGKFLSLFDCLNETSKDHNCNK
+                     AVCLEGRCSGDLQFCTEFTCSYAKADCNCKRNQVSGVAVVHTKHGSFMPECMGQSLWS
+                     VRKPLSKRSVTVQQPCMDCESDCKVDHILVIVRHFYPDHYQACLGSTCLTGRAKDKEF
+                     KIPFKMADRLSDSHFEIRIWDKERSNEYFLESRCESVDACAAITCWFCRANWANIHCF
+                     SKEQVLILVAVSSLCILLLASVLRALKVIATFTWKIIKPFWWILSLLCRTCSKRLNKR
+                     AERLKESIHSLEEGLNNVDEGPREQNNPARAVARPNVRQKMFNLTRLSPVVVGMLCLA
+                     CPVESCSDSISVTASSQRCSTSSDGVNSCFVSTSSLLQVSPKGQESCLILKGPTGTAV
+                     DSIRIKTTDIKLECVRRDLYWVPRVTHRCIGTRRCHLMGACKGEACSEFKINDYSPEW
+                     GHEEELMAQLGWSYCVEQCGGALCQCFNMRPSCFYLRKTFSHLSQDAFNIYECSEWSY
+                     RINVLVSTNSTHSNLTLKLGVPDSIPHGLISLSSVSQPPAIAYSECFGEDLHGTKFHT
+                     VCNRRTDYTLGRIGEIQCPTKADALAVSKRCISSDSIIFSKVHKDSVDCQSSIIDPMT
+                     IRNRNKLPSTVGSVTFWPTETSVEAAIPDLASATMLIRLDGYTIQFRSDSNKCSPRFL
+                     SLSGCYNCEAGAKLELEHVTDFGTALGILECPSLGYTTYYEVKNTLEKSIRTMHLNGS
+                     HVEAKCYFRCPNSESQLTIRGELIYLFNDDIRHHNQTLSPGLSPKSGSGWDPFGWFKA
+                     SWLRAIWAILGGTVSLIIGVVIIYMVFTLCLKVKKS"
+     sig_peptide     18..68
+                     /locus_tag="UUKVsMgp1"
+                     /note="membrane glycoprotein G1 signal peptide"
+     mat_peptide     69..1505
+                     /locus_tag="UUKVsMgp1"
+                     /product="membrane glycoprotein G1"
+                     /protein_id="NP_941985.1"
+                     /db_xref="GI:38371705"
+     sig_peptide     1506..1556
+                     /locus_tag="UUKVsMgp1"
+                     /note="membrane glycoprotein G2 signal peptide"
+     mat_peptide     1557..3041
+                     /locus_tag="UUKVsMgp1"
+                     /product="membrane glycoprotein G2"
+                     /protein_id="NP_941986.1"
+                     /db_xref="GI:38371706"
+ORIGIN      
+        1 acacaaagac ggctaacatg gtaaggacat atctcttgct tttgctcctg tgcgggccag
+       61 caacgccttt cttcaatcac ctgatggatg tgacccgtcg cttactagac tccagcaacg
+      121 caacctggca gagagaccag cctgacacgc accgattgtc aaggctggat gctcatgtca
+      181 tgtcaatgtt aggggttggt tcacacattg atgaagtcag tgtcaatcac agccagcacc
+      241 tccacaactt taggtcctac aattgtgaag agggaaggag gactttaacc atgatggatc
+      301 ccaaatcagg aaagttcaag cgcctgaaat gtaatgaaaa ccagactctg tccaaggatt
+      361 gtgcctcttg catagaaaag aagtcctcca tcatgaagag tgagcatctg gtctatgacg
+      421 acgccatttg ccaatctgat tacagcagtc ctgaggcaat gccagaccat gagacacatc
+      481 tttgcaggat cgggccattg cacatccagc attgcactca cgaggctaag agggttcagc
+      541 atgtctcttg gttttggatt gatgggaaac tgagggtgta tgatgacttc tcagtctcct
+      601 ggactgaggg gaaattcctg tctctctttg attgcttaaa tgaaacatcc aaggaccaca
+      661 actgcaataa agcagtctgt ttggagggca gatgttctgg agatcttcag ttttgcacag
+      721 aattcacatg ctcatatgca aaggctgact gcaactgcaa gagaaaccag gtttctgggg
+      781 tggcagtagt gcataccaag cacggctcct tcatgccaga gtgtatgggt cagtctcttt
+      841 ggtcagtgcg aaagcctttg tctaagagat cagtaacagt gcagcaacct tgcatggatt
+      901 gcgaaagtga ctgcaaagta gaccacattt tggtgatagt caggcacttc tacccagacc
+      961 attaccaggc atgtctgggc tccacatgtc tcactggtcg agcaaaggac aaggaattca
+     1021 agatcccatt taagatggca gacaggctct cagattcaca cttcgagata cgtatctggg
+     1081 ataaggagag gtccaacgaa tatttcttag aatctaggtg tgagtcagtt gatgcctgtg
+     1141 ctgccattac atgctggttt tgtagagcaa attgggccaa cattcactgc ttttctaaag
+     1201 agcaggttct aattctagtt gcagtgagct ccttgtgcat tttactgcta gctagtgttc
+     1261 tgagggctct caaagtcatt gccaccttca cctggaaaat aataaagccc ttttggtgga
+     1321 tcctttccct gttgtgcaga acttgctcca aaagactgaa caaacgggca gagcgactaa
+     1381 aggagagcat ccactccctg gaagaaggac tgaataatgt ggatgaagga cccagagagc
+     1441 agaacaaccc tgcaagagca gtggcaaggc ccaatgttcg acaaaagatg tttaacttga
+     1501 ccagactaag cccagttgtt gtaggcatgc tgtgtctggc ttgcccagtt gaaagttgct
+     1561 cagactccat ctctgtaaca gcctccagtc agaggtgctc tactagctca gatggagtga
+     1621 actcctgttt tgtcagcact agctctctgc ttcaggtcag tcctaagggg caagagagct
+     1681 gtctgatcct aaaggggcca actggaacag cagtggactc tattaggatc aagaccactg
+     1741 acatcaagct ggagtgtgtc aggcgagatc tgtattgggt ccccagggta acccataggt
+     1801 gcatagggac caggcgatgc catctcatgg gagcctgcaa gggagaggcc tgctctgagt
+     1861 ttaagataaa cgattattct ccggagtggg gtcatgaaga ggagttgatg gctcagctag
+     1921 gctggagcta ctgtgttgag cagtgtggcg gagccctttg tcaatgcttc aacatgaggc
+     1981 cctcttgctt ctacttgagg aaaacatttt ctcatctatc ccaggatgct ttcaacatct
+     2041 atgaatgctc agaatggtca taccggataa atgtgcttgt atcgacaaat tcaactcact
+     2101 caaatttaac attaaagctt ggtgtcccag actctatccc tcatggtctg attagcttgt
+     2161 ctagcgtgtc ccaaccgcca gccatagcat actcagagtg ctttggggag gatctacacg
+     2221 gcacaaagtt ccacacagtc tgcaacagaa ggactgatta cactctaggc agaatagggg
+     2281 agatacagtg ccccaccaaa gctgatgccc tggcagtctc taagagatgc attagcagcg
+     2341 actccataat tttctccaag gtccacaagg attcagtgga ttgtcaatca tcaatcatag
+     2401 atcccatgac aatcaggaat cggaacaaat tgccatccac tgtaggttca gtcactttct
+     2461 ggccaacaga aaccagtgtt gaggcagcca tccctgactt ggcatctgcc accatgttaa
+     2521 tcaggttaga tggttatacc attcagttca gatctgattc caataagtgt agcccaagat
+     2581 tcttatcatt atcaggctgt tacaactgtg aggctggagc aaagctggaa ctggaacatg
+     2641 taacagactt tggaacagcc ttgggaatcc tcgaatgccc aagcctaggc tacacaacat
+     2701 attatgaggt gaagaacacg cttgaaaagt ccataaggac aatgcattta aacggatcac
+     2761 acgtggaggc caagtgctac tttcggtgcc ctaactctga gagtcagcta actataagag
+     2821 gagaactgat ctatcttttc aatgatgaca tcagacacca caatcagacc ttgtccccag
+     2881 gcctgagtcc gaagtcaggg tctggatggg atccttttgg ttggttcaaa gcctcctggt
+     2941 tgagagcaat ttgggccatc ctgggtggga ctgtgtctct gataattgga gtggtgatca
+     3001 tatacatggt gttcacactc tgcttgaaag ttaaaaaatc gtgaagtccc cctattcccc
+     3061 atccccctct acccctttcc cttatccccc cctcatcctc taagagggtg agggcctctg
+     3121 ccgcacgacg ccgctggagc attcattact aagtggtgtt atccagggtg gtccttagca
+     3181 gtgcccgtga ataccatatt tgttgttcca tgtagccgtg tctttgtgt
+//
+

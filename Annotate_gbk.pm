@@ -258,7 +258,7 @@ sub extract_mature_peptides {
         my $str1 = $parent_cds->location->start .'..'. $parent_cds->location->end;
         $debug && print STDERR "$subname: \$str1=$str1\n";
         # each CDS and corresponding mat_peptides
-#        CDS: for (my $i=0; $i<=$#{@$feats_msa}; $i++) {
+#        CDS: for (my $i=0; $i<=$#{$feats_msa}; $i++) {
 #            my $feats = $feats_msa->[$i];
         CDS: for my $i (keys %$feats_msa) {
             my $feats = $feats_msa->{$i};
@@ -390,7 +390,7 @@ sub extract_mature_peptides0 {
            $id = "ACC=". $parent_cds->seq->accession_number .'.'.$parent_cds->entire_seq->{'_version'}.'|' .$id;
            
            my $source = 'src=GBK';
-            for (my $i=0; $i<=$#{@$feats_msa}; $i++) {
+            for (my $i=0; $i<=$#{$feats_msa}; $i++) {
                 my $feats = $feats_msa->[$i];
                 $debug && print STDERR "$subname: \$feats=\n". Dumper($feats) . "End of \$feats\n\n";
 
@@ -530,7 +530,7 @@ sub get_matpeptide {
      ($r1, $comment) = extract_mature_peptides($seq_obj, $feats_msa,$exe_dir);
      $debug && print STDERR "$subname: \$r1=\n".Dumper($r1)."end of \$r1\n\n";
      push @records, @$r1;
-     $debug && print STDERR "$subname: sub extract_mature_peptides returned $#{@$r1} mat_peptides\n";
+     $debug && print STDERR "$subname: sub extract_mature_peptides returned $#{$r1} mat_peptides\n";
 
    # write out the entire genbank file
      if ( 0 ) {

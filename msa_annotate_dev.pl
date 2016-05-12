@@ -16,7 +16,7 @@ use Bio::Tools::Run::StandAloneBlast;
 use Bio::Tools::Run::Alignment::Muscle;
 use IO::String;
 
-use lib qw(/net/home/gsun/northrop/matpeptide/msa_annotate-1.1.3/);
+#use lib qw(/net/home/gsun/northrop/matpeptide/msa_annotate-1.1.3/);
 use GBKUpdate::Configuration;
 use GBKUpdate::Database;
 
@@ -29,7 +29,7 @@ $ENV{MUSCLEDIR} or croak 'MUSCLEDIR must be defined in your environment';
 use Annotate_gbk;		# for annotation from genbank
 use Annotate_Muscle;		# for live MUSCLE run
 #use Annotate_Muscleprofile;	# for live MUSCLE profile run
-use Annotate_bl2seq;		# for live bl2seq run
+#use Annotate_bl2seq;		# for live bl2seq run
 use Annotate_Util;
 use Annotate_Verify;
 use Annotate_misc;
@@ -135,23 +135,23 @@ if ("$infile") {
 
     # Now run the annotation
     my $accs = [];
-    push @$accs, [$#{@$accs}+1, "$dir_path/$infile"];
+    push @$accs, [$#{$accs}+1, "$dir_path/$infile"];
 
     $dbh_ref = undef;
     Annotate_misc::process_list1( $accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $test1, $refseq_required);
 
 } elsif ("$dir_path/$list_fn") {
 
-    print STDERR "$exe_name: Input accession numbers are in dir/file '$dir_path/$list_fn'\n";
+    print STDERR "$exe_name: Input accession are in dir/file '$dir_path/$list_fn'\n";
     my $accs = [];
     if (-d "$dir_path/$list_fn") {
         $dir_path = "$dir_path/$list_fn";
         # if input -l file is directory
         my $ptn = '^\s*([^\s]+)(\.(gb|gbk|genbank))\s*$';
         $accs = Annotate_misc::list_dir_files( "$dir_path", $ptn);
-        my $n = $#{@$accs}+1;
+        my $n = $#{$accs}+1;
         print STDERR "$exe_name: from directory: $dir_path, found $n gbk files.\n";
-        for my $j (0 .. $#{@$accs}) {
+        for my $j (0 .. $#{$accs}) {
             print STDERR "$exe_name: \$acc[$j]=$accs->[$j]->[1]\n";
         }
         print STDERR "\n";
@@ -173,7 +173,7 @@ if ("$infile") {
                 $acc = $2;
                 print STDERR "\$1=\'$1\' \t\$2=\'$2\'\n";
             } elsif ($_ =~ /^\s*([^\s.]+)[.]\d+\s*$/) { # FJ888392.1
-                $number = $#{@$accs};
+                $number = $#{$accs} +1;
                 $acc = $1;
 #                print STDERR "\$1=\'$1\'\n";
             } elsif ($_ =~ /^(\d+)[.] /) { # 1. Norovirus Hu/
@@ -197,7 +197,7 @@ if ("$infile") {
         }
         close $list_file or croak "$0: Couldn't close $dir_path/$list_fn: $OS_ERROR";
 
-        print STDERR "\n$exe_name: finished reading list file: $dir_path/$list_fn, found $#{@$accs} gbk files.\n\n";
+        print STDERR "\n$exe_name: finished reading list file: $dir_path/$list_fn, found $#{$accs} gbk files.\n\n";
 #        $debug && print STDERR "$exe_name: \$accs = \n".Dumper($accs)."End of \$accs\n\n";
 
         # configuration file used to connect to MySQL

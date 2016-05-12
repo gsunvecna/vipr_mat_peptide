@@ -1,0 +1,105 @@
+LOCUS       NC_005221               1720 bp ss-RNA     linear   VRL 30-NOV-2009
+DEFINITION  Uukuniemi virus, complete genome.
+ACCESSION   NC_005221
+VERSION     NC_005221.1  GI:38371707
+DBLINK      Project:14902
+KEYWORDS    .
+SOURCE      Uukuniemi virus
+  ORGANISM  Uukuniemi virus
+            Viruses; ssRNA negative-strand viruses; Bunyaviridae; Phlebovirus.
+REFERENCE   1  (bases 1 to 1720)
+  AUTHORS   Simons,J.F. and Pettersson,R.F.
+  TITLE     Host-derived 5' ends and overlapping complementary 3' ends of the
+            two mRNAs transcribed from the ambisense S segment of Uukuniemi
+            virus
+  JOURNAL   J. Virol. 65 (9), 4741-4748 (1991)
+   PUBMED   1831239
+REFERENCE   2  (bases 1 to 1720)
+  AUTHORS   Simons,J.F., Hellman,U. and Pettersson,R.F.
+  TITLE     Uukuniemi virus S RNA segment: ambisense coding strategy, packaging
+            of complementary strands into virions, and homology to members of
+            the genus Phlebovirus
+  JOURNAL   J. Virol. 64 (1), 247-255 (1990)
+   PUBMED   2136709
+REFERENCE   3  (bases 1 to 1720)
+  CONSRTM   NCBI Genome Project
+  TITLE     Direct Submission
+  JOURNAL   Submitted (18-NOV-2003) National Center for Biotechnology
+            Information, NIH, Bethesda, MD 20894, USA
+COMMENT     PROVISIONAL REFSEQ: This record has not yet been subject to final
+            NCBI review. The reference sequence is identical to M33551.
+            Reference [1] reports nucleotides
+            12 through 1720.  Reference [2]
+            reports nucleotides 1 through 11.
+            COMPLETENESS: full length.
+FEATURES             Location/Qualifiers
+     source          1..1720
+                     /organism="Uukuniemi virus"
+                     /mol_type="genomic RNA"
+                     /strain="S23"
+                     /db_xref="taxon:11591"
+     gene            35..799
+                     /locus_tag="UUKVsSgp1"
+                     /db_xref="GeneID:6457835"
+     CDS             35..799
+                     /locus_tag="UUKVsSgp1"
+                     /note="(nucleocapsid) N protein"
+                     /codon_start=1
+                     /product="hypothetical protein"
+                     /protein_id="NP_941980.1"
+                     /db_xref="GI:38371708"
+                     /db_xref="GeneID:6457835"
+                     /translation="MAMPENWVRFAIEISDAQWEEEEIREFINLFQYQGFDAAVVLSR
+                     IFELAKKADLSRDQMLRDIRALITLHLTRGNKLSSIEKRLSEEGKKEFALLKARYQLV
+                     DKAKEAADLTLSRIAIANAGLTCRILPQVVAHTAVTRSRMESLSADYPVCMMHNAFAG
+                     LIDETLPEDSIKALVDAHRLYLLEFSRTINVKHRGMEAKEILDANDSALQAGLASSFL
+                     TPSQKRAYLLSFKLVDGNGKVNKAVQQAATVLRSLI"
+     gene            complement(874..1695)
+                     /gene="NS"
+                     /locus_tag="UUKVsSgp2"
+                     /db_xref="GeneID:2654010"
+     CDS             complement(874..1695)
+                     /gene="NS"
+                     /locus_tag="UUKVsSgp2"
+                     /codon_start=1
+                     /product="nonstructural protein"
+                     /protein_id="NP_941981.1"
+                     /db_xref="GI:38371709"
+                     /db_xref="GeneID:2654010"
+                     /translation="MSYFTIQNEDLPQGFTFRPHDKIYDSLWEMMDDGYFPSTIPLKT
+                     TINGVDMPSVGWLEVDEGLYDILIDGLDVLRPTDEEMIVSATGWPLEKNRALILNFFR
+                     NLRMDIIGTYTLQRSFITIMSIVLFGDQNPRLRRKKRSRVSLGKMLFDLALRMRSKIR
+                     RMKLTEVQVTGQNLVKDLCLLHILDLQKRLVTRGTIAEKRFFTAIEQAPCNYEPKRYG
+                     MKKKHMNFMFESDRKNLTVHPTLVNLEEHWITFESARERLLDTTFTKDWPVVGSL"
+ORIGIN      
+        1 acacaaagac ctccaactta gctatcgata gatcatggct atgccggaga attgggtgcg
+       61 ctttgcgatt gaaatctcgg atgctcagtg ggaggaggaa gagatccgag agttcatcaa
+      121 tctcttccag tatcaaggct ttgatgcagc cgtggtgctg agcaggattt ttgagttggc
+      181 caaaaaggct gatctctccc gggaccagat gctgagggac atcagggctc tgatcaccct
+      241 ccatctgacc agaggtaaca agctctccag cattgagaag aggctgtctg aggagggcaa
+      301 gaaagaattc gccctgctga aggccaggta ccagcttgtg gacaaggcca aggaggctgc
+      361 agatctgaca ctctcccgca ttgcgatcgc caatgccggg ctgacgtgcc gcattctgcc
+      421 gcaagtggtg gcccacacag ccgtgactag gtcacggatg gagagtctga gcgcagacta
+      481 tccagtgtgc atgatgcaca atgcctttgc tggcctgatc gatgagaccc tccctgagga
+      541 ctccatcaag gccctggtcg atgcccacag gctctatctg ctggagttct ccaggaccat
+      601 caacgtgaag caccgcggaa tggaggccaa ggagatcttg gatgccaatg actctgctct
+      661 gcaggctggt ctggcaagct ccttcctgac tcccagtcag aagagagctt acctgctgag
+      721 cttcaagctg gtggacggaa atggcaaagt gaataaagcc gtccagcagg ctgcaactgt
+      781 cctcagatca ttgatctgag gtgttttgga atttgattta attcggccaa attaaaactc
+      841 tctaattgga ctctaaaagg gcttcggccc aaactacagt gatcctacga ctggccaatc
+      901 cttggtgaat gtggtgtcca gcagtcgctc cctagcactc tcaaaggtga tccagtgctc
+      961 ctcaaggttg actagagttg gatggacagt aaggttcttc cgatctgatt caaacatgaa
+     1021 gttcatgtgc ttcttcttca tcccataacg cttaggttca tagttgcaag gtgcttgctc
+     1081 aattgcagtg aagaaccttt tctctgcaat ggtccccctt gtgactagtc ttttctggag
+     1141 atcaagaatg tggagaaggc acagatcctt caccagattc tgcccagtga cctgaacctc
+     1201 agtgagcttc attctcctta tttttgatct cattctgaga gcgagatcaa acagcatctt
+     1261 cccaagagag accctggatc tcttcttccg tctcagcctg gggttctgat caccgaacaa
+     1321 aacaatgctc atgatcgtta tgaaggacct ttgcaaagta taagtcccga tgatatccat
+     1381 tctcaagttc ctgaagaaat tgaggatgag agctcgattc ttctccagag gccatccagt
+     1441 tgctgacaca atcatttctt catcagtcgg tctaaggaca tctaaaccat caatcaggat
+     1501 gtcatacagg ccctcatcca cctcaagcca acccactgac ggcatatcca caccgttgat
+     1561 ggtagtcttc agaggaattg tgctaggaaa gtagccatca tccatcatct cccagagcga
+     1621 gtcgtagatc ttgtcatgag gacgaaaagt gaagccctgg gggagatcct cgttctggat
+     1681 agtgaagtaa gacatgctta atgttggagg gtctttgtgt
+//
+

@@ -1352,6 +1352,7 @@ mysql> select id, speciesid, genusid, familyid, species, genus, family from taxo
 | 591069 |    694005 |  694002 |    11118 | Murine coronavirus                                        | Betacoronavirus     | Coronaviridae   | 
 | 591070 |    694005 |  694002 |    11118 | Murine coronavirus                                        | Betacoronavirus     | Coronaviridae   | 
 | 591071 |    694005 |  694002 |    11118 | Murine coronavirus                                        | Betacoronavirus     | Coronaviridae   | 
+|1163669 |    694005 |  694002 |    11118 | Murine coronavirus                                        | Betacoronavirus     | Coronaviridae   | 
 | 424367 |    694006 |  694002 |    11118 | Rousettus bat coronavirus HKU9                            | Betacoronavirus     | Coronaviridae   | 
 | 424368 |    694006 |  694002 |    11118 | Rousettus bat coronavirus HKU9                            | Betacoronavirus     | Coronaviridae   | 
 | 424369 |    694006 |  694002 |    11118 | Rousettus bat coronavirus HKU9                            | Betacoronavirus     | Coronaviridae   | 

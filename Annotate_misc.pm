@@ -92,20 +92,20 @@ sub generate_fasta {
 
 
 sub process_list1 {
-    my ($accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $test1, $refseq_required) = @_;
+#    my ($accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $test1, $refseq_required) = @_;
+    my ($accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $progs) = @_;
 
     my $debug = 0 && $debug_all;
     my $subname = 'process_list1';
 
 #    my $refseqs = {};
-#    my $inseqs  = [];
 
    my $msgs = [];
    my $count = {
          MSA=>{Success=>0, Fail=>0, Empty=>0},
          GBK=>{Success=>0, Fail=>0, Empty=>0},
    };
-   for (my $ct = 0; $ct<=$#{@$accs}; $ct++) {
+   for (my $ct = 0; $ct<=$#{$accs}; $ct++) {
         my $msg_msa = '';
         my $msg_gbk = '';
         my $faa = '';
@@ -114,24 +114,39 @@ sub process_list1 {
 
         # get genbank file from MySQL database
         my $result;
-        print STDERR "$subname: \$acc='$acc'\n";
+        print STDERR "\n";
+#        print STDERR "$subname: \$acc='$acc'\n";
         if ($dbh_ref && $dbh_ref->isa('GBKUpdate::Database')) {
             # get genome gbk from MySQL database
             $result = $dbh_ref->get_genbank($acc);
             $result = $result->[0];
+            print STDERR "$subname: \$acc='#$number:$acc' Found record in MySQL database\n";
+
+            # Turn on following 'if' section to save genbank file to file
+            if ( 0 && $result ) {
+                open my $out, '>', "${acc}.gb" or croak "$0: Couldn't open ${acc}.gb: $OS_ERROR";
+                print $out "$result";
+                close $out or croak "$0: Couldn't close ${acc}.gb: $OS_ERROR";
+                print STDERR "$subname: \$acc='#$number:$acc' written to file ${acc}.gb\n";
+                next;
+            }
+
         } elsif (-r "$acc") {
             # This $acc is really a filename
             open my $in, '<', "$acc" or croak "$0: Couldn't open $acc: $OS_ERROR";
             $result = do { local $/; <$in>};
             close $in or croak "$0: Couldn't close $acc: $OS_ERROR";
+            print STDERR "$subname: \$acc='#$number:$acc' Found record in file=$acc\n";
         }
         if (!$result) {
             print STDERR "$subname: #$number:$acc result is empty\n";
 #            print STDOUT "$subname: #$number:$acc result is empty\n";
-            my $msg = "$acc \tsrc=MSA \tstatus=Fail \tcomment=Empty genome file";
+#            my $msg = "$acc \ttaxid=null \tsrc=MSA \tstatus=Fail \tcomment=Empty genome file";
+            my $msg = "$acc \ttaxid=---- \tsrc=MSA \tstatus=---- \tcomment=Empty genome file";
             print STDERR "$subname: \$msg=$msg\n";
             push @$msgs, $msg;
-            $msg = "$acc \tsrc=GBK \tstatus=Fail \tcomment=Empty genome file";
+#            $msg = "$acc \ttaxid=null \tsrc=GBK \tstatus=Fail \tcomment=Empty genome file";
+            $msg = "$acc \ttaxid=---- \tsrc=GBK \tstatus=---- \tcomment=Empty genome file";
             print STDERR "$subname: \$msg=$msg\n";
             push @$msgs, $msg;
 #            $count->{MSA}->{Fail}++;
@@ -150,10 +165,14 @@ sub process_list1 {
         my $gbk = $result;
         my $in_file2 = IO::String->new($gbk);
         my $in  = Bio::SeqIO->new( -fh => $in_file2, -format => 'genbank' );
-        $acc = $in->next_seq()->accession_number;
+        my $inseq = $in->next_seq();
+        $acc = $inseq->accession_number;
+        my $taxid = $inseq->species->ncbi_taxid;
+        $debug && print STDERR "$subname: accession='$acc' \$taxid=$taxid.\n";
         my $outfile = '';
         $outfile = "$dir_path/$acc" . '_matpept_msagbk.faa' if (!$debug);
-        print STDERR "$subname: accession='$acc' \$outfile=$outfile.\n";
+#        print STDERR "$subname: accession='#$number:$acc' \$outfile=$outfile.\n";
+        $debug && print STDERR "$subname: accession='#$number:$acc' \$outfile=$outfile.\n";
         
         my ($feats_msa, $comment_msa) = Annotate_Muscle::annotate_1gbk( $gbk, $exe_dir, $aln_fn, $dir_path);
         my $status_msa = $feats_msa ? 'Success' : ($comment_msa eq 'Refseq with mat_peptide annotation from NCBI, skip') ? 'Skip   ' : 'Fail   ';
@@ -164,7 +183,7 @@ sub process_list1 {
             $count->{MSA}->{Success}++;
             $debug && print STDERR "$subname: \$feats_msa='\n". Dumper($feats_msa) . "End of \$feats_msa\n\n";
         }
-        $msg_msa = "$acc \tsrc=MSA \tstatus=$status_msa \tcomment=$comment_msa";
+        $msg_msa = "$acc \ttaxid=$taxid \tsrc=MSA \tstatus=$status_msa \tcomment=$comment_msa";
         push @$msgs, $msg_msa;
         print STDERR "$subname: \$msg=$msg_msa\n";
 
@@ -200,10 +219,9 @@ sub process_list1 {
             }
             $debug && print STDERR "$subname: \$feats=\n". Dumper($feats) . "End of \$feats\n\n";
 
-            my $inseq = $feats->[0]->seq;
             # either print to STDERR or fasta file
             $faa1 .= Annotate_misc::generate_fasta( $feats);
-            print STDERR "$subname: accession='$acc' CDS=".$feats->[0]->location->to_FTstring."\n";
+            print STDERR "$subname: refcds=$id input accession='$acc' CDS=".$feats->[0]->location->to_FTstring."\n";
 #            $debug && print STDERR "$subname: \$faa1 = '\n$faa1'\n";
 
             Annotate_Verify::check_old_annotation( $acc, $faa1);
@@ -221,7 +239,7 @@ sub process_list1 {
             $count->{GBK}->{Success}++;
             $debug && print STDERR "$subname: \$feats_gbk='\n$feats_gbk'\nEnd of \$feats_gbk\n\n";
         }
-        $msg_gbk = "$acc \tsrc=GBK \tstatus=$status_gbk \tcomment=$comment_gbk";
+        $msg_gbk = "$acc \ttaxid=$taxid \tsrc=GBK \tstatus=$status_gbk \tcomment=$comment_gbk";
         if ($feats_gbk && $faa1 && $acc !~ /^NC_/i) {
             $msg_gbk .= ". Not refseq, take MSA instead";
         }
@@ -233,31 +251,45 @@ sub process_list1 {
         # Take gbk if the genome is refseq,
         # Take $faa1 if exists
         # otherwise take gbk.
-        $faa = Annotate_gbk::combine_msa_gbk( $acc, $faa1, $feats_gbk);
-        print STDERR "$subname: \$acc=$acc \$faa=\n". Dumper($faa) . "End of \$faa\n\n";
+        if ( 0 ) {
+            $faa = Annotate_gbk::combine_msa_gbk( $acc, $faa1, $feats_gbk);
+        } elsif ($faa1 || $feats_gbk) {
+            if ($faa1 && $acc !~ /^NC_\d+$/i) {
+                $faa = $faa1;
+                $outfile = "$dir_path/$acc" . '_matpept_msa.faa';
+            } elsif (($acc =~ /^NC_\d+$/i || !$faa1) && $feats_gbk ) {
+                $faa = $feats_gbk;
+                $outfile = "$dir_path/$acc" . '_matpept_gbk.faa';
+            
+            }
+            
+            print STDERR "$subname: accession='#$number:$acc' \$outfile=$outfile.\n";
+            print STDERR "$subname: \$acc=$acc \$faa=\n${faa}End of \$faa\n\n";
 
-        if ( 1 && $faa && $outfile) {
+            if ( 1 && $faa && $outfile) {
                 open my $OUTFH, '>', $outfile
                     or croak "Can't open '$outfile': $OS_ERROR";
                 print {$OUTFH} $faa
                     or croak "Can't write to '$outfile': $OS_ERROR";
                 close $OUTFH
                     or croak "Can't close '$outfile': $OS_ERROR";
+            }
         }
 
 #   exit;
 
-   } # for (my $ct = 0; $ct<=$#{@$accs}; $ct++)
+   } # for (my $ct = 0; $ct<=$#{$accs}; $ct++)
 #   $debug && print STDERR "$subname: \$refseqs = \n".Dumper($refseqs)."End of \$refseqs\n\n";
 #   $debug && print STDERR "$subname: \$inseqs = \n".Dumper($inseqs)."End of \$inseqs\n\n";
 
-    print STDOUT "accession \tsource \tstatus \tcomment\n";
+#    print STDOUT "accession \tsource \tstatus \tcomment\n";
+    print STDOUT "accession \ttaxonomy \tsource \tstatus \tcomment\n";
     for my $msg (@$msgs) {
         print STDOUT "$msg\n";
     }
     my $summary = '';
     $summary = "\nStatistics of this run:\n";
-    $summary .= "Total input genomes: ". ($#{@$accs}+1) ."\n";
+    $summary .= "Total input genomes: ". ($#{$accs}+1) ."\n";
     for my $key ('MSA','GBK') {
         $summary .= "$key: \t";
         for my $key2 ('Success','Fail','Empty') {
@@ -285,7 +317,7 @@ sub process_list3 {
     my $inseqs  = [];
 
    # get all CDS for seqs and refseqs, including the mat_peptides
-   for (my $ct = 0; $ct<=$#{@$accs}; $ct++) {
+   for (my $ct = 0; $ct<=$#{$accs}; $ct++) {
         my $refpolyprots = [];
         my $polyprots    = [];
         my $number = $accs->[$ct]->[0];
@@ -325,12 +357,12 @@ sub process_list3 {
 
         # determine the refseq, and get the CDS/mat_peptides in refseq
         $refpolyprots = Annotate_Util::get_refpolyprots( $refseqs, $inseq, $exe_dir);
-#        $debug && print STDERR "$subname: \$refpolyprots = $#{@$refpolyprots}\n";
+#        $debug && print STDERR "$subname: \$refpolyprots = $#{$refpolyprots}\n";
 #        $debug && print STDERR "$subname: \$refpolyprots = \n".Dumper($refpolyprots)."End of \$refpolyprots\n\n";
 
-        if ($#{@$refpolyprots} <0) {
+        if ($#{$refpolyprots} <0) {
             print STDERR "$subname: There is a problem getting refseq for ".$acc.". Skipping\n";
-            print STDERR "$subname: \$#{\@\$refpolyprots} ".$#{@$refpolyprots}.".\n";
+            print STDERR "$subname: \$#{\@\$refpolyprots} ".$#{$refpolyprots}.".\n";
             next;
         }
 
@@ -341,21 +373,21 @@ sub process_list3 {
         $debug && print STDERR "$subname: \$polyprots = \n".Dumper($polyprots)."End of \$polyprots\n\n";
 
         # add refseq to hash, add inseq to array
-        if ($#{@$refpolyprots} >=0 && $refpolyprots->[0]->[1]->primary_tag eq 'CDS') {
+        if ($#{$refpolyprots} >=0 && $refpolyprots->[0]->[1]->primary_tag eq 'CDS') {
             if (!exists($refseqs->{$refpolyprots->[0]->[1]->seq->accession_number})) {
                 $refseqs->{$refpolyprots->[0]->[1]->seq->accession_number} = $refpolyprots;
             }
         } else {
             print STDERR "$subname: There is a problem with ".$acc.". Skipping\n";
-            print STDERR "$subname: \$#{\@\$refpolyprots} ".$#{@$refpolyprots}.". Skipping\n";
+            print STDERR "$subname: \$#{\@\$refpolyprots} ".$#{$refpolyprots}.". Skipping\n";
             next;
         }
 
         my $n = [keys %$polyprots];
-        $debug && print STDERR "$subname: polyprotein CDS for acc=".$acc." \$n=$#{@$n}\n";
-        if ($#{@$n} <0) {
-            print STDERR "$subname: Can't find any polyprotein CDS for acc=".$acc." \$n=$#{@$n}. Skipping\n";
-#            print STDOUT "$subname: Can't find any polyprotein CDS for acc=".$acc." \$n=$#{@$n}. Skipping\n";
+        $debug && print STDERR "$subname: polyprotein CDS for acc=".$acc." \$n=$#{$n}\n";
+        if ($#{$n} <0) {
+            print STDERR "$subname: Can't find any polyprotein CDS for acc=".$acc." \$n=$#{$n}. Skipping\n";
+#            print STDOUT "$subname: Can't find any polyprotein CDS for acc=".$acc." \$n=$#{$n}. Skipping\n";
             next;
         }
         push @$inseqs, [$acc, $polyprots];
@@ -368,12 +400,12 @@ sub process_list3 {
    $debug && print STDERR "$subname: \$refseqs = \n".Dumper($refseqs)."End of \$refseqs\n\n";
    $debug && print STDERR "$subname: \$refseqs =".length($refseqs)."\n";
    $debug && print STDERR "$subname: \$inseqs = \n".Dumper($inseqs)."End of \$inseqs\n\n";
-   $debug && print STDERR "$subname: \$inseqs =".$#{@$inseqs}."\n";
+   $debug && print STDERR "$subname: \$inseqs =".$#{$inseqs}."\n";
 
    $debug && print STDERR "$subname: Finished loading all seqs and refseqs, ready to run MUSCLE\n\n";
 
-   $debug && print STDERR "$subname: Number of input genome is $#{@$inseqs}.\n";
-   if ($#{@$inseqs}<0) {
+   $debug && print STDERR "$subname: Number of input genome is $#{$inseqs}.\n";
+   if ($#{$inseqs}<0) {
        $debug && print STDERR "$subname: Nothing to process. Return.\n";
        return;
    }
@@ -382,9 +414,9 @@ sub process_list3 {
    $feats_all = Annotate_Muscle::muscle_profile( $refseqs, $inseqs, $aln_fn,$exe_dir);
 #   $debug && print STDERR "$subname: \$feats_all=\n". Dumper($feats_all->[0]) . "End of \$feats_all\n\n";
 
-   for (my $i=0; $i<=$#{@$feats_all}; $i++) {
+   for (my $i=0; $i<=$#{$feats_all}; $i++) {
        my $feats = $feats_all->[$i];
-       for (my $j=0; $j<=$#{@$feats}; $j++) {
+       for (my $j=0; $j<=$#{$feats}; $j++) {
             my $feats_new = $feats->[$j];
             $debug && print STDERR "$subname: \$j=$j \$feats_new=\n".Dumper($feats_new)."End of \$feats_new\n\n";
             next if (!$feats_new);
@@ -394,7 +426,7 @@ sub process_list3 {
             $outfile = $accession_number . '_matpept_muscle.faa' if (!$debug);
             my $faa1 = Annotate_misc::generate_fasta( $feats_new, $outfile, '');
             $debug && print STDERR "$subname: \$outfile=$outfile\n";
-            print STDERR "$subname: \$j=$j/$#{@$feats} accession = '".$accession_number."'\n";
+            print STDERR "$subname: \$j=$j/$#{$feats} accession = '".$accession_number."'\n";
             print STDERR "$subname: \$faa1 = '\n$faa1'\n";
 
             if ( 0 && $outfile) {
@@ -452,7 +484,7 @@ sub list_dir_files {
                $debug && print STDERR "$subname: skipping file: '$file'\n";
                next;
             } else {
-                $number = $#{@$accs}+1;
+                $number = $#{$accs}+1;
                 $acc = "$list_fn/$file";
 #                print STDERR "\$1=\'$1\'\n";
             }
@@ -508,3 +540,4 @@ Usage:  -d directory to find the input genome file
 
 
 1;
+

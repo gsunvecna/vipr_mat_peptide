@@ -8,6 +8,7 @@ use Data::Dumper;
 
 use version; our $VERSION = qv('1.1.2'); # December 01 2010
 use File::Temp qw/ tempfile tempdir /;
+use Bio::Perl;
 use Bio::SeqIO;
 use Bio::Seq;
 use Bio::AlignIO;
@@ -39,12 +40,15 @@ sub adjust_start {
 
         # Get any potential gap caused by split locations in refseq CDS
         my $qstart_gap = Annotate_Math::get_split_gap( $qstart, $refcds_loc);
-        $debug && print STDERR "$subname: \$qstart_gap=$qstart_gap\n";
-        $qstart -= $qstart_gap if ($qstart_gap % 3 ==0);
+        $debug && print STDERR "$subname: refcds \$qstart_gap=$qstart_gap\n";
+        # For SARS genome DQ497008, there is a stuter at CDS=join(265..13398,13398..21485)
+#        $qstart -= $qstart_gap;
+#        $qstart -= $qstart_gap if ($qstart_gap % 3 ==0); # Don't remember why used such condition in the beginning
+        $debug && print STDERR "$subname: \$qstart=$qstart after checking refCDS\n";
 
     my $cds_loc = $cds->location;
     # Convert to protain from DNA
-    $qstart = ($qstart - $refcds_loc->start)/3 +1;
+    $qstart = ($qstart - $refcds_loc->start - $qstart_gap)/3 +1;
     $debug && print STDERR "$subname: \$qstart=$qstart\n";
 #    $debug && print STDERR "$subname: \$aln_q=\n".Dumper($aln_q)."end of $aln_q\n";
     my $qseq = $aln_q->seq;
@@ -55,9 +59,9 @@ sub adjust_start {
         $c = substr($qseq, $n-1, 1);
         $qstart++ if ($c eq $gap_char);
         if (($n-1)%10 ==0) {
-            $debug && print STDERR "\n$subname: \$n=$n \$gap_char=$gap_char ";
+#            $debug && print STDERR "\n$subname: \$n=$n \$gap_char=$gap_char ";
         }
-        $debug && print STDERR "\$c=$c \$qstart=$qstart ";
+#        $debug && print STDERR "\$c=$c \$qstart=$qstart ";
     }
     $debug && print STDERR "\n";
 
@@ -69,9 +73,9 @@ sub adjust_start {
         $c = substr($hseq, $n-1, 1);
         $hstart-- if ($c eq $gap_char);
         if (($n-0)%10 ==0 || $n==length($hseq)) {
-            $debug && print STDERR "\n$subname: \$n=$n \$gap_char=$gap_char ";
+#            $debug && print STDERR "\n$subname: \$n=$n \$gap_char=$gap_char ";
         }
-        $debug && print STDERR "\$c=$c \$hstart=$hstart ";
+#        $debug && print STDERR "\$c=$c \$hstart=$hstart ";
     }
     $debug && print STDERR "\n";
     $debug && print STDERR "$subname: \$hstart=$hstart\n";
@@ -79,10 +83,21 @@ sub adjust_start {
     # Convert back to DNA
     $hstart = $cds_loc->start + ($hstart-1)*3;
 
+        # Get any potential gap caused by split locations in refseq CDS
+        my $hstart_gap = Annotate_Math::get_split_gap( $hstart, $cds->location);
+        $debug && print STDERR "$subname: cds \$hstart_gap=$hstart_gap\n";
+        # For SARS genome DQ497008, there is a stuter at CDS=join(265..13398,13398..21485)
+#        $qstart += $qstart_gap;
+#        $qstart += $qstart_gap if ($qstart_gap % 3 ==0); # Don't remember why used such condition in the beginning
+        $debug && print STDERR "$subname: \$hstart=$hstart after checking CDS\n";
+
+    $hstart = $hstart + $hstart_gap; # Include the stutering
+        $debug && print STDERR "$subname: \$hstart=$hstart after checking CDS\n";
+
         # Get any potential gap caused by split locations in CDS
-        $qstart_gap = Annotate_Math::get_split_gap( $hstart, $cds->location);
-        $debug && print STDERR "$subname: \$qstart_gap=$qstart_gap\n";
-        $hstart += $qstart_gap if ($qstart_gap % 3 ==0);
+#        $qstart_gap = Annotate_Math::get_split_gap( $hstart, $cds->location);
+#        $debug && print STDERR "$subname: \$qstart_gap=$qstart_gap\n";
+#        $hstart += $qstart_gap if ($qstart_gap % 3 ==0);
 
     return $hstart;
 } # sub adjust_start
@@ -94,10 +109,13 @@ sub adjust_end {
     my $debug = 0 && $debug_all;
     my $subname = 'adjust_end';
 
-        # Get any potential gap caused by split locations in CDS
+        # Get any potential gap caused by split locations in refCDS
         my $qend_gap = Annotate_Math::get_split_gap( $qend, $refcds_loc);
-        $debug && print STDERR "$subname: \$qend_gap=$qend_gap\n";
-        $qend -= $qend_gap if ($qend_gap % 3 ==0);
+        $debug && print STDERR "$subname: refcds \$qend_gap=$qend_gap\n";
+        # For SARS genome DQ497008, there is a stuter at CDS=join(265..13398,13398..21485)
+#        $qend -= $qend_gap;
+#        $qend -= $qend_gap if ($qend_gap % 3 ==0); # Don't remember why used such condition in the beginning
+        $debug && print STDERR "$subname: \$qend=$qend after checking refCDS\n";
 
     my $last_mat_peptide = 0;
     $last_mat_peptide = 1 if ($qend == $refcds_loc->end || $qend == $refcds_loc->end-3);
@@ -105,7 +123,7 @@ sub adjust_end {
 
     my $cds_loc = $cds->location;
     # Convert to protain from DNA
-    $qend = ($qend+1 - $refcds_loc->start)/3 -1 +1;
+    $qend = ($qend+1 - $refcds_loc->start - $qend_gap)/3 -1 +1;
     $debug && print STDERR "$subname: \$qend=$qend\n";
 #    $debug && print STDERR "$subname: \$aln_q=\n".Dumper($aln_q)."end of $aln_q\n";
     my $qseq = $aln_q->seq;
@@ -117,9 +135,9 @@ sub adjust_end {
         $c = substr($qseq, $n-1, 1);
         $qend++ if ($c eq $gap_char);
         if (($n-1)%10 ==0) {
-            $debug && print STDERR "\n$subname: \$n=$n \$gap_char=$gap_char ";
+#            $debug && print STDERR "\n$subname: \$n=$n \$gap_char=$gap_char ";
         }
-        $debug && print STDERR "\$c=$c \$qend=$qend ";
+#        $debug && print STDERR "\$c=$c \$qend=$qend ";
     }
     $debug && print STDERR "\n";
     $debug && print STDERR "$subname: \$qend=$qend\n";
@@ -143,15 +161,26 @@ sub adjust_end {
         $c = substr($hseq, $n-1, 1);
         $hend-- if ($c eq $gap_char);
         if (($n-0)%10 ==0 || $n==length($hseq)) {
-            $debug && print STDERR "\n$subname: \$n=$n \$gap_char=$gap_char ";
+#            $debug && print STDERR "\n$subname: \$n=$n \$gap_char=$gap_char ";
         }
-        $debug && print STDERR "\$c=$c \$hend=$hend ";
+#        $debug && print STDERR "\$c=$c \$hend=$hend ";
     }
     $debug && print STDERR "\n";
 
     # Convert back to DNA
     $hend = $cds_loc->start + ($hend-1)*3 +2;
-    $debug && print STDERR "$subname: \$cds_loc->start=".$cds_loc->start." \$qend=$hend\n";
+    $debug && print STDERR "$subname: \$cds_loc->start=".$cds_loc->start." \$hend=$hend\n";
+
+        # Get any potential gap caused by split locations in CDS
+        my $hend_gap = Annotate_Math::get_split_gap( $hend, $cds->location);
+        $debug && print STDERR "$subname: cds \$hend=$hend \$hend_gap=$hend_gap\n";
+        # For SARS genome DQ497008, there is a stuter at CDS=join(265..13398,13398..21485)
+#        $hend += $hend_gap;
+#        $qend += $hend_gap if ($hend_gap % 3 ==0); # Don't remember why used such condition in the beginning
+        $debug && print STDERR "$subname: \$hend=$hend after checking CDS\n";
+
+    $hend = $hend + $hend_gap; # Include the stuttering
+    $debug && print STDERR "$subname: \$cds_loc->start=".$cds_loc->start." \$hend=$hend\n";
 
     my %good_tail = ( # if CDS ends with any of these DNA sequences, an extra amino acid is decided
                       'CU'=>1, 'CT'=>1, # (Leu/L) Leucine
@@ -171,11 +200,11 @@ sub adjust_end {
     }
 
         # Get any potential gap caused by split locations in CDS
-        $qend_gap = Annotate_Math::get_split_gap( $hend, $cds->location);
-        $debug && print STDERR "$subname: \$qend_gap=$qend_gap\n";
-        $hend += $qend_gap if ($qend_gap % 3 ==0);
+#        $qend_gap = Annotate_Math::get_split_gap( $hend, $cds->location);
+#        $debug && print STDERR "$subname: \$qend_gap=$qend_gap\n";
+#        $hend += $qend_gap if ($qend_gap % 3 ==0);
 
-    $debug && print STDERR "$subname: \$qend=$hend\n";
+    $debug && print STDERR "$subname: \$hend=$hend\n";
     return $hend;
 
 } # sub adjust_end
@@ -199,15 +228,15 @@ sub get_split_gap {
         if ($cds_loc->isa('Bio::Location::Split')) {
             my $locs = [ $cds_loc->sub_Location ];
             for my $i (1 .. $#{$locs}) {
-               $debug && print STDERR "$subname: \$pos=$pos \$locs->[$i]->start=".$locs->[$i]->start." \$split=$split\n";
+               $debug && print STDERR "$subname: \$pos=$pos \$locs->[$i]=".$locs->[$i]->to_FTstring." \$split=$split\n";
                if ($pos < $locs->[$i]->start) {
-                 $debug && print STDERR "$subname: 1\n";
+                 $debug && print STDERR "$subname: 1 pos=$pos start=".$locs->[$i]->to_FTstring."\n";
                  next;
                } else {
-                 $debug && print STDERR "$subname: 2\n";
-                 $split = $locs->[$i]->start - $locs->[$i-1]->end -1;
+                 $debug && print STDERR "$subname: 2 pos=$pos start=".$locs->[$i]->to_FTstring."\n";
+                 $split += $locs->[$i]->start - $locs->[$i-1]->end -1;
                }
-               $debug && print STDERR "$subname: \$pos=$pos \$locs->[$i]->start=".$locs->[$i]->start." \$split=$split\n";
+               $debug && print STDERR "$subname: \$pos=$pos \$locs->[$i]=".$locs->[$i]->to_FTstring." \$split=$split\n";
             }
         }
 
@@ -234,7 +263,7 @@ sub msa_get_feature_loc {
     my $loc2 = undef;
     my $errcode = {};
 
-    $debug && print STDERR "$subname:\n";
+    $debug && print STDERR "\n$subname: starting with reffeat ".$reffeat_loc->to_FTstring."\n";
     if ($reffeat_loc->isa('Bio::Location::Simple') || $reffeat_loc->isa('Bio::Location::Split')) {
         my $qstart = $reffeat_loc->start;
         my $qend = $reffeat_loc->end;
@@ -627,7 +656,7 @@ sub adjust_from_gaps {
         my $debug = 0 && $debug_all;
         my $adjust; # number of gaps
         $adjust = 0;
-        foreach my $i (1 .. $#{@$gaps_q}) {
+        foreach my $i (1 .. $#{$gaps_q}) {
             $debug && print STDERR "adjust_from_gaps: \$position=$position \t\$i=$i \$gap=$gaps_q->[$i]\n";
             if ($gaps_q->[$i] < ($position + $adjust)) { # This $position doesn't have any gap
                 $adjust = $i;
@@ -658,7 +687,7 @@ sub convert_range_protein2dna {
     my $above_water = 0;
     $debug && print STDERR "$subname: gaps are converted to DNA coordinates from protein coordinate.\n";
     $debug && print STDERR "$subname: DNA coordinates include the start of CDS, also include the gaps.\n";
-    for (my $i=0; $i<=$#{@$gaps}; $i++) {
+    for (my $i=0; $i<=$#{$gaps}; $i++) {
         my $gap = $gaps->[$i];
 
         if ($gap eq '') {
@@ -732,6 +761,8 @@ sub get_dna_byloc {
       $debug && print STDERR "get_dna_byloc: \$feat_obj = \n".Dumper($feat_obj)."End of \$feat_obj\n\n";
       my ($s, $product);
       if ($feat_obj->location->isa('Bio::Location::Simple')) {
+           $debug && print STDERR "get_dna_byloc: \$loc = \n".Dumper($feat_obj->location)."End of \$loc\n\n";
+           $debug && print STDERR "get_dna_byloc: \$loc = \n".Dumper($feat_obj)."End of \$loc\n\n";
 #           print "  Simple:DNA    :seq=". $feat_obj->seq->seq ."\n";
 #           $s = substr($seq_obj_seq, $feat_obj->location->start-1, $feat_obj->location->end - $feat_obj->location->start + 1);
            my $start = $feat_obj->location->start-1;
@@ -746,11 +777,20 @@ sub get_dna_byloc {
            }
            $debug && print STDERR "get_dna_byloc: \$start = $start \$len=$len\n";
            $s = substr($seq_obj_seq, $start, $len);
+           $debug && print STDERR "get_dna_byloc: \$s = \n".Dumper($s)."End of \$s\n\n";
+           if ($feat_obj->strand() == -1) {
+               $s = revcom($s);
+               $s = $s->seq;
+               $debug && print STDERR "get_dna_byloc: after revcom \$s = \n".Dumper($s)."End of \$s\n\n";
+           }
 #           print "  Simple:protein:seq=". $feat_obj->seq->translate()->seq ."\n";
       } elsif ($feat_obj->location->isa('Bio::Location::Split')) {
            my $s0 = $seq_obj_seq;
 #           print "location=". $feat_obj->location->to_FTstring . "\n";
            for my $loc ($feat_obj->location->sub_Location) {
+               $debug && print STDERR "get_dna_byloc: \$loc = \n".Dumper($loc)."End of \$loc\n\n";
+               $debug && print STDERR "get_dna_byloc: \$loc->strand()=".$loc->strand()."\n";
+               $debug && print STDERR "get_dna_byloc: \$loc->strand()=".$feat_obj->location->strand()."\n";
 #              $s .= substr($s0, $loc->start -1, $loc->end +1 - $loc->start);
                my $start = $loc->start -1;
                my $len = $loc->end +1 - $loc->start;
@@ -761,7 +801,13 @@ sub get_dna_byloc {
                   $len = $len - $codon_start +1;
                   $debug && print STDERR "get_dna_byloc: \$codon_start = $codon_start\n";
               }
-              $s .= substr($s0, $start, $len);
+              my $stemp = substr($s0, $start, $len);
+           if ($loc->strand() == -1) {
+               $stemp = revcom($stemp);
+               $stemp = $stemp->seq;
+               $debug && print STDERR "get_dna_byloc: after revcom \$stemp = \n".Dumper($stemp)."End of \$stemp\n\n";
+           }
+              $s .= $stemp;
 #              print "start=". $loc->start ."\tend=". $loc->end ."\n";
 #              print "  \$s=". $s ."\n";
            }
@@ -780,6 +826,11 @@ sub get_dna_byloc {
                   $debug && print STDERR "get_dna_byloc: \$codon_start = $codon_start\n";
               }
               $s .= substr($s0, $start, $len);
+           if ($feat_obj->strand() == -1) {
+               $s = revcom($s);
+               $s = $s->seq;
+               $debug && print STDERR "get_dna_byloc: after revcom \$s = \n".Dumper($s)."End of \$s\n\n";
+           }
 #              $debug && print STDERR "get_dna_byloc: start=". $loc->start ."\tend=". $loc->end ."\n";
 #              $debug && print STDERR "get_dna_byloc:   \$s=". $s ."\n";
            }

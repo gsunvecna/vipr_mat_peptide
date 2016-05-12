@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.1.3'); # Sep 26, 2011
+use version; our $VERSION = qv('1.1.4'); # May 09, 2012
 use Getopt::Long;
 use Data::Dumper;
 use English;
@@ -73,6 +73,8 @@ if ($exe_name =~ /^(.*[\/])([^\/]+[.]pl)$/i) {
     $exe_dir  = $1;
     $exe_name = $2;
 }
+print STDERR "$exe_name: $0 executing...\n";
+print STDERR "$exe_name: command='$0 @ARGV'\n";
 
 $debug && print STDERR "$exe_name: \$exe_dir    = $exe_dir\n";
 $debug && print STDERR "$exe_name: input path   = $dir_path\n";
@@ -94,23 +96,23 @@ if ($infile) {
 
     # Now run the annotation
     my $accs = [];
-    push @$accs, [$#{@$accs}+1, "$dir_path/$infile"];
+    push @$accs, [$#{$accs}+1, "$dir_path/$infile"];
 
     $dbh_ref = undef;
     Annotate_misc::process_list1( $accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path);
 
 } elsif ("$dir_path/$list_fn") {
 
-    print STDERR "$exe_name: Input accession numbers are in file/dir '$dir_path/$list_fn'\n";
+    print STDERR "$exe_name: Input accession are in file/dir '$dir_path/$list_fn'\n";
     my $accs = [];
     if (-d "$dir_path/$list_fn") {
         $dir_path = "$dir_path/$list_fn";
         # if input -l file is directory
         my $ptn = '^\s*([^\s]+)(\.(gb|gbk|genbank))\s*$';
         $accs = Annotate_misc::list_dir_files( "$dir_path", $ptn);
-        my $n = $#{@$accs}+1;
+        my $n = $#{$accs}+1;
         print STDERR "$exe_name: from directory: $dir_path, found $n gbk files.\n";
-        for my $j (0 .. $#{@$accs}) {
+        for my $j (0 .. $#{$accs}) {
             print STDERR "$exe_name: \$acc[$j]=$accs->[$j]->[1]\n";
         }
         print STDERR "\n";

@@ -1,0 +1,323 @@
+LOCUS       NC_003988               7374 bp ss-RNA     linear   VRL 06-MAY-2008
+DEFINITION  Simian enterovirus A, complete genome.
+ACCESSION   NC_003988
+VERSION     NC_003988.1  GI:21389216
+DBLINK      Project: 15371
+KEYWORDS    .
+SOURCE      Simian enterovirus A
+  ORGANISM  Simian enterovirus A
+            Viruses; ssRNA positive-strand viruses, no DNA stage;
+            Picornavirales; Picornaviridae; Enterovirus.
+REFERENCE   1  (bases 1 to 7374)
+  AUTHORS   Liu,Z., Donahue,R.E., Young,N.S. and Brown,K.E.
+  TITLE     Sequencing and characterization of A-2 plaque virus: A new member
+            of the Picornaviridae family
+  JOURNAL   Virology 272 (1), 168-176 (2000)
+   PUBMED   10873759
+REFERENCE   2  (bases 1 to 7374)
+  CONSRTM   NCBI Genome Project
+  TITLE     Direct Submission
+  JOURNAL   Submitted (11-JUN-2002) National Center for Biotechnology
+            Information, NIH, Bethesda, MD 20894, USA
+REFERENCE   3  (bases 1 to 7374)
+  AUTHORS   Liu,Z., Donahue,R.E. and Brown,K.E.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (04-NOV-1999) Hematology Branch, National Heart, Lung and
+            Blood Institute, 9000 Rockville Pike, Bethesda, MD 20892, USA
+COMMENT     REVIEWED REFSEQ: This record has been curated by NCBI staff. The
+            reference sequence was derived from AF201894.
+            The putative polyprotein processing products were annotated in NCBI
+            following the prediction in publication 1.
+            COMPLETENESS: full length.
+FEATURES             Location/Qualifiers
+     source          1..7374
+                     /organism="Simian enterovirus A"
+                     /mol_type="genomic RNA"
+                     /sub_species="A-2 plaque virus"
+                     /db_xref="taxon:310907"
+     gene            654..7247
+                     /locus_tag="HeEVgp1"
+                     /db_xref="GeneID:944584"
+     CDS             654..7247
+                     /locus_tag="HeEVgp1"
+                     /codon_start=1
+                     /product="A2 polyprotein"
+                     /protein_id="NP_653149.1"
+                     /db_xref="GI:21389217"
+                     /db_xref="GeneID:944584"
+                     /translation="MGAQVSRQTSGAHDTRIRAEQGANIHYTNINYYRDAASNAASKM
+                     DYSQDPDKFTKPVLDAITEPLPTLKSPSAEACGYSDRVAQLTIGNSTITTQEAANVVV
+                     AYGQWPEYLDSKDATAVDKPTQPDVASNRFYTLKTVSWEKSSTGWYWKFSDCLASVGL
+                     FGQNVQYHYLGRYGLAVHVQCNASKFHQGTLLVLAIPEWEIGVSNADRASFNLTNPDK
+                     NGHTMTGQEAYCLHNGTNIHSSLVFPHQFINLRTNNCATLVLPYVGATPLDTPIKHNV
+                     WSLVVIPVVPLDYTTGATTQVPITITMAPMACEFNGLRNAITQGLPVLNTPGSGQFVT
+                     TDNFQSPNLIPNFDVTQVFNSPGEIINLQQYVQIEGIMEINNVASANNLERIRIPISV
+                     QSGIDEMLFAINCNPGTAQEFRRTPLGDVCRYYTQWSGSIQITFTFCGSFMTTGKLLI
+                     CYTPPGGRVPQNREEAMLGTNVIWDFGLQSSVTLNIPWISGAHFRNTSVNVDGFDNTG
+                     YVSAWFQTNMVVPPDAPTTAYILAFTSAKDDFSMRLLRDTAEISQDGFLQGPIDQAIE
+                     KVITDVVSDTRESSSDFSIGAVPALNAVETGATSQASVESTIETRAVQNRHRTSEMSV
+                     ESFLGRSSLVTRFTINNGGTNNATKFRNWKINLKEVVQLRRKLEMFTYVRFDLEVTIV
+                     AVNLTGNGGVRYMYQAMYCPPGAPLPTNADQYLWQSSTNPSIIGAVGEVPGRVSVPFV
+                     SNANMYATFYDGYPSFGSINGQGNGSDYGAFIPNDMGTLCFRLLNIFNNGPQIQFRVF
+                     MKPKHVRVWCPRPCRTLQYVKLGTPRYSNQDTHLNKMTTDRANIKTVTNYIMSGSTRT
+                     VESEVAVVEDSLKQYGPATGGVVVGQYKIINYHLATTEDREKEIWSDPRRDLLVCASS
+                     VHGNNWIARCACRTGVYWSRTYGKCFPVCFQGPGIEKFQASEYYPERYQTHVLLAMGP
+                     AQPGDCGGLLCCPHGVIGLLTGGDEGRVAFADIRDLLWVEDDVMEQGVADYVKQLGNA
+                     FGAGFTDEISSYAQQIKNMFVGQDSLVEKMIKNLVKIVCALVILIRNSSDITTVTATL
+                     ALLGCSTSPWKWLKTKISQLCGVTIAERQSDSWLKKFIEFTNAFKGLEWLAAKIEKFI
+                     EWVKMKILPAVRERADFVNRLKQLPLLEAQMATLEHAAPNQEKQERLFTNVQYFATYC
+                     RKYAPLYASEARRVFQMEKKMNNYIQFKSKSRIEPVCLLIHGSPGAGKSVATSIIGRA
+                     IAESISGSVYSLPPDPTFFDGYKQQEVVIMDDLLQNPDGKDVGMLCQMVSTVDFHPPM
+                     AALEEKGMLYTSPFLLASTNASSIHAPTISDSKALNRRFHFDVNIEIMDQYKKEGRIN
+                     MPEAARPCDEECYPCNFKRCCPLVCGKAIQLVDRRLGIRYSIDMMVSELLREFTHRHN
+                     TQNLVEALFQGPIYHDLTITVEETPAPSAISDLLCSVDSGEVRDYCRRRGWIVPDTPT
+                     EITVSRDYGKLSIILQAVTTFVTIAGVIFLVYKLMANFQGPYTGLFKAKHKSTTLRTA
+                     TVQGPSLDFSISLLRHNIRTATTVNGEFTMLGIYDRVAVLPSHAGVTDTILVDGKTVP
+                     VVNAVNLVDPEGVNLEITVLTLGWNEKFRDIRKFIPETVEEGTEGTLIVQTSNYPHLI
+                     CPIGTVKEYGYLNLSGTPTHRVLMYNFHTRIGQCGGVIATTGRVLGIHVGGNGAQGFA
+                     ASLFRKYFAITQGSIEFKRRLSWQGLRVLYPEKTSLEPSVFHDIFPGVKQPAVLSKKD
+                     PRCQVNFEDAIFSKYKGNVNKEIDQYMAEAIDDYASNLLSLGINTEPNSMEQAVYGMD
+                     GLEALDLSTSAGYPYVTQGIKKRDLFKPNRDLSKFKECMDKYGLNLPMVTFLKDELRP
+                     LSKVEAGKTRLIEASSVNDSVAMRQAFGNLYAAFHSNPGVITGSAVGCDPDQFWSKIP
+                     VLLEGELFAFDYSNYDASLSPCWFAALKVLLEKIGFGDRTYFINYLCFSHHIFKDSHY
+                     YVSGGMPSGCSGTSIFNTMINNLIIRTLLVKVYKRISLSDLRMIAYGDDVIASLPYKI
+                     DAGKLAIAGRDYGLTMTPADKGETFTDVTWENVTFLKRYFRSDERFPFLIHPVMPMSE
+                     IFESIRWTRNAKHTQEHVTSLCYLAWHNGEEKYNDFLKRIRSVPVGKCLNLPAFKALE
+                     REWYDKF"
+     proprotein      654..3266
+                     /locus_tag="HeEVgp1"
+                     /product="putative P1"
+                     /inference="non-experimental evidence, no additional
+                     details recorded"
+                     /note="precursor of capsid proteins VP0, VP3 and VP1"
+     proprotein      654..1610
+                     /locus_tag="HeEVgp1"
+                     /product="putative VP0"
+                     /inference="non-experimental evidence, no additional
+                     details recorded"
+                     /note="capsid protein; precursor of VP4 and VP2"
+     mat_peptide     654..860
+                     /locus_tag="HeEVgp1"
+                     /product="capsid protein"
+                     /inference="non-experimental evidence, no additional
+                     details recorded"
+                     /note="putative VP4"
+                     /protein_id="NP_714929.1"
+                     /db_xref="GI:24231943"
+     mat_peptide     861..1610
+                     /locus_tag="HeEVgp1"
+                     /product="capsid protein"
+                     /inference="non-experimental evidence, no additional
+                     details recorded"
+                     /note="putative VP2"
+                     /protein_id="NP_714930.1"
+                     /db_xref="GI:24231944"
+     mat_peptide     1611..2327
+                     /locus_tag="HeEVgp1"
+                     /product="capsid protein"
+                     /inference="non-experimental evidence, no additional
+                     details recorded"
+                     /note="putative VP3"
+                     /protein_id="NP_714931.1"
+                     /db_xref="GI:24231945"
+     mat_peptide     2328..3266
+                     /locus_tag="HeEVgp1"
+                     /product="capsid protein"
+                     /inference="non-experimental evidence, no additional
+                     details recorded"
+                     /note="putative VP1"
+                     /protein_id="NP_714932.1"
+                     /db_xref="GI:24231946"
+     proprotein      3267..4991
+                     /locus_tag="HeEVgp1"
+                     /product="putative P2"
+                     /inference="non-experimental evidence, no additional
+                     details recorded"
+     mat_peptide     3267..3707
+                     /locus_tag="HeEVgp1"
+                     /product="Chymotrypsin-like cysteine proteinase"
+                     /inference="non-experimental evidence, no additional
+                     details recorded"
+                     /note="Picornain 2A; putative 2A"
+                     /protein_id="NP_714933.1"
+                     /db_xref="GI:24231947"
+     mat_peptide     3708..4004
+                     /locus_tag="HeEVgp1"
+                     /product="membrane-associated protein"
+                     /inference="non-experimental evidence, no additional
+                     details recorded"
+                     /note="putative 2B"
+                     /protein_id="NP_714934.1"
+                     /db_xref="GI:24231948"
+     mat_peptide     4005..4991
+                     /locus_tag="HeEVgp1"
+                     /product="ATPase"
+                     /inference="non-experimental evidence, no additional
+                     details recorded"
+                     /note="putative 2C"
+                     /protein_id="NP_714935.1"
+                     /db_xref="GI:24231949"
+     proprotein      4992..7244
+                     /locus_tag="HeEVgp1"
+                     /product="putative P3"
+                     /note="precursor of 3A (membrane-associated protein), 3B
+                     (VPg, genome-linked protein), 3C (protease) and 3D
+                     (polymerase)"
+     mat_peptide     4992..5252
+                     /locus_tag="HeEVgp1"
+                     /product="membrane-associated protein"
+                     /inference="non-experimental evidence, no additional
+                     details recorded"
+                     /note="putative 3A"
+                     /protein_id="NP_714936.1"
+                     /db_xref="GI:24231950"
+     mat_peptide     5253..5318
+                     /locus_tag="HeEVgp1"
+                     /product="VPg"
+                     /inference="non-experimental evidence, no additional
+                     details recorded"
+                     /note="genome-linked protein; putative 3B"
+                     /protein_id="NP_714937.1"
+                     /db_xref="GI:24231951"
+     mat_peptide     5319..5867
+                     /locus_tag="HeEVgp1"
+                     /product="Chymotrypsin-like cysteine proteinase"
+                     /inference="non-experimental evidence, no additional
+                     details recorded"
+                     /note="Picornain 3C; putative 3C"
+                     /protein_id="NP_714938.1"
+                     /db_xref="GI:24231952"
+     mat_peptide     5868..7244
+                     /locus_tag="HeEVgp1"
+                     /product="RNA-dependent RNA polymerase"
+                     /inference="non-experimental evidence, no additional
+                     details recorded"
+                     /note="putative 3D"
+                     /protein_id="NP_714939.1"
+                     /db_xref="GI:24231953"
+ORIGIN      
+        1 gagtgttccc acccaacagg cccactgggt gttgtactct ggtattacgg tacctttgta
+       61 cgcctatttt atttcccccc cctttttgaa acttagaagt taataataaa cacgctcact
+      121 aggtgcacta catccagtag tgtaatgagc aagcacttct gtctyccccg ggagggatat
+      181 atggtacgct gtgcaaacgg cggaaattaa tcctaccgtt aaccgcccac ctactccgag
+      241 aagcctagta cctaattgga tttatcaatg gagttgcgct cagcaggtga ccctgacctg
+      301 ccagctccgg ctgatggacc tgggctttcc ccacaggcga ctgtggccca ggtcgcgtgg
+      361 cggccggccc acccccctgg gtgggacgcc ttgataatga caaggtggga agagcctatt
+      421 gggctagctg gtttcctccg gcctcctgaa tgcggctaac cttaacccca gagcatatgg
+      481 tagcaaccca gctactagta tgtcataatg cgtaagtctg ggatgggacc gactactttg
+      541 gagagtccgt gtttctattg tttctttaat caatcttatg gtgacaattt atagtgccct
+      601 gagtattgat tggttgttgc ttttgacaat tattgagaca tcacatagac ataatgggag
+      661 ctcaagtaag caggcaaacg tctggtgcgc atgacacccg gatacgggct gaacagggcg
+      721 caaacattca ttatactaat atcaattatt atagagatgc agctagcaat gcagcaagca
+      781 aaatggacta ttcccaggat ccggacaagt tcacgaaacc agtacttgat gctataactg
+      841 aaccattacc cacgctgaag tcccctagtg ctgaggcatg tgggtacagc gaccgagttg
+      901 cacaactgac aattggcaat tccactatca ctactcagga agccgccaat gtggtggtcg
+      961 catatggaca atggcctgaa tatttagatt cgaaggatgc aactgccgtg gataagccca
+     1021 cacagcccga tgtagcctca aatagatttt acactcttaa gacagtgtct tgggagaaga
+     1081 gttcaactgg ctggtattgg aaattctcgg attgtctggc ttctgttgga ttatttggac
+     1141 agaatgtaca gtatcattat ttaggccgtt atgggttagc ggttcatgtg caatgtaatg
+     1201 cttcaaaatt tcatcagggc actctactgg tcttagcaat accagaatgg gagattgggg
+     1261 tgtctaatgc tgatagggca tcctttaatc taacaaaccc cgataagaac gggcatacta
+     1321 tgactggtca agaagcttat tgcttacata atgggactaa catccattct tcactggtat
+     1381 ttccacatca attcatcaat cttaggacaa acaattgtgc tacgttagtc ttgccctatg
+     1441 tgggagcaac accactggac acaccgatca agcataatgt ttggtcattg gtagtaatac
+     1501 cggtggtccc gttggattac accactggtg caactacaca agtgcctata acaataacaa
+     1561 tggctccaat ggcgtgcgag tttaacggac tgcgcaatgc catcacccaa gggctgccag
+     1621 tactcaatac acccggctct gggcagtttg tgactacaga taatttccaa tcaccaaact
+     1681 tgattccaaa ttttgatgtg acacaagtct ttaatagtcc aggtgaaatt attaatttac
+     1741 agcagtatgt ccagattgag ggcattatgg aaatcaataa tgtagcaagt gcaaataatt
+     1801 tggagagaat tcgcattcca atatcagtcc agagtggaat tgatgagatg ttatttgcaa
+     1861 tcaactgcaa cccaggaaca gcccaggagt ttagacgcac acccctggga gatgtgtgta
+     1921 ggtattatac acagtggtca ggtagcatac aaattacatt tacattttgt ggttcattta
+     1981 tgacaacagg aaaattatta atttgctaca cccctccggg tggtcgagta ccacaaaata
+     2041 gagaggaggc aatgctaggg actaatgtga tctgggattt tggtttacaa tccagcgtta
+     2101 cgctgaacat accgtggata agtggagccc attttagaaa cacttctgtt aatgtcgatg
+     2161 gttttgataa cacagggtat gtatctgctt ggtttcaaac gaacatggta gttcctcccg
+     2221 atgctccaac gactgcttat atattggctt ttacatcagc caaggatgat ttctcgatgc
+     2281 gcttgttgcg ggatacagca gagatttcgc aagacggatt tctgcaagga ccaatagatc
+     2341 aagcaataga aaaagtaatc actgatgtag tgtctgacac gcgtgagtct agtagtgact
+     2401 ttagcattgg ggctgttcca gcattgaatg cggtggaaac tggagccact tcgcaagcta
+     2461 gtgttgagtc caccattgag acgcgggccg tgcagaatcg tcatcgcact tctgagatga
+     2521 gcgtggaaag ctttttgggc cgctctagtt tagtaactcg ctttaccatt aataatggag
+     2581 gaacaaataa tgccacgaag tttcgtaact ggaaaataaa cttaaaggaa gtggtgcagc
+     2641 tgcggcgtaa attagaaatg tttacttacg tgcgctttga tcttgaggtg actatagtgg
+     2701 ctgtgaattt gactggaaat ggaggagtgc gttacatgta ccaagcaatg tactgccccc
+     2761 caggtgcccc cctccccacc aatgctgatc aatatctgtg gcaatcctcg acaaatccct
+     2821 ccataatcgg agcagttggt gaagtcccag gcagagtatc agtgcctttt gtgtcaaatg
+     2881 ctaatatgta tgccaccttt tatgatggat atccatcctt tggaagcata aatggacagg
+     2941 gaaatggctc tgattacggt gcattcatac caaatgatat gggtacattg tgtttccgat
+     3001 tactcaatat ctttaataat ggtccacaaa ttcaatttag agtgttcatg aaacccaagc
+     3061 atgtacgagt atggtgccca agaccgtgtc gtaccttaca atatgtcaag ctgggaacac
+     3121 ccagatattc aaaccaggac acacacctaa acaagatgac tactgatagg gcgaacataa
+     3181 agactgttac caattatatc atgtctggca gcacgcggac agttgaatca gaagtagctg
+     3241 tggtcgagga ttcacttaag caatatggtc cagcaactgg gggtgtagtg gttgggcagt
+     3301 ataagatcat aaattaccac ctggcaacca ctgaggatcg cgagaaagaa atttggtcag
+     3361 atccaagaag ggaccttctg gtttgtgctt ccagtgtgca tggtaataat tggatagcaa
+     3421 ggtgtgcatg cagaactggg gtttattggt caagaactta cggcaagtgc ttcccggtgt
+     3481 gttttcaagg gccaggaata gaaaagttcc aggcgagcga atactaccct gagagatacc
+     3541 aaacacatgt tttattagcc atgggccctg cacagccagg cgattgtgga ggtctcctct
+     3601 gctgtccaca tggagtgatt gggctactca ccggaggcga tgagggaagg gttgcctttg
+     3661 cagacataag agatttgtta tgggtagaag atgatgtgat ggaacagggt gttgctgact
+     3721 atgtaaaaca acttggaaat gcatttggtg ctgggtttac agatgagatt agcagctatg
+     3781 cacaacaaat taaaaacatg tttgtggggc aagattccct tgtagaaaaa atgataaaga
+     3841 atctagttaa aattgtgtgt gctttagtaa ttttaattag aaattcaagt gatatcacca
+     3901 ctgtgactgc aaccttagcg cttttagggt gtagcactag tccgtggaag tggctaaaaa
+     3961 ccaaaataag ccagctgtgt ggtgtaacaa tagcagaacg ccaatcagat tcatggttaa
+     4021 agaaatttat agaatttact aatgcgttca agggcctgga atggttggca gccaaaattg
+     4081 aaaaatttat tgagtgggta aaaatgaaaa tacttccggc cgtgagggag cgtgctgatt
+     4141 ttgtgaatag actgaagcaa ttgccactgc tggaggcaca gatggccaca cttgaacacg
+     4201 ccgctccaaa tcaggagaaa caagaacgac tttttacaaa tgtacaatat tttgcaacat
+     4261 attgcagaaa atatgctcca ctgtatgcca gtgaagctag gcgtgtcttc cagatggaaa
+     4321 agaagatgaa taactacata cagttcaaga gcaaatcaag gattgaaccc gtatgtttat
+     4381 taatccatgg gagtcctggt gctggaaagt ctgtggcaac ttcaataatt ggccgtgcaa
+     4441 tagccgagag tatttcaggg tcagtatatt cattaccacc ggacccgact ttctttgatg
+     4501 ggtataaaca gcaggaagtg gtcataatgg atgacctgct acagaaccca gatggtaaag
+     4561 atgttggcat gctgtgtcaa atggtgtcca cagtagattt ccacccacct atggcagcat
+     4621 tggaggaaaa aggaatgttg tacacaagcc ctttcttgct cgcatctaca aatgccagta
+     4681 gcatacatgc ccccacaata tcagatagca aggctctgaa caggcggttc cattttgatg
+     4741 ttaatataga gatcatggat caatataaga aggagggcag aataaacatg ccagaggcag
+     4801 caaggccatg tgatgaggag tgctaccctt gtaattttaa gagatgttgt ccactggtat
+     4861 gtggtaaggc aatacaattg gttgaccgcc gcttgggcat tagatactca attgatatga
+     4921 tggttagtga gttattgagg gaattcacac atcggcataa cacacaaaat cttgttgagg
+     4981 ctttgtttca gggaccaatc tatcatgact tgacaataac agtggaggaa acaccagccc
+     5041 catctgcaat ctctgatctt ctctgtagcg ttgactcagg ggaggtccga gattattgca
+     5101 gacgaagggg ctggatagtt ccagacactc ctactgagat cacggtttcc cgtgattatg
+     5161 gcaaactcag catcatttta caagcggtaa ccacatttgt tacaatagca ggggtcattt
+     5221 tccttgttta caagttgatg gcaaatttcc aagggcctta tactggcctg ttcaaagcaa
+     5281 agcacaaaag taccaccttg agaactgcga ctgtccaagg gccctcattg gatttttcca
+     5341 tatctttact tagacataat ataagaactg caacaactgt gaatggagaa ttcacaatgc
+     5401 ttggcattta tgatcgtgtt gcagtattac catcccatgc tggggttaca gacacaatat
+     5461 tggtggatgg aaaaacagtt ccagtagtca atgcagtaaa cttggttgac ccagaaggag
+     5521 tcaatcttga aattaccgta ttgacactgg gatggaatga aaagtttaga gacatacgca
+     5581 aattcattcc tgagactgtt gaggaaggca ctgaaggcac tttaatagtg caaacatcta
+     5641 attatcccca tctgatatgc ccaatcggta ctgttaaaga atatggttat ttaaatctta
+     5701 gtggaacacc tactcacaga gtattgatgt ataatttcca tacaaggata gggcagtgtg
+     5761 gcggagtgat tgctaccact ggtagggttc ttggcataca tgtagggggt aatggagcac
+     5821 agggttttgc agctagctta tttagaaaat actttgccat cacacaagga agtattgagt
+     5881 tcaagagaag gttgagctgg cagggcttaa gagtgttata cccagagaaa actagcctag
+     5941 aaccctcagt gtttcacgat attttccctg gtgtaaaaca acccgctgtt ctgagtaaga
+     6001 aagatccccg ctgtcaagtg aatttcgaag atgccatttt ttcaaaatat aaggggaatg
+     6061 ttaataaaga gattgatcag tatatggcag aagcaattga tgattatgcc agtaatttat
+     6121 tatcattagg aataaatact gaaccaaatt caatggagca ggctgtatat ggaatggatg
+     6181 gtcttgaagc tttagatctg agcactagtg ctggatatcc atacgtaacc caaggcatca
+     6241 agaagcggga cctctttaag ccaaatagag accttagcaa gtttaaagag tgtatggata
+     6301 agtatggatt gaatctccca atggtcactt tcttgaagga tgagttaagg ccgctgtcaa
+     6361 aagtagaagc cggaaaaaca cgattaattg aagcatctag cgtaaatgat tcagttgcaa
+     6421 tgcgtcaggc atttggtaat ttatatgcag cattccattc aaacccaggg gtgattaccg
+     6481 gttctgccgt tggatgtgat ccagaccagt tttggagtaa aataccagtg ttgttagaag
+     6541 gagaattgtt tgcatttgat tattccaatt atgatgccag cttgagtcca tgttggttcg
+     6601 cagccctaaa agtattgttg gaaaagattg gatttggaga tagaacctat ttcattaatt
+     6661 acttatgttt ctcccatcat atctttaagg attctcatta ttatgtgtct ggaggtatgc
+     6721 catcgggatg ctcagggacc agtatattca acacaatgat aaataatctt ataattcgga
+     6781 cattattagt caaggtgtat aaacgaatct ctttgtctga tttgaggatg atagcatatg
+     6841 gtgatgatgt aatagcctca ctcccttata agattgatgc tggaaaattg gcgattgctg
+     6901 gacgagacta tggtctaaca atgactccgg ctgacaaagg agagacattc actgatgtga
+     6961 cttgggagaa tgtcaccttc ttaaagagat actttaggtc agatgagaga tttcctttcc
+     7021 taattcatcc agttatgcct atgagtgaaa ttttcgagtc cattagatgg acacgaaatg
+     7081 caaaacacac ccaagaacat gtcacctccc tgtgctattt ggcttggcac aatggcgagg
+     7141 aaaaatataa tgattttctt aagagaatca gatcagtacc agtcggcaag tgcttgaatt
+     7201 tgccagcttt caaggcactt gagcgggagt ggtatgataa attttagaca atgtgatttt
+     7261 caccatttga attcggtcgc attggctttc atatgcgttt ggtgagacgc ataaaaaaaa
+     7321 aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaaaaaaaa aaaa
+//
+

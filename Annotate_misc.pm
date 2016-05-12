@@ -180,8 +180,10 @@ sub process_list1 {
             $in  = Bio::SeqIO->new( -fh => $in_file2, -format => 'fasta' );
         }
 #        $debug && print STDERR "$subname: \$in='\n". Dumper($in) . "End of \$in\n\n";
-        my $inseq = $in->next_seq();
-#        $debug && print STDERR "$subname: \$inseq='\n". Dumper($inseq) . "End of \$inseq\n\n";
+while (
+        my $inseq = $in->next_seq()#;
+) {
+        $debug && print STDERR "$subname: \$inseq='\n". Dumper($inseq) . "End of \$inseq\n\n";
         if (!$result || !$inseq) {
             print STDERR "$subname: \$acc=$acc \$inseq is undef, skip\n";
             my $msg = "$acc \ttaxid=---- \tsrc=MSA \tstatus=---- \tcomment=Empty genome file";
@@ -212,7 +214,8 @@ sub process_list1 {
         # Now run the annotation by MUSCLE or CLUSTALW alignment
         my ($feats_msa, $comment_msa);
         if ($inFormat =~ m/genbank/i) {
-            ($feats_msa, $comment_msa) = Annotate_Align::annotate_1gbk( $gbk, $exe_dir, $aln_fn, $dir_path, $progs);
+#            ($feats_msa, $comment_msa) = Annotate_Align::annotate_1gbk( $gbk, $exe_dir, $aln_fn, $dir_path, $progs);
+            ($feats_msa, $comment_msa) = Annotate_Align::annotate_1gbk( $inseq, $exe_dir, $aln_fn, $dir_path, $progs);
         } elsif ($inFormat =~ m/fasta/i) {
             ($feats_msa, $comment_msa) = Annotate_Align::annotate_1faa( $gbk, $inTaxon, $exe_dir, $aln_fn, $dir_path, $progs);
         }
@@ -226,6 +229,12 @@ sub process_list1 {
         } else {
             $count->{MSA}->{Success}++;
             $debug && print STDERR "$subname: \$feats_msa='\n". Dumper($feats_msa) . "End of \$feats_msa\n\n";
+            for my $k (sort keys %$feats_msa) {
+              for my $f (@{$feats_msa->{$k}}) {
+                my $p = ($f->has_tag('note')) ? ($f->get_tag_values('note'))[1] : '';
+                $debug && print STDERR "$subname: $p\n";
+              }
+            }
         }
         $msg_msa = "$acc \ttaxid=$taxid \tsrc=MSA \tstatus=$status_msa \tcomment=$comment_msa";
         push @$msgs, $msg_msa;
@@ -263,7 +272,8 @@ sub process_list1 {
         $debug && print STDERR "$subname: accession=$acc \$faa1 = '\n$faa1'\n";
 
         # Gets a FASTA string containing all mat_peptides from genbank file
-        my ($feats_gbk, $comment_gbk) = Annotate_gbk::get_matpeptide( $gbk, $feats_msa,$exe_dir);
+#        my ($feats_gbk, $comment_gbk) = Annotate_gbk::get_matpeptide( $gbk, $feats_msa,$exe_dir);
+        my ($feats_gbk, $comment_gbk) = Annotate_gbk::get_matpeptide( $inseq, $feats_msa,$exe_dir);
         my $status_gbk = ($feats_gbk)                         ? 'Success'
                        : ($comment_gbk eq 'Not refseq, skip') ? 'Skip   '
                        :                                        'Fail   ';
@@ -321,6 +331,7 @@ sub process_list1 {
                     or croak "Can't close '$outfile': $OS_ERROR";
             }
         }
+}
 
 #   exit;
 

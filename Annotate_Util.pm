@@ -221,7 +221,7 @@ sub msa_get_aln {
 sub run_1MSA {
     my ($cds_all, $runMUSCLE, $outfile_name, $dir_path, $progs) = @_;
 
-    my $debug = 1 || $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'Annotate_Util::run_1MSA';
 
     # $runMUSCLE = 0; # 0: Muscle, 1: Clustalw
@@ -412,7 +412,7 @@ sub refcds2PrimarySeq {
 sub get_polyprots {
     my ($inseq, $refpolyprots, $exe_dir, $dir_path, $progs) = @_;
 
-    my $debug = 1 || $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'get_polyprots';
     my $polyprots = {};
     my $num_cds = -1;
@@ -508,9 +508,17 @@ if ( 0 ) {
 } else {
             my $runMUSCLE = 0;
             my $outfile_name = sprintf("$dir_path/test_ref%d_cds%d", $i, $ct);
+            $outfile_name = sprintf("$dir_path/${acc}_%d_cds%d_Util", $i, $ct); # Need to be unique for parallel processing
             $outfile_name .= $runMUSCLE ? '.afa' : '.msf';
             $match = Annotate_Util::cmp_cds_clustalw($cds, $reffeat, $outfile_name, $runMUSCLE, $exe_dir, $dir_path, $progs);
 #            $debug && printf STDERR ("$subn: CDS=$s_cds_id $s_ref_id \$match=%6.4f \$matchHigh=$matchHigh from sub cmp_cds_clustalw\n", $match);
+            if (-e "$outfile_name") {
+              my $cmd = "rm $outfile_name";
+              my $r = `$cmd`;
+              $debug && print STDERR "$subn: cmd='$cmd' result='$r'\n";
+            } else {
+              $debug && print STDERR "$subn: file='$outfile_name' not found\n";
+            }
 }
 #            $match = 100 if ($debug);
             $debug && printf STDERR ("$subn: CDS=$s_cds_id \$pct_conserved=%6.4f \$match=%6.4f \$refcds=$s_ref_id\n", $pct_conserved, $match);
@@ -680,7 +688,7 @@ if (1) {
     $debug && print STDERR "$subn: \$refcds_id='$refcds_id' \$cds_id='$cds_id'\n";
 
     my $aln_h = Annotate_Util::msa_get_aln( $aln, $cds_id);
-#    $debug && print STDERR "$subn: \$aln_h=\n". Dumper($aln_h) . "End of \$aln_h\n";
+    $debug && print STDERR "$subn: \$aln_h=\n". Dumper($aln_h) . "End of \$aln_h\n";
 
     my $qseq = $aln_q->seq;
     my $hseq = $aln_h->seq;

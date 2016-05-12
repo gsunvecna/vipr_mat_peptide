@@ -132,16 +132,19 @@ if ( 0 ) {
 =cut
 
 sub annotate_1gbk {
-    my ($gbk, $exe_dir, $aln_fn, $dir_path, $progs) = @_;
+#    my ($gbk, $exe_dir, $aln_fn, $dir_path, $progs) = @_;
+    my ($inseq, $exe_dir, $aln_fn, $dir_path, $progs) = @_;
 
     my $debug = 0 || $debug_all;
     my $subn = 'annotate_1gbk';
 
     $aln_fn = [] if (!defined($aln_fn));
+=head2
     my $in_file2 = IO::String->new($gbk);
     my $in  = Bio::SeqIO->new( -fh => $in_file2, -format => 'genbank' );
     # Only take 1st sequence from each gbk (Note: gbk can hold multiple sequences, we ignore all after 1st)
     my $inseq = $in->next_seq();
+=cut
 
     my $comment = '';
     my $acc = $inseq->accession_number;
@@ -266,8 +269,8 @@ Takes a hash of refseqs, and an array of target genomes, in the form of
 sub run_MSA {
     my ($refseqs, $inseqs, $aln_fn,$exe_dir, $dir_path, $progs) = @_;
 
-    my $debug = 1 || $debug_all;
-    my $subn = 'run_MSA';
+    my $debug = 0 || $debug_all;
+    my $subn = 'Annotate_Align::run_MSA';
 
     # $runMUSCLE = 0; # 0: Muscle, 1: Clustalw
     my $runMUSCLE = 0;
@@ -325,6 +328,8 @@ sub run_MSA {
 #                $debug && print STDERR "$subn: \$key=$key \$i=$i \$inseqs=\n".Dumper($inseqs)."End of \$inseqs\n";
                 foreach my $j (0 .. $#{$cds_set}) {
                   my $cds = $cds_set->[$j]->[0];
+                  my $acc = $cds->seq->accession_number;
+                  $debug && print STDERR "$subn: \$n_set=$n_set \$cds=\n". Dumper($cds) . "End of \$cds\n";
                   next if (!$cds);
 
                   my ($f2, $ecode) = Annotate_Util::cds2PrimarySeq($cds);
@@ -341,7 +346,8 @@ sub run_MSA {
                   push @$cds_all, $f2;
 
                 #  Returns : Reference to a SimpleAlign object containing the sequence alignment
-                my $outfile_name = sprintf("$dir_path/test_n%d_i%d", $n_set, $j);
+                my $outfile_name = sprintf("$dir_path/test_n%d_i%d_j%d", $n_set, $i, $j);
+                $outfile_name = sprintf("$dir_path/${acc}_i%d_j%d_Align", $i, $j); # Need to be unique for parallel processing
                 $outfile_name .= $runMUSCLE ? '.afa' : '.msf';
                 print STDERR "$subn: MSA \$n_set=$n_set \$i=$i \$outfile_name='$outfile_name'\n";
 
@@ -359,6 +365,14 @@ sub run_MSA {
               # Incoorporate the new features to any existing list of features
                   combineFeatures( $feats, $feats_all, $exe_dir, $dir_path, $progs);
 
+              if (-e "$outfile_name") {
+                  print STDERR "$subn: file='$outfile_name' found\n";
+                  my $cmd = "rm $outfile_name ";
+                  my $result = `$cmd`;
+                  $debug && print STDERR "$subn: cmd='$cmd' result='$result'\n";
+                } else {
+                  $debug && print STDERR "$subn: file='$outfile_name' not found\n";
+              }
               $debug && print STDERR "$subn: \$n_set=$n_set \$feats_all=\n". Dumper($feats_all) . "End of \$feats_all\n";
                 } # foreach my $j (0 .. $#{$cds_set})
             } # for (my $i = 0; $i<=$#{$inseqs}; $i++) {

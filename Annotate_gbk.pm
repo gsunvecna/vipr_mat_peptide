@@ -581,19 +581,22 @@ sub get_feature_nuc {
 =cut
 
 sub get_matpeptide {
-    my ($gbk, $feats_msa,$exe_dir) = @_;
+#    my ($gbk, $feats_msa,$exe_dir) = @_;
+    my ($seq_obj, $feats_msa,$exe_dir) = @_;
 
     my $debug = 0 && $debug_all;
     my $subname = 'get_matpeptide';
 
     my $comment = '';
+=head2
     my $in_file2 = IO::String->new($gbk);
     my $seqio_obj = Bio::SeqIO->new( -fh => $in_file2, -format => 'genbank' );
 #   my $seqio_obj = Bio::SeqIO->new(-file=> $infile);
+   my $seq_obj = $seqio_obj->next_seq;
+=cut
 
    my @records = ();
     # Only take 1st sequence from each gbk (Note: gbk can hold multiple sequences, we ignore all after 1st)
-   my $seq_obj = $seqio_obj->next_seq;
      $debug && print STDERR "$subname: \$seq_obj=\n".Dumper($seq_obj)."end of \$seq_obj\n\n";
 
      my $r1;
@@ -610,9 +613,9 @@ sub get_matpeptide {
         $seq_out->write_seq($seq_obj);
      }
 
-    if (my $seq_obj1 = $seqio_obj->next_seq) {
-        print STDERR "$subname: There are additional sequences (".$seq_obj1->accession_number.") in input file, ignored\n";
-    }
+#    if (my $seq_obj1 = $seqio_obj->next_seq) {
+#        print STDERR "$subname: There are additional sequences (".$seq_obj1->accession_number.") in input file, ignored\n";
+#    }
 
         # write all mat_peptides to fasta file
         my $faa_gbk = '';

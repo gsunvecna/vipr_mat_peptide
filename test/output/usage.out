@@ -1,12 +1,12 @@
-msa_annotate.pl Ver1.3.0
+msa_annotate.pl Ver1.3.1
 Usage:  -d directory to find the input genome file
         -i name of the input genbank file
         -l name of input folder
     E.g.: msa_annotate.pl -d ./ -i NC_001477.gb
     E.g.: msa_annotate.pl -d ./ -l all_genomes/ 
 
-Viral families and species covered in Ver1.3.0 are:
-Families: 14, species: 114, strains: 166
+Viral families and species covered in Ver1.3.1 are:
+Families: 14, species: 117, strains: 169
 
 Family=Arenaviridae
 Arenaviridae	#1	species=11619 	strain=----- 	ref=NC_005081 	"Junin virus"
@@ -87,8 +87,11 @@ Flaviviridae	#37	species=54315 	strain=----- 	ref=NC_002032 	"Bovine viral diarr
 Flaviviridae	#38	species=64280 	strain=----- 	ref=NC_003676 	"Apoi virus"
 Flaviviridae	#39	species=64285 	strain=----- 	ref=NC_003675 	"Rio Bravo virus"
 Flaviviridae	#40	species=64286 	strain=----- 	ref=NC_006551 	"Usutu virus"
-Flaviviridae	#41	species=64300 	strain=----- 	ref=NC_003635 	"Modoc virus"
-Flaviviridae	#42	species=64312 	strain=----- 	ref=NC_004119 	"Montana myotis leukoencephalitis virus"
+Flaviviridae	#41	species=64290 	strain=----- 	ref=NC_012534 	"Bagaza virus"
+Flaviviridae	#42	species=64300 	strain=----- 	ref=NC_003635 	"Modoc virus"
+Flaviviridae	#43	species=64311 	strain=----- 	ref=NC_012533 	"Kedougou virus"
+Flaviviridae	#44	species=64312 	strain=----- 	ref=NC_004119 	"Montana myotis leukoencephalitis virus"
+Flaviviridae	#45	species=64320 	strain=----- 	ref=NC_012532 	"Zika virus"
 
 Family=Hepeviridae
 Family=Hepeviridae 	No approved species found for family:Hepeviridae

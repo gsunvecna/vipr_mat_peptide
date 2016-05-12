@@ -2,6 +2,8 @@ package Annotate_Def;
 
 use strict;
 use warnings;
+use File::Basename;
+use Cwd 'abs_path';
 use English;
 use Carp;
 use Data::Dumper;
@@ -15,8 +17,7 @@ use Bio::Tools::Run::StandAloneBlast;
 use IO::String;
 
 #use version;
-#our $VERSION = qw('1.2.2'); # May 10 2013
-our $VERSION = qw(1.3.0); # May 01 2014
+our $VERSION = qw(1.3.1); # Jan 28 2016
 
 my $debug_all = 0;
 
@@ -31,6 +32,13 @@ my $debug_all = 0;
 
 ## //Global variables// ##
 
+    # May create link genotype to actual dir of particular version
+    my $MSA_ANNOTATE_HOME = './';
+    $MSA_ANNOTATE_HOME = (-l __FILE__) ? dirname(readlink(__FILE__))
+                   : dirname(__FILE__);
+    $MSA_ANNOTATE_HOME = abs_path($MSA_ANNOTATE_HOME) . '/';
+    $debug_all && print STDERR "Genotyp_Def: \$MSA_ANNOTATE_HOME='$MSA_ANNOTATE_HOME'\n";
+
 #loadTaxonTable: $TAXON=
 #$VAR1 = {
 #          'taxon_fn' => 'Annotate_taxon_records.txt',
@@ -44,7 +52,7 @@ my $debug_all = 0;
 
 my $TAXON = {
                taxon_loaded => 0,
-               taxon_fn     => "Annotate_taxon_records.txt",
+               taxon_fn     => "$MSA_ANNOTATE_HOME/Annotate_taxon_records.txt",
             };
 
 #get_refseq_acc: $REFSEQS=
@@ -81,7 +89,7 @@ my $REFSEQS = {
 #        };
 my $GENE_SYM = {
                symbol_loaded => 0,
-               symbol_fn     => "Annotate_symbol_records.txt",
+               symbol_fn     => "$MSA_ANNOTATE_HOME/Annotate_symbol_records.txt",
             };
 
 
@@ -105,9 +113,9 @@ sub getTaxonInfo {
 
     $exe_dir = './' if (!$exe_dir);
     if ( !$TAXON->{taxon_loaded} ) {
-        Annotate_Def::loadTaxonTable( $exe_dir);
+        Annotate_Def::loadTaxonTable( $MSA_ANNOTATE_HOME);
         my $ctLines = scalar(keys %{$TAXON->{taxon}});
-        $debug && print STDERR "$subn: loaded $ctLines lines from file '$exe_dir/$TAXON->{taxon_fn}'\n";
+        $debug && print STDERR "$subn: loaded $ctLines lines from file '$MSA_ANNOTATE_HOME/$TAXON->{taxon_fn}'\n";
     }
 
     $debug && print STDERR "$subn: \$taxid=$taxid\n";
@@ -140,15 +148,15 @@ sub loadTaxonTable {
 
     my $ctLines = 0;
     # Load the taxon information from an ASCII file
-    $debug && print STDERR "$subn: \$TAXON=$TAXON->{taxon_loaded} file=$exe_dir/$TAXON->{taxon_fn}\n";
-    if ( !-f "$exe_dir/$TAXON->{taxon_fn}" ) {
-        croak "$subn: Couldn't find file=$exe_dir/$TAXON->{taxon_fn}\n";
+    $debug && print STDERR "$subn: \$TAXON=$TAXON->{taxon_loaded} file=$TAXON->{taxon_fn}\n";
+    if ( !-f "$TAXON->{taxon_fn}" ) {
+        croak "$subn: Couldn't find file=$TAXON->{taxon_fn}\n";
         return 0;
     } else {
-        $debug && print STDERR "$subn: found taxon_fn=$exe_dir/$TAXON->{taxon_fn}\n";
+        $debug && print STDERR "$subn: found taxon_fn=$TAXON->{taxon_fn}\n";
 
-        open my $tfile, '<', "$exe_dir/$TAXON->{taxon_fn}"
-               or croak("$subn: found '$exe_dir/$TAXON->{taxon_fn}', but couldn't open: $OS_ERROR");
+        open my $tfile, '<', "$TAXON->{taxon_fn}"
+               or croak("$subn: found '$TAXON->{taxon_fn}', but couldn't open: $OS_ERROR");
         while (<$tfile>) {
             s/(^[|]*\s+|\s+$)//x;
             my $words = [ split(/\s*\|\s*/x) ];
@@ -161,15 +169,15 @@ sub loadTaxonTable {
             $TAXON->{'taxon'}->{$strainid} = $words;
 
         }
-        close $tfile or croak "$subn: Couldn't close $exe_dir/$TAXON->{taxon_fn}: $OS_ERROR";
+        close $tfile or croak "$subn: Couldn't close $TAXON->{taxon_fn}: $OS_ERROR";
         my @keys = keys %{$TAXON->{'taxon'}};
         $TAXON->{taxon_loaded} = 1 if ($#keys>1);
 
-        $debug && print STDERR "$subn: finished reading $ctLines lines from file: '$exe_dir/$TAXON->{taxon_fn}'.\n";
+        $debug && print STDERR "$subn: finished reading $ctLines lines from file: '$TAXON->{taxon_fn}'.\n";
         $debug && print STDERR "$subn: \$TAXON=\n".Dumper($TAXON)."End of \$TAXON\n\n";
     }
     $debug && print STDERR "$subn: \$TAXON->{taxon_loaded}=$TAXON->{taxon_loaded}\n";
-    print STDERR "$subn: loaded $ctLines lines from file '$exe_dir/$TAXON->{taxon_fn}'\n";
+    print STDERR "$subn: loaded $ctLines lines from file '$TAXON->{taxon_fn}'\n";
 
     return $TAXON;
 } # sub loadTaxonTable
@@ -273,7 +281,8 @@ sub get_refpolyprots {
 
     if (!$refseq || !$refseq->isa('Bio::Seq::RichSeq') || !check_refseq($refseq, $inseq)) {
 
-        $refseq = Annotate_Def::get_refseq( $inseq, $exe_dir);
+#        $refseq = Annotate_Def::get_refseq( $inseq, $exe_dir);
+        $refseq = Annotate_Def::get_refseq( $inseq, $MSA_ANNOTATE_HOME);
         my $acc = $inseq->accession;
         my $taxid  = $inseq->species->ncbi_taxid;
         if (!$refseq) {
@@ -485,12 +494,12 @@ sub add_extra_refCDS {
     my $n_extraCDS = 0;
     $debug && print STDERR "$subn: pwd=" . `pwd`;
     $debug && print STDERR "$subn: \$refacc='$refacc' \$extraCDS=$extraCDS\n";
-    if ($#{$cds_all}<0 || !$cds_all->[0] || !$refacc || !-f "$exe_dir/refseq/$extraCDS") {
+    if ($#{$cds_all}<0 || !$cds_all->[0] || !$refacc || !-f "$MSA_ANNOTATE_HOME/refseq/$extraCDS") {
         ($n_extraCDS>0) && print STDERR "$subn: For RefSeq=$refacc, found $n_extraCDS extra reference CDS: \$extraCDS=$extraCDS\n";
         return;
     }
 
-    my $cds_obj = Bio::SeqIO->new( -file => "$exe_dir/refseq/$extraCDS");
+    my $cds_obj = Bio::SeqIO->new( -file => "$MSA_ANNOTATE_HOME/refseq/$extraCDS");
     my $cds=$cds_obj->next_seq();
     while ($cds) {
         $debug && print STDERR "$subn: \$cds=\n". Dumper($cds) . "End of \$cds\n";
@@ -542,24 +551,24 @@ sub get_refseq {
     if ($inseq->isa('Bio::Seq::RichSeq')) {
             my $refacc = undef;
             $taxid = $inseq->species->ncbi_taxid;
-            ($refacc, $speciesid, $species, $fam) = Annotate_Def::get_refseq_acc( $inseq, $exe_dir);
+            ($refacc, $speciesid, $species, $fam) = Annotate_Def::get_refseq_acc( $inseq, $MSA_ANNOTATE_HOME);
             return undef if (!$refacc);
-            if (-e "${exe_dir}refseq/${refacc}_matpeptide.gb") {
+            if (-e "${MSA_ANNOTATE_HOME}refseq/${refacc}_matpeptide.gb") {
                 $refseq_fn = $refacc.'_matpeptide.gb';
-            } elsif (-e "${exe_dir}refseq/${refacc}_uniprot.gb") {
+            } elsif (-e "${MSA_ANNOTATE_HOME}refseq/${refacc}_uniprot.gb") {
                 $refseq_fn = $refacc.'_uniprot.gb';
-            } elsif (-e "${exe_dir}refseq/${refacc}_msaa.gb") {
+            } elsif (-e "${MSA_ANNOTATE_HOME}refseq/${refacc}_msaa.gb") {
                 $refseq_fn = $refacc.'_msaa.gb';
-            } elsif (-e "${exe_dir}refseq/${refacc}.gb") {
+            } elsif (-e "${MSA_ANNOTATE_HOME}refseq/${refacc}.gb") {
                 $refseq_fn = $refacc.'.gb';
-            } elsif (-e "${exe_dir}refseq/${refacc}.gbk") {
+            } elsif (-e "${MSA_ANNOTATE_HOME}refseq/${refacc}.gbk") {
                 $refseq_fn = $refacc.'.gbk';
-            } elsif (-e "${exe_dir}refseq/${refacc}.genbank") {
+            } elsif (-e "${MSA_ANNOTATE_HOME}refseq/${refacc}.genbank") {
                 $refseq_fn = $refacc.'.genbank';
             } else {
                 $refseq_fn = $refacc.'.gb';
             }
-            $debug && print STDERR "$subn: REFSEQ is ${exe_dir}refseq/$refseq_fn\n";
+            $debug && print STDERR "$subn: REFSEQ is ${MSA_ANNOTATE_HOME}refseq/$refseq_fn\n";
 
     } elsif ($inseq) {
         $refseq_fn = $inseq;
@@ -570,17 +579,17 @@ sub get_refseq {
     $exe_dir = './' if (!$exe_dir);
     if ($refseq_fn) {
         $debug && print STDERR "$subn: REFSEQ is $refseq_fn\n";
-        if (-e "$exe_dir/refseq/$refseq_fn") {
-            $refseq = Bio::SeqIO->new( -file => "$exe_dir/refseq/$refseq_fn")->next_seq();
-            print STDERR "$subn: Found REFSEQ at '$exe_dir/refseq/$refseq_fn' for taxid=$taxid, species=$speciesid ($fam:$species)\n";
-        } elsif (-e "$exe_dir/$refseq_fn") {
-            $refseq = Bio::SeqIO->new( -file => "$exe_dir/$refseq_fn")->next_seq();
-            print STDERR "$subn: Found REFSEQ at '$exe_dir/$refseq_fn' for taxid=$taxid, species=$speciesid ($fam:$species)\n";
+        if (-e "$MSA_ANNOTATE_HOME/refseq/$refseq_fn") {
+            $refseq = Bio::SeqIO->new( -file => "$MSA_ANNOTATE_HOME/refseq/$refseq_fn")->next_seq();
+            print STDERR "$subn: Found REFSEQ at '$MSA_ANNOTATE_HOME/refseq/$refseq_fn' for taxid=$taxid, species=$speciesid ($fam:$species)\n";
+        } elsif (-e "$MSA_ANNOTATE_HOME/$refseq_fn") {
+            $refseq = Bio::SeqIO->new( -file => "$MSA_ANNOTATE_HOME/$refseq_fn")->next_seq();
+            print STDERR "$subn: Found REFSEQ at '$MSA_ANNOTATE_HOME/$refseq_fn' for taxid=$taxid, species=$speciesid ($fam:$species)\n";
 #        } elsif ($debug && -e "./$refseq_fn") {
 #            $refseq = Bio::SeqIO->new( -file => "./$refseq_fn")->next_seq();
 #            print STDERR "$subn: Found REFSEQ at './$refseq_fn'\n";
         } else {
-            print STDERR "$subn: ERROR: Can't find required refseq: $refseq_fn in '$exe_dir/refseq' for taxid=$taxid, species=$speciesid ($fam:$species).\n";
+            print STDERR "$subn: ERROR: Can't find required refseq: $refseq_fn in '$MSA_ANNOTATE_HOME/refseq' for taxid=$taxid, species=$speciesid ($fam:$species).\n";
         }
     }
 
@@ -684,12 +693,12 @@ sub get_refseq_acc {
     $debug && print STDERR "$subn: \$REFSEQS=\n".Dumper($REFSEQS)."end of \$REFSEQS\n\n";
 
     # Load taxon information from an ASCII file
-    $debug && print STDERR "$subn: \$TAXON=$TAXON->{taxon_loaded} file=$exe_dir/$TAXON->{taxon_fn}\n";
+    $debug && print STDERR "$subn: \$TAXON=$TAXON->{taxon_loaded} file=$TAXON->{taxon_fn}\n";
     if ( !$TAXON->{taxon_loaded} ) {
         Annotate_Def::loadTaxonTable( $exe_dir);
     $debug && print STDERR "$subn: \$TAXON=\n".Dumper($TAXON)."end of \$TAXON\n\n";
         my $ctLines = scalar(keys %{$TAXON->{taxon}});
-        $debug && print STDERR "$subn: loaded $ctLines lines from file '$exe_dir/$TAXON->{taxon_fn}'\n";
+        $debug && print STDERR "$subn: loaded $ctLines lines from file '$TAXON->{taxon_fn}'\n";
     }
     $debug && print STDERR "$subn: \$TAXON->{taxon_loaded}=$TAXON->{taxon_loaded}\n";
     $debug && print STDERR "$subn: \$TAXON=\n".Dumper($TAXON)."end of \$TAXON\n\n";
@@ -820,6 +829,9 @@ sub initRefseq {
            39113 => 'NC_001655', # Hepatitis GB virus B; has extra C mat_peptide at start; V1.2.0
          1321391 => 'NC_021154', # Rodent pegivirus, has 11 mat_peptides; Having problem defining the gene_symbols
          1281454 => 'NC_021153', # Rodent hepacivirus, has 10 mat_peptides; V1.2.1
+           64320 => 'NC_012532', # Zika virus, 13 mat_peptides from Arch Virol 2007 152 687-696; V1.3.1
+           64311 => 'NC_012533', # Kedougou virus, 13 mat_peptides from Arch Virol 2007 152 687-696; V1.3.1
+           64290 => 'NC_012534', # Bagaza virus, 13 mat_peptides from Arch Virol 2007 152 687-696; V1.3.1
            },
 
            # Family=Caliciviridae
@@ -1409,10 +1421,10 @@ sub load_gene_symbol {
 #            };
     # Load the definition of symbols from the text file
     $debug && print STDERR "$subn: \$GENE_SYM->{symbol_loaded}=$GENE_SYM->{symbol_loaded}\n";
-    $debug && print STDERR "$subn: found symbol_fn=$exe_dir/$GENE_SYM->{symbol_fn}\n";
+    $debug && print STDERR "$subn: found symbol_fn=$GENE_SYM->{symbol_fn}\n";
 
-    open my $symbol_file, '<', "$exe_dir/$GENE_SYM->{symbol_fn}"
-       or croak("$subn: found '$exe_dir/$GENE_SYM->{symbol_fn}', but couldn't open: $OS_ERROR");
+    open my $symbol_file, '<', "$GENE_SYM->{symbol_fn}"
+       or croak("$subn: found '$GENE_SYM->{symbol_fn}', but couldn't open: $OS_ERROR");
     my $m1 = [];
     my $m0 = [];
     my $accession = 1;
@@ -1478,10 +1490,10 @@ if (0) {
             $accession = $acc if (!$accession);
         }
     }
-    close $symbol_file or croak "$subn: Couldn't close $exe_dir/$GENE_SYM->{symbol_fn}: $OS_ERROR";
+    close $symbol_file or croak "$subn: Couldn't close $GENE_SYM->{symbol_fn}: $OS_ERROR";
     $GENE_SYM->{symbol_loaded} = 1;
 
-    $debug && print STDERR "$subn: finished reading list file: '$exe_dir/$GENE_SYM->{symbol_fn}'.\n";
+    $debug && print STDERR "$subn: finished reading list file: '$GENE_SYM->{symbol_fn}'.\n";
     $debug && print STDERR "$subn: \$GENE_SYM->{symbol_loaded}=$GENE_SYM->{symbol_loaded}\n";
     $debug && print STDERR "$subn: \$GENE_SYM=\n".Dumper($GENE_SYM)."End of \$GENE_SYM\n\n";
 
@@ -1588,12 +1600,12 @@ sub updateGeneSymbol {
     my $debug = 0 || $debug_all;
     my $subn = 'updateGeneSymbol';
 
-    ++$errcode->{noNewGenbank} if (!-e"$exe_dir/$errcode->{newGenbank}");
-    ++$errcode->{noOldGenbank} if (!-e"$exe_dir/$errcode->{oldGenbank}");
+    ++$errcode->{noNewGenbank} if (!-e"$MSA_ANNOTATE_HOME/$errcode->{newGenbank}");
+    ++$errcode->{noOldGenbank} if (!-e"$MSA_ANNOTATE_HOME/$errcode->{oldGenbank}");
     return if ($errcode->{noNewGenbank} || $errcode->{noOldGenbank} );
 
-    my $newseqio = Bio::SeqIO->new( -file => "$exe_dir/$errcode->{newGenbank}");
-    my $oldseqio = Bio::SeqIO->new( -file => "$exe_dir/$errcode->{oldGenbank}");
+    my $newseqio = Bio::SeqIO->new( -file => "$MSA_ANNOTATE_HOME/$errcode->{newGenbank}");
+    my $oldseqio = Bio::SeqIO->new( -file => "$MSA_ANNOTATE_HOME/$errcode->{oldGenbank}");
     my $new = $newseqio->next_seq();
     my $old = $oldseqio->next_seq();
     $debug && print STDERR "$subn: $acc \$GENE_SYM=\n".Dumper($GENE_SYM)."End of \$GENE_SYM\n";
@@ -1627,7 +1639,7 @@ sub updateGeneSymbol {
             my $newSym = 0;
             my $featId = $feat->location->start ."..". $feat->location->end;
             my $comm = ($GENE_SYM->{comm}->{$acc}->{$featId}) ? $GENE_SYM->{comm}->{$acc}->{$featId} : '';
-            $gene_symbol = get_gene_symbol($feat, $exe_dir);
+            $gene_symbol = get_gene_symbol($feat, $MSA_ANNOTATE_HOME);
             $debug && print STDERR "$subn: $acc \$featId=$featId \$gene_symbol='$gene_symbol' \$comm='$comm'\n";
             if (!$gene_symbol) {
                 print STDERR "$subn: $acc: Found new mat_peptide, need gene symbol \$featId='$featId'\n";
@@ -1692,8 +1704,8 @@ sub get_gene_symbol {
     # Load the definition of symbols from the text file
     $debug && print STDERR "$subn: \$exe_dir=$exe_dir\n";
     $debug && print STDERR "$subn: \$GENE_SYM->{symbol_fn}=$GENE_SYM->{symbol_fn}\n";
-    if (!$GENE_SYM->{symbol_loaded} && -f "$exe_dir/$GENE_SYM->{symbol_fn}" ) {
-        load_gene_symbol($exe_dir);
+    if (!$GENE_SYM->{symbol_loaded} && -f "$GENE_SYM->{symbol_fn}" ) {
+        load_gene_symbol($MSA_ANNOTATE_HOME);
     }
 
     # Search for the symbol based on the start/stop of the reference mat_peptide

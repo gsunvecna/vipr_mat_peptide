@@ -7,6 +7,7 @@ use Getopt::Long;
 use Data::Dumper;
 use English;
 use Carp;
+use Parallel::ForkManager; # To install this module: 1)perl -MCPAN -e shell; 2)force install Parallel::ForkManager
 
 use Annotate_misc;
 use Annotate_Def;
@@ -61,12 +62,14 @@ my $debug = 0;
 print STDERR "command='$0 @ARGV'\n";
 print STDERR "$0 V$VERSION executing ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime)."\n";
 print STDOUT "$0 V$VERSION executing ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime)."\n";
+my $nproc         = 1;
 my $infile = '';
 my $FAMILY = '';
 my $useropts = GetOptions(
                  "i=s"  => \ $infile,      # [inputFile.gb]
                  "f=s"  => \ $FAMILY,      # viral family to test
                  "debug"=> \ $debug,       # debug
+                 "nproc=s"  => \$nproc,         # number of processes, for parallel processing
                  );
 my $exe_dir  = './';
 my $exe_name = $0;
@@ -80,6 +83,8 @@ if ($FAMILY && !exists($families->{$FAMILY})) {
     $FAMILY = '';
 }
 print STDERR "$exe_name: requested \$FAMILY='$FAMILY'\n";
+$nproc = ($nproc<0) ? 0 : ($nproc>20) ? 20 : $nproc;
+print STDERR "$exe_name: \$nproc=$nproc\n";
 
 $debug && print STDERR "$exe_name: \$exe_dir    = '$exe_dir'\n";
 $debug && print STDERR "\n";
@@ -171,11 +176,36 @@ for my $fam ( sort keys %$families) {
     my $accs = $families->{$fam};
     my $msg1 = sprintf (" Testing %-15s %d", "$fam,", scalar @$accs);
 
+    # Set up parallel process, each input gbk/fasta file is one fork
+    # Set $max_procs = 0; for debugging, ie. not forking
+    # Set $max_procs to (intended number of process)-1 for processing
+    my $max_procs = ($nproc>0) ? $nproc : 0;
+    my $pm =  Parallel::ForkManager->new( $max_procs);
+    $debug && print STDERR "$exe_name: ForkManager started with \$max_procs=$max_procs\n";
+    $pm->run_on_start(
+        sub { my ($pid, $ident) = @_;
+#            print STDERR "** $ident started, pid: $pid\n";
+        }
+    );
+    $pm->run_on_finish(
+        sub { my ($pid, $exit_code, $ident) = @_;
+          if (!$exit_code) {
+#            print STDERR "** $ident finished PID $pid and exit_code: $exit_code\n";
+          } else {
+#            print STDERR "** $ident ERROR: finished PID $pid and exit_code: $exit_code\n";
+#            print STDERR "** $ident ERROR: needs checking\n";
+          }
+        }
+    );
+
     print STDERR "$msg1\n";
     print STDOUT "$msg1\n";
     my ($timeStart, $timeEnd);
     for my $j (0 .. $#{$accs}) {
         $count++;
+        # starts the fork in child, and returns to for loop in main
+        my $pid = $pm->start("$j:$accs->[$j]->[1]") and next;
+
         $timeStart = time();
         my $acc = $accs->[$j]->[1];
         my $result = '';
@@ -226,7 +256,9 @@ for my $fam ( sort keys %$families) {
         my $t = time() - $timeStart;
         printf STDOUT ("%3d sec\t$msg", $t);
         print STDERR "$msg";
+        $pm->finish($acc); # do the exit in the child process, pass an exit code to finish
     } # acc
+    $pm->wait_all_children; # Wait for all child processes to finish
 
 } # family
     print STDERR "\n";

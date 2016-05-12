@@ -37,6 +37,11 @@ To-do:
 1. What to do with the 2 RefSeqs of the Reoviridae family?
 
 Changes
+
+V1.3.1, Jan 2016
+1. Added Zika virus (64320), Bagaza virus (64290), and Kedougou virus (64311). The reference mat_peptide
+annotation was obtain from Arch Virol 2007, 152, 687-696.
+
 V1.3.0
 1. Re-structured the program.
 

@@ -2,16 +2,20 @@
 
 use strict;
 use warnings;
-#use version;
-our $VERSION = qw(1.3.0); # Apr 08, 2015
-#use lib ("/home/peptide/loader/ext/BioPerl"); # This is for account peptide on Northrop machine 33
-#use lib ("/net/home/gsun/lib/ext/BioPerl"); # need to fix this
-#use lib "/usr/lib/perl5";
 use lib "~/prog/lib/perl5/"; # bunsen -- 4/08/2015
 use Getopt::Long;
 use English;
 use Carp;
 use Data::Dumper;
+
+our $VERSION = qw(1.3.1); # Jan 03, 2016
+use Cwd 'abs_path'; # needed to find absolute path for input file
+use File::Basename;
+my $libPath = './';
+BEGIN { # The modules need to exist in same dir as the script
+    $libPath = (-l __FILE__) ? dirname(readlink(__FILE__)) : dirname(__FILE__);
+}
+use lib ("$libPath");
 
 use Bio::SeqIO;
 use Bio::Seq;
@@ -58,7 +62,7 @@ my $debug = 0;
 # ./msa_annotate.pl -d ./ -l test >> test/out.txt 2>> test/err.txt
 # ./msa_annotate.pl -checkrefseq=1 -update >out1.txt 2>err1.txt
 #
-#    Authors: Chris Larsen, clarsen@vecna.com; Guangyu Sun, gsun@vecna.com;
+#    Authors: Guangyu Sun, gsun@vecna.com; Chris Larsen, clarsen@vecna.com;
 #    September 2011
 #
 #################
@@ -102,6 +106,7 @@ my $useropts = GetOptions(
          "debug"  => \ $debug,     # turn on all debug messages, see module Annotate_misc.pm for setting for each module
          );
 $dir_path =~ s/[\/]$//;
+$dir_path = abs_path($dir_path) . '/';
 $list_fn =~ s/[\/]$//;
 
 $debug && print STDERR "$exe_name: \$exe_dir  ='$exe_dir'\n";

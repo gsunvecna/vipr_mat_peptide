@@ -2498,5 +2498,57 @@ AY426531;      "5311..5376"; "3B"; #msa_annotate.pl v1.2.3
 AY426531;      "5377..5925"; "3C"; #msa_annotate.pl v1.2.3
 AY426531;      "5926..7296"; "3D"; #msa_annotate.pl v1.2.3
 
+# msa_annotate.pl v1.3.1
+# Zika virus, 64320, Flaviviridae
+# NC_012532; 
+NC_012532;       "107..472"; "ancC"  ; #msa_annotate.pl v1.3.1
+NC_012532;       "107..418"; "C"     ; #msa_annotate.pl v1.3.1
+NC_012532;       "473..976"; "preM"  ; #msa_annotate.pl v1.3.1
+NC_012532;       "473..751"; "pr"    ; #msa_annotate.pl v1.3.1
+NC_012532;       "752..976"; "M"     ; #msa_annotate.pl v1.3.1
+NC_012532;      "977..2476"; "E"     ; #msa_annotate.pl v1.3.1
+NC_012532;     "2477..3532"; "NS1"   ; #msa_annotate.pl v1.3.1
+NC_012532;     "3533..4210"; "NS2A"  ; #msa_annotate.pl v1.3.1
+NC_012532;     "4211..4600"; "NS2B"  ; #msa_annotate.pl v1.3.1
+NC_012532;     "4601..6451"; "NS3"   ; #msa_annotate.pl v1.3.1
+NC_012532;     "6452..6832"; "NS4A"  ; #msa_annotate.pl v1.3.1
+NC_012532;     "6833..6901"; "2K"    ; #msa_annotate.pl v1.3.1
+NC_012532;     "6902..7654"; "NS4B"  ; #msa_annotate.pl v1.3.1
+NC_012532;    "7655..10363"; "NS5"   ; #msa_annotate.pl v1.3.1
+
+# msa_annotate.pl v1.3.1
+# Kedougou virus, 64311, Flaviviridae
+# NC_012533; 
+NC_012533;       "107..448"; "ancC"  ; #msa_annotate.pl v1.3.1
+NC_012533;       "107..397"; "C"     ; #msa_annotate.pl v1.3.1
+NC_012533;       "449..952"; "preM"  ; #msa_annotate.pl v1.3.1
+NC_012533;       "728..952"; "M"     ; #msa_annotate.pl v1.3.1
+NC_012533;      "953..2455"; "E"     ; #msa_annotate.pl v1.3.1
+NC_012533;     "2456..3511"; "NS1"   ; #msa_annotate.pl v1.3.1
+NC_012533;     "3512..4183"; "NS2a"  ; #msa_annotate.pl v1.3.1
+NC_012533;     "4184..4573"; "NS2b"  ; #msa_annotate.pl v1.3.1
+NC_012533;     "4574..6421"; "NS3"   ; #msa_annotate.pl v1.3.1
+NC_012533;     "6422..6802"; "NS4a"  ; #msa_annotate.pl v1.3.1
+NC_012533;     "6803..6871"; "2k"    ; #msa_annotate.pl v1.3.1
+NC_012533;     "6872..7627"; "NS4b"  ; #msa_annotate.pl v1.3.1
+NC_012533;    "7628..10330"; "NS5"   ; #msa_annotate.pl v1.3.1
+
+# msa_annotate.pl v1.3.1
+# Bagaza virus, 64290, Flaviviridae
+# NC_012534; 
+NC_012534;        "95..460"; "ancC"  ; #msa_annotate.pl v1.3.1
+NC_012534;        "95..406"; "C"     ; #msa_annotate.pl v1.3.1
+NC_012534;       "461..961"; "preM"  ; #msa_annotate.pl v1.3.1
+NC_012534;       "737..961"; "M"     ; #msa_annotate.pl v1.3.1
+NC_012534;      "962..2464"; "E"     ; #msa_annotate.pl v1.3.1
+NC_012534;     "2465..3520"; "NS1"   ; #msa_annotate.pl v1.3.1
+NC_012534;     "3521..4201"; "NS2a"  ; #msa_annotate.pl v1.3.1
+NC_012534;     "4202..4594"; "NS2b"  ; #msa_annotate.pl v1.3.1
+NC_012534;     "4595..6451"; "NS3"   ; #msa_annotate.pl v1.3.1
+NC_012534;     "6452..6829"; "NS4a"  ; #msa_annotate.pl v1.3.1
+NC_012534;     "6830..6898"; "2k"    ; #msa_annotate.pl v1.3.1
+NC_012534;     "6899..7657"; "NS4b"  ; #msa_annotate.pl v1.3.1
+NC_012534;    "7658..10372"; "NS5"   ; #msa_annotate.pl v1.3.1
+
 # End of Annotate_symbol_records.txt
 

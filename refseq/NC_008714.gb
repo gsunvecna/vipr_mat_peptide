@@ -1,9 +1,9 @@
-LOCUS       NC_008714               7390 bp ss-RNA     linear   VRL 27-DEC-2006
+LOCUS       NC_008714               7390 bp ss-RNA     linear   VRL 27-MAR-2014
 DEFINITION  Possum enterovirus W1, complete genome.
-ACCESSION   NC_008714
+ACCESSION   NC_008714 NC_008715
 VERSION     NC_008714.1  GI:119952256
-DBLINK      Project: 18517
-KEYWORDS    .
+DBLINK      BioProject: PRJNA18517
+KEYWORDS    RefSeq.
 SOURCE      Possum enterovirus W1
   ORGANISM  Possum enterovirus W1
             Viruses; ssRNA positive-strand viruses, no DNA stage;
@@ -24,8 +24,9 @@ REFERENCE   3  (bases 1 to 7390)
   TITLE     Direct Submission
   JOURNAL   Submitted (29-JUL-2003) National Center for Biotechnology
             Information, NIH, Bethesda, MD 20894, USA
-COMMENT     PROVISIONAL REFSEQ: This record has not yet been subject to final
-            NCBI review. The reference sequence was derived from AY462106.
+COMMENT     REVIEWED REFSEQ: This record has been curated by NCBI staff. The
+            reference sequence was derived from AY462106.
+            On Mar 27, 2014 this sequence version replaced gi:119952257.
             COMPLETENESS: full length.
 FEATURES             Location/Qualifiers
      source          1..7390
@@ -34,6 +35,109 @@ FEATURES             Location/Qualifiers
                      /isolate="W1"
                      /db_xref="taxon:263531"
      5'UTR           1..818
+     gene            819..7319
+                     /locus_tag="PEW1_gp1"
+                     /db_xref="GeneID:18937610"
+     CDS             819..7319
+                     /locus_tag="PEW1_gp1"
+                     /codon_start=1
+                     /product="genome polyprotein"
+                     /protein_id="YP_009020973.1"
+                     /db_xref="GI:599196100"
+                     /db_xref="GeneID:18937610"
+                     /translation="MGAQLSKNTAGSHTTGTYATGGSNIHYTNINYYENAASNSLNKQ
+                     DLTQDPEKFTRPVVDMMKEAAVPLKSPSAEACGYSDRVAQLTLGNSTITTQEAANIVV
+                     AYGRWPSNLRDTDATAVDKPTQPGVSAERFYTLPSVQWTTTFKGHYWKLPDALSELGL
+                     FGQNLQFHYLYRGGWAIHVQCNATKFHQGTLLVVAVPEHKIQAQSNPTFDRTNPGENG
+                     ATCQFPFTFEDGTALGNALIYPHQWINLRTNNSATLILPYVNAIPMDSGIKHNNWTLL
+                     VIPLVPLEYAAGATTFVPITVTIAPMCTEYNGLRAAIAQGIPTLYTPGSGQFLTTDDF
+                     QSPCMLPKFQPTPVIDIPGEVKNFLEVIQVESLVEINNVVNVEGVERYRIPLNVQDAM
+                     DGQIMAMRVDPGADGPLQSTLLGVFTRYYTQWSGSLEFTFMFCGTFMTTGKVIIAYTP
+                     PGGDQPESRQQAMLGTHVVWDFGLQSSITLVVPWISSGHFRGTSLDNTIYKYRYYEAG
+                     YITMWYQTNMVVPPNFPTTASILMFVAAQPNFSLRILKDRPDVSQTAALQGETGHMIK
+                     DTIKDTVENTVQSTHSISTEATPALQAAETGATSNTSDESMLETRNVINTHGVAETSL
+                     EGFYGRAGLVAMFTTDGGIRSWYINFGEYVQLRTKLELLTYARFDIEFTIVAQAVDEQ
+                     AKVKDFNVDYQVMYVPPGASAPDGQDSFQWQSSCNPSVFSNTGMPPARVSVPFMSSAN
+                     AYSFSYDGYTEFGDKSGSSYGILPSNYLGQLVVRTCEDLDSAHLRVRIYAKPKHMRGW
+                     IPRSPRMRPYVSRFTGVYTDVPRFCVNRDSIKTAGAFGQQSGAAYVGSYKIMNRHLAK
+                     EQDWKNHIWDSYERDLLVTRVDAHGKDQIARCSCCAGVYYSKSRNKHYPVVVTPPSLA
+                     HIDENDYYPERYQSHVILGVGFAEPGDCGGILRCEHGVMGILTAGGSNLVAFADVRDL
+                     LWIEDDVMEQGLTDYVQGLGNAFGAGFTNEICNYVNQVKDMMIGSDTVVEKIIRNVIR
+                     LLSALVIVVKNPSDIVTVTATLSLLGCTGSPWRWLKAKICSILGINMAQKQADSWIKK
+                     FTEAVNAFKGLDWIAAKFSKFLDWIKSKIIPELKERTEFLKNLRQLPLLEAQIATLEH
+                     SNPTQETQEILFSNVQYLAHHCRKNAPLYAAEARRVFALEKRVLGAMQFKTKNRIEPV
+                     CCLIHGSPGTGKSLATSIIGRRIAEYENSGVYSLPPDPNHFDGYQEQAVVVMDDLLQN
+                     PDGKDMSLFCQMVSTVPFVVPMAALEDKGRLFTSKYVLASTNANTMHPVTVADGRALQ
+                     RRFHFDTVIEIMPDYSDNGKLNVAKATEQCDDCSPINFKKCMPLICGKALQLRSKNGD
+                     GMRYSIDTMITEMRRESARRYNIGNVIEALFQGPPAYKPLRIDVSEETPAPPAIADLL
+                     SSVDSEEVREYCRQKGWIVQEKITKERLERNVNRALIILQSATLIATICGTIYVVYRL
+                     FAGLQGPYSGIHTNYQKVKPVVRQVTTQGPLLDFAVSLLNKNIRTVTTKNGDFTGLGI
+                     YDTFMVLPRHAMAHGEVAINGKTIEVEDAYDLVDTTQTSLELTVVKLKQNEKFRDIRS
+                     LIPDQISETTEALVIVNTPAYPNLFMPVGAVKDYGYLNLAGRPTHRTLMYNFPTRAGQ
+                     CGGVAISMGKVIGIHIGGNGAQGFAAALLRRYFTQPQGKIELVEKSKDAGYPIINAPT
+                     KTKLYPSVFFDVFPGEKEPAVLHKKDKRLEVDFEEALFSKYIGNIDKPVTEEMEIAID
+                     HYANQLKQLNIDPTPISMEEAIYGTEGLEALDLGTSAGYPYVALGIKKRDILNKETRD
+                     TSKMQQCIEKYGLNLPMVTYVKDELRSKEKVKKGKSRLIEASSLNDSVAMRCAFGNLY
+                     RAFHTNPGTLTGCAVGCNPETFWSKIPVMMDGELFGFDYTAYDASLSPVWFKCLNLLL
+                     EKIGFGHCKHFIDQLCYSNHLYMDKRYVVAGGMPSGCSGTSIFNSMINNLIIRTLVLT
+                     VYKNIDLDDLKIIAYGDDVIASYPFELDAKLLADAGKSFGLIMTPPDKSSEFVKLTWD
+                     NVTFLKRSFVKDERFPFLIHPAMKMTDIHESIRWTKDAKSTQDHVRSLCLLAWHCGEK
+                     QYEEFLEKIRSVPVGRALSLPSFKALQRTWYDSF"
+     mat_peptide     819..1025
+                     /locus_tag="PEW1_gp1"
+                     /product="capsid protein VP4"
+                     /protein_id="YP_009020974.1"
+                     /db_xref="GI:599196101"
+     mat_peptide     1026..1763
+                     /locus_tag="PEW1_gp1"
+                     /product="capsid protein VP2"
+                     /protein_id="YP_009020975.1"
+                     /db_xref="GI:599196102"
+     mat_peptide     1764..2492
+                     /locus_tag="PEW1_gp1"
+                     /product="capsid protein VP3"
+                     /protein_id="YP_009020976.1"
+                     /db_xref="GI:599196103"
+     mat_peptide     2493..3314
+                     /locus_tag="PEW1_gp1"
+                     /product="capsid protein VP1"
+                     /protein_id="YP_009020977.1"
+                     /db_xref="GI:599196104"
+     mat_peptide     3315..3764
+                     /locus_tag="PEW1_gp1"
+                     /product="protease 2A"
+                     /protein_id="YP_009020978.1"
+                     /db_xref="GI:599196105"
+     mat_peptide     3765..4061
+                     /locus_tag="PEW1_gp1"
+                     /product="protein 2B"
+                     /protein_id="YP_009020979.1"
+                     /db_xref="GI:599196106"
+     mat_peptide     4062..5048
+                     /locus_tag="PEW1_gp1"
+                     /product="protein 2C"
+                     /protein_id="YP_009020980.1"
+                     /db_xref="GI:599196107"
+     mat_peptide     5049..5315
+                     /locus_tag="PEW1_gp1"
+                     /product="protein 3A"
+                     /protein_id="YP_009020981.1"
+                     /db_xref="GI:599196108"
+     mat_peptide     5316..5384
+                     /locus_tag="PEW1_gp1"
+                     /product="viral protein genome-linked"
+                     /protein_id="YP_009020982.1"
+                     /db_xref="GI:599196109"
+     mat_peptide     5385..5933
+                     /locus_tag="PEW1_gp1"
+                     /product="protease 3C"
+                     /protein_id="YP_009020983.1"
+                     /db_xref="GI:599196110"
+     mat_peptide     5934..7316
+                     /locus_tag="PEW1_gp1"
+                     /product="RNA-directed RNA polymerase"
+                     /protein_id="YP_009020984.1"
+                     /db_xref="GI:599196111"
 ORIGIN      
         1 ttaaaacagc ctgggggttg tacccacccc tagggcccac gtggcgttag taccctggta
        61 cgctagtacc tttgtacgcc tgtttttccc tcccttaaat aaattaagat taccactact
@@ -160,4 +264,3 @@ ORIGIN
      7321 tcgactccaa ttttgactat ccggtttaat taggttttaa ttggcacaat acacccgccg
      7381 gatggggtgt
 //
-

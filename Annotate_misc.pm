@@ -6,7 +6,7 @@ use English;
 use Carp;
 use Data::Dumper;
 
-use version; our $VERSION = qv('1.1.8'); # Feb 18 2013
+use version; our $VERSION = qv('1.2.1'); # May 10 2013
 use File::Temp qw/ tempfile tempdir /;
 use Bio::SeqIO;
 use Bio::Seq;

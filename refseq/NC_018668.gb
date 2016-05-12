@@ -1,14 +1,13 @@
-LOCUS       NC_018668               7583 bp    RNA     linear   VRL 21-NOV-2012
-DEFINITION  Bovine hungarovirus, complete genome.
+LOCUS       NC_018668               7583 bp    RNA     linear   VRL 04-DEC-2013
+DEFINITION  Bovine hungarovirus 1 strain BHUV1/2008/HUN, complete genome.
 ACCESSION   NC_018668
 VERSION     NC_018668.1  GI:407868409
-DBLINK      Project: 176432
-            BioProject: PRJNA176432
-KEYWORDS    .
-SOURCE      Bovine hungarovirus
-  ORGANISM  Bovine hungarovirus
+DBLINK      BioProject: PRJNA176432
+KEYWORDS    RefSeq.
+SOURCE      Bovine hungarovirus 1 (BHuV-1)
+  ORGANISM  Bovine hungarovirus 1
             Viruses; ssRNA positive-strand viruses, no DNA stage;
-            Picornavirales; Picornaviridae.
+            Picornavirales; Picornaviridae; Hunnivirus.
 REFERENCE   1  (bases 1 to 7583)
   AUTHORS   Reuter,G., Pankovics,P., Knowles,N.J. and Boros,A.
   TITLE     Two closely related novel picornaviruses in cattle and sheep in
@@ -32,12 +31,12 @@ COMMENT     PROVISIONAL REFSEQ: This record has not yet been subject to final
             COMPLETENESS: full length.
 FEATURES             Location/Qualifiers
      source          1..7583
-                     /organism="Bovine hungarovirus"
+                     /organism="Bovine hungarovirus 1"
                      /mol_type="genomic RNA"
                      /strain="BHUV1/2008/HUN"
                      /isolation_source="fecal sample"
                      /host="Bos taurus (cattle)"
-                     /db_xref="taxon:1233320"
+                     /db_xref="taxon:1431464"
                      /country="Hungary"
                      /collection_date="29-Feb-2008"
      5'UTR           1..732

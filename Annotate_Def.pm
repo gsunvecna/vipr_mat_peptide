@@ -14,7 +14,7 @@ use Bio::AlignIO;
 use Bio::Tools::Run::StandAloneBlast;
 use IO::String;
 
-use version; our $VERSION = qv('1.2.0'); # Apr 12 2013
+use version; our $VERSION = qv('1.2.1'); # May 10 2013
 
 my $debug_all = 0;
 
@@ -277,8 +277,9 @@ sub get_refpolyprots {
         if (!$refseq) {
 #            my $species = Annotate_Def::getSpecies( $taxid);
             my $species = Annotate_Def::getTaxonInfo( $taxid);
+            my $family = ($species->[6]) ? $species->[6] : '';
             $species = ($species->[4]) ? $species->[4] : '';
-            print STDERR "$subn: ERROR genome=$acc w/ taxid=$taxid($species) is not covered in V$VERSION.";
+            print STDERR "$subn: ERROR genome=$acc w/ taxid=$taxid($family:$species) not covered in V$VERSION.";
             print STDERR " Please contact script author for any update.\n";
             return undef;
         } else {
@@ -461,6 +462,57 @@ sub is_polyprotein {
 } # sub is_polyprotein
 
 
+=head2 add_extra_refCDS
+ Takes a ref to an array of CDS, gets the refseq name, then locates any file that bears the <refseq name>_extraCDS.afa
+ appends the additional CDS to the array
+ Returns nothing
+=cut
+
+sub add_extra_refCDS {
+    my ($cds_all, $exe_dir) = @_;
+
+    my $debug = 0 || $debug_all;
+    my $subn = 'add_extra_refCDS';
+
+    $debug && print STDERR "$subn: \$cds_all=\n". Dumper($cds_all) . "End of \$cds_all\n";
+    my $refacc = '';
+    $refacc = $cds_all->[0]->{display_id};
+    $refacc = $1 if ($refacc =~ m/ref=([^|]+)[|]/i); # Used to identify the file with extra CDS, and avoid duplicate refseq
+    my $extraCDS = $refacc . "_extraCDS.afa";
+    my $n_extraCDS = 0;
+    $debug && print STDERR "$subn: pwd=" . `pwd`;
+    $debug && print STDERR "$subn: \$refacc='$refacc' \$extraCDS=$extraCDS\n";
+    if ($#{$cds_all}<0 || !$cds_all->[0] || !$refacc || !-f "$exe_dir/refseq/$extraCDS") {
+        ($n_extraCDS>0) && print STDERR "$subn: For RefSeq=$refacc, found $n_extraCDS extra reference CDS: \$extraCDS=$extraCDS\n";
+        return;
+    }
+
+    my $cds_obj = Bio::SeqIO->new( -file => "$exe_dir/refseq/$extraCDS");
+    my $cds=$cds_obj->next_seq();
+    while ($cds) {
+        $debug && print STDERR "$subn: \$cds=\n". Dumper($cds) . "End of \$cds\n";
+        my $cdsid = $cds->primary_seq->{display_id};
+        $debug && print STDERR "$subn: \$cdsid='$cdsid'\n";
+        # can't have duplicate id in the input file, especially for ClustalW
+        # extra CDS must have following defline: ">ref=EU921388|CDS=5..5104"
+        if ($cdsid =~ m/ref=$refacc/i) {
+            $debug && print STDERR "$subn: skipped \$cdsid='$cdsid' as it's identical to RefSeq:$refacc\n";
+        } elsif ($cdsid =~ m/^ref=[^|]+[|]CDS=\d+[.][.]\d+$/i) {
+            ++$n_extraCDS;
+            push @$cds_all, $cds;
+            $debug && print STDERR "$subn: added \$cdsid='$cdsid' to \$cds_all\n";
+        } else {
+            $debug && print STDERR "$subn: skipped \$cdsid='$cdsid' for unknown reason\n";
+        }
+        $cds=$cds_obj->next_seq();
+    }
+
+    $debug && print STDERR "$subn: \$cds_all=\n". Dumper($cds_all) . "End of \$cds_all\n";
+    ($n_extraCDS>0) && print STDERR "$subn: For RefSeq=$refacc, found $n_extraCDS extra reference CDS: \$extraCDS=$extraCDS\n";
+    return;
+} # sub add_extra_refCDS
+
+
 =head2 get_refseq
 Takes either a file name, or a Bio::Seq object based on genbank file, returns refseq in Bio::Seq.
  For a file name, simply load the genbank file
@@ -479,16 +531,19 @@ sub get_refseq {
     $debug && print STDERR "$subn: \$inseq=$inseq is a ".ref($inseq)."\n";
     my $speciesid = '-1';
     my $species = 'unknown';
+    my $fam = 'unknown';
     my $taxid = '';
     my $refseq_fn;
 
     if ($inseq->isa('Bio::Seq::RichSeq')) {
             my $refacc = undef;
             $taxid = $inseq->species->ncbi_taxid;
-            ($refacc, $speciesid, $species) = Annotate_Def::get_refseq_acc( $inseq, $exe_dir);
+            ($refacc, $speciesid, $species, $fam) = Annotate_Def::get_refseq_acc( $inseq, $exe_dir);
             return undef if (!$refacc);
             if (-e "${exe_dir}refseq/${refacc}_matpeptide.gb") {
                 $refseq_fn = $refacc.'_matpeptide.gb';
+            } elsif (-e "${exe_dir}refseq/${refacc}_uniprot.gb") {
+                $refseq_fn = $refacc.'_uniprot.gb';
             } elsif (-e "${exe_dir}refseq/${refacc}_msaa.gb") {
                 $refseq_fn = $refacc.'_msaa.gb';
             } elsif (-e "${exe_dir}refseq/${refacc}.gb") {
@@ -513,15 +568,15 @@ sub get_refseq {
         $debug && print STDERR "$subn: REFSEQ is $refseq_fn\n";
         if (-e "$exe_dir/refseq/$refseq_fn") {
             $refseq = Bio::SeqIO->new( -file => "$exe_dir/refseq/$refseq_fn")->next_seq();
-            print STDERR "$subn: Found REFSEQ at '$exe_dir/refseq/$refseq_fn' for taxid=$taxid, species=$speciesid ($species)\n";
+            print STDERR "$subn: Found REFSEQ at '$exe_dir/refseq/$refseq_fn' for taxid=$taxid, species=$speciesid ($fam:$species)\n";
         } elsif (-e "$exe_dir/$refseq_fn") {
             $refseq = Bio::SeqIO->new( -file => "$exe_dir/$refseq_fn")->next_seq();
-            print STDERR "$subn: Found REFSEQ at '$exe_dir/$refseq_fn' for taxid=$taxid, species=$speciesid ($species)\n";
+            print STDERR "$subn: Found REFSEQ at '$exe_dir/$refseq_fn' for taxid=$taxid, species=$speciesid ($fam:$species)\n";
 #        } elsif ($debug && -e "./$refseq_fn") {
 #            $refseq = Bio::SeqIO->new( -file => "./$refseq_fn")->next_seq();
 #            print STDERR "$subn: Found REFSEQ at './$refseq_fn'\n";
         } else {
-            print STDERR "$subn: ERROR: Can't find required refseq: $refseq_fn in '$exe_dir/refseq' for taxid=$taxid, species=$speciesid ($species).\n";
+            print STDERR "$subn: ERROR: Can't find required refseq: $refseq_fn in '$exe_dir/refseq' for taxid=$taxid, species=$speciesid ($fam:$species).\n";
         }
     }
 
@@ -547,6 +602,7 @@ sub get1RefseqAcc {
     # Going through $REFSEQS and find the RefSeq for a given taxid
     my $speciesid = '-1';
     my $species = 'unknown';
+    my $family = 'unknown';
     for my $fam (keys %{$REFSEQS->{refs}}) {
         my $refseq_list1 = $REFSEQS->{refs}->{$fam};
         $debug && print STDERR "$subn: \$fam=$fam \$refseq_list1=\n".Dumper($refseq_list1)."\n";
@@ -558,6 +614,7 @@ sub get1RefseqAcc {
             $debug && print STDERR "$subn: \$fam=$fam \$taxinfo=\n".Dumper($taxinfo)."\n";
             $speciesid = $taxinfo->[1] if ($taxinfo->[1]);
             $species = $taxinfo->[4] if ($taxinfo->[1]);
+            $family = $taxinfo->[6] if ($taxinfo->[1]);
             $debug && print STDERR "$subn: Got from \$REFSEQS \$refseq_acc=$refseq_acc for \$taxid=$taxid species=$speciesid ($species)\n";
         }
     }
@@ -569,6 +626,7 @@ sub get1RefseqAcc {
         if ($speciesid && $speciesid>0) {
             $speciesid = $TAXON->{'taxon'}->{$taxid}->[1];
             $species = $TAXON->{'taxon'}->{$taxid}->[4];
+            $family = $TAXON->{'taxon'}->{$taxid}->[6];
     for my $fam (keys %{$REFSEQS->{refs}}) {
         my $refseq_list1 = $REFSEQS->{refs}->{$fam};
             if (exists($refseq_list1->{$speciesid})) {
@@ -590,12 +648,12 @@ sub get1RefseqAcc {
             last;
 #        }
 =cut
-        $debug && print STDERR "$subn: Determined from \$REFSEQS & \$TAXON \$refseq_acc=$refseq_acc for \$taxid=$taxid species=$speciesid ($species)\n";
+        $debug && print STDERR "$subn: Determined from \$REFSEQS & \$TAXON \$refseq_acc=$refseq_acc for \$taxid=$taxid species=$speciesid ($family:$species)\n";
 
     }
 
-    $debug && print STDERR "$subn: \$refseq_acc=$refseq_acc taxid=$taxid, species=$speciesid ($species)\n";
-    return ($refseq_acc, $speciesid, $species);
+    $debug && print STDERR "$subn: \$refseq_acc=$refseq_acc taxid=$taxid, species=$speciesid ($family:$species)\n";
+    return ($refseq_acc, $speciesid, $species, $family);
 } # sub get1RefseqAcc
 
 
@@ -640,6 +698,7 @@ sub get_refseq_acc {
 
     my $speciesid = '-1';
     my $species = 'unknown';
+    my $family = 'unknown';
     my $refseq_acc = '';
     my $taxid = $inseq->species->ncbi_taxid;
     $debug && print STDERR "$subn: \$taxid=$taxid \$inseq=$inseq is a ".ref($inseq)."\n";
@@ -659,11 +718,11 @@ if (0) {
         }
     }
 } else {
-    ($refseq_acc, $speciesid, $species) = Annotate_Def::get1RefseqAcc($taxid);
+    ($refseq_acc, $speciesid, $species, $family) = Annotate_Def::get1RefseqAcc($taxid);
 }
 
     $debug && print STDERR "$subn: \$refseq_acc=$refseq_acc taxid=$taxid, species=$speciesid ($species)\n";
-    return ($refseq_acc, $speciesid, $species);
+    return ($refseq_acc, $speciesid, $species, $family);
 } # sub get_refseq_acc
 
 
@@ -718,24 +777,25 @@ sub initRefseq {
           356426 => 'NC_004102', # Hepatitis C virus genotype 3a
            64312 => 'NC_004119', # Montana myotis leukoencephalitis virus; Ver1.1.3
           172148 => 'NC_004355', # Alkhurma hemorrhagic fever virus; Ver1.1.3
-##           64294 => 'NC_005039', # Yokose virus
-##           12542 => 'NC_005062', # Omsk hemorrhagic fever virus
+##           64294 => 'NC_005039', # Yokose virus; No mat_peptide in uniprot. 8/13
+##           12542 => 'NC_005062', # Omsk hemorrhagic fever virus; No mat_peptide in uniprot. 8/13
            64286 => 'NC_006551', # Usutu virus; Ver1.1.3
-##           64287 => 'NC_006947', # Karshi virus
+##           64287 => 'NC_006947', # Karshi virus; No mat_peptide in uniprot. 8/13
            11080 => 'NC_007580', # St. Louis encephalitis virus
 ##           11080 => 'NC_001563', # St. Louis encephalitis => West Nile virus (lineage II strain 956)
-##          390844 => 'NC_008604', # Culex flavivirus
-##           64283 => 'NC_008718', # Entebbe bat virus
-##           44026 => 'NC_008719', # Sepik virus
-##           64303 => 'NC_009026', # Bussuquara virus
-##           59563 => 'NC_009028', # Ilheus virus
-##           44024 => 'NC_009029', # Kokobera virus
-#           40271 => 'NC_009823', # Hepatitis C virus genotype 2
+##          390844 => 'NC_008604', # Culex flavivirus; New mat_peptide in genbank as of JUN-2012; No mat_peptide in uniprot. 8/13
+##           64283 => 'NC_008718', # Entebbe bat virus; No mat_peptide in uniprot. 8/13
+##           44026 => 'NC_008719', # Sepik virus; No mat_peptide in uniprot. 8/13
+##           64303 => 'NC_009026', # Bussuquara virus; No mat_peptide in uniprot. 8/13
+##           59563 => 'NC_009028', # Ilheus virus; No mat_peptide in uniprot. 8/13
+##           44024 => 'NC_009029', # Kokobera virus; No mat_peptide in uniprot. 8/13
+#           40271 => 'NC_009823', # Hepatitis C virus genotype 2; No mat_peptide in uniprot. 8/13
 #          356114 => 'NC_009824', # Hepatitis C virus genotype 3; has 9 mat_peptides; E2/NS1 combined at 1489..2544
 #           33745 => 'NC_009825', # Hepatitis C virus genotype 4
 #           33746 => 'NC_009826', # Hepatitis C virus genotype 5
 #           42182 => 'NC_009827', # Hepatitis C virus genotype 6
-#           11082 => 'NC_009942', # West Nile virus (lineage I strain NY99), missing 2k
+# The following refseq for West Nile Virus, NC_009942 has been updated in Jun-2012. However it still has a few minor problems
+#           11082 => 'NC_009942', # West Nile virus (lineage I strain NY99), missing 2k; No mat_peptide in uniprot. 8/13
           390845 => 'NC_012932', # Aedes flavivirus; V1.2.0
           390844 => 'NC_008604', # Culex flavivirus; V1.2.0
           218849 => 'NC_005064', # Kamiti River virus; V1.2.0
@@ -750,10 +810,12 @@ sub initRefseq {
            11099 => 'NC_001461', # Bovine viral diarrhea virus 1; V1.2.0
          # Following species has even different cleavage pattern:
          # E1,E2,p7-NS2,ATPase,NS4A,NS4B,NS5A,NS5B
-         1307800 => 'NC_001837', # Hepatitis GB virus A; V1.2.0
+         1307800 => 'NC_001837', # Hepatitis GB virus A; V1.2.0; No mat_peptide in uniprot. 8/13
 #           39112 => 'NC_001837', # Hepatitis GB virus A; old taxid=39112 before 3/22/2013; V1.2.0
            54290 => 'NC_001710', # GB virus C/Hepatitis G virus; V1.2.0
            39113 => 'NC_001655', # Hepatitis GB virus B; has extra C mat_peptide at start; V1.2.0
+         1321391 => 'NC_021154', # Rodent pegivirus, has 11 mat_peptides; Having problem defining the gene_symbols
+         1281454 => 'NC_021153', # Rodent hepacivirus, has 10 mat_peptides; V1.2.1
            },
 
            # Family=Caliciviridae
@@ -768,21 +830,21 @@ sub initRefseq {
   33756 => 'NC_002615', #   33756 | European brown hare syndrome virus    | Good refseq w/ 7 mat_peptides, V1.1.6
   35612 => 'NC_002551', #   35612 | Vesicular exanthema of swine virus    | Good refseq w/ 7+2 mat_peptides, V1.1.6
   74724 => 'NC_004542', #   74724 | Canine calicivirus                    | Good refseq w/ 7+2 mat_peptides, V1.1.6
-## 106333 => 'NC_000940', #   95342 | Sapporo virus                         | No mat_peptide in refseq
-## 234601 => 'NC_010624', #   95342 | Sapporo virus                         | No mat_peptide in refseq
-# 290314 => 'NC_006554', #   95342 | Sapporo virus                         | Good refseq w/ 1 mat_peptides
-## 291175 => 'NC_006269', #   95342 | Sapporo virus                         | No mat_peptide in refseq
+#@ 106333 => 'NC_000940', #   95342 | Sapporo virus                         | No mat_peptide in refseq; 7 mat_peptides in uniprot, 8/13; V1.2.1
+#@ 234601 => 'NC_010624', #   95342 | Sapporo virus                         | Good refseq w/ 1 mat_peptides; 7 mat_peptides in uniprot, 8/13; V1.2.1
+# 290314 => 'NC_006554', #   95342 | Sapporo virus                         | Good refseq w/ 1 mat_peptides; No mat_peptide in uniprot. 8/13
+#@ 291175 => 'NC_006269', #   95342 | Sapporo virus                         | No mat_peptide in refseq; 7 mat_peptides in uniprot, 8/13; V1.2.1
  146073 => 'NC_004541', #  146073 | Walrus calicivirus                    | Good refseq w/ 7+2 mat_peptides, V1.1.6
-## 303317 => 'NC_008580', #  303317 | Rabbit vesivirus                      | No mat_peptide in refseq
+## 303317 => 'NC_008580', #  303317 | Rabbit vesivirus                      | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
  # NC_008311 seems good enough to be used as RefSeq for species 357231
  223997 => 'NC_008311', #  357231 | Murine norovirus                      | Good refseq w/ 6 mat_peptides, V1.1.6
  357231 => 'NC_008311', #  357231 | Murine norovirus                      | Good refseq w/ 6 mat_peptides, V1.1.6
-## 436911 => 'NC_011050', #  436911 | Steller sea lion vesivirus            | No mat_peptide in refseq
-## 576948 => 'NC_011704', #  576948 | Rabbit calicivirus Australia 1 MIC-07 | No mat_peptide in refseq
-## 520973 => 'NC_012699', #  646294 | St-Valerien swine virus               | No mat_peptide in refseq
-## 190239 => 'NC_004064', #  696856 | Newbury-1 virus                       | No mat_peptide in refseq
-# 331642 => 'NC_007916', #  696856 | Newbury-1 virus                       | Good refseq w/ 2 mat_peptides
-##1185359 => 'NC_017936', # 1185359 | Bat sapovirus TLC58/HK                | No mat_peptide in refseq
+## 436911 => 'NC_011050', #  436911 | Steller sea lion vesivirus            | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+## 576948 => 'NC_011704', #  576948 | Rabbit calicivirus Australia 1 MIC-07 | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+## 520973 => 'NC_012699', #  646294 | St-Valerien swine virus               | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+#@ 190239 => 'NC_004064', #  696856 | Newbury-1 virus                       | No mat_peptide in refseq; 7 mat_peptides in uniprot, 8/13; V1.2.1
+#@ 331642 => 'NC_007916', #  696856 | Newbury-1 virus                       | Good refseq w/ 2 mat_peptides; 7 mat_peptides in uniprot, 8/13; V1.2.1
+##1185359 => 'NC_017936', # 1185359 | Bat sapovirus TLC58/HK                | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
 #+---------+-----------+-----------+---------------------------------------+
 #19 rows in set (0.24 sec)
            },
@@ -790,6 +852,7 @@ sub initRefseq {
            # Family=Togaviridae
            'Togaviridae' => {
   # Alphavirus
+  # the nsP4(5703..7520) in NC_001449 is 1 AA short from the end of polyprotein
   11036 => 'NC_001449', # 11036 |     11036 | Venezuelan equine encephalitis virus; Ver1.1.3
   11027 => 'NC_001512', # 11027 |     11027 | O'nyong-nyong virus; Ver1.1.3
   11029 => 'NC_001544', # 11029 |     11029 | Ross River virus; Ver1.1.3
@@ -803,14 +866,15 @@ sub initRefseq {
   11039 => 'NC_003908', # 11039 |     11039 | Western equine encephalomyelitis virus; Ver1.1.3
   84589 => 'NC_003930', # 84589 |     84589 | Salmon pancreas disease virus; Ver1.1.3
   # Following line is used for creating annotation in NC_004162
-#  37124 => 'NC_001512', # 37124 |     37124 | Chikungunya virus, refseq=O'nyong-nyong virus
+#  37124 => 'NC_001512', # 37124 |     37124 | Chikungunya virus, refseq=O'nyong-nyong virus; Used to create NC_004162_msaa.gb
   37124 => 'NC_004162', # 37124 |     37124 | Chikungunya virus; Ver1.1.3
-#  59300 => 'NC_001544', # 59300 |     59300 | Getah virus, refseq=Ross River virus; Used to created NC_006558_msaa.gb
+#  59300 => 'NC_001544', # 59300 |     59300 | Getah virus, refseq=Ross River virus; Used to create NC_006558_msaa.gb
   59300 => 'NC_006558', # 59300 |     59300 | Getah virus; Ver1.1.3
   11024 => 'NC_012561', # 11024 |     11024 | Highlands J virus; Ver1.1.3
   48544 => 'NC_013528', # 48544 |     48544 | Fort Morgan virus; Ver1.1.3
   # Rubivirus
   11041 => 'NC_001545', # 11041 |     11041 | Rubella virus; Ver1.1.3
+1440170 => 'NC_023812', # 1440170 |   11019 |   11018 | Madariaga virus       | Good refseq w/ 9 mat_peptides; V1.2.1
             },
 
            # Family=Coronaviridae
@@ -818,54 +882,59 @@ sub initRefseq {
 #+---------+-----------+-----------+---------------------------------------------------------+
 #| taxid   | accession | speciesid | species                                                 |
 #+---------+-----------+-----------+---------------------------------------------------------+
-#  11137 => 'NC_002645', #     11137 | Human coronavirus 229E          | No mat_peptide in refseq
+#@  11137 => 'NC_002645', #     11137 | Human coronavirus 229E          | No mat_peptide in refseq; 16 mat_peptides in uniprot, 8/13; V1.2.1
   28295 => 'NC_003436', #     28295 | Porcine epidemic diarrhea virus | Has 13 mat_peptides, but w/ gaps b/w them, species
-#  46473 => 'NC_007447', #     74501 | Bovine torovirus                | No mat_peptide in refseq
-# 277944 => 'NC_005831', #    277944 | Human coronavirus NL63          | No mat_peptide in refseq
+#  46473 => 'NC_007447', #     74501 | Bovine torovirus                | No mat_peptide in refseq; 15 mat_peptides in uniprot, 8/13
+#@ 277944 => 'NC_005831', #    277944 | Human coronavirus NL63          | No mat_peptide in refseq; 15 mat_peptides in uniprot, 8/13; V1.2.1
  290028 => 'NC_006577', #    290028 | Human coronavirus HKU1          | Has 15 mat_peptides; Ver1.1.4, species
-# 389230 => 'NC_008315', #    389230 | Bat coronavirus (BtCoV/133/2005)| No mat_peptide in refseq
-# 393767 => 'NC_010437', #    393767 | Bat coronavirus 1A              | No mat_peptide in refseq
-# 393768 => 'NC_010436', #    393768 | Bat coronavirus 1B              | No mat_peptide in refseq
-# 405554 => 'NC_008516', #    405554 | White bream virus               | No mat_peptide in refseq
-# 502105 => 'NC_012949', #    502105 | Bovine respiratory coronavirus bovine/US/OH-440-TC/1996 | No mat_peptide in refseq
-# 502108 => 'NC_012948', #    502108 | Bovine respiratory coronavirus AH187 | No mat_peptide in refseq
-# 627439 => 'NC_012950', #    627439 | Human enteric coronavirus strain 4408| No mat_peptide in refseq
-#  11135 => 'NC_002306', #    693997 | Alphacoronavirus 1              | No mat_peptide in refseq
-# 693998 => 'NC_009988', #    693998 | Rhinolophus bat coronavirus HKU2| No mat_peptide in refseq
-# 693999 => 'NC_009657', #    693999 | Scotophilus bat coronavirus 512 | No mat_peptide in refseq
-# 694001 => 'NC_010438', #    694001 | Miniopterus bat coronavirus HKU8| No mat_peptide in refseq
+#@ 389230 => 'NC_008315', #    389230 | Bat coronavirus (BtCoV/133/2005)| No mat_peptide in refseq; 15 mat_peptides in uniprot, 8/13; V1.2.1
+# 393767 => 'NC_010437', #    393767 | Bat coronavirus 1A              | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+# 393768 => 'NC_010436', #    393768 | Bat coronavirus 1B              | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+# 405554 => 'NC_008516', #    405554 | White bream virus               | No mat_peptide in refseq; 14 mat_peptides in uniprot, 8/13
+# 502105 => 'NC_012949', #    502105 | Bovine respiratory coronavirus bovine/US/OH-440-TC/1996 | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+# 502108 => 'NC_012948', #    502108 | Bovine respiratory coronavirus AH187 | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+# 627439 => 'NC_012950', #    627439 | Human enteric coronavirus strain 4408| No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+#@  11135 => 'NC_002306', #    693997 | Alphacoronavirus 1              | No mat_peptide in refseq; 15 mat_peptides in uniprot, 8/13; V1.2.1
+# 693998 => 'NC_009988', #    693998 | Rhinolophus bat coronavirus HKU2| No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+#@ 693999 => 'NC_009657', #    693999 | Scotophilus bat coronavirus 512 | No mat_peptide in refseq; 15 mat_peptides in uniprot, 8/13; V1.2.1
+# 694001 => 'NC_010438', #    694001 | Miniopterus bat coronavirus HKU8| No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
 # The species Bovine coronavirus (11128) has been lumped into species Betacoronavirus 1 (694003), and is no longer a species
 # Alignment of all polyproteins in 694003 showed no gaps around the cleavage sites
   11128 => 'NC_003045', #    694003 | Betacoronavirus 1               | has mat_peptide; Ver1.1.4
  694003 => 'NC_003045', #    694003 | Betacoronavirus 1               | Has 15 mat_peptides; Ver1.1.5, species
-#  31631 => 'NC_005147', #    694003 | Betacoronavirus 1               | No mat_peptide in refseq
-#  42005 => 'NC_007732', #    694003 | Betacoronavirus 1               | No mat_peptide in refseq
-# 136187 => 'NC_010327', #    694003 | Betacoronavirus 1               | No mat_peptide in refseq
+#@  31631 => 'NC_005147', #    694003 | Betacoronavirus 1               | No mat_peptide in refseq; 15 mat_peptides in uniprot, 8/13; V1.2.1
+#  42005 => 'NC_007732', #    694003 | Betacoronavirus 1               | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+# 136187 => 'NC_010327', #    694003 | Betacoronavirus 1               | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
 # Murine hepatitis virus (11138) that used to be species has been moved to under Murine coronavirus (694005)
   11142 => 'NC_001846', #    694005 | Murine coronavirus              | has mat_peptide; Ver1.1.4
  694005 => 'NC_001846', #    694005 | Murine coronavirus              | has mat_peptide; Ver1.1.4, species
-  11144 => 'NC_006852', #    694005 | Murine coronavirus              | has mat_peptide; Ver1.1.4
-# 502102 => 'NC_012936', #    694005 | Murine coronavirus              | No mat_peptide in refseq
-# 694006 => 'NC_009021', #    694006 | Rousettus bat coronavirus HKU9  | No mat_peptide in refseq
-# 694007 => 'NC_009019', #    694007 | Tylonycteris bat coronavirus HKU4    | No mat_peptide in refseq
-# 694008 => 'NC_009020', #    694008 | Pipistrellus bat coronavirus HKU5    | No mat_peptide in refseq
+# 11144 => 'NC_006852', #    694005 | Murine coronavirus              | has mat_peptide; Ver1.1.4
+  11144 => 'AC_000192', #    694005 | Murine coronavirus              | has mat_peptide; Ver1.2.1, 5/13/14
+# 502102 => 'NC_012936', #    694005 | Murine coronavirus              | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+#@ 694006 => 'NC_009021', #    694006 | Rousettus bat coronavirus HKU9  | No mat_peptide in refseq; 15 mat_peptides in uniprot, 8/13; V1.2.1
+#@ 694007 => 'NC_009019', #    694007 | Tylonycteris bat coronavirus HKU4    | No mat_peptide in refseq; 15 mat_peptides in uniprot, 8/13; V1.2.1
+#@ 694008 => 'NC_009020', #    694008 | Pipistrellus bat coronavirus HKU5    | No mat_peptide in refseq; 15 mat_peptides in uniprot, 8/13; V1.2.1
  227859 => 'NC_004718', #    694009 | Severe acute respiratory syndrome-related coronavirus| Has 15 mat_peptides; Ver1.1.4, species
  694009 => 'NC_004718', #    694009 | Severe acute respiratory syndrome-related coronavirus| Has 15 mat_peptides; Ver1.1.4, species
+# For NC_019843 of MERS, follow the annotation of SARS NC_004718, then needs manual adjustment
+#1335626 => 'NC_004718', #   1335626 | Middle East respiratory syndrome coronavirus| following the annotation in SARS; Ver1.2.1, species
+1335626 => 'NC_019843', #   1335626 | Middle East respiratory syndrome coronavirus| Manual annotation based on SARS; Ver1.2.1, species
   11120 => 'NC_001451', #    694014 | Avian coronavirus               | Has 14 mat_peptides; Ver1.1.4
   11152 => 'NC_010800', #    694014 | Avian coronavirus               | Has 15 mat_peptides; Ver1.1.4
  694014 => 'NC_010800', #    694014 | Avian coronavirus               | Has 15 mat_peptides; Ver1.1.4, species
-# 572289 => 'NC_011550', #    694014 | Avian coronavirus               | No mat_peptide in refseq
-# 572290 => 'NC_011549', #    694014 | Avian coronavirus               | No mat_peptide in refseq
-# 694015 => 'NC_010646', #    694015 | Beluga Whale coronavirus SW1    | No mat_peptide in refseq
-# 864596 => 'NC_014470', #    864596 | Bat coronavirus BM48-31/BGR/2008| No mat_peptide in refseq
-#1159902 => 'NC_016996', #   1159902 | Common-moorhen coronavirus HKU21| No mat_peptide in refseq
-#1159903 => 'NC_016993', #   1159903 | Magpie-robin coronavirus HKU18  | No mat_peptide in refseq
-#1159904 => 'NC_016994', #   1159904 | Night-heron coronavirus HKU19   | No mat_peptide in refseq
-#1159905 => 'NC_016990', #   1159905 | Porcine coronavirus HKU15       | No mat_peptide in refseq
-#1159906 => 'NC_016992', #   1159906 | Sparrow coronavirus HKU17       | No mat_peptide in refseq
-#1159907 => 'NC_016991', #   1159907 | White-eye coronavirus HKU16     | No mat_peptide in refseq
-#1159908 => 'NC_016995', #   1159908 | Wigeon coronavirus HKU20        | No mat_peptide in refseq
-#1160968 => 'NC_017083', #   1160968 | Rabbit coronavirus HKU14        | No mat_peptide in refseq
+# 572289 => 'NC_011550', #    694014 | Avian coronavirus               | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+# 572290 => 'NC_011549', #    694014 | Avian coronavirus               | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+# 694015 => 'NC_010646', #    694015 | Beluga Whale coronavirus SW1    | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+# 864596 => 'NC_014470', #    864596 | Bat coronavirus BM48-31/BGR/2008| No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+#1159902 => 'NC_016996', #   1159902 | Common-moorhen coronavirus HKU21| No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+#1159903 => 'NC_016993', #   1159903 | Magpie-robin coronavirus HKU18  | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+#1159904 => 'NC_016994', #   1159904 | Night-heron coronavirus HKU19   | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+#1159905 => 'NC_016990', #   1159905 | Porcine coronavirus HKU15       | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+#1159906 => 'NC_016992', #   1159906 | Sparrow coronavirus HKU17       | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+#1159907 => 'NC_016991', #   1159907 | White-eye coronavirus HKU16     | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+#1159908 => 'NC_016995', #   1159908 | Wigeon coronavirus HKU20        | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+#1160968 => 'NC_017083', #   1160968 | Rabbit coronavirus HKU14        | No mat_peptide in refseq; No mat_peptide in uniprot. 8/13
+ 1384461 => 'NC_022103', #   1384461 | Bat coronavirus CDPHE15/USA/2006 | Has 17 mat_peptides; Ver1.2.0, species
 #+---------+-----------+-----------+---------------------------------------------------------+
            },
 
@@ -1072,6 +1141,7 @@ sub initRefseq {
    47000 => 'NC_003982', #   47000 | Equine rhinitis A virus          | Good refseq w/ 12 mat_peptides, V1.1.6
    70796 => 'NC_003990', #   70796 | Avian encephalomyelitis virus    | Good refseq w/ 11 mat_peptides, V1.1.6
    72149 => 'NC_001918', #   72149 | Aichi virus                      | Good refseq w/ 10 mat_peptides, V1.1.6
+ 1313215 => 'NC_001918', #   72149 | Aichi virus                      | Good refseq w/ 10 mat_peptides, V1.2.1
   106966 => 'NC_004441', #  106966 | Porcine enterovirus B            | Good refseq w/ 11 mat_peptides, V1.1.6
   118140 => 'NC_003985', #  118140 | Porcine teschovirus              | Good refseq w/ 12 mat_peptides, V1.1.6
   138948 => 'NC_001612', #  138948 | Human enterovirus A              | Good refseq w/ 11 mat_peptides, V1.1.6
@@ -1102,24 +1172,30 @@ sub initRefseq {
   147712 => 'NC_001490', #  147712 | Human rhinovirus B               | Good refseq w/ 11 mat_peptides, V1.1.6
   172314 => 'NC_003976', #  172314 | Ljungan virus                    | Good refseq w/ 11 mat_peptides, V1.1.6
   184753 => 'NC_010384', #  184753 | Simian picornavirus strain N125  | Good refseq w/ 11 mat_peptides, V1.1.6
-  184754 => 'NC_013695', #  184754 | Simian picornavirus strain N203  | Good refseq w/ 11 mat_peptides, V1.1.6
-  194965 => 'NC_004421', #  194965 | Bovine kobuvirus                 | Good refseq w/ 11 mat_peptides, V1.1.6
+  # species=1330521 has 2 refseqs, using NC_010415 instead
+#  184754 => 'NC_013695', #  184754 | Simian picornavirus strain N203  | Good refseq w/ 11 mat_peptides, V1.1.6
+# 1330521 => 'NC_013695', #  1330521 | Enterovirus J                   | Good refseq w/ 11 mat_peptides, V1.2.1
+#  194965 => 'NC_004421', #  194965 | Bovine kobuvirus                 | Good refseq w/ 11 mat_peptides, V1.1.6
+ 1476554 => 'NC_004421', #  194965 | Bovine kobuvirus                 | Good refseq w/ 11 mat_peptides, V1.2.1, species
   195054 => 'NC_001897', #  195054 | Human parechovirus               | Good refseq w/ 10 mat_peptides, V1.1.6
   204711 => 'NC_001366', #  204711 | Theilovirus                      | Good refseq w/ 12 mat_peptides, V1.1.6
   434309 => 'NC_009448', #  204711 | Theilovirus                      | Good refseq w/ 12 mat_peptides, V1.1.6
   511755 => 'NC_010810', #  204711 | Theilovirus                      | Good refseq w/ 12 mat_peptides, V1.1.6
-##  263531 => 'NC_008714', #  263531 | Possum enterovirus W1            | No mat_peptide in refseq
+  263531 => 'NC_008714', #  263531 | Possum enterovirus W1            | Good refseq w/ 11 mat_peptides, V1.2.1
 ##  263532 => 'NC_008715', #  263532 | Possum enterovirus W6            | No mat_peptide in refseq
   310907 => 'NC_003988', #  310907 | Simian enterovirus A             | Good refseq w/ 11 mat_peptides, V1.1.6
  # There are problems with following refseq (NC_003983) for Equine rhinitis B virus, so the species is left out
+ # Double coverage between 3A-3B, 3B-3C
 ##   47001 => 'NC_003983', #  312185 | Equine rhinitis B virus          | Good refseq w/ 12 mat_peptides
  # There are problems with following refseq (NC_003077) for Equine rhinitis B virus, so the species is left out
 ##  168014 => 'NC_003077', #  312185 | Equine rhinitis B virus          | Good refseq w/ 12 mat_peptides
 ##  390157 => 'NC_011349', #  390157 | Seneca valley virus              | No mat_peptide in refseq
-  442860 => 'NC_010415', #  442860 | Simian enterovirus SV6           | Good refseq w/ 11 mat_peptides, V1.1.6
+#  442860 => 'NC_010415', #  442860 | Simian enterovirus SV6           | Good refseq w/ 11 mat_peptides, V1.1.6
+ 1330521 => 'NC_010415', #  1330521 | Enterovirus J                   | Good refseq w/ 11 mat_peptides, V1.1.6
   463676 => 'NC_009996', #  463676 | Human rhinovirus C               | Good refseq w/ 11 mat_peptides, V1.1.6
   471728 => 'NC_009891', #  471728 | Seal picornavirus type 1         | Good refseq w/ 11 mat_peptides, V1.1.6
-  586419 => 'NC_012800', #  586419 | Human cosavirus A                | Good refseq w/ 11 mat_peptides, V1.1.6
+#  586419 => 'NC_012800', #  586419 | Human cosavirus A                | Good refseq w/ 11 mat_peptides, V1.1.6
+ 1330491 => 'NC_012800', #  1330491 | Cosavirus A                     | Good refseq w/ 11 mat_peptides, V1.2.1, species
   586420 => 'NC_012801', #  586420 | Human cosavirus B                | Good refseq w/ 11 mat_peptides, V1.1.6
   586422 => 'NC_012802', #  586422 | Human cosavirus D                | Good refseq w/ 11 mat_peptides, V1.1.6
   586423 => 'NC_012798', #  586423 | Human cosavirus E                | Good refseq w/ 11 mat_peptides, V1.1.6
@@ -1149,7 +1225,16 @@ sub initRefseq {
 ## 1136133 => 'NC_016769', # 1156769 | Porcine kobuvirus                | No mat_peptide in refseq
  1210913 => 'NC_018226', # 1210913 | Swine pasivirus 1                | Good refseq w/ 11 mat_peptides, V1.1.6
 ## 1214230 => 'NC_018400', # 1214230 | Turkey gallivirus                | No mat_peptide in refseq
- 1233320 => 'NC_018668', # 1233320 | Bovine hungarovirus              | Good refseq w/ 12 mat_peptides, V1.1.6
+# 1233320 => 'NC_018668', # 1233320 | Bovine hungarovirus              | Good refseq w/ 12 mat_peptides, V1.1.6. This is old taxon
+ 1431464 => 'NC_018668', # 1431460 | Hunnivirus A                 | Good refseq w/ 12 mat_peptides, V1.2.1
+ 1150861 => 'NC_021178', # 1330068 | Cadicivirus A                | Good refseq w/ 11 mat_peptides, V1.2.1
+ 1330520 => 'NC_021220', # 1330520 | Enterovirus F                | Good refseq w/ 11 mat_peptides, V1.2.1
+ 1294177 => 'NC_021482', # 1294177 | Sebokele virus 1             | Good refseq w/ 10 mat_peptides, V1.2.1
+ 1398149 => 'NC_022332', # 1398149 | Eel picornavirus 1           | Good refseq w/ 11 mat_peptides, V1.2.1
+ 1416021 => 'NC_022802', # 1416021 | Feline sakobuvirus A         | Good refseq w/ 11 mat_peptides, V1.2.1
+ 1452516 => 'NC_023422', # 1452516 | Caprine kobuvirus            | Good refseq w/ 11 mat_peptides, V1.2.1
+ 1476208 => 'NC_023861', # 1476208 | Sicinivirus 1                | Good refseq w/ 11 mat_peptides, V1.2.1
+ 1483681 => 'NC_023988', # 1483681 | Tortoise rafivirus A         | Good refseq w/ 11 mat_peptides, V1.2.1
 #+---------+-----------+-----------+----------------------------------+
 #73 rows in set (0.01 sec)
     },

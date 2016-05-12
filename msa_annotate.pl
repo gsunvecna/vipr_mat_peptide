@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.1.8'); # Feb 21, 2013
+use version; our $VERSION = qv('1.2.1'); # Jul 08, 2013
 #use lib ("/home/peptide/loader/ext/BioPerl"); # This is for account peptide on Northrop machine 33
 use Getopt::Long;
 use English;

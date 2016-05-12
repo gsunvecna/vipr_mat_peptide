@@ -1,0 +1,47 @@
+LOCUS       FR675275                 406 bp    RNA     linear   VRL 26-JUL-2013
+DEFINITION  Hepatitis C virus subtype 1a partial gene for polyprotein, E1-E2
+            region, genomic RNA, isolate patient 9827, clone e9827a.
+ACCESSION   FR675275
+VERSION     FR675275.1  GI:317440396
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 1a
+  ORGANISM  Hepatitis C virus subtype 1a
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Gonzalez-Candelas,F., Bracho,M.A., Wrobel,B. and Moya,A.
+  TITLE     Molecular evolution in court: analysis of a large hepatitis C virus
+            outbreak from an evolving source
+  JOURNAL   BMC Biol. 11, 76 (2013)
+   PUBMED   23870105
+  REMARK    Publication Status: Online-Only
+REFERENCE   2  (bases 1 to 406)
+  AUTHORS   Bracho,M.A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (28-JUL-2010) Bracho M.A., Genomics and Health, CSISP,
+            Avinguda Catalunya 21, 46020, SPAIN
+FEATURES             Location/Qualifiers
+     source          1..406
+                     /organism="Hepatitis C virus subtype 1a"
+                     /mol_type="genomic RNA"
+                     /isolate="patient 9827"
+                     /db_xref="taxon:31646"
+                     /clone="e9827a"
+                     /country="Spain:Valencia"
+     CDS             <1..>406
+                     /pseudo
+                     /codon_start=2
+                     /product="polyprotein"
+     mat_peptide     <1..103
+                     /product="envelope glycoprotein 1, E1"
+     mat_peptide     104..>406
+                     /product="envelope glycoprotein 2, E2"
+ORIGIN      
+        1 tggtgcccac tggggagtcc tagcgggcat agcgtatttc tccatggtgg ggaactgggc
+       61 gaaggtcttg ctagtgctgt tgctgttcgc cggcgtcgat gcgtaaaccc ataccaccgg
+      121 gggggccgcc gcccagggcg cgcttggtat cgcctctttt ttttctcggg gcgccaggca
+      181 ggacatccag ctaatcaaca ccaacggcag ttggcacatt aatcgtactg ccctgaactg
+      241 taatgcgagc ctcgagaccg gctgggtagc ggggctcatc tactaccaca aattcaactc
+      301 ttcaggttgc cccgagagga tggccagctg tagacccctc gccgacttcg cccagggctg
+      361 gggccctatc agctacgcca acggaagtgg ccccgaacac cgcccc
+//

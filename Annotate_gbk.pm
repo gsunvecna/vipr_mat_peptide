@@ -261,7 +261,13 @@ sub extract_mature_peptides {
            my @s = $feat_obj->get_tag_values('translation');
            $translation = $s[0];
         }
-        my @parent_cds_seq = $parent_cds->get_tag_values('translation');
+        # Get translation for CDS
+        my @parent_cds_seq = ();
+        if ($parent_cds->has_tag('translation')) {
+            @parent_cds_seq = $parent_cds->get_tag_values('translation');
+        } else {
+            @parent_cds_seq = (Annotate_Util::get_new_translation( $parent_cds, $parent_cds));
+        }
         if ($translation =~ /[*]/) {
 #            $count_err->{total}++;
 #            $count_err->{stop_in_seq}++;

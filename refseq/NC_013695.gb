@@ -1,11 +1,11 @@
-LOCUS       NC_013695               7379 bp    RNA     linear   VRL 11-MAR-2010
-DEFINITION  Simian picornavirus strain N203, complete genome.
-ACCESSION   NC_013695
+LOCUS       NC_013695               7379 bp    RNA     linear   VRL 24-MAR-2014
+DEFINITION  Enterovirus J strain N203, complete genome.
+ACCESSION   NC_013695 NC_010384
 VERSION     NC_013695.1  GI:282598693
-DBLINK      Project: 42941
-KEYWORDS    .
-SOURCE      Simian picornavirus strain N203
-  ORGANISM  Simian picornavirus strain N203
+DBLINK      BioProject: PRJNA42941
+KEYWORDS    RefSeq.
+SOURCE      Enterovirus J
+  ORGANISM  Enterovirus J
             Viruses; ssRNA positive-strand viruses, no DNA stage;
             Picornavirales; Picornaviridae; Enterovirus.
 REFERENCE   1  (bases 1 to 7379)
@@ -39,24 +39,26 @@ REFERENCE   5  (bases 1 to 7379)
             Mailstop G-17, Atlanta, GA 30333, USA
 COMMENT     PROVISIONAL REFSEQ: This record has not yet been subject to final
             NCBI review. The reference sequence is identical to AF414373.
+            On May 28, 2013 this sequence version replaced gi:169247424.
             COMPLETENESS: full length.
 FEATURES             Location/Qualifiers
      source          1..7379
-                     /organism="Simian picornavirus strain N203"
+                     /organism="Enterovirus J"
                      /mol_type="genomic RNA"
                      /strain="N203"
-                     /db_xref="taxon:184754"
+                     /isolate="Simian picornavirus strain N203"
+                     /db_xref="taxon:1330521"
      5'UTR           1..737
      gene            738..7274
                      /locus_tag="SpVN203_gp1"
-                     /db_xref="GeneID:8684470"
+                     /db_xref="GeneID:15486940"
      CDS             738..7274
                      /locus_tag="SpVN203_gp1"
                      /codon_start=1
-                     /product="polyprotein"
+                     /product="genome polyprotein"
                      /protein_id="YP_003358790.1"
                      /db_xref="GI:282598694"
-                     /db_xref="GeneID:8684470"
+                     /db_xref="GeneID:15486940"
                      /translation="MGAQVSTQKSGSHETGTYATGGSTINYTNINYYKDSYAASASRQ
                      DFSQDPSKFTKPVVDALTEAAVPLKSPSAEACGYSDRVLQLTLGNSTITTQEAANIVV
                      GYGKWPEHLKPIDANSIDAPTKPDVAVNRFYTLKAKKWEKASKGWMWKLPDCLNDTGI
@@ -98,56 +100,62 @@ FEATURES             Location/Qualifiers
      mat_peptide     738..944
                      /locus_tag="SpVN203_gp1"
                      /product="1A (VP4)"
+                     /note="capsid protein VP4"
                      /protein_id="YP_003359166.1"
                      /db_xref="GI:282598695"
      mat_peptide     945..1703
                      /locus_tag="SpVN203_gp1"
                      /product="1B (VP2)"
+                     /note="capsid protein VP2"
                      /protein_id="YP_003359167.1"
                      /db_xref="GI:282598696"
      mat_peptide     1704..2429
                      /locus_tag="SpVN203_gp1"
                      /product="1C (VP3)"
+                     /note="capsid protein VP3"
                      /protein_id="YP_003359168.1"
                      /db_xref="GI:282598697"
      mat_peptide     2430..3275
                      /locus_tag="SpVN203_gp1"
                      /product="1D (VP1)"
+                     /note="capsid protein VP1"
                      /protein_id="YP_003359169.1"
                      /db_xref="GI:282598698"
      mat_peptide     3276..3725
                      /locus_tag="SpVN203_gp1"
-                     /product="2A"
+                     /product="protease 2A"
                      /protein_id="YP_003359170.1"
                      /db_xref="GI:282598699"
      mat_peptide     3726..4022
                      /locus_tag="SpVN203_gp1"
-                     /product="2B"
+                     /product="protein 2B"
                      /protein_id="YP_003359171.1"
                      /db_xref="GI:282598700"
      mat_peptide     4023..5009
                      /locus_tag="SpVN203_gp1"
-                     /product="2C"
+                     /product="protein 2C"
                      /protein_id="YP_003359172.1"
                      /db_xref="GI:282598701"
      mat_peptide     5010..5270
                      /locus_tag="SpVN203_gp1"
-                     /product="3A"
+                     /product="protein 3A"
                      /protein_id="YP_003359173.1"
                      /db_xref="GI:282598702"
      mat_peptide     5271..5336
                      /locus_tag="SpVN203_gp1"
                      /product="3B (VPg)"
+                     /note="Viral protein genome-linked"
                      /protein_id="YP_003359174.1"
                      /db_xref="GI:282598703"
      mat_peptide     5337..5885
                      /locus_tag="SpVN203_gp1"
-                     /product="3C"
+                     /product="protease 3C"
                      /protein_id="YP_003359175.1"
                      /db_xref="GI:282598704"
      mat_peptide     5886..7271
                      /locus_tag="SpVN203_gp1"
                      /product="3D"
+                     /note="RNA-directed RNA polymerase"
                      /protein_id="YP_003359176.1"
                      /db_xref="GI:282598705"
      3'UTR           7275..7379
@@ -276,4 +284,3 @@ ORIGIN
      7261 ttgactcttt ctaaattata tacaatcaat ttaaatgatt aggctaattg gctaaccctg
      7321 tcacgtatct ggacgtgaca aaacgtgaca ggggtaaatt tagcacatcc agagtgctt
 //
-

@@ -1,9 +1,9 @@
-LOCUS       NC_003436              28033 bp ss-RNA     linear   VRL 08-DEC-2008
+LOCUS       NC_003436              28033 bp ss-RNA     linear   VRL 13-DEC-2013
 DEFINITION  Porcine epidemic diarrhea virus, complete genome.
 ACCESSION   NC_003436
 VERSION     NC_003436.1  GI:19387576
-DBLINK      Project: 14739
-KEYWORDS    .
+DBLINK      BioProject: PRJNA14739
+KEYWORDS    RefSeq.
 SOURCE      Porcine epidemic diarrhea virus (PEDV)
   ORGANISM  Porcine epidemic diarrhea virus
             Viruses; ssRNA positive-strand viruses, no DNA stage; Nidovirales;
@@ -63,7 +63,7 @@ FEATURES             Location/Qualifiers
      gene            297..20641
                      /locus_tag="PEDVgp1"
                      /db_xref="GeneID:935181"
-     CDS             join(297..12605,12605..20641)
+     CDS             join(297..12620,12620..20641)
                      /locus_tag="PEDVgp1"
                      /ribosomal_slippage
                      /note="The putative mature peptides were added to the
@@ -71,8 +71,8 @@ FEATURES             Location/Qualifiers
                      /citation=[1]
                      /codon_start=1
                      /product="Pol1"
-                     /protein_id="NP_598309.1"
-                     /db_xref="GI:19387582"
+                     /protein_id="NP_598309.2"
+                     /db_xref="GI:565952968"
                      /db_xref="GeneID:935181"
                      /translation="MASNHVTLAFANDAEISAFGFCTASEAVSYYSEAAASGFMQCRF
                      VSLDLADTVEGLLPEDYVMVVIGTTKLSAYVDTFGSRPRNICGWLLFSNCNYFLEELE
@@ -144,8 +144,8 @@ FEATURES             Location/Qualifiers
                      AEGDGIVGEGKALYNNEGGRTFMYAFISDKPDLRVVKWEFDGGCNTIELEPPRKFLVD
                      SPNGAQIKYLYFVRNLNTLRRGAVLGYIGATVRLQAGKQTEQAINSSLLTLCAFAVDP
                      AKTYIDAVKSGHKPVGNCVKMLANGSGNGQAVTNGVEASTNQDSYGGASVCLYCRAHV
-                     EHPSMDGFCRLKGKYVQVPLGTVDPIRFVLENDVCKVCGCWLSNGCTCDRSIMQSTDY
-                     GLFKRVRGSSAARLEPCNGTDTQHVYRAFDIYNKDVACLGKFLKVNCVRLKNLDKHDA
+                     EHPSMDGFCRLKGKYVQVPLGTVDPIRFVLENDVCKVCGCWLSNGCTCDRSIMQSTDM
+                     AYLNRVRGSSAARLEPCNGTDTQHVYRAFDIYNKDVACLGKFLKVNCVRLKNLDKHDA
                      FYVVKRCTKSAMEHEQSIYSRLEKCGAIAEHDFFTWKDGRAIYGNVCRKDLTEYTMMD
                      LCYALRNFDENNCDVLKSILIKVGACEESYFNNKVWFDPVENEDIHRVYALLGTIVAR
                      AMLKCVKFCDAMVEQGIVGVVTLDNQDLNGDFYDFGDFTCSIKGMGVPICTSYYSYMM
@@ -244,7 +244,7 @@ FEATURES             Location/Qualifiers
                      /note="putative coronavirus nsp7"
                      /protein_id="NP_839964.1"
                      /db_xref="GI:30138160"
-     mat_peptide     join(12597..12605,12605..15376)
+     mat_peptide     join(12597..12620,12620..15376)
                      /locus_tag="PEDVgp1"
                      /product="RNA-dependent RNA polymerase"
                      /note="putative coronavirus nsp9 (RdRp)"

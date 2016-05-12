@@ -38,6 +38,33 @@ To-do:
 
 Changes
 
+Changes in V1.2.1, May, 2013
+1. Add the family to the output, so that it's clear what family the genome
+belongs to.
+2. Add function to include more reference CDS to the RefSeq CDS. The additional 
+ref CDS were chosen as the centroid sequences in the groups clustered by 
+uclust by RC Edgar, based on 90% identity search. This is done to make the
+alignment align better in term of aligning the cleavage sites. Without the
+additional CDS, alignment are more prone to error, such as following:
+==========
+ref=NC_001959|CDS=5..5374      ETEEEESEDQ IQMVPSDAVP E-G-KNKGKTKK GRGRKNNYNAFSRRGLSDEE
+ACC=KC175410|CDS=3..5102       .......DDE EFVISSDDIK T-E-GKKGKNKT GRGKK..HTAFSSKGLSDEE
+==========
+2581 aagatgatga ggagttcgtc atttcatctg acgacattaa aact-gag-ggt aagaaaggga
+===>                                    DDDIIIKK KTTT-EEE-GGG KKKKKKGGG
+==========
+  After adding 4 more polyproteins, the alignment form most of the genomes are
+correct. Exceptions include: AF097917 and AY126474, where the correct cleavage
+site can't be reliably determined based on alignment.
+
+3. Added MERS to the list of approved species. The refseq NC_019843 is
+annotated based on SARS refseq NC_004718 and the annotation from UniProt.
+4. Debugged the MSA=*..* tag in the note of the features annotated from
+different CDS based on same refseq mat_peptide, in the annotation of
+NC_019843 based on NC_004718. However, this turned out to be because of the
+different cleavage site. Since in the real run of the script, the refseq is
+closer to the target, this issue is not further pursued.
+
 Changes in V1.2.0, April, 2013
 1. Add a third nucleotide if the last codon has 2 nucleotides that can
 determine the amino acid already, in order to overcome the change from BioPerl
@@ -194,7 +221,7 @@ Modular design: functions grouped into 6 modules for easy upkeep
   Easy input/output
   Takes genbank file as input, output mat_peptides in fasta file with name <accession>_matpept_msagbk.faa. Also writes messages to stdout and stderr for monitoring/debugging. 
   Validated species/refseq via opt-in process
-  MSA-based annotation is only available for genomes in the species that have been validated. For other species, the annotation in genbank is take if present, or left blank otherwise
+  MSA-based annotation is only available for genomes in the species that have been validated. For other species, the annotation in genbank is taken if present, or left blank otherwise
   Easy addition of more validated species
   Simply add the genbank file to refseq/ directory, add a line in sub Annotate_Util::get_refseq_acc (format: speciesid=>accession, this should probably be changed to a file, instead of a subroutine), and define the gene symbols in the Annotate_symbol_records.txt.
 

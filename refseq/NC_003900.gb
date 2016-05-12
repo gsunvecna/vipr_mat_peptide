@@ -1,9 +1,9 @@
-LOCUS       NC_003900              11824 bp ss-RNA     linear   VRL 27-JUN-2012
+LOCUS       NC_003900              11824 bp ss-RNA     linear   VRL 13-DEC-2013
 DEFINITION  Aura virus, complete genome.
 ACCESSION   NC_003900
 VERSION     NC_003900.1  GI:21218488
 DBLINK      BioProject: PRJNA14830
-KEYWORDS    .
+KEYWORDS    RefSeq.
 SOURCE      Aura virus
   ORGANISM  Aura virus
             Viruses; ssRNA positive-strand viruses, no DNA stage; Togaviridae;
@@ -23,8 +23,8 @@ REFERENCE   3  (bases 1 to 11824)
   TITLE     Direct Submission
   JOURNAL   Submitted (08-FEB-1999) Vet. Virology, Justus-Liebig University,
             Frankfurter Str. 107, Giessen D-35392, Germany
-COMMENT     PROVISIONAL REFSEQ: This record has not yet been subject to final
-            NCBI review. The reference sequence was derived from AF126284.
+COMMENT     REVIEWED REFSEQ: This record has been curated by NCBI staff. The
+            reference sequence was derived from AF126284.
             The mature peptides were predicted and annotated at the NCBI by
             analogy with the annotation of the genome of Semliki forest virus
             (NC_003215) and other alphaviruses.
@@ -37,16 +37,21 @@ FEATURES             Location/Qualifiers
      gene            78..7577
                      /locus_tag="AURAVgp1"
                      /db_xref="GeneID:944525"
-     CDS             join(78..5723,5727..7577)
+     CDS             78..7577
                      /locus_tag="AURAVgp1"
+                     /inference="non-experimental evidence, no additional
+                     details recorded"
                      /note="The mature peptides were predicted and annotated at
                      the NCBI by analogy with the annotation of the genome of
                      Semliki forest virus (NC_003215) and other alphaviruses;
-                     contains leaky opal termination codon; Polyprotein 1"
+                     Inferred from its homology with non-structural polyprotein
+                     precursor nsP1234 of Sindbis virus (PMID 2521676 and PMID
+                     3339717). Contains leaky opal termination codon"
                      /codon_start=1
-                     /product="Nonstructural polyprotein"
-                     /protein_id="NP_632023.1"
-                     /db_xref="GI:21218489"
+                     /transl_except=(pos:5724..5726,aa:Trp)
+                     /product="Polyprotein 1"
+                     /protein_id="NP_632023.2"
+                     /db_xref="GI:565826042"
                      /db_xref="GeneID:944525"
                      /translation="MEKPTVHVDVDPQSPFVLQLQKSFPQFEIVAQQVTPNDHANARA
                      FSHLASKLIEHEIPTSVTILDIGSAPARRMYSEHKYHCVCPMRSPEDPDRLMNYASRL
@@ -80,19 +85,19 @@ FEATURES             Location/Qualifiers
                      VYINKDEPPVTPHTDSPPDTCSSRLSLTPTLSNAESDIVSLTFSEIDSELSSLNEPAR
                      HVMISSFKLRYTAIQALPQKLSWMREDRTPRQPPPVPPPRPKRAAKLSRLANQLNELR
                      RHATISSVQAEVHYNSGFTPEAELNERGSILRKPPPVPPLRPKQTTNLSRLANQLSMP
-                     ITFGDFAEGELDRLLTPSPTPTFGDFSQEEMDRFFGNRQYLTGVGGYIFSSDTGPGHL
-                     QQKSVIQNSTTEILIERSRLEKIHAPVLDLQKEEMLKCRYQMSPTVANKSRYQSRKVE
-                     NMKAVTTGRLLDGLKMYVTPDVEAECYKYTYPKPMYSASVPDRFVSPEVAVAVCNNFF
-                     HENYPTVASYQITDEYDAYLDMVEGSVSCLDTATFCPAKLRSFPKTHSYLEPTLRSAV
-                     PSAFQNTLQNVLSAATKRNCNVTQMRELPVLDSAVFNVECFKKYACNTDYWEEFKEKP
-                     IRITTECVTSYVARLKGPEAAALFAKTHQLVPLQEVPMDRFVMDMKRDVKVTPGTKHT
-                     EERPKVQVIQAAEPLATAYLCGIHRELVRRLTAVLLPNIHTLFDMSAEDFDAIIAANF
-                     SYVHPVLETDIGSFDKSQDDSLALTALMILEDLGVDDRLMDLIECAFGEITSVHLPTA
-                     TTFKFGAMMKSGMFLTLFVNTVLNVVIASRVLEQRLRDSKCAAFIGDDNIIHGVVSDK
-                     IMADRCATWMNMEVKIIDAVIGIKAPYFCGGFILEDQVTHTACRVSDPLKRLFKLGKP
-                     LPVDDEQDHDRRRALEDETRAWFRVGIQGELLKAVESRYEVQEVQPVLLALATFSRSD
-                     KAFKALRGSPRHLYGGPK"
-     mat_peptide     join(78..5723,5727..5744)
+                     ITFGDFAEGELDRLLTPSPTPTFGDFSQEEMDRFFGNRQYWLTGVGGYIFSSDTGPGH
+                     LQQKSVIQNSTTEILIERSRLEKIHAPVLDLQKEEMLKCRYQMSPTVANKSRYQSRKV
+                     ENMKAVTTGRLLDGLKMYVTPDVEAECYKYTYPKPMYSASVPDRFVSPEVAVAVCNNF
+                     FHENYPTVASYQITDEYDAYLDMVEGSVSCLDTATFCPAKLRSFPKTHSYLEPTLRSA
+                     VPSAFQNTLQNVLSAATKRNCNVTQMRELPVLDSAVFNVECFKKYACNTDYWEEFKEK
+                     PIRITTECVTSYVARLKGPEAAALFAKTHQLVPLQEVPMDRFVMDMKRDVKVTPGTKH
+                     TEERPKVQVIQAAEPLATAYLCGIHRELVRRLTAVLLPNIHTLFDMSAEDFDAIIAAN
+                     FSYVHPVLETDIGSFDKSQDDSLALTALMILEDLGVDDRLMDLIECAFGEITSVHLPT
+                     ATTFKFGAMMKSGMFLTLFVNTVLNVVIASRVLEQRLRDSKCAAFIGDDNIIHGVVSD
+                     KIMADRCATWMNMEVKIIDAVIGIKAPYFCGGFILEDQVTHTACRVSDPLKRLFKLGK
+                     PLPVDDEQDHDRRRALEDETRAWFRVGIQGELLKAVESRYEVQEVQPVLLALATFSRS
+                     DKAFKALRGSPRHLYGGPK"
+     mat_peptide     78..5744
                      /locus_tag="AURAVgp1"
                      /product="Nonstructural protein P123"
                      /note="together with nsP4, constitutes the minus-strand
@@ -122,7 +127,7 @@ FEATURES             Location/Qualifiers
                      papain-like proteinase"
                      /protein_id="NP_819011.1"
                      /db_xref="GI:29653353"
-     mat_peptide     join(4113..5723,5727..5744)
+     mat_peptide     4113..5744
                      /locus_tag="AURAVgp1"
                      /product="Nonstructural protein nsP3"
                      /note="phosphoprotein, polymerase complex component;

@@ -442,7 +442,7 @@ sub check_ranges {
             $head_tail .= substr($s,0,$head_tail_print_length).'.';
             $head_tail .= substr($s,length($s)-$head_tail_print_length);
             $head_tail .= '..' if ($gap && $gap ne ' ');
-            $head_tail .= '.^.' if ($loc2);
+            $head_tail .= ($loc->end < 10000) ? '.^.' : '..^..' if ($loc2);
             $head_tail .= '..' if ($gap && $gap ne ' ');
 #            print STDERR "$subn: head_tail=$s";
         }

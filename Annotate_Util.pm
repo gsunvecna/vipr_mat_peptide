@@ -240,8 +240,12 @@ sub get_polyprots {
             $debug && print STDERR " is not CDS. Skip.\n";
             next; # Skip those features such as source, gene, 5'URT
         } elsif (!$feat->has_tag('translation')) {
+          if ( 0 ) {
             $debug && print STDERR " has no translation. Skip.\n";
             next; # Skip those features such as source, gene, 5'URT
+          } else {
+             $feat->add_tag_value('translation', Annotate_Util::get_new_translation( $feat, $feat)); 
+          }
         } else {
             $debug && print STDERR " (potential polyprotein)\n";
         }
@@ -261,6 +265,8 @@ sub get_polyprots {
         }
         $debug && print STDERR "$subn: translation='$tr2'\n";
 
+        my $PCT_CONSERVED_MIN = 0.6667;
+        $PCT_CONSERVED_MIN = 0.5 if ($debug);
         my $pct_conserved = 0;
         my $refcds_set;
         $debug && print STDERR ("$subn: Now look through $#{$refpolyprots}+1 refcds for best cookie cutter\n");
@@ -272,6 +278,7 @@ sub get_polyprots {
             next if ($reffeat->primary_tag ne 'CDS');
 
             my $match = Annotate_Util::cmp_cds_bl2seq($cds, $reffeat);
+            $debug && printf STDERR ("$subn: \$match=%6.4f \$matchHigh=$matchHigh after sub Annotate_Util::cmp_cds_bl2seq\n", $match);
 #            $match = 100 if ($debug);
             $matchHigh = $match if ($matchHigh < $match);
             my $s_ref_loc = $reffeat->location->to_FTstring;
@@ -291,7 +298,7 @@ sub get_polyprots {
 
 #        }
             $debug && print STDERR ("$subn: Done looking through $#{$refpolyprots}+1 refcds\n");
-            if ($pct_conserved > 0.6667) {
+            if ($pct_conserved > $PCT_CONSERVED_MIN) {
         # Interesting case, in FJ588686: the CDS=246..12815 match with refcds very well, however, there is a large
         # gap at the middle, causing bl2seq to report 2 HSP, and neither is >0.67. This in turn causes the CDS to be
         # eliminated as candidate for annotation
@@ -369,7 +376,7 @@ sub get_polyprots {
             $debug && print STDERR "$subn: \$#polyprots=". keys(%$polyprots)."\n";
             $debug && print STDERR "$subn: \$polyprots=\n".Dumper($polyprots)."end of \$polyprots\n\n";
 
-            print STDERR "$subn: Found polyprotein in $acc at $ct_cds:".$cds->location->to_FTstring." \$num_cds=$num_cds for \$refseq=".$refcds_set->[1]->seq->accession_number."|$refset->[0]\n";
+            print STDERR "$subn: polyprotein: $acc:$ct_cds=".$cds->location->to_FTstring." #$num_cds for refseq=".$refcds_set->[1]->seq->accession_number."|$refset->[0]|".$refcds_set->[1]->location->to_FTstring."\n";
 
         }
 
@@ -419,6 +426,9 @@ sub cmp_cds_bl2seq {
     return $match_cds if (!defined($hit_cds));
     my $hsp_cds_conserved = 0;
     my $hsp_cds_hit_length = 0;
+    my $CONSERVED_RESIDUES_REQUIRED = 0.66667; # The target must have 66.667% conserved, needed for cases like KC175410 -7/8/2013
+#    my $CONSERVED_RESIDUES_REQUIRED = 0.75; # The target must have 75% residues conserved wrt refseq
+    $CONSERVED_RESIDUES_REQUIRED = 0.400 if ($debug); # 0.75 seems too high, eg AB005702, AF052446. --10/10/2012
     while (my $hsp_cds = $hit_cds->next_hsp) {
         $debug && print STDERR "$subn: \$hsp_cds=\n".Dumper($hsp_cds)."end of \$hsp_cds\n\n";
         # ignore any HSP shorter than 10% of hit_length
@@ -428,7 +438,8 @@ sub cmp_cds_bl2seq {
             next;
         }
         # ignore any HSP shorter than 66.7% of hit_length
-        if ($hsp_cds->{'CONSERVED'}  < 0.667*($hsp_cds->{'HIT_END'} - $hsp_cds->{'HIT_START'} +1)) {
+#        if ($hsp_cds->{'CONSERVED'}  < 0.667*($hsp_cds->{'HIT_END'} - $hsp_cds->{'HIT_START'} +1)) {
+        if ($hsp_cds->{'CONSERVED'}  < $CONSERVED_RESIDUES_REQUIRED*($hsp_cds->{'HIT_END'} - $hsp_cds->{'HIT_START'} +1)) {
             $debug && print STDERR "$subn: \$hsp_cds=".$hsp_cds->{'HIT_START'}."..".$hsp_cds->{'HIT_END'}." too few conserved=".$hsp_cds->{'CONSERVED'}.". Skip\n";
             next;
         }
@@ -437,10 +448,6 @@ sub cmp_cds_bl2seq {
         $hsp_cds_hit_length += $hsp_cds->{'HIT_END'} - $hsp_cds->{'HIT_START'} +1;
     }
     $debug && print STDERR "$subn: refcds: \$s1=$s1 \$s2=$s2 length of conserved=$hsp_cds_conserved\n";
-#    my $conserved_residues_required = 0.66667; # The target must have 66.667% residues conserved wrt refseq
-    my $CONSERVED_RESIDUES_REQUIRED = 0.75; # The target must have 75% residues conserved wrt refseq
-    $CONSERVED_RESIDUES_REQUIRED = 0.667 if ($debug);
-    $CONSERVED_RESIDUES_REQUIRED = 0.000; # 0.75 seems too high, eg AB005702, AF052446. --10/10/2012
     # This check assumes that the target CDS should never be longer than refcds, I think this is reasonable -gsun
     my $s3 = ($s1<$s2) ? $s1 : $s2;
     if ($hsp_cds_conserved >= $s3 * $CONSERVED_RESIDUES_REQUIRED) {
@@ -465,6 +472,7 @@ sub cmp_cds_bl2seq {
             $emsgs .= "$subn: \$hit_cds=\n".Dumper($hit_cds)."end of \$hit_cds\n\n";
     }
     $debug && (!$match_cds) && print STDERR "$emsgs";
+    $debug && print STDERR "$subn: \$pct_conserved=$pct_conserved, leaving subroutine\n";
 
 #    return $match_cds;
     return $pct_conserved;
@@ -539,25 +547,49 @@ if (0) {
     $debug && print STDERR "$subn: \$s  =".length($s)."\n";
 
     # Only keep the annotated mat_peptide that confirms to CDS. It should, just to double check
+    my @parent_cds_seq = ();
     if ($cds->has_tag('translation')) {
-      my @parent_cds_seq = $cds->get_tag_values('translation');
+      @parent_cds_seq = $cds->get_tag_values('translation');
 #      $parent_cds_seq[0] =~ s/[X]/./;
-      $debug && print STDERR "$subn: \$cds  =$parent_cds_seq[0]\n";
-      $debug && print STDERR "$subn: \$cds  =".length($parent_cds_seq[0])."\n";
-      if ($parent_cds_seq[0] =~ /($s1)/i
+    } else {
+        my $s1 = Annotate_Math::get_dna_byloc( $cds, $cds->{_gsf_seq}->seq);
+        if (length($s1) % 3 ==2 && substr($s1, length($s1)-2, 2) =~/([TU]C|C[TU]|CC|CG|AC|G[TU]|GC|GG)/i ) {
+            $s1 .= 'N';
+            print STDERR "$subn: Appended generic nucleotide 'N' to \$s1=".length($s1)." \$s1='$s1'\n";
+        }
+        $debug && print STDERR "$subn: \$s1  ='$s1'\n";
+        my $f = Bio::PrimarySeq->new(
+                         -seq      => $s1,
+                         -id       => '',	# id can't contain space
+                         -alphabet => 'dna'
+                                );
+        $debug && print STDERR "$subn: \$cds->strand() =".$cds->strand()."\n";
+#        $f->revcom() if ($feat->strand() == -1);
+        $debug && print STDERR "$subn: \$f=\n".Dumper($f)."End of \$f\n\n";
+        $s1 = $f->translate(); 
+        $debug && print STDERR "$subn: \$f=\n".Dumper($f)."End of \$f\n\n";
+        $debug && print STDERR "$subn: \$s=\n".Dumper($s)."End of \$s\n\n";
+        $s1 = $s1->seq; 
+        $s1 =~ s/[*]$// if ($s1 =~ /[*]$/);
+        $s1 =~ s/[*]/./g if ($s1 =~ /[*]/);
+        $s1 =~ s/[X]/./ig if ($s1 =~ /[X]/i);
+        @parent_cds_seq = ($s1);
+    }
+    $debug && print STDERR "$subn: \$cds  =$parent_cds_seq[0]\n";
+    $debug && print STDERR "$subn: \$cds  =".length($parent_cds_seq[0])."\n";
+    if ($parent_cds_seq[0] =~ /($s1)/i
            || $s1 =~ /$parent_cds_seq[0]/i
            || Annotate_Verify::diff_2str( $s1, substr($parent_cds_seq[0], 0, length($s1))) =~ /^L[.]+$/i) {
         $translation = $s;
         $debug && print STDERR "$subn: \$s  ='$s'\n";
         $debug && print STDERR "$subn: \$cds='".$parent_cds_seq[0]."'\n";
         $debug && print STDERR "$subn: diff='".Annotate_Verify::diff_2str( $s, $parent_cds_seq[0])."'\n";
-      } else {
+    } else {
         print STDERR "$subn: ERROR: \$acc=$acc translation for feature=".$feat->location->to_FTstring." doesn't match CDS.\n";
         print STDERR "$subn: \$s  ='$s'\n";
         print STDERR "$subn: \$cds='".$parent_cds_seq[0]."'\n";
         print STDERR "$subn: diff='".Annotate_Verify::diff_2str( $s, $parent_cds_seq[0])."'\n";
 #        return undef;
-      }
     }
 
     $debug && print STDERR "$subn: \$acc=$acc \$translation  ='$translation'\n";
@@ -606,7 +638,10 @@ sub assemble_new_feature {
                                  $aln_q,
                                  $aln_h,
                                  );
-    $debug && print STDERR "$subn: \$loc2=\n".Dumper($loc2)."End of \$loc2\n\n";
+    $debug && print STDERR "$subn:after Annotate_Math::msa_get_feature_loc \$loc2=\n".Dumper($loc2)."End of \$loc2\n\n";
+
+    Annotate_Util::checkHeadTailSimilarity($loc2, $errcode, $refcds, $reffeat, $cds, $aln, $refcds_id, $cds_id, $note,$exe_dir);
+    $debug && print STDERR "$subn: after checkHeadTailSimilarity \$loc2=\n".Dumper($loc2)."End of \$loc2\n\n";
 
     if (!exists($errcode->{alnstart}) || !$errcode->{alnstart} || !exists($errcode->{alnend}) || !$errcode->{alnend}) {
         $debug && print STDERR "$subn: ERROR \$loc2 has problem with alnstart=$errcode->{alnstart} or alnend=$errcode->{alnend}\n";
@@ -623,6 +658,7 @@ sub assemble_new_feature {
         print STDERR "$subn: ACC=$acc \$loc2=".$loc2->to_FTstring." has too long internal gap in alignment, discard.\n";
         return undef;
     }
+=head2
 #    if (($loc2->end-$loc2->start+1) < 0.15 * ($reffeat->location->end-$reffeat->location->start+1)) {
     # kick out those seqs that are too short, sometimes caused by artifacts in MUSCLE alignment
     # previously set at 50% of reffeat, which turns out too high. 10 AA might be a good one --10/22/2012
@@ -635,7 +671,7 @@ sub assemble_new_feature {
         }
         return undef;
     }
-
+=cut
     my $feat;
     $feat = Bio::SeqFeature::Generic->new();
     $feat->primary_tag($reffeat->primary_tag); # Take the primary_tag from reffeat
@@ -657,23 +693,23 @@ sub assemble_new_feature {
         my $tag = [$reffeat->get_tag_values('product')];
         # take care of the wrong product 2C (4195..5157) in NC_012800
         if ($reffeat->seq->accession_number eq 'NC_012800' && $reffeat->location->to_FTstring eq '4195..5157' && $tag->[0] eq '3C') {
-            $debug && print STDERR "$subn: refseq accession=".$reffeat->seq->accession_number."\n";
-            $debug && print STDERR "$subn: reffeat location=".$reffeat->location->to_FTstring."\n";
-            $debug && print STDERR "$subn: found erranous 3C\n";
+            print STDERR "$subn: refseq accession=".$reffeat->seq->accession_number.
+               " mat_peptide=".$reffeat->location->to_FTstring.
+               " found erranous 3C, changed to '2C'\n";
             $tag->[0] = '2C';
         }
         # take care of the wrong product 2C (3801..4763) in NC_012801
         if ($reffeat->seq->accession_number eq 'NC_012801' && $reffeat->location->to_FTstring eq '3801..4763' && $tag->[0] eq '3C') {
-            $debug && print STDERR "$subn: refseq accession=".$reffeat->seq->accession_number."\n";
-            $debug && print STDERR "$subn: reffeat location=".$reffeat->location->to_FTstring."\n";
-            $debug && print STDERR "$subn: found erranous 3C\n";
+            print STDERR "$subn: refseq accession=".$reffeat->seq->accession_number.
+               " mat_peptide=".$reffeat->location->to_FTstring.
+               " found erranous 3C, changed to '2C'\n";
             $tag->[0] = '2C';
         }
         # take care of the wrong product 2C (3787..4749) in NC_012802
         if ($reffeat->seq->accession_number eq 'NC_012802' && $reffeat->location->to_FTstring eq '3787..4749' && $tag->[0] eq '3C') {
-            $debug && print STDERR "$subn: refseq accession=".$reffeat->seq->accession_number."\n";
-            $debug && print STDERR "$subn: reffeat location=".$reffeat->location->to_FTstring."\n";
-            $debug && print STDERR "$subn: found erranous 3C\n";
+            print STDERR "$subn: refseq accession=".$reffeat->seq->accession_number.
+               " mat_peptide=".$reffeat->location->to_FTstring.
+               " found erranous 3C, changed to '2C'\n";
             $tag->[0] = '2C';
         }
         $feat->add_tag_value('product', $tag->[0]);
@@ -734,12 +770,26 @@ sub assemble_new_feature {
     $feat->add_tag_value('translation', $translation);
 #    print STDERR "$subn: \$feat=\n".Dumper($feat)."end of \$feat\n\n";
 
+#    if (($loc2->end-$loc2->start+1) < 0.15 * ($reffeat->location->end-$reffeat->location->start+1)) {
+    # kick out those seqs that are too short, sometimes caused by artifacts in MUSCLE alignment
+    # previously set at 50% of reffeat, which turns out too high. 10 AA might be a good one --10/22/2012
+    # Also, switching to CLUSTALW should reduce MSA artifacts
+    my $len_min = ($reffeat->location->end-$reffeat->location->start+1) * 0.33;
+    $len_min = 30 if ($len_min > 30);
+    if (($loc2->end-$loc2->start+1) < $len_min) {
+        if ($loc2->end-$loc2->start+1>2) {
+          print STDERR "$subn: ACC=$acc \$loc2=".$loc2->to_FTstring."=".($loc2->end-$loc2->start+1).":'$translation' is too short for ref=".$reffeat->location->to_FTstring."=".($reffeat->location->end-$reffeat->location->start+1).", discard.\n";
+        }
+        return undef;
+    }
+
     if ($cds->has_tag('locus_tag')) {
         my $tag = [$cds->get_tag_values('locus_tag')];
         $feat->add_tag_value('locus_tag', $tag->[0]);
     }
 
     my $gene_symbol = Annotate_Def::get_gene_symbol( $reffeat,$exe_dir);
+    $debug && print STDERR "$subn: ready to enter sub get_feature_id_desc\n";
     my ($id, $desc) = Annotate_Util::get_feature_id_desc( $feat, $errcode, $gene_symbol, $cds, $refcds, $reffeat);
     my @notes = ();
     $notes[0] = 'Desc:'.$desc;
@@ -751,6 +801,93 @@ sub assemble_new_feature {
 
     return ($feat);
 } # sub assemble_new_feature
+
+
+=head2 checkHeadTailSimilarity
+Takes a new location, checks if there is enough similarity at either end between the RefSeq and target
+ Requires a minimum similarity of 2 out of 5+5 AA at head+tail of the new mat_peptide
+ change $loc to undef if the requirement is not met
+=cut
+
+sub checkHeadTailSimilarity {
+    my ($loc2, $errcode, $refcds, $reffeat, $cds, $aln, $refcds_id, $cds_id, $note,$exe_dir) = @_;
+
+    my $debug = 0 || $debug_all;
+    my $subn = 'checkHeadTailSimilarity';
+
+    if (!exists($errcode->{low_similarity})) {
+        $errcode->{low_similarity} = 0;
+    }
+    my $min_similar_within5 = 2;
+    my $MAX_LENGTH = 05;
+    my $changed = 0;
+#    $debug && print STDERR "$subn: \$cds=\n".Dumper($cds)."end of \$cds\n";
+    $debug && print STDERR "$subn: \$errcode=\n".Dumper($errcode)."end of \$errcode\n";
+
+  # This for loop is used to take care of cases where 2 mat_peptides end at same
+  # location and there is a gap, eg. preM and M
+    my $acc = $cds->seq->accession_number;
+
+    # For loc, find the N-term and C-term
+    my ($str, $l, $n, $f);
+    my $ts = ['', ''];
+    my $rs = ['', ''];
+    my $aln_q = Annotate_Util::msa_get_aln( $aln, $refcds_id);
+    my $aln_h = Annotate_Util::msa_get_aln( $aln, $cds_id);
+
+    $debug && print STDERR "$subn: \$loc2=\n".Dumper($loc2)."end of \$loc2\n";
+    $rs->[0] = substr($aln_q->seq, $errcode->{alnstart}-1, $MAX_LENGTH);
+    $ts->[0] = substr($aln_h->seq, $errcode->{alnstart}-1, $MAX_LENGTH);
+    $rs->[1] = substr($aln_q->seq, $errcode->{alnend}-$MAX_LENGTH, $MAX_LENGTH);
+    $ts->[1] = substr($aln_h->seq, $errcode->{alnend}-$MAX_LENGTH, $MAX_LENGTH);
+
+    # Determine the reffeat for each feature
+    $debug && print STDERR "$subn: ACC=$acc \$rs='@$rs'\n";
+    $debug && print STDERR "$subn: ACC=$acc \$ts='@$ts'\n";
+
+    # Update the dscription to include GapAtCleavage
+
+    # The mat_peptide have to have some minimum similarity w.r.t. the ref mat_peptide. -May 17, 2013
+
+    my $similar_first5 = 0;
+    my $similar_last5 = 0;
+
+    $n = (length($rs->[0])<=length($ts->[0])) ? length($rs->[0]) : length($ts->[0]);
+    my ($rc, $tc);
+    foreach my $j (reverse 1 .. $n) {
+        $rc = uc substr($rs->[0], length($rs->[0])-$j, 1);
+        $tc = uc substr($ts->[0], length($ts->[0])-$j, 1);
+        next if ($rc eq '.' || $tc eq '.');
+        $similar_first5++ if ($j<=5 && Annotate_Def::similarAA($rc, $tc));
+        $debug && print STDERR "$subn: \$j=$j \$rc-\$tc:$rc-$tc \$similar_first5=$similar_first5 \$similar_last5=$similar_last5\n";
+    }
+    $rc = uc substr($rs->[0], length($rs->[0])-1, 1);
+    $tc = uc substr($ts->[0], length($ts->[0])-1, 1);
+
+    $n = (length($rs->[1])<=length($ts->[1])) ? length($rs->[1]) : length($ts->[1]);
+    foreach my $j (0 .. $n-1) {
+        $rc = uc substr($rs->[1], $j, 1);
+        $tc = uc substr($ts->[1], $j, 1);
+        next if ($rc eq '.' || $tc eq '.');
+        $similar_last5++ if ($j<=5 && Annotate_Def::similarAA($rc, $tc));
+        $debug && print STDERR "$subn: \$j=$j \$rc-\$tc:$rc-$tc \$similar_first5=$similar_first5 \$similar_last5=$similar_last5\n";
+    }
+    my $sim = $similar_first5 + $similar_last5;
+    $debug && print STDERR "$subn: ACC=$acc \$rs='@$rs'\n";
+    $debug && print STDERR "$subn: ACC=$acc \$ts='@$ts' there are $sim/". $MAX_LENGTH*2 ." similar AA";
+    $debug && print STDERR " among the first $MAX_LENGTH and last $MAX_LENGTH residues\n";
+
+    if ($sim < $min_similar_within5) {
+        print STDERR "$subn: ACC=$acc \$rs='@$rs'\n";
+        print STDERR "$subn: ACC=$acc \$ts='@$ts' there are $sim/". $MAX_LENGTH*2 ." similar AA";
+        print STDERR " among the first $MAX_LENGTH and last $MAX_LENGTH residues\n";
+        print STDERR "$subn: ERROR: less than required $min_similar_within5 similar residues, changing \$loc2=undef\n";
+        $loc2 = undef;
+        $errcode->{low_similarity} = 1;
+    }
+    $debug && print STDERR "$subn: \$errcode=\n".Dumper($errcode)."end of \$errcode\n";
+    return $changed;
+} # sub checkHeadTailSimilarity
 
 
 =head2 get_feature_id_desc
@@ -768,6 +905,7 @@ sub get_feature_id_desc {
     my $debug = 0 || $debug_all;
     my $subn = 'get_feature_id_desc';
 
+    $debug && print STDERR "$subn: \$feat=\n".Dumper($feat)."end of \$feat\n";
     my (@id);
     my $id = 0;
     if ($cds) {
@@ -798,7 +936,9 @@ sub get_feature_id_desc {
             }
         }
     }
-    $id = "CDS=unknown|" if (($id !~ /^CDS=/) ); # indicates a potential problem
+#    $id = "CDS=unknown|" if (($id !~ /^CDS=/) ); # indicates a potential problem
+    $id = "CDS=".$cds->location->to_FTstring."|" if (($id !~ /^CDS=/) ); # indicates a potential problem
+    $debug && print STDERR "$subn: \$id='$id'\n";
 
     # add the accession of target genome
     if ( 1 ) {
@@ -828,19 +968,22 @@ sub get_feature_id_desc {
 
     # add the range of mat_peptide
     $id .= 'Loc='. &get_DNA_loc($feat) .'|';
-    
+    $debug && print STDERR "$subn: \$id='$id'\n";
+
     if ($feat->has_tag('codon_start')) {
         my $codon_start = [$feat->get_tag_values('codon_start')];
         $codon_start = $codon_start->[0];
         $id .= 'cstart='. $codon_start;
     }
     $id .= '|';
+    $debug && print STDERR "$subn: \$id='$id'\n";
 
     # Add range in polyprotein. This is simply calculated from existing DNA coordinates.
     # One caveat is, in some cases, the last AA of polyprotein may have 2 coden, need special handling.
     my $s = '';
     $s = &get_AA_loc($feat, $cds);
     $id .= 'AA='. $s .'|';
+    $debug && print STDERR "$subn: \$id='$id'\n";
 
     # add gene symbol
     my $desc = $id;
@@ -875,6 +1018,7 @@ sub get_feature_id_desc {
     } else {
        $desc = $desc. 'Partial=N|'; # fixing the field --10/12/2012
     }
+    $debug && print STDERR "$subn: \$desc='$desc'\n";
 
     # add the product of mat_peptide
   if (1) {
@@ -949,15 +1093,19 @@ sub get_AA_loc {
 
     # Add range in polyprotein. This is simply calculated by comparing the sequence of mat_peptide with
     # that of the CDS, and finding the index.
+    $debug && print STDERR "$subn: Entering sub: \$feat=".$feat->location->to_FTstring." \$cds=".$cds->location->to_FTstring."\n";
     my $s = '0..0';
     if ( 1 ) {
-        $debug && print STDERR "$subn: \$feat=".$feat->location->to_FTstring." \$cds=".$cds->location->to_FTstring."\n";
         my $s_temp = -1;
         my $s1 = Annotate_Util::get_new_translation( $feat, $cds);
         $s1 = '' if (!$s1);
         $s1 =~ s/[.BJZ]/X/g; # Change all .BJZ to X
         my $s0 = '';
-        $s0 = [ $cds->get_tag_values('translation') ]->[0];
+        if ( 0 ) {
+            $s0 = [ $cds->get_tag_values('translation') ]->[0];
+        } else {
+            $s0 = Annotate_Util::get_new_translation( $cds, $cds);
+        }
         $s0 =~ s/[.BJZ]/X/g; # Change all .BJZ to X
         if ( $cds->strand!=-1 ) {
             $s_temp = $feat->location->start - $cds->location->start;
@@ -981,19 +1129,51 @@ sub get_AA_loc {
         $codon_start_feat = [$feat->get_tag_values('codon_start')]->[0] -1 if ($feat->has_tag('codon_start'));
         my $codon_start_cds = 0;
         $codon_start_cds = [$cds->get_tag_values('codon_start')]->[0] -1 if ($cds->has_tag('codon_start'));
+        my $gap1 = 0;
+        my $gap2 = 0;
+        if ( $cds->location->isa('Bio::Location::Split') ) {
+#            print "location=". $feat_obj->location->to_FTstring . "\n";
+            my @locs = ($cds->location->sub_Location);
+            for my $iloc (0 .. $#locs-1) {
+                my $loc = $locs[$iloc];
+#                $debug && print STDERR "$subn: \$loc=\n".Dumper($loc)."End of \$loc\n\n";
+#                $debug && print STDERR "$subn: \$loc->strand()=".$loc->strand()."\n";
+#                $debug && print STDERR "$subn: \$loc->strand()=".$feat_obj->location->strand()."\n";
+                if ($locs[$iloc+1]->start < $feat->location->start ) {
+                    $gap1 += $locs[$iloc+1]->start-1 - $loc->end;
+                    $gap2 += $locs[$iloc+1]->start-1 - $loc->end;
+                } elsif ($locs[$iloc+1]->end < $feat->location->end) {
+                    $gap2 += $locs[$iloc+1]->start-1 - $loc->end;
+                }
+            }
+        }
+        $debug && print STDERR "$subn: \$gap1=$gap1 \$gap2=$gap2 after checking CDS\n";
 
-        my $b0 = $feat->location->start +$codon_start_feat - $cds->location->start -$codon_start_cds;
+        my $b0 = 0;
+        if ($feat->location->start==$cds->location->start) {
+            $b0 = $feat->location->start +$codon_start_feat - $cds->location->start -$codon_start_cds -$gap1;
+        } else {
+            $b0 = $feat->location->start                    - $cds->location->start -$codon_start_cds -$gap1;
+        }
         $debug && print STDERR "$subn: \$b0=$b0 \$b0/3=". $b0 % 3 ."\n";
         $b0 = (($b0 % 3) ==0) ? $b0 /3 +1 : 0;
-        $debug && print STDERR "$subn: \$b0=$b0\n";
+        $debug && print STDERR "$subn: \$b0=$b0 after converting from DNA to AA\n";
 
-        my $e0 = $feat->location->end +$codon_start_feat + 1 - $cds->location->start -$codon_start_cds;
+        my $e0 = 0;
+        if ($feat->location->start==$cds->location->start) {
+            #$e0 = $feat->location->end +$codon_start_feat + 1 - $cds->location->start -$codon_start_cds;
+            $e0 = $feat->location->end                    + 1 - $cds->location->start -$codon_start_cds -$gap2;
+        } else {
+            $e0 = $feat->location->end                    + 1 - $cds->location->start -$codon_start_cds -$gap2;
+        }
         $debug && print STDERR "$subn: \$e0=$e0\n";
         $e0 +=1 if (($e0 +1) % 3 ==0); # some of the polyproteins have 2 nucleotides for the last codon
         $debug && print STDERR "$subn: \$e0=$e0\n";
-        $e0 = ($e0 % 3 ==0) ? $e0 /3 : 0;
-        $debug && print STDERR "$subn: \$e0=$e0\n";
-        $debug && print STDERR "$subn: \$b0=$b0 \$e0=$e0\n";
+        #$e0 = ($e0 % 3 ==0) ? $e0 /3 : 0;
+        $e0 = (($e0-1) % 3 ==0) ? $e0-1 : $e0;
+        $e0 = $e0 /3;
+        $debug && print STDERR "$subn: \$e0=$e0 after converting from DNA to AA\n";
+        $debug && print STDERR "$subn: \$b0=$b0 \$e0=$e0  after converting from DNA to AA\n";
         $s = $e0 - $b0 +1; # This is the length calculated from the DNA location
 
         # For split locations, any gap between sublocations needs to be accounted for
@@ -1134,14 +1314,14 @@ sub project_matpept {
                 my @tags = $feat->get_tag_values('note');
                 for (my $ii = 0; $ii<=$#tags; $ii++) {
                     $debug && print STDERR "$subn: \$tags[$ii] = $tags[$ii]\n";
-                    $symbol = $1 if ($tags[$ii] =~ /(symbol=[^|]+[|]product=[^|]+)([|]|$)/i);
-                    $symbol = $1 if ($tags[$ii] =~ /(symbol=[^|]+[|])/i);
+                    $symbol = $1 if ($tags[$ii] =~ /symbol=([^|]+[|]product=[^|]+)([|]|$)/i);
+                    $symbol = $1 if ($tags[$ii] =~ /symbol=([^|]+[|])/i);
                 }
                 @tags = $feat_old->get_tag_values('note');
                 for (my $ii = 0; $ii<=$#tags; $ii++) {
                     $debug && print STDERR "$subn: \$tags[$ii] = $tags[$ii]\n";
-                    $symbol2 = $1 if ($tags[$ii] =~ /(symbol=[^|]+[|]product=[^|]+)([|]|$)/i);
-                    $symbol2 = $1 if ($tags[$ii] =~ /(symbol=[^|]+[|])/i);
+                    $symbol2 = $1 if ($tags[$ii] =~ /symbol=([^|]+[|]product=[^|]+)([|]|$)/i);
+                    $symbol2 = $1 if ($tags[$ii] =~ /symbol=([^|]+[|])/i);
                 }
                 $debug && print STDERR "$subn: \$symbol ='$symbol' \$symbol2='$symbol2'\n";
                 my $feat_loc = $feat->location->to_FTstring;
@@ -1181,7 +1361,7 @@ sub project_matpept {
                     $debug && print STDERR "$subn: Don't see '=Y[|]\n";
                 }
                 last;
-            }
+            } # for my $feat_oldi (0..$#{$feats_all})
             push @$feats_all, $feat if (!$seen);
             $debug && print STDERR "$subn: \$feat=\n".Dumper($feat)."End of \$feat\n\n";
         } # while (($refset->[$ct+1]) && ($allowed_feats{$refset->[$ct+1]->primary_tag}))

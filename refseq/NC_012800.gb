@@ -1,11 +1,12 @@
-LOCUS       NC_012800               7632 bp ss-RNA     linear   VRL 16-JUN-2009
-DEFINITION  Human cosavirus A1, complete genome.
+LOCUS       NC_012800               7632 bp    RNA     linear   VRL 07-MAY-2013
+DEFINITION  Cosavirus A strain HCoSV-A1 polyprotein gene, complete cds.
 ACCESSION   NC_012800
 VERSION     NC_012800.1  GI:239828780
 DBLINK      Project: 38497
-KEYWORDS    .
-SOURCE      Human cosavirus A
-  ORGANISM  Human cosavirus A
+            BioProject: PRJNA38497
+KEYWORDS    RefSeq.
+SOURCE      Cosavirus A
+  ORGANISM  Cosavirus A
             Viruses; ssRNA positive-strand viruses, no DNA stage;
             Picornavirales; Picornaviridae; Cosavirus.
 REFERENCE   1  (bases 1 to 7632)
@@ -28,19 +29,19 @@ REFERENCE   3  (bases 1 to 7632)
   TITLE     Direct Submission
   JOURNAL   Submitted (05-NOV-2008) Molecular Virology, Blood Systems Research
             Institute, 270, Masonic Avenue, San Francisco, CA 94118, USA
-COMMENT     REVIEWED REFSEQ: This record has been curated by NCBI staff. The
-            reference sequence was derived from FJ438902.
+COMMENT     PROVISIONAL REFSEQ: This record has not yet been subject to final
+            NCBI review. The reference sequence is identical to FJ438902.
             Complete genome of Human Cosavirus, species A type 1.
             COMPLETENESS: full length.
 FEATURES             Location/Qualifiers
      source          1..7632
-                     /organism="Human cosavirus A"
+                     /organism="Cosavirus A"
                      /mol_type="genomic RNA"
                      /strain="HCoSV-A1"
                      /isolate="0553"
                      /isolation_source="feces"
                      /host="Homo sapiens"
-                     /db_xref="taxon:586419"
+                     /db_xref="taxon:1330491"
      5'UTR           <1..1164
      gene            1165..7539
                      /locus_tag="HCoSV-A_gp1"
@@ -278,4 +279,3 @@ ORIGIN
      7561 agatttattt tgaatttggc ttttaattcg gctttaattt ggttatttat tgggtatatt
      7621 caaatctaat ga
 //
-

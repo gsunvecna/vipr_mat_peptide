@@ -152,8 +152,10 @@ sub annotate_1gbk {
     $refpolyprots = Annotate_Def::get_refpolyprots( $refseqs, $inseq, $exe_dir);
     if ( !defined($refpolyprots) ) {
             my $species = Annotate_Def::getTaxonInfo( $inseq->species->ncbi_taxid);
+            my $fam = ($species->[6]) ? $species->[6] : 'unknown';
             $species = ($species->[4]) ? $species->[4] : '';
-            $comment = $acc." w/ taxid=".$inseq->species->ncbi_taxid."($species) not covered in V$Annotate_Def::VERSION";
+            $comment = $acc." w/ taxid=".$inseq->species->ncbi_taxid."($fam:$species)";
+            $comment .= " not covered in V$Annotate_Def::VERSION";
             return (undef, $comment);
     }
     my $n_reffeat = 0;
@@ -254,6 +256,7 @@ sub msa_seqid {
     $debug && print STDERR "$subn: \$str1='$str1'\n";
     return $str1;
 } # msa_seqid
+
 
 =head2 run_MSA
 Takes a hash of refseqs, and an array of target genomes, in the form of
@@ -364,15 +367,24 @@ sub run_MSA {
                   my $s2 = $values[0];
                   $s2 = $1 if ($s2 =~ /([^*]+)[*]$/); # to remove any trailing * in CDS
                   $s3 =~ s/[*]/./g if ($s3 =~ /[*]/);
-                  $s3 =~ s/X/./ig if ($s3 =~ /X/i);
+#                  $s3 =~ s/X/./ig if ($s3 =~ /X/i); # What's this for? This causes problem for FR675275 where this is a dot in the CDS sequence -11/19/2013
+                  $s3 =~ s/[.]/X/ig; # -11/19/2013
+                  $s2 =~ s/[.]/X/ig; # -11/19/2013
 #                  if ($s2 ne $s3) {
                   if ($s2 !~ /$s3/ && Annotate_Verify::diff_2str( $s3, $s2) !~ /^L[.]+$/i) {
                     print STDERR "$subn: \$s2='$s2'\n";
                     print STDERR "$subn: \$s3='$s3'\n";
-                    print STDERR "$subn: diff='".Annotate_Verify::diff_2str( $s2, $s3)."'\n";
-                    print STDERR "$subn: translation tag and translate don't match in CDS of $acc. Skip.\n";
-                    print STDOUT "$subn: translation tag and translate don't match in CDS of $acc. Skip.\n";
-                    next;
+                    my $sdiff = Annotate_Verify::diff_2str( $s2, $s3);
+                    print STDERR "$subn: diff='$sdiff'\n";
+                    $sdiff =~ s/[.]//gi;
+                    if (length($sdiff)>1) {
+                      print STDERR "$subn: translation tag and translate don't match in CDS of $acc. Skip.\n";
+                      print STDOUT "$subn: translation tag and translate don't match in CDS of $acc. Skip.\n";
+                      next;
+                    } else {
+                      print STDERR "$subn: diff='$sdiff'\n";
+                      print STDERR "$subn: The mismatch in CDS of $acc is only of 1 AA, proceed.\n";
+                    }
                   }
                   $s2 =~ s/[BJZ]/X/ig; # so that clustalw to align BJZ, instead of printing '.', eg DQ835769
                   $debug && print STDERR "$subn: \$s2=$s2\n";
@@ -385,6 +397,9 @@ sub run_MSA {
                                     );
                   $cds_all = []; # Clear all cds, run MUSCLE separately for each input CDS
                   push @$cds_all, $f1;
+                  if ( 1 ) {
+                      Annotate_Def::add_extra_refCDS( $cds_all, $exe_dir);
+                  }
                   push @$cds_all, $f2;
 
 if ( 0 ) {
@@ -408,7 +423,8 @@ if ( 0 ) {
                 #  Returns : Reference to a SimpleAlign object containing the sequence alignment
                 my $factory;
                 my $outfile_ext = $runMUSCLE ? 'afa' : 'msf';
-                my $outfile_name = "$dir_path/test.$outfile_ext";
+                my $outfile_name = sprintf("$dir_path/test_n%d_i%d.$outfile_ext", $n_set, $j);
+                print STDERR "$subn: MSA \$n_set=$n_set \$i=$i \$outfile_name='$outfile_name'\n";
                 if ($debug) {
                     my $display_id = $cds_all->[1]->display_id;
                     my $display_id2 = '';
@@ -422,7 +438,7 @@ if ( 0 ) {
                     $display_id2 =~ s/[.]{2}/_/i;
                     $display_id2 =~ s/[<>]//i;
                     $outfile_name = sprintf("$dir_path/test_%s_%02d.$outfile_ext", $display_id2, ++$uniqId);
-                    $debug && print STDERR "$subn: \$outfile_name='$outfile_name'\n";
+                    $debug && print STDERR "$subn: MSA \$outfile_name='$outfile_name'\n";
                     if (-e "./$outfile_name") {
                         my $copies = Annotate_Util::backupFiles( '.', $outfile_name, 8);
                         print STDERR "$subn: sub backupFiles made $copies backups\n";
@@ -436,6 +452,7 @@ if ( 0 ) {
 #                        $count++;
 #                    }
                 }
+                $debug && print STDERR "$subn: ready to run alignment\n";
     if ($runMUSCLE) {
                 @param = (
                    '-stable' => '',
@@ -503,14 +520,36 @@ sub combineFeatures {
     my $debug = 0 || $debug_all;
     my $subn = 'combineFeatures';
 
-    $debug && print STDERR "$subn: Entering $subn \$feats_all=\n". Dumper($feats_all) . "End of \$feats_all\n";
-    $debug && print STDERR "$subn: Entering $subn \$feats=\n". Dumper($feats) . "End of \$feats\n";
+    if ( 0 ) {
+        $debug && print STDERR "$subn: Entering $subn \$feats_all=\n". Dumper($feats_all) . "End of \$feats_all\n";
+    } else {
+                $debug && print STDERR "$subn: Entering $subn \$feats_all=\n";
+                for my $k1 (keys %$feats_all) {
+                    for my $k2 (keys %{$feats_all->{$k1}}) {
+                      for my $f (@{$feats_all->{$k1}->{$k2}}) {
+                        $debug && print STDERR "$subn: feats_all: k1=$k1 k2=$k2 ".$f->primary_tag.':'.$f->location->to_FTstring."\n";
+                      }
+                    }
+                }
+    }
+    if ( 0 ) {
+        $debug && print STDERR "$subn: Entering $subn \$feats=\n". Dumper($feats) . "End of \$feats\n";
+    } else {
+                $debug && print STDERR "$subn: Entering $subn \$feats=\n";
+                for my $k1 (keys %$feats) {
+                    for my $k2 (keys %{$feats->{$k1}}) {
+                      for my $f (@{$feats->{$k1}->{$k2}}) {
+                        $debug && print STDERR "$subn: feats: k1=$k1 k2=$k2 ".$f->primary_tag.':'.$f->location->to_FTstring."\n";
+                      }
+                    }
+                }
+    }
 
     # Incoorporate the new features to any existing list of features
     for my $nk1 (sort keys %$feats) { # refcds GI
-        $debug && print STDERR "$subn: \$nk1=$nk1\n";
+        $debug && print STDERR "$subn: \$nk1=$nk1: refcds\n";
         for my $nk2 (keys %{$feats->{$nk1}}) { # accession
-            $debug && print STDERR "$subn: \$nk1=$nk1 \$nk2=$nk2\n";
+            $debug && print STDERR "$subn: \$nk1=$nk1 \$nk2=$nk2: input genome\n";
 #              if (!exists($feats_all->{$nk2}->{$nk1})) {
 #                $debug && print STDERR "$subn: \$nk1=$nk1 \$nk2=$nk2 doesn't exist in \$feats_all, simply add\n";
 #                $feats_all->{$nk2}->{$nk1} = $feats->{$nk1}->{$nk2};
@@ -520,15 +559,18 @@ sub combineFeatures {
                 my $feat_kk = $feats->{$nk1}->{$nk2}->[$kk];
                 my $prod_kk = [ $feat_kk->get_tag_values('product') ];
                 $prod_kk = $prod_kk->[0];
+                $debug && print STDERR "$subn: \$nk1=$nk1 \$nk2=$nk2 \$kk=$kk:$prod_kk\n";
                 my $prod_kk_loc = $feat_kk->location->to_FTstring;
                 my $prod_kk_note = [ $feat_kk->get_tag_values('note') ];
                 for (@$prod_kk_note) { next if ($_!~/^Desc:/i); $prod_kk_note = $_; }
-                $debug && print STDERR "\n$subn: \$nk1=$nk1 \$nk2=$nk2 \$prod_kk='$prod_kk' $prod_kk_loc is being checked\n";
+                $debug && print STDERR "\n$subn: \$nk1=$nk1 \$nk2=$nk2 \$kk=$kk \$prod_kk='".$feat_kk->primary_tag.":$prod_kk_loc:$prod_kk' is being checked\n";
                 my $seen = 0;
 #                my $feat_ff;
                 # Check if the product name has been seen
-                $debug && print STDERR "$subn: \$nk1=$nk1 \$nk2=$nk2 \$feats_all has ".scalar keys(%$feats_all)." keys\n";
+                my @feats_all_keys = keys(%$feats_all);
+                $debug && print STDERR "$subn: \$nk1=$nk1 \$nk2=$nk2 \$feats_all has ".scalar @feats_all_keys." keys: '@feats_all_keys'\n";
                 for my $ok1 (keys %{$feats_all->{$nk2}}) {
+                $debug && print STDERR "$subn: \$nk1=$nk1 \$nk2=$nk2 \$kk=$kk \$ok1=$ok1: input genome\n";
                     $debug && print STDERR "$subn: \$nk1=$nk1 \$nk2=$nk2 \$ok1=$ok1\n";
                     $debug && print STDERR "$subn: \$kk=$kk \$prod_kk='$prod_kk' \$prod_kk_loc='$prod_kk_loc'\n";
                     for my $ff (0 .. $#{$feats_all->{$nk2}->{$ok1}}) {
@@ -538,28 +580,54 @@ sub combineFeatures {
                         my $prod_f_loc = $feat_ff->location->to_FTstring;
                         my $prod_f_note = [ $feat_ff->get_tag_values('note') ];
                         for (@$prod_f_note) { next if ($_!~/^Desc:/i); $prod_f_note = $_; }
-                        $debug && print STDERR "$subn: \$ff=$ff \$prod_f='$prod_f' $prod_f_loc\n";
 
 #                        next if ($prod_f ne $prod_kk);
-                        next if (!($prod_f_loc eq $prod_kk_loc || $prod_f eq $prod_kk));
+                        if (!($prod_f_loc eq $prod_kk_loc || $prod_f eq $prod_kk)) {
+                            $debug && print STDERR "$subn: \$ff=$ff $prod_kk_loc:$prod_kk vs $prod_f_loc:$prod_f are different\n";
+                            next;
+                        }
+                        $debug && print STDERR "$subn: \$ff=$ff \$prod_f='$prod_f' $prod_f_loc\n";
 
+                        $debug && print STDERR "$subn: \$prod_kk_loc=$prod_kk_loc:$prod_kk \n";
+                        $debug && print STDERR "$subn: \$prod_f_loc =$prod_f_loc:$prod_f have similar location/product\n";
                         $debug && print STDERR "$subn: \$kk=$kk \$feat_kk=\n". Dumper($feat_kk) . "End of \$feat_kk\n";
                         $debug && print STDERR "$subn: \$ff=$ff \$feat_ff=\n". Dumper($feat_ff) . "End of \$feat_ff\n";
-                        if ($prod_f eq $prod_kk) {
-                          my $len_kk = $feat_kk->location->end   - $feat_kk->location->start +1;
-                          my $len_ff = 0;
-                          # $len_ff = $feat_ff->location->end   - $feat_kk->location->start +1;
-                          $len_ff = $feat_ff->location->end   - $feat_ff->location->start +1;
-                          $debug && print STDERR "$subn: \$len_kk=$len_kk \$len_ff=$len_ff\n";
-                          print STDERR "$subn: found duplicate by product: $prod_f_loc vs. $prod_kk_loc \$seen=$seen\n";
-                          print STDERR "$subn: duplicate: \$prod_kk_note='$prod_kk_note'\n";
-                          print STDERR "$subn: duplicate:  \$prod_f_note='$prod_f_note'\n";
+                        my $len_kk = $feat_kk->location->end   - $feat_kk->location->start +1;
+                        my $len_ff = 0;
+                        # $len_ff = $feat_ff->location->end   - $feat_kk->location->start +1;
+                        $len_ff = $feat_ff->location->end   - $feat_ff->location->start +1;
+                        $debug && print STDERR "$subn: \$len_ff=$prod_f_loc:$len_ff \$len_kk=$prod_kk_loc:$len_kk\n";
+
+                        if ($prod_f eq $prod_kk && $prod_f_loc eq $prod_kk_loc) {
                           $seen = 1;
-                          if ( $len_kk > $len_ff ) {
+                          print STDERR "$subn: found duplicate by product and location: $prod_f_loc vs. $prod_kk_loc \$seen=$seen\n";
+                          $debug && print STDERR "$subn: duplicate: \$prod_kk_note='$prod_kk_note'\n";
+                          $debug && print STDERR "$subn: duplicate: \$prod_f_note ='$prod_f_note'\n";
+                          $debug && print STDERR "$subn: duplicate: Both product and location are same, skip\n";
+                          last;
+                        } elsif ($prod_f eq $prod_kk) {
+#                          my $len_kk = $feat_kk->location->end   - $feat_kk->location->start +1;
+#                          my $len_ff = 0;
+#                          # $len_ff = $feat_ff->location->end   - $feat_kk->location->start +1;
+#                          $len_ff = $feat_ff->location->end   - $feat_ff->location->start +1;
+                          $seen = 1;
+                          print STDERR "$subn: found duplicate by product: $prod_f:$prod_f_loc vs. $prod_kk:$prod_kk_loc \$seen=$seen\n";
+                          print STDERR "$subn: duplicate: \$prod_kk_note='$prod_kk_note'\n";
+                          print STDERR "$subn: duplicate: \$prod_f_note ='$prod_f_note'\n";
+                          my $rm_kk = '';
+                          my $rm_f = '';
+                          $rm_kk = $1 if ($prod_kk_note =~ m/[|](RM=[^|]+)[|]/i);
+                          $rm_f = $1  if ($prod_f_note =~ m/[|](RM=[^|]+)[|]/i);
+                          $debug && print STDERR "$subn: $prod_f:$prod_f_loc:$rm_f vs. $prod_kk:$prod_kk_loc:$rm_kk\n";
+                          if ( ($rm_kk || $rm_f) && $rm_kk ne $rm_f ) {
+                            print STDERR "$subn: different reference mat_peptide: $rm_kk vs. $rm_f, keep both.\n";
+                            $seen = 0;
+                            last;
+                          } elsif ( $len_kk > $len_ff ) {
                             print STDERR "$subn: replacing $prod_f:$prod_f_loc with $prod_kk:$prod_kk_loc \$seen=$seen\n";
                             $feats_all->{$nk2}->{$ok1}->[$ff] = $feat_kk;
+                            next;
                           }
-                          last;
                         } elsif ($prod_f_loc eq $prod_kk_loc) {
                           my $pct = 0;
                           $pct = Annotate_Util::cmp_cds_bl2seq( $feat_kk, $feat_ff);
@@ -579,16 +647,18 @@ sub combineFeatures {
 #                        } else {
 #                          next;
                         }
-                    }
-                }
-                $debug && print STDERR "$subn: after checking \$feats_all \$nk1=$nk1 \$nk2=$nk2 $prod_kk_loc \$seen=$seen\n";
+                    } # for my $ff (0 .. $#{$feats_all->{$nk2}->{$ok1}})
+                    last if ($seen);
+                } # for my $ok1 (keys %{$feats_all->{$nk2}})
+                $debug && print STDERR "$subn: after checking \$feats_all \$nk1=$nk1 \$nk2=$nk2 ".$feat_kk->primary_tag.":$prod_kk_loc \$seen=$seen\n";
                 if ($seen) {
+                    $debug && print STDERR "$subn: after checking \$feats_all \$nk1=$nk1 \$nk2=$nk2 ".$feat_kk->primary_tag.":$prod_kk_loc skipped\n";
                     next;
                 }
-                $debug && print STDERR "$subn: Add to list of features: $prod_kk_loc \$seen=$seen, keep\n";
+                $debug && print STDERR "$subn: Add to list of features: ".$feat_kk->primary_tag.":$prod_kk_loc \$seen=$seen, keep\n";
                 push @{$feats_all->{$nk2}->{$nk1}}, $feat_kk;
         if ( 0 ) {
-                $debug && print STDERR "$subn: Entering $subn \$feats_all=\n". Dumper($feats_all) . "End of \$feats_all\n";
+                $debug && print STDERR "$subn: Leaving $subn \$feats_all=\n". Dumper($feats_all) . "End of \$feats_all\n";
         } else {
                 for my $k1 (keys %$feats_all) {
                     for my $k2 (keys %{$feats_all->{$k1}}) {
@@ -602,6 +672,7 @@ sub combineFeatures {
         } # for my $nk2 (keys %{$feats->{$nk1}}) {
     } # for my $nk1 (keys %$feats) {
     $debug && print STDERR "$subn: Done with $subn: \$feats_all=\n". Dumper($feats_all) . "End of \$feats_all\n";
+    $debug && print STDERR "$subn: Done with $subn\n";
 
     return $feats_all;
 

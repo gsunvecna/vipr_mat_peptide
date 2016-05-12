@@ -1,0 +1,287 @@
+LOCUS       KC875821                5130 bp    RNA     linear   VRL 23-JUN-2013
+DEFINITION  Human betacoronavirus 2c EMC/2012 strain Essen, partial genome.
+ACCESSION   KC875821
+VERSION     KC875821.1  GI:512779633
+KEYWORDS    .
+SOURCE      Human betacoronavirus 2c EMC/2012
+  ORGANISM  Human betacoronavirus 2c EMC/2012
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Nidovirales;
+            Coronaviridae; Coronavirinae; Betacoronavirus; unclassified
+            Betacoronavirus.
+REFERENCE   1  (bases 1 to 5130)
+  AUTHORS   Drosten,C., Seilmaier,M., Corman,V.M., Hartmann,W., Scheible,G.,
+            Sack,S., Guggemos,W., Kallies,R., Muth,D., Junglen,S.,
+            Mueller,M.A., Haas,W., Guberina,H., Roehnisch,T.,
+            Schmidt-Wendtner,M., Aldabbagh,S., Dittmer,U., Gold,H., Graf,P.,
+            Bonin,F., Rambaut,A. and Wendtner,C.-M.
+  TITLE     Clinical features and virological analysis of a case of Middle East
+            respiratory syndrome coronavirus infection
+  JOURNAL   Lancet Infect Dis (2013) In press
+  REMARK    Publication Status: Available-Online prior to print
+REFERENCE   2  (bases 1 to 5130)
+  AUTHORS   Kallies,R., Corman,V.M. and Drosten,C.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (09-APR-2013) Institute of Virology, University of Bonn
+            Medical Center, Sigmund-Freud-Strasse 25, Bonn D-53127, Germany
+COMMENT     ##Assembly-Data-START##
+            Assembly Method       :: Geneious v. R6
+            Sequencing Technology :: 454; Sanger dideoxy sequencing
+            ##Assembly-Data-END##
+FEATURES             Location/Qualifiers
+     source          1..5130
+                     /organism="Human betacoronavirus 2c EMC/2012"
+                     /mol_type="genomic RNA"
+                     /strain="Essen"
+                     /isolation_source="broncho alveolar lavage"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:1235996"
+                     /country="Qatar"
+                     /collection_date="2012"
+     gene            <1..>1867
+                     /gene="orf1ab"
+     CDS             <1..>135
+                     /gene="orf1ab"
+                     /note="coding region disrupted by sequencing gap"
+                     /codon_start=1
+                     /product="ORF1ab protein"
+                     /protein_id="AGO05997.1"
+                     /db_xref="GI:512779634"
+                     /translation="GKPIGMFFPYDIELVTGKQNILLRKYGRGGYHYTPFHYERDNTS
+                     C"
+     gap             136..235
+                     /estimated_length=unknown
+     CDS             <236..>810
+                     /gene="orf1ab"
+                     /note="coding region disrupted by sequencing gap"
+                     /codon_start=2
+                     /product="ORF1ab protein"
+                     /protein_id="AGO05998.1"
+                     /db_xref="GI:512779635"
+                     /translation="ARSACVYYSQVLCKSILLVDSSLVTSVGDSSEIATKMFDSFVNS
+                     FVSLYNVTRDKLEKLISTARDGVRRGDNFHSVLTTFIDAARGPAGVESDVETNEIVDS
+                     VQYAHKHDIQITNESYNNYVPSYVKPDSVSTSDLGSLIDCNAASVNQIVLRNSNGACI
+                     WNAAAYMKLSDALKRQIRIACRKCNLAFRLT"
+     gap             811..910
+                     /estimated_length=unknown
+     CDS             <911..>1046
+                     /gene="orf1ab"
+                     /note="coding region disrupted by sequencing gap"
+                     /codon_start=1
+                     /product="ORF1ab protein"
+                     /protein_id="AGO05999.1"
+                     /db_xref="GI:512779636"
+                     /translation="YCSVNVVAWLYAAILNGCAWFVKPNRTSVVSFNEWALANQFTEF
+                     V"
+     gap             1047..1146
+                     /estimated_length=unknown
+     CDS             <1147..>1585
+                     /gene="orf1ab"
+                     /note="coding region disrupted by sequencing gap"
+                     /codon_start=2
+                     /product="ORF1ab protein"
+                     /protein_id="AGO06000.1"
+                     /db_xref="GI:512779637"
+                     /translation="IKVAAMQSKLTDLKCTSVVLLSVLQQLHLEANSRAWAFCVKCHN
+                     DILAATDPSEAFEKFVSLFATLMTFSGNVDLDALASDIFDTPSVLQATLSEFSHLATF
+                     AELEAAQKAYQEAMDSGDTSPQVLKALQKAVNIAKNAYEKDKAV"
+     gap             1586..1685
+                     /estimated_length=unknown
+     CDS             <1686..>1867
+                     /gene="orf1ab"
+                     /codon_start=2
+                     /product="ORF1ab protein"
+                     /protein_id="AGO06001.1"
+                     /db_xref="GI:512779638"
+                     /translation="RTVAGVSILSTMTNRQYHQKMLKSMAATRGATCVIGTTKFYGGW
+                     DFMLKTLYKDVDNPHL"
+     gap             1868..1967
+                     /estimated_length=unknown
+     gene            <1968..>2629
+                     /gene="S"
+     CDS             <1968..>2104
+                     /gene="S"
+                     /note="coding region disrupted by sequencing gap"
+                     /codon_start=2
+                     /product="spike"
+                     /protein_id="AGO06002.1"
+                     /db_xref="GI:512779639"
+                     /translation="EDGDYYRKQLSPLEGGGWLVASGSTVAMTEQLQMGFGITVQYGT
+                     D"
+     gap             2105..2204
+                     /estimated_length=unknown
+     CDS             <2205..>2629
+                     /gene="S"
+                     /note="coding region disrupted by sequencing gap"
+                     /codon_start=2
+                     /product="spike protein"
+                     /protein_id="AGO06003.1"
+                     /db_xref="GI:512779640"
+                     /translation="GFTTTNEAFHKVQDAVNNNAQALSKLASELSNTFGAISASIGDI
+                     IQRLDVLEQDAQIDRLINGRLTTLNAFVAQQLVRSESAALSAQLAKDKVNECVKAQSK
+                     RSGFCGQGTHIVSFVVNAPNGLYFMHVGYYPSNHIEVVS"
+     gap             2630..2729
+                     /estimated_length=unknown
+     gene            <2730..>2827
+                     /gene="orf3"
+     CDS             <2730..>2827
+                     /gene="orf3"
+                     /note="coding region disrupted by sequencing gap"
+                     /codon_start=2
+                     /product="ORF3 protein"
+                     /protein_id="AGO06004.1"
+                     /db_xref="GI:512779641"
+                     /translation="PTLLLVFSLSLLVTAFSKPLYVPEHCQNYSGC"
+     gap             2828..2927
+                     /estimated_length=unknown
+     gene            <2928..3549
+                     /gene="orf5"
+     CDS             <2928..3549
+                     /gene="orf5"
+                     /note="coding region disrupted by sequencing gap"
+                     /codon_start=2
+                     /product="ORF5 protein"
+                     /protein_id="AGO06005.1"
+                     /db_xref="GI:512779642"
+                     /translation="AFHRIESTDSIVFTYIPASGYVAALAVNVCLIPLLLLLRQDTCR
+                     RSIIRTMVLYFLVLYNFLLAIVLVNGVHXPTGSCLIAFLVILIILWFVDRIRFCLMLN
+                     SYIPLFDMRSHFIRVSTVSSHGMVPVIHTKPLFIRNFDQRCSCSRCFYLHSSTYIECT
+                     YISRFSKISLVSVTDFSLNGNVSTVFVPATRDSVPLHIIAPSSLIV"
+     gap             3553..3652
+                     /estimated_length=unknown
+     gene            <3653..3810
+                     /gene="E"
+     CDS             <3653..3810
+                     /gene="E"
+                     /note="coding region disrupted by sequencing gap"
+                     /codon_start=3
+                     /product="envelope protein"
+                     /protein_id="AGO06006.1"
+                     /db_xref="GI:512779643"
+                     /translation="AFLTATRLCVQCMTGFNTLLVQPALYLYNTGRSVYVKFQDSKPP
+                     LPPDEWV"
+     gene            3825..>4340
+                     /gene="M"
+     CDS             3825..>4340
+                     /gene="M"
+                     /codon_start=1
+                     /product="membrane"
+                     /protein_id="AGO06007.1"
+                     /db_xref="GI:512779644"
+                     /translation="MSNMTQLTEAQIIAIIKDWNFAWSLIFLLITIVLQYGYPSRSMT
+                     VYVFKMFVLWLLWPSSMALSIFSAVYPIDLASQIISGIVAAVSAMMWISYFVQSIRLF
+                     MRTGSWWSFNPETNCLLNVPFGGTTVVRPLVEDSTSVTAVVTNGHLKMAGMHFGACDY
+                     DRLPNEVTVAKP"
+     gap             4341..4440
+                     /estimated_length=unknown
+     gene            <4441..5099
+                     /gene="N"
+     CDS             <4441..>4760
+                     /gene="N"
+                     /note="coding region disrupted by sequencing gap"
+                     /codon_start=2
+                     /product="nucleocapsid"
+                     /protein_id="AGO06008.1"
+                     /db_xref="GI:512779645"
+                     /translation="TGNGIKQLAPRWYFYYTGTGPEAALPFRAVKDGIVWVHEDGATD
+                     APSTFGTRNPNNDSAIVTQFAPGTKLPKNFHIEGTGGNSQSSSRASSVSRNSSRSSSQ
+                     GSRS"
+     gap             4761..4860
+                     /estimated_length=unknown
+     CDS             <4861..5099
+                     /gene="N"
+                     /note="coding region disrupted by sequencing gap"
+                     /codon_start=3
+                     /product="nucleocapsid"
+                     /protein_id="AGO06009.1"
+                     /db_xref="GI:512779646"
+                     /translation="KLDPKNPNYNKWLELLEQNIDAYKTFPKKEKKQKAPKEESTDQM
+                     SEPPKEQRVQGSITQRTRTRPSVQPGPMIDVNTD"
+ORIGIN      
+        1 ggcaagccta ttggtatgtt cttcccttat gacattgaac ttgtcacagg aaagcaaaat
+       61 attctcctgc gcaagtatgg ccgtggtggt tatcactaca ccccattcca ctatgagcga
+      121 gacaacacct cttgcnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+      181 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnagcta
+      241 ggtctgcatg tgtttattat tctcaagtct tgtgtaaatc aattcttttg gttgactcaa
+      301 gtttggttac ttctgttggt gattctagtg aaatcgccac taaaatgttt gattcctttg
+      361 ttaatagttt cgtctcgctg tataatgtca cacgcgataa gttggaaaaa cttatctcta
+      421 ctgctcgtga tggcgtaagg cgaggcgata acttccatag tgtcttaaca acattcattg
+      481 acgcagcacg aggccccgca ggtgtggagt ctgatgttga gaccaatgaa attgttgact
+      541 ctgtgcagta tgctcataaa catgacatac aaattactaa tgagagttac aataattatg
+      601 taccctcata tgttaaacct gatagtgtgt ctaccagtga tttaggtagt ctcattgatt
+      661 gtaatgcggc ttcagttaac caaattgtct tgcgtaattc taatggtgct tgtatttgga
+      721 acgctgctgc atatatgaaa ctctcggatg cacttaaacg acagattcgc attgcatgcc
+      781 gtaagtgtaa tttagctttc cggttaacca nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+      841 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+      901 nnnnnnnnnn tactgcagtg ttaatgtagt agcttggctt tacgcagcaa tacttaatgg
+      961 ttgcgcttgg tttgtaaaac ctaatcgcac tagtgttgtt tcttttaatg aatgggctct
+     1021 tgccaaccaa ttcactgaat ttgttgnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+     1081 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+     1141 nnnnnntata aaggttgctg ctatgcagtc taaacttaca gatcttaaat gcacatctgt
+     1201 ggttctcctc tctgtgctcc aacagttaca cttagaggct aatagtaggg cctgggcttt
+     1261 ctgtgttaaa tgccataatg atatattggc agcaacagac cccagtgagg ctttcgagaa
+     1321 attcgtaagt ctctttgcca ctttaatgac tttttctggt aatgtagatc ttgatgcgtt
+     1381 agctagtgat atttttgaca ctcctagcgt acttcaagct actctttctg agttttcaca
+     1441 cttagctacc tttgctgagt tggaagctgc acagaaagcc tatcaggaag ctatggactc
+     1501 tggtgacacc tcaccacaag ttcttaaggc tttgcagaag gctgttaata tagctaaaaa
+     1561 cgcctatgag aaggataagg cagtgnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+     1621 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+     1681 nnnnntcgca ctgttgcagg cgtgtccata cttagcacaa tgactaatcg ccagtaccat
+     1741 cagaaaatgc ttaagtccat ggctgcaact cgtggagcga cttgcgtcat tggtactaca
+     1801 aagttctatg gtggctggga tttcatgctt aaaacattgt acaaagatgt tgataatccg
+     1861 catcttannn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+     1921 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnngga agacggtgat
+     1981 tattatagga aacaactatc tccacttgaa ggtggtggct ggcttgttgc tagtggctca
+     2041 actgttgcca tgactgagca attacagatg ggctttggta ttacagttca atatggtaca
+     2101 gacannnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+     2161 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnaggctt cactacaact
+     2221 aatgaagctt ttcacaaggt tcaggatgct gtgaacaaca atgcacaggc tctatccaaa
+     2281 ttagctagcg agctatctaa tacttttggt gctatttccg cctctattgg agacatcata
+     2341 caacgtcttg atgttctcga acaggacgcc caaatagaca gacttattaa tggccgtttg
+     2401 acaacactaa atgcttttgt tgcacagcag cttgttcgtt ccgaatcagc tgctctttcg
+     2461 gctcaattgg ctaaagataa agtcaatgag tgtgtcaagg cacaatccaa gcgttctgga
+     2521 ttttgcggtc aaggcacaca tatagtgtcc tttgttgtaa atgcccctaa tggcctttac
+     2581 ttcatgcatg ttggttatta ccctagcaac cacattgagg ttgtttctgn nnnnnnnnnn
+     2641 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+     2701 nnnnnnnnnn nnnnnnnnnn nnnnnnnnna cccactctct tgttagtgtt ctcactctct
+     2761 cttttggtca ctgcattttc aaaacctctc tatgtacctg agcattgtca gaattattct
+     2821 ggttgcannn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+     2881 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnntgc atttcatcgc
+     2941 attgagtcta ctgactctat tgttttcaca tacattcctg ctagcggcta tgtagctgct
+     3001 ttagctgtca atgtgtgtct cattccccta ttattactgc tacgtcaaga tacttgtcgt
+     3061 cgcagcatta tcagaactat ggttctctat ttccttgttc tgtataactt tttattagcc
+     3121 attgtactag tcaatggtgt acattrtcca actggaagtt gcctgatagc cttcttagtt
+     3181 atcctcataa tactttggtt tgtagataga attcgtttct gtctcatgct gaattcctac
+     3241 attccactgt ttgacatgcg ttctcacttt attcgtgtta gtacagtttc ttctcatggt
+     3301 atggtccctg tcatacacac caaaccatta tttattagaa acttcgatca gcgttgcagc
+     3361 tgttctcgtt gtttttattt gcactcttcc acttatatag agtgcactta tattagccgt
+     3421 tttagtaaga ttagcctagt ttctgtaact gacttctcct taaacggcaa tgtttccact
+     3481 gttttcgtgc ctgcaacgcg cgattcagtt cctcttcaca taatcgcccc gagctcgctt
+     3541 atcgtttaag cannnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+     3601 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nntggctttc
+     3661 cttacggcta ctagattatg tgtgcaatgt atgacaggct tcaataccct gttagttcag
+     3721 cccgcattat acttgtataa tactggacgt tcagtctatg taaaattcca ggatagtaaa
+     3781 ccccctctac cacctgacga gtgggtttaa cgaactcctt cataatgtct aatatgacgc
+     3841 aactcactga ggcgcagatt attgccatta ttaaagactg gaactttgca tggtccctga
+     3901 tctttctctt aattactatc gtactacagt atggataccc atcccgtagt atgactgtct
+     3961 atgtctttaa aatgtttgtt ttatggctcc tatggccatc ttccatggcg ctatcaatat
+     4021 ttagcgccgt ttatccaatt gatctagctt cccagataat ctctggcatt gtagcagctg
+     4081 tttcagctat gatgtggatt tcctactttg tgcagagtat ccggctgttt atgagaactg
+     4141 gatcatggtg gtcattcaat cctgagacta attgcctttt gaacgttcca tttggtggta
+     4201 caactgtcgt acgtccactc gtagaggact ctaccagtgt aactgctgtt gtaaccaatg
+     4261 gccacctcaa aatggctggc atgcatttcg gtgcttgtga ctacgacaga cttcctaatg
+     4321 aagtcaccgt ggccaaaccc nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+     4381 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+     4441 taccgggaat ggaattaagc aactggctcc caggtggtac ttctactaca ctggaactgg
+     4501 acccgaagca gcactcccat tccgggctgt taaggatggc atcgtttggg tccatgaaga
+     4561 tggcgccact gatgctcctt caacttttgg gacgcggaac cctaacaatg attcagctat
+     4621 tgttacacaa ttcgcgcccg gtactaagct tcctaaaaac ttccacattg aggggactgg
+     4681 aggcaatagt caatcatctt caagagcctc tagcgtaagc agaaactctt ccagatctag
+     4741 ttcacaaggt tcaagatcag nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+     4801 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+     4861 ttaaacttga cccaaagaat cccaactaca ataagtggtt ggagcttctt gagcaaaata
+     4921 ttgatgccta caaaaccttc cctaagaagg aaaagaaaca aaaggcacca aaagaagaat
+     4981 caacagacca aatgtctgaa cctcctaagg agcagcgtgt gcaaggtagc atcactcagc
+     5041 gcactcgcac ccgtccaagt gttcagcctg gtccaatgat tgatgttaac actgattagt
+     5101 gtcactcaaa gtaacaagat cgcggcaatc
+//
+

@@ -14,6 +14,7 @@ use Bio::Seq;
 use Bio::AlignIO;
 use Bio::Tools::Run::StandAloneBlast;
 use IO::String;
+use POSIX;
 
 use Annotate_Verify;
 
@@ -113,6 +114,7 @@ sub adjust_start {
     $debug && print STDERR "$subn: \$hseq='$hseq' \$hseq=".length($hseq)."\n";
     for my $n (1 .. length($hseq)) {
         $c = substr($hseq, $n-1, 1);
+        $debug && print STDERR "$subn: \$n='$n' \$c='$c'\n";
         if ($c eq $gap_char) {
             $errcode->{alnstart}++;
         } else {
@@ -735,7 +737,7 @@ Takes reffeat, gaps in the reffeat, and gaps (in DNA coordinate) in the target
 sub msa_check_loc {
     my ($loc2, $reffeat_loc, $refcds_loc, $cds_loc, $aln, $aln_q, $aln_h, $errcode) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'msa_check_loc';
     # error code: OutsideCDS; partial_mat_peptide; GapAtCleaveSite
 #    my $errcode = {
@@ -804,6 +806,7 @@ sub msa_check_loc {
 
     $debug && print STDERR "$subn: \$errcode=\n".Dumper($errcode)."\n";
 
+    $debug && print STDERR "$subn: subroutine finished\n";
     return ($errcode);
 
 } # sub msa_check_loc
@@ -813,7 +816,7 @@ sub msa_check_internal {
 #    my ($loc2, $reffeat_loc, $refcds_loc, $cds_loc, $aln, $aln_q, $aln_h) = @_;
     my ($loc2, $reffeat_loc, $refcds_loc, $cds_loc, $aln, $aln_q, $aln_h, $errcode) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subname = 'msa_check_internal';
 #    my $errcode = { long_internal_gap => 0 };
     $errcode->{long_internal_gap} = 0 if (!$errcode || !exists($errcode->{long_internal_gap}));
@@ -861,7 +864,7 @@ sub msa_check_internal {
         }
         $debug && print STDERR "$subname: \$hseq='$hseq' \$hseq=".length($hseq)." \$count=$count\n";
         if ($count > 0.333*length($qseq)) {
-            print STDERR "$subname: ERROR: \$qstart=$qstart \$qend=$qend \$gap_char=$gap_char\n";
+            print STDERR "$subname: ERROR: refcds=".$refcds_loc->to_FTstring." refmat=".$reffeat_loc->to_FTstring." cds=".$cds_loc->to_FTstring." \$qstart=$qstart \$qend=$qend \$gap_char=$gap_char\n";
             print STDERR "$subname: ERROR: \$qseq='$qseq' \$qseq=".length($qseq)." \$count=$count\n";
             $errcode->{long_internal_gap} = 1;
         }
@@ -873,7 +876,7 @@ sub msa_check_internal {
         }
         $debug && print STDERR "$subname: \$hseq='$hseq' \$hseq=".length($hseq)." \$count=$count\n";
         if ($count > 0.333*length($hseq)) {
-            print STDERR "$subname: ERROR: \$qstart=$qstart \$qend=$qend \$gap_char=$gap_char\n";
+            print STDERR "$subname: ERROR: refcds=".$refcds_loc->to_FTstring." refmat=".$reffeat_loc->to_FTstring." cds=".$cds_loc->to_FTstring." \$qstart=$qstart \$qend=$qend \$gap_char=$gap_char\n";
             print STDERR "$subname: ERROR: \$hseq='$hseq' \$hseq=".length($hseq)." \$count=$count\n";
             $errcode->{long_internal_gap} = 1;
         }
@@ -893,7 +896,7 @@ sub msa_check_internal {
 sub msa_check_internal2 {
     my ($loc2, $reffeat_loc, $refcds_loc, $cds_loc, $aln, $aln_q, $aln_h, $errcode) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'msa_check_internal2';
     $errcode->{long_internal_gap} = 0 if (!$errcode || !exists($errcode->{long_internal_gap}));
     $errcode->{has_internal_gap} = 0 if (!$errcode || !exists($errcode->{has_internal_gap}));
@@ -955,7 +958,7 @@ sub msa_check_internal2 {
     my $GAP_THRESH = (length($qseq)>30) ? 0.2 *length($qseq) : 5;
     if ($gapct > $GAP_THRESH) {
         if ( 1 ) {
-            print STDERR "$subn: ERROR: \$qstart=$qstart \$qend=$qend \$gap_char='$gap_char'\n";
+            print STDERR "$subn: ERROR: refcds=".$refcds_loc->to_FTstring." refmat=".$reffeat_loc->to_FTstring." cds=".$cds_loc->to_FTstring." \$qstart=$qstart \$qend=$qend \$gap_char='$gap_char'\n";
             print STDERR "$subn: ERROR: \$qseq='$qseq' \$qseq=".length($qseq)." \$gapct=$gapct\n";
             $errcode->{long_internal_gap} = 1;
         }
@@ -1027,7 +1030,7 @@ sub msa_check_internal2 {
 sub msa_check_loc_start {
     my ($loc2, $reffeat_loc, $refcds_loc, $cds_loc, $aln, $aln_q, $aln_h, $errcode) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'msa_check_loc_start';
     # error code: OutsideCDS; partial_mat_peptide; GapAtCleaveSite
     $errcode->{ partial_mat_peptide } = 0 if (!$errcode || !exists($errcode->{partial_mat_peptide}));
@@ -1035,17 +1038,33 @@ sub msa_check_loc_start {
         my $qstart = $reffeat_loc->start; # get start of reffeat
         $qstart = ($qstart - $refcds_loc->start)/3 +1; # convert to AA coordinate in CDS
         my $qseq = $aln_q->seq;
+        my $hseq = $aln_h->seq;
         $debug && print STDERR "$subn: \$qseq='$qseq' \$qseq=".length($qseq)."\n";
         my $gap_char = $aln->gap_char;
-        my $char;
+        my ($char, $char1);
+        my ($s, $s1);
+        my $n1 = 1;
         for (my $n=1; $n<=$qstart && $n<=length($qseq); $n++) {
             $char = substr($qseq, $n-1, 1);
+            $s .= $char;
+            $s .= ' ' if (10* floor(($n-1)/10) == 10* floor($n/10-1));
+            $char1 = substr($hseq, $n-1, 1);
+            $s1 .= $char1;
+            $s1 .= ' ' if (10* floor(($n-1)/10) == 10* floor($n/10-1));
             $qstart++ if ($char eq $gap_char);
-            $debug && print STDERR "$subn: \$n=$n \$char=$char \$gap_char=$gap_char \$qstart=$qstart\n";
+            my $v = 50* floor(($n-1)/50);
+            my $v1 = 50* floor($n/50-1);
+            if ($v ==$v1 || $n==$qstart) {
+                $debug && printf STDERR "$subn: \$n=%3d..%3d \$s =$s \n", $n1, $n;
+                $debug && printf STDERR "$subn: \$n=%3d..%3d \$s1=$s1 \$gap_char=$gap_char \$qstart=$qstart\n", $n1, $n;
+                $s = undef;
+                $s1 = undef;
+                $n1 = $n+1;
+            }
         }
 
         # Any gap in hseq at the cleavage site makes the mat_peptide partial
-        my $hseq = $aln_h->seq;
+        #my $hseq = $aln_h->seq;
         $debug && print STDERR "$subn: \$hseq='$hseq' \$hseq=".length($hseq)."\n";
         $char = substr($hseq, 0, $qstart); # Any gap at the beginning of CDS, plus the 1st AA of current feat.
         $debug && print STDERR "$subn: \$char='$char' \$char=".length($char)."\n";
@@ -1062,7 +1081,7 @@ sub msa_check_loc_start {
 sub msa_check_loc_end {
     my ($loc2, $reffeat_loc, $refcds_loc, $cds_loc, $aln, $aln_q, $aln_h, $errcode) = @_;
 
-    my $debug = 0 && $debug_all;
+    my $debug = 0 || $debug_all;
     my $subn = 'msa_check_loc_end';
     # error code: OutsideCDS; partial_mat_peptide; GapAtCleaveSite
     $errcode->{ partial_mat_peptide } = 0 if (!$errcode || !exists($errcode->{partial_mat_peptide}));
@@ -1070,16 +1089,33 @@ sub msa_check_loc_end {
         my $qend = $reffeat_loc->end; # get end of reffeat
         $qend = ($qend - $refcds_loc->start +1)/3; # convert to AA coordinate in CDS
         my $qseq = $aln_q->seq;
+        my $hseq = $aln_h->seq;
         $debug && print STDERR "$subn: \$qseq='$qseq' \$qseq=".length($qseq)."\n";
         my $gap_char = $aln->gap_char;
-        my $char;
+        my ($char, $char1);
+        my ($s, $s1);
+        my $n1 = 1;
         for (my $n=1; $n<=$qend && $n<=length($qseq); $n++) {
             $char = substr($qseq, $n-1, 1);
+            $s .= $char;
+            $s .= ' ' if (10* floor(($n-1)/10) == 10* floor($n/10-1));
+            $char1 = substr($hseq, $n-1, 1);
+            $s1 .= $char1;
+            $s1 .= ' ' if (10* floor(($n-1)/10) == 10* floor($n/10-1));
             $qend++ if ($char eq $gap_char);
-            $debug && print STDERR "$subn: \$n=$n \$char=$char \$gap_char=$gap_char \$qend=$qend\n";
+            #$debug && print STDERR "$subn: \$n=$n \$char=$char \$gap_char=$gap_char \$qend=$qend\n";
+            my $v = 50* floor(($n-1)/50);
+            my $v1 = 50* floor($n/50-1);
+            if ($v ==$v1 || $n==$qend) {
+                $debug && printf STDERR "$subn: \$n=%3d..%3d \$s =$s \n", $n1, $n;
+                $debug && printf STDERR "$subn: \$n=%3d..%3d \$s1=$s1 \$gap_char=$gap_char \$qend=$qend\n", $n1, $n;
+                $s = undef;
+                $s1 = undef;
+                $n1 = $n+1;
+            }
         }
         # Any gap in hseq at the cleavage site makes the mat_peptide partial
-        my $hseq = $aln_h->seq;
+        #my $hseq = $aln_h->seq;
         $debug && print STDERR "$subn: \$hseq='$hseq' \$hseq=".length($hseq)."\n";
         $char = substr($hseq, $qend-1, length($hseq)-$qend+1); # Any gap at the end of CDS, plus the last AA of current feat.
         $debug && print STDERR "$subn: \$char='$char' \$char=".length($char)."\n";

@@ -1,3 +1,4 @@
+# Saved from msa_annotate.pl V1.2.1 at 04/07/2014 18:44:58
 # Saved from msa_annotate.pl V1.1.8 at 03/27/2013 14:31:18
 # Saved from msa_annotate.pl V1.1.8 at 03/15/2013 16:34:31
 # Annotate_symbol_records.txt
@@ -714,19 +715,19 @@ NC_003045;     "20595..21491"; "nsp13"; #msa_annotate.pl v1.1.4
 # msa_annotate.pl v1.1.4
 # Porcine epidemic diarrhea virus, 28295, Coronaviridae
 # NC_003436
-NC_003436;         "297..626"; "L"; #msa_annotate.pl v1.1.4
-NC_003436;       "2982..7847"; "nsp1"; #msa_annotate.pl v1.1.4
-NC_003436;      "9288..10193"; "nsp2"; #msa_annotate.pl v1.1.4
-NC_003436;     "10194..11033"; "nsp3"; #msa_annotate.pl v1.1.4
-NC_003436;     "11034..11282"; "nsp4"; #msa_annotate.pl v1.1.4
-NC_003436;     "11283..11867"; "nsp5"; #msa_annotate.pl v1.1.4
-NC_003436;     "11868..12191"; "nsp6"; #msa_annotate.pl v1.1.4
-NC_003436;     "12192..12596"; "nsp7"; #msa_annotate.pl v1.1.4
-NC_003436;     "12597..15376"; "nsp9"; #msa_annotate.pl v1.1.4
-NC_003436;     "15377..17167"; "nsp10"; #msa_annotate.pl v1.1.4
-NC_003436;     "17168..18718"; "nsp11"; #msa_annotate.pl v1.1.4
-NC_003436;     "18719..19735"; "nsp12"; #msa_annotate.pl v1.1.4
-NC_003436;     "19736..20638"; "nsp13"; #msa_annotate.pl v1.1.4
+NC_003436;       "297..626"; "L"     ; #msa_annotate.pl v1.1.4
+NC_003436;     "2982..7847"; "nsp1"  ; #msa_annotate.pl v1.1.4
+NC_003436;    "9288..10193"; "nsp2"  ; #msa_annotate.pl v1.1.4
+NC_003436;   "10194..11033"; "nsp3"  ; #msa_annotate.pl v1.1.4
+NC_003436;   "11034..11282"; "nsp4"  ; #msa_annotate.pl v1.1.4
+NC_003436;   "11283..11867"; "nsp5"  ; #msa_annotate.pl v1.1.4
+NC_003436;   "11868..12191"; "nsp6"  ; #msa_annotate.pl v1.1.4
+NC_003436;   "12192..12596"; "nsp7"  ; #msa_annotate.pl v1.1.4
+NC_003436;   "12597..15376"; "nsp9"  ; #msa_annotate.pl v1.1.4
+NC_003436;   "15377..17167"; "nsp10" ; #msa_annotate.pl v1.1.4
+NC_003436;   "17168..18718"; "nsp11" ; #msa_annotate.pl v1.1.4
+NC_003436;   "18719..19735"; "nsp12" ; #msa_annotate.pl v1.1.4
+NC_003436;   "19736..20638"; "nsp13" ; #msa_annotate.pl v1.1.4
 
 # msa_annotate.pl v1.1.4
 # Human coronavirus HKU1, 290028, Coronaviridae
@@ -767,24 +768,44 @@ NC_006852;     "18178..19734"; "nsp14"; #msa_annotate.pl v1.1.4
 NC_006852;     "19735..20856"; "nsp15"; #msa_annotate.pl v1.1.4
 NC_006852;     "20857..21753"; "nsp16"; #msa_annotate.pl v1.1.4
 
+# msa_annotate.pl v1.2.0
+# Murine hepatitis virus, 11144, Coronaviridae
+# AC_000192
+AC_000192;         "215..955"; "nsp1"; #msa_annotate.pl v1.2.0
+AC_000192;        "956..2710"; "nsp2"; #msa_annotate.pl v1.2.0
+AC_000192;       "2711..8734"; "nsp3"; #msa_annotate.pl v1.2.0
+AC_000192;      "8735..10222"; "nsp4"; #msa_annotate.pl v1.2.0
+AC_000192;     "10223..11131"; "nsp5"; #msa_annotate.pl v1.2.0
+AC_000192;     "11132..11995"; "nsp6"; #msa_annotate.pl v1.2.0
+AC_000192;     "11996..12271"; "nsp7"; #msa_annotate.pl v1.2.0
+AC_000192;     "12272..12853"; "nsp8"; #msa_annotate.pl v1.2.0
+AC_000192;     "12854..13183"; "nsp9"; #msa_annotate.pl v1.2.0
+AC_000192;     "13184..13594"; "nsp10"; #msa_annotate.pl v1.2.0
+AC_000192;     "13595..13636"; "nsp11"; #msa_annotate.pl v1.2.0
+AC_000192;     "13595..16377"; "nsp12"; #msa_annotate.pl v1.2.0
+AC_000192;     "16378..18177"; "nsp13"; #msa_annotate.pl v1.2.0
+AC_000192;     "18178..19734"; "nsp14"; #msa_annotate.pl v1.2.0
+AC_000192;     "19735..20856"; "nsp15"; #msa_annotate.pl v1.2.0
+AC_000192;     "20857..21753"; "nsp16"; #msa_annotate.pl v1.2.0
+
 # msa_annotate.pl v1.1.4
 # Avian coronavirus, 694014, Coronaviridae
 # NC_010800
-NC_010800;        "529..2547"; "nsp1/2"; #msa_annotate.pl v1.1.4
-NC_010800;       "2548..7323"; "nsp3"; #msa_annotate.pl v1.1.4
-NC_010800;       "7324..8865"; "nsp4"; #msa_annotate.pl v1.1.4
-NC_010800;       "8866..9786"; "nsp5"; #msa_annotate.pl v1.1.4
-NC_010800;      "9787..10665"; "nsp6"; #msa_annotate.pl v1.1.4
-NC_010800;     "10666..10914"; "nsp7"; #msa_annotate.pl v1.1.4
-NC_010800;     "10915..11544"; "nsp8"; #msa_annotate.pl v1.1.4
-NC_010800;     "11545..11877"; "nsp9"; #msa_annotate.pl v1.1.4
-NC_010800;     "11878..12312"; "nsp10"; #msa_annotate.pl v1.1.4
-NC_010800;     "12313..12377"; "nsp11"; #msa_annotate.pl v1.1.4
-NC_010800;     "12313..15134"; "nsp12"; #msa_annotate.pl v1.1.4
-NC_010800;     "15135..16934"; "nsp13"; #msa_annotate.pl v1.1.4
-NC_010800;     "16935..18488"; "nsp14"; #msa_annotate.pl v1.1.4
-NC_010800;     "18489..19502"; "nsp15"; #msa_annotate.pl v1.1.4
-NC_010800;     "19503..20333"; "nsp16"; #msa_annotate.pl v1.1.4
+NC_010800;      "529..2547"; "nsp1/2"; #msa_annotate.pl v1.1.4
+NC_010800;     "2548..7323"; "nsp3"  ; #msa_annotate.pl v1.1.4
+NC_010800;     "7324..8865"; "nsp4"  ; #msa_annotate.pl v1.1.4
+NC_010800;     "8866..9786"; "nsp5"  ; #msa_annotate.pl v1.1.4
+NC_010800;    "9787..10665"; "nsp6"  ; #msa_annotate.pl v1.1.4
+NC_010800;   "10666..10914"; "nsp7"  ; #msa_annotate.pl v1.1.4
+NC_010800;   "10915..11544"; "nsp8"  ; #msa_annotate.pl v1.1.4
+NC_010800;   "11545..11877"; "nsp9"  ; #msa_annotate.pl v1.1.4
+NC_010800;   "11878..12312"; "nsp10" ; #msa_annotate.pl v1.1.4
+NC_010800;   "12313..15134"; "nsp12" ; #msa_annotate.pl v1.1.4
+NC_010800;   "12313..12377"; "nsp11" ; #msa_annotate.pl v1.1.4
+NC_010800;   "15135..16934"; "nsp13" ; #msa_annotate.pl v1.1.4
+NC_010800;   "16935..18488"; "nsp14" ; #msa_annotate.pl v1.1.4
+NC_010800;   "18489..19502"; "nsp15" ; #msa_annotate.pl v1.1.4
+NC_010800;   "19503..20333"; "nsp16" ; #msa_annotate.pl v1.1.4
 
 # msa_annotate.pl v1.1.4
 # Junin virus, 11619, Arenaviridae
@@ -904,24 +925,22 @@ NC_014336;     "5284..5349"; "3B"; #msa_annotate.pl v1.1.6
 NC_014336;     "5350..5898"; "3C"; #msa_annotate.pl v1.1.6
 NC_014336;     "5899..7281"; "3D"; #msa_annotate.pl v1.1.6
 
+# Updated via msa_annotate.pl V1.2.1 at 04/07/2014 18:42:25
 # msa_annotate.pl v1.1.6
 # Human enterovirus D, 138951, Picornaviridae
 # NC_001430
-NC_001430;       "727..933"; "1A"; #msa_annotate.pl v1.1.6
-NC_001430;      "934..1683"; "1B"; #msa_annotate.pl v1.1.6
-NC_001430;     "1684..2424"; "1Cv3"; #msa_annotate.pl v1.1.6
-NC_001430;     "1684..2409"; "1Cv1"; #msa_annotate.pl v1.1.6
-NC_001430;     "1684..2388"; "1Cv2"; #msa_annotate.pl v1.1.6
-NC_001430;     "2389..3339"; "1Dv2"; #msa_annotate.pl v1.1.6
-NC_001430;     "2410..3339"; "1Dv1"; #msa_annotate.pl v1.1.6
-NC_001430;     "2425..3339"; "1Dv3"; #msa_annotate.pl v1.1.6
-NC_001430;     "3340..3768"; "2A"; #msa_annotate.pl v1.1.6
-NC_001430;     "3769..4065"; "2B"; #msa_annotate.pl v1.1.6
-NC_001430;     "4066..5055"; "2C"; #msa_annotate.pl v1.1.6
-NC_001430;     "5056..5322"; "3A"; #msa_annotate.pl v1.1.6
-NC_001430;     "5323..5388"; "3B"; #msa_annotate.pl v1.1.6
-NC_001430;     "5389..5937"; "3C"; #msa_annotate.pl v1.1.6
-NC_001430;     "5938..7308"; "3D"; #msa_annotate.pl v1.1.6
+NC_001430;      "727..1683"; "VP0"   ; #msa_annotate.pl, V1.2.1, via script
+NC_001430;       "727..933"; "1A"    ; #msa_annotate.pl v1.1.6
+NC_001430;      "934..1683"; "1B"    ; #msa_annotate.pl v1.1.6
+NC_001430;     "1684..2409"; "1C"    ; #msa_annotate.pl v1.1.6
+NC_001430;     "2410..3339"; "1D"    ; #msa_annotate.pl v1.1.6
+NC_001430;     "3340..3768"; "2A"    ; #msa_annotate.pl v1.1.6
+NC_001430;     "3769..4065"; "2B"    ; #msa_annotate.pl v1.1.6
+NC_001430;     "4066..5055"; "2C"    ; #msa_annotate.pl v1.1.6
+NC_001430;     "5056..5322"; "3A"    ; #msa_annotate.pl v1.1.6
+NC_001430;     "5323..5388"; "3B"    ; #msa_annotate.pl v1.1.6
+NC_001430;     "5389..5937"; "3C"    ; #msa_annotate.pl v1.1.6
+NC_001430;     "5938..7308"; "3D"    ; #msa_annotate.pl v1.1.6
 
 # msa_annotate.pl v1.1.6
 # Human enterovirus B, 138949, Picornaviridae
@@ -1301,7 +1320,7 @@ NC_004421;     "3941..4342"; "2A"; #msa_annotate.pl v1.1.6
 NC_004421;     "4343..4837"; "2B"; #msa_annotate.pl v1.1.6
 NC_004421;     "4838..5842"; "2C"; #msa_annotate.pl v1.1.6
 NC_004421;     "5843..6124"; "3A"; #msa_annotate.pl v1.1.6
-NC_004421;     "6125..6214"; "3B(VPg)"; #msa_annotate.pl v1.1.6
+NC_004421;     "6125..6214"; "3B"; #msa_annotate.pl v1.1.6
 NC_004421;     "6215..6790"; "3C"; #msa_annotate.pl v1.1.6
 NC_004421;     "6791..8197"; "3D"; #msa_annotate.pl v1.1.6
 
@@ -1413,20 +1432,20 @@ NC_010384;     "5274..5339"; "3B(VPg)"; #msa_annotate.pl v1.1.6
 NC_010384;     "5340..5888"; "3C"; #msa_annotate.pl v1.1.6
 NC_010384;     "5889..7274"; "3D"; #msa_annotate.pl v1.1.6
 
-# msa_annotate.pl v1.1.6
-# Simian picornavirus strain N203, 184754, Picornaviridae
+# msa_annotate.pl v1.2.1
+# Enterovirus J, 1330521, Picornaviridae
 # NC_013695
-NC_013695;       "738..944"; "1A(VP4)"; #msa_annotate.pl v1.1.6
-NC_013695;      "945..1703"; "1B(VP2)"; #msa_annotate.pl v1.1.6
-NC_013695;     "1704..2429"; "1C(VP3)"; #msa_annotate.pl v1.1.6
-NC_013695;     "2430..3275"; "1D(VP1)"; #msa_annotate.pl v1.1.6
-NC_013695;     "3276..3725"; "2A"; #msa_annotate.pl v1.1.6
-NC_013695;     "3726..4022"; "2B"; #msa_annotate.pl v1.1.6
-NC_013695;     "4023..5009"; "2C"; #msa_annotate.pl v1.1.6
-NC_013695;     "5010..5270"; "3A"; #msa_annotate.pl v1.1.6
-NC_013695;     "5271..5336"; "3B(VPg)"; #msa_annotate.pl v1.1.6
-NC_013695;     "5337..5885"; "3C"; #msa_annotate.pl v1.1.6
-NC_013695;     "5886..7271"; "3D"; #msa_annotate.pl v1.1.6
+NC_013695;       "738..944"; "1A(VP4)"; #msa_annotate.pl v1.2.1
+NC_013695;      "945..1703"; "1B(VP2)"; #msa_annotate.pl v1.2.1
+NC_013695;     "1704..2429"; "1C(VP3)"; #msa_annotate.pl v1.2.1
+NC_013695;     "2430..3275"; "1D(VP1)"; #msa_annotate.pl v1.2.1
+NC_013695;     "3276..3725"; "2A"; #msa_annotate.pl v1.2.1
+NC_013695;     "3726..4022"; "2B"; #msa_annotate.pl v1.2.1
+NC_013695;     "4023..5009"; "2C"; #msa_annotate.pl v1.2.1
+NC_013695;     "5010..5270"; "3A"; #msa_annotate.pl v1.2.1
+NC_013695;     "5271..5336"; "3B(VPg)"; #msa_annotate.pl v1.2.1
+NC_013695;     "5337..5885"; "3C"; #msa_annotate.pl v1.2.1
+NC_013695;     "5886..7271"; "3D"; #msa_annotate.pl v1.2.1
 
 # msa_annotate.pl v1.1.6
 # Porcine kobuvirus swine/S-1-HUN/2007/Hungary, 569195, Picornaviridae
@@ -1458,20 +1477,20 @@ NC_012798;     "4426..4482"; "3B"; #msa_annotate.pl v1.1.6
 NC_012798;     "4483..5091"; "3C"; #msa_annotate.pl v1.1.6
 NC_012798;     "5092..6477"; "3D"; #msa_annotate.pl v1.1.6
 
-# msa_annotate.pl v1.1.6
-# Human cosavirus A, 586419, Picornaviridae
+# msa_annotate.pl v1.2.1
+# Cosavirus A, 1330491, Picornaviridae
 # NC_012800
-NC_012800;     "1165..1368"; "VP4"; #msa_annotate.pl v1.1.6
-NC_012800;     "1369..2163"; "VP2"; #msa_annotate.pl v1.1.6
-NC_012800;     "2164..2862"; "VP3"; #msa_annotate.pl v1.1.6
-NC_012800;     "2863..3741"; "VP1"; #msa_annotate.pl v1.1.6
-NC_012800;     "3742..3831"; "2A"; #msa_annotate.pl v1.1.6
-NC_012800;     "3832..4194"; "2B"; #msa_annotate.pl v1.1.6
-NC_012800;     "4195..5157"; "2C"; #msa_annotate.pl v1.1.6
-NC_012800;     "5158..5481"; "3A"; #msa_annotate.pl v1.1.6
-NC_012800;     "5482..5538"; "3B"; #msa_annotate.pl v1.1.6
-NC_012800;     "5539..6147"; "3C"; #msa_annotate.pl v1.1.6
-NC_012800;     "6148..7536"; "3D"; #msa_annotate.pl v1.1.6
+NC_012800;     "1165..1368"; "VP4"; #msa_annotate.pl v1.2.1
+NC_012800;     "1369..2163"; "VP2"; #msa_annotate.pl v1.2.1
+NC_012800;     "2164..2862"; "VP3"; #msa_annotate.pl v1.2.1
+NC_012800;     "2863..3741"; "VP1"; #msa_annotate.pl v1.2.1
+NC_012800;     "3742..3831"; "2A"; #msa_annotate.pl v1.2.1
+NC_012800;     "3832..4194"; "2B"; #msa_annotate.pl v1.2.1
+NC_012800;     "4195..5157"; "2C"; #msa_annotate.pl v1.2.1
+NC_012800;     "5158..5481"; "3A"; #msa_annotate.pl v1.2.1
+NC_012800;     "5482..5538"; "3B"; #msa_annotate.pl v1.2.1
+NC_012800;     "5539..6147"; "3C"; #msa_annotate.pl v1.2.1
+NC_012800;     "6148..7536"; "3D"; #msa_annotate.pl v1.2.1
 
 # msa_annotate.pl v1.1.6
 # Human cosavirus B, 586420, Picornaviridae
@@ -1662,21 +1681,21 @@ NC_018226;     "4765..4839"; "3B"; #msa_annotate.pl v1.1.6
 NC_018226;     "4840..5412"; "3C"; #msa_annotate.pl v1.1.6
 NC_018226;     "5413..6777"; "3D"; #msa_annotate.pl v1.1.6
 
-# msa_annotate.pl v1.1.6
+# msa_annotate.pl v1.2.1
 # Bovine hungarovirus, 1233320, Picornaviridae
 # NC_018668
-NC_018668;       "733..984"; "L"; #msa_annotate.pl v1.1.6
-NC_018668;      "985..1227"; "VP4"; #msa_annotate.pl v1.1.6
-NC_018668;     "1228..1944"; "VP2"; #msa_annotate.pl v1.1.6
-NC_018668;     "1945..2613"; "VP3"; #msa_annotate.pl v1.1.6
-NC_018668;     "2614..3318"; "VP1"; #msa_annotate.pl v1.1.6
-NC_018668;     "3319..3381"; "2A"; #msa_annotate.pl v1.1.6
-NC_018668;     "3382..4083"; "2B"; #msa_annotate.pl v1.1.6
-NC_018668;     "4084..5055"; "2C"; #msa_annotate.pl v1.1.6
-NC_018668;     "5056..5388"; "3A"; #msa_annotate.pl v1.1.6
-NC_018668;     "5389..5469"; "3B"; #msa_annotate.pl v1.1.6
-NC_018668;     "5470..6093"; "3C"; #msa_annotate.pl v1.1.6
-NC_018668;     "6094..7461"; "3D"; #msa_annotate.pl v1.1.6
+NC_018668;       "733..984"; "L"; #msa_annotate.pl v1.2.1
+NC_018668;      "985..1227"; "VP4"; #msa_annotate.pl v1.2.1
+NC_018668;     "1228..1944"; "VP2"; #msa_annotate.pl v1.2.1
+NC_018668;     "1945..2613"; "VP3"; #msa_annotate.pl v1.2.1
+NC_018668;     "2614..3318"; "VP1"; #msa_annotate.pl v1.2.1
+NC_018668;     "3319..3381"; "2A"; #msa_annotate.pl v1.2.1
+NC_018668;     "3382..4083"; "2B"; #msa_annotate.pl v1.2.1
+NC_018668;     "4084..5055"; "2C"; #msa_annotate.pl v1.2.1
+NC_018668;     "5056..5388"; "3A"; #msa_annotate.pl v1.2.1
+NC_018668;     "5389..5469"; "3B"; #msa_annotate.pl v1.2.1
+NC_018668;     "5470..6093"; "3C"; #msa_annotate.pl v1.2.1
+NC_018668;     "6094..7461"; "3D"; #msa_annotate.pl v1.2.1
 
 # msa_annotate.pl v1.1.1
 # Norwalk virus, 11983, Caliciviridae
@@ -1945,17 +1964,17 @@ NC_003996; "7558..10050"; "NS5"   ; #msa_annotate.pl V1.2.0
 # msa_annotate.pl V1.2.0
 # Langat virus, 11085, Flaviviridae
 # NC_003690;
+#NC_003690;    ""; "M"     ; #msa_annotate.pl V1.2.0
+#NC_003690;  ""; "2k"    ; #msa_annotate.pl V1.2.0
 NC_003690;    "131..478"; "ancC"  ; #msa_annotate.pl V1.2.0
 NC_003690;    "131..418"; "C"     ; #msa_annotate.pl V1.2.0
 NC_003690;    "479..970"; "preM"  ; #msa_annotate.pl V1.2.0
-#NC_003690;    ""; "M"     ; #msa_annotate.pl V1.2.0
 NC_003690;   "971..2467"; "E"     ; #msa_annotate.pl V1.2.0
 NC_003690;  "2468..3514"; "NS1"   ; #msa_annotate.pl V1.2.0
 NC_003690;  "3515..4204"; "NS2a"  ; #msa_annotate.pl V1.2.0
 NC_003690;  "4205..4597"; "NS2b"  ; #msa_annotate.pl V1.2.0
 NC_003690;  "4598..6460"; "NS3"   ; #msa_annotate.pl V1.2.0
 NC_003690;  "6461..6907"; "NS4a"  ; #msa_annotate.pl V1.2.0
-#NC_003690;  ""; "2k"    ; #msa_annotate.pl V1.2.0
 NC_003690;  "6908..7663"; "NS4b"  ; #msa_annotate.pl V1.2.0
 NC_003690; "7664..10372"; "NS5"   ; #msa_annotate.pl V1.2.0
 
@@ -1997,6 +2016,472 @@ NC_001655;  "5126..5290"; "NS4A"  ; #msa_annotate.pl V1.2.0
 NC_001655;  "5291..6034"; "NS4B"  ; #msa_annotate.pl V1.2.0
 NC_001655;  "6035..7267"; "NS5A"  ; #msa_annotate.pl V1.2.0
 NC_001655;  "7268..9037"; "NS5B"  ; #msa_annotate.pl V1.2.0
+
+# msa_annotate.pl V1.2.1
+# Middle East respiratory syndrome coronavirus, 1335626, Coronaviridae
+# NC_019843;
+NC_019843;    "278..856"; "nsp1"  ; #msa_annotate.pl V1.2.1
+NC_019843;   "857..2836"; "nsp2"  ; #msa_annotate.pl V1.2.1
+NC_019843;  "2837..8497"; "nsp3"  ; #msa_annotate.pl V1.2.1
+NC_019843; "8498..10018"; "nsp4"  ; #msa_annotate.pl V1.2.1
+NC_019843;"10019..10936"; "nsp5"  ; #msa_annotate.pl V1.2.1
+NC_019843;"10937..11812"; "nsp6"  ; #msa_annotate.pl V1.2.1
+NC_019843;"11813..12061"; "nsp7"  ; #msa_annotate.pl V1.2.1
+NC_019843;"12062..12658"; "nsp8"  ; #msa_annotate.pl V1.2.1
+NC_019843;"12659..12988"; "nsp9"  ; #msa_annotate.pl V1.2.1
+NC_019843;"12989..13408"; "nsp10" ; #msa_annotate.pl V1.2.1
+NC_019843;"13409..16206"; "nsp12" ; #msa_annotate.pl V1.2.1
+NC_019843;"16207..18000"; "nsp13" ; #msa_annotate.pl V1.2.1
+NC_019843;"18001..19572"; "nsp14" ; #msa_annotate.pl V1.2.1
+NC_019843;"19573..20601"; "nsp15" ; #msa_annotate.pl V1.2.1
+NC_019843;"20602..21510"; "nsp16" ; #msa_annotate.pl V1.2.1
+NC_019843;"13409..13450"; "nsp11" ; #msa_annotate.pl V1.2.1
+
+# msa_annotate.pl V1.2.1
+# Ref mat_peptides taken from uniprot.org
+# Pipistrellus bat coronavirus HKU5, 694008, Coronaviridae
+# NC_009020;
+NC_009020;    "261..845"; "nsp1"  ; #msa_annotate.pl V1.2.1
+NC_009020;   "846..2813"; "nsp2"  ; #msa_annotate.pl V1.2.1
+NC_009020;  "2814..8750"; "nsp3"  ; #msa_annotate.pl V1.2.1
+NC_009020; "8751..10274"; "nsp4"  ; #msa_annotate.pl V1.2.1
+NC_009020;"10275..11192"; "nsp5"  ; #msa_annotate.pl V1.2.1
+NC_009020;"11193..12068"; "nsp6"  ; #msa_annotate.pl V1.2.1
+NC_009020;"12069..12317"; "nsp7"  ; #msa_annotate.pl V1.2.1
+NC_009020;"12318..12914"; "nsp8"  ; #msa_annotate.pl V1.2.1
+NC_009020;"12915..13244"; "nsp9"  ; #msa_annotate.pl V1.2.1
+NC_009020;"13245..13661"; "nsp10" ; #msa_annotate.pl V1.2.1
+NC_009020;"13662..16462"; "nsp12" ; #msa_annotate.pl V1.2.1
+NC_009020;"16463..18256"; "nsp13" ; #msa_annotate.pl V1.2.1
+NC_009020;"18257..19828"; "nsp14" ; #msa_annotate.pl V1.2.1
+NC_009020;"19829..20881"; "nsp15" ; #msa_annotate.pl V1.2.1
+NC_009020;"20882..21805"; "nsp16" ; #msa_annotate.pl V1.2.1
+NC_009020;""; "nsp11" ; #msa_annotate.pl V1.2.1
+
+# msa_annotate.pl V1.2.1
+# Ref mat_peptides taken from uniprot.org
+# Tylonycteris bat coronavirus HKU4, 694007, Coronaviridae
+# NC_009019;
+NC_009019;    "267..851"; "nsp1"  ; #msa_annotate.pl V1.2.1
+NC_009019;   "852..2807"; "nsp2"  ; #msa_annotate.pl V1.2.1
+NC_009019;  "2808..8618"; "nsp3"  ; #msa_annotate.pl V1.2.1
+NC_009019; "8619..10139"; "nsp4"  ; #msa_annotate.pl V1.2.1
+NC_009019;"10140..11057"; "nsp5"  ; #msa_annotate.pl V1.2.1
+NC_009019;"11058..11933"; "nsp6"  ; #msa_annotate.pl V1.2.1
+NC_009019;"11934..12182"; "nsp7"  ; #msa_annotate.pl V1.2.1
+NC_009019;"12183..12779"; "nsp8"  ; #msa_annotate.pl V1.2.1
+NC_009019;"12780..13109"; "nsp9"  ; #msa_annotate.pl V1.2.1
+NC_009019;"13110..13526"; "nsp10" ; #msa_annotate.pl V1.2.1
+NC_009019;"13527..16327"; "nsp12" ; #msa_annotate.pl V1.2.1
+NC_009019;"16328..18121"; "nsp13" ; #msa_annotate.pl V1.2.1
+NC_009019;"18122..19690"; "nsp14" ; #msa_annotate.pl V1.2.1
+NC_009019;"19691..20716"; "nsp15" ; #msa_annotate.pl V1.2.1
+NC_009019;"20717..21622"; "nsp16" ; #msa_annotate.pl V1.2.1
+NC_009019;""; "nsp11" ; #msa_annotate.pl V1.2.1
+
+# msa_annotate.pl V1.2.1
+# Ref mat_peptides taken from uniprot.org
+# Rousettus bat coronavirus HKU9, 694006, Coronaviridae
+# NC_009021;
+NC_009021;    "229..753"; "nsp1"  ; #msa_annotate.pl V1.2.1
+NC_009021;   "754..2544"; "nsp2"  ; #msa_annotate.pl V1.2.1
+NC_009021;  "2545..8055"; "nsp3"  ; #msa_annotate.pl V1.2.1
+NC_009021;  "8056..9533"; "nsp4"  ; #msa_annotate.pl V1.2.1
+NC_009021; "9538..10455"; "nsp5"  ; #msa_annotate.pl V1.2.1
+NC_009021;"10456..11325"; "nsp6"  ; #msa_annotate.pl V1.2.1
+NC_009021;"11326..11574"; "nsp7"  ; #msa_annotate.pl V1.2.1
+NC_009021;"11575..12174"; "nsp8"  ; #msa_annotate.pl V1.2.1
+NC_009021;"12175..12510"; "nsp9"  ; #msa_annotate.pl V1.2.1
+NC_009021;"12511..12927"; "nsp10" ; #msa_annotate.pl V1.2.1
+NC_009021;"12928..15722"; "nsp12" ; #msa_annotate.pl V1.2.1
+NC_009021;"15723..17525"; "nsp13" ; #msa_annotate.pl V1.2.1
+NC_009021;"17526..19115"; "nsp14" ; #msa_annotate.pl V1.2.1
+NC_009021;"19116..20126"; "nsp15" ; #msa_annotate.pl V1.2.1
+NC_009021;"20127..21017"; "nsp16" ; #msa_annotate.pl V1.2.1
+NC_009021;""; "nsp11" ; #msa_annotate.pl V1.2.1
+
+# msa_annotate.pl V1.2.1
+# Ref mat_peptides taken from uniprot.org
+# Human coronavirus OC43, 31631, Coronaviridae
+# NC_005147;
+NC_005147;    "211..948"; "nsp1"  ; #msa_annotate.pl V1.2.1
+NC_005147;   "949..2763"; "nsp2"  ; #msa_annotate.pl V1.2.1
+NC_005147;  "2764..8460"; "nsp3"  ; #msa_annotate.pl V1.2.1
+NC_005147;  "8461..9948"; "nsp4"  ; #msa_annotate.pl V1.2.1
+NC_005147; "9949..10857"; "nsp5"  ; #msa_annotate.pl V1.2.1
+NC_005147;"10858..11718"; "nsp6"  ; #msa_annotate.pl V1.2.1
+NC_005147;"11719..11985"; "nsp7"  ; #msa_annotate.pl V1.2.1
+NC_005147;"11986..12576"; "nsp8"  ; #msa_annotate.pl V1.2.1
+NC_005147;"12577..12906"; "nsp9"  ; #msa_annotate.pl V1.2.1
+NC_005147;"12907..13317"; "nsp10" ; #msa_annotate.pl V1.2.1
+NC_005147;"13318..16100"; "nsp12" ; #msa_annotate.pl V1.2.1
+NC_005147;"16101..17909"; "nsp13" ; #msa_annotate.pl V1.2.1
+NC_005147;"17910..19472"; "nsp14" ; #msa_annotate.pl V1.2.1
+NC_005147;"19473..20597"; "nsp15" ; #msa_annotate.pl V1.2.1
+NC_005147;"20598..21494"; "nsp16" ; #msa_annotate.pl V1.2.1
+NC_005147;""; "nsp11" ; #msa_annotate.pl V1.2.1
+
+# msa_annotate.pl V1.2.1
+# Ref mat_peptides taken from uniprot.org
+# Scotophilus bat coronavirus 512, 693999, Coronaviridae
+# NC_009657;
+NC_009657;    "294..623"; "nsp1"  ; #msa_annotate.pl V1.2.1
+NC_009657;   "624..2984"; "nsp2"  ; #msa_annotate.pl V1.2.1
+NC_009657;  "2985..7883"; "nsp3"  ; #msa_annotate.pl V1.2.1
+NC_009657;  "7884..9329"; "nsp4"  ; #msa_annotate.pl V1.2.1
+NC_009657; "9330..10235"; "nsp5"  ; #msa_annotate.pl V1.2.1
+NC_009657;"10236..11063"; "nsp6"  ; #msa_annotate.pl V1.2.1
+NC_009657;"11064..11312"; "nsp7"  ; #msa_annotate.pl V1.2.1
+NC_009657;"11313..11897"; "nsp8"  ; #msa_annotate.pl V1.2.1
+NC_009657;"11898..12221"; "nsp9"  ; #msa_annotate.pl V1.2.1
+NC_009657;"12222..12626"; "nsp10" ; #msa_annotate.pl V1.2.1
+NC_009657;"12627..15406"; "nsp12" ; #msa_annotate.pl V1.2.1
+NC_009657;"15407..16963"; "nsp13" ; #msa_annotate.pl V1.2.1
+NC_009657;"16964..18751"; "nsp14" ; #msa_annotate.pl V1.2.1
+NC_009657;"18752..19768"; "nsp15" ; #msa_annotate.pl V1.2.1
+NC_009657;"19769..20671"; "nsp16" ; #msa_annotate.pl V1.2.1
+NC_009657;""; "nsp11" ; #msa_annotate.pl V1.2.1
+
+# msa_annotate.pl V1.2.1
+# Ref mat_peptides taken from uniprot.org
+# Feline infectious peritonitis virus, 11135, Coronaviridae
+# NC_002306;
+NC_002306;    "311..640"; "nsp1"  ; #msa_annotate.pl V1.2.1
+NC_002306;   "641..2947"; "nsp2"  ; #msa_annotate.pl V1.2.1
+NC_002306;  "2948..7549"; "nsp3"  ; #msa_annotate.pl V1.2.1
+NC_002306;  "7550..9019"; "nsp4"  ; #msa_annotate.pl V1.2.1
+NC_002306;  "9020..9925"; "nsp5"  ; #msa_annotate.pl V1.2.1
+NC_002306; "9926..10807"; "nsp6"  ; #msa_annotate.pl V1.2.1
+NC_002306;"10808..11056"; "nsp7"  ; #msa_annotate.pl V1.2.1
+NC_002306;"11057..11641"; "nsp8"  ; #msa_annotate.pl V1.2.1
+NC_002306;"11642..11974"; "nsp9"  ; #msa_annotate.pl V1.2.1
+NC_002306;"11975..12379"; "nsp10" ; #msa_annotate.pl V1.2.1
+NC_002306;"12380..15165"; "nsp12" ; #msa_annotate.pl V1.2.1
+NC_002306;"15166..16962"; "nsp13" ; #msa_annotate.pl V1.2.1
+NC_002306;"16963..18519"; "nsp14" ; #msa_annotate.pl V1.2.1
+NC_002306;"18520..19536"; "nsp15" ; #msa_annotate.pl V1.2.1
+NC_002306;"19537..20436"; "nsp16" ; #msa_annotate.pl V1.2.1
+NC_002306;""; "nsp11" ; #msa_annotate.pl V1.2.1
+
+# msa_annotate.pl V1.2.1
+# Ref mat_peptides taken from uniprot.org
+# Bat coronavirus (BtCoV/133/2005), 389230, Coronaviridae
+# NC_008315;
+NC_008315;    "260..844"; "nsp1"  ; #msa_annotate.pl V1.2.1
+NC_008315;   "845..2800"; "nsp2"  ; #msa_annotate.pl V1.2.1
+NC_008315;  "2801..8632"; "nsp3"  ; #msa_annotate.pl V1.2.1
+NC_008315; "8633..10153"; "nsp4"  ; #msa_annotate.pl V1.2.1
+NC_008315;"10154..11071"; "nsp5"  ; #msa_annotate.pl V1.2.1
+NC_008315;"11072..11947"; "nsp6"  ; #msa_annotate.pl V1.2.1
+NC_008315;"11948..12196"; "nsp7"  ; #msa_annotate.pl V1.2.1
+NC_008315;"12197..12793"; "nsp8"  ; #msa_annotate.pl V1.2.1
+NC_008315;"12794..13123"; "nsp9"  ; #msa_annotate.pl V1.2.1
+NC_008315;"13124..13540"; "nsp10" ; #msa_annotate.pl V1.2.1
+NC_008315;"13541..16341"; "nsp12" ; #msa_annotate.pl V1.2.1
+NC_008315;"16342..18135"; "nsp13" ; #msa_annotate.pl V1.2.1
+NC_008315;"18136..19704"; "nsp14" ; #msa_annotate.pl V1.2.1
+NC_008315;"19705..20730"; "nsp15" ; #msa_annotate.pl V1.2.1
+NC_008315;"20731..21636"; "nsp16" ; #msa_annotate.pl V1.2.1
+NC_008315;""; "nsp11" ; #msa_annotate.pl V1.2.1
+
+# msa_annotate.pl V1.2.1
+# Ref mat_peptides taken from uniprot.org
+# Human coronavirus NL63, 277944, Coronaviridae
+# NC_005831;
+NC_005831;    "287..616"; "nsp1"  ; #msa_annotate.pl V1.2.1
+NC_005831;   "617..2980"; "nsp2"  ; #msa_annotate.pl V1.2.1
+NC_005831;  "2981..7672"; "nsp3"  ; #msa_annotate.pl V1.2.1
+NC_005831;  "7673..9103"; "nsp4"  ; #msa_annotate.pl V1.2.1
+NC_005831; "9104..10012"; "nsp5"  ; #msa_annotate.pl V1.2.1
+NC_005831;"10013..10849"; "nsp6"  ; #msa_annotate.pl V1.2.1
+NC_005831;"10850..11098"; "nsp7"  ; #msa_annotate.pl V1.2.1
+NC_005831;"11099..11683"; "nsp8"  ; #msa_annotate.pl V1.2.1
+NC_005831;"11684..12010"; "nsp9"  ; #msa_annotate.pl V1.2.1
+NC_005831;"12011..12415"; "nsp10" ; #msa_annotate.pl V1.2.1
+NC_005831;"12416..15195"; "nsp12" ; #msa_annotate.pl V1.2.1
+NC_005831;"15196..16986"; "nsp13" ; #msa_annotate.pl V1.2.1
+NC_005831;"16987..18540"; "nsp14" ; #msa_annotate.pl V1.2.1
+NC_005831;"18541..19572"; "nsp15" ; #msa_annotate.pl V1.2.1
+NC_005831;"19573..20472"; "nsp16" ; #msa_annotate.pl V1.2.1
+NC_005831;""; "nsp11" ; #msa_annotate.pl V1.2.1
+
+# msa_annotate.pl V1.2.1
+# Ref mat_peptides taken from uniprot.org
+# Human coronavirus 229E, 11137, Coronaviridae
+# NC_002645;
+NC_002645;    "293..625"; "nsp1"  ; #msa_annotate.pl V1.2.1
+NC_002645;   "626..2983"; "nsp2"  ; #msa_annotate.pl V1.2.1
+NC_002645;  "2984..7744"; "nsp3"  ; #msa_annotate.pl V1.2.1
+NC_002645;  "7745..9187"; "nsp4"  ; #msa_annotate.pl V1.2.1
+NC_002645; "9188..10093"; "nsp5"  ; #msa_annotate.pl V1.2.1
+NC_002645;"10094..10930"; "nsp6"  ; #msa_annotate.pl V1.2.1
+NC_002645;"10931..11179"; "nsp7"  ; #msa_annotate.pl V1.2.1
+NC_002645;"11180..11764"; "nsp8"  ; #msa_annotate.pl V1.2.1
+NC_002645;"11765..12091"; "nsp9"  ; #msa_annotate.pl V1.2.1
+NC_002645;"12092..12496"; "nsp10" ; #msa_annotate.pl V1.2.1
+NC_002645;"12497..15276"; "nsp12" ; #msa_annotate.pl V1.2.1
+NC_002645;"15277..17067"; "nsp13" ; #msa_annotate.pl V1.2.1
+NC_002645;"17068..18621"; "nsp14" ; #msa_annotate.pl V1.2.1
+NC_002645;"18622..19665"; "nsp15" ; #msa_annotate.pl V1.2.1
+NC_002645;"19666..20565"; "nsp16" ; #msa_annotate.pl V1.2.1
+NC_002645;"12497..12547"; "nsp11" ; #msa_annotate.pl V1.2.1
+
+# msa_annotate.pl V1.2.1
+# Ref mat_peptides taken from uniprot.org
+# Newbury agent 1 virus, 331642; Caliciviridae
+# NC_007916;
+NC_007916;     "76..981"; "p34"   ; #msa_annotate.pl V1.2.1
+NC_007916;   "982..2010"; "NTPase"; #msa_annotate.pl V1.2.1
+NC_007916;  "2011..2850"; "p30"   ; #msa_annotate.pl V1.2.1
+NC_007916;  "2851..3045"; "VPg"   ; #msa_annotate.pl V1.2.1
+NC_007916;  "3046..3597"; "3CLpro"; #msa_annotate.pl V1.2.1
+NC_007916;  "3598..5052"; "RdRp"  ; #msa_annotate.pl V1.2.1
+NC_007916;  "5053..6705"; "VP1"   ; #msa_annotate.pl V1.2.1
+
+# msa_annotate.pl V1.2.1
+# Ref mat_peptides taken from uniprot.org
+# Calicivirus strain NB, 190239; Caliciviridae
+# NC_004064;
+NC_004064;     "75..980"; "p34"   ; #msa_annotate.pl V1.2.1
+NC_004064;   "981..2009"; "NTPase"; #msa_annotate.pl V1.2.1
+NC_004064;  "2010..2849"; "p30"   ; #msa_annotate.pl V1.2.1
+NC_004064;  "2850..3044"; "VPg"   ; #msa_annotate.pl V1.2.1
+NC_004064;  "3045..3596"; "3CLpro"; #msa_annotate.pl V1.2.1
+NC_004064;  "3597..5051"; "RdRp"  ; #msa_annotate.pl V1.2.1
+NC_004064;  "5052..6704"; "VP1"   ; #msa_annotate.pl V1.2.1
+
+# msa_annotate.pl V1.2.1
+# Ref mat_peptides taken from uniprot.org
+# Sapovirus Hu/Dresden/pJG-Sap01/DE; 291175; Caliciviridae
+# NC_006269;
+NC_006269;     "13..216"; "p11"   ; #msa_annotate.pl V1.2.1
+NC_006269;    "217..984"; "p28"   ; #msa_annotate.pl V1.2.1
+NC_006269;   "985..2007"; "NTPase"; #msa_annotate.pl V1.2.1
+NC_006269;  "2008..2829"; "p32"   ; #msa_annotate.pl V1.2.1
+NC_006269;  "2830..3171"; "VPg"   ; #msa_annotate.pl V1.2.1
+NC_006269;  "3172..5175"; "Pro-Pol"; #msa_annotate.pl V1.2.1
+NC_006269;  "5176..6852"; "VP1"   ; #msa_annotate.pl V1.2.1
+
+# msa_annotate.pl V1.2.1
+# Ref mat_peptides taken from uniprot.org
+# Sapovirus Mc10; 234601; Caliciviridae
+# NC_010624;
+NC_010624;     "14..220"; "p11"   ; #msa_annotate.pl V1.2.1
+NC_010624;    "221..988"; "p28"   ; #msa_annotate.pl V1.2.1
+NC_010624;   "989..2011"; "NTPase"; #msa_annotate.pl V1.2.1
+NC_010624;  "2012..2833"; "p32"   ; #msa_annotate.pl V1.2.1
+NC_010624;  "2834..3178"; "VPg"   ; #msa_annotate.pl V1.2.1
+NC_010624;  "3179..5179"; "Pro-Pol"; #msa_annotate.pl V1.2.1
+NC_010624;  "5180..6847"; "VP1"   ; #msa_annotate.pl V1.2.1
+
+# msa_annotate.pl V1.2.1
+# Ref mat_peptides taken from uniprot.org
+# Porcine enteric sapovirus; 106333; Caliciviridae
+# NC_000940;
+NC_000940;     "10..177"; "p11"   ; #msa_annotate.pl V1.2.1
+NC_000940;    "178..939"; "p28"   ; #msa_annotate.pl V1.2.1
+NC_000940;   "940..1959"; "NTPase"; #msa_annotate.pl V1.2.1
+NC_000940;  "1960..2811"; "p32"   ; #msa_annotate.pl V1.2.1
+NC_000940;  "2812..3153"; "VPg"   ; #msa_annotate.pl V1.2.1
+NC_000940;  "3154..5145"; "Pro-Pol"; #msa_annotate.pl V1.2.1
+NC_000940;  "5146..6771"; "VP1"   ; #msa_annotate.pl V1.2.1
+
+# msa_annotate.pl V1.2.0
+# Bat coronavirus CDPHE15/USA/2006, 1384461, Coronaviridae
+# NC_022103;
+NC_022103;     "80..409"; "nsp1"  ; #msa_annotate.pl V1.2.1
+NC_022103;   "410..2767"; "nsp2"  ; #msa_annotate.pl V1.2.1
+NC_022103;  "2768..7753"; "nsp3"  ; #msa_annotate.pl V1.2.1
+NC_022103;  "7754..9202"; "nsp4"  ; #msa_annotate.pl V1.2.1
+NC_022103; "9203..10111"; "nsp5"  ; #msa_annotate.pl V1.2.1
+NC_022103;"10112..10942"; "nsp6"  ; #msa_annotate.pl V1.2.1
+NC_022103;"10943..11191"; "nsp7"  ; #msa_annotate.pl V1.2.1
+NC_022103;"11192..11776"; "nsp8"  ; #msa_annotate.pl V1.2.1
+NC_022103;"11777..12100"; "nsp9"  ; #msa_annotate.pl V1.2.1
+NC_022103;"12101..12505"; "nsp10" ; #msa_annotate.pl V1.2.1
+NC_022103;"12506..15288"; "nsp12" ; #msa_annotate.pl V1.2.1
+NC_022103;"15289..17079"; "nsp13" ; #msa_annotate.pl V1.2.1
+NC_022103;"17080..18636"; "nsp14" ; #msa_annotate.pl V1.2.1
+NC_022103;"18637..19653"; "nsp15" ; #msa_annotate.pl V1.2.1
+NC_022103;"19654..20553"; "nsp16" ; #msa_annotate.pl V1.2.1
+NC_022103;"12101..12508"; "nsp10" ; #msa_annotate.pl V1.2.1
+NC_022103;"12509..12559"; "nsp11" ; #msa_annotate.pl V1.2.1
+
+# msa_annotate.pl v1.2.1
+# Rodent hepacivirus, 1281454, Flaviviridae
+# NC_021153; 
+NC_021153;   "403..906"; "C"     ; #msa_annotate.pl v1.2.1
+NC_021153;  "907..1461"; "E1"    ; #msa_annotate.pl v1.2.1
+NC_021153; "1462..2301"; "E2"    ; #msa_annotate.pl v1.2.1
+NC_021153; "2302..2463"; "p7"    ; #msa_annotate.pl v1.2.1
+NC_021153; "2464..3057"; "NS2"   ; #msa_annotate.pl v1.2.1
+NC_021153; "3058..4920"; "NS3"   ; #msa_annotate.pl v1.2.1
+NC_021153; "4921..5094"; "NS4a"  ; #msa_annotate.pl v1.2.1
+NC_021153; "5095..5832"; "NS4b"  ; #msa_annotate.pl v1.2.1
+NC_021153; "5833..6897"; "NS5a"  ; #msa_annotate.pl v1.2.1
+NC_021153; "6898..8646"; "NS5b"  ; #msa_annotate.pl v1.2.1
+
+# msa_annotate.pl v1.2.1
+# Sicinivirus 1, 1476208, Picornaviridae
+# NC_023861
+NC_023861;      "374..1759"; "L"; #msa_annotate.pl v1.2.1
+NC_023861;     "1760..2779"; "VP0"; #msa_annotate.pl v1.2.1
+NC_023861;     "2780..3403"; "VP3"; #msa_annotate.pl v1.2.1
+NC_023861;     "3404..4348"; "VP1"; #msa_annotate.pl v1.2.1
+NC_023861;     "4349..4831"; "2A"; #msa_annotate.pl v1.2.1
+NC_023861;     "4832..5419"; "2B"; #msa_annotate.pl v1.2.1
+NC_023861;     "5420..6439"; "2C"; #msa_annotate.pl v1.2.1
+NC_023861;     "6440..6946"; "3A"; #msa_annotate.pl v1.2.1
+NC_023861;     "6947..7024"; "3B"; #msa_annotate.pl v1.2.1
+NC_023861;     "7025..7549"; "3C"; #msa_annotate.pl v1.2.1
+NC_023861;     "7550..8965"; "3D"; #msa_annotate.pl v1.2.1
+
+# msa_annotate.pl v1.2.1
+# Enterovirus F, 1330520, Picornaviridae
+# NC_021220
+NC_021220;      "823..1029"; "VP4"; #msa_annotate.pl v1.2.1
+NC_021220;     "1030..1767"; "VP2"; #msa_annotate.pl v1.2.1
+NC_021220;     "1768..2496"; "VP3"; #msa_annotate.pl v1.2.1
+NC_021220;     "2497..3321"; "VP1"; #msa_annotate.pl v1.2.1
+NC_021220;     "3322..3771"; "2A"; #msa_annotate.pl v1.2.1
+NC_021220;     "3772..4068"; "2B"; #msa_annotate.pl v1.2.1
+NC_021220;     "4069..5055"; "2C"; #msa_annotate.pl v1.2.1
+NC_021220;     "5056..5322"; "3A"; #msa_annotate.pl v1.2.1
+NC_021220;     "5323..5391"; "3B"; #msa_annotate.pl v1.2.1
+NC_021220;     "5392..5940"; "3C"; #msa_annotate.pl v1.2.1
+NC_021220;     "5941..7323"; "RdRp"; #msa_annotate.pl v1.2.1
+
+# msa_annotate.pl v1.2.1
+# Possum enterovirus W1, 263531, Picornaviridae
+# NC_008714
+NC_008714;      "819..1025"; "VP4"; #msa_annotate.pl v1.2.1
+NC_008714;     "1026..1763"; "VP2"; #msa_annotate.pl v1.2.1
+NC_008714;     "1764..2492"; "VP3"; #msa_annotate.pl v1.2.1
+NC_008714;     "2493..3314"; "VP1"; #msa_annotate.pl v1.2.1
+NC_008714;     "3315..3764"; "2A"; #msa_annotate.pl v1.2.1
+NC_008714;     "3765..4061"; "2B"; #msa_annotate.pl v1.2.1
+NC_008714;     "4062..5048"; "2C"; #msa_annotate.pl v1.2.1
+NC_008714;     "5049..5315"; "3A"; #msa_annotate.pl v1.2.1
+NC_008714;     "5316..5384"; "3B"; #msa_annotate.pl v1.2.1
+NC_008714;     "5385..5933"; "3C"; #msa_annotate.pl v1.2.1
+NC_008714;     "5934..7316"; "RdRp"; #msa_annotate.pl v1.2.1
+
+# msa_annotate.pl v1.2.1
+# Caprine kobuvirus, 1452516, Picornaviridae
+# NC_023422
+NC_023422;      "684..129"; "L"; #msa_annotate.pl v1.2.1
+NC_023422;     "1296..2396"; "VP0"; #msa_annotate.pl v1.2.1
+NC_023422;     "2397..3065"; "VP3"; #msa_annotate.pl v1.2.1
+NC_023422;     "3066..3929"; "VP1"; #msa_annotate.pl v1.2.1
+NC_023422;     "3930..4268"; "2A"; #msa_annotate.pl v1.2.1
+NC_023422;     "4269..4763"; "2B"; #msa_annotate.pl v1.2.1
+NC_023422;     "4764..5768"; "2C"; #msa_annotate.pl v1.2.1
+NC_023422;     "5769..6038"; "3A"; #msa_annotate.pl v1.2.1
+NC_023422;     "6039..6119"; "3B"; #msa_annotate.pl v1.2.1
+NC_023422;     "6120..6719"; "3C"; #msa_annotate.pl v1.2.1
+NC_023422;     "6720..8120"; "3D"; #msa_annotate.pl v1.2.1
+
+# msa_annotate.pl v1.2.1
+# Feline sakobuvirus A, 1416021, Picornaviridae
+# NC_022802
+NC_022802;       "592..909"; "L"; #msa_annotate.pl v1.2.1
+NC_022802;      "910..2025"; "VP0"; #msa_annotate.pl v1.2.1
+NC_022802;     "2026..2697"; "VP3"; #msa_annotate.pl v1.2.1
+NC_022802;     "2698..3552"; "VP1"; #msa_annotate.pl v1.2.1
+NC_022802;     "3583..3891"; "2A"; #msa_annotate.pl v1.2.1
+NC_022802;     "3892..4341"; "2B"; #msa_annotate.pl v1.2.1
+NC_022802;     "4342..5352"; "2C"; #msa_annotate.pl v1.2.1
+NC_022802;     "5353..5586"; "3A"; #msa_annotate.pl v1.2.1
+NC_022802;     "5587..5673"; "3B"; #msa_annotate.pl v1.2.1
+NC_022802;     "5674..6243"; "3C"; #msa_annotate.pl v1.2.1
+NC_022802;     "6244..7647"; "3D"; #msa_annotate.pl v1.2.1
+
+# msa_annotate.pl v1.2.1
+# Eel picornavirus 1, 1398149, Picornaviridae
+# NC_022332
+NC_022332;      "489..1232"; "1AB"; #msa_annotate.pl v1.2.1
+NC_022332;     "1233..1928"; "1C"; #msa_annotate.pl v1.2.1
+NC_022332;     "1929..2777"; "1D"; #msa_annotate.pl v1.2.1
+NC_022332;     "2778..2834"; "2A1"; #msa_annotate.pl v1.2.1
+NC_022332;     "2835..3254"; "2A2"; #msa_annotate.pl v1.2.1
+NC_022332;     "3255..3632"; "2B"; #msa_annotate.pl v1.2.1
+NC_022332;     "3633..4751"; "2C"; #msa_annotate.pl v1.2.1
+NC_022332;     "4752..5189"; "3A"; #msa_annotate.pl v1.2.1
+NC_022332;     "5190..5249"; "3B"; #msa_annotate.pl v1.2.1
+NC_022332;     "5250..5846"; "3C"; #msa_annotate.pl v1.2.1
+NC_022332;     "5847..7265"; "3D"; #msa_annotate.pl v1.2.1
+
+# msa_annotate.pl v1.2.1
+# Sebokele virus 1, 1294177, Picornaviridae
+# NC_021482
+NC_021482;      "755..1531"; "VP0"; #msa_annotate.pl v1.2.1
+NC_021482;     "1532..2260"; "VP3"; #msa_annotate.pl v1.2.1
+NC_021482;     "2261..3190"; "VP1"; #msa_annotate.pl v1.2.1
+NC_021482;     "3191..3592"; "2A"; #msa_annotate.pl v1.2.1
+NC_021482;     "3593..4003"; "2B"; #msa_annotate.pl v1.2.1
+NC_021482;     "4004..5002"; "2C"; #msa_annotate.pl v1.2.1
+NC_021482;     "5003..5374"; "3A"; #msa_annotate.pl v1.2.1
+NC_021482;     "5375..5461"; "3B"; #msa_annotate.pl v1.2.1
+NC_021482;     "5462..6043"; "3C"; #msa_annotate.pl v1.2.1
+NC_021482;     "6044..7453"; "3D"; #msa_annotate.pl v1.2.1
+
+# msa_annotate.pl v1.2.1
+# Canine picodicistrovirus, 1150861, species=1330068, Picornaviridae
+# NC_021178
+NC_021178;      "983..1114"; "VP4"; #msa_annotate.pl v1.2.1
+NC_021178;     "1115..1828"; "VP2"; #msa_annotate.pl v1.2.1
+NC_021178;     "1829..2578"; "VP3"; #msa_annotate.pl v1.2.1
+NC_021178;     "2579..3514"; "VP1"; #msa_annotate.pl v1.2.1
+NC_021178;     "4106..4528"; "2A"; #msa_annotate.pl v1.2.1
+NC_021178;     "4529..4906"; "2B"; #msa_annotate.pl v1.2.1
+NC_021178;     "4907..5929"; "2C"; #msa_annotate.pl v1.2.1
+NC_021178;     "5930..6190"; "3A"; #msa_annotate.pl v1.2.1
+NC_021178;     "6191..6268"; "3B"; #msa_annotate.pl v1.2.1
+NC_021178;     "6269..6874"; "3C"; #msa_annotate.pl v1.2.1
+NC_021178;     "6875..8323"; "3D"; #msa_annotate.pl v1.2.1
+
+# msa_annotate.pl, V1.2.1
+# Madariaga virus, 1440170, Togaviridae
+# NC_023812
+NC_023812;       "43..1641"; "nsP1"  ; #msa_annotate.pl, V1.2.1
+NC_023812;     "1642..4023"; "nsP2"  ; #msa_annotate.pl, V1.2.1
+NC_023812;     "4024..5640"; "nsP3"  ; #msa_annotate.pl, V1.2.1
+NC_023812;     "5641..7464"; "nsP4"  ; #msa_annotate.pl, V1.2.1
+NC_023812;     "7541..8323"; "C"     ; #msa_annotate.pl, V1.2.1
+NC_023812;     "8324..8512"; "E3"    ; #msa_annotate.pl, V1.2.1
+NC_023812;     "8513..9772"; "E2"    ; #msa_annotate.pl, V1.2.1
+NC_023812;     "9773..9943"; "6K"    ; #msa_annotate.pl, V1.2.1
+NC_023812;    "9944..11266"; "E1"    ; #msa_annotate.pl, V1.2.1
+
+# msa_annotate.pl V1.2.1
+# Rodent pegivirus, 1321391, Flaviviridae
+# NC_021154
+NC_021154;       "350..442"; "sig"   ; #msa_annotate.pl V1.2.1
+NC_021154;      "443..1015"; "Y"     ; #msa_annotate.pl V1.2.1
+NC_021154;     "1016..1585"; "E1"    ; #msa_annotate.pl V1.2.1
+NC_021154;     "1586..2698"; "E2"    ; #msa_annotate.pl V1.2.1
+NC_021154;     "2699..3445"; "X"     ; #msa_annotate.pl V1.2.1
+NC_021154;     "3446..4168"; "NS2"   ; #msa_annotate.pl V1.2.1
+NC_021154;     "4169..5983"; "NS3"   ; #msa_annotate.pl V1.2.1
+NC_021154;     "5984..6322"; "NS4A"  ; #msa_annotate.pl V1.2.1
+NC_021154;     "6323..7102"; "NS4B"  ; #msa_annotate.pl V1.2.1
+NC_021154;     "7103..9100"; "NS5A"  ; #msa_annotate.pl V1.2.1
+NC_021154;    "9101..10801"; "NS5B"  ; #msa_annotate.pl V1.2.1
+
+# msa_annotate.pl v1.2.1
+# Bovine kobuvirus, 194965, Picornaviridae
+# NC_023988
+NC_023988;       "436..777"; "L"; #msa_annotate.pl v1.2.1
+NC_023988;      "778..1884"; "VP0"; #msa_annotate.pl v1.2.1
+NC_023988;     "1885..2559"; "VP3"; #msa_annotate.pl v1.2.1
+NC_023988;     "2560..3267"; "VP1"; #msa_annotate.pl v1.2.1
+NC_023988;     "3268..3426"; "2A"; #msa_annotate.pl v1.2.1
+NC_023988;     "3427..3777"; "2B"; #msa_annotate.pl v1.2.1
+NC_023988;     "3778..4782"; "2C"; #msa_annotate.pl v1.2.1
+NC_023988;     "4783..4971"; "3A"; #msa_annotate.pl v1.2.1
+NC_023988;     "4972..5061"; "3B"; #msa_annotate.pl v1.2.1
+NC_023988;     "5062..5706"; "3C"; #msa_annotate.pl v1.2.1
+NC_023988;     "5707..7134"; "3D"; #msa_annotate.pl v1.2.1
 
 # End of Annotate_symbol_records.txt
 

@@ -2,12 +2,12 @@ LOCUS       NC_004421               8374 bp    RNA     linear   VRL 25-JUL-2008
 DEFINITION  Bovine kobuvirus, complete genome.
 ACCESSION   NC_004421
 VERSION     NC_004421.1  GI:25057978
-DBLINK      Project: 14948
-KEYWORDS    .
+DBLINK      BioProject: PRJNA14948
+KEYWORDS    RefSeq.
 SOURCE      Bovine kobuvirus
   ORGANISM  Bovine kobuvirus
             Viruses; ssRNA positive-strand viruses, no DNA stage;
-            Picornavirales; Picornaviridae; Kobuvirus.
+            Picornavirales; Picornaviridae; Kobuvirus; unclassified Kobuvirus.
 REFERENCE   1
   AUTHORS   Yamashita,T., Ito,M., Kabashima,Y., Tsuzuki,H., Fujiura,A. and
             Sakae,K.
@@ -35,7 +35,7 @@ FEATURES             Location/Qualifiers
                      /mol_type="genomic RNA"
                      /strain="U-1"
                      /isolation_source="bovine"
-                     /db_xref="taxon:194965"
+                     /db_xref="taxon:1476554"
      5'UTR           1..808
      gene            809..8200
                      /locus_tag="BkVgp1"
@@ -288,4 +288,3 @@ ORIGIN
      8281 gcattttcct ctcagtgtcc tgctccctca cgggactgca cccaggaact gtgagcttcc
      8341 ccccctgtcc ttgaaatttc tattcttttc ttgc
 //
-

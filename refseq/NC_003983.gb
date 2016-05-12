@@ -1,10 +1,11 @@
-LOCUS       NC_003983               8828 bp    RNA     linear   VRL 05-FEB-2011
+LOCUS       NC_003983               8828 bp    RNA     linear   VRL 28-MAY-2013
 DEFINITION  Equine rhinitis B virus 1, complete genome.
-ACCESSION   NC_003983
+ACCESSION   NC_003983 NC_003077
 VERSION     NC_003983.1  GI:21335364
 DBLINK      Project: 15206
-KEYWORDS    proteinase; RNA polymerase; VP1; VP2; VP2A; VP2B; VP2C; VP3; VP3A;
-            VP3B; VP3C; VP3D; Vpg.
+            BioProject: PRJNA15206
+KEYWORDS    RefSeq; proteinase; RNA polymerase; VP1; VP2; VP2A; VP2B; VP2C;
+            VP3; VP3A; VP3B; VP3C; VP3D; Vpg.
 SOURCE      Equine rhinitis B virus 1
   ORGANISM  Equine rhinitis B virus 1
             Viruses; ssRNA positive-strand viruses, no DNA stage;
@@ -28,6 +29,7 @@ REFERENCE   3  (bases 1 to 8828)
             Vienna, AUSTRIA
 COMMENT     PROVISIONAL REFSEQ: This record has not yet been subject to final
             NCBI review. The reference sequence is identical to X96871.
+            On May 28, 2013 this sequence version replaced gi:16156223.
             COMPLETENESS: full length.
 FEATURES             Location/Qualifiers
      source          1..8828
@@ -318,4 +320,3 @@ ORIGIN
      8761 tacagcgagt cttttagctt aaggtgttag atgtaaggta cgtgggcttt cttttggttt
      8821 acttcttc
 //
-

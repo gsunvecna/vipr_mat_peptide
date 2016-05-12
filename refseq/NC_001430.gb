@@ -1,11 +1,11 @@
-LOCUS       NC_001430               7390 bp ss-RNA     linear   VRL 08-DEC-2008
+LOCUS       NC_001430               7390 bp ss-RNA     linear   VRL 25-MAR-2014
 DEFINITION  Human enterovirus D, complete genome.
 ACCESSION   NC_001430
 VERSION     NC_001430.1  GI:9626436
-DBLINK      Project: 15297
-KEYWORDS    .
-SOURCE      Human enterovirus D
-  ORGANISM  Human enterovirus D
+DBLINK      BioProject: PRJNA15297
+KEYWORDS    RefSeq.
+SOURCE      Enterovirus D
+  ORGANISM  Enterovirus D
             Viruses; ssRNA positive-strand viruses, no DNA stage;
             Picornavirales; Picornaviridae; Enterovirus.
 REFERENCE   1  (bases 1 to 7390)
@@ -32,7 +32,7 @@ COMMENT     REVIEWED REFSEQ: This record has been curated by NCBI staff. The
             COMPLETENESS: full length.
 FEATURES             Location/Qualifiers
      source          1..7390
-                     /organism="Human enterovirus D"
+                     /organism="Enterovirus D"
                      /mol_type="genomic RNA"
                      /strain="Enterovirus 70"
                      /db_xref="taxon:138951"
@@ -43,7 +43,7 @@ FEATURES             Location/Qualifiers
      CDS             727..7311
                      /locus_tag="HEVDgp1"
                      /codon_start=1
-                     /product="polyprotein"
+                     /product="genome polyprotein"
                      /protein_id="NP_040760.1"
                      /db_xref="GI:9626437"
                      /db_xref="GeneID:1461118"
@@ -86,54 +86,41 @@ FEATURES             Location/Qualifiers
                      LLAKAGKEYGLIMTPADKSSGFTETTWENVTFLKRYFRADEQYPFLIHPVMPMKEIHE
                      SIRWTKDPRNTQDHVRSLCLLAWHNGEETYNEFCRKIRTVPVGRALALPVYSSLRRKW
                      LDSF"
+     mat_peptide     727..1683
+                     /locus_tag="HEVDgp1"
+                     /product="protein VP0"
+                     /protein_id="YP_009020592.1"
+                     /db_xref="GI:597901228"
      mat_peptide     727..933
                      /locus_tag="HEVDgp1"
                      /product="capsid protein 1A"
+                     /note="capsid protein VP4"
                      /protein_id="NP_740412.1"
                      /db_xref="GI:25121919"
      mat_peptide     934..1683
                      /locus_tag="HEVDgp1"
                      /product="capsid protein 1B"
+                     /note="capsid protein VP2"
                      /protein_id="NP_740413.1"
                      /db_xref="GI:25121920"
-     mat_peptide     1684..2424
-                     /locus_tag="HEVDgp1"
-                     /product="capsid protein 1C version 3"
-                     /exception="alternative processing"
-                     /protein_id="NP_740738.1"
-                     /db_xref="GI:25121921"
      mat_peptide     1684..2409
                      /locus_tag="HEVDgp1"
                      /product="capsid protein 1C version 1"
                      /exception="alternative processing"
+                     /note="capsid protein VP3"
                      /protein_id="NP_740739.1"
                      /db_xref="GI:25121922"
-     mat_peptide     1684..2388
-                     /locus_tag="HEVDgp1"
-                     /product="capsid protein 1C version 2"
-                     /protein_id="NP_740740.1"
-                     /db_xref="GI:25121923"
-     mat_peptide     2389..3339
-                     /locus_tag="HEVDgp1"
-                     /product="alternative processing"
-                     /note="capsid protein 1D version 2"
-                     /protein_id="NP_740741.1"
-                     /db_xref="GI:25121924"
      mat_peptide     2410..3339
                      /locus_tag="HEVDgp1"
-                     /product="capsid protein 1D version 1"
+                     /product="capsid protein 1D"
                      /exception="alternative processing"
+                     /note="capsid protein VP1"
                      /protein_id="NP_740742.1"
                      /db_xref="GI:25121925"
-     mat_peptide     2425..3339
-                     /locus_tag="HEVDgp1"
-                     /product="capsid protein 1D version 3"
-                     /exception="alternative processing"
-                     /protein_id="NP_740743.1"
-                     /db_xref="GI:25121926"
      mat_peptide     3340..3768
                      /locus_tag="HEVDgp1"
-                     /product="proteinase 2A"
+                     /product="protease 2A"
+                     /note="proteinase 2A"
                      /protein_id="NP_740416.1"
                      /db_xref="GI:25121927"
      mat_peptide     3769..4065
@@ -144,6 +131,7 @@ FEATURES             Location/Qualifiers
      mat_peptide     4066..5055
                      /locus_tag="HEVDgp1"
                      /product="NTPase 2C"
+                     /note="protein 2C"
                      /protein_id="NP_740744.1"
                      /db_xref="GI:25121929"
      mat_peptide     5056..5322
@@ -154,16 +142,19 @@ FEATURES             Location/Qualifiers
      mat_peptide     5323..5388
                      /locus_tag="HEVDgp1"
                      /product="VPg 3B"
+                     /note="viral protein genome-linked"
                      /protein_id="NP_740745.1"
                      /db_xref="GI:25121931"
      mat_peptide     5389..5937
                      /locus_tag="HEVDgp1"
-                     /product="proteinase 3C"
+                     /product="protease 3C"
+                     /note="proteinase 3C"
                      /protein_id="NP_740421.1"
                      /db_xref="GI:25121932"
      mat_peptide     5938..7308
                      /locus_tag="HEVDgp1"
-                     /product="RNA polymerase 3D"
+                     /product="3D-POL"
+                     /note="RNA-directed RNA polymerase"
                      /protein_id="NP_740422.1"
                      /db_xref="GI:25121933"
 ORIGIN      

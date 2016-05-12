@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.2.0'); # Apr 12, 2013
+use version; our $VERSION = qv('1.2.1'); # May 10, 2013
 use Getopt::Long;
 use Data::Dumper;
 use English;
@@ -217,6 +217,7 @@ for my $fam ( sort keys %$families) {
     print STDERR "\n";
 #    $debug && print STDERR "$exe_name: \$accs=\n".Dumper($accs)."End of \$accs\n\n";
 
+    print STDERR "Tests performed: total=$summ->{total}, fail=$summ->{fail}, pass=$summ->{pass}; skip=$summ->{skip}\n";
     print "Tests performed: total=$summ->{total}, fail=$summ->{fail}, pass=$summ->{pass}; skip=$summ->{skip}\n";
 
 

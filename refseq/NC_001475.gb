@@ -1,9 +1,9 @@
-LOCUS       NC_001475              10707 bp    RNA     linear   VRL 08-DEC-2008
-DEFINITION  Dengue virus type 3, complete genome.
+LOCUS       NC_001475              10707 bp    RNA     linear   VRL 17-NOV-2011
+DEFINITION  Dengue virus 3, complete genome.
 ACCESSION   NC_001475
 VERSION     NC_001475.2  GI:163644368
-DBLINK      Project:15598
-KEYWORDS    .
+DBLINK      BioProject: PRJNA15598
+KEYWORDS    RefSeq.
 SOURCE      Dengue virus 3
   ORGANISM  Dengue virus 3
             Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
@@ -112,64 +112,64 @@ FEATURES             Location/Qualifiers
      mat_peptide     95..436
                      /gene="pol"
                      /locus_tag="DV3_gp1"
-                     /product="Anchored capsid protein"
+                     /product="anchored capsid protein C"
                      /protein_id="YP_001531165.2"
                      /db_xref="GI:164654854"
      mat_peptide     95..394
                      /gene="pol"
                      /locus_tag="DV3_gp1"
-                     /product="Capsid protein"
+                     /product="capsid protein C"
                      /protein_id="YP_001531164.2"
                      /db_xref="GI:164654862"
      mat_peptide     437..934
                      /gene="pol"
                      /locus_tag="DV3_gp1"
-                     /product="Membrane glicoprotein precursor"
+                     /product="membrane glycoprotein precursor M"
                      /note="premembrane/membrane protein; protein preM"
                      /protein_id="YP_001531166.1"
                      /db_xref="GI:158828126"
      mat_peptide     710..934
                      /gene="pol"
                      /locus_tag="DV3_gp1"
-                     /product="Membrane glycoprotein"
+                     /product="membrane glycoprotein M"
                      /note="protein M"
                      /protein_id="YP_001531167.1"
                      /db_xref="GI:158828127"
      mat_peptide     935..2413
                      /gene="pol"
                      /locus_tag="DV3_gp1"
-                     /product="Envelope protein"
+                     /product="envelope protein E"
                      /note="protein E"
                      /protein_id="YP_001531168.2"
                      /db_xref="GI:164654853"
      mat_peptide     2414..3469
                      /gene="pol"
                      /locus_tag="DV3_gp1"
-                     /product="Nonstructural protein NS1"
+                     /product="nonstructural protein NS1"
                      /protein_id="YP_001531169.2"
                      /db_xref="GI:164654855"
      mat_peptide     3470..4123
                      /gene="pol"
                      /locus_tag="DV3_gp1"
-                     /product="Nonstructural protein NS2A"
+                     /product="nonstructural protein NS2A"
                      /protein_id="YP_001531170.2"
                      /db_xref="GI:164654856"
      mat_peptide     4124..4513
                      /gene="pol"
                      /locus_tag="DV3_gp1"
-                     /product="Nonstructural protein NS2B"
+                     /product="nonstructural protein NS2B"
                      /protein_id="YP_001531171.3"
                      /db_xref="GI:164654857"
      mat_peptide     4514..6370
                      /gene="pol"
                      /locus_tag="DV3_gp1"
-                     /product="Nonstructural protein NS3"
+                     /product="nonstructural protein NS3"
                      /protein_id="YP_001531172.2"
                      /db_xref="GI:164654858"
      mat_peptide     6371..6751
                      /gene="pol"
                      /locus_tag="DV3_gp1"
-                     /product="Nonstructural protein NS4A"
+                     /product="nonstructural protein NS4A"
                      /protein_id="YP_001531173.2"
                      /db_xref="GI:164654859"
      mat_peptide     6752..6820
@@ -182,13 +182,13 @@ FEATURES             Location/Qualifiers
      mat_peptide     6821..7564
                      /gene="pol"
                      /locus_tag="DV3_gp1"
-                     /product="Nonstructural protein NS4B"
+                     /product="nonstructural protein NS4B"
                      /protein_id="YP_001531175.2"
                      /db_xref="GI:164654860"
      mat_peptide     7565..10264
                      /gene="pol"
                      /locus_tag="DV3_gp1"
-                     /product="Nonstructural protein NS5"
+                     /product="nonstructural protein NS5"
                      /protein_id="YP_001531176.2"
                      /db_xref="GI:164654861"
      3'UTR           10268..10707
@@ -373,4 +373,3 @@ ORIGIN
     10621 gagaccagag atcctgctgt ctcctcagca tcattccagg cacagaacgc cagaaaatgg
     10681 aatggtgctg ttgaatcaac aggttct
 //
-

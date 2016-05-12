@@ -848,6 +848,7 @@ sub checkAllRefseq {
         my @fam = sort keys %{$REFSEQS->{refs}};
         for my $fam (@fam) { $nstrain += scalar keys %{$REFSEQS->{refs}->{$fam}}; }
         printf STDERR ("$subn: loaded RefSeqs for $nstrain strains in %d families: \n", $#fam+1);
+        printf STDERR ("%s\t%s\t%s\n", '#', 'allowed', 'Family');
         for my $i(0..$#fam) { printf STDERR ("%2d\t%3d\t%s\n", $i+1, scalar keys %{$REFSEQS->{refs}->{$fam[$i]}}, $fam[$i]); }
     }
     $debug && print STDERR "$subn: \$REFSEQS=\n".Dumper($REFSEQS)."end of \$REFSEQS\n\n";
@@ -874,6 +875,41 @@ sub checkAllRefseq {
     my $meta = 1; # To load the content of Annotate_symbol_records.txt
     Annotate_Def::load_gene_symbol( $exe_dir, $meta);
     $debug && print STDERR "$subn: \$meta='$meta'\n\n";
+
+    my $refseqs_excluded = {
+                             'Bunyaviridae' => {
+                                                   'NC_004158' => 'Having only 1 mat_peptide',
+                                                 },
+                             'Caliciviridae' => {
+                                                   'NC_007916' => 'Having only 2 mat_peptides',
+                                                   'NC_006554' => 'Having only 1 mat_peptide',
+                                                   'NC_010624' => 'Having only 1 mat_peptide',
+                                                 },
+                             'Flaviviridae' => {
+                                                   'NC_009942' => 'Some minor problems as of 5/14/2014',
+                                                   'NC_009824' => 'E2/NS1 combined at 1489..2544',
+                                                   'NC_012671' => 'Having only 1 mat_peptide',
+                                                 },
+                             'Hepeviridae' => {
+                                                   'NC_015521' => 'huge gape between the 4 mat_peptides',
+                                                 },
+                             'Picornaviridae' => {
+                                                   'NC_003983' => 'double coverage between 3A-3B, 3B-3C',
+                                                   'NC_013695' => 'species=1330521 has 2 refseqs, using NC_010415 instead',
+                                                 },
+                             'Reoviridae' => {
+                                                   'NC_003758' => 'Ask Richard for opinion on Reoviridae',
+                                                   'NC_004278' => 'Ask Richard for opinion on Reoviridae',
+                                                 },
+                             'Rhabdoviridae' => {
+                                                   'NC_001560' => 'Rhabdoviridae doesn\'t have mat_peptide',
+                                                 },
+                             'Togaviridae' => {
+                                                   'NC_016959' => 'Having only 1 mat_peptide',
+                                                   'NC_016960' => 'Having only 1 mat_peptide',
+                                                   'NC_016961' => 'Having only 1 mat_peptide',
+                                                 },
+                           };
 
     my @fams = sort keys %{$REFSEQS->{refs}};
     for my $fam (@fams){
@@ -939,6 +975,11 @@ sub checkAllRefseq {
             $debug && print STDERR "$subn: \$nseq=$nseq \$acc=$acc \$errcode=\n".Dumper($errcode)."\n";
 
 #            print STDERR "$subn: \$nseq=$nseq \$acc=$acc\n";
+            if (exists($refseqs_excluded->{$fam}) && 
+                  exists($refseqs_excluded->{$fam}->{$acc}) && 
+                  $refseqs_excluded->{$fam}->{$acc}) {
+                print STDERR "$subn: \$nseq=$nseq \$acc=$acc of family=$fam has been excluded: '$refseqs_excluded->{$fam}->{$acc}'\n";
+            }
             # print out those new mat_peptides
             if ($errcode->{change_in_matpeptide}>0) {
               for my $newf (@{$errcode->{new_mat_peptides}}) {
@@ -981,12 +1022,12 @@ sub checkAllRefseq {
 
         $msg .= "family: $fam\t";
         $msg .= sprintf("total=%3d\t", $status->{total});
-        $msg .= "$status->{has_matpeptide}\t";
-        $msg .= "$status->{no_file_on_disk}\t";
-        $msg .= "$status->{change_in_matpeptide}\t";
-        $msg .= "$status->{allowed}\t";
-        $msg .= "$status->{updated}\t";
-        $msg .= "$status->{newSymbols}\n";
+        $msg .= ":$status->{has_matpeptide}\t";
+        $msg .= ":$status->{no_file_on_disk}\t";
+        $msg .= ":$status->{change_in_matpeptide}\t";
+        $msg .= ":$status->{allowed}\t";
+        $msg .= ":$status->{updated}\t";
+        $msg .= ":$status->{newSymbols}\n";
 
         printf STDERR ("$msg\n");
         printf STDERR ("$subn: family=$fam total RefSeqs checked:  $status->{total}\n");
@@ -1065,6 +1106,7 @@ sub check1Refseq {
     my $debug = 0 || $debug_all;
     my $subn = 'check1Refseq';
 
+#    $debug = 1 if ($acc eq 'NC_013695');
     $exe_dir = './' if (!$exe_dir);
     my $errcode = {
                     no_file_on_disk => 0, # Set to 1 if there is no such genbank file
@@ -1092,7 +1134,7 @@ sub check1Refseq {
     if (exists($REFSEQS->{refs}) 
         && exists($REFSEQS->{refs}->{$fam}) 
         && exists($REFSEQS->{refs}->{$fam}->{$strain}) 
-        && $acc eq $REFSEQS->{refs}->{$fam}->{$strain}
+        && ($acc eq $REFSEQS->{refs}->{$fam}->{$strain})
        ) {
         $errcode->{allowed} = 1;
         $debug && print STDERR "$subn: $acc \$errcode=".Dumper($errcode)."\n";
@@ -1154,6 +1196,9 @@ sub check1Refseq {
             }
     $errcode->{refseq_name} = $refseq_fn;
     $debug && print STDERR "$subn: \$acc=$acc \$errcode->{refseq_name}='$errcode->{refseq_name}'\n";
+#    if ($refseq_fn && $errcode->{refseq_name} !~ m/$acc/i) {
+#        print STDERR "$subn: \$acc=$acc is of specie=$specid \$errcode->{refseq_name}='$errcode->{refseq_name}' don't match. Problem.\n";
+#    }
 
     if ($refseq_fn !~ m/^$acc[.]gb$/i) {
         $errcode->{manual_curation} = 1;

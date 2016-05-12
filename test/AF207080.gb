@@ -1,0 +1,48 @@
+LOCUS       AF207080                  81 bp ss-RNA     linear   VRL 23-MAY-2002
+DEFINITION  Hepatitis C virus patient 6 LB1 clone 1 polyprotein (pol) gene,
+            partial cds.
+ACCESSION   AF207080
+VERSION     AF207080.1  GI:8468056
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 81)
+  AUTHORS   Izopet,J., Rostaing,L., Sandres,K., Cisterne,J.M., Pasquier,C.,
+            Rumeau,J.L., Duffaut,M., Durand,D. and Puel,J.
+  TITLE     Longitudinal analysis of hepatitis C virus replication and liver
+            fibrosis progression in renal transplant recipients
+  JOURNAL   J. Infect. Dis. 181 (3), 852-858 (2000)
+   PUBMED   10720504
+REFERENCE   2  (bases 1 to 81)
+  AUTHORS   Izopet,J., Rostaing,L., Sandres,K., Cisterne,J.M., Pasquier,C.,
+            Rumeau,J.L., Duffaut,M., Durand,D. and Puel,J.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (19-NOV-1999) Toulouse Hospital University, Laboratory of
+            Virology, Place Baylac, Toulouse 31059, France
+FEATURES             Location/Qualifiers
+     source          1..81
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="patient 6 LB1"
+                     /db_xref="taxon:11103"
+                     /clone="1"
+                     /note="isolated from renal transplant patient 6 LB1
+                     without liver fibrosis
+                     genotype: 1b"
+     gene            <1..>81
+                     /gene="pol"
+     CDS             <1..>81
+                     /gene="pol"
+                     /note="hypervariable region 1"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="AAF75286.1"
+                     /db_xref="GI:8468057"
+                     /translation="GTYVTGGAAARTTAGFASLLSPGAKQN"
+ORIGIN      
+        1 ggaacctacg tcaccggggg agccgccgct aggaccacgg ctgggtttgc cagccttctc
+       61 tctccgggcg ccaagcagaa t
+//
+

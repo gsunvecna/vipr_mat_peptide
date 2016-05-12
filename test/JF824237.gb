@@ -1,0 +1,53 @@
+LOCUS       JF824237                 456 bp    RNA     linear   VRL 28-JUL-2011
+DEFINITION  Hepatitis C virus isolate SN193 from Canada core gene, partial cds.
+ACCESSION   JF824237
+VERSION     JF824237.1  GI:334264573
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 456)
+  AUTHORS   Pilon,R., Leonard,L., Kim,J., Vallee,D., De Rubeis,E., Jolly,A.M.,
+            Wylie,J., Pelude,L. and Sandstrom,P.
+  TITLE     Transmission Patterns of HIV and Hepatitis C Virus among Networks
+            of People Who Inject Drugs
+  JOURNAL   PLoS ONE 6 (7), E22245 (2011)
+   PUBMED   21799802
+REFERENCE   2  (bases 1 to 456)
+  AUTHORS   Pilon,R., Leonard,L.E., Kim,J., Vallee,D., De Rubeis,E., Jolly,A.,
+            Wylie,J., Pelude,L. and Sandstrom,P.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (18-APR-2011) National Microbiology Laboratories, Public
+            Health Agency of Canada, 100 Eglantine Driveway, Ottawa, Ontario
+            K1A 0K9, Canada
+FEATURES             Location/Qualifiers
+     source          1..456
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="SN193"
+                     /isolation_source="injection drug user (IDU)"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11103"
+                     /country="Canada: Ottawa, Ontario"
+                     /collection_date="31-Oct-2007"
+                     /note="genotype: 1b"
+     CDS             <1..>456
+                     /codon_start=2
+                     /product="core"
+                     /protein_id="AEG74862.1"
+                     /db_xref="GI:334264574"
+                     /translation="PKPQRKTKRNTNRRPQDVKFPGGGQIVGGVYLLPRRGPKLGVRA
+                     TRKTSERSQPRGRRQPIPKARRPEGRAWAQPGYPWPLYGNEGMGWAGWLLSPRGSRPS
+                     WGPTDPRRRSRNLGKVIDTLTCGFADLMGYIPLVGAPLGGAARALAHGVR"
+ORIGIN      
+        1 tcctaaacct caaagaaaaa ccaaacgtaa caccaaccgc cgcccacagg acgtcaagtt
+       61 cccgggcggt ggccagatcg ttggtggagt ttacttgttg ccgcgcaggg gccccaagtt
+      121 gggtgtgcgc gcgactagga agacttccga gcggtcgcaa cctcgtggaa ggcgacaacc
+      181 tatccccaag gctcgccggc ccgagggcag ggcctgggct cagcccgggt acccttggcc
+      241 cctctatggc aatgagggca tggggtgggc aggatggctc ctgtcacccc gcggctctcg
+      301 gcctagttgg ggccccacgg acccccggcg taggtcgcgt aatttgggta aggtcatcga
+      361 tacccttaca tgcggcttcg ccgacctcat ggggtacatt ccgctcgtcg gcgccccctt
+      421 ggggggcgct gccagggccc tggcgcatgg cgttcg
+//
+

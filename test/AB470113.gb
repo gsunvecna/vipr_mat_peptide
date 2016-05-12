@@ -1,0 +1,53 @@
+LOCUS       AB470113                 385 bp    RNA     linear   VRL 16-MAY-2009
+DEFINITION  Hepatitis C virus core/E1 gene for polyprotein, partial cds,
+            isolate: T16-E1.
+ACCESSION   AB470113
+VERSION     AB470113.1  GI:237679595
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Elkady,A., Tanaka,Y., Kurbanov,F., Sugauchi,F., Sugiyama,M.,
+            Khan,A., Sayed,D., Moustafa,G., Abdel-Hameed,A.R. and Mizokami,M.
+  TITLE     Genetic variability of hepatitis C virus in South Egypt and its
+            possible clinical implication
+  JOURNAL   J. Med. Virol. 81 (6), 1015-1023 (2009)
+   PUBMED   19382263
+REFERENCE   2  (bases 1 to 385)
+  AUTHORS   Elkady,A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (13-NOV-2008) Contact:Abeer Elkady Nagoya city uiversity;
+            Kawasuami-1, Mizhuo-cho, Nagoya 467-8601, Japan
+FEATURES             Location/Qualifiers
+     source          1..385
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="T16-E1"
+                     /isolation_source="serum"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11103"
+                     /country="Egypt"
+     gene            <1..>385
+                     /gene="core/E1"
+     CDS             <1..>385
+                     /gene="core/E1"
+                     /note="contains core/E1 junction"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="BAH59161.1"
+                     /db_xref="GI:237679596"
+                     /translation="LLSCLTVPASATNYRNVSGVYHITNDCPNASIVYEADHHILHLP
+                     GCVPCVREGNQSRCWVALTPTVAAPYIGAPLESLRSHVDMMVGAATVCSALYIGDLCG
+                     GLFLVGQMFSFRPRRHWTTQDCNVPS"
+ORIGIN      
+        1 cttctctcgt gcctgactgt ccccgcttcg gccactaact atcgcaatgt ctcgggtgtt
+       61 tatcatatca ccaaygattg cccgaatgca agcatagtgt atgaggccga ccaccacatc
+      121 ttgcaccttc caggttgtgt gccctgcgtg agagagggga atcagtcacg ttgctgggtg
+      181 gcccttactc ctaccgtcgc agccccgtac atcggcgcgc cacttgagtc tctacggagt
+      241 caygtggata tgatggtggg ggctgccact gtttgttcag ccctttacat cggggatttg
+      301 tgtggcggct tgttcctggt cggccagatg ttctctttcc gaccccggcg tcactggact
+      361 acccaggatt gcaatgttcc atcta
+//
+

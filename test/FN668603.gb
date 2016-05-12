@@ -1,0 +1,59 @@
+LOCUS       FN668603                 313 bp    RNA     linear   VRL 15-JUN-2010
+DEFINITION  Hepatitis C virus genotype 4 partial gene for polyprotein, NS5B
+            region, genomic RNA, isolate AF01603.
+ACCESSION   FN668603
+VERSION     FN668603.1  GI:298356473
+KEYWORDS    .
+SOURCE      Hepatitis C virus genotype 4
+  ORGANISM  Hepatitis C virus genotype 4
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Paez-Jimenez,A., Rimlinger,F., El-Daly,M., Delarocque-Astagneau,E.,
+            Abdel-Hamid,M., Fontanet,A. and Thiers,V.
+  TITLE     HCV intrafamilial transmission in Greater Cairo, Egypt
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 313)
+  AUTHORS   Thiers,V.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (15-FEB-2010) Thiers V., Departement de Virologie,
+            Institut Pasteur, 28, Rue du Dr ROUX, FRANCE
+FEATURES             Location/Qualifiers
+     source          1..313
+                     /organism="Hepatitis C virus genotype 4"
+                     /mol_type="genomic RNA"
+                     /isolate="AF01603"
+                     /isolation_source="host serum"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:33745"
+                     /country="Egypt:Greater Cairo"
+                     /collection_date="Jun-2007"
+                     /identified_by="Francois Rimlinger, Mai El-Dali"
+                     /PCR_primers="fwd_name: NS5b-3S, fwd_seq:
+                     cgctgytttgactcmacrgtcac, rev_name: NS5b-4AS, rev_seq:
+                     gtcatagcctccgtgaagactc"
+                     /note="subtype 4a"
+     CDS             <1..>313
+                     /note="NSB5 region"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="CBJ66037.1"
+                     /db_xref="GI:298356474"
+                     /db_xref="GOA:D7GB38"
+                     /db_xref="InterPro:IPR002166"
+                     /db_xref="InterPro:IPR007094"
+                     /db_xref="UniProtKB/TrEMBL:D7GB38"
+                     /translation="IRAEEEVYQCCDLEPEARKVITALTERLYVGGPMHNSKGDLCGY
+                     RRCRASGVYTTSFGNTLTCYLKATAAIRAAGLRDCDMLVCGDDLVVIAESDGVEEDNR
+                     AL"
+     mat_peptide     <1..>313
+                     /product="NSB5 protein"
+ORIGIN      
+        1 atcagggccg aggaagaggt ctatcagtgt tgtgacctgg agcccgaagc ccgcaaggtt
+       61 attactgccc tcacagaaag actctacgtg ggcggcccca tgcacaacag caagggagac
+      121 ctttgtgggt atcggagatg ccgcgcaagc ggcgtctaca caaccagctt cgggaacaca
+      181 ctgacatgct atctcaaagc cacagccgct attagggcgg cagggctgag agactgcgat
+      241 atgttggttt gcggtgacga cttagtcgtt atcgccgaga gcgacggcgt ggaggaggat
+      301 aaccgagccc tcc
+//
+

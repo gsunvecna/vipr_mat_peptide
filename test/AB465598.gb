@@ -1,0 +1,49 @@
+LOCUS       AB465598                 151 bp    RNA     linear   VRL 27-MAY-2009
+DEFINITION  Japanese encephalitis virus polyprotein, partial cds, strain:
+            JEV/sw/Ishigaki/1/2005.
+ACCESSION   AB465598
+VERSION     AB465598.1  GI:238231306
+KEYWORDS    .
+SOURCE      Japanese encephalitis virus
+  ORGANISM  Japanese encephalitis virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Japanese encephalitis virus group.
+REFERENCE   1
+  AUTHORS   Nidaira,M., Taira,K., Okano,S., Shinzato,T., Morikawa,T.,
+            Tokumine,M., Asato,Y., Tada,Y., Miyagi,K., Matsuda,S., Itokazu,K.,
+            Kudaka,J., Nakamura,M. and Tamanaha,K.
+  TITLE     Survey of Japanese encephalitis virus in pigs on Miyako, Ishigaki,
+            Kume, and Yonaguni Islands in Okinawa, Japan
+  JOURNAL   Jpn. J. Infect. Dis. 62 (3), 220-224 (2009)
+   PUBMED   19468186
+REFERENCE   2  (bases 1 to 151)
+  AUTHORS   Nidaira,M., Taira,K., Okano,S., Tada,Y., Miyagi,K., Itokazu,K.,
+            Kudaka,J., Nakamura,M. and Tamanaha,K.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (14-OCT-2008) Contact:Minoru Nidaira Okinawa Prefectural
+            Institute of Health and Environment; Ozato 2085, Nanjo-city,
+            Okinawa 901-1202, Japan
+FEATURES             Location/Qualifiers
+     source          1..151
+                     /organism="Japanese encephalitis virus"
+                     /mol_type="genomic RNA"
+                     /strain="JEV/sw/Ishigaki/1/2005"
+                     /isolation_source="swine serum"
+                     /host="Sus scrofa"
+                     /db_xref="taxon:11072"
+                     /country="Japan: Okinawa, Ishigaki Island"
+                     /collection_date="Aug-2005"
+     CDS             <1..>151
+                     /note="envelope protein"
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="BAH60834.1"
+                     /db_xref="GI:238231307"
+                     /translation="LDVRMINIEASQLAEVRSYCYHASVTDISTVARCPTTGEAHNEK
+                     RADSSY"
+ORIGIN      
+        1 attggacgtc cgcatgatta acatcgaagc tagccaactt gctgaggtca gaagttattg
+       61 ttatcatgct tcagtcactg acatctcgac ggtggctcgg tgccctacga ctggagaagc
+      121 ccacaacgag aagcgagctg atagtagcta t
+//
+

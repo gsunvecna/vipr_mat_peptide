@@ -1,0 +1,55 @@
+LOCUS       AY342476                 570 bp    RNA     linear   VRL 19-AUG-2003
+DEFINITION  Hepatitis C virus isolate BB4C18 polyprotein gene, partial cds.
+ACCESSION   AY342476
+VERSION     AY342476.1  GI:33637211
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 570)
+  AUTHORS   Wang,X.-P., Kahn,P.D., Cunha,C.B., Laser,B.S., Sahn,B.A., Gawel,C.
+            and Kaplan,M.H.
+  TITLE     The Genetic Diversity of Hepatitis C Virus in HIV-1 Co-infected
+            Patients
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 570)
+  AUTHORS   Wang,X.-P., Kahn,P.D., Cunha,C.B., Laser,B.S., Sahn,B.A., Gawel,C.
+            and Kaplan,M.H.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (11-JUL-2003) Medicine, Division of Infectious Disease,
+            North Shore University Hospital, 300 Community Drive, Manhasset, NY
+            11030, USA
+FEATURES             Location/Qualifiers
+     source          1..570
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="BB4C18"
+                     /db_xref="taxon:11103"
+                     /clone="18"
+                     /note="patient designation: AAxCy, where AA indicates
+                     patients' initials, x designates visit number, Cy refers
+                     to clone number"
+     CDS             <1..>570
+                     /note="contains E1 and E2"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="AAQ23762.1"
+                     /db_xref="GI:33637212"
+                     /translation="MAWDMMMNWSPTTALVVAQLLRVPQAILDMIAGAHWGVLAGIAY
+                     FSMVGNWAKVLVVLLLFAGVDAKTYVSGGSAGRSTAGFADLFSPGAKQNIQLINTNGS
+                     WHINSTALNCNDSLNTGWVAGLFYYHKFNSSGCSERLASCRPLTTFAQGWGPISHVNG
+                     GGPDQGPYCWTTPKTWGIVPARTCVVRILL"
+ORIGIN      
+        1 atggcatggg atatgatgat gaactggtcc cctacgacgg cgctggtagt agctcagctg
+       61 ctccgggtcc cacaagccat cttggacatg atcgctggtg ctcactgggg agtcctagcg
+      121 ggcatagcgt atttttccat ggtggggaac tgggcgaagg ttctggtagt gctgctgcta
+      181 tttgccggcg ttgacgcgaa aacctacgtc agcgggggaa gtgccggccg ctccacggct
+      241 ggatttgctg atctcttctc accaggcgcc aagcagaaca tccagctgat caacaccaac
+      301 ggcagttggc acatcaatag tacggccttg aactgcaatg atagccttaa caccggctgg
+      361 gtagcagggc tcttctatta ccacaaattc aactcttcag gctgctccga gaggttggcc
+      421 agctgccgac cccttaccac ttttgcccag ggctggggcc ctatcagtca tgtcaacgga
+      481 ggcggcccgg accaaggccc ttactgttgg actaccccca agacttgggg tattgtgccc
+      541 gcaagaacgt gtgtggtccg gatattgctt
+//
+

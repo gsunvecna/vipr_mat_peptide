@@ -1,0 +1,50 @@
+LOCUS       EU166225                 372 bp    RNA     linear   VRL 08-MAY-2008
+DEFINITION  Hepatitis C virus isolate 20024L8 E1 glycoprptein gene, partial
+            cds.
+ACCESSION   EU166225
+VERSION     EU166225.1  GI:158323196
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 372)
+  AUTHORS   Fishman,S.L., Murray,J.M., Eng,F.J., Walewski,J.L., Morgello,S. and
+            Branch,A.D.
+  TITLE     Molecular and bioinformatic evidence of hepatitis C virus evolution
+            in brain
+  JOURNAL   J. Infect. Dis. 197 (4), 597-607 (2008)
+   PUBMED   18275278
+REFERENCE   2  (bases 1 to 372)
+  AUTHORS   Fishman,S.L., Murray,J., Eng,F., Walewski,J.L., Morgello,S. and
+            Branch,A.D.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (20-SEP-2007) Division of Liver Diseases, Mount Sinai
+            School of Medicine, One Gustave L Levy Plaza, New York, NY 10029,
+            USA
+FEATURES             Location/Qualifiers
+     source          1..372
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="20024L8"
+                     /db_xref="taxon:11103"
+                     /note="isolate represents patient number, tissue,
+                     extraction, clone; B=frontal cortex, M=medulla,
+                     C=cerebellum, L=liver, P=plasma"
+     CDS             <1..>372
+                     /codon_start=3
+                     /product="E1 glycoprptein"
+                     /protein_id="ABW34158.1"
+                     /db_xref="GI:158323197"
+                     /translation="LPGCSFSIFLLALLSCLTVPASAYQVRDSMGLYHVTNDCPNSSI
+                     VYETADAILHTPGCVPCVREGNATMCWVAMTPTVATRDGKLPTTQLRRHIDLLVGGAT
+                     LCSALYVGDLCGSVFLVGQLF"
+ORIGIN      
+        1 accttcctgg ttgctctttc tctatcttcc tcctggccct gctttcttgc ttgaccgtgc
+       61 ccgcttcagc ctaccaagtg cgcgactcca tggggcttta ccatgtcacc aatgactgcc
+      121 cgaactcgag tatcgtgtac gagacggctg atgccatcct gcacactccg gggtgtgtcc
+      181 cttgcgtccg cgagggcaac gccacgatgt gttgggtggc gatgaccccc acggtggcca
+      241 ccagggacgg caaactccct acaacgcagc ttcgacgtca tatcgatctg ctggtcgggg
+      301 gcgccactct ctgttcggcc ctctacgtgg gggatttgtg cgggtctgtc ttccttgtcg
+      361 gtcagctgtt ta
+//

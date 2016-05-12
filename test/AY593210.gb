@@ -1,0 +1,48 @@
+LOCUS       AY593210                 364 bp    RNA     linear   VRL 05-NOV-2004
+DEFINITION  Dengue virus type 1 isolate 62234/1962/vellore polyprotein gene,
+            partial cds.
+ACCESSION   AY593210
+VERSION     AY593210.1  GI:51093278
+KEYWORDS    .
+SOURCE      Dengue virus 1
+  ORGANISM  Dengue virus 1
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Dengue virus group.
+REFERENCE   1  (bases 1 to 364)
+  AUTHORS   Urvashi,S.B., Rai,A., Pasha,S.T., Sunita,K. and Seth,P.
+  TITLE     Evolution of Dengue viruses I & II over thirty years in India
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 364)
+  AUTHORS   Urvashi,S.B., Rai,A., Pasha,S.T., Sunita,K. and Seth,P.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (07-APR-2004) Microbiology, All India Institute of
+            Medical Sciences, Ansari Nagar, New Delhi 110 029, India
+FEATURES             Location/Qualifiers
+     source          1..364
+                     /organism="Dengue virus 1"
+                     /mol_type="genomic RNA"
+                     /serotype="1"
+                     /isolate="62234/1962/vellore"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11053"
+                     /country="India:Vellore"
+                     /note="isolated during 1962 Dengue epidemic in Vellore"
+     CDS             <1..>364
+                     /note="CprM; capsid/premembrane junction"
+                     /codon_start=3
+                     /product="polyprotein"
+                     /protein_id="AAT94965.1"
+                     /db_xref="GI:51093279"
+                     /translation="RLLSGQGPMKLVMAFIAFLRFLAIPPTAGILARWSSFKKNGAIK
+                     VLRGFKKEISNMLNIMNRKKRSVTMLLMLLPTALAFHLTTRGGEPHMIVSKQERGKPL
+                     LFKTSAGVNMCTLIAMDLG"
+ORIGIN      
+        1 aaagattgct ttcaggccaa ggacccatga aattggtgat ggcttttata gcatttctaa
+       61 gatttctagc cataccccca acagcaggaa ttttggctag atggagctca ttcaagaaga
+      121 atggagcgat taaagtgtta cggggtttca agaaagagat ctcaaacatg ctgaacataa
+      181 tgaacaggaa aaaaagatcc gtgaccatgc tccttatgct gctgcccaca gccctggcgt
+      241 tccatttgac aacacgaggg ggagagccgc acatgatagt tagcaagcag gaaagaggaa
+      301 agccactttt gtttaaaacc tcagcaggtg tcaatatgtg caccctcatt gcgatggatt
+      361 tggg
+//
+

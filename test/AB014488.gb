@@ -1,0 +1,59 @@
+LOCUS       AB014488                 566 bp    RNA     linear   VRL 19-NOV-1999
+DEFINITION  Hepatitis C virus RNA for polyprotein (E1/E2 region), partial cds,
+            clone 612.
+ACCESSION   AB014488
+VERSION     AB014488.1  GI:4001656
+KEYWORDS    polyprotein.
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Esumi,M., Ahmed,M., Zhou,Y.H., Takahashi,H. and Shikata,T.
+  TITLE     Murine antibodies against E2 and hypervariable region 1
+            cross-reactively capture hepatitis C virus
+  JOURNAL   Virology 251 (1), 158-164 (1998)
+   PUBMED   9813211
+REFERENCE   2
+  AUTHORS   Esumi,M., Rikihisa,T., Nishimura,S., Goto,J., Mizuno,K., Zhou,Y.H.
+            and Shikata,T.
+  TITLE     Experimental vaccine activities of recombinant E1 and E2
+            glycoproteins and hypervariable region 1 peptides of hepatitis C
+            virus in chimpanzees
+  JOURNAL   Arch. Virol. 144 (5), 973-980 (1999)
+   PUBMED   10416378
+REFERENCE   3  (bases 1 to 566)
+  AUTHORS   Esumi,M.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (21-MAY-1998) Mariko Esumi, Nihon University School of
+            Medicine, Department of Pathology; Oyaguchikami-machi, Itabashi-ku,
+            Tokyo 173-8610, Japan (E-mail:mesumi@med.nihon-u.ac.jp,
+            Tel:81-3-3972-8111(ex.2250), Fax:81-3-3972-8830)
+FEATURES             Location/Qualifiers
+     source          1..566
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /db_xref="taxon:11103"
+                     /clone="612"
+     CDS             <1..>566
+                     /note="E1/E2 region"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="BAA35058.1"
+                     /db_xref="GI:4001657"
+                     /translation="QAVMDMVAGAHWGVLAGLAYYSMVGNWAKVLIVMLLFAGVDGHT
+                     RVTGGVQGHVTSTLTSLFRPGASQKIQLVNTNGSWHINRTALNCNDSLQTGFLAALFY
+                     THKFNASGCPERMASCRSIDKFDQGWGPITYAQPDNSDQRPYCWHYAPRQCGIVPASQ
+                     VCGPVYCFTPSPVVVGTTDRSGAPTYNWG"
+ORIGIN      
+        1 caagctgtca tggacatggt ggcgggggcc cactggggag tcctagcggg ccttgcctac
+       61 tattccatgg tggggaactg ggctaaggtt ttgattgtga tgctactctt cgccggcgtt
+      121 gacgggcata cccgcgtgac ggggggggtg caaggccacg tcacctctac actcacgtcc
+      181 ctctttagac ctggggcgtc ccagaaaatt cagcttgtaa acaccaatgg cagttggcac
+      241 atcaacagga ctgccctgaa ctgcaatgac tccctccaaa ctgggttcct tgccgcgctg
+      301 ttctacacac acaagttcaa cgcgtccgga tgcccggagc gcatggccag ctgccgctcc
+      361 attgacaagt tcgaccaggg atggggtccc atcacttatg cccaacctga caactcggac
+      421 cagaggccgt attgctggca ctatgcacct cgacagtgtg gtatcgtacc cgcgtcgcag
+      481 gtgtgcggtc cagtgtattg cttcacccca agccctgttg tggtggggac gaccgatcgt
+      541 tccggtgccc ctacgtataa ctgggg
+//

@@ -1,0 +1,66 @@
+LOCUS       AF159998                 955 bp ss-RNA     linear   VRL 25-MAR-2000
+DEFINITION  Coxsackievirus B4 isolate 04493net65 polyprotein gene, partial cds.
+ACCESSION   AF159998
+VERSION     AF159998.1  GI:7327289
+KEYWORDS    .
+SOURCE      Human coxsackievirus B4
+  ORGANISM  Human coxsackievirus B4
+            Viruses; ssRNA positive-strand viruses, no DNA stage;
+            Picornavirales; Picornaviridae; Enterovirus; Human enterovirus B.
+REFERENCE   1  (bases 1 to 955)
+  AUTHORS   Mulders,M.N., Salminen,M., Kalkkinen,N. and Hovi,T.
+  TITLE     Molecular epidemiology of coxsackievirus B4 and disclosure of the
+            correct VP1/2A(pro) cleavage site: evidence for high genomic
+            diversity and long-term endemicity of distinct genotypes
+  JOURNAL   J. Gen. Virol. 81 (Pt 3), 803-812 (2000)
+   PUBMED   10675418
+REFERENCE   2  (bases 1 to 955)
+  AUTHORS   Mulders,M.N.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (17-JUN-1999) Department of Virology, National Public
+            Health Institute, Mannerheimintie 166, Helsinki 00300, Finland
+FEATURES             Location/Qualifiers
+     source          1..955
+                     /organism="Human coxsackievirus B4"
+                     /mol_type="genomic RNA"
+                     /isolate="04493net65"
+                     /db_xref="taxon:12073"
+                     /country="Netherlands"
+                     /note="isolated from 4 year old male patient in 1965"
+     CDS             <1..>955
+                     /note="VP1/2A junction"
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="AAF59655.1"
+                     /db_xref="GI:7327290"
+                     /translation="QFIKQDTFYQGPAEESVERAVGRVADTIARGPSNSEQIPALTAV
+                     ETGHTSQVDPSDTMQTRHVHNYHSRSESSVENFLCRSACVIYIKYSSAESNNLKRYAE
+                     WVINTRQVAQLRRKMEMFTYIRCDMELTFVITSHQEMSTATNSDVPVQTHQIMYVPPG
+                     GPVPTSVNDYVWQTSTNPSIFWTEGNAPPRMSIPFMSIGNAYTMFYDGWSNFSRDGIY
+                     GYNSLNNMGTIYARHVNDSSPGGLTSTIRIYFKPKHVKAYVPRPPRLCQYKKAKNVNF
+                     DVEAVTTERANLITTGPHGQQSGAVYVGNYRVVNRHLATQFD"
+     mat_peptide     <1..31
+                     /product="viral capsid protein VP3"
+     mat_peptide     32..874
+                     /product="viral capsid protein 1"
+     mat_peptide     875..>955
+                     /product="viral protease 2A"
+ORIGIN      
+        1 acaattcatc aagcaagata ccttttacca agggccagca gaggaatctg tggagagagc
+       61 agtgggcaga gttgcagaca ccattgccag gggcccgtcg aactccgagc aaatccccgc
+      121 tttaacagcc gtagagactg ggcacacttc ccaagtggac cctagtgaca ccatgcaaac
+      181 caggcatgtg cacaactatc actcaaggtc agagtcatca gtagaaaatt tcctatgcag
+      241 gtccgcgtgt gtgatctaca taaaatactc cagtgctgaa tcaaacaact tgaagcgcta
+      301 tgcagaatgg gttatcaaca caagacaggt ggcgcagctg cggcggaaaa tggaaatgtt
+      361 cacatacatc cgatgtgaca tggagctgac atttgtcatt actagtcatc aagaaatgtc
+      421 caccgccacc aattctgacg ttcctgtcca aacacaccaa ataatgtatg taccacctgg
+      481 tggtcctgta ccaacatcgg tcaacgacta tgtatggcaa acatccacca accctagcat
+      541 cttctggacg gagggcaacg caccaccgag gatgtcaata ccatttatga gcataggtaa
+      601 tgcgtacact atgttttatg acggttggtc gaatttctca agggatggca tatatggcta
+      661 taactcgcta aataacatgg ggaccattta cgcgcgccat gtcaacgatt caagcccagg
+      721 tggtttgacc agcaccatac gcatttattt caaacccaag cacgttaagg cttatgtgcc
+      781 acgcccaccg cgcttgtgcc aatacaagaa agccaagaat gtgaactttg acgttgaagc
+      841 cgtcaccact gagcgcgcaa atctgataac cacaggtccc cacggtcaac agtctggcgc
+      901 agtatacgta ggcaattaca gagtggtaaa cagacatctg gcgacacaat ttgac
+//
+

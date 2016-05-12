@@ -1,0 +1,60 @@
+LOCUS       AB186428                 271 bp    RNA     linear   VRL 05-DEC-2008
+DEFINITION  Hepatitis C virus gene for polyprotein (envelope protein 1,
+            envelope protein 2), partial cds, isolate: C1I-04.
+ACCESSION   AB186428
+VERSION     AB186428.1  GI:56710141
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Nakayama,H., Sugai,Y., Ikeya,S., Inoue,J., Nishizawa,T. and
+            Okamoto,H.
+  TITLE     Molecular investigation of interspousal transmission of hepatitis C
+            virus in two Japanese patients who acquired acute hepatitis C after
+            40 or 42 years of marriage
+  JOURNAL   J. Med. Virol. 75 (2), 258-266 (2005)
+   PUBMED   15602741
+REFERENCE   2  (bases 1 to 271)
+  AUTHORS   Nakayama,H., Sugai,Y. and Okamoto,H.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (05-AUG-2004) Contact:Hiroaki Okamoto Jichi Medical
+            School, Division of Virology, Department of Infection and Immunity;
+            3311-1 Yakushiji, Minamikawachi-Machi, Kawachi-Gun, Tochigi
+            329-0498, Japan
+FEATURES             Location/Qualifiers
+     source          1..271
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /strain="C1I"
+                     /isolate="C1I-04"
+                     /isolation_source="human serum"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11103"
+                     /country="Japan"
+     CDS             <1..>271
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="BAD80911.1"
+                     /db_xref="GI:56710142"
+                     /translation="SPTTALVVSQLLRIPQAVVDMVAGAHWGVLAGLAYYSMVGNWAK
+                     VLIVMLLFSGVDGRGTHVMGGQAARTTQGLASLFTPGPSQKIQLVN"
+     mat_peptide     <1..172
+                     /gene="E1"
+                     /product="envelope protein 1"
+     mat_peptide     173..>271
+                     /gene="E2"
+                     /product="envelope protein 2"
+     gene            <1..172
+                     /gene="E1"
+     gene            173..>271
+                     /gene="E2"
+ORIGIN      
+        1 gtcgcctaca acagccctag tggtgtcaca gttgctccgg atcccacaag ctgtcgtgga
+       61 catggtggcg ggggcccact ggggagtcct ggcgggcctc gcctactatt ccatggtagg
+      121 gaactgggct aaggttctga ttgtaatgct gcttttttcc ggcgttgacg ggaggggaac
+      181 tcacgtgatg ggggggcagg cggcccgcac cacccaaggg ctcgcatccc tcttcacccc
+      241 tgggccttct cagaaaatcc agcttgtgaa t
+//
+

@@ -1,10 +1,10 @@
-LOCUS       NC_001563              10962 bp ss-RNA     linear   VRL 08-DEC-2008
-DEFINITION  West Nile virus (lineage II strain 956), complete genome.
+LOCUS       NC_001563              10962 bp ss-RNA     linear   VRL 28-AUG-2012
+DEFINITION  West Nile virus, complete genome.
 ACCESSION   NC_001563
 VERSION     NC_001563.2  GI:11528013
-DBLINK      Project:15431
+DBLINK      Project: 15431
 KEYWORDS    .
-SOURCE      West Nile virus
+SOURCE      West Nile virus (WNV)
   ORGANISM  West Nile virus
             Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
             Flavivirus; Japanese encephalitis virus group.
@@ -49,6 +49,7 @@ FEATURES             Location/Qualifiers
                      /strain="956"
                      /db_xref="taxon:11082"
                      /clone="33/G8; 34/F6"
+                     /note="lineage 2"
      gene            97..10389
                      /locus_tag="WNVgp1"
                      /db_xref="GeneID:912267"
@@ -119,72 +120,77 @@ FEATURES             Location/Qualifiers
                      LLLYFHRRDLRLMANAICSAVPANWVPTGRTTWSIHAKGEWMTTEDMLAVWNRVWIEE
                      NEWMEDKTPVERWSDVPYSGKREDIWCGSLIGTRTRATWAENIHVAINQVRSVIGEEK
                      YVDYMSSLRRYEDTIVVEDTVL"
-     mat_peptide     97..>465
+     mat_peptide     97..465
                      /locus_tag="WNVgp1"
-                     /product="anchored core protein C"
+                     /product="anchored capsid protein C"
+                     /note="anchored core protein C"
                      /protein_id="NP_776011.1"
                      /db_xref="GI:27735299"
-     mat_peptide     97..>411
+     mat_peptide     97..411
                      /locus_tag="WNVgp1"
-                     /product="core protein C"
+                     /product="capsid protein C"
+                     /note="core protein C"
                      /protein_id="NP_776010.1"
                      /db_xref="GI:27735298"
-     mat_peptide     <466..>966
+     mat_peptide     466..966
                      /locus_tag="WNVgp1"
-                     /product="PreM protein"
+                     /product="membrane glycoprotein precursor prM"
+                     /note="matrix protein precursor"
                      /protein_id="NP_776012.1"
                      /db_xref="GI:27735300"
-     mat_peptide     <742..>966
+     mat_peptide     742..966
                      /locus_tag="WNVgp1"
-                     /product="matrix protein M"
+                     /product="membrane glycoprotein M"
+                     /note="matrix protein"
                      /protein_id="NP_776013.1"
                      /db_xref="GI:27735301"
-     mat_peptide     <967..>2457
+     mat_peptide     967..2457
                      /locus_tag="WNVgp1"
-                     /product="envelope protein"
+                     /product="envelope protein E"
                      /protein_id="NP_776014.1"
                      /db_xref="GI:27735302"
-     mat_peptide     <2458..>3513
+     mat_peptide     2458..3513
                      /locus_tag="WNVgp1"
-                     /product="non-structural protein NS1"
+                     /product="nonstructural protein NS1"
                      /protein_id="NP_776015.1"
                      /db_xref="GI:27735303"
-     mat_peptide     <3514..>4206
+     mat_peptide     3514..4206
                      /locus_tag="WNVgp1"
-                     /product="non-structural protein NS2a"
+                     /product="nonstructural protein NS2A"
                      /protein_id="NP_776016.1"
                      /db_xref="GI:27735304"
-     mat_peptide     <4207..>4599
+     mat_peptide     4207..4599
                      /locus_tag="WNVgp1"
-                     /product="non-structural protein NS2b"
+                     /product="nonstructural protein NS2B"
                      /protein_id="NP_776017.1"
                      /db_xref="GI:27735305"
-     mat_peptide     <4600..>6456
+     mat_peptide     4600..6456
                      /locus_tag="WNVgp1"
-                     /product="non-structural protein NS3"
-                     /note="proteinase and putative helicase"
+                     /product="nonstructural protein NS3"
+                     /note="protease; nucleotide triphosphatase; RNA
+                     triphosphatase; RNA helicase"
                      /protein_id="NP_776018.1"
                      /db_xref="GI:27735306"
-     mat_peptide     <6457..>6834
+     mat_peptide     6457..6834
                      /locus_tag="WNVgp1"
-                     /product="non-structural protein NS4a"
+                     /product="nonstructural protein NS4A"
                      /protein_id="NP_776019.1"
                      /db_xref="GI:27735307"
-     mat_peptide     <6835..>6903
+     mat_peptide     6835..6903
                      /locus_tag="WNVgp1"
                      /product="2K protein"
                      /protein_id="NP_776020.1"
                      /db_xref="GI:27735308"
-     mat_peptide     <6904..>7671
+     mat_peptide     6904..7671
                      /locus_tag="WNVgp1"
-                     /product="non-structural protein NS4b"
+                     /product="nonstructural protein NS4B"
                      /protein_id="NP_776021.1"
                      /db_xref="GI:27735309"
      mat_peptide     7672..10386
                      /locus_tag="WNVgp1"
-                     /product="RNA-dependent RNA polymerase"
-                     /note="methyltransferase component of capping enzyme;
-                     non-structural protein NS5"
+                     /product="nonstructural protein NS5"
+                     /note="RNA-dependent RNA polymerase; methyltransferase
+                     component of capping enzyme"
                      /protein_id="NP_776022.1"
                      /db_xref="GI:27735310"
 ORIGIN      
@@ -372,4 +378,3 @@ ORIGIN
     10861 attgacacct gggatagact aggggatctt ctgctctgca caaccagcca cacggcacag
     10921 tgcgccgaca taggtggctg gtggtgctag aacacaggat ct
 //
-

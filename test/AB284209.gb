@@ -1,0 +1,51 @@
+LOCUS       AB284209                 481 bp    RNA     linear   VRL 28-NOV-2006
+DEFINITION  Hepatitis C virus subtype 6a gene for polyprotein (NS5B region),
+            partial cds, isolate: TV146.
+ACCESSION   AB284209
+VERSION     AB284209.1  GI:118420744
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 6a
+  ORGANISM  Hepatitis C virus subtype 6a
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Huy,T. and Abe,K.
+  TITLE     Genotypic Variation of Hepatitis C Virus in Vietnam
+  JOURNAL   Published Only in Database (2006)
+REFERENCE   2  (bases 1 to 481)
+  AUTHORS   Tran,H.T. and Abe,K.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (21-NOV-2006) Kenji Abe, National Institute of Infectious
+            Diseases, Department of Pathology; Toyama 1-23-1, Shinjuku ku,
+            Tokyo 162-8640, Japan (E-mail:Kenjiabe@nih.go.jp,
+            URL:www.nih.go.jp, Tel:81-3-5285-1111(ex.2624), Fax:81-3-5285-1189)
+FEATURES             Location/Qualifiers
+     source          1..481
+                     /organism="Hepatitis C virus subtype 6a"
+                     /mol_type="genomic RNA"
+                     /isolate="TV146"
+                     /db_xref="taxon:31655"
+                     /country="Viet Nam: Ho Chi Minh City"
+                     /note="subtype 6a"
+     CDS             <1..>481
+                     /note="NS5B region"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="BAF37143.1"
+                     /db_xref="GI:118420745"
+                     /translation="RPGKRYYYLTRDCTTPLARAAWETARHTPVNSWLGNIIMFAPTI
+                     WVRMVLMTHFFSILQSQEQLEKALDFDIYGVTYSVSPLDLPAIIQRLHGMAAFSLHGY
+                     SPVELNRVGACLRKLGVPPLRAWRHRARAVRAKLIAQGGKAAICGRYLFNWAVKTKLN
+                     "
+ORIGIN      
+        1 aggcccggga agagatacta ctacctcaca cgtgactgta ccactccact tgcgcgggcc
+       61 gcttgggaga cggcccgcca cactccggtc aactcgtggt tgggcaacat cattatgttt
+      121 gcccccacga tatgggtgcg tatggttctg atgacccatt ttttctccat cctccagtcg
+      181 caagaacaat tggagaaagc actcgacttt gacatctacg gagtaaccta ctccgtctct
+      241 ccacttgatc tcccagcaat cattcaacga ctccatggca tggcagcatt ttcactccac
+      301 ggatactctc cagttgagct caatagggta ggggcttgcc tcagaaaact tggggtacct
+      361 cccttgcgag cctggagaca tcgagccaga gctgtcagag ctaaactcat tgcccaaggg
+      421 gggaaagcgg ctatatgcgg caggtacctc tttaactggg cggtgaagac taagctcaac
+      481 t
+//
+

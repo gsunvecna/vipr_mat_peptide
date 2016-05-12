@@ -1,0 +1,56 @@
+LOCUS       JF446285                 492 bp    RNA     linear   VRL 07-SEP-2011
+DEFINITION  Junin virus isolate H_FHA5069_G glycoprotein precursor (GPC) gene,
+            partial cds.
+ACCESSION   JF446285
+VERSION     JF446285.1  GI:334717191
+KEYWORDS    .
+SOURCE      Junin virus
+  ORGANISM  Junin virus
+            Viruses; ssRNA negative-strand viruses; Arenaviridae; Arenavirus;
+            New world arenaviruses.
+REFERENCE   1  (bases 1 to 492)
+  AUTHORS   Goni,S.E., Stephan,B.I., Iserte,J.A., Contigiani,M.S., Lozano,M.E.
+            and Tenorio,A.
+  TITLE     Viral diversity of Junin virus field strains
+  JOURNAL   Virus Res. 160 (1-2), 150-158 (2011)
+   PUBMED   21689697
+REFERENCE   2  (bases 1 to 492)
+  AUTHORS   Goni,S.E., Stephan,B.I., Iserte,J.A., Contigiani,M.S., Lozano,M.E.
+            and Tenorio,A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (01-MAR-2011) Ciencia y Tecnologia, Universidad Nacional
+            de Quilmes, Roque Saenz Pena, Bernal, Buenos Aires B1876BXD,
+            Argentina
+FEATURES             Location/Qualifiers
+     source          1..492
+                     /organism="Junin virus"
+                     /mol_type="genomic RNA"
+                     /isolate="H_FHA5069_G"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11619"
+                     /segment="S"
+                     /country="Argentina"
+                     /collection_date="1971"
+     gene            <1..>492
+                     /gene="GPC"
+     CDS             <1..>492
+                     /gene="GPC"
+                     /codon_start=3
+                     /product="glycoprotein precursor"
+                     /protein_id="AEG91034.1"
+                     /db_xref="GI:334717192"
+                     /translation="ATFMITFDDIAVLLPQYDVVIQHPADMSWCSKSDDQIRLSQWFM
+                     NVVGHDWHLDPPFLCRNRTKTEGFIFQVNTSKTGVNENYAKKFKTGMHHLYREYPDSC
+                     LSGKLCLMKAQPTSWPLQCPLDHVNTLHFLTRGKNIQLPRRSLKAFFSWSLTDSSGKD
+                     TPE"
+ORIGIN      
+        1 atgctacatt tatgataacc tttgatgaca ttgcagtact gttaccacaa tatgatgttg
+       61 taattcaaca cccggcagat atgagctggt gttccaaaag tgatgatcaa attcggttgt
+      121 ctcaatggtt catgaatgtt gtgggacatg actggcattt agacccacca tttctgtgta
+      181 ggaaccgtac aaagacagaa ggcttcatct ttcaagtcaa cacctccaag actggtgtta
+      241 atgaaaacta tgccaagaag ttcaagactg gcatgcacca tttatataga gaataccctg
+      301 actcttgctt gagtggaaaa ctgtgtttga tgaaggcaca acccaccagt tggcctctcc
+      361 agtgtccact cgaccacgtc aacacattgc atttcctcac aagaggtaag aacattcaac
+      421 ttccaaggag gtctttgaaa gcattctttt cctggtcact gaccgactca tccggaaaag
+      481 acacccctga gg
+//

@@ -1,0 +1,73 @@
+LOCUS       AB022290                1488 bp    RNA     linear   VRL 23-DEC-1999
+DEFINITION  Tick-borne encephalitis virus gene for polyprotein (E protein
+            region), partial cds, strain:Oshima 5-11.
+ACCESSION   AB022290
+VERSION     AB022290.1  GI:6009534
+KEYWORDS    polyprotein.
+SOURCE      Tick-borne encephalitis virus
+  ORGANISM  Tick-borne encephalitis virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; tick-borne encephalitis virus group.
+REFERENCE   1
+  AUTHORS   Hayasaka,D., Suzuki,Y., Kariwa,H., Ivanov,L., Volkov,V.,
+            Demenev,V., Mizutani,T., Gojobori,T. and Takashima,I.
+  TITLE     Phylogenetic and virulence analysis of tick-borne encephalitis
+            viruses from Japan and far-Eastern Russia
+  JOURNAL   J. Gen. Virol. 80 (PT 12), 3127-3135 (1999)
+   PUBMED   10567643
+REFERENCE   2  (bases 1 to 1488)
+  AUTHORS   Takashima,I. and Hayasaka,D.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (12-JAN-1999) Daisuke Hayasaka, Hokkaido University,
+            Graduate School of Veterinary Medicine; Kitaku Kita-18 Nishi-9,
+            Sapporo, Hokkaido 060-0818, Japan
+            (E-mail:dhaya@vetmed.hokudai.ac.jp, Tel:81-11-706-5213,
+            Fax:81-11-706-5213)
+FEATURES             Location/Qualifiers
+     source          1..1488
+                     /organism="Tick-borne encephalitis virus"
+                     /mol_type="genomic RNA"
+                     /strain="Oshima 5-11"
+                     /db_xref="taxon:11084"
+     CDS             <1..>1488
+                     /note="E protein region"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="BAA84950.1"
+                     /db_xref="GI:6009535"
+                     /translation="SRCTHLENRDFVTGTQGTTRVTLVLELGGCVTITAEGKPSMDVW
+                     LDSIYQENPAKTREYCLHAKLSDTKVAARCPTMGPATLAEEHQSGTVCKRDQSDRGWG
+                     NHCGLFGKGSIVTCVKASCEAKKKATGHVYDANKIVYTVKVEPHTGDYVAANETHSGR
+                     KTASFTVSSEKTILTMGDYGDVSLLCRVASSVDLAQTVILELDKTSEHLPTAWQVHRD
+                     WFNDLALPWKHEGAQNWNNAERLVEFGAPHAVKMDVYNLGDQTGVLLKSLAGVPVAHI
+                     DGTKYHLKSGHVTCEVGLEKLKMKGLTYTVCDKTKFTWKRIPTDSGHDTVVMEVAFSG
+                     TKPCRIPVRAVAHGSPDVNVAMLITPNPTIENNGGGFIEMQLPPGDNIIYVGELSHQW
+                     FQKGSSIGRVFQKTRKGIERLTVIGEHAWDFGSTGGFLTSVGKALHTVLGGAFNSLFG
+                     GVGFLPKILVGMALAWLGLNMRNPTMSMSFLLAGGLVLAMTLGVGA"
+ORIGIN      
+        1 tcacggtgca cacatctgga aaacagggat tttgtcactg gcactcaggg aaccactcgt
+       61 gtgaccctgg tgctggaact gggaggatgc gtcaccataa cagctgaggg gaagccctca
+      121 atggatgtgt ggcttgactc catctaccag gagaatcctg ccaaaacacg tgagtactgc
+      181 cttcacgcaa agctatcgga taccaaagtc gcggccagat gccctacaat gggacctgcc
+      241 actttggctg aagagcacca gagtggcaca gtgtgcaaga gagatcagag tgatcgaggc
+      301 tggggtaatc attgcggatt atttggaaaa ggcagcattg taacctgtgt caaggcgtct
+      361 tgtgaggcaa aaaagaaagc aacaggacac gtgtatgacg ccaacaaaat tgtgtacaca
+      421 gttaaagtag agccgcacac gggggattac gtcgctgcta atgagactca cagtggaaga
+      481 aaaacagcgt ccttcacggt ttcctcggag aagaccatct tgaccatggg agattacgga
+      541 gacgtgtcct tgttatgcag agttgccagc agtgttgacc ttgctcagac tgtcatcttg
+      601 gagcttgaca agacctcaga acacctaccg acggcctggc aggtccaccg ggactggttc
+      661 aatgatctgg ccctgccgtg gaaacatgag ggagcacaaa actggaacaa cgcggaacgg
+      721 ctggttgagt ttggagctcc acacgctgtg aaaatggacg tatacaacct tggagaccag
+      781 actggagtgt tgcttaagtc acttgctggt gttcctgtgg cgcacattga tggaaccaag
+      841 taccacctga aaagtggcca cgtgacatgc gaggtaggac tagaaaaact taagatgaaa
+      901 ggtcttacat acacagtgtg cgacaagacg aaattcacat ggaaaagaat tccaacagac
+      961 agtggacatg atacagtggt catggaggtt gcgttctctg ggaccaaacc ctgtaggatc
+     1021 ccggtgaggg ccgtggcaca cggctctcca gacgtgaacg tggctatgtt gataacacct
+     1081 aaccccacaa tcgaaaacaa tggtggtggt ttcatagaaa tgcagttgcc tccaggagac
+     1141 aatatcatct atgttgggga actgagtcac caatggttcc aaaaagggag tagcatagga
+     1201 agggtctttc aaaaaaccag gaaaggcata gaaaggctaa cagtgatcgg agaacacgcc
+     1261 tgggattttg gctctactgg tggtttcctg acttcggttg gtaaggcgct gcacacagtt
+     1321 cttggcggtg cctttaacag cctttttgga ggagtggggt tcttgcccaa gatcctggtg
+     1381 ggaatggccc tggcctggtt gggcctgaac atgaggaatc cgaccatgtc catgagcttc
+     1441 ctcctggctg gaggactggt tctggccatg acactcggag tgggggct
+//

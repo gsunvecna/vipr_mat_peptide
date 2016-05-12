@@ -1,0 +1,56 @@
+LOCUS       AJ507016                 777 bp    RNA     linear   VRL 28-AUG-2002
+DEFINITION  Hepatitis C virus partial gene for E1 protein, isolate KGV68.
+ACCESSION   AJ507016
+VERSION     AJ507016.1  GI:22549358
+KEYWORDS    E1 protein.
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Shustov,A.V., Gavrilova,I.V. and Netesov,S.V.
+  TITLE     The prevalence and genetic variability of hepatitis C virus
+            isolates in Western Siberia
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 777)
+  AUTHORS   Shustov,A.V.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (28-AUG-2002) Shustov A. V., Inst. Molecular Biology,
+            State Research Center of Virology and Biotechnology 'Vector',
+            Koltsovo, Novosibirskaya obl. 630559, Russia
+FEATURES             Location/Qualifiers
+     source          1..777
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="KGV68"
+                     /db_xref="taxon:11103"
+                     /country="Russia"
+     CDS             <1..>777
+                     /codon_start=1
+                     /product="E1 protein"
+                     /protein_id="CAD44971.1"
+                     /db_xref="GI:22549359"
+                     /db_xref="GOA:Q8JKB2"
+                     /db_xref="InterPro:IPR002519"
+                     /db_xref="InterPro:IPR002531"
+                     /db_xref="UniProtKB/TrEMBL:Q8JKB2"
+                     /translation="FLLGFGVLFDHPQLPAYEVRNVSGVYHVTNDCSNTSIVYEAADM
+                     IMHTPGCVPCVREDNSSRCWVALTPTLAARNSSIPTTTIRRHVDLLVGAAAFCSAMYV
+                     GDLCGSVFLVSQLFVFSPRRYETVQDCNCSIYPGHLTGHRMAWDMMMNWSPSVALLVS
+                     QLLRIPQAVVDMVAGAHWGVLAGLAYYSMVGNWAKVLIVMLLFAGVDGHTHVLGGTAS
+                     HTTRRLTAIFDLGSAQKLELVNTNGSWHINRTALNCNDSLH"
+ORIGIN      
+        1 ttccttttgg gctttggtgt cctgtttgac catccccagc ttccggctta tgaggtgcgc
+       61 aacgtgtccg gggtgtacca tgtcacgaac gattgctcca acacaagtat tgtgtatgag
+      121 gcagcggaca tgattatgca cacccccggg tgcgtgccct gcgttcggga ggacaattct
+      181 tcccgctgct gggtagcgct cactcccacg ctcgcggcca ggaactccag catccccact
+      241 acgacaatac gacgtcacgt cgatttgctc gttggggcgg ctgccttctg ctccgctatg
+      301 tacgtggggg atctctgcgg atctgttttc cttgtctccc agctgttcgt cttctcgcct
+      361 cgccggtatg agacagtgca ggattgcaat tgttcaatct atcccggcca cttgacaggt
+      421 caccgcatgg cttgggatat gatgatgaac tggtcacctt cagtagccct gctagtgtcg
+      481 cagttactcc ggatcccaca agctgtcgtg gacatggtgg cgggggccca ctggggagtc
+      541 ctggcgggcc ttgcctacta ttccatggtg gggaactggg ctaaggtttt gattgtgatg
+      601 ctactctttg ccggcgtcga cgggcatacc cacgtgttgg gggggacggc gagccacacc
+      661 acccgcaggt tgacggccat cttcgatctt gggtcggctc agaaactcga gcttgtaaac
+      721 accaacggca gctggcatat taacaggacc gccctgaact gcaatgactc cctccac
+//

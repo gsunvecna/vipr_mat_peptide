@@ -1,0 +1,47 @@
+LOCUS       AF271851                 411 bp    DNA     linear   VRL 26-SEP-2000
+DEFINITION  Hepatitis C virus isolate 2681 polyprotein gene, partial cds.
+ACCESSION   AF271851
+VERSION     AF271851.1  GI:10304232
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 411)
+  AUTHORS   Ray,S.C., Arthur,R.R., Carella,A., Bukh,J. and Thomas,D.L.
+  TITLE     Genetic epidemiology of hepatitis C virus throughout egypt
+  JOURNAL   J. Infect. Dis. 182 (3), 698-707 (2000)
+   PUBMED   10950762
+REFERENCE   2  (bases 1 to 411)
+  AUTHORS   Ray,S.C., Arthur,R.R., Carella,A., Bukh,J. and Thomas,D.L.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (25-MAY-2000) Department of Medicine, Johns Hopkins
+            University School of Medicine, 720 Rutland Avenue, Baltimore, MD
+            21205, USA
+FEATURES             Location/Qualifiers
+     source          1..411
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic DNA"
+                     /isolate="2681"
+                     /db_xref="taxon:11103"
+                     /country="Egypt: Minya governorate"
+                     /note="genotype:4a"
+     CDS             <1..>411
+                     /note="contains core and E1 proteins"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="AAG16187.1"
+                     /db_xref="GI:10304233"
+                     /translation="LLXLLSCLTVPTSAINYHNVSGIYHVTNDCPNSSIVYEADHHIL
+                     HVPGCVPCVREGNQSRCWVAITPTLAAPYIGAPLESLRSHVDXMVGAATAXSALYIGD
+                     LCAGLFLVGQMLSFRPRRHWTTQDCNCSIYTGAXV"
+ORIGIN      
+        1 ctcttgscac ttctctcgtg cctgactgtc cccacttcgg ccattaacta ccataatgtt
+       61 tcgggcatct atcacgtcac caatgattgt ccgaattcaa gcattgtgta tgaggccgat
+      121 catcacatct tgcacgttcc aggctgtgtg ccctgcgtga gagagggaaa tcagtcacgt
+      181 tgctgggtgg ccattactcc taccctcgca gcgccataca tcggcgcgcc gcttgagtcc
+      241 ctgcggagtc acgtggatmt gatggtgggg gctgccactg cttgntcagc cctttacatc
+      301 ggggatttgt gtgccggtct gttcttggtt ggtcagatgt tatctttccg accacggcgc
+      361 cactggacta cccaggattg caattgttcc atctatacag gagcgngtgt t
+//
+

@@ -1,0 +1,53 @@
+LOCUS       AB162873                 534 bp    RNA     linear   VRL 05-JAN-2006
+DEFINITION  Hepatitis C virus (isolate VT887) gene for polyprotein, core
+            protein region, partial cds.
+ACCESSION   AB162873
+VERSION     AB162873.1  GI:44885949
+KEYWORDS    .
+SOURCE      Hepatitis C virus (isolate VT887)
+  ORGANISM  Hepatitis C virus (isolate VT887)
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Hirano,M., Tran,H.T. and Abe,K.
+  TITLE     Genotypic distribution of hepatitis C virus (HCV) in Ho Chi Minh
+            City, Vietnam: New genotyping systems for identification of
+            Vietnamese HCV isolates
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 534)
+  AUTHORS   Hirano,M. and Abe,K.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (19-FEB-2004) Kenji Abe, National Institute of Infectious
+            Diseases, Department of Pathology; Toyama 1-23-1, Shinjuku, Tokyo
+            162-8640, Japan (E-mail:kenjiabe@nih.go.jp,
+            Tel:81-3-5285-1111(ex.2624), Fax:81-3-5285-1189)
+FEATURES             Location/Qualifiers
+     source          1..534
+                     /organism="Hepatitis C virus (isolate VT887)"
+                     /mol_type="genomic RNA"
+                     /isolate="VT887"
+                     /isolation_source="serum"
+                     /db_xref="taxon:357988"
+                     /country="Viet Nam: Ho Chi Minh City"
+                     /note="genotype 7b"
+     CDS             185..>534
+                     /note="core protein region"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="BAD11967.1"
+                     /db_xref="GI:44885950"
+                     /translation="MSTLPKPQRQTKRNTNRRPQDVKFPGGGQIVGGVYLLPRRGPRL
+                     GVRATRKTSERSQPRGRRQPIPKARRQTGRTWAQPGYPWPLYGNEGCGWAGWLLSPRG
+                     SRPNWGPNDPRRRSR"
+ORIGIN      
+        1 ggtgagtaca ccggaattgc caggacgacc gggtcctttc ttggatcaac ccgctcaatg
+       61 cctggagatt tgggcgtgcc cccgcgagac tgctagccga gtagtgttgg gtcgcgaaag
+      121 gccttgtggt actgcctgat agggtgcttg cgagtgcccc gggaggtctc gtagaccgtg
+      181 catcatgagc acacttccaa aaccccaaag acaaaccaaa agaaacacaa accgtcgccc
+      241 acaggacgtt aagttcccgg gcggcggtca aatcgttggt ggagtttact tgttgccgcg
+      301 caggggccct cgtttgggtg tgcgcgcgac gaggaagact tcggaacgat cccagcccag
+      361 aggcaggcgc caaccaatac ctaaggcgcg tcgccaaacg ggccgtacct gggcacaacc
+      421 cgggtacccc tggcccctgt atgggaacga gggctgtggt tgggcaggat ggctcctgtc
+      481 cccccgcggc tcccgcccta attgggggcc caatgacccc cggcggaggt cccg
+//
+

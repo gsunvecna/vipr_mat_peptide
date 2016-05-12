@@ -1,0 +1,46 @@
+LOCUS       AY548635                 217 bp    RNA     linear   VRL 23-MAR-2007
+DEFINITION  Hepatitis C virus isolate HCC_EG_011 core protein gene, partial
+            cds.
+ACCESSION   AY548635
+VERSION     AY548635.1  GI:45160569
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 217)
+  AUTHORS   Abdel-Hamid,M., El-Daly,M., Molnegren,V., El-Kafrawy,S.,
+            Abdel-Latif,S., Esmat,G., Strickland,G.T., Loffredo,C., Albert,J.
+            and Widell,A.
+  TITLE     Genetic diversity in hepatitis C virus in Egypt and possible
+            association with hepatocellular carcinoma
+  JOURNAL   J. Gen. Virol. 88 (PT 5), 1526-1531 (2007)
+   PUBMED   17412982
+REFERENCE   2  (bases 1 to 217)
+  AUTHORS   Abdel Hamid,M., El-Daly,M., Molnegren,V., El-Kafrawy,S., Esmat,G.,
+            Strickland,G.T., Loffredo,C., Albert,J. and Widell,A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (17-FEB-2004) Department of Medical Microbiology, Lund
+            University, Institution of Laboratory Medicine, Malmoe University
+            Hospital, Malmoe SE-20502, Sweden
+FEATURES             Location/Qualifiers
+     source          1..217
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="HCC_EG_011"
+                     /db_xref="taxon:11103"
+                     /country="Egypt"
+     CDS             <1..>217
+                     /codon_start=1
+                     /product="core protein"
+                     /protein_id="AAS55345.1"
+                     /db_xref="GI:45160570"
+                     /translation="TRKTSERSQPRGRRQPIPKARPREGRSWAQPGYPWPLYGNEGCG
+                     WAGWLLSPRGSRPSWGPNDPRRRSRNLG"
+ORIGIN      
+        1 actcggaaga cttcggagcg gtcgcaacct cgtggaaggc gccaacctat ccccaaggcg
+       61 cgcccccgcg agggcaggtc ctgggcacag cctgggtacc cctggcctct ttacggcaat
+      121 gagggctgtg ggtgggcagg atggctcctg tcaccccgcg gctctcggcc gtcttggggc
+      181 ccaaatgatc cccggcggag gtcccgcaac ttgggta
+//
+

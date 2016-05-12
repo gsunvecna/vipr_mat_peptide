@@ -1,4 +1,4 @@
-LOCUS       NC_006558              11597 bp    RNA     linear   VRL 01-DEC-2009
+LOCUS       NC_006558              11597 bp    RNA     linear   VRL 04-SEP-2012
 DEFINITION  Getah virus, complete genome.
 ACCESSION   NC_006558
 VERSION     NC_006558.1  GI:56692396
@@ -120,6 +120,46 @@ FEATURES             Location/Qualifiers
                      GNIPVSMDIPDTAFTRVIDAPAVTNLECQVAVCTHSSDFGGIATLTFKTDKPGKCAVH
                      SHSNVATIQEAAVDIKTDGKITLHFSTASASPAFKVSVCSAKTTCMAACEPPKDHIVP
                      YGASHNNQVFPDMSGTAMTWVQRVAGGLGGLTLAAVAVLILVTCVTMRR"
+     gene            7527..10018
+                     /locus_tag="GETV_gp3"
+                     /db_xref="GeneID:13179080"
+     CDS             join(7527..9935,9935..10018)
+                     /locus_tag="GETV_gp3"
+                     /note="Truncated verstion of structural polyprotein that
+                     will be produced when frameshifting occurs at nt 9935;
+                     Truncated version of structural polyprotein and transframe
+                     fusion protein have been added by NCBI Staff with the kind
+                     help of Dr. David Karlin (Department of Zoology,
+                     University of  Oxford, UK) and Dr. Andrew Firth
+                     (Department of Pathology,  University of Cambridge, UK)"
+                     /codon_start=1
+                     /product="truncated polyprotein"
+                     /protein_id="YP_006491251.1"
+                     /db_xref="GI:392990023"
+                     /db_xref="GeneID:13179080"
+                     /translation="MNYIPTQTFYGRRWRPRPAYRPWRVPMQPAPPMVIPELQTPIVQ
+                     AQQMQQLISAVSALTTKQNGKAPKKPKKKPQKAKAKKNEQQKKNENKKPPPKQKNPAK
+                     KKKPGKRERMCMKIENDCIFEVKLDGKVTGYACLVGDKVMKPAHVKGVIDNPDLAKLT
+                     YKKSSKYDLECAQIPVHMKSDASKYTHEKPEGHYNWHHGAVQYSGGRFTIPTGAGKPG
+                     DSGRPIFDNKGRVVAIVLGGANEGARTALSVVTWTKDMVTRYTPEGTEEWSAALMMCV
+                     LANVTFPCSEPACAPCCYEKQPEQTLRMLEDNVDRPGYYDLLEATMTCNNSARHRRSV
+                     TKHFNVYKATKPYLAYCADCGDGQFCYSPVAIEKIRDEASDGMIKIQVAAQIGINKGG
+                     THEHNKIRYIAGHDMKEANRDSLQVHTSGVCAIRGTMGHFIVAYCPPGDELKVQFQDA
+                     ESHTQACKVQYKHAPAPVGREKFTVRPHFGIEVPCTTYQLTTAPTEEEIDMHTPPDIP
+                     DITLLSQQSGNVKITAGGKTIRYNCTCGSGNVGTTSSDKTINSCKIAQCHAAVTNHDK
+                     WQYTSSFVPRADQLSRKGKVHVPFPLTNSTCRVPVARAPGVTYGKRELTVKLHPDHPT
+                     LLTYRSLGADPRPYEEWIDRYVERTIPVTEDGIEYRWGNNPPVRLWAQLTTEGKPHGW
+                     PHEIILYYYGLYPAATIAAVSAAGLAVVLSLLASCYMFATARRKCLTPYALTPGAVVP
+                     VTLGVLCCAPRAHAASFAESMAYLWDENQTLFWLELATPLAAIIILVCCLKNLLCCCK
+                     PLSFLSAGEPGNSRRKILRTHRNDPECGGIPV"
+     mat_peptide     join(9789..9935,9935..10015)
+                     /locus_tag="GETV_gp3"
+                     /product="transframe fusion protein"
+                     /note="Transframe fusion (TF) protein expressed via
+                     programmed ribosomal frameshifting. TF protein presumably
+                     plays a stabilizing role in the virion structure."
+                     /protein_id="YP_006491252.1"
+                     /db_xref="GI:392990024"
 ORIGIN      
         1 atggcggacg tgtgacatca ccgttcgctc tttctaggat cctttgctac tccacatagt
        61 gagagacaaa caacccaaat gaaggtaacc gtggacgttg aggctgatag cccattcctt
@@ -316,4 +356,3 @@ ORIGIN
     11521 gagacgtagg acaaaattct gccgaacccc agaccatcgg ggacgtaggc gtctaatttg
     11581 tttttttaat attttac
 //
-

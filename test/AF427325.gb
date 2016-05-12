@@ -1,0 +1,48 @@
+LOCUS       AF427325                 301 bp    RNA     linear   VRL 30-OCT-2001
+DEFINITION  Hantaan virus AA1028 M polyprotein precursor, glycoprotein G2
+            region, gene, partial cds.
+ACCESSION   AF427325
+VERSION     AF427325.1  GI:16519002
+KEYWORDS    .
+SOURCE      Hantaan virus
+  ORGANISM  Hantaan virus
+            Viruses; ssRNA negative-strand viruses; Bunyaviridae; Hantavirus.
+REFERENCE   1  (bases 1 to 301)
+  AUTHORS   Dekonenko,A.E. and Ivanov,L.I.
+  TITLE     Apodemus agrarius and Apodemus peninsulae trapped in Khabarovsk
+            region of far eastern Russia associated with different Hantaan
+            virus genotypes
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 301)
+  AUTHORS   Dekonenko,A.E. and Ivanov,L.I.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (03-OCT-2001) Virology Division, US Army Medical Research
+            Institute of Infectious Diseases, 1301 Ditto Ave., Ft. Detrick,
+            Frederick, MD 21702, USA
+FEATURES             Location/Qualifiers
+     source          1..301
+                     /organism="Hantaan virus"
+                     /mol_type="genomic RNA"
+                     /isolate="AA1028"
+                     /host="Apodemus agrarius"
+                     /db_xref="taxon:11599"
+                     /segment="M"
+                     /country="Russia: Khabarovsk region"
+     CDS             <1..>301
+                     /codon_start=1
+                     /product="M polyprotein precursor"
+                     /protein_id="AAL25101.1"
+                     /db_xref="GI:16519003"
+                     /translation="WNDNAHGVGSVPMHTDLELDFSLTSSSKYTYRRKLTNPLEEAQS
+                     IDLHIEIEEQTIGVDVHALGHWFDGRLNLKTSFHCYGACTKYEYPWHTAKCHYERD"
+     mat_peptide     <1..>301
+                     /product="glycoprotein G2"
+ORIGIN      
+        1 tggaatgaca atgcccatgg tgttggttct gtgcctatgc acacagatct ggagcttgat
+       61 ttttctctga catccagctc taagtataca taccgcagaa agctaacaaa cccactggaa
+      121 gaggcacaat caattgatct ccatattgaa atagaagagc aaacaatcgg tgttgatgtg
+      181 cacgctctag gacattggtt tgatggccgt cttaacctta aaacatcctt tcactgttat
+      241 ggtgcctgta caaagtacga gtacccatgg catactgcaa agtgtcacta tgaacgggat
+      301 t
+//
+

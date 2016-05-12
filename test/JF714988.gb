@@ -1,0 +1,52 @@
+LOCUS       JF714988                 409 bp    RNA     linear   VRL 15-JUN-2012
+DEFINITION  West Nile virus strain BO-b1 polyprotein gene, partial cds.
+ACCESSION   JF714988
+VERSION     JF714988.1  GI:346720589
+KEYWORDS    .
+SOURCE      West Nile virus (WNV)
+  ORGANISM  West Nile virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Japanese encephalitis virus group.
+REFERENCE   1  (bases 1 to 409)
+  AUTHORS   Calzolari,M., Gaibani,P., Bellini,R., Defilippo,F., Pierro,A.,
+            Albieri,A., Maioli,G., Luppi,A., Rossini,G., Balzani,A., Tamba,M.,
+            Galletti,G., Gelati,A., Carrieri,M., Poglayen,G., Cavrini,F.,
+            Natalini,S., Dottori,M., Sambri,V., Angelini,P. and Bonilauri,P.
+  TITLE     Mosquito, bird and human surveillance of west nile and usutu
+            viruses in emilia-romagna region (Italy) in 2010
+  JOURNAL   PLoS ONE 7 (5), E38058 (2012)
+   PUBMED   22666446
+  REMARK    Publication Status: Online-Only
+REFERENCE   2  (bases 1 to 409)
+  AUTHORS   Calzolari,M. and Bonilauri,P.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (22-MAR-2011) Istituto Zooprofilattico Sperimentale della
+            Lombardia e dell'Emilia-Romagna, via Bianchi 9, Brescia, Italy
+FEATURES             Location/Qualifiers
+     source          1..409
+                     /organism="West Nile virus"
+                     /mol_type="genomic RNA"
+                     /strain="BO-b1"
+                     /host="Pica pica"
+                     /db_xref="taxon:11082"
+                     /country="Italy"
+                     /collection_date="01-Aug-2010"
+     CDS             <1..>409
+                     /note="E protein"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="AEO50476.1"
+                     /db_xref="GI:346720590"
+                     /translation="FVLALLAFFRFTAIAPTRAVLDRWRGVNKQTAMKHLLSFKKELG
+                     TLTSAINRRSSKQKKRGGKTGIAVMIGLIASVGAVTLSNFQGKVMMTVNATDVTDVIT
+                     IPTAAGKNLCIVRAMDVGYMCDDTITYECPVLSA"
+ORIGIN      
+        1 tttgtgttgg ctctcttggc gttcttcagg ttcacagcaa ttgctccgac tcgagcagtg
+       61 ctggatcgat ggagaggtgt gaacaaacaa acagcgatga aacaccttct gagttttaag
+      121 aaagaactag ggaccttgac cagtgctatt aatcggcgga gctcaaaaca aaagaaaaga
+      181 ggaggaaaga ccggaattgc agtcatgatt ggcctgatcg ccagcgtagg agcagttacc
+      241 ctctctaact ttcaagggaa agttatgatg acggtaaatg ctactgacgt cacagatgtc
+      301 atcacgattc caacagctgc tggaaagaat ctatgcattg tcagagcaat ggatgtggga
+      361 tacatgtgtg atgacactat cacttatgaa tgtccagtgc tgtcggctg
+//
+

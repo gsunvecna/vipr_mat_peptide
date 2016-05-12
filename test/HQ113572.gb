@@ -1,0 +1,66 @@
+LOCUS       HQ113572                 901 bp    RNA     linear   VRL 17-JUN-2011
+DEFINITION  Hepatitis C virus subtype 1a isolate 136C_2097_2997_1 polyprotein
+            gene, partial cds.
+ACCESSION   HQ113572
+VERSION     HQ113572.1  GI:320000058
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 1a
+  ORGANISM  Hepatitis C virus subtype 1a
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 901)
+  AUTHORS   Li,H., Hughes,A.L., Bano,N., McArdle,S., Livingston,S., Deubner,H.,
+            McMahon,B.J., Townshend-Bulson,L., McMahan,R., Rosen,H.R. and
+            Gretch,D.R.
+  TITLE     Genetic Diversity of Near Genome-Wide Hepatitis C Virus Sequences
+            during Chronic Infection: Evidence for Protein Structural
+            Conservation Over Time
+  JOURNAL   PLoS ONE 6 (5), E19562 (2011)
+   PUBMED   21573177
+  REMARK    Publication Status: Online-Only
+REFERENCE   2  (bases 1 to 901)
+  AUTHORS   Li,H., Hughes,A.L., Bano,N., McArdle,S., Livingston,S., Deubner,H.,
+            McMahon,B.J. and Gretch,D.R.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (10-AUG-2010) Laboratory Medicine, Pathology, and
+            Medicine, University of Washington, 325 9th Ave, box 359743,
+            Seattle, WA 98104, USA
+FEATURES             Location/Qualifiers
+     source          1..901
+                     /organism="Hepatitis C virus subtype 1a"
+                     /mol_type="genomic RNA"
+                     /isolate="136C_2097_2997_1"
+                     /isolation_source="serum"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:31646"
+                     /note="subtype: 1a"
+     CDS             <1..>901
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="ADV92083.1"
+                     /db_xref="GI:320000059"
+                     /translation="FRKHPEATYPRCGSGPWITPRCLVNYPYRLRHYPCTVNYTIFKI
+                     RMYVGGVEHRLEAACNWTRGERCDLEDRDRSELSPLLLSTTQWQVLPCSFTTLPALST
+                     GLIHLHQNIVDVQYLYGVGSSIASWAIKWDYVVLLFLLLADARVCSCLWMMLLISQAE
+                     AALENLVVLNAASLAGTHGLVSFLVFFCFAWYLKGKWVPGAAYAFYGMWPLLLLLLAL
+                     PQRAYALDTEVAASCGGVVLVGLMVLTLSPHYKRYISWCLWWLQYFLTRVEAQLHMWV
+                     PPLDARGGRDAVILLMCAAYPSLV"
+ORIGIN      
+        1 ttccgcaagc atccggaagc cacataccct cggtgcggct ccggtccctg gattacgccc
+       61 aggtgcctag tcaactaccc gtataggctt cggcattatc cttgtaccgt caactacacc
+      121 atattcaaaa tcaggatgta tgtgggaggg gttgagcaca ggctggaggc tgcctgcaat
+      181 tggacgcggg gcgaacgttg tgatctggaa gacagggaca ggtccgagct cagcccgttg
+      241 ctgctgtcca ccacacagtg gcaggtcctc ccgtgttcct tcacgaccct cccagccttg
+      301 tccaccggcc ttatccacct ccaccagaac atcgtggacg tgcagtactt gtacggggtg
+      361 gggtcaagca tcgcgtcctg ggccattaag tgggattacg tcgttctcct gttccttctg
+      421 ctcgcagacg cgcgcgtctg ctcctgcttg tggatgatgt tactcatatc ccaagcagag
+      481 gcggctctag agaacctcgt agtactcaat gcagcatccc tagccgggac gcacggcctt
+      541 gtatccttcc ttgtgttctt ctgctttgcc tggtatctga agggtaagtg ggtgcccgga
+      601 gcggcctacg ccttttacgg gatgtggcct ctcctcctgc tcctgttggc gttgccccag
+      661 cgggcatacg cgctggacac ggaggtggcc gcgtcgtgtg gcggcgttgt tcttgtcggg
+      721 ttaatggtgc taactctgtc accacattac aagcgctata ttagctggtg cttatggtgg
+      781 cttcagtatt ttctgaccag agtagaagcg caactgcaca tgtgggttcc ccccctcgat
+      841 gcccgagggg ggcgcgacgc tgtcatcttg ctcatgtgtg ctgcataccc gtctttggta
+      901 t
+//
+

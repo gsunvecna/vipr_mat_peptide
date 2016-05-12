@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.1.5'); # Sep 20, 2012
+use version; our $VERSION = qv('1.1.6'); # Nov 07, 2012
 use File::Temp qw/ tempfile tempdir /;
 use Getopt::Long;
 use English;
@@ -12,8 +12,8 @@ use Data::Dumper;
 use Bio::SeqIO;
 use Bio::Seq;
 use Bio::AlignIO;
-use Bio::Tools::Run::StandAloneBlast;
-use Bio::Tools::Run::Alignment::Muscle;
+#use Bio::Tools::Run::StandAloneBlast;
+#use Bio::Tools::Run::Alignment::Muscle;
 use IO::String;
 
 #use lib qw(/net/home/gsun/northrop/matpeptide/msa_annotate-1.1.3/);
@@ -29,15 +29,16 @@ $ENV{CLUSTALDIR} or croak 'CLUSTALDIR must be defined in your environment';
 ## Path to the MUSCLE binaries. You need to configure this, if muscle is not in the path already
 #	BEGIN {$ENV{MUSCLEDIR} = '/net/home/gsun/prog/muscle/mus37'}
 #Check for MUSCLE installation on start:
-#$ENV{MUSCLEDIR} or croak 'MUSCLEDIR must be defined in your environment';
-#(-e $ENV{MUSCLEDIR}) or croak "MUSCLEDIR ($ENV{MUSCLEDIR}) does not exist";
+$ENV{MUSCLEDIR} or croak 'MUSCLEDIR must be defined in your environment';
+(-e $ENV{MUSCLEDIR}) or croak "MUSCLEDIR ($ENV{MUSCLEDIR}) does not exist";
 
-use Annotate_gbk;		# for annotation from genbank
-use Annotate_Muscle;		# for live MUSCLE run
+#use Annotate_gbk;		# for annotation from genbank
+#use Annotate_Align;		# for live MUSCLE run
 #use Annotate_Muscleprofile;	# for live MUSCLE profile run
 #use Annotate_bl2seq;		# for live bl2seq run
-use Annotate_Util;
-use Annotate_Verify;
+#use Annotate_Util;
+#use Annotate_Verify;
+use Annotate_Download;
 use Annotate_misc;
 
 my $debug_all  = 1; # Used to turn off all debugging code
@@ -50,7 +51,9 @@ my $test1      = 0;
 # msa_annotate_dev.pl
 #
 # This script uses a refseq to annotate the polyprotein in a genome file
-# It outputs the annotated mat_peptides in fasta named as <accession>_matpeptide.faa with.
+# It outputs a file named as <accession>_matpept_msa.faa with the annotated mat_peptides in fasta format
+# if the result comes from alignment. Otherwise, outputs to a file <accession>_matpept_gbk.faa when the
+# result comes from genbank.
 #
 # INPUT: dir of input file, input genome file name, ticket (used as subfolder), optional refseq file name
 #
@@ -58,7 +61,7 @@ my $test1      = 0;
 #
 # DEPENDENCIES:
 # This script calls perl and uses BioPerl modules.
-# Specify the blast executable location in your environment as directly below!
+# Specify the MUSCLE executable location in your environment as directed above!
 #
 # USAGE:
 # For single input genome
@@ -72,8 +75,8 @@ my $test1      = 0;
 # ./msa_annotate.pl -d ./ -l test >> test/out.txt 2>> test/err.txt
 # ./msa_annotate.pl -d test -l nuccore_result.txt >> test/out.txt 2>> test/err.txt
 #
-#	Authors Chris Larsen, clarsen@vecna.com; Guangyu Sun, gsun@vecna.com
-#	September 2011
+#    Authors: Chris Larsen, clarsen@vecna.com; Guangyu Sun, gsun@vecna.com;
+#    September 2011
 #
 #################
 
@@ -95,6 +98,8 @@ my $refseq_fn = '';
 my $infile    = '';
 my $list_fn   = '';
 my $dir_path  = './';
+my $checkRefseq = 0;
+#my $checkTaxon = 0;
 my @aln_fn    = ();
 my $aln_fn    = \@aln_fn;
 
@@ -104,9 +109,10 @@ if ($exe_name =~ /^(.*[\/])([^\/]+[.]pl)$/i) {
     $exe_dir  = $1;
     $exe_name = $2;
 }
-print STDERR "$exe_name: $0 executing...\n";
-print STDERR "$exe_name: command='$0 @ARGV'\n";
+print STDERR "$exe_name: $0 $VERSION executing from command='$0 @ARGV' ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime)."\n";
 my $useropts = GetOptions(
+                 "checkrefseq"  => \ $checkRefseq,    # Check any update for RefSeqs from genbank
+#                 "checktaxon"  => \ $checkTaxon,    # Check any update for taxon from genbank
                  "d=s"  => \ $dir_path,    # Path to directory
                  "i=s"  => \ $infile,      # [inputFile.gbk]
                  "l=s"  => \ $list_fn,     # directory with the gbk file, or list of accessions from genbank search
@@ -120,8 +126,22 @@ $list_fn =~ s/[\/]$//;
 print STDERR "$exe_name: Directory=$dir_path \talignment file='@$aln_fn'\n";
 
 # Either a genbank file or a folder/list of genbank files is required
-if (!$infile && !$list_fn) {
-    print Annotate_misc::Usage( $exe_name);
+if ($checkRefseq) {
+#    my $count = Annotate_Def::checkAllTaxon( $exe_dir);
+    print STDERR "\n$exe_name: start to check taxon.\n";
+    my $count = Annotate_Download::checkAllTaxon( $exe_dir);
+    printf STDERR "\n$exe_name: finished checking %d taxon, exit.\n\n", $count;
+
+#    $count = Annotate_Def::checkAllRefseq( $exe_dir);
+    print STDERR "\n$exe_name: start to check RefSeq.\n";
+    $count = Annotate_Download::checkAllRefseq( $exe_dir);
+    printf STDERR "\n$exe_name: finished checking %d RefSeqs, exit.\n\n", $count;
+    exit(1);
+#} elsif ($checkTaxon) {
+#    exit(1);
+
+} elsif (!$infile && !$list_fn) {
+    print Annotate_misc::Usage( $exe_name, $exe_dir);
     exit(1);
 }
 
@@ -139,13 +159,16 @@ if ($refseq_fn) {
   my $refseq;
   if ($refseq_fn) {
       print STDERR "$exe_name: refseq read from $refseq_fn\n";
-      $refseq = Annotate_Util::get_refseq( $refseq_fn);
+      $refseq = Annotate_Def::get_refseq( $refseq_fn);
   }
 
 # Now go through the input file of sequences
 if ("$infile") {
 
     print STDERR "$exe_name: Input genbank file '$dir_path/$infile'\n";
+    if ($infile !~ m/[.](gb|gbk|genbank)/i) {
+        print STDERR "$exe_name: WARNING: please make sure input genbank file '$infile' is in genbank format\n";
+    }
 
     # Now run the annotation
     my $accs = [];
@@ -169,10 +192,9 @@ if ("$infile") {
             print STDERR "$exe_name: \$acc[$j]=$accs->[$j]->[1]\n";
         }
         print STDERR "\n";
-#        $debug && print STDERR "$exe_name: \$accs = \n".Dumper($accs)."End of \$accs\n\n";
+#        $debug && print STDERR "$exe_name: \$accs=\n".Dumper($accs)."End of \$accs\n\n";
 
         $dbh_ref = undef;
-
     } elsif (-f "$dir_path/$list_fn") {
         croak("$exe_name: Need to turn on \$withDB to connect to MySQL database.") if (!$withDB);
         my $list_file;
@@ -211,8 +233,9 @@ if ("$infile") {
         }
         close $list_file or croak "$0: Couldn't close $dir_path/$list_fn: $OS_ERROR";
 
-        print STDERR "\n$exe_name: finished reading list file: $dir_path/$list_fn, found $#{$accs} gbk files.\n\n";
-#        $debug && print STDERR "$exe_name: \$accs = \n".Dumper($accs)."End of \$accs\n\n";
+        my $n = $#{$accs}+1;
+        print STDERR "$exe_name: finished reading list file: $dir_path/$list_fn, found $n gbk files.\n\n";
+#        $debug && print STDERR "$exe_name: \$accs=\n".Dumper($accs)."End of \$accs\n\n";
 
         # configuration file used to connect to MySQL
         my $cfg_file = $exe_dir .'vbrc_retrieveGBK_mysql.cfg';

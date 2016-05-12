@@ -1,0 +1,44 @@
+LOCUS       AF163220                 273 bp    RNA     linear   VRL 21-OCT-1999
+DEFINITION  Hepatitis C virus isolate V-B8 polyprotein gene, partial cds.
+ACCESSION   AF163220
+VERSION     AF163220.1  GI:5533215
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 273)
+  AUTHORS   Afonso,A.M., Jiang,J., Penin,F., Tareau,C., Samuel,D., Petit,M.A.,
+            Bismuth,H., Dussaix,E. and Feray,C.
+  TITLE     Nonrandom distribution of hepatitis C virus quasispecies in plasma
+            and peripheral blood mononuclear cell subsets
+  JOURNAL   J. Virol. 73 (11), 9213-9221 (1999)
+   PUBMED   10516029
+REFERENCE   2  (bases 1 to 273)
+  AUTHORS   Roque Afonso,A.M., Feray,C. and Dussaix,E.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (24-JUN-1999) Virology, Hopital Paul Brousse, 12 avenue
+            Paul Vaillant Couturier, Villejuif 94804, France
+FEATURES             Location/Qualifiers
+     source          1..273
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="V-B8"
+                     /db_xref="taxon:11103"
+                     /clone="14"
+     CDS             <1..>273
+                     /note="E1/E2 region"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="AAD45083.1"
+                     /db_xref="GI:5533262"
+                     /translation="TTALVVSQLLRIPQADMDMVTGAHWGVLAGLAYYSMVGNWAKVF
+                     IVMLLFAGVDGATYVTGGTAARSTGGLVSMFSPGPSQHIQLINTNGR"
+ORIGIN      
+        1 acaacggcct tggtggtatc acagttactc cggatcccac aagccgacat ggacatggtg
+       61 acgggggccc actggggagt cctggcgggc cttgcctact actccatggt gggaaactgg
+      121 gctaaggttt ttattgtgat gctacttttt gccggcgttg acggggctac ctacgtgaca
+      181 gggggaacgg cggcccgcag caccggaggc ctagtgtcca tgttctcacc tgggccatct
+      241 cagcatatcc agctcataaa caccaatggc agg
+//
+

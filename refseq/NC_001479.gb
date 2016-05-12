@@ -1,8 +1,8 @@
-LOCUS       NC_001479               7835 bp ss-RNA     linear   VRL 28-JUN-2010
+LOCUS       NC_001479               7835 bp ss-RNA     linear   VRL 01-JUN-2012
 DEFINITION  Encephalomyocarditis virus, complete genome.
 ACCESSION   NC_001479
 VERSION     NC_001479.1  GI:9626692
-DBLINK      Project: 15307
+DBLINK      BioProject: PRJNA15307
 KEYWORDS    .
 SOURCE      Encephalomyocarditis virus
   ORGANISM  Encephalomyocarditis virus
@@ -129,6 +129,50 @@ FEATURES             Location/Qualifiers
                      /product="protein 3D"
                      /protein_id="NP_740411.1"
                      /db_xref="GI:25121614"
+     gene            834..4531
+                     /locus_tag="EMCVgp2"
+                     /db_xref="GeneID:12978520"
+     CDS             join(834..3998,3998..4351)
+                     /locus_tag="EMCVgp2"
+                     /note="Truncated version of polyprotein that will be
+                     produced when frameshifting occurs at nt 3998"
+                     /codon_start=1
+                     /product="truncated polyprotein"
+                     /protein_id="YP_006383902.1"
+                     /db_xref="GI:388565189"
+                     /db_xref="GeneID:12978520"
+                     /translation="MATTMEQETCAHSLTFEECPKCSALQYRNGFYLLKYDEEWYPEE
+                     LLTDGEDDVFDPELDMEVVFELQGNSTSSDKNNSSSEGNEGVIINNFYSNQYQNSIDL
+                     SANAAGSDPPRTYGQFSNLFSGAVNAFSNMLPLLADQNTEEMENLSDRVSQDTAGNTV
+                     TNTQSTVGRLVGYGTVHDGEHPASCADTASEKILAVERYYTFKVNDWTSTQKPFEYIR
+                     IPLPHVLSGEDGGVFGAALRRHYLVKTGWRVQVQCNASQFHAGGLLVFMAPEYPTLDA
+                     FAMDNRWSKDNLPNGTRTQTNKKGPFAMDHQNFWQWTLYPHQFLNLRTNTTVDLEVPY
+                     VNIAPTSSWTQHASWTLVIAVVAPLTYSTGASTSLDITASIQPVRPVFNGLRHETLSR
+                     QSPIPVTIREHAGTWYSTLPDSTVPIYGKTPVAPSNYMVGEYKDFLEIAQIPTFIGNK
+                     IPNAVPYIEASNTAVKTQPLATYQVTLSCSCLANTFLAALSRNFAQYRGSLVYTFVFT
+                     GTAMMKGKFLIAYTPPGAGKPTSRDQAMQATYAIWDLGLNSSYSFTVPFISPTHFRMV
+                     GTDQVNITNADGWVTVWQLTPLTYPPGCPTSAKILTMVSAGKDFSLKMPISPAPWSPQ
+                     GVENAEKGVTENTNATADFVAQPVYLPENQTKVAFFYNRSSPIGAFTVKSGSLESGFA
+                     PFSNGTCPNSVILTPGPQFDPAYDQLRPQRLTEIWGNGNEETSKVFPLKSKQDYSFCL
+                     FSPFVYYKCDLEVTLSPHTSGNHGLLVRWCPTGTPTKPTTQVLHEVSSLSEGRTPQVY
+                     SAGPGISNQISFVVPYNSPLSVLSAVWYNGHKRFDNTGSLGIAPNSDFGTLFFAGTKP
+                     DIKFTVYLRYKNKRVFCPRPTVFFPWPTSGDKIDMTPRAGVLMLESPNALDISRTYPT
+                     LHVLIQFNHRGLEVRLFRHGHFWAETRADVILRSKTKQVSFLSNGNYPSMDSRAPWNP
+                     WKNTYQAVLRAEPCRVTMDIYYKRVRPFRLPLVQKEWPVREENVFGLYRIFNAHYAGY
+                     FADLLIHDIETNPGPFMFRPRKQVFPDPRSGSVINGSNPTAERPCQQSYGISFYGFAR
+                     CQRGRPKSNEDYKDIKFSIGCMGKCKRNTKQPRVLEAALEQMCAADCRDDNSSDASGP
+                     FDSALLRNIDGRRDYKPDKSVRRNSS"
+     mat_peptide     join(3966..3998,3998..4348)
+                     /locus_tag="EMCVgp2"
+                     /product="2B* protein"
+                     /note="Transframe fusion protein expressed via programmed
+                     ribosomal frameshifting. 2B* protein has been added by
+                     NCBI Staff with the kind help of Dr. David
+                     Karlin(Department of Zoology,  University of Oxford, UK)
+                     and Dr. Andrew Firth (Department of Pathology, University
+                     of Cambridge, UK)."
+                     /protein_id="YP_006383903.2"
+                     /db_xref="GI:389581798"
 ORIGIN      
         1 ttgaaagccg ggggtgggag atccggattg ccagtctgct cgatatcgca ggctgggtcc
        61 gtgactaccc actccccctt tcaacgtgaa ggctacgata gtgccagggc gggtactgcc
@@ -262,4 +306,3 @@ ORIGIN
      7741 ccggtaagcc aatcgggtat acacggtcgt catactgcag acagggttct tctactttgc
      7801 aagatagtct agagtagtaa aataaataga tagag
 //
-

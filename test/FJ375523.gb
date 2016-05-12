@@ -1,0 +1,45 @@
+LOCUS       FJ375523                 284 bp    RNA     linear   VRL 03-NOV-2008
+DEFINITION  Dengue virus 1 isolate 13D1/06 polyprotein gene, partial cds.
+ACCESSION   FJ375523
+VERSION     FJ375523.1  GI:210061735
+KEYWORDS    .
+SOURCE      Dengue virus 1
+  ORGANISM  Dengue virus 1
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Dengue virus group.
+REFERENCE   1  (bases 1 to 284)
+  AUTHORS   Kukreti,H., Chaudhary,A., Mittal,V., Lal,S. and Rai,A.
+  TITLE     E/NS1 gene based molecular epidemiology of Dengue virus type 1 in
+            Delhi, India
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 284)
+  AUTHORS   Kukreti,H., Chaudhary,A., Mittal,V., Lal,S. and Rai,A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (10-OCT-2008) Division of Biochemistry and Biotechnology,
+            National Institute of Communicable Diseases, 22 Shamnath Marg,
+            Delhi, Delhi 110054, India
+FEATURES             Location/Qualifiers
+     source          1..284
+                     /organism="Dengue virus 1"
+                     /mol_type="genomic RNA"
+                     /isolate="13D1/06"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11053"
+                     /country="India"
+                     /collection_date="2006"
+     CDS             <1..>284
+                     /note="contains envelope and nonstructural protein 1;
+                     E/NS1 gene junction"
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="ACJ05926.1"
+                     /db_xref="GI:210061736"
+                     /translation="ILGDTAWDFGSIGGVFTSVGKLVHQVFGTAYGVLFSGVSWTMKI
+                     GIGILLTWLGLNSRSTSLSMTCIAVGMVTLYLGVMVQADSGCVINWKGRE"
+ORIGIN      
+        1 tatcttggga gacacagcgt gggacttcgg ttccatagga ggggtgttca catccgtggg
+       61 aaaactggta caccaggttt ttggaaccgc atatggggtc ttgttcagcg gtgtttcttg
+      121 gacaatgaaa ataggaatag ggattctgct gacatggcta ggattaaatt caaggagcac
+      181 gtcactctcg atgacgtgca ttgcagttgg tatggtcaca ctgtacttag gagtcatggt
+      241 tcaagcggac tcggggtgtg tgatcaactg gaagggcaga gaac
+//

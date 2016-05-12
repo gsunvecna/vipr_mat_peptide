@@ -1,0 +1,53 @@
+LOCUS       JF446298                 374 bp    RNA     linear   VRL 07-SEP-2011
+DEFINITION  Junin virus isolate H_FHA5069_N nucleoprotein (N) gene, partial
+            cds.
+ACCESSION   JF446298
+VERSION     JF446298.1  GI:334717217
+KEYWORDS    .
+SOURCE      Junin virus
+  ORGANISM  Junin virus
+            Viruses; ssRNA negative-strand viruses; Arenaviridae; Arenavirus;
+            New world arenaviruses.
+REFERENCE   1  (bases 1 to 374)
+  AUTHORS   Goni,S.E., Stephan,B.I., Iserte,J.A., Contigiani,M.S., Lozano,M.E.
+            and Tenorio,A.
+  TITLE     Viral diversity of Junin virus field strains
+  JOURNAL   Virus Res. 160 (1-2), 150-158 (2011)
+   PUBMED   21689697
+REFERENCE   2  (bases 1 to 374)
+  AUTHORS   Goni,S.E., Stephan,B.I., Iserte,J.A., Contigiani,M.S., Lozano,M.E.
+            and Tenorio,A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (01-MAR-2011) Ciencia y Tecnologia, Universidad Nacional
+            de Quilmes, Roque Saenz Pena, Bernal, Buenos Aires B1876BXD,
+            Argentina
+FEATURES             Location/Qualifiers
+     source          1..374
+                     /organism="Junin virus"
+                     /mol_type="genomic RNA"
+                     /isolate="H_FHA5069_N"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11619"
+                     /segment="S"
+                     /country="Argentina"
+                     /collection_date="1971"
+     gene            complement(<1..>374)
+                     /gene="N"
+     CDS             complement(<1..>374)
+                     /gene="N"
+                     /codon_start=3
+                     /product="nucleoprotein"
+                     /protein_id="AEG91047.1"
+                     /db_xref="GI:334717218"
+                     /translation="AMPGVLSYVIGLLPPDMVVTTQGSDDIRKLFDLHGRRDLKLVDV
+                     RLTSEQARQFDQQVWEKFGHLCKHHNGVVVSKKKRDKDTPFKLASSEPHCALLDCIMF
+                     QSVLDGKLYEEEPTPLLPPSLL"
+ORIGIN      
+        1 cagcaagctt ggtggtaata gaggtgtagg ttcctcctca tagagcttcc catccaacac
+       61 tgactgaaac attatgcagt ctaacagagc acagtgaggc tcactggagg ctaacttaaa
+      121 gggagtgtcc ttatccctct ttttcttact gacaaccact ccattgtgat gtttgcatag
+      181 gtggccaaat ttttcccaga cctgttgatc aaactgcctg gcttgttctg atgtaagcct
+      241 aacatcaacc agtttaagat cccttcttcc atgaagatca aataacttcc tgatatcatc
+      301 ggatccttga gtagtcacaa ccatgtctgg aggcagcaaa ccaatcacgt aactcagaac
+      361 tcctggcatt gcat
+//

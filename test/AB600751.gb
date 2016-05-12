@@ -1,0 +1,79 @@
+LOCUS       AB600751                1398 bp    RNA     linear   VRL 22-FEB-2012
+DEFINITION  Hepatitis C virus subtype 2a gene for polyprotein, partial cds,
+            isolate: 2-2a.
+ACCESSION   AB600751
+VERSION     AB600751.1  GI:338899840
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 2a
+  ORGANISM  Hepatitis C virus subtype 2a
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   El-Shamy,A., Shoji,I., Kim,S.R., Ide,Y., Imoto,S., Deng,L.,
+            Yoon,S., Fujisawa,T., Tani,S., Yano,Y., Seo,Y., Azuma,T. and
+            Hotta,H.
+  TITLE     Sequence Heterogeneity in NS5A of Hepatitis C Virus Genotypes 2a
+            and 2b and Clinical Outcome of Pegylated-Interferon/Ribavirin
+            Therapy
+  JOURNAL   PLoS ONE 7 (2), E30513 (2012)
+   PUBMED   22319571
+REFERENCE   2  (bases 1 to 1398)
+  AUTHORS   El-shamy,A., Shoji,I., Kim,S.-R., Ide,Y., Imoto,S., Yano,Y.,
+            Seo,Y., Azuma,T. and Hotta,H.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (15-NOV-2010) Contact:Hak Hotta Graduate School of
+            Medicine, Kobe University, Microbiology; 7-5-1 Kusunoki-cho,
+            Chuo-ku, Kobe, Hyogo 650-0017, Japan
+FEATURES             Location/Qualifiers
+     source          1..1398
+                     /organism="Hepatitis C virus subtype 2a"
+                     /mol_type="genomic RNA"
+                     /isolate="2-2a"
+                     /isolation_source="Japanese chronically hepatitis C virus
+                     infected patient"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:31649"
+                     /country="Japan"
+     CDS             <1..>1398
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="BAK43134.1"
+                     /db_xref="GI:338899841"
+                     /translation="AGSWLRDVWDWVCTILTDFKNWLTSKLFPKMPGLPFISCQKGYK
+                     GVWAGTGIMTTRCPCGANISGNVRLGSMRITGPKTCMNTWQGTFPINCYTEGQCVPKP
+                     APNFGTAIWRVAASEYAEVTRHGSYSYITGLTTDNLKVPCQLPSPEFFSWVDGVQIHR
+                     FAPTPKPFFPDEVSFCVGLNSFVVGSQLPCDPEPDTDVLMSMLTDPSHITAEAAARRL
+                     ARGSPPSEASSSASQLSAPSLRATCTTHGKAYFVDMVDANLFMGGDVTRIESESKVVV
+                     LDSLDPMAEEVSDLEPSIPSEYMLPRRGFPPALPAWARPDYNPPLVESWRRPDYQPPT
+                     VAGCALPPPKKVPTPPPRRRRTVGLSESTIGDALQQLAVKTFGQPPPSGDSGLSTGAD
+                     AADSGGQTPPDELALSETGSTSSMPPLEGEPGDPDLEPEQVEPQPPPQGGEVAPGSDS
+                     GSWSTCSEEDDSVVCC"
+     mat_peptide     1..1398
+                     /product="NS5A protein"
+ORIGIN      
+        1 gccggctcgt ggctccgcga tgtgtgggac tgggtttgca ccattctaac agacttcaaa
+       61 aactggctga cctccaagtt gttcccaaag atgcccggcc tcccctttat ctcttgccaa
+      121 aaggggtaca agggcgtgtg ggccggcact ggcatcatga ccacacggtg tccttgcggc
+      181 gccaacatct ctggcaatgt ccgcctgggc tctatgagaa tcacagggcc caaaacctgc
+      241 atgaacactt ggcaggggac ctttcccatc aattgttaca cggagggcca gtgcgtgccg
+      301 aagcccgcgc caaacttcgg gaccgccatc tggagggtgg cggcctcgga gtacgcggag
+      361 gtgacgcggc acgggtcata ctcctacata acaggactga ctaccgacaa tttgaaagtc
+      421 ccctgtcaat tgccttctcc agagtttttc tcctgggtgg atggggtgca aatccatagg
+      481 ttcgctccta cgccgaagcc gtttttcccg gatgaagtct cgttctgcgt tgggctcaat
+      541 tcatttgtcg tcggatctca gcttccttgt gaccctgaac ccgacactga cgtgttgatg
+      601 tccatgctaa cagacccatc ccacattacg gcggaggctg cagcgcgacg cttggcacgg
+      661 ggatcacccc catctgaagc aagctcctca gcgagccagc tgtcggcacc atcgctgcga
+      721 gccacctgca ccacccacgg caaggcctat tttgtggaca tggtggatgc caacctgttc
+      781 atggggggcg atgtgactcg gatagagtct gagtccaaag tggtcgttct ggactctctc
+      841 gacccaatgg ccgaggaagt gagcgacctc gagccttcga taccatcgga gtacatgctc
+      901 cccaggagag ggttcccacc agccttaccg gcctgggcac ggcctgatta caacccacca
+      961 cttgtggaat cgtggaggag gccagattac caaccgccca ctgttgcggg ctgcgctctc
+     1021 ccccccccca agaaagtccc gacgcccccc ccaaggaggc gccggacagt gggtctgagc
+     1081 gagagcacca taggggatgc cctccaacag ctggctgtca agacctttgg ccagcccccc
+     1141 ccaagtggcg attcaggcct ttccacgggg gcggatgccg ccgactccgg cggtcagacg
+     1201 ccccccgacg agttggctct ttcggagaca ggttccacct cctccatgcc ccccctcgag
+     1261 ggggagcctg gagatccaga cctggagcct gagcaggtag agccccagcc tcccccccag
+     1321 gggggggagg tggctcccgg ctcggactcg gggtcctggt ctacttgctc cgaggaggat
+     1381 gactccgtcg tgtgctgc
+//
+

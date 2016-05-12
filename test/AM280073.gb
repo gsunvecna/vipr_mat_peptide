@@ -1,0 +1,66 @@
+LOCUS       AM280073                 743 bp    RNA     linear   VRL 20-DEC-2006
+DEFINITION  Hepatitis C virus subtype 1b partial genomic RNA for partial gene
+            for polyprotein, NS5a region, isolate NA29T0, variant 02.
+ACCESSION   AM280073
+VERSION     AM280073.1  GI:119704428
+KEYWORDS    ns5a gene; NS5A protein; polyprotein.
+SOURCE      Hepatitis C virus subtype 1b
+  ORGANISM  Hepatitis C virus subtype 1b
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Jimenez-Hernandez,N., Torres-Puente,M., Bracho,M.A.,
+            Garcia-Robles,I., Ortega,E., del Olmo,J., Carnicer,F.,
+            Gonzalez-Candelas,F. and Moya,A.
+  TITLE     Epidemic dynamics of two coexisting hepatitis C virus subtypes
+  JOURNAL   J. Gen. Virol. 88 (PT 1), 123-133 (2007)
+   PUBMED   17170444
+REFERENCE   2  (bases 1 to 743)
+  AUTHORS   Jimenez,N.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (18-MAY-2006) Jimenez N., Genetica evolutiva, Instituto
+            Cavanilles de Biodiversidad y, Poligono de la coma s/n, Edificio
+            Institutos, Valencia, 46071, SPAIN
+FEATURES             Location/Qualifiers
+     source          1..743
+                     /organism="Hepatitis C virus subtype 1b"
+                     /mol_type="genomic RNA"
+                     /isolate="NA29T0"
+                     /db_xref="taxon:31647"
+                     /clone="NA29T0ab"
+                     /frequency=".017"
+                     /country="Spain:Alicante"
+                     /note="variant 02;
+                     interferon and ribavirin treatment time=0"
+     CDS             <1..>743
+                     /codon_start=3
+                     /product="polyprotein"
+                     /protein_id="CAK51870.1"
+                     /db_xref="GI:119704429"
+                     /db_xref="GOA:A1J9Y8"
+                     /db_xref="InterPro:IPR013193"
+                     /db_xref="UniProtKB/TrEMBL:A1J9Y8"
+                     /translation="PLLRDEVTFQVGLNQYLVGSQLPCEPEPDVAVLTSMLTDPSHIT
+                     AETAKRRLARGSPPSLASSSASQLSAPSLKATCTTRHDSPDADLIEANLLWRQEMGGN
+                     ITRVESENKVVILDSFDPLRAEEDDREVSVPAEILRRSRKFPPAIPIWARPDYNPPLL
+                     ESWKDPDYVPPVVHGCPLPPAKAPPIPPPRRKRTVVLTESTVSSALAELATKTFGSSE
+                     SSAADSGTATAPPDQPSDNGDTGSDVGSY"
+     mat_peptide     <1..>743
+                     /product="NS5A protein"
+                     /note="ns5a"
+ORIGIN      
+        1 aacctctcct acgggatgag gtcacattcc aggtcgggct caaccaatac ctggtcgggt
+       61 cacaactccc atgcgagccc gaaccggacg tagcagtgct cacttccatg ctcaccgacc
+      121 cctcccacat tacagcagag acagctaagc gcaggctggc cagggggtct cccccctcct
+      181 tggccagctc ctcagctagt cagttgtcag cgccttcttt gaaggcaaca tgcactaccc
+      241 gtcacgactc cccggacgcc gacctcatcg aggccaacct cctgtggcgg caggagatgg
+      301 gcggaaacat cacccgcgtg gagtcagaga ataaggtggt gattttggac tctttcgacc
+      361 cgcttcgagc ggaggaggat gacagggaag tgtccgttcc ggcggaaatc ctgcggagat
+      421 ccaggaaatt ccccccggca atacccatat gggcacgtcc ggattacaat cctccattgc
+      481 tagagtcctg gaaggacccg gactacgtcc ctccggtggt acacgggtgc ccactgccac
+      541 ctgctaaggc ccctccaata ccgcctccac ggagaaagag gacggttgtc ctgacagaat
+      601 ctactgtgtc ttctgccttg gcggagcttg ctacaaagac ctttggcagc tccgaatcgt
+      661 cggctgccga tagcggcacg gcgactgccc cccctgacca gccctccgat aacggcgaca
+      721 caggatccga cgttgggtcg tac
+//
+

@@ -1,0 +1,52 @@
+LOCUS       AB269327                 308 bp    mRNA    linear   VRL 03-MAY-2007
+DEFINITION  Hepatitis C virus subtype 3a mRNA for core protein, partial cds,
+            isolate: MYAN-BTC85.
+ACCESSION   AB269327
+VERSION     AB269327.1  GI:146219027
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 3a
+  ORGANISM  Hepatitis C virus subtype 3a
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Lwin,A.A., Shinji,T., Khin,M., Win,N., Obika,M., Okada,S. and
+            Koide,N.
+  TITLE     Hepatitis C virus genotype distribution in Myanmar: Predominance of
+            genotype 6 and existence of new genotype 6 subtype
+  JOURNAL   Hepatol. Res. 37 (5), 337-345 (2007)
+   PUBMED   17441806
+REFERENCE   2  (bases 1 to 308)
+  AUTHORS   Shinji,T., Lwin,A., Obika,M., Khin,M., Win,N., Okada,S. and
+            Koide,N.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (10-AUG-2006) Toshiyuki Shinji, Okayama University
+            Graduate School of Medicine, Dentistry and Pharmaceutical Sciences,
+            Department of Laboratory Medicine; 2-5-1 Shikata-cho, Okayanma,
+            OKAYAMA 700-8558, Japan (E-mail:toshinji@md.okayama-u.ac.jp,
+            Tel:81-86-235-7342, Fax:81-86-235-7345)
+FEATURES             Location/Qualifiers
+     source          1..308
+                     /organism="Hepatitis C virus subtype 3a"
+                     /mol_type="mRNA"
+                     /isolate="MYAN-BTC85"
+                     /db_xref="taxon:356426"
+                     /country="Myanmar"
+                     /note="genotype 3a"
+     CDS             <1..>308
+                     /note="Core protein"
+                     /codon_start=3
+                     /product="polyprotein"
+                     /protein_id="BAF57916.1"
+                     /db_xref="GI:146219028"
+                     /translation="PKPQRKTKRNTIRRPQDVKFPGGGQIVGGVYVLPRRGPRLGVRA
+                     TRKTSERSQPRGRRQPIPKARRSEGRSWAQPGYPWPLYGNEGCGWAGWLLSPRGSRPS
+                     "
+ORIGIN      
+        1 ttcctaaacc ccaaagaaaa accaaaagaa acaccatccg tcgccctcag gacgtcaagt
+       61 tcccgggtgg cggacagatc gttggtggag tatacgtgtt gccgcgcagg ggcccacgat
+      121 tgggtgtgcg cgcgacgcgt aaaacttctg aacggtcaca gcctcgcgga cgacgacagc
+      181 ctatccccaa ggcgcgtcgg agcgaaggcc ggtcctgggc ccagcccggg tacccttggc
+      241 ccctctatgg taacgagggc tgcgggtggg cgggatggct cctgtccccg cgcggctccc
+      301 gtccgtcc
+//
+

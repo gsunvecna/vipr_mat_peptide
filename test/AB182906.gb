@@ -1,0 +1,45 @@
+LOCUS       AB182906                 145 bp    RNA     linear   VRL 21-JUN-2008
+DEFINITION  Hepatitis C virus gene for glycoprotein, partial cds, clone:
+            NDM281C-02.
+ACCESSION   AB182906
+VERSION     AB182906.1  GI:54650497
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Kurihara,C., Tsuzuki,Y., Hokari,R., Nakashima,H., Mataki,N.,
+            Kuroki,M., Kawaguchi,A., Nagao,S., Kondo,T. and Miura,S.
+  TITLE     A highly hydrophobic domain within hypervariable region 1 may be
+            related to the entry of hepatitis C virus into cultured human
+            hepatoma cells
+  JOURNAL   J. Med. Virol. 74 (4), 546-555 (2004)
+   PUBMED   15484277
+REFERENCE   2  (bases 1 to 145)
+  AUTHORS   Kurihara,C.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (28-JUN-2004) Contact:Chie Kurihara National Defense
+            Medical College, Second Department of Internal Medicine; 3-2
+            Namiki, Tokorozawa, Saitama 359-8513, Japan
+FEATURES             Location/Qualifiers
+     source          1..145
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="NDM281"
+                     /db_xref="taxon:11103"
+                     /clone="NDM281C-02"
+     CDS             <1..>145
+                     /note="hypervariable region 1"
+                     /codon_start=2
+                     /product="glycoprotein"
+                     /protein_id="BAD67130.1"
+                     /db_xref="GI:54650498"
+                     /translation="LIVMLLFTGVDGRTHVTGGAQARHTYGFTSIFSAGASQKIQLIN
+                     TNGS"
+ORIGIN      
+        1 tttgattgtg atgctactct ttaccggcgt tgacgggagg acccacgtga cggggggagc
+       61 gcaggcccgc catacttatg gctttacgtc catcttttca gccggggcat ctcagaagat
+      121 ccagcttata aacaccaatg gcagc
+//
+

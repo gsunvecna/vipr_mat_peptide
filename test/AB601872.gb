@@ -1,0 +1,62 @@
+LOCUS       AB601872                 927 bp    RNA     linear   VRL 25-AUG-2011
+DEFINITION  Human enterovirus 68 gene for polyprotein, partial cds, VP1 protein
+            region, strain: JPOC10-200.
+ACCESSION   AB601872
+VERSION     AB601872.1  GI:327133885
+KEYWORDS    .
+SOURCE      Human enterovirus 68
+  ORGANISM  Human enterovirus 68
+            Viruses; ssRNA positive-strand viruses, no DNA stage;
+            Picornavirales; Picornaviridae; Enterovirus; Human enterovirus D.
+REFERENCE   1
+  AUTHORS   Kaida,A., Kubo,H., Sekiguchi,J., Kohdera,U., Togawa,M., Shiomi,M.,
+            Nishigaki,T. and Iritani,N.
+  TITLE     Enterovirus 68 in children with acute respiratory tract infections,
+            osaka, Japan
+  JOURNAL   Emerging Infect. Dis. 17 (8), 1494-1497 (2011)
+   PUBMED   21801632
+REFERENCE   2  (bases 1 to 927)
+  AUTHORS   Kaida,A., Kubo,H., Sekiguchi,J. and Iritani,N.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (22-NOV-2010) Contact:Atsushi Kaida Osaka City Institute
+            of Public Health and Environmental Sciences, Microbiology; 8-34,
+            Tojo-cho, Tennoji-ku, Osaka, Osaka 5430026, Japan
+FEATURES             Location/Qualifiers
+     source          1..927
+                     /organism="Human enterovirus 68"
+                     /mol_type="genomic RNA"
+                     /strain="JPOC10-200"
+                     /db_xref="taxon:42789"
+                     /country="Japan: Osaka City"
+                     /collection_date="2010"
+     CDS             <1..>927
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="BAK08567.1"
+                     /db_xref="GI:327133886"
+                     /translation="LDHLDAAEAAYQIESIIKTATDTVKSEINAELGVVPSLNAVETG
+                     ATSNTEPEEAIQTRTVINQHGVSETLVENFLSRAALVSKRSFEYKNHTSSEAQTDKNF
+                     FKWTINTRSFVQLRRKLELFTYLRFDAEITILTTVAVNGSSSNAYMGLPDLTLQAMFV
+                     PTGALTPKQQDSFHWQSGSNASVFFKISDPPARMTIPFMCINSAYSIFYDGFAGFEKS
+                     GLYGINPADTIGNLCVRIVNEHQPIGFTVTVRVYMKPKHIKAWAPRPPRTLPYMSIAN
+                     ANYRGKERAPNALNAIIGNRDSVKTMPHNIVTT"
+     mat_peptide     <1..>927
+                     /product="VP1 protein"
+ORIGIN      
+        1 ttagaccatt tagatgcggc agaggcagcc taccaaattg agagcatcat caaaacagca
+       61 actgatactg taaaaagtga gattaacgcc gaacttggtg tggtccctag cttaaatgca
+      121 gttgaaacag gtgcaacttc caacactgaa ccagaagaag ccatacaaac tcgcacagtg
+      181 ataaatcagc atggtgtgtc tgaaacttta gtggagaatt ttcttagtag agctgcttta
+      241 gtatcaaaga gaagtttcga atacaagaat catacctcgt ctgaagcgca gacggacaag
+      301 aactttttca agtggacaat taacaccagg tcctttgtac agttaagaag aaagttagaa
+      361 ttgtttacat atctcagatt tgatgctgaa atcaccatac tcacaactgt ggcagtgaat
+      421 ggtagtagta gcaacgcgta catgggtctt cctgacttga cgcttcaagc aatgtttgta
+      481 cccactggtg cccttacccc aaaacagcag gattcattcc actggcagtc aggtagtaat
+      541 gctagtgtat tctttaaaat ttctgacccc ccagccagaa tgaccatacc ttttatgtgc
+      601 attaactcag catactcaat tttttatgat ggctttgctg gatttgagaa aagtggtctg
+      661 tatggaataa atccagccga cactatcggt aacttatgtg tcagaatagt gaatgaacac
+      721 caaccaattg gttttacagt aaccgtgagg gtttacatga agcctaaaca cataaaagca
+      781 tgggcaccgc gaccaccccg aaccctacca tacatgagca ttgcaaatgc aaattacaga
+      841 ggtaaagaaa gagcaccaaa tgcgctcaat gccataattg gtaatagaga cagtgtcaaa
+      901 accatgcctc acaatatagt aaccact
+//

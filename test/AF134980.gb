@@ -1,0 +1,50 @@
+LOCUS       AF134980                 420 bp    RNA     linear   VRL 08-NOV-2002
+DEFINITION  Dengue virus type 2 polyprotein gene, partial cds.
+ACCESSION   AF134980
+VERSION     AF134980.1  GI:5359721
+KEYWORDS    .
+SOURCE      Dengue virus 2
+  ORGANISM  Dengue virus 2
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Dengue virus group.
+REFERENCE   1  (bases 1 to 420)
+  AUTHORS   Singh,U.B., Maitra,A., Broor,S., Rai,A., Pasha,S.T. and Seth,P.
+  TITLE     Partial nucleotide sequencing and molecular evolution of epidemic
+            causing Dengue 2 strains
+  JOURNAL   J. Infect. Dis. 180 (4), 959-965 (1999)
+   PUBMED   10479118
+REFERENCE   2  (bases 1 to 420)
+  AUTHORS   Singh,U.B., Maitra,A., Rai,A., Pasha,S.T., Broor,S. and Seth,P.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (15-MAR-1999) Microbiology, All India Institute of
+            Medical Sciences, Ansari Nagar, New Delhi, Delhi 110029, India
+FEATURES             Location/Qualifiers
+     source          1..420
+                     /organism="Dengue virus 2"
+                     /mol_type="genomic RNA"
+                     /strain="1451/96"
+                     /db_xref="taxon:11060"
+                     /country="India:Delhi"
+                     /note="isolated from a patient with dengue hemorrhagic
+                     fever (DHF) during 1996 Delhi epidemic in which 10,000
+                     patients were admitted with DHF and 423 died"
+     CDS             <1..>420
+                     /note="envelope protein/non-structural protein 1 junction
+                     region"
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="AAD42780.1"
+                     /db_xref="GI:5359722"
+                     /translation="PFLDCYIILGVEPGQLKLIWFKKGSSIGQMFETTMRGAKRMAIL
+                     GDTAWDFGSLGGVFTSIGKALHQVFGAIYGAAFSGVSWTMKILIGVVITWIGMNSRST
+                     SLSVSLVLVGVVTLYLGVMVQADSGCVVNWKNKKLNIV"
+ORIGIN      
+        1 gccattctta gactgctaca tcattctagg agtagaaccg ggacaactga agctcatctg
+       61 gtttaagaaa ggaagctcaa tcggccaaat gttcgagaca acaatgagag gagcgaagag
+      121 aatggccatt ttaggtgaca cagcctggga ttttggatcc ctgggaggag tgttcacatc
+      181 tataggaaag gccctccacc aagtttttgg agcaatctat ggggctgcct tcagtggggt
+      241 ctcatggact atgaaaatcc tcataggagt tgtcatcaca tggataggaa tgaattcacg
+      301 tagcacctca ctgtctgtgt cactagtatt agtgggagtc gtgacattgt atttgggagt
+      361 tatggtgcag gctgatagtg gttgtgttgt gaactggaaa aacaaaaaat tgaatattgt
+//
+

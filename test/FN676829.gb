@@ -1,0 +1,61 @@
+LOCUS       FN676829                 532 bp    RNA     linear   VRL 23-DEC-2010
+DEFINITION  Hepatitis C virus subtype 1b partial gene for polyprotein, isolate
+            3227, clone 02, genomic RNA.
+ACCESSION   FN676829
+VERSION     FN676829.1  GI:315460958
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 1b
+  ORGANISM  Hepatitis C virus subtype 1b
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Saludes,V., Bracho,M.A., Valero,O., Ardevol,M., Planas,R.,
+            Gonzalez-Candelas,F., Ausina,V. and Martro,E.
+  TITLE     Baseline prediction of combination therapy outcome in hepatitis C
+            virus 1b infected patients by discriminant analysis using viral and
+            host factors
+  JOURNAL   PLoS ONE 5 (11), E14132 (2010)
+   PUBMED   21152430
+  REMARK    Publication Status: Online-Only
+REFERENCE   2  (bases 1 to 532)
+  AUTHORS   Martro,E.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (24-FEB-2010) Martro E., Microbiology Service, Hospital
+            Universitari Germans Trias i Pujol, Crta. del Canyet s/n, 08916
+            Badalona, SPAIN
+FEATURES             Location/Qualifiers
+     source          1..532
+                     /organism="Hepatitis C virus subtype 1b"
+                     /mol_type="genomic RNA"
+                     /isolate="3227"
+                     /isolation_source="Pegylated-interferon alfa and ribavirin
+                     pre-treatment serum sample"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:31647"
+                     /clone="02"
+                     /country="Spain:Barcelona"
+     CDS             <1..>532
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="CBK33417.1"
+                     /db_xref="GI:315460959"
+                     /translation="PTTALVVSQLLRIPQAVVDMVAGAHWGVLAGLAYYSMAGNWAKV
+                     LIVMLLFAGVDGDTRTVGGTQGFTIRGLTSFFTSGPQQKIQLINTNGSWHINRTALNC
+                     NDSLHTGFVAALFYAHKFNSSGCPERMASCRSLDKFAQGWGPITYGNLPSLDQRPYCW
+                     HYAPRPCGIVPATQVCG"
+     mat_peptide     <1..169
+                     /product="Envelope protein 1, E1"
+     mat_peptide     170..>532
+                     /product="Envelope protein 2, E2"
+ORIGIN      
+        1 acctacaact gccctagtgg tatcgcagtt actccggatc ccgcaagccg tcgtggacat
+       61 ggtggcgggg gcccactggg gagtcctggc gggcctcgcc tactattcca tggcggggaa
+      121 ttgggctaag gtcttgattg tgatgctact ctttgccggc gtcgacgggg atacccgcac
+      181 ggtaggggga acacaaggtt tcaccatcag gggcctcacg agcttcttca cctctgggcc
+      241 acaacagaag atccagctta taaacaccaa cggcagttgg cacatcaaca ggaccgctct
+      301 gaactgcaat gattccctcc atactgggtt tgttgccgcg ctgttctacg cacataagtt
+      361 caactcgtct ggatgcccgg agcgtatggc cagttgtcgc tccctcgaca agtttgccca
+      421 agggtggggt cccatcacct acggaaacct ccccagcttg gaccagaggc cttactgctg
+      481 gcactacgcg ccccggccgt gtggcattgt gcccgcgacg caggtgtgcg gt
+//
+

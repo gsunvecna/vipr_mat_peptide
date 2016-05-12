@@ -1,0 +1,79 @@
+LOCUS       FJ360845                1435 bp    RNA     linear   VRL 10-MAR-2010
+DEFINITION  Tick-borne encephalitis virus strain AM I polyprotein gene, partial
+            cds.
+ACCESSION   FJ360845
+VERSION     FJ360845.1  GI:228551646
+KEYWORDS    .
+SOURCE      Tick-borne encephalitis virus
+  ORGANISM  Tick-borne encephalitis virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; tick-borne encephalitis virus group.
+REFERENCE   1  (bases 1 to 1435)
+  AUTHORS   Kupca,A.M., Essbauer,S., Zoeller,G., de Mendonca,P.G., Brey,R.,
+            Rinder,M., Pfister,K., Siegel,M., Doerrbecker,B., Pfeffer,M. and
+            Dobler,G.
+  TITLE     Isolation and molecular characterization of a tick-borne
+            encephalitis virus strain from a new tick-borne encephalitis focus
+            with severe cases in Bavaria, Germany
+  JOURNAL   Ticks Tick Borne Dis 1 (1), 44-51 (2010)
+   PUBMED   21771510
+REFERENCE   2  (bases 1 to 1435)
+  AUTHORS   Kupca,A.M., Zoeller,G., Essbauer,S.S., Rinder,M., Dobler,G. and de
+            Mendonca,P.G.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (07-OCT-2008) Faculty of Veterinary Medicine, LMU,
+            Munich, Institute for Comparative Tropical Medicine and
+            Parasitology, Leopoldstr. 5, Munich, Bavaria 80802, Germany
+FEATURES             Location/Qualifiers
+     source          1..1435
+                     /organism="Tick-borne encephalitis virus"
+                     /mol_type="genomic RNA"
+                     /strain="AM I"
+                     /isolation_source="ticks sampled unfed from vegetation"
+                     /host="Ixodes ricinus"
+                     /db_xref="taxon:11084"
+                     /country="Germany: Bavaria"
+                     /collection_date="2006"
+     CDS             <1..>1435
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="ACQ44594.1"
+                     /db_xref="GI:228551647"
+                     /translation="TRVTLVLELGGCVTITAEGKPSMDVWLDAIYQDNPAKTREYCLH
+                     AKLSDTKVAARCPTMGPAILAEEHQGGTVCKRDQSDRGWGNHCGLFGKGSIVACVKAA
+                     CEAKKKAIGHVYDANKIVYTVKVEPHTGDYVAANETHSGRKTASFTVSSEKTILTMGE
+                     YGDVSLLCRVASGVDLAQTVILELDKTVEHLPTAWQVHRDWFNDLALPWKHEGAQNWN
+                     NAERLVEFGAPHAVKMDVYNLGDQTGVLLKALAGVPVAHIEGTKYHLKSGHVTCEVGL
+                     EKLKMKGLTYTMCDKTKFTWKRAPTDSGHDTVVMEVTFSGTKPCRIPVRAVAHGSPDV
+                     NVAMLITPNPTIENNGGGFIEMQLPPGDNIIYVGELSHQWFQKGSSIGRVFQKTKKGI
+                     ERLTVIGEHAWDFGSAGGFLSSIGKAVHTVLGGAFNSIFGGVGFLPKLLLGVALAWLG
+                     LNMRNPTMSMSFLLAGGLVLAMTLGVGA"
+     mat_peptide     <1..1435
+                     /product="glycoprotein"
+                     /note="envelope protein; E"
+ORIGIN      
+        1 tacgagggtc accttggtgc tggaactggg tggatgtgtt accataacag ctgaggggaa
+       61 gccttcaatg gatgtgtggc ttgacgccat ctaccaggat aaccctgcta agacacgtga
+      121 gtactgttta cacgccaagt tgtcggacac taaggttgca gccagatgcc caacgatggg
+      181 accagccatt ttggctgaag aacaccaggg tggcacagtg tgtaagaggg atcagagtga
+      241 tcgaggctgg ggcaaccact gcggactgtt tggaaagggt agcatcgtgg cctgtgttaa
+      301 ggcggcttgt gaggcaaaaa agaaagccat aggacatgtg tacgacgcca acaaaatagt
+      361 gtacacggtt aaagtcgaac cacacacggg agactatgtt gccgcaaacg agacacatag
+      421 tgggaggaag acggcatcct tcacagtttc ttcagagaaa accattctga ctatgggtga
+      481 gtatggagat gtgtctttgt tgtgcagagt cgctagtggc gttgatttgg cccagaccgt
+      541 catccttgag cttgacaaga cagtggaaca ccttccaacg gcttggcagg tccacaggga
+      601 ctggtttaat gatctggctc tgccatggaa acatgaggga gcgcaaaatt ggaataacgc
+      661 agaaagactg gttgaatttg gggctcctca cgctgttaag atggacgtgt acaacctcgg
+      721 agaccagact ggagtgttac tgaaggctct cgctggggtc cctgtggcac acattgaggg
+      781 aaccaagtac cacctgaaga gtggtcatgt gacatgcgaa gtgggactgg aaaaactgaa
+      841 gatgaaaggt cttacgtaca caatgtgtga caaaacaaag ttcacatgga agagagctcc
+      901 aacagacagt gggcatgata cagtggtcat ggaagtcaca ttctctggaa caaagccctg
+      961 taggatccca gtcagggcag tggcacatgg atctccagat gtgaacgtgg ccatgctgat
+     1021 aacgccaaac ccaacaattg aaaacaatgg aggtggcttc atagagatgc agctgccccc
+     1081 aggggataac atcatctatg ttggggaact gagtcatcaa tggttccaga aagggagcag
+     1141 catcggaagg gttttccaaa agaccaagaa aggcatagaa agactgacag tgataggaga
+     1201 gcacgcctgg gacttcggtt ctgctggagg ctttctgagt tcaattggga aggcggtgca
+     1261 tacggtcctt ggtggtgctt tcaatagcat cttcggggga gtggggtttc taccaaagct
+     1321 tttattagga gtggcattgg cttggttggg cctgaacatg agaaacccta caatgtccat
+     1381 gagctttctc ttggctggag gtctggtctt ggccatgacc cttggagtgg gggcg
+//

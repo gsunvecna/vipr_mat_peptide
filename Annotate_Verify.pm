@@ -26,16 +26,12 @@ my $debug_all = 1;
 
 ## //EXECUTE// ##
 
-# Get refseq object if $refseq_fn is given
-#  my $dbh_ref;
-#  my $refseq = &get_refseq($refseq_fn, $dir_path);
-
 
 sub check_old_annotation {
     my ($acc, $faa1) = @_;
 
     my $debug = 0 && $debug_all;
-    my $subname = 'check_old_annotation';
+    my $subn = 'check_old_annotation';
 
     my $refseqs = {};
     my $inseqs  = [];
@@ -51,15 +47,15 @@ sub check_old_annotation {
             my $fn = $acc.'_matpept.faa';
 #            $fn = $acc.'_matpept_muscle.faa';
             $fn = $acc.'_muscle_matpeptide.faa';
-            $debug && print STDERR "$subname: read existing mat_peptide annotation from \$fn=$fn\n";
+            $debug && print STDERR "$subn: read existing mat_peptide annotation from \$fn=$fn\n";
             for (my $k=0; $k<=$#{$old_dirs}; $k++) {
               my $old_dir = $old_dirs->[$k];
               my $fn1 = "$old_dir/" . $fn;
               if (-e $fn1) {
                 open my $in, '<', "$fn1";
                 $faa3 = do { local $/; <$in>};
-                close $in or croak "$subname: Couldn't close $fn1: $OS_ERROR";
-                print STDERR "$subname: Found earlier result for acc=$acc in $old_dir\n";
+                close $in or croak "$subn: Couldn't close $fn1: $OS_ERROR";
+                print STDERR "$subn: Found earlier result for acc=$acc in $old_dir\n";
                 last;
               }
             }
@@ -69,25 +65,25 @@ sub check_old_annotation {
         $diff_fasta = &diff_fasta($faa1, $faa3) if ($faa3);
 
 
-#            print STDOUT "$subname: $acc\n";
-            $debug && print STDERR "$subname: accession=$acc\n";
+#            print STDOUT "$subn: $acc\n";
+            $debug && print STDERR "$subn: accession=$acc\n";
 #            if ($faa1 && $faa3 && $faa1 eq $faa3) {
             if ($faa1 && $faa3 && !$diff_fasta) {
-                $debug && print STDERR "$subname: accession=$acc \$faa1 == \$faa3 identical\n";
+                $debug && print STDERR "$subn: accession=$acc \$faa1 == \$faa3 identical\n";
             } elsif ($faa1 && $faa3) {
-                $debug && print STDERR "$subname: \$faa3=\n".Dumper($faa3)."End of \$faa3\n";
-                $debug && print STDERR "$subname: accession=$acc \$faa1 != \$faa3 different\n";
-                $debug && print STDERR "$subname: diff = '".Annotate_Verify::diff_2str( $faa1, $faa3)."'\n";
-                $debug && print STDERR "$subname: diff shown above\n";
-                $debug && print STDERR "$subname: diff EOF\n";
+                $debug && print STDERR "$subn: \$faa3=\n".Dumper($faa3)."End of \$faa3\n";
+                $debug && print STDERR "$subn: accession=$acc \$faa1 != \$faa3 different\n";
+                $debug && print STDERR "$subn: diff = '".Annotate_Verify::diff_2str( $faa1, $faa3)."'\n";
+                $debug && print STDERR "$subn: diff shown above\n";
+                $debug && print STDERR "$subn: diff EOF\n";
             } elsif (!$faa1 && !$faa3) {
-                $debug && print STDERR "$subname: accession=$acc \$faa1 & \$faa3 are empty\n" if (!$faa3);
-                $debug && print STDERR "$subname: Couldn't find earlier annotation for accession=$acc $fn\n";
+                $debug && print STDERR "$subn: accession=$acc \$faa1 & \$faa3 are empty\n" if (!$faa3);
+                $debug && print STDERR "$subn: Couldn't find earlier annotation for accession=$acc $fn\n";
             } elsif (!$faa1) {
-                $debug && print STDOUT "$subname: accession=$acc \$faa1 is empty\n" if (!$faa1);
+                $debug && print STDOUT "$subn: accession=$acc \$faa1 is empty\n" if (!$faa1);
             } elsif (!$faa3) {
-                $debug && print STDERR "$subname: accession=$acc \$faa3 is empty\n" if (!$faa3);
-                $debug && print STDERR "$subname: Couldn't find earlier annotation for accession=$acc $fn\n";
+                $debug && print STDERR "$subn: accession=$acc \$faa3 is empty\n" if (!$faa3);
+                $debug && print STDERR "$subn: Couldn't find earlier annotation for accession=$acc $fn\n";
             }
 
 
@@ -101,44 +97,44 @@ sub diff_fasta {
     my ($faa1, $faa3) = @_;
 
     my $debug = 0 && $debug_all;
-    my $subname = 'diff_fasta';
+    my $subn = 'diff_fasta';
 
     my $faa1_all = [];
     $faa1_all = &read_fasta($faa1);
-    $debug && print STDERR "$subname: \$faa1_all=\n".Dumper($faa1_all)."End of \$faa1_all\n";
+    $debug && print STDERR "$subn: \$faa1_all=\n".Dumper($faa1_all)."End of \$faa1_all\n";
     my $faa3_all = [];
     $faa3_all = &read_fasta($faa3);
-    $debug && print STDERR "$subname: \$faa3_all=\n".Dumper($faa3_all)."End of \$faa3_all\n";
+    $debug && print STDERR "$subn: \$faa3_all=\n".Dumper($faa3_all)."End of \$faa3_all\n";
 
     my $diff_fasta = 0;
     if (!$faa1_all) {
         $diff_fasta = 1;
-        print STDERR "$subname: No feature found in faa1=$#{$faa1_all}\n";
+        print STDERR "$subn: No feature found in faa1=$#{$faa1_all}\n";
         return $diff_fasta;
     } elsif (!$faa1_all || !$faa3_all) {
         $diff_fasta = 1;
-        print STDERR "$subname: No feature found in faa3=$#{$faa3_all}\n";
+        print STDERR "$subn: No feature found in faa3=$#{$faa3_all}\n";
         return $diff_fasta;
     } elsif ($#{$faa1_all} != $#{$faa3_all}) {
         $diff_fasta = 1;
-        print STDERR "$subname: Numbers of seqs different between faa1=$#{$faa1_all}+1 and faa3=$#{$faa3_all}+1\n";
+        print STDERR "$subn: Numbers of seqs different between faa1=$#{$faa1_all}+1 and faa3=$#{$faa3_all}+1\n";
         return $diff_fasta;
     }
     for my $i (0 .. $#{$faa1_all}) {
         my $seq1 = $faa1_all->[$i]->seq;
-        $debug && print STDERR "$subname: \$seq1#$i=$seq1\n";
+        $debug && print STDERR "$subn: \$seq1#$i=$seq1\n";
         my $seq3 = $faa3_all->[$i]->seq;
-        $debug && print STDERR "$subname: \$seq3#$i=$seq3\n";
+        $debug && print STDERR "$subn: \$seq3#$i=$seq3\n";
         if ($seq1 ne $seq3) {
             $diff_fasta = 1;
-            print STDERR "$subname: seqs#$i different between faa1=$#{$faa1_all}+1 and faa3=$#{$faa3_all}+1\n";
-            print STDERR "$subname: \$seq1#$i=$seq1\n";
-            print STDERR "$subname: \$seq3#$i=$seq3\n";
+            print STDERR "$subn: seqs#$i different between faa1=$#{$faa1_all}+1 and faa3=$#{$faa3_all}+1\n";
+            print STDERR "$subn: \$seq1#$i=$seq1\n";
+            print STDERR "$subn: \$seq3#$i=$seq3\n";
             last;
         }
     }
 
-    $debug && print STDERR "$subname: berween \$faa1 and \$faa3: \$diff_fasta=$diff_fasta\n";
+    $debug && print STDERR "$subn: berween \$faa1 and \$faa3: \$diff_fasta=$diff_fasta\n";
     return $diff_fasta;
 } # sub diff_fasta
 
@@ -147,7 +143,7 @@ sub read_fasta {
     my ($faa1) = @_;
 
     my $debug = 0 && $debug_all;
-    my $subname = 'read_fasta';
+    my $subn = 'read_fasta';
 
     my $faa_all;
     my $stringio = IO::String->new($faa1);
@@ -155,10 +151,174 @@ sub read_fasta {
     while ( my $seq = $in->next_seq() ) {
         push @$faa_all, $seq;
     }
-    $debug && print STDERR "$subname: \$faa_all=\n".Dumper($faa_all)."\n";
+    $debug && print STDERR "$subn: \$faa_all=\n".Dumper($faa_all)."\n";
 
     return $faa_all;
 } # sub read_fasta
+
+
+=head2 check_ranges1
+
+Checks the new annotations against the CDS to see if all features (in an array) are consecutive without any gap, as a gap (shown as >=?=<) indicates potential problem.
+
+=cut
+
+sub check_ranges1 {
+    my ($feats, $level) = @_;
+
+    my $debug = 0 && $debug_all;
+    my $subn = 'check_ranges1';
+
+    $level = 0 if (!$level);
+    my $has_gap = 0;
+#    print STDERR "$subn: \$feats is a ".$feats."\n";
+    if ( 0 ) {
+        $debug && print STDERR "$subn: \$feats=".Dumper($feats)."\n";
+    } else {
+        for my $nfeat (0 .. $#{$feats}) {
+            my $feat = $feats->[$nfeat];
+            $debug && print STDERR "$subn: \$feats[$nfeat]=".$feat->primary_tag.'|'.$feat->location->to_FTstring."\n";
+        }
+    }
+#    $feats = [sort {$a->location->start <=> $b->location->start} @{$feats}];
+#    $debug && print STDERR "$subn: \$feats=".Dumper($feats)."\n";
+
+    my $cds = undef;
+    my $acc = '';
+    my @str = ('', '');
+    my $head_tail = '';
+    my $head_tail_print_length = 5;
+    my $gap = '';
+    for (my $i=0; $i<=$#{$feats}; $i++) {
+        my $feat = $feats->[$i];
+        if ($feat->primary_tag eq 'CDS') {
+            $cds = $feat if ($feat->primary_tag eq 'CDS');
+            $acc = $cds->seq->accession_number;
+        }
+        next if ($feat->primary_tag ne 'mat_peptide' && $feat->primary_tag ne 'sig_peptide');
+#        print STDERR "$subn: \$feat is a ".ref($feat)."\n";
+        my $loc = $feat->location;
+        my $overlap = 0;
+        my $loc2 = $feats->[$i+$overlap+1];
+        my @add = ('', '');
+        my $newfeats = [];
+
+        # if the first feature doesn't start at 1st residue of CDS
+        if ($i == 0 && $cds && $loc->start != $cds->location->start) {
+            $has_gap = 1;
+            $gap = $loc->start - $cds->location->start;
+            $gap = '='.$gap.'=<';
+            $add[1+$level] .= $gap;
+            $gap =~ s/\S/ /g;
+            for my $nadd (0 .. $#add) {
+                next if ($nadd==1+$level);
+                $add[$nadd] = $gap . $add[$nadd];
+            }
+            $debug && print STDERR "$subn: First feature \$i=$i \$gap='@add'\n";
+        }
+
+        # Collect all feats overlapping with feat #$i
+        while ($loc2 && ($loc2->start < $loc->end) && ($loc2->end <= $loc->end)) {
+            $newfeats->[$#{$newfeats}+1] = $feats->[$i+$overlap+1];
+            $overlap++;
+            $loc2 = $feats->[$i+$overlap+1];
+        }
+        $debug && print STDERR "$subn: \$i=$i \$has_gap=$has_gap \@str=\n".Dumper(@str)."\n";
+        # if there are feats that overlap with feat #$i
+        if ($#{$newfeats}>=0) {
+            $level++;
+            my $add = [];
+            ($has_gap, $add) = Annotate_Verify::check_ranges($newfeats, $level);
+            $debug && print STDERR "$subn: \$level=$level \$i=$i \$has_gap=$has_gap \$add=\n".Dumper(@$add)."\n";
+#            for my $nadd (reverse 1 .. $#{$add}+ $level) {
+#               if ($level+1<=$nadd && $nadd<=$#{$add}+ $level) {
+#                   $add[$nadd] = $add->[$nadd-$level];
+#               } elsif ($nadd!=0) {
+#                   $add[$nadd] = $add->[0];
+#                   $add[$nadd] =~ s/\S/ /g;
+#               }
+#            }
+            @add = @$add;
+            $debug && print STDERR "$subn: overlap \$level=$level \$i=$i \$has_gap=$has_gap \@add=\n".Dumper(@add)."\n";
+            $level--;
+
+        } else {
+            $gap = ' ' if ($i>1);
+            $debug && print STDERR "$subn: \$level=$level \$i=$i \$gap='$gap' \@add='@add'\n";
+            $gap .= sprintf("(%4s..%4s) ", $loc->start, $loc->end);
+            $add[1+$level] .= $gap;
+            $gap =~ s/\S/ /g;
+            for my $nadd (1 .. $#add) {
+                next if ($nadd == 1+$level);
+                $add[$nadd] .= $gap;
+            }
+            # check the head/tail of each mat_peptide
+            my $s;
+            if ( 0 ) {
+                $s = [ $feat->get_tag_values('translation') ];
+                $s = $s->[0];
+                $head_tail .= substr($s,0,$head_tail_print_length).'.';
+                $head_tail .= substr($s,length($s)-$head_tail_print_length);
+                $head_tail .= '..' if ($gap && $gap ne ' ');
+                $head_tail .= '.^.' if ($loc2);
+                $head_tail .= '..' if ($gap && $gap ne ' ');
+            } else {
+                $s = [ $feat->get_tag_values('translation') ];
+                $s = $s->[0];
+                $add[0] .= substr($s, 0, $head_tail_print_length) .'.';
+                $add[0] .= substr($s, length($s)-$head_tail_print_length);
+#                $add[0] .= '.' if ($gap && $gap ne ' ');
+                $add[0] .= '.^.' if ($loc2);
+#                $add[0] .= '.' if ($gap && $gap ne ' ');
+            }
+        }
+        $debug && print STDERR "$subn: Before last feat \$level=$level \$i=$i \$gap='$gap' \@add=\n".Dumper(@add)."\n";
+
+        # See if $loc2 is last feat
+        $gap = '';
+        if (!$loc2) {   # This indicates $loc is the last feat
+          if ($cds) {   # This indicates $loc is the last feat
+#            print STDERR "$subn: \$loc->end=".$loc->end." \$cds->end=".$cds->location->end."\n";
+            if ($loc->end != $cds->location->end-3 && $loc->end != $cds->location->end) {   # If there is overhang
+                $has_gap = 1;
+                $gap = $cds->location->end - $loc->end;
+                $gap = '>='. $gap .'=';
+            }
+          }
+            $debug && print STDERR "$subn: Last feature \$i=$i \$gap='$gap'\n";
+        } elsif ($loc2->start != $loc->end+1) {   # If there is a gap between subsequent features
+            $has_gap = 1;
+            $gap = $loc2->start - $loc->end -1;
+            $gap = '>='. $gap .'=<';
+            $debug && print STDERR "$subn: Found gap \$i=$i \$gap='$gap'\n";
+        }
+
+        $add[1+$level] .= $gap;
+        $gap =~ s/\S/ /g;
+        for my $nadd (0 .. $#add) {
+            next if ($nadd == 1+$level);
+            $add[$nadd] .= $gap;
+        }
+        $debug && print STDERR "$subn: After last feat \$level=$level \$i=$i \$has_gap=$has_gap \@add=\n".Dumper(@add)."\n";
+
+        for my $j (0 .. $#add) {
+            $str[$j] .= $add[$j];
+            $debug && print STDERR "$subn: \$i=$i \$str[$j]='$str[$j]'\n";
+        }
+
+        $debug && print STDERR "$subn: After feat #$i \$has_gap=$has_gap \@str=\n".Dumper(@str)."\n";
+        $i += $overlap;
+    }
+
+    print STDERR "$subn: $acc\thead_tail= '$head_tail'\n";
+    if ( 1 ) {
+        for my $j (0 .. $#str) {
+            print STDERR "$subn: $acc\t\$str[$j]  ='$str[$j]'\n";
+        }
+    }
+
+    return ($has_gap, \@str);
+} # sub check_ranges1
 
 
 =head2 check_ranges
@@ -171,74 +331,89 @@ sub check_ranges {
     my ($feats) = @_;
 
     my $debug = 0 && $debug_all;
-    my $subname = 'check_ranges';
+    my $subn = 'check_ranges';
 
     my $has_gap = 0;
+#    print STDERR "$subn: \$feats is a ".$feats."\n";
+    if ( 0 ) {
+        $debug && print STDERR "$subn: \$feats=".Dumper($feats)."\n";
+    } else {
+        for my $nfeat (0 .. $#{$feats}) {
+            my $feat = $feats->[$nfeat];
+            $debug && print STDERR "$subn: \$feats[$nfeat]=".$feat->primary_tag.'|'.$feat->location->to_FTstring."\n";
+        }
+    }
+#    $feats = [sort {$a->location->start <=> $b->location->start} @{$feats}];
+#    $debug && print STDERR "$subn: \$feats=".Dumper($feats)."\n";
+
     my $cds = $feats->[0];
     my @str = ('');
-#    print STDERR "check_ranges: \$feats is a ".$feats."\n";
-    $debug && print STDERR "$subname: \$cds = \n".Dumper($cds)."\n";
-    $debug && print STDERR "check_ranges: \$feats is a ".Dumper($feats)."\n";
-#    $feats = [sort {$a->location->start <=> $b->location->start} @{$feats}];
-    $debug && print STDERR "check_ranges: \$feats is a ".Dumper($feats)."\n";
     my $head_tail = '';
     my $head_tail_print_length = 5;
     my $gap = ' ';
     for (my $i=0; $i<=$#{$feats}; $i++) {
         my $feat = $feats->[$i];
         next if ($feat->primary_tag ne 'mat_peptide' && $feat->primary_tag ne 'sig_peptide');
-#        print STDERR "check_ranges: \$feat is a ".ref($feat)."\n";
+#        print STDERR "$subn: \$feat is a ".ref($feat)."\n";
         my $loc = $feat->location;
-#        print STDERR "check_ranges: \$loc is a ".ref($loc)."\n";
-#        print STDERR "check_ranges: \$loc = \n".Dumper($loc)."\n";
-#        print STDERR "check_ranges: \$cds_>loc = \n".Dumper($cds->location)."\n";
         my $level = 0;
         my $loc2 = $feats->[$i+$level+1];
         my @add;
+        my $newfeats = [$feats->[0]];
         while ($loc2 && ($loc2->start < $loc->end) && ($loc2->end <= $loc->end)) {
-          if (!defined($str[$level+1])) {
-            $str[$level+1] = $str[0];
-            $str[$level+1] =~ s/\S/ /g;
+          if ( 1 ) {
+            if (!defined($str[$level+1])) {
+                $str[$level+1] = $str[0];
+                $str[$level+1] =~ s/\S/ /g;
+            }
+#            $add[$level+1] .= '('.$loc2->start.'..'.$loc2->end.')';
+            $add[$level+1] .= sprintf(" (%4s..%4s)", $loc2->start, $loc2->end);
+          } else {
+              $newfeats->[$#{$newfeats}+1] = $feats->[$i+$level+1];
           }
-#          $add[$level+1] .= '('.$loc2->start.'..'.$loc2->end.')';
-          $add[$level+1] .= sprintf(" (%4s..%4s)", $loc2->start, $loc2->end);
-          $level++;
-          $loc2 = $feats->[$i+$level+1];
+            $level++;
+            $loc2 = $feats->[$i+$level+1];
+        }
+        if ($#{$newfeats}>0) {
+            my $add;
+            ($has_gap, $add) = check_ranges($newfeats);
+            $debug && print STDERR "$subn: \$i=$i \$has_gap=$has_gap \$add='@$add'\n";
+            exit;
         }
 
         my $s = ' ' if (!$gap || $gap eq ' ');
         $s .= sprintf("(%4s..%4s)", $loc->start, $loc->end);
-        $debug && print STDERR "$subname: \$i=$i \$gap='$gap' \$s=$s\n";
+        $debug && print STDERR "$subn: \$i=$i \$gap='$gap' \$s=$s\n";
 #        my $gap = '';
         $gap = '';
 
         # if the first feature doesn't start at 1st residue of CDS
         if ($i == 0 && ($cds->location->isa('Bio::Location::Simple') || $cds->location->isa('Bio::Location::Split')) && $loc->start != $cds->location->start) {
-          $has_gap = 1;
-          $gap = $loc->start - $cds->location->start;
-          $gap = '='.$gap.'=<';
-          $s = $gap . $s;
-          $gap =~ s/\S/ /g;
-          for my $add (1 .. $#add) {
-            $add[$add] = $gap . $add[$add];
-          }
+            $has_gap = 1;
+            $gap = $loc->start - $cds->location->start;
+            $gap = '='.$gap.'=<';
+            $s = $gap . $s;
+            $gap =~ s/\S/ /g;
+            for my $add (1 .. $#add) {
+                $add[$add] = $gap . $add[$add];
+            }
         }
 
         if (!$loc2) {   # This indicates $loc is the last feat
-#          print STDERR "check_ranges: \$loc->end=".$loc->end." \$cds->end=".$cds->location->end."\n";
-          if ($loc->end == $cds->location->end-3 || $loc->end == $cds->location->end) {   # If there is overhang
-            $gap = '';
-          } else {
-            $has_gap = 1;
-            $gap = $cds->location->end - $loc->end;
-            $gap = '>='. $gap .'=';
-          }
+#            print STDERR "$subn: \$loc->end=".$loc->end." \$cds->end=".$cds->location->end."\n";
+            if ($loc->end == $cds->location->end-3 || $loc->end == $cds->location->end) {   # If there is overhang
+                $gap = '';
+            } else {
+                $has_gap = 1;
+                $gap = $cds->location->end - $loc->end;
+                $gap = '>='. $gap .'=';
+            }
         } elsif ($loc2->start != $loc->end+1) {   # If there is a gap between subsequent features
-          $has_gap = 1;
-          $gap = $loc2->start - $loc->end -1;
-          $gap = '>='. $gap .'=<';
+            $has_gap = 1;
+            $gap = $loc2->start - $loc->end -1;
+            $gap = '>='. $gap .'=<';
         } else {
-          $gap = ' ';
+            $gap = ' ';
         }
         $str[0] .= $s.$gap;
         $gap =~ s/\S/ /g;
@@ -252,7 +427,7 @@ sub check_ranges {
         }
 
         for my $j (0 .. $#str) {
-            $debug && print STDERR "$subname: \$i=$i \$str[$j]='$str[$j]'\n";
+            $debug && print STDERR "$subn: \$i=$i \$str[$j]='$str[$j]'\n";
         }
 
         # check the head/tail of each mat_peptide
@@ -264,16 +439,16 @@ sub check_ranges {
             $head_tail .= '..' if ($gap && $gap ne ' ');
             $head_tail .= '.^.' if ($loc2);
             $head_tail .= '..' if ($gap && $gap ne ' ');
-#            print STDERR "check_ranges: head_tail=$s";
+#            print STDERR "$subn: head_tail=$s";
         }
 
         $i += $level;
     }
-    print STDERR "$subname: ". $cds->seq->accession_number ."\thead_tail= $head_tail\n";
+    print STDERR "$subn: ". $cds->seq->accession_number ."\thead_tail= $head_tail\n";
 
     if ( 1 ) {
         for my $j (0 .. $#str) {
-            print STDERR "$subname: ". $cds->seq->accession_number ."\t\$str[$j]  =$str[$j]\n";
+            print STDERR "$subn: ". $cds->seq->accession_number ."\t\$str[$j]  =$str[$j]\n";
         }
     }
 
@@ -291,33 +466,33 @@ sub check_partial {
     my ($feats) = @_;
 
     my $debug = 0 && $debug_all;
-    my $subname = 'check_partial';
+    my $subn = 'check_partial';
 
     my $has_gap = 0;
     my $cds = $feats->[0];
     my @str = ('');
-#    print STDERR "check_ranges: \$feats is a ".$feats."\n";
-    $debug && print STDERR "$subname: \$cds = \n".Dumper($cds)."\n";
-#    print STDERR "check_ranges: \$feats is a ".$feats."\n";
+#    print STDERR "$subn: \$feats is a ".$feats."\n";
+    $debug && print STDERR "$subn: \$cds=\n".Dumper($cds)."\n";
+#    print STDERR "$subn: \$feats is a ".$feats."\n";
     for (my $i=1; $i<=$#{$feats}; $i++) {
         next if ($i==1 or $i==$#{$feats});
         my $feat = $feats->[$i];
         my @values = $feat->get_tag_values('note');
-        $debug && print STDERR "$subname: \@values = \n".Dumper(@values)."End of \@values\n";
+        $debug && print STDERR "$subn: \@values=\n".Dumper(@values)."End of \@values\n";
         for (my $k=0; $k<=$#values; $k++) {
             my $value = $values[$k];
             next if ($value !~ /^Desc:(.+)$/i);
             my $pattn = '\|Partial=Y';
             if ($value =~ /($pattn)/i) {
                 $has_gap = 1;
-                $debug && print STDERR "$subname: \$value = '$value'\n";
+                $debug && print STDERR "$subn: \$value = '$value'\n";
                 last;
             }
         }
 
     }
 
-    $debug && print STDERR "$subname: \$has_gap=$has_gap\n";
+    $debug && print STDERR "$subn: \$has_gap=$has_gap\n";
     return ($has_gap, \@str);
 } # sub check_partial
 

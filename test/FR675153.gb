@@ -1,0 +1,50 @@
+LOCUS       FR675153                 406 bp    RNA     linear   VRL 10-JAN-2011
+DEFINITION  Hepatitis C virus subtype 1a partial gene for polyprotein, E1-E2
+            region, genomic RNA, isolate patient 9812609, clone e9812609j.
+ACCESSION   FR675153
+VERSION     FR675153.1  GI:317438697
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 1a
+  ORGANISM  Hepatitis C virus subtype 1a
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Gonzalez-Candelas,F., Bracho,M.A., Wrobel,B. and Moya,A.
+  TITLE     Molecular and evolutionary epidemiology of a large hepatitis C
+            virus outbreak
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 406)
+  AUTHORS   Bracho,M.A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (28-JUL-2010) Bracho M.A., Genomics and Health, CSISP,
+            Avinguda Catalunya 21, 46020, SPAIN
+FEATURES             Location/Qualifiers
+     source          1..406
+                     /organism="Hepatitis C virus subtype 1a"
+                     /mol_type="genomic RNA"
+                     /isolate="patient 9812609"
+                     /db_xref="taxon:31646"
+                     /clone="e9812609j"
+                     /country="Spain:Valencia"
+     CDS             <1..>406
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="CBW43364.1"
+                     /db_xref="GI:317438698"
+                     /translation="GAHWGVLAGIAYFSLVGNWAKVLLVLLLFAGVDAETYTTGGAAA
+                     RAALGFTGIFSPGPKQDIQLINSNGSWHINRTALNCNASLETGWIAGLLYYNRFNSSG
+                     CPERMASCRPLADFDQGWGPISYASGSGPDHRP"
+     mat_peptide     <1..103
+                     /product="envelope glycoprotein 1, E1"
+     mat_peptide     104..>406
+                     /product="envelope glycoprotein 2, E2"
+ORIGIN      
+        1 tggtgcccac tggggagtcc tagcgggcat agcgtatttc tccctggtgg ggaactgggc
+       61 gaaggtcctg ctagtgctgt tgttgtttgc cggcgtcgat gcggaaacct acaccaccgg
+      121 gggggccgcc gccagggccg cgcttggatt cactggtatt ttctctccgg gccccaagca
+      181 ggacatccag ctaatcaact ccaacggcag ttggcacatc aatcgtactg ccttgaactg
+      241 taatgcgagc ctcgaaaccg gctggatagc ggggctcctc tattacaaca gattcaactc
+      301 ttcaggctgc cccgagagga tggccagctg tagacccctc gccgacttcg accagggctg
+      361 gggccctatc agctacgcca gcggaagtgg ccccgatcac cgcccc
+//
+

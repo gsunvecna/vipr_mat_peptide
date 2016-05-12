@@ -1,0 +1,66 @@
+LOCUS       AF118611                 979 bp    DNA     linear   VRL 22-MAR-1999
+DEFINITION  Hepatitis C virus isolate AMS4C19 polyprotein gene, partial cds.
+ACCESSION   AF118611
+VERSION     AF118611.1  GI:4469454
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 979)
+  AUTHORS   Ray,S.C., Wang,Y.M., Laeyendecker,O., Ticehurst,J.R., Villano,S.A.
+            and Thomas,D.L.
+  TITLE     Acute hepatitis C virus structural gene sequences as predictors of
+            persistent viremia: hypervariable region 1 as a decoy
+  JOURNAL   J. Virol. 73 (4), 2938-2946 (1999)
+   PUBMED   10074143
+REFERENCE   2  (bases 1 to 979)
+  AUTHORS   Ray,S.C., Wang,Y.-M., Laeyendecker,O.B., Ticehurst,J.R.,
+            Villano,S.A. and Thomas,D.L.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (07-JAN-1999) Medicine, Johns Hopkins University, 720
+            Rutland Ave, Baltimore, MD 21205, USA
+FEATURES             Location/Qualifiers
+     source          1..979
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic DNA"
+                     /isolate="AMS4C19"
+                     /db_xref="taxon:11103"
+     CDS             <1..>979
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="AAD21287.1"
+                     /db_xref="GI:4469513"
+                     /translation="FLLALLSCLTVPASAYQVRNSTGLYHVTNDCPNSSIVYEADDAI
+                     LHTPGCVPCVREGNASRCWVAMTPTVATRDGKLPATQLRRHIDLLVGSATLCSALYVG
+                     DLCGSVFLVGQLFTFSPRRHWTTQDCNCSVYPGHITGHRMAWDMMMNWSPTTALVVAQ
+                     LLRIPQAIMDMIAGAHWGVLAGIAYFSMVGNWAKVLVVLLLFAGVDAETYVTGGQAAR
+                     ATAGLADMFSLGAQQKIQLINTNGSWHINRTALNCNESLNTGWLAGLFYFHKFNSSGC
+                     PERSASCRPLADFDQGWGPISYANGSGPDQRPYCWHYPPRPCGIVPAKSV"
+     mat_peptide     <1..25
+                     /product="core"
+     mat_peptide     26..622
+                     /product="E1"
+     mat_peptide     623..>979
+                     /product="E2"
+                     /note="HVR1; hypervariable region 1"
+ORIGIN      
+        1 cttccttcta gccctgcttt cttgcctgac tgtgcccgcc tcagcctacc aagtgcgcaa
+       61 ctccacgggg ctttaccatg tcaccaatga ttgccccaat tcgagtattg tgtacgaggc
+      121 ggacgatgcc atcctacata ccccggggtg tgtcccttgc gttcgtgagg gtaacgcctc
+      181 gaggtgttgg gtggcgatga cccccacggt ggccaccagg gacggcaaac tccccgcaac
+      241 gcagcttcga cggcatatcg atctgcttgt cgggagcgcc accctctgtt cggccctcta
+      301 cgtgggggac ctgtgcgggt ctgtctttct tgtcggtcaa ctgttcacct tctctcccag
+      361 gcgccattgg acaacgcagg actgcaattg ttctgtctat cccggccata taacgggtca
+      421 ccgcatggca tgggatatga tgatgaactg gtcccctacg acggcgttag tagtagccca
+      481 gctgctccgg atcccacaag ccatcatgga catgatcgct ggtgcccact ggggagtcct
+      541 ggcgggcata gcgtacttct ccatggtggg gaactgggcg aaggtcctgg tggtgctgct
+      601 gctgtttgcc ggcgttgacg cggaaaccta cgtcaccggg ggacaagccg cccgcgccac
+      661 ggctggactt gctgatatgt tcagcctggg cgcccagcag aagatccagc tgatcaacac
+      721 caacggcagt tggcacatca atcgcacggc cttgaactgc aatgaaagcc tcaacaccgg
+      781 ctggttagca gggcttttct atttccacaa attcaactct tcgggttgcc ccgagaggtc
+      841 ggccagctgc cgaccccttg ccgattttga ccagggctgg ggccctatca gttatgccaa
+      901 tggaagcggc cccgaccaac gcccttactg ctggcactac cctccaagac cttgtggtat
+      961 cgtgcccgca aagagcgtg
+//
+

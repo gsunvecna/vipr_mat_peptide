@@ -1,0 +1,50 @@
+LOCUS       AB441024                 420 bp    RNA     linear   VRL 19-JUN-2008
+DEFINITION  Hepatitis C virus NS5A gene for nonstructural protein 5A, partial
+            cds, clone: 15-72h-IR.
+ACCESSION   AB441024
+VERSION     AB441024.1  GI:190689239
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Kanda,T., Yokosuka,O., Imazeki,F., Tanaka,M., Shino,Y., Shimada,H.,
+            Tomonaga,T., Nomura,F., Nagao,K., Ochiai,T. and Saisho,H.
+  TITLE     Proceedings of the Consensus Conference on Hepatitis C. April
+            21-22, 2004. Edinburgh, United Kingdom
+  JOURNAL   J. Viral Hepat. 11 SUPPL 1, 1-39 (2004)
+   PUBMED   15357855
+REFERENCE   2  (bases 1 to 420)
+  AUTHORS   Kanda,T., Yokosuka,O. and Imazeki,F.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (14-JUN-2008) Contact:Tatsuo Kanda Chiba University,
+            School of Medicine, Department of Medicine and Clinical Oncology;
+            1-8-1 Inohana, Chuo-ku, Chiba, Chiba 260-8670, Japan
+FEATURES             Location/Qualifiers
+     source          1..420
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /db_xref="taxon:11103"
+                     /clone="15-72h-IR"
+     gene            <1..>420
+                     /gene="NS5A"
+     CDS             <1..>420
+                     /gene="NS5A"
+                     /codon_start=1
+                     /product="nonstructural protein 5A"
+                     /protein_id="BAG49324.1"
+                     /db_xref="GI:190689240"
+                     /translation="AKRRLARGSPPSLASSSAIQLSAPSLKATCTTRHDSPDADLIEA
+                     NLLWRQEMGGNITRVGSGNKVVILDSFEPLQAEEDEREVSVPAEILRRSRKFPRAMPI
+                     WARPDYNPPLLESWKDPDYVPPVVHGCPLPPAKAPPIP"
+ORIGIN      
+        1 gctaagcgta ggctggccag gggatctccc ccctccttgg ccagctcatc agctatccag
+       61 ctgtctgcgc cttccttgaa ggcaacatgc actacccgtc atgactcccc ggacgctgac
+      121 ctcatcgagg ccaacctcct gtggcggcag gagatgggcg ggaacatcac ccgcgtgggg
+      181 tcaggaaata aggtagtaat tttggactct ttcgagccgc tccaagcgga ggaggatgag
+      241 agggaagtat ccgttccggc ggagatcctg cggaggtcca ggaaattccc tcgagcgatg
+      301 cccatatggg cacgcccgga ttacaaccct ccactgttag agtcctggaa ggacccggac
+      361 tacgtccctc cagtggtaca cgggtgtcca ttgccgcctg ccaaggcccc tccgatacca
+//
+

@@ -1,0 +1,63 @@
+LOCUS       AM708188                 472 bp    RNA     linear   VRL 03-APR-2008
+DEFINITION  Hepatitis C virus subtype 1b partial gene for polyprotein, E1-E2
+            region, genomic RNA, clone EC08T2ab.
+ACCESSION   AM708188
+VERSION     AM708188.1  GI:172051821
+KEYWORDS    envelope glycoprotein 1; envelope glycoprotein 2; polyprotein.
+SOURCE      Hepatitis C virus subtype 1b
+  ORGANISM  Hepatitis C virus subtype 1b
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Torres-Puente,M., Cuevas,J.M., Jimenez-Hernandez,N., Bracho,M.A.,
+            Garcia-Robles,I., Carnicier,F., del Olmo,J., Ortega,E., Moya,A. and
+            Gonzalez-Candelas,F.
+  TITLE     The role of insertions and deletions in hepatitis C virus
+            evolutionary dynamics: slight evidence of association with
+            antiviral treatment response in a subtype dependent manner
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 472)
+  AUTHORS   Jimenez,N.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (03-APR-2007) Jimenez N., Genetica Evolutiva, I.
+            Cavanilles de Biodiv. y Biol. Evol., Poligono de La Coma s/n
+            Edificio Institutos, Valencia, 46071, SPAIN
+FEATURES             Location/Qualifiers
+     source          1..472
+                     /organism="Hepatitis C virus subtype 1b"
+                     /mol_type="genomic RNA"
+                     /isolate="EC08T2"
+                     /db_xref="taxon:31647"
+                     /clone="EC08T2ab"
+                     /country="Spain:Valencia"
+                     /note="sample collected 12 months after interferon and
+                     ribavirin treatment"
+     CDS             <1..>472
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="CAM93483.1"
+                     /db_xref="GI:172051822"
+                     /db_xref="GOA:B1VBL2"
+                     /db_xref="InterPro:IPR002519"
+                     /db_xref="InterPro:IPR002531"
+                     /db_xref="UniProtKB/TrEMBL:B1VBL2"
+                     /translation="PTAALVVSQLLRIPQAIVDMVAGAHWGVLAGLAYYSMVGNWAKV
+                     LIVMLLFAGVDGTTRTIGESVASTTSSLANLFTSGPAQKIQLINTNGSWHINRTALNC
+                     NDSLKTGFIAALFYKNSFNASGCPERMASCRPIDNFAQGWGPITHTEPNGLDQRP"
+     mat_peptide     <1..169
+                     /product="envelope glycoprotein 1"
+                     /note="E1"
+     mat_peptide     170..>472
+                     /product="envelope glycoprotein 2"
+                     /note="E2"
+ORIGIN      
+        1 gcctacagcg gccttagtgg tgtcgcagtt actccggatc ccacaggcca tcgtggacat
+       61 ggtggcgggg gcccactggg gagtcttggc gggccttgcc tactattcca tggtggggaa
+      121 ctgggctaaa gttttgattg tgatgctact ctttgctggc gttgacggaa ctacccgtac
+      181 gataggggag agcgtggcct ccacaaccag tagtctcgca aacctcttca cgtccgggcc
+      241 tgcccagaaa atccagctta taaacaccaa cggcagctgg cacatcaaca ggactgctct
+      301 gaactgcaac gactccctta agactgggtt cattgccgcg ttgttctaca aaaacagctt
+      361 caacgcgtcc ggatgtccag agcgcatggc cagctgccgc cccattgaca acttcgctca
+      421 agggtggggc cccatcactc acactgagcc caatggcttg gatcagaggc ct
+//
+

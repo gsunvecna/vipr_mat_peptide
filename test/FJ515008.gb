@@ -1,0 +1,71 @@
+LOCUS       FJ515008                 877 bp    RNA     linear   VRL 18-FEB-2010
+DEFINITION  Hepatitis C virus isolate D1 polyprotein gene, partial cds.
+ACCESSION   FJ515008
+VERSION     FJ515008.1  GI:253912485
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 877)
+  AUTHORS   Lee,Y.M., Lin,H.J., Chen,Y.J., Lee,C.M., Wang,S.F., Chang,K.Y.,
+            Chen,T.L., Liu,H.F. and Chen,Y.M.
+  TITLE     Molecular epidemiology of HCV genotypes among injection drug users
+            in Taiwan: Full-length sequences of two new subtype 6w strains and
+            a recombinant form_2b6w
+  JOURNAL   J. Med. Virol. 82 (1), 57-68 (2010)
+   PUBMED   19950240
+REFERENCE   2  (bases 1 to 877)
+  AUTHORS   Chen,Y.-M., Chen,T.-L., Lee,C.-M., Lee,Y.-M., Chen,C.-Y. and
+            Lin,H.-J.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (01-DEC-2008) AIDS Prevention and Research Center,
+            National Yang-Ming University, No. 155, Sec. 2, Linong Street,
+            Taipei 112, Taiwan
+FEATURES             Location/Qualifiers
+     source          1..877
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="D1"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11103"
+                     /country="Taiwan"
+                     /collection_date="2004"
+     CDS             <1..>287
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="ACT36971.1"
+                     /db_xref="GI:253912486"
+                     /translation="RPMDVKFPGGGQIVGGVYLLPPRGPRLGVRATRKTSHRSQPRGR
+                     RQPIPKAPQPQGRHWAQPGYPWPLYGNEGWGGGGWLLSPRGSRPHWGPTDP"
+     mat_peptide     <1..>287
+                     /product="core protein"
+     gap             288..543
+                     /estimated_length=256
+     CDS             <544..>877
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="ACT36972.1"
+                     /db_xref="GI:253912487"
+                     /translation="GLYHLTNDCPNSSIVLEADAMILHLPGCLPCVKVDNKSTCWHAV
+                     SPTLAIPNASTPATGFRRHVDLLAGAAVVCSSLYIGDLCGSLFLAGQLFTFQPRRHWT
+                     VQDCNCSIY"
+     mat_peptide     <544..>877
+                     /product="E1"
+ORIGIN      
+        1 tcgcccaatg gacgtcaagt tcccgggggg cggtcagatc gttggtggag tttacttgtt
+       61 gccgcccagg ggcccccggt tgggtgtgcg cgcaacaaga aagacttccc accgatccca
+      121 gcccagaggc aggcgccaac ctataccaaa ggcgccccag ccccagggca ggcactgggc
+      181 tcagcccgga tacccttggc ctctttatgg aaatgagggg tggggggggg gaggttggct
+      241 cctgtccccc cgcggctccc ggccacattg gggccctact gaccccannn nnnnnnnnnn
+      301 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+      361 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+      421 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+      481 nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn nnnnnnnnnn
+      541 nnntgggcta taccatctca caaatgattg ccccaactcc agcatcgtgc tggaggcgga
+      601 tgctatgatc ttgcatttac ctggatgctt gccttgtgtg aaggtcgata ataagtccac
+      661 ctgctggcat gctgtgtccc ccaccctagc cataccaaat gcttccacgc ctgcaacggg
+      721 attccgcagg catgtggatc ttcttgcggg tgccgcagta gtttgctcat ccctgtacat
+      781 cggggatctg tgcggctctc tctttttggc gggacaatta tttaccttcc agccccgccg
+      841 tcattggact gtgcaagatt gtaactgctc catctat
+//

@@ -1,0 +1,47 @@
+LOCUS       AB063394                 285 bp    RNA     linear   VRL 02-APR-2003
+DEFINITION  Hepatitis C virus type 1b gene for polyprotein (E2 region), partial
+            cds, isolate:U-2.
+ACCESSION   AB063394
+VERSION     AB063394.1  GI:29466789
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 1b
+  ORGANISM  Hepatitis C virus subtype 1b
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Ukai,K. and Yoshioka,K.
+  TITLE     SUBSTITUTION IN THE PKR-eIF2 a PHOSPHORYLATION HOMOLOGY DOMAIN
+            (PePHD) AND FLANKING REGIONS IN ENVELOPE 2 (E2) OF HEPATITIS C
+            VIRUS GENOTYPE 1b AND ITS CORRELATION WITH TREATMENT RESPONSE
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 285)
+  AUTHORS   Ukai,K. and Yoshioka,K.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (20-JUN-2001) Koji Ukai, Nagoya University School of
+            Medicine, Third Department of Internal Medicine; 65 Tsuruma-cho,
+            Showa-ku, Nagoya, Aichi 466-8550, Japan
+            (E-mail:kanken@med.nagoya-u.ac.jp, Tel:81-52-744-2190,
+            Fax:81-52-744-2208)
+FEATURES             Location/Qualifiers
+     source          1..285
+                     /organism="Hepatitis C virus subtype 1b"
+                     /mol_type="genomic RNA"
+                     /isolate="U-2"
+                     /db_xref="taxon:31647"
+     CDS             <1..>285
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="BAC66862.1"
+                     /db_xref="GI:29466790"
+                     /translation="HYPCTVNFTIFKVRMYVGGVEHRLNAACNWTRGERCDLEDRDRS
+                     ELSPLLLSTTEWQILPCSYTTLPALSTGLIHLHQNVVDVQYLYGIGSAVVS"
+     mat_peptide     <1..>285
+                     /product="E2"
+ORIGIN      
+        1 cactacccct gcactgtcaa ctttaccatc ttcaaggtta ggatgtatgt agggggcgtg
+       61 gagcacaggc tcaacgctgc atgcaattgg acccgagggg agcgttgtga cttggaggac
+      121 agggatagat cggagctcag cccgctgctg ctgtctacaa cagagtggca gatactgccc
+      181 tgttcctaca ccaccctacc ggctctgtcc accggtttaa tccatctgca tcagaacgtc
+      241 gtggacgtgc aatacctgta cggtataggg tcggcggttg tctcc
+//
+

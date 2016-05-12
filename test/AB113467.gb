@@ -1,0 +1,48 @@
+LOCUS       AB113467                 338 bp    RNA     linear   VRL 01-FEB-2005
+DEFINITION  Hepatitis C virus gene for polyprotein, partial cds, clone: HIS20.
+ACCESSION   AB113467
+VERSION     AB113467.1  GI:58430169
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Tanaka,Y., Kato,T., Ohno,T., Orito,E. and Mizokami,M.
+  TITLE     Tracing the endemic behavior of hepatitis C virus genotype 1b
+            associated with the injection treatment of schistosomiasis in Japan
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 338)
+  AUTHORS   Tanaka,Y. and Mizokami,M.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (27-JUN-2003) Yasuhito Tanaka, Nagoya City University
+            Graduate School of Medical Sciences, Department of Clinical
+            Molecular Informative Medicine; 1 Kawasumi, Mizuho-cho, Mizuho-ku,
+            Nagoya, Aichi 467-8601, Japan (E-mail:ytanaka@med.nagoya-cu.ac.jp,
+            Tel:81-52-853-8292, Fax:81-52-842-0021)
+FEATURES             Location/Qualifiers
+     source          1..338
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /db_xref="taxon:11103"
+                     /clone="HIS20"
+     gene            <1..>338
+                     /gene="NS5B"
+     CDS             <1..>338
+                     /gene="NS5B"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="BAD88885.1"
+                     /db_xref="GI:58430170"
+                     /translation="PVPGSFFLVGGSFYQCCDLAPEARQAIRSLTERLYIGGPLTNSK
+                     GQNCGYRRCRASGVLTTSCGNTLTCYLKATAACRAAKLQDCTMLVNGDDLVVIWESAG
+                     TQEDAASLRV"
+ORIGIN      
+        1 ccggtccctg ggagtttctt cctggttggg gggtcgtttt accaatgctg tgacttggcc
+       61 cccgaagcca gacaggccat aaggtcgctc acagagcggc tttatatcgg gggtcccctg
+      121 accaattcaa aagggcagaa ctgcggctat cgccggtgcc gcgcaagcgg cgtgctgacg
+      181 accagctgcg gtaataccct cacatgttac ttgaaggcca ctgcggcctg tagagctgca
+      241 aagctccagg actgcacgat gctcgtgaac ggagacgacc ttgtcgttat ctgggaaagc
+      301 gcggggaccc aagaggatgc ggcgagccta cgagtctt
+//
+

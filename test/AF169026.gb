@@ -1,0 +1,58 @@
+LOCUS       AF169026                 930 bp    DNA     linear   VRL 19-AUG-1999
+DEFINITION  Coxsackievirus B3 polyprotein gene, VP1 region, partial cds.
+ACCESSION   AF169026
+VERSION     AF169026.1  GI:5739378
+KEYWORDS    .
+SOURCE      Human coxsackievirus B3
+  ORGANISM  Human coxsackievirus B3
+            Viruses; ssRNA positive-strand viruses, no DNA stage;
+            Picornavirales; Picornaviridae; Enterovirus; Human enterovirus B.
+REFERENCE   1  (bases 1 to 930)
+  AUTHORS   Kong,J., Zhao,S. and Shi,N.
+  TITLE     Complete nucleotide sequence of VP1 of Coxsackievirus B3 isolated
+            from China
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 930)
+  AUTHORS   Kong,J., Zhao,S. and Shi,N.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (15-JUL-1999) Department of Immunodiagnostics, National
+            Vaccine and Serum Institute, Chaoyang District, Beijing, Beijing
+            100024, China
+FEATURES             Location/Qualifiers
+     source          1..930
+                     /organism="Human coxsackievirus B3"
+                     /mol_type="genomic DNA"
+                     /db_xref="taxon:12072"
+                     /country="China"
+     CDS             <1..>930
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="AAD50446.1"
+                     /db_xref="GI:5739379"
+                     /translation="GPVEDAITAAIGRVADTVGTGPTNSEAIPALTAAETGHTSQVVP
+                     GDTMQTRHVKNYHSRSESTIENFLCRSACVYFTEYENSGAKRYAEWVLTPRQAAQLRR
+                     KLEFFTYVRFDLELTFVITSTQQPSTTQNQDAQILTHQIMYVPPGGPVPDKVDSYVWQ
+                     TSTNPSVFWTEGNAPPRMSIPFLSIGNAYSNFYDGWSEFSRNGVYGINTLNNMGTLYA
+                     RHVNAGSTGPIKSTIRIYFKPKHVKAWIPRPPRLCQYEKAKNVNFQPSGVTTTRQSIT
+                     TMTNTGAFGQQSGAVYVGNYRVVNRHLATSADWQ"
+     mat_peptide     1..930
+                     /product="VP1"
+ORIGIN      
+        1 ggcccagtgg aagacgcgat aacagccgct atagggagag ttgcggatac cgtgggtaca
+       61 gggccaacca actcagaagc tataccagca ctcactgctg ctgagacagg tcacacgtca
+      121 caagtagtgc cgggtgacac catgcagaca cgccacgtta agaactacca ttcaaggtcc
+      181 gagtcaacca tagagaactt cctatgtagg tcagcatgcg tgtactttac ggagtatgaa
+      241 aactcaggtg ccaagcggta tgctgaatgg gtattaacac cacgacaagc agcacaactt
+      301 aggagaaagc tagaattctt tacctacgtc cggttcgacc tggagctgac gtttgtcata
+      361 acaagtactc aacagccctc aaccacacag aaccaagacg cacagatcct aacacaccaa
+      421 attatgtatg taccaccagg tggacctgta ccagataaag ttgattcata cgtgtggcaa
+      481 acatctacga atcccagtgt gttttggacc gagggaaacg ccccgccgcg catgtccata
+      541 ccgtttttga gcattggcaa cgcctattca aatttctatg acggatggtc tgaattttcc
+      601 aggaacggag tttacggcat caacacgcta aacaacatgg gcacgctata tgcaagacat
+      661 gtcaacgctg gaagcacggg tccaataaaa agcaccatta gaatctactt caaaccgaag
+      721 catgtcaaag cgtggatacc tagaccacct agactctgcc aatacgagaa ggcaaagaac
+      781 gtgaacttcc aacccagcgg agttaccact actaggcaaa gcatcactac aatgacaaat
+      841 acgggcgcat ttggacaaca atcaggggca gtgtatgtgg ggaactacag ggtagtaaat
+      901 agacatctag ctaccagtgc tgactggcaa
+//
+

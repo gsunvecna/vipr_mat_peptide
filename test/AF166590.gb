@@ -1,0 +1,41 @@
+LOCUS       AF166590                  81 bp    RNA     linear   VRL 01-SEP-1999
+DEFINITION  Hepatitis C virus clone 1.1 polyprotein gene, partial cds.
+ACCESSION   AF166590
+VERSION     AF166590.1  GI:5814491
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 81)
+  AUTHORS   Sandres,K., Dubois,M., Pasquier,C. and Izopet,J.
+  TITLE     The genetic heterogeneity of hypervariable region 1 of the viral
+            genome and the sensitivity of hepatitis C virus to interferon alpha
+            therapy
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 81)
+  AUTHORS   Sandres,K., Dubois,M., Pasquier,C. and Izopet,J.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (08-JUL-1999) Lab of Virology, Toulouse University
+            Hospital, Place Baylac, Toulouse 31059, France
+FEATURES             Location/Qualifiers
+     source          1..81
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /db_xref="taxon:11103"
+                     /clone="1.1"
+                     /note="isolated from patient R2
+                     genotype: 3"
+     CDS             <1..>81
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="AAD52248.1"
+                     /db_xref="GI:5814805"
+                     /translation="TTHITGGAAAHSVRGIASLFSPGARQN"
+     misc_feature    <1..>81
+                     /note="hypervariable region 1"
+ORIGIN      
+        1 accacacaca tcaccggtgg tgccgcagct catagcgtcc gagggatagc tagtcttttt
+       61 agtccgggcg cccggcagaa c
+//
+

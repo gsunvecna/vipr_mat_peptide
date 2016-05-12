@@ -1,0 +1,46 @@
+LOCUS       AF454974                 345 bp    RNA     linear   VRL 14-JAN-2002
+DEFINITION  Hepatitis C virus clone Dn42 polyprotein gene, partial cds.
+ACCESSION   AF454974
+VERSION     AF454974.1  GI:18141175
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 345)
+  AUTHORS   Fan,X., Tan,D. and Di Bisceglie,A.M.
+  TITLE     The Dynamics Of Hypervariable Region 1 (HVR1) Quasispecies of
+            Hepatitis C Virus (HCV) In A Bone Marrow Recipient With De Novo
+            Hepatitis C Infection
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 345)
+  AUTHORS   Fan,X., Tan,D. and Di Bisceglie,A.M.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (04-DEC-2001) Division of Gatroenterology & Hepatology,
+            Saint Louis University, 1402 South Grand Blvd., St. Louis, MO
+            63104, USA
+FEATURES             Location/Qualifiers
+     source          1..345
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /strain="HCVBMT"
+                     /db_xref="taxon:11103"
+                     /clone="Dn42"
+     CDS             <1..>345
+                     /note="E2 domain"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="AAL60526.1"
+                     /db_xref="GI:18141176"
+                     /translation="GHVSGHRMAWDMMMNWSPTTALVVSQLLRIPQAVVDMVAGAHWG
+                     VLAGLAYYSMVGNWAKVLIVMLLFAGVDGWGTHTTGGAAAYTTKGFASLFSSGPSQKV
+                     QLVNTNGSWHINR"
+ORIGIN      
+        1 ggccacgtat caggtcaccg catggcttgg gatatgatga tgaactggtc acctacaacg
+       61 gccctagtgg tatcgcagtt actccgaatc ccacaagccg tcgtggacat ggtggcgggg
+      121 gcccactggg gagtcctggc gggccttgcc tactattcca tggtggggaa ctgggccaag
+      181 gtcttgattg tgatgctact ctttgccggc gttgacgggt gggggaccca cacgacgggg
+      241 ggggcggcag cctacaccac caaaggcttt gcgtccctct tctcctccgg gccgtctcag
+      301 aaagtccagc tcgtgaacac caacggcagc tggcacatca acagg
+//
+

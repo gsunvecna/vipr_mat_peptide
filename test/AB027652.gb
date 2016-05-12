@@ -1,0 +1,44 @@
+LOCUS       AB027652                 300 bp    RNA     linear   VRL 24-MAR-2005
+DEFINITION  Hepatitis C virus gene for polyprotein, partial cds, clone:R-23.
+ACCESSION   AB027652
+VERSION     AB027652.1  GI:4972416
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Saito,T., Watanabe,H., Shao,L., Okumoto,K., Hattori,E., Sanjo,M.,
+            Misawa,K., Suzuki,A., Takeda,T., Sugahara,K., Ito,J.I., Saito,K.,
+            Togashi,H. and Kawata,S.
+  TITLE     Transmission of hepatitis C virus quasispecies between human adults
+  JOURNAL   Hepatol. Res. 30 (2), 57-62 (2004)
+   PUBMED   15519268
+REFERENCE   2  (bases 1 to 300)
+  AUTHORS   Saito,T.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (24-MAY-1999) Takafuni Saito, Yamagata University School
+            of Medicine, Division of Gastroenterology, Department of Internal
+            Medicine and Molecular Therapeutics; Iida-nishi 2-2-2, Yamagata
+            990-9585, Japan (E-mail:tasaitoh@med.id.yamagata-u.ac.jp,
+            Tel:81-23-628-5309)
+FEATURES             Location/Qualifiers
+     source          1..300
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /db_xref="taxon:11103"
+                     /clone="R-23"
+     CDS             <1..>300
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="BAA78169.1"
+                     /db_xref="GI:4972417"
+                     /translation="PTAALVVSQLLRIQQAVVDMVAGAHWGVLAGLAYYSMVGNWAKV
+                     LIVMLLFAGVDGRTGLTGGNAAQNTRGLANLFTTGASQKIQLVHTNGSWHINRTAL"
+ORIGIN      
+        1 cctacagcag ccctagtggt atcgcagtta ctccggatcc aacaagccgt cgtggacatg
+       61 gtggcggggg cccactgggg ggtcctggcg ggccttgcct actattccat ggtggggaac
+      121 tgggctaagg ttttgattgt gatgctactc tttgccggcg ttgacgggcg taccggattg
+      181 acggggggga acgcagccca aaacacccgg ggcttagcga acctctttac aacaggggcg
+      241 tctcagaaaa tccagcttgt tcacaccaac ggtagctggc atatcaacag gactgcccta
+//

@@ -1,0 +1,55 @@
+LOCUS       DQ793159                 621 bp    RNA     linear   VRL 30-JUL-2006
+DEFINITION  Hepatitis C virus isolate NR6 NS5A protein gene, partial cds.
+ACCESSION   DQ793159
+VERSION     DQ793159.1  GI:110677317
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 621)
+  AUTHORS   Goyal,A., Hofmann,W.P., Herrmann,E., Traver,S., Hissar,S.S.,
+            Arora,N., Blum,H.E., Zeuzem,S., Sarrazin,C. and Sarin,S.K.
+  TITLE     The Hepatitis C Virus NS5A Protein and Response to Interferon a:
+            Mutational Analyses in Patients with Chronic HCV Genotype 3a
+            Infection from India
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 621)
+  AUTHORS   Goyal,A., Hofmann,W.P., Herrmann,E., Traver,S., Hissar,S.S.,
+            Arora,N., Blum,H.E., Zeuzem,S., Sarrazin,C. and Sarin,S.K.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (22-JUN-2006) Internal Medicine II, Saarland University
+            Hospital, Kirrbergerstrasse, Homburg/Saar 66421, Germany
+FEATURES             Location/Qualifiers
+     source          1..621
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="NR6"
+                     /isolation_source="serum from non responder to interferon
+                     alpha-based therapy"
+                     /db_xref="taxon:11103"
+                     /country="India"
+                     /note="subtype: 3a"
+     CDS             <1..>621
+                     /codon_start=1
+                     /product="NS5A protein"
+                     /protein_id="ABG85246.1"
+                     /db_xref="GI:110677318"
+                     /translation="RRLARGSPPSEASSSASQLSAPSLKATCQTHRPHPDAELVDANL
+                     LWRQEMGSNITRVESETKVVILDSFEPLRAETDDTELSVAAECFKKPPKYPPALPIWA
+                     RPDYNPPLLDRWKEPDYVPPTVHGCALPPRGAPPVPPPRRKRTVQLDGSNVSAALAAL
+                     AEKSFPSLKPQEESSSSSGVDTQSSTTSKVPPSPEGESDAESCSSMP"
+ORIGIN      
+        1 cgtcgtcttg ctcgtggttc tcctccttct gaagcttctt cttctgcttc tcaactttct
+       61 gctccttctc ttaaagctac ttgtcaaact catcgtcctc atcctgatgc tgaacttgtt
+      121 gatgctaatc ttctttggcg tcaagaaatg ggttctaata ttactcgtgt tgaatctgaa
+      181 actaaagttg ttattcttga ttcttttgaa cctcttcgtg ctgaaactga tgatactgaa
+      241 ctttctgttg ctgctgaatg ttttaaaaaa cctcctaaat atcctcctgc tcttcctatt
+      301 tgggctcgtc ctgattataa tcctcctctt cttgatcgtt ggaaagaacc tgattatgtt
+      361 cctcctactg ttcatggttg tgctcttcct cctcgtggtg ctcctcctgt tcctcctcct
+      421 cgtcgtaaac gtactgttca acttgatggt tctaatgttt ctgctgctct tgctgctctt
+      481 gctgaaaaat cttttccttc tcttaaacct caagaagaat cttcttcttc ttctggtgtt
+      541 gatactcaat cttctactac ttctaaagtt cctccttctc ctgaaggtga atctgatgct
+      601 gaatcttgtt cttctatgcc t
+//
+

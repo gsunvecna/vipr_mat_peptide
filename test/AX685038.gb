@@ -1,0 +1,55 @@
+LOCUS       AX685038                1021 bp    DNA     linear   PAT 29-MAR-2003
+DEFINITION  Sequence 37 from Patent WO02055548.
+ACCESSION   AX685038
+VERSION     AX685038.1  GI:29371443
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Maertens,G., Bosman,F. and Buyse,M.A.
+  TITLE     Purified Hepatitis C Virus envelope proteins for diagnostic and
+            therapeutic use
+  JOURNAL   Patent: WO 02055548-A2 37 18-JUL-2002;
+            INNOGENETICS N.V. (BE)
+FEATURES             Location/Qualifiers
+     source          1..1021
+                     /organism="Hepatitis C virus"
+                     /mol_type="unassigned DNA"
+                     /db_xref="taxon:11103"
+     CDS             <2..1018
+                     /note="unnamed protein product"
+                     /codon_start=1
+                     /protein_id="CAD86532.1"
+                     /db_xref="GI:29371444"
+                     /translation="IPQAVVDMVAGAHWGVLAGLAYYSMVGNWAKVLVVMLLFAGVDG
+                     HTRVSGGAAASDTRGLVSLFSPGSAQKIQLVNTNGSWHINRTALNCNDSLQTGFFAAL
+                     FYKHKFNSSGCPERLASCRSIDKFAQGWGPLTYTEPNSSDQRPYCWHYAPRPCGIVPA
+                     SQVCGPVYCFTPSPVVVGTTDRFGVPTYNWGANDSDVLILNNTRPPRGNWFGCTWMNG
+                     TGFTKTCGGPPCNIGGAGNNTLTCPTDCFRKHPEATYARCGSGPWLTPRCMVHYPYRL
+                     WHYPCTVNFTIFKVRMYVGGVEHRFEAACNWTRGERCDLEDRDRSELSPLLLSTTEWQ
+                     SGRA"
+     mat_peptide     2..1015
+                     /product="unnamed"
+ORIGIN      
+        1 gatcccacaa gctgtcgtgg acatggtggc gggggcccat tggggagtcc tggcgggcct
+       61 cgcctactat tccatggtgg ggaactgggc taaggttttg gttgtgatgc tactctttgc
+      121 cggcgtcgac gggcataccc gcgtgtcagg aggggcagca gcctccgata ccaggggcct
+      181 tgtgtccctc tttagccccg ggtcggctca gaaaatccag ctcgtaaaca ccaacggcag
+      241 ttggcacatc aacaggactg ccctgaactg caacgactcc ctccaaacag ggttctttgc
+      301 cgcactattc tacaaacaca aattcaactc gtctggatgc ccagagcgct tggccagctg
+      361 tcgctccatc gacaagttcg ctcaggggtg gggtcccctc acttacactg agcctaacag
+      421 ctcggaccag aggccctact gctggcacta cgcgcctcga ccgtgtggta ttgtacccgc
+      481 gtctcaggtg tgcggtccag tgtattgctt caccccgagc cctgttgtgg tggggacgac
+      541 cgatcggttt ggtgtcccca cgtataactg gggggcgaac gactcggatg tgctgattct
+      601 caacaacacg cggccgccgc gaggcaactg gttcggctgt acatggatga atggcactgg
+      661 gttcaccaag acgtgtgggg gccccccgtg caacatcggg ggggccggca acaacacctt
+      721 gacctgcccc actgactgtt ttcggaagca ccccgaggcc acctacgcca gatgcggttc
+      781 tgggccctgg ctgacaccta ggtgtatggt tcattaccca tataggctct ggcactaccc
+      841 ctgcactgtc aacttcacca tcttcaaggt taggatgtac gtggggggcg tggagcacag
+      901 gttcgaagcc gcatgcaatt ggactcgagg agagcgttgt gacttggagg acagggatag
+      961 atcagagctt agcccgctgc tgctgtctac aacagagtgg cagagtggca gagcttaatt
+     1021 a
+//
+

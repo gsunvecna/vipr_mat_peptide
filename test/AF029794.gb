@@ -1,0 +1,50 @@
+LOCUS       AF029794                 280 bp ss-RNA     linear   VRL 16-DEC-1997
+DEFINITION  Dengue virus type 3 MaKH00693 envelope/nonstructural protein 1
+            gene, partial cds.
+ACCESSION   AF029794
+VERSION     AF029794.1  GI:2623627
+KEYWORDS    .
+SOURCE      Dengue virus 3
+  ORGANISM  Dengue virus 3
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Dengue virus group.
+REFERENCE   1  (bases 1 to 280)
+  AUTHORS   Thayan,R., Morita,K., Vijayamalar,B., Zainah,S., Chew,T.K., Oda,K.,
+            Sinniah,M. and Igarashi,A.
+  TITLE     Comparison of sequences of E/NS1 gene junction of dengue type 3
+            virus following culture subpassage in C6/36 cells to study the
+            possible occurrence of mutations
+  JOURNAL   Southeast Asian J. Trop. Med. Public Health 28 (2), 380-386 (1997)
+   PUBMED   9444025
+REFERENCE   2  (bases 1 to 280)
+  AUTHORS   Thayan,R., Morita,K., Vijayamalar,B. and Igarashi,A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (15-OCT-1997) Virology, Institute for Medical Research,
+            Jalan Pahang, Kuala Lumpur, Federal Territory 50588, Malaysia
+FEATURES             Location/Qualifiers
+     source          1..280
+                     /organism="Dengue virus 3"
+                     /mol_type="genomic RNA"
+                     /strain="MaKH00693"
+                     /db_xref="taxon:11069"
+                     /cell_line="C6/36"
+                     /lab_host="mosquito (Aedes albopictus)"
+                     /note="strain name code: Ma=Malaysia; K=Kuala Lumpur;
+                     H=Human; middle 3 digit numbers= isolate numbers; last 2
+                     digit numbers=year of isolation"
+     CDS             <1..>280
+                     /note="protein junction region"
+                     /codon_start=1
+                     /product="envelope/nonstructural protein 1"
+                     /protein_id="AAC58720.1"
+                     /db_xref="GI:2623628"
+                     /translation="SGVSWIMKIGIGVLLTWIGLNSKNTSMSFSCIAIGIITLYLGAV
+                     VQADMGCVINWKGKELKCGSGIFVTNEVHTWTEQYKFQADSPKRLATAI"
+ORIGIN      
+        1 agtggagtct catggataat gaaaattgga ataggtgtcc tcttaacctg gatagggttg
+       61 aattcaaaaa acacttccat gtcattttca tgcattgcga taggaattat tacactctat
+      121 ctgggagccg tggtacaagc tgacatgggg tgtgtcataa actggaaagg aaaagaactc
+      181 aaatgtggaa gcggaatttt cgtcaccaat gaggtccaca cctggacaga gcagtacaaa
+      241 tttcaagcag actcccctaa aagactggcg acagccatcg
+//
+

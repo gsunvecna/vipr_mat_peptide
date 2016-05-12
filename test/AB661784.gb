@@ -1,0 +1,54 @@
+LOCUS       AB661784                 363 bp    RNA     linear   VRL 27-APR-2012
+DEFINITION  Hepatitis C virus NS5B gene for RNA-dependent RNA polymerase,
+            partial cds, isolate: YOG002.
+ACCESSION   AB661784
+VERSION     AB661784.1  GI:343183210
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Anggorowati,N., Yano,Y., Heriyanto,D.S., Rinonce,H.T., Utsumi,T.,
+            Mulya,D.P., Subronto,Y.W. and Hayashi,Y.
+  TITLE     Clinical and virological characteristics of hepatitis B or C virus
+            co-infection with HIV in Indonesian patients
+  JOURNAL   J. Med. Virol. 84 (6), 857-865 (2012)
+   PUBMED   22499006
+  REMARK    DOI:10.1002/jmv.23293
+REFERENCE   2  (bases 1 to 363)
+  AUTHORS   Yano,Y. and Anggorowati,N.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (07-AUG-2011) Contact:Yoshihiko Yano Kobe University,
+            Gastroenterology; 7-5-1 Kusunoki-cho, Chuo-ku, Kobe, Hyogo
+            650-0017, Japan
+FEATURES             Location/Qualifiers
+     source          1..363
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="YOG002"
+                     /isolation_source="human serum"
+                     /db_xref="taxon:11103"
+                     /country="Indonesia: Yogyakarta"
+                     /collection_date="30-Apr-2010"
+     gene            <1..>363
+                     /gene="NS5B"
+     CDS             <1..>363
+                     /gene="NS5B"
+                     /codon_start=3
+                     /product="RNA-dependent RNA polymerase"
+                     /protein_id="BAK61448.1"
+                     /db_xref="GI:343183211"
+                     /translation="GGRKPARLIVFPDLGVRVCEKMALYDVVSKLPLAVMGSSYGFQY
+                     SPGQRVEFLVQAWKSKKTPMGFSYDTRCFDSTVTESDIRTEEAIYQCCDLEPQARVAI
+                     KSLTERLYVGGPLTNSRG"
+ORIGIN      
+        1 aggggggtcg caagccagct cgtctcatcg tgttccccga tctgggtgtg cgcgtgtgcg
+       61 agaaaatggc cttgtacgac gtagttagca agctcccttt agccgtgatg ggaagctcct
+      121 acggattcca atactcacca ggacagcggg ttgaattcct cgtgcaagcg tggaagtcca
+      181 agaagacccc aatggggttc tcgtatgata cccgctgctt tgactccaca gtcactgaga
+      241 gcgacatccg tacggaggag gcaatctacc aatgttgtga cctggaaccc caagcccgcg
+      301 tggccatcaa gtccctcact gaaaggcttt atgttggggg ccctcttacc aattcaaggg
+      361 ggg
+//
+

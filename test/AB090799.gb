@@ -1,0 +1,57 @@
+LOCUS       AB090799                 763 bp    RNA     linear   VRL 19-FEB-2009
+DEFINITION  Human coxsackievirus A6 gene for polyprotein, VP1 region, partial
+            cds, strain: SA/159/1994.
+ACCESSION   AB090799
+VERSION     AB090799.1  GI:22531706
+KEYWORDS    .
+SOURCE      Human coxsackievirus A6
+  ORGANISM  Human coxsackievirus A6
+            Viruses; ssRNA positive-strand viruses, no DNA stage;
+            Picornavirales; Picornaviridae; Enterovirus; Human enterovirus A.
+REFERENCE   1
+  AUTHORS   Segawa,Y., Shinohara,M., Uchida,K. and Shimada,S.
+  TITLE     Partial Sequence of Coxsackievirus A6
+  JOURNAL   Published Only in Database (2002)
+REFERENCE   2  (bases 1 to 763)
+  AUTHORS   Segawa,Y., Shinohara,M., Uchida,K. and Shimada,S.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (26-AUG-2002) Contact:Yukari Segawa Saitama Institute of
+            Public Health, Virus Division; Kamiookubo639-1, Saitama-shi,
+            Saitama-ken 338-0824, Japan
+FEATURES             Location/Qualifiers
+     source          1..763
+                     /organism="Human coxsackievirus A6"
+                     /mol_type="genomic RNA"
+                     /strain="SA/159/1994"
+                     /serotype="A6"
+                     /db_xref="taxon:86107"
+                     /country="Japan:Saitama"
+                     /note="laboratory host: suckling mouse"
+     CDS             <1..>763
+                     /note="VP1 region"
+                     /codon_start=3
+                     /product="polyprotein"
+                     /protein_id="BAC10664.1"
+                     /db_xref="GI:22531707"
+                     /translation="FHASDENLIETRCVMNRNGVNEASVEHFYSRAGLVGVVEVKDSG
+                     TDQDGYTVWPIDVMGFVQQRRKLELSTYMRFDAEFTFVSNLNDSTTPGMLLQYMYVPP
+                     GAPKPDGRKSYQWQTATNPSIFAKLSDPPPQVSVPFMSPASAYQWFYDGYPTFGEHNQ
+                     ATNLQYGQCPNNMMGHFAIRTVSESTTGKNIHVRVYMRIKHVRAWVPRPFRSQAYMVK
+                     NYPTYSQTITNTASDRASITTTDYEGGVPANPQRT"
+     mat_peptide     3..>763
+                     /product="VP1"
+ORIGIN      
+        1 agttccacgc tagtgatgag aatctgattg aaacgcgctg tgtaatgaac aggaatggag
+       61 tcaatgaggc aagtgtagaa cacttctact cccgtgcagg gttggtagga gtcgtggaag
+      121 tgaaagactc tggtaccgat caagatgggt atacagtgtg gcccatagat gtgatgggct
+      181 tcgtacaaca gcggcgcaag ttagagttgt ccacctacat gcgctttgac gctgaattca
+      241 cctttgtgtc taatctcaat gacagcacga cacccggcat gttgttacag tacatgtatg
+      301 taccaccagg agcacctaaa ccagatggta ggaaatcata tcaatggcag actgccacca
+      361 atccatcgat attcgcaaag ctgagtgatc caccccctca agtgtctgtc ccattcatgt
+      421 caccagcatc agcctatcag tggttttacg acggctaccc cacattcggg gagcacaacc
+      481 aagctaccaa tttgcagtac ggacaatgcc ccaacaatat gatgggccat tttgctatcc
+      541 ggacagttag cgaatcgacc actgggaaaa acattcatgt tcgggtgtat atgagaatca
+      601 agcatgtaag agcttgggtt cccagacctt ttcggtctca ggcttatatg gtcaagaatt
+      661 acccaacata tagtcagaca ataaccaaca ccgcatctga tcgcgcgagc ataaccacca
+      721 ctgactatga gggaggagtg ccagcaaatc cacagagaac att
+//

@@ -1,0 +1,52 @@
+LOCUS       AF378170                 544 bp    RNA     linear   VRL 05-JUN-2001
+DEFINITION  Dengue virus type 1 strain Peru 9615-00 envelope glycoprotein (E)
+            gene, partial cds.
+ACCESSION   AF378170
+VERSION     AF378170.1  GI:14290132
+KEYWORDS    .
+SOURCE      Dengue virus 1
+  ORGANISM  Dengue virus 1
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Dengue virus group.
+REFERENCE   1  (bases 1 to 544)
+  AUTHORS   Douglas,S., Caceres,O., Kochel,T.J., Guevara,C. and Montoya,Y.
+  TITLE     Phylogenetic relationships of DEN-1 viruses from Sullana, Peru
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 544)
+  AUTHORS   Douglas,S., Caceres,O., Kochel,T.J., Guevara,C. and Montoya,Y.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (09-MAY-2001) Molecular Biology Division, National
+            Institute of Health, Capac Yupanqui 1400, Jesus Maria, Lima 11,
+            Peru
+FEATURES             Location/Qualifiers
+     source          1..544
+                     /organism="Dengue virus 1"
+                     /mol_type="genomic RNA"
+                     /strain="Peru 9615-00"
+                     /db_xref="taxon:11053"
+     gene            <1..>544
+                     /gene="E"
+     CDS             <1..>544
+                     /gene="E"
+                     /note="structural protein"
+                     /codon_start=3
+                     /product="envelope glycoprotein"
+                     /protein_id="AAK59270.1"
+                     /db_xref="GI:14290133"
+                     /translation="RLITANPIVTDKEKPVNIETEPPFGESYIVVGAGEKALKLSWFK
+                     KGSSIGKMFEATARGARRMAILGDTAWDFGSIGEVFTSVGKLVHQVFGTAYGVLFSGV
+                     SWTMKIGIGILLTWLGLNSRSTSLSMTCIAVGMVTLYLGVMVQADSGCVINWKGSELK
+                     CGSGIFVTNEVHTWTEQYKF"
+ORIGIN      
+        1 ggagattgat aacagccaat cccatagtta ctgacaaaga gaaaccagtc aacatcgaga
+       61 cagaaccacc ttttggtgag agctacatcg tggtaggggc aggtgaaaaa gctttgaaac
+      121 taagctggtt caagaaagga agcagcatag ggaaaatgtt cgaagcaacc gcccgaggag
+      181 cacgaaggat ggctatcctg ggagacaccg catgggactt cggctctata ggagaagtgt
+      241 ttacatctgt gggaaaattg gtacaccagg tttttggaac cgcatatggg gttctgttca
+      301 gcggtgtttc ttggaccatg aaaataggaa tagggattct gctgacatgg ttgggattaa
+      361 attcaaggag cacgtcactt tcgatgacgt gcattgcagt tggcatggtt acactgtacc
+      421 taggagtcat ggttcaagcg gactcgggat gtgtaatcaa ctggaagggc agtgaactca
+      481 aatgtggaag tggcattttt gtcactaatg aagtccacac ttggacagaa caatataagt
+      541 tcca
+//
+

@@ -1,0 +1,44 @@
+LOCUS       DQ294045                 133 bp    RNA     linear   VRL 21-APR-2006
+DEFINITION  Hepatitis C virus isolate 535201c18 E2 protein gene, partial cds.
+ACCESSION   DQ294045
+VERSION     DQ294045.1  GI:83375628
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 133)
+  AUTHORS   Shuhart,M.C., Sullivan,D.G., Bekele,K., Harrington,R.D.,
+            Kitahata,M.M., Mathisen,T.L., Thomassen,L.V., Emerson,S.S. and
+            Gretch,D.R.
+  TITLE     HIV infection and antiretroviral therapy: effect on hepatitis C
+            virus quasispecies variability
+  JOURNAL   J. Infect. Dis. 193 (9), 1211-1218 (2006)
+   PUBMED   16586356
+REFERENCE   2  (bases 1 to 133)
+  AUTHORS   Shuhart,M.C., Sullivan,D.G., Bekele,K., Harrington,R.D.,
+            Kitahata,M.M., Mathisen,T.L., Thomassen,L.V., Emerson,S.S. and
+            Gretch,D.R.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (16-NOV-2005) Laboratory Medicine, University of
+            Washington, 325 9th Ave. Box 359690, Seattle, WA 98104, USA
+FEATURES             Location/Qualifiers
+     source          1..133
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="535201c18"
+                     /db_xref="taxon:11103"
+                     /country="USA"
+     CDS             <1..>133
+                     /note="HVR1 region"
+                     /codon_start=3
+                     /product="E2 protein"
+                     /protein_id="ABC17659.1"
+                     /db_xref="GI:83375629"
+                     /translation="VAAVLLLFAGVDASTYVTGGSAGQTTSGLTALFAPGAKQNIQL"
+ORIGIN      
+        1 aggtcgcggc agtgctgctg ctatttgccg gcgtcgacgc gagtacctac gtcaccgggg
+       61 ggagtgccgg ccaaaccacg tctggactta ctgcactctt cgcacctggc gccaagcaga
+      121 acatccagct gat
+//
+

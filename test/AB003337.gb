@@ -1,0 +1,71 @@
+LOCUS       AB003337                1484 bp    RNA     linear   VRL 06-MAR-2003
+DEFINITION  Rubella virus gene for E1 protein, partial cds, strain:Matsuura
+            Progenitor.
+ACCESSION   AB003337
+VERSION     AB003337.1  GI:2077826
+KEYWORDS    .
+SOURCE      Rubella virus
+  ORGANISM  Rubella virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Togaviridae;
+            Rubivirus.
+REFERENCE   1
+  AUTHORS   Katow,S., Minahara,H., Ota,T. and Fukushima,M.
+  TITLE     Identification of strain-specific nucleotide sequences in E1 and
+            NS4 genes of rubella virus vaccine strains in Japan
+  JOURNAL   Vaccine 15 (14), 1579-1585 (1997)
+   PUBMED   9330471
+REFERENCE   2  (bases 1 to 1484)
+  AUTHORS   Katow,S.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (24-APR-1997) Shigetaka Katow, National institute of
+            Infectious Diseases, Dpt of viral Disease & Vaccine Control;
+            Musashi-Murayama, Tokyo 208, Japan (E-mail:katow@nih.go.jp,
+            Tel:0425-61-0771(ex.322), Fax:0425-61-1960)
+FEATURES             Location/Qualifiers
+     source          1..1484
+                     /organism="Rubella virus"
+                     /mol_type="genomic RNA"
+                     /strain="Matsuura Progenitor"
+                     /db_xref="taxon:11041"
+                     /map="E1 coding region and 3'end"
+     CDS             <1..1446
+                     /codon_start=1
+                     /product="E1 protein"
+                     /protein_id="BAA19886.1"
+                     /db_xref="GI:2077827"
+                     /translation="EEAFTYLCTAPGCATQTPVPVRLAGVRFESKIVDGGCFAPWDLE
+                     ATGACICEIPTDVSCEGLGAWVPTAPCARIWNGTQRACTFWAVNAYSSGGYAQLASYF
+                     NPGGSYYKQYHPTACEVEPAFGHSDAACWGFPTDTVMSVFALASYVQHPHKTVRVKFH
+                     TETRTVWQLSVAGVSCNVTTEHPFCNTPHGQLEVQVPPDPGDLVEYIMNYTGNQQSRW
+                     GLGSPNCHGPDWASPVCQRHSPDCSRLVGATPERPRLRLVDADDPLLRTAPGPGEVWV
+                     TPVIGSQARKCGLHIRAGPYGHATVEMPEWIHAHTTSDPWHPPGPLGLKFKTVRPVAL
+                     PRALAPPRNVRVTGCYQCGTPALVEGLAPGGGNCHLTVNGEDVGAFPPGKFVTAALLN
+                     TPPPYQVSCGGESDRASARVIDPAAQSFTGVVYGTHTTAVSETRQTWAEWAAAHWWQL
+                     TLGAICALLLAGLLACCAKCLYYLRGAIAPR"
+ORIGIN      
+        1 gaggaggcct tcacctacct ctgcactgca ccggggtgcg ccactcaaac acctgtcccc
+       61 gtgcgcctcg ctggcgtccg ctttgagtcc aagattgtgg acggcggctg ctttgcccca
+      121 tgggacctcg aggccactgg agcctgcatt tgcgagatcc ccactgatgt ctcgtgcgag
+      181 ggcttggggg cctgggtacc cacagcccct tgcgcgcgca tctggaatgg cacacagcgc
+      241 gcgtgcacct tctgggctgt caacgcctac tcctctggcg ggtacgcgca gctggcctct
+      301 tacttcaacc ctggcggcag ctactacaag cagtaccacc ctaccgcgtg cgaggttgaa
+      361 cctgccttcg gacacagcga cgcggcctgc tggggcttcc ccaccgacac cgtgatgagc
+      421 gtgttcgccc ttgctagcta cgtccagcac cctcacaaga ccgtccgggt caagttccat
+      481 acagagacca ggaccgtctg gcaactctcc gttgccggcg tgtcgtgcaa cgtcaccaca
+      541 gaacacccgt tctgcaacac gccgcacgga caactggagg tccaggtccc gcccgacccc
+      601 ggggacctgg ttgagtacat tatgaattac accggcaatc agcagtcccg gtggggcctc
+      661 gggagcccga attgtcatgg ccccgattgg gcctccccgg tttgccaacg ccattcccct
+      721 gactgctcgc ggcttgtggg ggccacgcca gagcgtcccc ggctgcgcct ggtcgacgcc
+      781 gatgaccccc tgctgcgcac tgcccctggg cccggcgagg tgtgggtcac gcccgtcata
+      841 ggctctcagg cgcgcaagtg cggactccac atacgcgctg gaccgtacgg ccatgctacc
+      901 gtcgaaatgc ccgagtggat tcacgcccac accaccagcg acccctggca cccaccgggc
+      961 cccttggggc tgaagttcaa gacagttcgc ccggtggccc tgccacgcgc gttagcgcca
+     1021 ccccgcaatg tgcgtgtgac cgggtgctac cagtgcggta cccccgcgct ggtggaaggc
+     1081 cttgcccccg ggggagggaa ttgccatctc accgtcaatg gcgaggacgt cggcgccttc
+     1141 ccccctggga agttcgtcac cgccgccctc ctcaacaccc ccccgcccta ccaggtcagc
+     1201 tgcgggggcg agagcgatcg cgcgagcgcg cgggtcattg accccgccgc gcaatcgttt
+     1261 accggcgtgg tgtatggcac acacaccact gctgtgtcgg agacccggca gacctgggcg
+     1321 gagtgggctg ctgcccattg gtggcagctc actctgggcg ccatttgcgc cctcctactc
+     1381 gctggcttac tcgcttgctg tgccaaatgc ttgtactact tgcgcggcgc tatagcgccg
+     1441 cgctagtggg cccccgcgcg aaacccgcac tagcccacta gatt
+//

@@ -1,0 +1,51 @@
+LOCUS       EF185924                 431 bp    RNA     linear   VRL 24-JUN-2008
+DEFINITION  Hepatitis C virus subtype 6a isolate 51038 polyprotein gene,
+            partial cds.
+ACCESSION   EF185924
+VERSION     EF185924.1  GI:124109000
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 6a
+  ORGANISM  Hepatitis C virus subtype 6a
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 431)
+  AUTHORS   Peng,J.S., Wang,X., Liu,M.Q., Zhou,D.J., Gong,J., Xu,H.M.,
+            Chen,J.P., Zhu,H.H., Zhou,W. and Ho,W.Z.
+  TITLE     Genetic variation of hepatitis C virus in a cohort of injection
+            heroin users in Wuhan, China
+  JOURNAL   Virus Res. 135 (1), 191-196 (2008)
+   PUBMED   18353479
+REFERENCE   2  (bases 1 to 431)
+  AUTHORS   Peng,J., Liu,M., Zhou,D., Gong,J., Zhou,W., Ho,W. and Zhu,H.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (13-DEC-2006) Division of Viral Disease, Wuhan Centers
+            for Disease Prevention and Control, 24 Jianghanbei Road, Wuhan,
+            Hubei 430022, China
+FEATURES             Location/Qualifiers
+     source          1..431
+                     /organism="Hepatitis C virus subtype 6a"
+                     /mol_type="genomic RNA"
+                     /isolate="51038"
+                     /isolation_source="intravenous drug user"
+                     /db_xref="taxon:31655"
+                     /country="China"
+                     /note="subtype: 6a"
+     CDS             <1..>431
+                     /note="core-E1 region"
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="ABM90988.1"
+                     /db_xref="GI:124109001"
+                     /translation="VLTAPASALTYGNSSGLYHLTNDCPNSSIVLEADAMILHLPGCL
+                     PCVRVGNQSTCWHPVSPTLAIPNASTPATGFRRHVDLLAGAAVVCSSLYIGDLCGSLF
+                     LAGQLFTFQPRRHWTMQDCNCSIYTGHVTGHRMAWDMMMMN"
+ORIGIN      
+        1 tgtgctcaca gcgccagctt cggctctcac ctacggcaac tccagtgggc tataccatct
+       61 cacaaacgat tgccccaact ccagcatcgt gctggaggcg gatgccatga tcttgcattt
+      121 gcctgggtgc ttgccttgtg tgagggtcgg taatcagtcc acctgctggc atcccgtgtc
+      181 ccctacccta gccataccaa atgcttccac gcccgcaacg ggattccgta ggcacgtgga
+      241 tcttctagcg ggcgccgcag tggtttgttc atctctgtac attggggatt tgtgcggctc
+      301 tctcttcctg gcgggacaac tattcacctt ccagccccgc cgtcattgga ctatgcaaga
+      361 ctgcaactgc tccatttata caggccacgt cactggccac aggatggcat gggatatgat
+      421 gatgatgaac a
+//

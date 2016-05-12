@@ -1,0 +1,160 @@
+LOCUS       NC_018138               3378 bp ss-RNA     linear   VRL 13-JUL-2012
+DEFINITION  SFTS virus HB29 segment M, complete genome.
+ACCESSION   NC_018138
+VERSION     NC_018138.1  GI:395406765
+DBLINK      Project: 170539
+KEYWORDS    .
+SOURCE      SFTS virus HB29
+  ORGANISM  SFTS virus HB29
+            Viruses; ssRNA negative-strand viruses; Bunyaviridae; Phlebovirus;
+            unclassified Phlebovirus.
+REFERENCE   1  (bases 1 to 3378)
+  AUTHORS   Yu,X.J., Liang,M.F., Zhang,S.Y., Liu,Y., Li,J.D., Sun,Y.L.,
+            Zhang,L., Zhang,Q.F., Popov,V.L., Li,C., Qu,J., Li,Q., Zhang,Y.P.,
+            Hai,R., Wu,W., Wang,Q., Zhan,F.X., Wang,X.J., Kan,B., Wang,S.W.,
+            Wan,K.L., Jing,H.Q., Lu,J.X., Yin,W.W., Zhou,H., Guan,X.H.,
+            Liu,J.F., Bi,Z.Q., Liu,G.H., Ren,J., Wang,H., Zhao,Z., Song,J.D.,
+            He,J.R., Wan,T., Zhang,J.S., Fu,X.P., Sun,L.N., Dong,X.P.,
+            Feng,Z.J., Yang,W.Z., Hong,T., Zhang,Y., Walker,D.H., Wang,Y. and
+            Li,D.X.
+  TITLE     Fever with thrombocytopenia associated with a novel bunyavirus in
+            China
+  JOURNAL   N. Engl. J. Med. 364 (16), 1523-1532 (2011)
+   PUBMED   21410387
+REFERENCE   2  (bases 1 to 3378)
+  AUTHORS   Li,J., Sun,Y., Liang,M., Zhang,Q., Lu,J., Li,C., Qu,J., Zhan,F. and
+            Li,D.
+  TITLE     A novel Phlebovirus related to severe fever with thrombocytopenia
+            syndrome (SFTS) in humans
+  JOURNAL   Unpublished
+REFERENCE   3  (bases 1 to 3378)
+  CONSRTM   NCBI Genome Project
+  TITLE     Direct Submission
+  JOURNAL   Submitted (13-JUL-2012) National Center for Biotechnology
+            Information, NIH, Bethesda, MD 20894, USA
+REFERENCE   4  (bases 1 to 3378)
+  AUTHORS   Li,J., Sun,Y., Liang,M., Zhang,Q., Lu,J., Li,C., Qu,J., Zhan,F. and
+            Li,D.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (11-JUL-2010) Department of Viral Hemorrhagic Fever,
+            National Institute for Viral Diseases Control and Prevention,
+            Changbai Road 155, Beijing 102206, China
+COMMENT     PROVISIONAL REFSEQ: This record has not yet been subject to final
+            NCBI review. The reference sequence is identical to HM745931.
+            GenBank Accession Numbers HM745930-HM745932 represent sequences
+            from the 3 segments of Phlebovirus HB29/China/2010.
+            COMPLETENESS: full length.
+FEATURES             Location/Qualifiers
+     source          1..3378
+                     /organism="SFTS virus HB29"
+                     /mol_type="genomic RNA"
+                     /strain="HB29"
+                     /isolation_source="serum"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:992212"
+                     /segment="M"
+                     /country="China"
+                     /collection_date="20-May-2010"
+     gene            19..3240
+                     /locus_tag="B303_sMgp1"
+                     /db_xref="GeneID:13231111"
+     CDS             19..3240
+                     /locus_tag="B303_sMgp1"
+                     /codon_start=1
+                     /product="membrane glycoprotein polyprotein"
+                     /protein_id="YP_006504094.1"
+                     /db_xref="GI:395406766"
+                     /db_xref="GeneID:13231111"
+                     /translation="MMKVIWFSSLICLVIQCSGDSGPIICAGPIHSNKSAGIPHLLGY
+                     SEKICQIDRLIHVSSWLRNHSQFQGYVGQRGGRSQVSYYPAENSYSRWSGLLSPCDAD
+                     WLGMLVVKKAKESDMIVPGPSYKGKVFFERPTFDGYVGWGCGSGKSRTESGELCSSDS
+                     GTSSGLLPSDRVLWIGDVACQPMTPIPEETFLELKSFSQSEFPDICKIDGIVFNQCEG
+                     ESLPQPFDVAWMDVGHSHKIIMREHKTKWVQESSSKDFVCYKEGTGPCSESEEKACKT
+                     SGSCRGDMQFCKVAGCEHGEEASEAKCRCSLVHKPGEVVVSYGGTRVRPKCYGFSRMM
+                     ATLEVNPPEQRIGQCTGCHLECINGGVRLITLTSELRSATVCASHFCSSASSGKKSTE
+                     IHFHSGSLVGKTAIHVKGALVDGTEFTFEGSCMFPDGCDAVDCTFCREFLKNPQCYPA
+                     KKWLFIIIVILLGYAGLMLLTNVLKAIGVWGSWVIAPVKLMFAIIKKLMRTVSCLVGK
+                     LMDRGRQVIHEEIGENGEGNQDDVRIEMARPRRVRHWMYSPVILTILAIGLAEGCDEM
+                     VHADSKLVSCRQGSGNMKECITTGRALLPAVNPGQEACLHFTAPGSPDSKCLKIKVKR
+                     INLKCKKSSSYFVPDARSRCTSVRRCRWAGDCQSGCPPHFTSNSFSDDWAGKMDRAGL
+                     GFSGCSDGCGGAACGCFNAAPSCIFWRKWVENPHGIIWKVSPCAAWVPSAVIELTMPS
+                     GEVRTFHPMSGIPTQVFKGVSVTYLGSDMEVSGLTDLCEIEELKSKKLALAPCNQAGM
+                     GVVGKVGEIQCSSEESARTIKKDGCIWNADLVGIELRVDDAVCYSKITSVEAVANYSA
+                     IPTTIGGLRFERSHDSQGKISGSPLDITAIRGSFSVNYRGLRLSLSEITATCTGEVTN
+                     VSGCYSCMTGAKVSIKLHSSKNSTAHVRCKGDETAFSVLEGVHSYIVRLSFDHAVVDE
+                     QCQLNCGGHESQVTLKGNLIFLDVPKFVDGSYMQTYHSTVPTGANIPSPTDWLNALFG
+                     NGLSRWILGVIGVLLGGLALFFLIMFLLKLGTKQVFRSRTKLA"
+     sig_peptide     19..75
+                     /locus_tag="B303_sMgp1"
+     mat_peptide     76..1623
+                     /locus_tag="B303_sMgp1"
+                     /product="Gn protein"
+                     /protein_id="YP_006519138.1"
+                     /db_xref="GI:395406767"
+     sig_peptide     1624..1704
+                     /locus_tag="B303_sMgp1"
+     mat_peptide     1705..3237
+                     /locus_tag="B303_sMgp1"
+                     /product="Gc glycoprotein"
+                     /protein_id="YP_006519139.1"
+                     /db_xref="GI:395406768"
+ORIGIN      
+        1 acacagagac ggccaacaat gatgaaagtc atctggttct cctctctgat ctgcttagtc
+       61 attcaatgca gtggggattc gggcccaatc atctgcgcag gacccatcca ctcaaacaag
+      121 agtgctggca taccccacct gcttggttac tctgagaaga tttgtcagat agatcggctg
+      181 atacatgttt cgtcatggct caggaaccac tcgcaatttc aaggctacgt tgggcagcga
+      241 ggtggacgct ctcaggttag ctactaccca gctgagaatt cttactcgag gtggagtgga
+      301 cttctaagcc cctgtgatgc tgattggctt gggatgcttg tcgtgaagaa ggctaaggag
+      361 tctgatatga tagttcctgg gccttcatac aaggggaaag tcttttttga acggccaact
+      421 tttgatggat acgtaggctg gggctgtggc agtgggaagt ctaggactga gtcaggagag
+      481 ctctgcagtt cagactcagg gacaagttct ggtcttctgc cctcggatag ggttctctgg
+      541 ataggtgatg ttgcttgtca gcctatgaca cccatccctg aggagacatt tctggagctg
+      601 aagagtttta gccaaagtga attcccagac atatgtaaaa ttgatggcat tgtgttcaac
+      661 cagtgtgagg gtgagagtct accccagccc tttgatgttg catggatgga tgttggccac
+      721 tctcataaga tcatcatgag ggagcacaag accaaatggg tacaagagag ctcatccaag
+      781 gattttgtgt gctacaagga agggactgga ccttgttctg aatcagaaga aaaggcttgt
+      841 aagaccagtg gatcatgcag aggggacatg cagttttgca aggtggcagg ttgcgaacat
+      901 ggagaggagg catctgaggc caagtgtaga tgctcacttg tgcacaagcc tggggaagtc
+      961 gttgtgtcat atggagggac gcgtgtcaga ccaaagtgct acggtttctc cagaatgatg
+     1021 gcaacactgg aggtgaaccc accagagcaa aggattggtc aatgcactgg ctgccatcta
+     1081 gaatgcataa atgggggtgt gaggctaatc actctaacca gtgagctcag gtcagctact
+     1141 gtctgtgctt cccacttttg cagttctgcc tcaagtggta agaaaagcac ggagattcat
+     1201 ttccactcag gatcattggt tgggaaaaca gctatccatg tcaaaggggc attggtagat
+     1261 ggaactgaat tcacatttga gggtagttgc atgttcccag atggatgtga tgcagtggac
+     1321 tgcacattct gtcgtgagtt tctaaaaaat cctcagtgct accctgcaaa gaagtggctg
+     1381 ttcatcatta ttgtcatcct ccttggatat gcaggcctca tgttactcac caatgtcctt
+     1441 aaggcaattg gggtctgggg atcatgggta atagctccag tgaagctaat gtttgccatc
+     1501 ataaagaaac taatgagaac tgtgagctgc ttggtgggga aattgatgga taggggaagg
+     1561 caagtgatcc atgaggaaat aggggagaat ggggagggca accaagatga tgttaggatt
+     1621 gagatggcaa gacccagaag ggtaaggcat tggatgtact cacctgtcat cctgaccatt
+     1681 ctagcaatag ggcttgcaga gggctgtgat gagatggtcc atgctgattc taaacttgtt
+     1741 tcatgcagac aagggagcgg aaacatgaag gaatgcataa caactgggag ggcgcttctt
+     1801 cctgcggtga acccaggaca agaggcatgt ctgcacttca cagcacctgg gagtccggac
+     1861 tcaaaatgtc tcaaaattaa ggttaagagg atcaacctaa aatgtaagaa gtcatcatca
+     1921 tattttgttc ctgatgcccg gtccaggtgt acatcagtga ggagatgtcg ttgggcggga
+     1981 gactgccagt ctgggtgccc ccctcatttc acatccaact ccttttctga tgattgggca
+     2041 ggtaagatgg acagggctgg tcttggattc agtggctgct ctgatggatg tggaggagca
+     2101 gcctgcggct gctttaatgc ggccccttca tgcatcttct ggaggaaatg ggtggagaat
+     2161 ccacatggga tcatctggaa agtgtctcca tgcgccgcat gggtcccatc agcagttata
+     2221 gagctaacaa tgccctcagg tgaggtgagg acattccacc ccatgagcgg catccccaca
+     2281 caggtcttca agggtgtgag tgtaacttac ttgggctcag atatggaggt gtctggcttg
+     2341 actgacctgt gtgagataga agagctcaag tccaaaaagc tggcattagc tccctgcaac
+     2401 caggctggca tgggggttgt aggcaaggtt ggagagatac agtgcagtag cgaggagagt
+     2461 gcccgtacca taaaaaaaga tgggtgcata tggaacgcag acctcgtggg tatagagcta
+     2521 cgagtggatg acgctgtgtg ctactctaag attactagtg tggaggcagt tgcaaactac
+     2581 tctgccatac ccaccactat tggggggctg aggtttgaga gaagccatga cagccagggt
+     2641 aaaatatctg gtagccccct ggacatcaca gctataagag gatccttttc tgttaattat
+     2701 agaggccttc gattaagtct ctcagaaatt actgctactt gcacagggga ggtgacaaat
+     2761 gtgagtgggt gctattcctg catgacaggt gccaaagtct ccatcaaatt gcatagcagc
+     2821 aaaaatagca ctgcccatgt tagatgcaaa ggggatgaga ctgcattcag tgtcttggag
+     2881 ggagtccata gctacattgt ccgcctcagc tttgaccatg cagtagtcga tgagcaatgc
+     2941 cagctgaact gtgggggaca tgagagtcaa gtgactctta aaggcaacct catcttcctg
+     3001 gatgtcccaa aatttgtgga tggcagctac atgcagacat atcacagtac tgtgccaaca
+     3061 ggggcaaata tcccaagccc tacagattgg ctgaatgcct tgtttggcaa tgggctgagt
+     3121 aggtggatcc tgggggtgat aggggttcta ctggggggat tggctctctt tttcttgatc
+     3181 atgtttttgc tcaagctggg aacaaaacag gtatttcgat cgaggacgaa gctggcttag
+     3241 atgggcaaat ttctggtcta gtgaccctct gggagcagtg ctctcagggg agttggctca
+     3301 cagtgtgttt gtttcgtggt cctggctcac attcttagaa tatggaggtt ctattgaagt
+     3361 gttggccggt ctttgtgt
+//
+

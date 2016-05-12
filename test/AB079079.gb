@@ -1,0 +1,76 @@
+LOCUS       AB079079                1465 bp    DNA     linear   VRL 29-NOV-2002
+DEFINITION  Hepatitis C virus gene for polyprotein (core-E2 region), partial
+            cds, strain:FM_86.
+ACCESSION   AB079079
+VERSION     AB079079.1  GI:25900866
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Tanaka,Y., Hanada,K., Mizokami,M., Yeo,A.E., Shih,J.W., Gojobori,T.
+            and Alter,H.J.
+  TITLE     Inaugural Article: A comparison of the molecular clock of hepatitis
+            C virus in the United States and Japan predicts that hepatocellular
+            carcinoma incidence in the United States will increase over the
+            next two decades
+  JOURNAL   Proc. Natl. Acad. Sci. U.S.A. 99 (24), 15584-15589 (2002)
+   PUBMED   12438687
+REFERENCE   2  (bases 1 to 1465)
+  AUTHORS   Tanaka,Y., Mizokami,M., Hanada,K. and Gojobori,T.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (29-JAN-2002) Yasuhito Tanaka, Nagoya City University
+            Graduate School of Medical Science, Department of Clinical
+            Molecular Informative Medicine; Kawasumi, Mizuho, Nagoya 467-8601,
+            Japan (E-mail:ytanaka@med.nagoya-cu.ac.jp, Tel:81-52-853-8292,
+            Fax:81-52-842-0021)
+FEATURES             Location/Qualifiers
+     source          1..1465
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic DNA"
+                     /strain="FM_86"
+                     /db_xref="taxon:11103"
+     CDS             <1..>1465
+                     /note="core-E2"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="BAC41271.1"
+                     /db_xref="GI:25900867"
+                     /translation="KRNTNRRPQDVKFPGGGQIVGGVYLLPRRGPRLGVRATRKTSER
+                     SQPRGRRQPIPKARRPEGRTWAQPGYPWPLYGNEGCGWAGWLLSPRGSRPSWGPTDPR
+                     RRSRNLGKVIDTLTCGFADLMGYIPLVGAPLGGAARALAHGVRVLEDGVNYATGNLPG
+                     CSFSIFLLALLSCLTVPASAYQVRNSTGLYHVTNDCPNSSIVYEAADAILHAPGCVPC
+                     VREGNASRCWVAVTPTVATRDGKLPTTQLRRHIDLLVGSATLCSALYVGDLCGSVFLI
+                     GQLFTFSPRRHWTTQDCNCSMYPGHITGHRMAWDMMMNWSPTTALIVAQLLRIPQAIL
+                     DMIAGAHWGVLAGMAYFSMVGNWAKVPVVLLLFAGVDATTHVTGGTAARSTAVFAGLF
+                     SPGAKQNVQLVNTNGSWHINSTALNCNDSLNTGWIAGLFYYHKFNSSGCSERLASCHP
+                     LTNFAQGWGPISCANGSGPDHRPYCWHYPPKPCGIVPA"
+ORIGIN      
+        1 aaacgtaaca ccaaccgccg cccacaggac gtcaagttcc cgggtggcgg tcagatcgtt
+       61 ggtggagttt acttgttgcc gcgcaggggc cctagattgg gtgtgcgcgc gacgaggaag
+      121 acttccgagc ggtcgcaacc tcgaggtaga cgtcagccta tccccaaggc acgtcggccc
+      181 gagggcagga cctgggctca gcccgggtac ccttggcccc tctatggcaa tgagggctgc
+      241 gggtgggcgg gatggctcct gtctccccgt ggctctcggc ccagctgggg ccccacagac
+      301 ccccggcgta ggtcgcgcaa tttgggtaag gtcatcgata cccttacgtg cggcttcgcc
+      361 gacctcatgg ggtacatacc gctcgtcggc gcccctctcg gaggcgctgc cagggccctg
+      421 gcgcacggcg tccgggttct ggaagacggc gtgaactacg caacagggaa tcttcctggt
+      481 tgctctttct ctatcttcct tctggccctg ctctcttgcc tgactgtgcc cgcttcagcc
+      541 taccaagtgc gcaactccac ggggctctac cacgtcacca atgattgccc taactcgagt
+      601 attgtgtacg aggcggccga tgccatcctg cacgctccgg ggtgtgtccc ttgcgtccgc
+      661 gagggcaacg cctcaaggtg ctgggtggcg gtgaccccca cggtggccac tagggacggc
+      721 aaactcccca caacgcagct tcgacgtcac atcgacctgc ttgtcgggag cgccaccctc
+      781 tgctcggccc tctacgtggg ggacctgtgc gggtctgttt ttcttatcgg tcagctgttt
+      841 accttctctc ccaggcgcca ctggacgacg caagactgca attgttctat gtatcccggc
+      901 catataacag gtcaccgcat ggcatgggat atgatgatga actggtcccc cacgacggcg
+      961 ttgatagtag ctcagctgct ccggatccca caagccatct tggacatgat cgccggtgct
+     1021 cactggggag tcctggcggg catggcgtat ttctccatgg tggggaattg ggcgaaagtc
+     1081 ccggtagtgc tgctgctatt tgccggcgtt gacgcgacaa cccacgtcac cgggggaacc
+     1141 gccgcccgca gcacggctgt attcgctggc ctcttcagcc caggcgccaa gcagaacgtc
+     1201 cagctggtca acaccaacgg cagttggcac atcaatagta cggccttgaa ctgcaatgat
+     1261 agccttaaca ccggttggat agcagggctt ttctattacc acaaattcaa ctcttcaggc
+     1321 tgttctgaga ggttggccag ttgccacccc cttaccaatt ttgcccaggg ttggggccct
+     1381 atcagttgtg ccaacggaag cggccccgac catcgcccct actgctggca ctaccctcca
+     1441 aaaccttgtg gtattgtgcc cgcga
+//
+

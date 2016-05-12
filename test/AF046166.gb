@@ -1,0 +1,48 @@
+LOCUS       AF046166                 340 bp    RNA     linear   VRL 21-FEB-1998
+DEFINITION  Hepatitis C virus strain HC-P6 non-structural protein 5 (NS5) gene,
+            partial cds.
+ACCESSION   AF046166
+VERSION     AF046166.1  GI:2905668
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 340)
+  AUTHORS   Wei,L., Wang,Y., Du,S., Wang,H. and Tao,Q.
+  TITLE     Genetic variability and characterization of non-structural region 5
+            of hepatitis C virus genome from Chinese patients
+  JOURNAL   J. Gastroenterol. 33 (1), 62-72 (1998)
+   PUBMED   9497224
+REFERENCE   2  (bases 1 to 340)
+  AUTHORS   Wei,L., Wang,Y., Du,S., Wang,H. and Tao,Q.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (06-FEB-1998) Institute of Hepatology and Department of
+            Infectious Diseases, Beilishi, Beijing, Beijing 100044, People's
+            Republic of China
+FEATURES             Location/Qualifiers
+     source          1..340
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /strain="HC-P6"
+                     /db_xref="taxon:11103"
+     gene            <1..>340
+                     /gene="NS5"
+     CDS             <1..>340
+                     /gene="NS5"
+                     /codon_start=3
+                     /product="non-structural protein 5"
+                     /protein_id="AAC40515.1"
+                     /db_xref="GI:2905669"
+                     /translation="STVTECYPGVLESMFQCYDLAPEPGMAIRSLTEGVYIGGPLTNS
+                     KGQNCGYRECRASVLTTSCGNTLTCYLKASAACRAAKLRDCTMLVNGDDLVIICESAG
+                     TQKDAASLRV"
+ORIGIN      
+        1 actcaacggt gactgagtgt tatcccggtg ttttagagtc aatgttccaa tgttatgact
+       61 tggcccccga gccaggcatg gccataaggt cgctcaccga gggggtttat attgggggcc
+      121 ccctgactaa ttcaaaaggg caaaactgcg gttatcgcga gtgccgcgca agcgtgctga
+      181 cgactagctg cggtaacacc cttacatgct acttaaaggc ctctgcggcc tgtcgagctg
+      241 caaagctccg ggactgcacg atgctcgtga acggagacga ccttgtcatt atctgtgaga
+      301 gcgcgggaac tcagaaggat gcggcaagcc tacgagtctt
+//
+

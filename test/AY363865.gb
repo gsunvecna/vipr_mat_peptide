@@ -1,0 +1,47 @@
+LOCUS       AY363865                 211 bp ss-RNA     linear   VRL 13-JUL-2005
+DEFINITION  Tick-borne encephalitis virus isolate Irkutsk-305 envelope
+            glycoprotein (E) gene, partial cds.
+ACCESSION   AY363865
+VERSION     AY363865.1  GI:38327499
+KEYWORDS    .
+SOURCE      Tick-borne encephalitis virus
+  ORGANISM  Tick-borne encephalitis virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; tick-borne encephalitis virus group.
+REFERENCE   1  (bases 1 to 211)
+  AUTHORS   Pogodina,V.V., Bochkova,N.G., Karan',L.S., Frolova,M.P.,
+            Trukhina,A.G., Malenko,G.V., Levina,L.S. and Platonov,A.E.
+  TITLE     [Comparative analysis of virulence of the Siberian and Far-East
+            subtypes of the tick-born encephalitis virus]
+  JOURNAL   Vopr. Virusol. 49 (6), 24-30 (2004)
+   PUBMED   15597957
+REFERENCE   2  (bases 1 to 211)
+  AUTHORS   Karan,L.S., Pogodina,V.V. and Platonov,A.E.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (07-AUG-2003) 1
+FEATURES             Location/Qualifiers
+     source          1..211
+                     /organism="Tick-borne encephalitis virus"
+                     /mol_type="genomic RNA"
+                     /isolate="Irkutsk-305"
+                     /isolation_source="Homo sapiens cerebrospinal fluid"
+                     /db_xref="taxon:11084"
+                     /country="Russia: Irkutsk region"
+                     /note="isolated in 1964"
+     gene            <1..>211
+                     /gene="E"
+     CDS             <1..>211
+                     /gene="E"
+                     /codon_start=3
+                     /product="envelope glycoprotein"
+                     /protein_id="AAR17781.1"
+                     /db_xref="GI:38327500"
+                     /translation="LELDKTLEHLPTAWQVHRDWFNDLALPWKHEGAQQWNNAERLVE
+                     FGAPHAVKMDVYNLGDQTGVLLKSLA"
+ORIGIN      
+        1 ttcttgagct tgataagact ctggaacacc ttccgacggc ctggcaggtc catcgggact
+       61 ggttcaatga tctggctcta ccgtggaaac acgaaggagc gcaacaatgg aacaatgctg
+      121 agcgactggt tgaatttgga gctccgcatg ccgttaaaat ggatgtgtat aaccttggag
+      181 atcaaactgg ggtgttgcta aagtcacttg c
+//
+

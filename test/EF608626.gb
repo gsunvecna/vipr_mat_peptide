@@ -1,0 +1,56 @@
+LOCUS       EF608626                 543 bp    RNA     linear   VRL 16-JUN-2007
+DEFINITION  Hepatitis C virus subtype 1b isolate PatS1-48w non-structural 3
+            protease gene, partial cds.
+ACCESSION   EF608626
+VERSION     EF608626.1  GI:148749828
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 1b
+  ORGANISM  Hepatitis C virus subtype 1b
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 543)
+  AUTHORS   Massaguer,A., Ramirez,S., Carrion,J.A., Gonzalez,P.,
+            Sanchez-Tapias,J.M. and Forns,X.
+  TITLE     Evolution of the NS3 and NS5B regions of the Hepatitis C virus
+            during disease recurrence after liver transplantation
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 543)
+  AUTHORS   Massaguer,A., Ramirez,S., Carrion,J.A., Gonzalez,P.,
+            Sanchez-Tapias,J.M. and Forns,X.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (11-MAY-2007) Liver Unit, Institut de Malalties
+            Digestives (IMD), Hospital Clinic, Ciberehd and Institut
+            d'Investigacions Biomediques August Pi i Sunyer (IDIBAPS),
+            Villarroel 170, Barcelona, Catalunya 08036, Spain
+FEATURES             Location/Qualifiers
+     source          1..543
+                     /organism="Hepatitis C virus subtype 1b"
+                     /mol_type="genomic RNA"
+                     /isolate="PatS1-48w"
+                     /isolation_source="serum"
+                     /db_xref="taxon:31647"
+                     /country="Spain"
+                     /note="subtype: 1b"
+     CDS             <1..>543
+                     /note="NS3"
+                     /codon_start=1
+                     /product="non-structural 3 protease"
+                     /protein_id="ABR09553.1"
+                     /db_xref="GI:148749829"
+                     /translation="APITAYAQQTRGLLGCIITSLTGRDKNQVEGEVQVVSTATQTFL
+                     ATCVNGACWTVYHGAGSKTLAGPKGPVTQMYTNVDQDLVGWPAPPGARSLTPCTCGSS
+                     DLYLVTRHADVIPVRRRGDSRGSLLSPRPVSYLKGSSGGPLLCPSGHAVGIFRAAVCT
+                     RGVAKAVDFIPVEAMETTMRS"
+ORIGIN      
+        1 gcgcctatca cggcctacgc ccagcaaacg cggggcttgc ttggctgcat catcactagc
+       61 ctcacaggcc gcgacaaaaa ccaggtcgag ggggaggtcc aagtggtttc caccgcaaca
+      121 caaactttcc tggcgacctg cgtcaacggc gcgtgttgga ctgtctatca tggcgccggc
+      181 tcaaagacct tggccggccc caagggccca gtcacccaaa tgtacaccaa tgtagaccag
+      241 gacctcgtcg gctggccggc gccccctggg gcgcgctctc tgacaccatg cacctgcggc
+      301 agctcggacc tctatttggt cacgaggcat gctgacgtca tcccggtgcg ccggcggggc
+      361 gacagcaggg ggagcctact ctcccccagg cccgtctctt atctgaaagg ctcttcgggc
+      421 ggtccactac tgtgcccctc ggggcacgcc gtgggcatct tccgggctgc tgtgtgcacc
+      481 cggggggttg cgaaggcggt ggacttcata cccgttgaag ccatggaaac taccatgcgg
+      541 tcc
+//
+

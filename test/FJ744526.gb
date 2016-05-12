@@ -1,0 +1,91 @@
+LOCUS       FJ744526                2351 bp    mRNA    linear   VRL 07-MAY-2010
+DEFINITION  Sindbis virus isolate C-263 structural polyprotein mRNA, partial
+            cds.
+ACCESSION   FJ744526
+VERSION     FJ744526.1  GI:255654015
+KEYWORDS    .
+SOURCE      Sindbis virus
+  ORGANISM  Sindbis virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Togaviridae;
+            Alphavirus; WEEV complex.
+REFERENCE   1  (bases 1 to 2351)
+  AUTHORS   Lundstrom,J.O. and Pfeffer,M.
+  TITLE     Phylogeographic structure and evolutionary history of sindbis virus
+  JOURNAL   Vector Borne Zoonotic Dis. 10 (9), 889-907 (2010)
+   PUBMED   20420530
+REFERENCE   2  (bases 1 to 2351)
+  AUTHORS   Pfeffer,M., Zoeller,G. and Lundstroem,J.O.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (10-FEB-2009) Bundeswehr, Institute of Microbiology,
+            Neuherbergstrasse 11, Munich 80937, Germany
+FEATURES             Location/Qualifiers
+     source          1..2351
+                     /organism="Sindbis virus"
+                     /mol_type="mRNA"
+                     /isolate="C-263"
+                     /host="Aedes normanensis"
+                     /db_xref="taxon:11034"
+                     /country="Australia"
+                     /collection_date="1961"
+     CDS             <1..>2351
+                     /note="contains capsid, E2, E3, 6 kDa and E1 proteins"
+                     /codon_start=3
+                     /product="structural polyprotein"
+                     /protein_id="ACU25459.1"
+                     /db_xref="GI:255654016"
+                     /translation="AIVLGGADEGARTALSVVTWNSKGKTIKTTPEGTEEWSAAPLVA
+                     AMCILGNMTFPCDQPPTCYSREPARALDILEANVDSAAYDDLMRAVLRCTPSSRAKRS
+                     ITDDFTLTSPYLGTCSYCHHTEPCFSPIKIEQVWDEADDNTIRIQTSAQFGYDQSGAA
+                     SVNKYRFMSLKQDHTVEEGSMDAIKISTSGPCRRLSHKGYFLLAKCPPGDSVTVSISA
+                     GDSATSCTLARKIKPKFVGREKYDLPPVHGKKIPCYIYDRLKETSAGYITMHRPGPHA
+                     YTTYLEESAGKVYAKPPSGKNVTYECKCGDYKTGTVSARTEITGCTALKQCIAYKSDQ
+                     TKWVFNSPDLIRHADHTAQGKMHLPFKLVPSMCLVPLAHVPQVVHGFKHISLQLDTDH
+                     LTLLTTRRLGEKPEPTSEWIIGKTVRNFSVGRDGFEYIWGNHEPVRVWAQESAPGDPH
+                     GWPHEIVQHYYHRHPVYTVMVLVAATLAIVLGVSVASACVCRARRECLTPYALAPNAV
+                     VPTSIALLCCIRPTSAEPFSETMTYLWTNSQPFFWAQLCIPLAVIIVLVRCCSCCLPF
+                     LVVAGAYLAKVDAFEHATTVPNVPRIPYKALVERAGYAPLNLEITVMSSELIPSTNLE
+                     YVTCKYTTVVPSPKVKCCGTLECSSARHADYNCKVFGGVYPFMWGGAQCFCDSENSQM
+                     SEAYVEFSADCAADHAQAVKVHTAALKVGLRVVYGNTTSMLDVYVNGVTPGTSKDLKV
+                     IAGPISAAYTPFDHKVIIHKGKVYNYDFPEYGAMKPGAFVDIQ"
+ORIGIN      
+        1 tcgccatcgt cctcggtggt gccgacgaag gggcccgtac tgccctatcc gtggtcacct
+       61 ggaatagcaa gggaaagacc atcaagacga cgcctgaagg gacagaggaa tggtcagcag
+      121 cacccctcgt cgcagccatg tgcatcctgg gaaatatgac gtttccgtgc gatcaaccac
+      181 cgacatgcta tagcagagaa cccgcacggg cactagacat cctggaagcc aatgtagata
+      241 gcgcggccta tgacgatctg atgcgggccg tgttacgttg cacaccaagc agccgcgcaa
+      301 agcggagtat taccgacgac tttacactta ccagtccata tctaggaacg tgttcatatt
+      361 gccaccacac cgaaccgtgc ttcagcccga taaagatcga gcaggtgtgg gacgaagcgg
+      421 acgacaatac aatccgcata caaacgtcgg cccagtttgg ttacgaccag agcggtgcag
+      481 caagtgttaa caaataccgg tttatgtccc taaaacaaga ccacacagtc gaagaggggt
+      541 ccatggacgc aatcaagatt agcacctcag gaccttgtcg aaggctcagt cacaaaggtt
+      601 acttcctact ggcgaagtgc ccgcccggtg acagtgttac cgtcagcatc tcggccggcg
+      661 attctgctac ttcatgcacg ctggctcgaa aaattaaacc aaagttcgtt gggcgtgaga
+      721 aatatgatct gcctccagta cacggcaaga agatcccatg ctacatctat gatcgtctga
+      781 aggaaacatc agcaggctat attactatgc accgcccagg accccacgca tacaccacct
+      841 atctggaaga gtcggcaggg aaagtgtatg caaaaccccc ttctggaaag aacgtcacgt
+      901 acgaatgcaa atgcggcgac tacaagactg ggacggtgtc ggcccgcaca gaaataaccg
+      961 ggtgcacggc attgaaacaa tgtatcgcct acaaaagtga ccagacaaag tgggtcttca
+     1021 actccccgga tttaatcagg catgctgacc acaccgcaca aggaaagatg catcttccgt
+     1081 tcaaattggt cccgagcatg tgtttagtcc cattggcaca cgtccctcag gtggtgcatg
+     1141 gcttcaaaca catcagttta cagctagaca ctgatcacct gacgttgctc acaaccagga
+     1201 ggttaggaga gaaaccagag ccaacctccg agtggataat agggaagaca gtgcggaatt
+     1261 tctcagtggg cagagacgga tttgagtaca tatggggaaa ccacgaacca gtcagagtgt
+     1321 gggcccaaga gtcagcgcca ggggaccctc atggctggcc acacgagatc gtgcaacact
+     1381 attaccatcg ccatccagtg tataccgtga tggtcttagt agccgcgaca ttagcgatcg
+     1441 tcctaggagt tagtgttgcg agcgcgtgtg tgtgccgcgc taggcgcgag tgcctaaccc
+     1501 cgtatgctct ggccccgaat gccgtggtcc cgacatcaat cgccctactg tgctgtatca
+     1561 gaccaaccag cgcggaaccg ttttccgaaa ccatgacgta tttgtggaca aacagccagc
+     1621 catttttctg ggcacaacta tgcatcccgc tggccgtaat catcgtacta gttagatgct
+     1681 gctcatgctg ccttcctttt ttagtggttg caggcgccta ccttgcgaag gtagacgcct
+     1741 tcgaacatgc gaccactgtc ccaaatgtgc cgaggattcc gtataaggct ctggtcgaga
+     1801 gagcaggata tgcgcctttg aacttggaga ttacagttat gtcctccgaa ctgatcccgt
+     1861 cgacgaacct ggagtacgtc acatgcaagt acacgactgt agttccatca cccaaagtga
+     1921 agtgctgtgg aacgctagag tgttcatctg cccgccatgc cgactacaac tgtaaggtgt
+     1981 ttgggggagt gtacccattc atgtggggcg gcgcacagtg cttctgcgat agcgagaaca
+     2041 gccaaatgag cgaggcatac gtggaatttt ctgcagactg cgctgcagat cacgctcagg
+     2101 cagtgaaagt gcacacagcg gcactgaagg taggactgcg cgttgtatat ggtaacacca
+     2161 ccagcatgtt ggacgtgtac gttaacggag tcacccctgg cacttcgaag gatcttaaag
+     2221 tgatcgcagg cccaatttca gcggcctata caccattcga tcacaaagtc atcattcaca
+     2281 aagggaaggt gtacaactac gattttccag aatacggagc gatgaaacca ggagcattcg
+     2341 tagacataca a
+//

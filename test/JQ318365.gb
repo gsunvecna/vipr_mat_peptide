@@ -1,0 +1,55 @@
+LOCUS       JQ318365                 436 bp    RNA     linear   VRL 08-APR-2012
+DEFINITION  Hepatitis C virus isolate QC503 polyprotein gene, partial cds.
+ACCESSION   JQ318365
+VERSION     JQ318365.1  GI:383215946
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 436)
+  AUTHORS   Murphy,D.G., Willems,B., Deschenes,M., Hilzenrat,N., Mousseau,R.
+            and Sabbah,S.
+  TITLE     Use of sequence analysis of the NS5B region for routine genotyping
+            of hepatitis C virus with reference to C/E1 and 5' untranslated
+            region sequences
+  JOURNAL   J. Clin. Microbiol. 45 (4), 1102-1112 (2007)
+   PUBMED   17287328
+REFERENCE   2  (bases 1 to 436)
+  AUTHORS   Murphy,D.G.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (22-DEC-2011) Biologie Moleculaire, Laboratoire de Sante
+            Publique du Quebec, Institut National de Sante Publique du Quebec,
+            20045 Chemin Sainte-Marie, Sainte-Anne-de-Bellevue, Quebec H9X 3R5,
+            Canada
+FEATURES             Location/Qualifiers
+     source          1..436
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="QC503"
+                     /isolation_source="serum or plasma"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11103"
+                     /country="Canada"
+                     /collection_date="Mar-2010"
+                     /note="subtype: 3i; genotype: 3"
+     CDS             <1..>436
+                     /note="core/E1 junction"
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="AFG73369.1"
+                     /db_xref="GI:383215947"
+                     /translation="FLLALFSCLTCPTTGLEYRNSSGLYTLTNDCANSSIVYEADDVI
+                     LHLPGCVPCTREPDHNATSSKCWIPVTPTVAVRYPGAATASIRRHVDLLVGAATLCSA
+                     LYVGDLCGGVFLVGQAFSFRSRHHWTVQECNCSIYPGHIGGHR"
+ORIGIN      
+        1 ctttctcctt gctctctttt cgtgtctgac ttgcccaacc accggactgg aatataggaa
+       61 ctcatctggt ctctacacac ttaccaacga ttgcgctaac agcagcatcg tgtatgaggc
+      121 cgatgacgtt atcctacact tacctggctg tgtgccttgc acccgcgagc ctgaccataa
+      181 tgccacaagc tcaaagtgct ggataccagt aacaccaaca gtagctgtca ggtaccctgg
+      241 cgcagccact gcgtcgatcc gcagacatgt ggatttgtta gtgggtgcag ctacgctgtg
+      301 ttcggcactt tatgttggag atctatgtgg aggcgtgttc cttgtaggac aagcctttag
+      361 tttcaggtct cgccaccact ggactgtcca agagtgcaat tgctcaatat acccgggcca
+      421 cattggagga catcgt
+//
+

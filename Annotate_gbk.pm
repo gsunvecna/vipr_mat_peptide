@@ -169,6 +169,12 @@ sub extract_mature_peptides {
 	    $id = "ACC=$acc|" .$id;
         $id .= '|'; # Save the space for refseq=
 
+        # add the range of mat_peptide
+        my $s = '';
+        $s = Annotate_Util::get_DNA_loc( $feat_obj);
+#        $id .= 'Loc='. $feat_obj->location->to_FTstring ."|";
+        $id .= 'Loc='. $s .'|';
+
         # Take care of codon_start if CDS has it, this is only needed for the first mat_peptide
         if ($feat_obj->location->start == $parent_cds->location->start) {
             my $codon_start = 1;
@@ -178,19 +184,15 @@ sub extract_mature_peptides {
             }
             if ($codon_start != 1 && !$feat_obj->has_tag('codon_start')) {
                 $feat_obj->add_tag_value('codon_start', $codon_start);
+                $id .= 'cstart='. $codon_start;
             }
         }
-        # add the range of mat_peptide
-        my $s = '';
-        $s = Annotate_Util::get_DNA_loc( $feat_obj);
-#        $id .= 'Loc='. $feat_obj->location->to_FTstring ."|";
-        $id .= 'Loc='. $s .'|';
-
+        $id .= '|';
         $s = Annotate_Util::get_AA_loc( $feat_obj, $parent_cds);
         $id .= 'AA='. $s .'|';
 
         # add gene_symbol
-        my $gene_symbol = Annotate_Util::get_gene_symbol( $feat_obj,$exe_dir);
+        my $symbol = Annotate_Def::get_gene_symbol( $feat_obj,$exe_dir);
     my $productName = '';
   if (1) {
     my @tags = ('product');
@@ -201,12 +203,12 @@ sub extract_mature_peptides {
            last;
         }
     }
-    if ((!$gene_symbol || $gene_symbol eq 'unk') && length($productName)<=6 && length($productName)>0) {
-#        $gene_symbol = $productName;
+    if ((!$symbol || $symbol eq 'unk') && length($productName)<=6 && length($productName)>0) {
+#        $symbol = $productName;
     }
   }
 
-        $id .= 'gene_symbol='. $gene_symbol .'|';
+        $id .= 'symbol='. $symbol .'|';
 
         # add the id of mat_peptide
         my @tags = ('db_xref', 'protein_id'); # per Client request
@@ -454,8 +456,8 @@ sub extract_mature_peptides0 {
            $id .= 'AA='. $s .'|';
 
            # add gene_symbol
-           my $gene_symbol = Annotate_Util::get_gene_symbol( $feat_obj,$exe_dir);
-           $id .= 'gene_symbol='. $gene_symbol ."|";
+           my $symbol = Annotate_Util::get_gene_symbol( $feat_obj,$exe_dir);
+           $id .= 'symbol='. $symbol ."|";
 
            # add the id of mat_peptide
            my @tags = ('db_xref', 'protein_id', 'product'); # per Chris request

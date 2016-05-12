@@ -1,0 +1,44 @@
+LOCUS       AF218876                 344 bp    mRNA    linear   VRL 14-NOV-2002
+DEFINITION  Hepatitis C virus isolate hc94 E2 mRNA, partial cds.
+ACCESSION   AF218876
+VERSION     AF218876.1  GI:8886788
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 344)
+  AUTHORS   Fan,X. and Di Bisceglie,A.M.
+  TITLE     Genetic characterization of hypervariable region 1 in patients
+            chronically infected with hepatitis C virus genotype 2
+  JOURNAL   J. Med. Virol. 64 (3), 325-333 (2001)
+   PUBMED   11424122
+REFERENCE   2  (bases 1 to 344)
+  AUTHORS   Fan,X. and Di Bisceglie,A.M.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (27-DEC-1999) Internal Medicine, Saint Louis University
+            School of Medicine, 1402 South Grand Blvd., St. Louis, MO 63104,
+            USA
+FEATURES             Location/Qualifiers
+     source          1..344
+                     /organism="Hepatitis C virus"
+                     /mol_type="mRNA"
+                     /isolate="hc94"
+                     /db_xref="taxon:11103"
+     CDS             <1..330
+                     /note="truncated protein"
+                     /codon_start=1
+                     /product="E2"
+                     /protein_id="AAF80573.1"
+                     /db_xref="GI:8886789"
+                     /translation="HWGVVFGLAYFSMQGAWAKVIAILLLVAGVDARPHRIGQVSGHT
+                     TRGLTNLFSPGAQQNIQLINTNGSWHINRTALNCNDSLNTGFLASLFYYQPLQQLWLS
+                     RAYVFLP"
+ORIGIN      
+        1 cactggggtg tggtgtttgg cttggcctat ttctccatgc agggagcatg ggccaaagtc
+       61 attgccatcc tcctccttgt cgcaggagta gatgcacgcc cccatagaat cggccaagtg
+      121 tcgggtcata ccaccagagg gcttactaac ctcttttccc ctggtgccca gcagaacatc
+      181 cagttaatca acaccaatgg cagctggcac ataaaccgga ccgccctcaa ttgcaatgac
+      241 agcttgaata ctggtttcct cgcttcccta ttctattacc agccgcttca acagctctgg
+      301 ctgtcccgag cgtatgtctt cctgccgtag gctggatgac tttc
+//

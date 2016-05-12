@@ -1,0 +1,49 @@
+LOCUS       AF047396                 405 bp    RNA     linear   VRL 05-NOV-2004
+DEFINITION  Dengue virus type 2 isolate 980 polyprotein gene, partial cds.
+ACCESSION   AF047396
+VERSION     AF047396.1  GI:3694773
+KEYWORDS    .
+SOURCE      Dengue virus 2
+  ORGANISM  Dengue virus 2
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Dengue virus group.
+REFERENCE   1  (bases 1 to 405)
+  AUTHORS   Singh,U., Seth,P., Maitra,A., Rai,A., Pasha,S., Dar,L. and Broor,S.
+  TITLE     Partial nucleotide sequence of the capsid/premembrane and envelope
+            protein/nonstructural protein-1 gene junctions of Dengue-2 virus
+            strains isolated during 1967 and 1996 Delhi epidemics
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 405)
+  AUTHORS   Seth,P.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (09-FEB-1998) Microbiology, All India Institute of
+            Medical Sciences, Ansari Nagar, New Delhi, Delhi 110029, India
+FEATURES             Location/Qualifiers
+     source          1..405
+                     /organism="Dengue virus 2"
+                     /mol_type="genomic RNA"
+                     /isolate="980"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11060"
+                     /clone="p980cprm"
+                     /country="India:Delhi"
+                     /note="isolated during the dengue epidemic of 1996"
+     CDS             <1..>405
+                     /note="CprM; capsid/premembrane junction"
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="AAC62440.1"
+                     /db_xref="GI:3694774"
+                     /translation="VQQLTKRFSLGMLQGRGPLKLFMALVAFLRFLTIPPTAGILKRW
+                     GTIKKSKAINVLRGFRKEIGRMLNILNRRRRTAGVIIMLIPTAMAFHLTTRNGEPHMI
+                     VSRQEKGKSLLFKTEDGVNMCTLMAMDLGELC"
+ORIGIN      
+        1 tgtgcaacag ctgacaaaga gattctcact tggaatgctg cagggacgag gaccgttgaa
+       61 actgttcatg gccttggtgg cattccttcg tttcctaaca atcccaccaa cagcagggat
+      121 actaaaaaga tggggaacga tcaaaaagtc aaaggccatc aatgtcttga gagggttcag
+      181 gaaagagatt ggaaggatgc tgaacatctt gaataggaga cgcagaactg caggcgtgat
+      241 catcatgctg attccaacag cgatggcgtt ccatttaacc acacgcaacg gagaaccaca
+      301 catgatcgtc agcagacaag agaaagggaa aagtctcttg tttaaaacag aggatggtgt
+      361 gaacatgtgt accctcatgg ccatggacct tggtgaactg tgtga
+//
+

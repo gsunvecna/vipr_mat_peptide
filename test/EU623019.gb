@@ -1,0 +1,46 @@
+LOCUS       EU623019                 291 bp    RNA     linear   VRL 29-APR-2008
+DEFINITION  Hepatitis C virus subtype 1b clone GMW4-C2 polyprotein gene,
+            partial cds.
+ACCESSION   EU623019
+VERSION     EU623019.1  GI:186469778
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 1b
+  ORGANISM  Hepatitis C virus subtype 1b
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 291)
+  AUTHORS   Ross,S., Viazov,S., Khudyakov,Y.E., Xia,G., Lin,Y., Holzmann,H.,
+            Roggendorf,M. and Janata,O.
+  TITLE     Nosocomial transmissions of the hepatitis C virus in an orthopedic
+            hospital ward
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 291)
+  AUTHORS   Ross,S., Viazov,S., Khudyakov,Y.E., Xia,G., Lin,Y., Holzmann,H.,
+            Roggendorf,M. and Janata,O.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (07-APR-2008) Division of Viral Hepatitis, Centers for
+            Disease Control and Prevention, 1600 Clifton Road, N.E., MS-A33,
+            Atlanta, GA 30333, USA
+FEATURES             Location/Qualifiers
+     source          1..291
+                     /organism="Hepatitis C virus subtype 1b"
+                     /mol_type="genomic RNA"
+                     /db_xref="taxon:31647"
+                     /clone="GMW4-C2"
+                     /country="Germany"
+     CDS             <1..>291
+                     /note="contains E1-HVR1"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="ACC85540.1"
+                     /db_xref="GI:186469779"
+                     /translation="NWSPTAALVVAQLLRIPQAVVDMVAGAHWGVLAGLAYYSMVGNW
+                     AKVLIVMLLFAGVDGNTRVTGGASARTVHGFTSLFSFGASQNIQLINTNGSWA"
+ORIGIN      
+        1 aactggtcgc ctacagcagc cctagtagta gcgcagttac tccggatccc acaagctgtc
+       61 gtggacatgg tggcaggggc ccactgggga gtcctggcgg gccttgccta ctactccatg
+      121 gtggggaact gggctaaggt tttaattgtt atgctactct tcgccggcgt tgacgggaac
+      181 acccgcgtga cagggggggc atcggcccgt accgtccacg ggtttacgtc cctcttctca
+      241 tttggggcgt ctcagaacat ccagcttata aacaccaacg gcagctgggc a
+//
+

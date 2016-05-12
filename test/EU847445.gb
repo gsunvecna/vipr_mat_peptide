@@ -1,0 +1,72 @@
+LOCUS       EU847445                1109 bp    mRNA    linear   VRL 20-MAY-2011
+DEFINITION  Hepatitis C virus isolate P15M9 non-structural protein 3 (NS3)
+            mRNA, partial cds.
+ACCESSION   EU847445
+VERSION     EU847445.1  GI:212524513
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 1109)
+  AUTHORS   Mello,I.M., Thumann,C., Schvoerer,E., Soulier,E., Pinho,J.R.,
+            Silvestre,D.A., Queiroz,A.T., Wolf,P., Baumert,T.F., Keller,F.S.
+            and Pereira,C.A.
+  TITLE     Conservation of hepatitis C virus nonstructural protein 3 amino
+            acid sequence in viral isolates during liver transplantation
+  JOURNAL   J. Viral Hepat. 16 (10), 732-737 (2009)
+   PUBMED   19486468
+REFERENCE   2  (bases 1 to 1109)
+  AUTHORS   Mello,I.M., Keller,F.S., Thumann,C., Schwoerer,E., Soulier,E.,
+            Silvestre,D.A.M.M., Pinho,J.R.R., Wolf,P., Baumert,T. and
+            Pereira,C.A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (23-JUN-2008) Labotatorio de Imunologia Viral, Instituto
+            Butantan, Av Vital Brasil numero 1500, Sao Paulo, Sao Paulo
+            05503-900, Brazil
+FEATURES             Location/Qualifiers
+     source          1..1109
+                     /organism="Hepatitis C virus"
+                     /mol_type="mRNA"
+                     /isolate="P15M9"
+                     /isolation_source="serum from patient with chronic HCV"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11103"
+                     /note="subtype: b; genotype: 1"
+     gene            <1..>1109
+                     /gene="NS3"
+     CDS             <1..>1109
+                     /gene="NS3"
+                     /codon_start=2
+                     /product="non-structural protein 3"
+                     /protein_id="ACJ26692.1"
+                     /db_xref="GI:212524514"
+                     /translation="GLLAPITAYSQQTRGLLGCIITSLTGRDKNQVEGEVQVVSTATQ
+                     SFLATCVNGVCWTVYHGAGSKTLAGPKGPIIQMYTNVDQDLVGWQAPSGARSLTPCTC
+                     GSSDLYLVTRHADVIPVRRRGDSRGSLLSPRPVSYLKGSSGGPLLCPSGHAVGIFRAA
+                     VCTRGVAKAVDFIPVESMETTMRSPVFTDNSSPPAVPQTFQVAHLHAPTGSGKSTKVP
+                     AAYAAQGYKVLVLNPSVAATLGFGAYMSKAHGVDPNIRTGVRTITTGAPITYSTYGKF
+                     LADGGCSGGAYDIIICDECHSTDSTSILGIGTVLDQAETAGARLVVLATATPPGSVTV
+                     PHPNIEEVALSNIGEIPFYGKAIPIETIKGGRHLI"
+ORIGIN      
+        1 gggactcctt gcgccgatca cggcctattc ccaacagaca cggggcctac ttggttgtat
+       61 catcaccagc ctcacaggcc gggacaagaa ccaggtcgag ggggaggttc aagtggtttc
+      121 caccgcgaca caatctttcc tggcgacctg tgtcaacggc gtgtgttgga ccgtctatca
+      181 tggcgccggc tcaaagactc tagccggccc aaagggccca atcatccaaa tgtacaccaa
+      241 tgtggaccag gacctcgtcg gctggcaggc gccttccggg gcgcgttccc tgacaccgtg
+      301 cacctgcggc agctcggacc tttacttggt cacgaggcat gccgatgtta ttccggtgcg
+      361 ccggcggggt gacagcaggg ggagcctact ttcccccaga cccgtctcct acttgaaggg
+      421 ctcctcgggt ggcccactgc tctgcccctc gggtcacgct gtgggcatct tccgggctgc
+      481 tgtgtgcacc cggggggttg cgaaagcggt ggacttcata cccgttgagt ctatggagac
+      541 tactatgcgg tccccggtct tcacggacaa ctcgtcccca ccggccgtac cgcagacatt
+      601 ccaagtggcc catctgcacg cccccaccgg cagcggcaag agcactaaag tgccggctgc
+      661 gtatgcggcc caagggtaca aagtgctcgt cctgaaccca tccgttgccg ctaccttagg
+      721 ctttggggcg tacatgtcca aggcacatgg tgtcgacccc aacattagaa ctggggtaag
+      781 gaccatcact acaggcgccc ctatcacgta ctccacctat ggcaagttcc tcgccgacgg
+      841 tggttgctct gggggcgcct acgacatcat aatatgtgat gagtgccact caactgactc
+      901 gacttccatt ttgggcatcg gcacggtcct ggaccaagcg gagacggctg gagcgcggct
+      961 cgtcgtgctc gccaccgcta cacctccggg atcggttacc gtgccacatc caaacatcga
+     1021 ggaggtggct ttatccaaca ttggagagat ccccttctat ggcaaagcca tccccattga
+     1081 gaccatcaag ggggggaggc atctcattt
+//
+

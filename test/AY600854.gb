@@ -1,0 +1,52 @@
+LOCUS       AY600854                 328 bp    RNA     linear   VRL 07-SEP-2004
+DEFINITION  Hepatitis C virus isolate G-L-HVRI-5 envelope E1/E2 gene, partial
+            cds.
+ACCESSION   AY600854
+VERSION     AY600854.1  GI:51862994
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 328)
+  AUTHORS   Deforges,S., Evlashev,A., Perret,M., Sodoyer,M., Pouzol,S.,
+            Scoazec,J.Y., Bonnaud,B., Diaz,O., Paranhos-Baccala,G., Lotteau,V.
+            and Andre,P.
+  TITLE     Expression of hepatitis C virus proteins in epithelial intestinal
+            cells in vivo
+  JOURNAL   J. Gen. Virol. 85 (PT 9), 2515-2523 (2004)
+   PUBMED   15302945
+REFERENCE   2  (bases 1 to 328)
+  AUTHORS   Paranhos-Baccala,G., Perret,M., Sodoyer,M., Pouzol,S. and
+            Bonnaud,B.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (15-APR-2004) UMR 2714 CNRS-bioMerieux, IFR128
+            Biosciences Lyon Gerland, 21 avenue Tony Garnier, Lyon cedex 07
+            69365, France
+FEATURES             Location/Qualifiers
+     source          1..328
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="G-L-HVRI-5"
+                     /isolation_source="lipo-viral-particles"
+                     /db_xref="taxon:11103"
+                     /country="France"
+                     /note="genotype: 1b"
+     CDS             <1..>328
+                     /note="HVR1"
+                     /codon_start=3
+                     /product="envelope E1/E2"
+                     /protein_id="AAU11805.1"
+                     /db_xref="GI:51862995"
+                     /translation="MAWDMMMNWSPTTAIVVSQLLRIPQAIVDMVAGAHWGVLAGLAY
+                     YSMVGNWAKVLIVMLLFAGVDGETTVVGGEQARSIRGVTSLFSFGASQKIQLINTNGS
+                     WHINRTA"
+ORIGIN      
+        1 gcatggcttg ggatatgatg atgaactggt cgcccacaac agccatagtg gtgtcgcagt
+       61 tactccggat cccacaagcc atcgtggaca tggtagcggg ggcccactgg ggagtcctgg
+      121 cgggcctcgc ctactattcc atggtgggga actgggctaa ggtcttaatt gtgatgctgc
+      181 tctttgccgg cgttgacggg gaaaccaccg tggtgggggg ggagcaagcc agatccatcc
+      241 gtggagtaac gtccctcttt agttttgggg catctcagaa aatccagctc ataaacacca
+      301 acggcagctg gcacatcaac aggactgc
+//
+

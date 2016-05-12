@@ -1,0 +1,55 @@
+LOCUS       AF529724                 574 bp    RNA     linear   VRL 06-AUG-2003
+DEFINITION  Hepatitis C virus isolate PF1C14 polyprotein gene, partial cds.
+ACCESSION   AF529724
+VERSION     AF529724.1  GI:22385085
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 574)
+  AUTHORS   Wang,X.-P., Gawel,C., Cunha,C.B., Laser,B.S., Sahn,B.A., Kahn,P.D.
+            and Kaplan,M.H.
+  TITLE     The Genetic Diversity of Hepatitis C Virus in HIV-1 Co-infected
+            Patients
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 574)
+  AUTHORS   Wang,X.-P., Gawel,C., Cunha,C.B., Laser,B.S., Sahn,B.A., Kahn,P.D.
+            and Kaplan,M.H.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (17-JUL-2002) Medicine, Division of Infectious Disease,
+            North Shore University Hospital, 300 Community Drive, Manhasset, NY
+            11030, USA
+FEATURES             Location/Qualifiers
+     source          1..574
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="PF1C14"
+                     /db_xref="taxon:11103"
+                     /clone="14"
+                     /note="patient designation: AAxCy, where AA indicates
+                     patients' initials, x designates visit number, Cy refers
+                     to clone number"
+     CDS             <1..>574
+                     /note="contains E1 and E2 proteins"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="AAM96075.1"
+                     /db_xref="GI:22385086"
+                     /translation="MAWDMMMSWSPTAALVVAQLLRIPQAIMDMIAGAHWGVLAGIAY
+                     FSMVGNWAKVLVVLLLFAGVDAETHVTGGSAGHTVASLASLFTSGAKQNIQLVNTNGS
+                     WHINRTALNCNDSLNTGWVAGLFYHHKFNSSGCSERLASCRRITDYAQGWGPISYANG
+                     SGRDERPYCWHYPPRPWGIGPHGACVVRDIA"
+ORIGIN      
+        1 atggcatggg atatgatgat gagctggtcc cctacggcgg cattggtggt agctcagctg
+       61 ctccggatcc cacaagccat catggacatg atcgctggtg ctcactgggg agtcctggcg
+      121 ggcatagcgt atttctccat ggtggggaac tgggcgaagg tcctggtagt gctgctgcta
+      181 tttgccggcg ttgacgcgga aacccacgtc accgggggaa gtgccggcca caccgtggct
+      241 agccttgcca gtctcttcac gtcaggcgcc aagcagaaca ttcaactggt caacaccaac
+      301 ggcagttggc acatcaatag gacggccttg aactgcaatg atagccttaa caccggttgg
+      361 gtagcagggc tcttctacca tcacaaattc aactcttcag gctgttccga gaggttggcc
+      421 agctgtcgac gcattaccga ttatgcccag ggctggggcc ccatcagtta tgccaacgga
+      481 agcggccgcg acgaacgccc ctactgctgg cactaccccc caagaccttg gggtattggg
+      541 ccccatggag cgtgtgtggt ccgggatatt gctt
+//
+

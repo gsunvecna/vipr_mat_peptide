@@ -1,0 +1,55 @@
+LOCUS       AB008476                 549 bp    RNA     linear   VRL 01-DEC-2007
+DEFINITION  Human coxsackievirus A24 gene for polyprotein, partial cds,
+            isolate: 90062.
+ACCESSION   AB008476
+VERSION     AB008476.1  GI:161408432
+KEYWORDS    .
+SOURCE      Human coxsackievirus A24
+  ORGANISM  Human coxsackievirus A24
+            Viruses; ssRNA positive-strand viruses, no DNA stage;
+            Picornavirales; Picornaviridae; Enterovirus; Human enterovirus C.
+REFERENCE   1
+  AUTHORS   Lin,K.H., Chern,C.L., Chu,P.Y., Chang,C.H., Wang,H.L., Sheu,M.M.,
+            Huang,W.L., Pongsuwanna,Y., Yamamoto,S., Yoshino,S., Ishiko,H. and
+            Takeda,N.
+  TITLE     Genetic analysis of recent Taiwanese isolates of a variant of
+            coxsackievirus A24
+  JOURNAL   J. Med. Virol. 64 (3), 269-274 (2001)
+   PUBMED   11424114
+REFERENCE   2  (bases 1 to 549)
+  AUTHORS   Lin,K.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (25-OCT-1997) Contact:Kuei-Hsiang Lin Kaohsiung Medical
+            University, Clinical Laboratory; 100 Shih-Chuan 1st Rd., Kaohsiung
+            80705, Taiwan
+FEATURES             Location/Qualifiers
+     source          1..549
+                     /organism="Human coxsackievirus A24"
+                     /mol_type="genomic RNA"
+                     /isolate="90062"
+                     /db_xref="taxon:12089"
+                     /note="CA24v: a variant sequence"
+     CDS             <1..>549
+                     /note="3C region"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="BAF94070.1"
+                     /db_xref="GI:161408433"
+                     /translation="GPGFDYAVAMAKRNVLTATTSKGEFTMLGVHDNVAILPTHAVPG
+                     DSIVIDGKEVEVLDAEALEDQSGINLEITIVKLKRNEKFRDIRPHIPAQITETNDGVL
+                     IVNTSKYPNMYVPVGAVTEQGYLNLGGRQTARTLMYHFPTRAGQCGGVITCTGKVIGM
+                     HVGGNGSHGFAAALKRSYFTQSQ"
+     mat_peptide     1..549
+                     /product="protease"
+ORIGIN      
+        1 gggcccgggt ttgactatgc agtagcaatg gccaaaagaa acgttttgac agctaccact
+       61 agcaagggtg aattcaccat gcttggcgtt catgacaatg ttgcaattct cccaactcat
+      121 gcagtcccgg gagattcaat tgtgattgac gggaaggaag ttgaagtctt ggatgctgag
+      181 gcattggagg accaatcggg cataaatctg gaaattacca tagtaaagct caaaagaaat
+      241 gaaaaattta gagacattag accacacatc ccagcccaga tcactgagac gaatgatgga
+      301 gtgttgattg tgaacactag taagtacccc aacatgtatg tccctgtggg tgctgtgacc
+      361 gaacaggggt atcttaatct cggtggccga caaactgctc gtactctaat gtaccacttt
+      421 ccaacaagag cgggccagtg tggcggagtc attacatgca ctggcaaggt aattgggatg
+      481 catgttggag ggaatggttc acatgggttc gcagcagccc taaaacgatc ttacttcact
+      541 cagagtcag
+//

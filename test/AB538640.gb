@@ -1,0 +1,58 @@
+LOCUS       AB538640                 634 bp    RNA     linear   VRL 11-MAY-2011
+DEFINITION  Japanese encephalitis virus gene for polyprotein, NS5 protein,
+            partial cds and 3'UTR, partial sequence, strain:
+            Mo/Toyama/1018v/2005.
+ACCESSION   AB538640
+VERSION     AB538640.1  GI:281370029
+KEYWORDS    .
+SOURCE      Japanese encephalitis virus
+  ORGANISM  Japanese encephalitis virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Japanese encephalitis virus group.
+REFERENCE   1
+  AUTHORS   Obara,M., Yamauchi,T., Watanabe,M., Hasegawa,S., Ueda,Y.,
+            Matsuno,K., Iwai,M., Horimoto,E., Kurata,T., Takizawa,T., Kariwa,H.
+            and Takashima,I.
+  TITLE     Continuity and change of Japanese encephalitis virus in toyama
+            prefecture, Japan
+  JOURNAL   Am. J. Trop. Med. Hyg. 84 (5), 695-708 (2011)
+   PUBMED   21540378
+  REMARK    DOI:10.4269/ajtmh.2011.10-0188
+REFERENCE   2  (bases 1 to 634)
+  AUTHORS   Obara,M.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (17-DEC-2009) Contact:Mayumi Obara Toyama Institute of
+            Health, Department of Virology; Nakataikoyama 17-1, Imizu, Toyama
+            939-0363, Japan
+FEATURES             Location/Qualifiers
+     source          1..634
+                     /organism="Japanese encephalitis virus"
+                     /mol_type="genomic RNA"
+                     /strain="Mo/Toyama/1018v/2005"
+                     /host="Culex tritaeniorhynchus"
+                     /db_xref="taxon:11072"
+                     /country="Japan:Toyama"
+                     /collection_date="2005"
+     CDS             <1..181
+                     /note="NS5 protein"
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="BAI59153.1"
+                     /db_xref="GI:281370030"
+                     /translation="REDIWCGSLIGTRSRATWAENIYAAINQVRAIIGKENYVDYMTS
+                     LRRYEDVLIQEDRVI"
+     3'UTR           182..>634
+ORIGIN      
+        1 gcgtgaggac atctggtgtg gcagtctcat cggaacgcga tccagggcaa catgggctga
+       61 gaacatctac gcggcaataa accaagtgag ggctatcatt ggaaaagaaa attatgttga
+      121 ttacatgact tccctcagaa gatatgagga tgtattgatt caggaggaca gggtcattta
+      181 gacaggatta agtcatgtgt gtaatgtgag ataagaaaat gtgcatgtgg agtcaggcca
+      241 gcaaaagctg ccaccggata ctgagtagac ggtgctgcct gcgtctcagt cccaggagga
+      301 ctgggttaac aaatctgaca acggaaggtg ggaaagccct cagaaccgtc tcggaagcag
+      361 gtccctgctc accggaagtt gaaagaccaa cgtcaggcca caattttgtg ccactccgct
+      421 ggggagtgcg gcctgcgcag ccccaggagg actgggttaa caaagccgtt gaggccccca
+      481 cggcccaagc ctcgtctaag atgcaataga ctaggtgtaa ggactagagg ttagaggaga
+      541 ccccgtggaa acaacattat gcggcccaag ccccctcgaa gctgtagagg aggtggaagg
+      601 actagaggtt agaggagacc ccgcatttgc atca
+//
+

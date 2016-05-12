@@ -1,0 +1,65 @@
+LOCUS       JQ303563                 922 bp    RNA     linear   VRL 22-JUN-2012
+DEFINITION  Hepatitis C virus subtype 6a isolate 11jsszIDU006 RNA-dependent RNA
+            polymerase gene, partial cds.
+ACCESSION   JQ303563
+VERSION     JQ303563.1  GI:388540665
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 6a
+  ORGANISM  Hepatitis C virus subtype 6a
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 922)
+  AUTHORS   Du,H., Qi,Y., Hao,F., Huang,Y., Mao,L., Ji,S., Huang,M., Qin,C.,
+            Yan,R., Zhu,X. and Zhang,C.
+  TITLE     Complex patterns of HCV epidemic in Suzhou: Evidence for dual
+            infection and HCV recombination in East China
+  JOURNAL   J. Clin. Virol. 54 (3), 207-212 (2012)
+   PUBMED   22595306
+REFERENCE   2  (bases 1 to 922)
+  AUTHORS   Qi,Y., Du,H., Hao,F. and Zhang,C.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (19-DEC-2011) Institute of Life Sciences, Jiangsu
+            University, 301 Xuefu Road, Zhenjiang, Jiangsu 212013, China
+FEATURES             Location/Qualifiers
+     source          1..922
+                     /organism="Hepatitis C virus subtype 6a"
+                     /mol_type="genomic RNA"
+                     /serotype="6a"
+                     /isolate="11jsszIDU006"
+                     /isolation_source="intravenous drug users"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:31655"
+                     /country="China"
+                     /collection_date="2011"
+                     /identified_by="Yinle Qi"
+     CDS             <1..>922
+                     /note="NS5B"
+                     /codon_start=1
+                     /product="RNA-dependent RNA polymerase"
+                     /protein_id="AFK65039.1"
+                     /db_xref="GI:388540666"
+                     /translation="CQLDPIARKAVSSLTERLYVGGPMVNSKGQSCGYRRCRASGVLP
+                     TSMGNTITCYLKAQAACRAANIKDYDMLVCGDDLVVICESAGVQEDTASLRAFTDAMT
+                     RYSAPPGDAPQPTYDLELITSCSSNVSVAHDGNGKRYYYLTRDCTTPLARAAWETARH
+                     TPVNSWLGNIIMFAPTIWVRMVLMTHFFSILQSQEQLEKALDFDIYGVTYSVXPLDLP
+                     AIIQRLHGMAAFSLHGYSPVELNRVGACLRKLGVPPLRAWRHRARAVRAKLIAQGGKA
+                     AICGRYLFNWAVKTKLKLTPLVSASKLDLSG"
+ORIGIN      
+        1 tgccagctgg atcccatagc gaggaaggca gtatcatccc taacggaacg gctctacgta
+       61 ggcggcccca tggtgaactc caagggacag tcatgtggct accgtagatg ccgcgccagt
+      121 ggggtgctgc ccacgagcat gggaaacacc atcacatgct atctgaaggc acaggccgcc
+      181 tgcagggcgg ccaacatcaa ggactatgac atgttggtgt gcggagatga tttggtggtc
+      241 atctgtgaga gtgctggcgt ccaggaggac actgcgtcac tgcgagcatt cacggatgct
+      301 atgaccaggt actcagctcc ccctggagac gccccgcaac ccacgtacga cctcgagctc
+      361 ataacatcgt gctcgtccaa cgtttccgtc gcccacgatg gcaatgggaa gagatattac
+      421 tacctcactc gtgactgtac tactccactt gcgcgggccg cctgggagac ggcccgccac
+      481 actccagtca attcgtggtt gggtaacatt attatgtttg cccccacgat atgggtgcgt
+      541 atggttctga tgacccattt tttctccatc ctccagtcgc aagaacaatt ggagaaagca
+      601 ctcgactttg acatctacgg agtaacctac tctgtcwctc cacttgatct cccagcaatc
+      661 attcaacgac tccatggcat ggcagcattt tcactccacg gatactctcc agttgagctc
+      721 aatagggtag gggcttgcct caggaaactt ggggtacctc ccttgcgagc ctggagacat
+      781 cgagccagag ctgtcagagc caaactcatc gcccaagggg ggaaagctgc tatatgcggt
+      841 aggtacctct ttaattgggc ggtgaagacc aaactaaaac tcactccatt ggtctccgcg
+      901 agcaagcttg atttatcagg ct
+//
+

@@ -1,0 +1,55 @@
+LOCUS       AB518856                 474 bp    RNA     linear   VRL 22-MAY-2012
+DEFINITION  Hepatitis C virus subtype 1b gene for polyprotein, core protein
+            region, partial cds, isolate: PAT.135.
+ACCESSION   AB518856
+VERSION     AB518856.1  GI:308036421
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 1b
+  ORGANISM  Hepatitis C virus subtype 1b
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   El-Shamy,A., Kim,S.R., Ide,Y.H., Sasase,N., Imoto,S., Deng,L.,
+            Shoji,I. and Hotta,H.
+  TITLE     Polymorphisms of hepatitis C virus non-structural protein 5A and
+            core protein and clinical outcome of pegylated-interferon/ribavirin
+            combination therapy
+  JOURNAL   Intervirology 55 (1), 1-11 (2012)
+   PUBMED   21293098
+  REMARK    DOI:10.1159/000322219
+REFERENCE   2  (bases 1 to 474)
+  AUTHORS   El-shamy,A., Apichartpiyakul,C., Adachi,T., Ide,Y., Sasase,N.,
+            Imoto,S., Kim,S., Shoji,I. and Hotta,H.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (27-AUG-2009) Contact:Hak Hotta Graduate School of
+            Medicine, Kobe University, Microbiology; 7-5-1 Kusunoki-cho,
+            Chuo-ku, Kobe, Hyogo 650-0017, Japan
+FEATURES             Location/Qualifiers
+     source          1..474
+                     /organism="Hepatitis C virus subtype 1b"
+                     /mol_type="genomic RNA"
+                     /isolate="PAT.135"
+                     /isolation_source="Japanese chronically hepatitis C virus
+                     infected patient"
+                     /db_xref="taxon:31647"
+     CDS             <1..>474
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="BAJ21667.1"
+                     /db_xref="GI:308036422"
+                     /translation="MSTNPKPQRKTKRNTNRRPQDVKFPGGGQIVGGVYLLPRRGPRL
+                     GVRATRKTSERSQLRGRRQPIPKARPPEGRTWAQPGYPWPLYGNEGMGWAGWLLSPRG
+                     SRPSWGPTDPRRRSRNLGKVIDTLTCGFADLMGYIPLVGAPLGRRCQGSGAWRQGP"
+     mat_peptide     <1..>474
+                     /product="core protein"
+ORIGIN      
+        1 atgagcacaa atcctaaacc tcaaagaaaa accaaacgta acaccaaccg ccgcccacag
+       61 gacgtcaagt tcccgggcgg tggtcagatc gttggtggag tttacctgtt gccgcgcagg
+      121 ggccccaggt tgggtgtgcg cgcgactagg aagacttccg agcggtcaca acttcgtgga
+      181 aggcgacaac ctatccccaa ggcccgccct cccgagggta ggacctgggc tcagcccggg
+      241 tacccttggc ccctctatgg caatgagggc atggggtggg caggatggct cctgtcaccc
+      301 cgtggctccc ggcctagttg gggccccacg gacccccggc gtaggtcgcg taatttgggt
+      361 aaggtcatcg ataccctcac atgcggcttc gccgacctca tggggtacat tccgcttgtc
+      421 ggcgcccccc tagggaggcg ctgccagggc tctggcgcat ggcgtcaggg tcct
+//
+

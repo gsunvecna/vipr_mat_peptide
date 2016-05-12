@@ -1,0 +1,53 @@
+LOCUS       DQ988684                 508 bp    RNA     linear   VRL 11-SEP-2009
+DEFINITION  Tick-borne encephalitis virus isolate KrM 219 envelope protein
+            gene, partial cds.
+ACCESSION   DQ988684
+VERSION     DQ988684.1  GI:119331599
+KEYWORDS    .
+SOURCE      Tick-borne encephalitis virus
+  ORGANISM  Tick-borne encephalitis virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; tick-borne encephalitis virus group.
+REFERENCE   1  (bases 1 to 508)
+  AUTHORS   Kim,S.Y., Yun,S.M., Han,M.G., Lee,I.Y., Lee,N.Y., Jeong,Y.E.,
+            Lee,B.C. and Ju,Y.R.
+  TITLE     Isolation of tick-borne encephalitis viruses from wild rodents,
+            South Korea
+  JOURNAL   Vector Borne Zoonotic Dis. 8 (1), 7-13 (2008)
+   PUBMED   18240970
+REFERENCE   2  (bases 1 to 508)
+  AUTHORS   Kim,S.Y., Yun,S.M., Han,M.G., Lee,I.Y., Lee,N.Y., Jeong,Y.E.,
+            Lee,B.C. and Ju,Y.R.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (08-SEP-2006) Division of Arboviruses, National Institute
+            of Health, 194, Tonil-lo Eunpyung-Gu, Seoul 122-791, South Korea
+FEATURES             Location/Qualifiers
+     source          1..508
+                     /organism="Tick-borne encephalitis virus"
+                     /mol_type="genomic RNA"
+                     /serotype="Western"
+                     /isolate="KrM 219"
+                     /db_xref="taxon:11084"
+                     /country="South Korea"
+                     /PCR_primers="fwd_seq: cagagtgatcgaggctggggyaa, rev_seq:
+                     aacactccagtctggtctccraggttgta"
+     CDS             <1..>508
+                     /codon_start=2
+                     /product="envelope protein"
+                     /protein_id="ABL63126.1"
+                     /db_xref="GI:119331600"
+                     /translation="QSDRGWGNHCGLFGKGSIVACVKAACGAKKKATGHVYDANKIVY
+                     TVKVEPHTGDYVAANETHSGRKTASFTVSSEKTILTMGEYGDVSLLCRVASGVDLAQT
+                     VILELDKTVEHLPMAWQVHRDWFNDLALPWKHEGAQNWNNAERLVEFGAPHAVKMDVY
+                     NLGDQTGVL"
+ORIGIN      
+        1 tcagagtgat cgaggctggg gcaaccactg tggactgttt ggaaagggta gcattgtggc
+       61 ctgtgtcaag gcggcttgtg gggcaaaaaa gaaagccaca ggacatgtgt acgacgccaa
+      121 caaaatagta tacacggtca aagtcgaacc acacacggga gactatgttg ccgcaaacga
+      181 gacacacagt gggaggaaga cggcatcctt cacagtttca tcagagaaaa ccattttgac
+      241 catgggtgag tatggagatg tgtctttgtt gtgcagggtc gctagtggcg ttgacttggc
+      301 ccagaccgtc atccttgagc ttgacaagac agtggaacac cttccaatgg cttggcaggt
+      361 ccacagggac tggttcaatg atctggctct gccatggaaa catgagggag cgcaaaactg
+      421 gaataacgca gaaagactgg ttgaatttgg ggctcctcac gctgtcaaga tggacgtgta
+      481 caaccttgga gaccagactg gagtgtta
+//

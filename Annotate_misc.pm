@@ -6,7 +6,7 @@ use English;
 use Carp;
 use Data::Dumper;
 
-use version; our $VERSION = qv('1.1.2'); # February 09 2011
+use version; our $VERSION = qv('1.1.6'); # November 09 2012
 use File::Temp qw/ tempfile tempdir /;
 use Bio::SeqIO;
 use Bio::Seq;
@@ -14,7 +14,7 @@ use IO::String;
 
 use Annotate_Math;
 use Annotate_Verify;
-use Annotate_Muscle;
+use Annotate_Align;
 use Annotate_gbk;		# for annotation from genbank
 
 my $debug_all = 1;
@@ -163,7 +163,21 @@ sub process_list1 {
         my $gbk = $result;
         my $in_file2 = IO::String->new($gbk);
         my $in  = Bio::SeqIO->new( -fh => $in_file2, -format => 'genbank' );
+        $debug && print STDERR "$subname: \$in='\n". Dumper($in) . "End of \$in\n\n";
         my $inseq = $in->next_seq();
+        $debug && print STDERR "$subname: \$inseq='\n". Dumper($inseq) . "End of \$inseq\n\n";
+        if (!$inseq) {
+            print STDERR "$subname: \$acc=$acc \$inseq is undef, skip\n";
+            my $msg = "$acc \ttaxid=---- \tsrc=MSA \tstatus=---- \tcomment=Empty genome file";
+            print STDERR "$subname: \$msg=$msg\n";
+            push @$msgs, $msg;
+            $msg = "$acc \ttaxid=---- \tsrc=GBK \tstatus=---- \tcomment=Empty genome file";
+            print STDERR "$subname: \$msg=$msg\n";
+            push @$msgs, $msg;
+            $count->{MSA}->{Empty}++;
+            $count->{GBK}->{Empty}++;
+            next;
+        }
         $acc = $inseq->accession_number;
         my $taxid = $inseq->species->ncbi_taxid;
         $debug && print STDERR "$subname: accession='$acc' \$taxid=$taxid.\n";
@@ -171,11 +185,12 @@ sub process_list1 {
         $outfile = "$dir_path/$acc" . '_matpept_msagbk.faa' if (!$debug);
         $debug && print STDERR "$subname: accession='#$number:$acc' \$outfile=$outfile.\n";
         
-        my ($feats_msa, $comment_msa) = Annotate_Muscle::annotate_1gbk( $gbk, $exe_dir, $aln_fn, $dir_path, $progs);
+        my ($feats_msa, $comment_msa) = Annotate_Align::annotate_1gbk( $gbk, $exe_dir, $aln_fn, $dir_path, $progs);
+#        $feats_msa = undef; # Used to test the subroutines in Annotate_gbk
         my $status_msa = $feats_msa ? 'Success' : ($comment_msa eq 'Refseq with mat_peptide annotation from NCBI, skip') ? 'Skip   ' : 'Fail   ';
         if (!$feats_msa) {
             $count->{MSA}->{Fail}++;
-            print STDERR "$subname: no result from Annotate_Muscle::annotate_1gbk comment=$comment_msa\n";
+            print STDERR "$subname: no result from Annotate_Align::annotate_1gbk comment=$comment_msa\n";
         } else {
             $count->{MSA}->{Success}++;
             $debug && print STDERR "$subname: \$feats_msa='\n". Dumper($feats_msa) . "End of \$feats_msa\n\n";
@@ -278,8 +293,8 @@ sub process_list1 {
 #   exit;
 
    } # for (my $ct = 0; $ct<=$#{$accs}; $ct++)
-#   $debug && print STDERR "$subname: \$refseqs = \n".Dumper($refseqs)."End of \$refseqs\n\n";
-#   $debug && print STDERR "$subname: \$inseqs = \n".Dumper($inseqs)."End of \$inseqs\n\n";
+#   $debug && print STDERR "$subname: \$refseqs=\n".Dumper($refseqs)."End of \$refseqs\n\n";
+#   $debug && print STDERR "$subname: \$inseqs=\n".Dumper($inseqs)."End of \$inseqs\n\n";
 
     print STDOUT "accession \ttaxonomy \tsource \tstatus \tcomment\n";
     for my $msg (@$msgs) {
@@ -310,7 +325,7 @@ sub process_list3 {
     my $debug = 0 && $debug_all;
     my $subname = 'process_list3';
 
-#    $debug && print STDERR "$subname: \$accs = \n".Dumper($accs)."End of \$accs\n\n";
+#    $debug && print STDERR "$subname: \$accs=\n".Dumper($accs)."End of \$accs\n\n";
     my $refseqs = {};
     my $inseqs  = [];
 
@@ -356,7 +371,7 @@ sub process_list3 {
         # determine the refseq, and get the CDS/mat_peptides in refseq
         $refpolyprots = Annotate_Util::get_refpolyprots( $refseqs, $inseq, $exe_dir);
 #        $debug && print STDERR "$subname: \$refpolyprots = $#{$refpolyprots}\n";
-#        $debug && print STDERR "$subname: \$refpolyprots = \n".Dumper($refpolyprots)."End of \$refpolyprots\n\n";
+#        $debug && print STDERR "$subname: \$refpolyprots=\n".Dumper($refpolyprots)."End of \$refpolyprots\n\n";
 
         if ($#{$refpolyprots} <0) {
             print STDERR "$subname: There is a problem getting refseq for ".$acc.". Skipping\n";
@@ -368,7 +383,7 @@ sub process_list3 {
         my $num_cds;
         ($polyprots, $num_cds) = Annotate_Util::get_polyprots( $inseq, $refpolyprots);
 #        $debug && print STDERR "$subname:    \$polyprots = $num_cds\n";
-        $debug && print STDERR "$subname: \$polyprots = \n".Dumper($polyprots)."End of \$polyprots\n\n";
+        $debug && print STDERR "$subname: \$polyprots=\n".Dumper($polyprots)."End of \$polyprots\n\n";
 
         # add refseq to hash, add inseq to array
         if ($#{$refpolyprots} >=0 && $refpolyprots->[0]->[1]->primary_tag eq 'CDS') {
@@ -395,9 +410,9 @@ sub process_list3 {
             last;
         }
    }
-   $debug && print STDERR "$subname: \$refseqs = \n".Dumper($refseqs)."End of \$refseqs\n\n";
-   $debug && print STDERR "$subname: \$refseqs =".length($refseqs)."\n";
-   $debug && print STDERR "$subname: \$inseqs = \n".Dumper($inseqs)."End of \$inseqs\n\n";
+   $debug && print STDERR "$subname: \$refseqs=\n".Dumper($refseqs)."End of \$refseqs\n\n";
+   $debug && print STDERR "$subname: \$refseqs=".length($refseqs)."\n";
+   $debug && print STDERR "$subname: \$inseqs =\n".Dumper($inseqs)."End of \$inseqs\n\n";
    $debug && print STDERR "$subname: \$inseqs =".$#{$inseqs}."\n";
 
    $debug && print STDERR "$subname: Finished loading all seqs and refseqs, ready to run MUSCLE\n\n";
@@ -409,7 +424,7 @@ sub process_list3 {
    }
 
    my $feats_all;
-   $feats_all = Annotate_Muscle::muscle_profile( $refseqs, $inseqs, $aln_fn,$exe_dir);
+   $feats_all = Annotate_Align::muscle_profile( $refseqs, $inseqs, $aln_fn,$exe_dir);
 #   $debug && print STDERR "$subname: \$feats_all=\n". Dumper($feats_all->[0]) . "End of \$feats_all\n\n";
 
    for (my $i=0; $i<=$#{$feats_all}; $i++) {
@@ -503,7 +518,7 @@ Print the useage according to calling sub
 =cut
 
 sub Usage {
-    my ($source) = @_;
+    my ($source, $exe_dir) = @_;
 
     my $debug = 0 && $debug_all;
     my $subname = 'Annotate_misc::Usage';
@@ -533,7 +548,13 @@ Usage:  -d directory to find the input genome file
         $usage .= $example;
     }
 
-    return $usage;
+    # Get the list of approved species in each viral family and their RefSeq
+    my $refseq_list = Annotate_Def::get_refseq_acc( undef, $exe_dir);
+    $debug && print STDERR "$subname: \$refseq_list=".Dumper($refseq_list)."\n";
+    $usage .= $refseq_list;
+
+    print STDERR "$subname: \$usage=\n".Dumper($usage)."\n";
+    return $usage . "\n";
 } # sub Usage
 
 

@@ -1,0 +1,54 @@
+LOCUS       AB269353                 329 bp    mRNA    linear   VRL 03-MAY-2007
+DEFINITION  Hepatitis C virus NS5b mRNA for polyprotein, partial cds, isolate:
+            MYAN-TC148.
+ACCESSION   AB269353
+VERSION     AB269353.1  GI:146219079
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Lwin,A.A., Shinji,T., Khin,M., Win,N., Obika,M., Okada,S. and
+            Koide,N.
+  TITLE     Hepatitis C virus genotype distribution in Myanmar: Predominance of
+            genotype 6 and existence of new genotype 6 subtype
+  JOURNAL   Hepatol. Res. 37 (5), 337-345 (2007)
+   PUBMED   17441806
+REFERENCE   2  (bases 1 to 329)
+  AUTHORS   Shinji,T., Lwin,A., Obika,M., Khin,M., Win,N., Okada,S. and
+            Koide,N.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (10-AUG-2006) Toshiyuki Shinji, Okayama University
+            Graduate School of Medicine, Dentistry and Pharmaceutical Sciences,
+            Department of Laboratory Medicine; 2-5-1 Shikata-cho, Okayanma,
+            OKAYAMA 700-8558, Japan (E-mail:toshinji@md.okayama-u.ac.jp,
+            Tel:81-86-235-7342, Fax:81-86-235-7345)
+FEATURES             Location/Qualifiers
+     source          1..329
+                     /organism="Hepatitis C virus"
+                     /mol_type="mRNA"
+                     /isolate="MYAN-TC148"
+                     /db_xref="taxon:11103"
+                     /country="Myanmar"
+                     /note="genotype 6 variant"
+     gene            <1..>329
+                     /gene="NS5b"
+     CDS             <1..>329
+                     /gene="NS5b"
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="BAF57942.1"
+                     /db_xref="GI:146219080"
+                     /translation="VTERDIRTEADIYLSCQLQPEARDAITSLTERLYCGGPMFNSKG
+                     QSCGYRRCRASGVLPTSMGNTTTCYLKAQAACKAAGLKDFDMLVCGDDLVVICESAGV
+                     QEDVAAL"
+ORIGIN      
+        1 tgtcaccgag cgcgacatca ggactgaagc tgacatctac ctgagctgcc aattgcaacc
+       61 agaagccagg gatgccatca cgtccctgac cgaaaggcta tactgcggtg gccccatgtt
+      121 taactcgaaa gggcaatcat gtgggtaccg caggtgccgc gcgagtggcg tgttacccac
+      181 cagtatggga aacaccacga catgctactt gaaggcacaa gccgcttgca aggcagcagg
+      241 gctcaaagac tttgacatgt tggtatgcgg agacgacctt gtagtcatct gcgagagtgc
+      301 cggcgtccag gaggacgttg ctgccctgs
+//
+

@@ -1,0 +1,46 @@
+LOCUS       AB005686                 273 bp    RNA     linear   VRL 06-OCT-2007
+DEFINITION  Hepatitis C virus gene for E2 protein, partial cds, clone:
+            JaCHC(S)-1-A.
+ACCESSION   AB005686
+VERSION     AB005686.1  GI:157939911
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Kato,T., Mizokami,M., Nakano,T., Orito,E., Ohba,K., Kondo,Y.,
+            Tanaka,Y., Ueda,R., Mukaide,M., Fujita,K., Yasuda,K. and Iino,S.
+  TITLE     Heterogeneity in E2 region of GBV-C/hepatitis G virus and hepatitis
+            C virus
+  JOURNAL   J. Med. Virol. 55 (2), 109-117 (1998)
+   PUBMED   9598930
+REFERENCE   2  (bases 1 to 273)
+  AUTHORS   Kato,T., Mizokami,M. and Nakano,T.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (11-JUL-1997) Takanobu Kato, Nagoya City University
+            Medical School, Second Department of Medicine; Kawasumi, Mizuho,
+            Nagoya, Aichi 467-8601, Japan (E-mail:takanobu@med.nagoya-cu.ac.jp,
+            Tel:81-52-851-5511, Fax:81-52-852-0849)
+FEATURES             Location/Qualifiers
+     source          1..273
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="RN/77/M"
+                     /db_xref="taxon:11103"
+                     /clone="JaCHC(S)-1-A"
+                     /note="clones were identified by SSCP"
+     CDS             <1..>273
+                     /codon_start=1
+                     /product="E2 protein"
+                     /protein_id="BAF81566.1"
+                     /db_xref="GI:157939912"
+                     /translation="SPTTTMILAYVMRIPEVIMDIISGAHWGVMFGLAYFSMQGAWAK
+                     VVVILLLTAGVDANTRAVGGATAKTTRGLVGLFSPGAQQNIQLINTN"
+ORIGIN      
+        1 tcgcccacga ccaccatgat cctggcgtac gtgatgcgca ttcccgaggt catcatggac
+       61 atcattagcg gggctcactg gggcgtcatg ttcggcctag cctacttctc tatgcaggga
+      121 gcgtgggcga aggtcgttgt catccttctg ctgaccgccg gggtggacgc gaacacccgc
+      181 gcagttggag gtgctaccgc gaaaaccact cgcggccttg tcggcctctt cagccctggc
+      241 gctcagcaga acattcagct cattaacacc aat
+//

@@ -1,0 +1,98 @@
+LOCUS       AF130362                2323 bp    RNA     linear   VRL 13-SEP-2001
+DEFINITION  West Nile virus strain RO97-50 polyprotein gene, partial cds.
+ACCESSION   AF130362
+VERSION     AF130362.1  GI:4732134
+KEYWORDS    .
+SOURCE      West Nile virus
+  ORGANISM  West Nile virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Japanese encephalitis virus group.
+REFERENCE   1  (bases 1 to 2323)
+  AUTHORS   Savage,H.M., Ceianu,C., Nicolescu,G., Karabatsos,N., Lanciotti,R.,
+            Vladimirescu,A., Laiv,L., Ungureanu,A., Romanca,C. and Tsai,T.F.
+  TITLE     Entomologic and avian investigations of an epidemic of West Nile
+            fever in Romania in 1996, with serologic and molecular
+            characterization of a virus isolate from mosquitoes
+  JOURNAL   Am. J. Trop. Med. Hyg. 61 (4), 600-611 (1999)
+   PUBMED   10548295
+REFERENCE   2  (bases 1 to 2323)
+  AUTHORS   Lanciotti,R.L., Ludwig,M.L. and Savage,H.M.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (22-FEB-1999) Arbovirus Diseases Branch, Centers for
+            Disease Control & Prevention, Rampart Road, Fort Collins, CO 80521,
+            USA
+FEATURES             Location/Qualifiers
+     source          1..2323
+                     /organism="West Nile virus"
+                     /mol_type="genomic RNA"
+                     /strain="RO97-50"
+                     /db_xref="taxon:11082"
+     CDS             <1..>2323
+                     /codon_start=3
+                     /product="polyprotein"
+                     /protein_id="AAD28623.1"
+                     /db_xref="GI:4732135"
+                     /translation="SLIGLKRAMLSLIDGKGPIRFVLALLAFFRFTAIAPTRAVLDRW
+                     RGVNKQTAMKHLLSFKKELGTLTSAINRRSSKQKKRGGKTGIAVMIGLIASVGAVTLS
+                     NFQGKVMMTVNATDVTDVITIPTAAGKNLCIVRAMDVGYMCDDTITYECPVLSAGNDP
+                     EDIDCWCTKSAVYVRYGRCTKTRHSRRSRRSLTVQTHGESTLANKKGAWMDSTKATRY
+                     LVKTESWILRNPGYALVAAVIGWMLGSNTMQRVVFVVLLLLVAPAYSFNCLGMSNRDF
+                     LEGVSGATWVDLVLEGDSCVTIMSKDKPTIDVKMMNMEAANLAEVRSYCYLATVSDLS
+                     TKAACPTMGEAHNDKRADPAFVCRQGVVDRGWGNGCGLFGKGSIDTCAKFACSTKATG
+                     RTILKENIKYEVAIFVHGPTTVESHGNYSTQIGATQAGRFSITPAAPSYTLKLGEYGE
+                     VTVDCEPRSGIDTNAYYVMTVGTKTFLVHREWFMDLNLPWSSAGSTVWRNRETLMEFE
+                     EPHATKQSVIALGSQEGALHQALAGAIPVEFSSNTVKLTSGHLKCRVKMEKLQLKGTT
+                     YGVCSKAFKFLGTPADTGHGTVVLELQYTGTDGPCKVPISSVASLNDLTPVGRLVTVN
+                     PFVSVATANAKVLIELEPPFGDSYIVVGRGEQQINHHWHKSGSSIGKAFTTTLKGAQR
+                     LAALGDTAWDFGSVGGVFTSVGKAVHQVFGGAFRSLFGGMSWITQGLLGALLLWMGIN
+                     ARDRSIALTFLAVGGVLLFLSVNVHADTGCAID"
+     mat_peptide     <1..266
+                     /product="capsid protein"
+     mat_peptide     267..797
+                     /product="pre-membrane/membrane protein"
+                     /note="prM/M"
+     mat_peptide     798..2300
+                     /product="envelope glycoprotein"
+                     /note="E"
+ORIGIN      
+        1 tgtccttgat tggactgaag agggcaatgt tgagcctgat tgacggcaag gggccaatac
+       61 gattcgtgtt ggctctcttg gcgttcttca ggttcacagc aattgctccg acccgagcag
+      121 tactggaccg atggagaggt gtgaacaaac aaacagcgat gaaacacctt ctgagtttta
+      181 agaaagaact agggaccttg accagtgcta tcaatcggcg gagctcaaaa caaaagaaaa
+      241 gaggaggaaa gaccggaatt gcagtcatga ttggcctgat cgccagcgta ggagcagtta
+      301 ccctctctaa cttccaaggg aaagttatga tgacggtaaa tgctactgac gtcacagatg
+      361 tcatcacgat tccaacagct gctggaaaga acctatgcat tgtcagagca atggatgtgg
+      421 gatacatgtg tgatgacact atcacttatg aatgcccagt gctgtcggcc ggtaatgatc
+      481 cagaagacat cgactgttgg tgcacaaagt cagcagtcta cgtcaggtat ggaagatgca
+      541 ccaagacacg ccactcaaga cgcagtcgga ggtcactgac agtgcagaca cacggagaaa
+      601 gcactctagc gaacaaaaag ggggcttgga tggacagcac caaggccaca aggtatctgg
+      661 taaaaacaga atcatggatc ttgaggaacc ctggatatgc cctggtggca gctgttattg
+      721 gttggatgct tggaagcaac accatgcagc gagttgtgtt tgtagtgcta ttgctcttgg
+      781 tggctccagc ctacagcttc aactgccttg gaatgagcaa cagagacttc ttggagggag
+      841 tatctggagc aacttgggtg gatttggttc tcgaaggcga cagctgcgtg actatcatgt
+      901 ctaaggacaa gcctaccatt gatgtgaaga tgatgaatat ggaggctgcc aacctggcag
+      961 aagtccgcag ttattgctat ttggctaccg tcagtgatct ctccaccaaa gctgcatgcc
+     1021 cgaccatggg agaagctcac aatgacaaac gtgctgatcc agcttttgtg tgcagacaag
+     1081 gagtggtgga caggggctgg ggcaacggct gcgggctatt tggcaaagga agcattgaca
+     1141 catgcgccaa atttgcctgc tccaccaagg caacaggaag aaccatcttg aaagagaata
+     1201 tcaagtatga agtggccatc tttgtccatg gaccaaccac tgtggagtcg catggaaact
+     1261 actccacaca gattggggcc actcaggcag ggagattcag catcactcct gcggcgcctt
+     1321 catacacact aaagcttgga gaatatggag aagtgacagt ggactgtgaa ccacggtcag
+     1381 ggattgacac caatgcttac tacgtgatga ctgttggaac aaagacgttt ttggtccatc
+     1441 gtgagtggtt catggacctc aacctccctt ggagcagtgc tggaagtact gtgtggagaa
+     1501 acagagagac gttaatggag tttgaggaac cacacgccac aaagcagtct gtgatagcat
+     1561 tgggctcaca agagggagct ctgcatcaag ctttggctgg agccatccct gtggaatttt
+     1621 caagcaacac tgtcaagttg acgtcgggtc atttgaagtg tagagtgaag atggaaaaat
+     1681 tgcagttgaa gggaacaacc tacggcgtct gttcaaaggc tttcaagttt cttgggactc
+     1741 ccgcagacac aggtcacggc actgtggtgt tggaattgca gtacactggc acggatggac
+     1801 cttgcaaagt tcccatctcg tcagtggctt cattgaacga cctaacacca gtgggcagat
+     1861 tggtcactgt caaccctttt gtttcagtgg ccacggccaa tgccaaagtc ctgattgaac
+     1921 tggaaccacc ctttggagac tcatacatag tggtaggcag aggagaacaa cagatcaatc
+     1981 accattggca taagtctgga agcagcattg gcaaagcctt tacaaccact ctcaaagggg
+     2041 cgcagagatt agccgctcta ggagacacag cttgggactt tggatcagtt ggaggggtgt
+     2101 tcacctcagt agggaaggct gtccatcaag tgttcggtgg agcattccgc tcactgttcg
+     2161 gaggtatgtc ctggataacg cagggattgc tgggggctct tctgctgtgg atgggcatca
+     2221 atgcccgtga caggtccata gctctcacgt ttctagcagt tggaggagtc ctgctcttcc
+     2281 tctccgtgaa cgtgcacgcc gacactgggt gtgccataga cat
+//
+

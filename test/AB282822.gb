@@ -1,0 +1,60 @@
+LOCUS       AB282822                 588 bp    RNA     linear   VRL 05-DEC-2008
+DEFINITION  Human enterovirus 71 gene for polyprotein, VP4 and VP2 region,
+            partial cds, isolate: 209/EV71/Hyogo/1995.
+ACCESSION   AB282822
+VERSION     AB282822.1  GI:118142453
+KEYWORDS    .
+SOURCE      Human enterovirus 71
+  ORGANISM  Human enterovirus 71
+            Viruses; ssRNA positive-strand viruses, no DNA stage;
+            Picornavirales; Picornaviridae; Enterovirus; Human enterovirus A.
+REFERENCE   1
+  AUTHORS   Munemura,T., Fujimoto,T., Chikahira,M., Kimura,H., Nishio,O.,
+            Yoshida,H., Okabe,N. and Tsuji,T.
+  TITLE     [Influence of genome extraction kits on enterovirus detection using
+            RT-PCR]
+  JOURNAL   Kansenshogaku Zasshi 82 (1), 55-57 (2008)
+   PUBMED   18306682
+REFERENCE   2  (bases 1 to 588)
+  AUTHORS   Munemura,T., Fujimoto,T., Kimura,H., Nishio,O., Yoshida,H. and
+            Tsuji,T.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (15-NOV-2006) Contact:Tetsuya Munemura Hoshi University
+            School of Pharmacy and Pharmaceutical Sciences, Department of
+            Microbiology; 2-4-41 Ebara, Shinagawa-ku, Tokyo 142-8501, Japan
+FEATURES             Location/Qualifiers
+     source          1..588
+                     /organism="Human enterovirus 71"
+                     /mol_type="genomic RNA"
+                     /isolate="209/EV71/Hyogo/1995"
+                     /isolation_source="throat swab"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:39054"
+                     /country="Japan"
+     5'UTR           <1..168
+     CDS             169..>588
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="BAF37002.1"
+                     /db_xref="GI:118142454"
+                     /translation="MGSQVSTQRSGSHENSNSATEGSTINYTTINYYKDSYAATAGKQ
+                     SLKQDPDKFANPVKDIFTEMAAPLKSPSAEACGYSDRVAQLTIGNSTITTQEAANIIV
+                     GYGEWPSYCSDSDATAVDKPTRPDVSVNRFTHWTPNCG"
+     mat_peptide     169..375
+                     /product="VP4"
+                     /note="capsid protein"
+     mat_peptide     356..>588
+                     /product="VP2"
+                     /note="capsid protein"
+ORIGIN      
+        1 atattggctg cttatggtga caatcaaaga attgttacca tatagctatt ggattggcca
+       61 tccggtgtgc aatagggcaa ttgtttatct atttgttggt ttcgtaccat tgacactgaa
+      121 gtctgtgatc acccttaact ttatcttgac cctcaacaca atttaaacat gggctcacag
+      181 gtatctacac aacgctccgg ttcgcatgaa aactctaatt cagccactga gggttccacc
+      241 ataaactata ctaccattaa ttactataag gactcctatg ccgctacggc aggcaagcag
+      301 agcctcaagc aggacccaga taagtttgca aatcctgtca aagacatttt cactgaaatg
+      361 gcggcaccat tgaaatcccc atctgctgag gcatgtggct acagcgatcg ggtagcgcag
+      421 ttaactattg gcaattctac catcactaca caagaagcgg caaacatcat agttggctat
+      481 ggtgagtggc cttcctattg ctcggattct gatgccacag cggtggacaa gccaacgcgc
+      541 ccagatgttt cggtgaacag gtttacacat tggacaccaa attgtggg
+//

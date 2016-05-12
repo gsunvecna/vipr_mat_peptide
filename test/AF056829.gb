@@ -1,0 +1,48 @@
+LOCUS       AF056829                 314 bp    RNA     linear   VRL 27-MAY-1998
+DEFINITION  Hepatitis C virus sm803_15 genome polyprotein gene, partial cds.
+ACCESSION   AF056829
+VERSION     AF056829.1  GI:3153610
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 314)
+  AUTHORS   McAllister,J., Casino,C., Davidson,F., Power,J., Lawlor,E.,
+            Yap,P.L., Simmonds,P. and Smith,D.B.
+  TITLE     Long-term evolution of the hypervariable region of hepatitis C
+            virus in a common-source-infected cohort
+  JOURNAL   J. Virol. 72 (6), 4893-4905 (1998)
+   PUBMED   9573256
+REFERENCE   2  (bases 1 to 314)
+  AUTHORS   McAllister,J., Casino,C., Davidson,F., Power,J., Lawlor,E.,
+            Yap,P.-L., Simmonds,P. and Smith,D.B.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (02-APR-1998) Department of Medical Microbiology,
+            University of Edinburgh, Teviot Place, Edinburgh, Scotland EH8 9AG,
+            UK
+FEATURES             Location/Qualifiers
+     source          1..314
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="anti-D Recipient 803"
+                     /db_xref="taxon:11103"
+                     /clone="sm803_15"
+     CDS             <1..>314
+                     /note="E1 and E2 regions"
+                     /codon_start=1
+                     /product="genome polyprotein"
+                     /protein_id="AAC17325.1"
+                     /db_xref="GI:3153611"
+                     /translation="GNWAKVLIVMLPFAGVDGATYTTGGAQGHTVRGLTSLFTPGPKQ
+                     NIQLINTNGSWHINRTALNCNDSLNTGFIAALFYARRFNSSGCPERMASCRPIDKFAQ
+                     GWG"
+ORIGIN      
+        1 gggaactggg ctaaggtctt gattgtgatg ctaccttttg ccggcgtcga cggggcgact
+       61 tacacgacag ggggggcgca gggccatact gtccgcgggc ttacgtccct ctttacgcct
+      121 gggccgaaac aaaacatcca gcttataaac accaacggca gctggcacat caacaggact
+      181 gccctgaact gcaatgactc cctcaacacc gggttcattg ccgcgctgtt ctacgcccgc
+      241 agattcaact cgtcnggatg cccggagcgt atggccagct gccgccccat tgacaagttc
+      301 gctcaggggt gggg
+//
+

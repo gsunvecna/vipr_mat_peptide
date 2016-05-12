@@ -1,0 +1,50 @@
+LOCUS       FJ872155                 121 bp    RNA     linear   VRL 29-APR-2009
+DEFINITION  Hepatitis C virus subtype 1b isolate p38-liver envelope
+            glycoprotein 2 (E2) gene, partial cds.
+ACCESSION   FJ872155
+VERSION     FJ872155.1  GI:227463091
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 1b
+  ORGANISM  Hepatitis C virus subtype 1b
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 121)
+  AUTHORS   Ramirez,S., Perez-Del-Pulgar,S., Carrion,J.A., Costa,J.,
+            Gonzalez,P., Massaguer,A., Fondevila,C., Garcia-Valdecasas,J.C.,
+            Navasa,M. and Forns,X.
+  TITLE     Hepatitis C virus compartmentalization and infection recurrence
+            after liver transplantation
+  JOURNAL   Am. J. Transplant. 9 (7), 1591-1601 (2009)
+   PUBMED   19459796
+REFERENCE   2  (bases 1 to 121)
+  AUTHORS   Ramirez,S., Perez-del-Pulgar,S., Carrion,J.A., Costa,J.,
+            Gonzalez,P., Massaguer,A., Fondevila,C., Garcia-Valdecasas,J.C.,
+            Navasa,M. and Forns,X.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (31-MAR-2009) Liver Unit, Hospital Clinic, IDIBAPS,
+            Villarroel 170, Barcelona 08036, Spain
+FEATURES             Location/Qualifiers
+     source          1..121
+                     /organism="Hepatitis C virus subtype 1b"
+                     /mol_type="genomic RNA"
+                     /isolate="p38-liver"
+                     /isolation_source="liver"
+                     /db_xref="taxon:31647"
+                     /country="Spain"
+                     /note="collected from November 2003 to January 2006"
+     gene            <1..>121
+                     /gene="E2"
+     CDS             <1..>121
+                     /gene="E2"
+                     /note="hypervariable region 1"
+                     /codon_start=1
+                     /product="envelope glycoprotein 2"
+                     /protein_id="ACP39996.1"
+                     /db_xref="GI:227463092"
+                     /translation="FAGVDGSTRAVGAQQSRVTSQFVGLFSAGSSQKIQLINTN"
+ORIGIN      
+        1 tttgccggcg ttgatgggag cacccgcgcg gtgggggcgc aacaatcccg cgtcaccagc
+       61 cagttcgtgg gcctcttcag tgccgggtca tctcagaaaa tccagcttat aaacaccaac
+      121 g
+//
+

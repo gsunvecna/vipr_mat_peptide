@@ -1,0 +1,60 @@
+LOCUS       AJ564839                 277 bp    RNA     linear   VRL 14-NOV-2006
+DEFINITION  Hepatitis C virus partial gene for polyprotein, genomic RNA,
+            isolate JBP3-8.
+ACCESSION   AJ564839
+VERSION     AJ564839.1  GI:31414465
+KEYWORDS    E1 protein; E2 protein; glycoprotein; HVR1; hypervariable region 1;
+            polyprotein.
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Babik,J.M., Penin,F. and Holodniy,M.
+  TITLE     A four amino acid insertion in the hepatitis C virus E1/E2 junction
+            in an individual coinfected with hepatitis C virus and human
+            immunodeficiency virus
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 277)
+  AUTHORS   Babik,J.M.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (26-MAY-2003) Babik J.M., Infectious Diseases, Stanford
+            University School of Medicine, Stanford University, Palo Alto, CA
+            94305, USA
+FEATURES             Location/Qualifiers
+     source          1..277
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="JBP3-8"
+                     /isolation_source="plasma"
+                     /db_xref="taxon:11103"
+                     /country="USA"
+     CDS             <1..>277
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="CAD92305.1"
+                     /db_xref="GI:31414466"
+                     /db_xref="GOA:Q7TGM8"
+                     /db_xref="InterPro:IPR002519"
+                     /db_xref="UniProtKB/TrEMBL:Q7TGM8"
+                     /translation="PTTALVVSQLLRIPQAVVDMVAGAHWGVLAGLAYYSMVGNWAKV
+                     LIVLLLFAGVDASHLSGTRTVGGKAGQTLGSFTSLFQSGASQKIQLVN"
+     mat_peptide     <1..168
+                     /product="E1 protein"
+                     /function="envelope protein"
+                     /experiment="experimental evidence, no additional details
+                     recorded"
+     mat_peptide     181..>277
+                     /product="E2 protein"
+                     /function="envelope protein"
+     variation       169..180
+                     /replace=""
+     misc_feature    181..261
+                     /note="hypervariable region 1 (HVR1)"
+ORIGIN      
+        1 cctacaacag ccttagtggt atcgcagtta ctccggatcc cacaagccgt cgtggacatg
+       61 gtggcggggg cccactgggg agtcctggcg ggcctcgcct actactccat ggtggggaac
+      121 tgggctaagg tcttgattgt gttgctgctc tttgccggcg tcgacgcgtc ccatttgtcg
+      181 ggcactcgca cggtgggggg gaaggcaggc caaactcttg gcagctttac gtccctcttc
+      241 caaagtgggg cgtctcagaa aatccagctt gtgaata
+//

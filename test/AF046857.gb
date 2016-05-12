@@ -1,0 +1,58 @@
+LOCUS       AF046857                1054 bp    mRNA    linear   VRL 25-FEB-1998
+DEFINITION  Dengue virus type 2 strain BRL 34 nonstructural 1 protein mRNA,
+            partial cds.
+ACCESSION   AF046857
+VERSION     AF046857.1  GI:2911431
+KEYWORDS    .
+SOURCE      Dengue virus 2
+  ORGANISM  Dengue virus 2
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Dengue virus group.
+REFERENCE   1  (bases 1 to 1054)
+  AUTHORS   Matias,R.R., Hasebe,F. and Igarashi,A.
+  TITLE     Dengue serotype 2 nonstructural 1 protein gene
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 1054)
+  AUTHORS   Matias,R.R., Hasebe,F. and Igarashi,A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (09-FEB-1998) Molecular Epidemiology, Institute for
+            Tropical Medicine, Sakamoto-machi, Nagasaki 12-4, Japan
+FEATURES             Location/Qualifiers
+     source          1..1054
+                     /organism="Dengue virus 2"
+                     /mol_type="mRNA"
+                     /strain="BRL 34"
+                     /db_xref="taxon:11060"
+     CDS             <1..>1054
+                     /codon_start=1
+                     /product="nonstructural 1 protein"
+                     /protein_id="AAC04353.1"
+                     /db_xref="GI:2911432"
+                     /translation="DSGCVVSWRNKELKCGSGIFITDNVHTWTEQYKFQPESPSKLAS
+                     AIQKAHQEGICGIRSVTRLENLMWKQITPELNHILSENEVKLTIMTGDIKGIMHAGKR
+                     SLRPQPTELRYSWKTWGKAKILSTESHNQTFLIDGPETAECPNTNRAWNSLEVEDYGF
+                     GVFTTNIWLRLREKQDAFCDSKLMSAAIKDNRAVHADMGYWIESALNDTWKIEKASFI
+                     EVKSCHWPKSHTLWSNGVLESEMIIPKNFAGPVSQHNYRPGYHTQTAGPWHLGKLEMD
+                     FDFCKGTTVVVTEDCGNRGPSLRTTTASGKLITEWCCRSCTLPPLRYRGEDGCWYGMK
+                     SDHERKRREFGQLLGHS"
+ORIGIN      
+        1 gatagtggtt gcgttgtgag ctggagaaac aaagaactga aatgtggtag tgggattttc
+       61 atcacagaca acgtgcacac gtggacagaa caatacaagt tccaaccaga atccccctca
+      121 aaactagctt cagctatcca gaaagctcat caagaaggca tttgtggaat ccgctcagta
+      181 acgagactgg aaaatttgat gtggaaacaa ataacaccgg aattgaatca cattctatca
+      241 gaaaatgagg tgaagctgac tatcatgaca ggagatatca aaggaatcat gcatgcagga
+      301 aaacgatctt tgcggcctca gcccactgag ctgaggtatt catggaaaac atggggcaaa
+      361 gcgaaaatcc tctctacaga gtcccataac cagaccttcc tcattgatgg ccccgaaaca
+      421 gcagaatgcc ccaacacaaa cagagcttgg aactcacttg aagttgaaga ctatggcttt
+      481 ggagtattca ccaccaatat atggctaagg ctgagagaaa agcaggatgc attttgcgac
+      541 tcaaaactca tgtcagcggc cataaaagac aacagagccg tccatgccga catgggttat
+      601 tggatagaaa gtgcactcaa tgacacatgg aagatagaga aagcctcttt catcgaagtt
+      661 aaaagctgcc actggccaaa gtcacacacc ctctggagca atggagtgct agaaagtgag
+      721 atgataattc caaagaattt cgctggacca gtgtcacaac acaattacag accaggctac
+      781 catacacaaa cagcaggacc atggcattta ggtaagcttg agatggattt tgatttctgc
+      841 aagggaacta cagtggtggt gactgaggac tgtggaaata gaggaccctc cttaagaaca
+      901 accactgcct ctggaaaact cataacagaa tggtgctgca gatcttgcac attgccacca
+      961 ctaagatata gaggtgagga cggatgctgg tacgggatga aatcagacca tgaaagaaaa
+     1021 agaagagaat ttggtcagct ccttggtcac agcc
+//
+

@@ -1,0 +1,79 @@
+LOCUS       AB622123                1469 bp    RNA     linear   VRL 10-SEP-2011
+DEFINITION  Hepatitis C virus gene for nonstructural protein, partial cds,
+            isolate: HC10-0245, clone: HC10-0245_F6.
+ACCESSION   AB622123
+VERSION     AB622123.1  GI:346223285
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Yokoyama,K., Takahashi,M., Nishizawa,T., Nagashima,S., Jirintai,S.,
+            Yotsumoto,S., Okamoto,H. and Momoi,M.Y.
+  TITLE     Identification and characterization of a natural inter-genotypic
+            (2b/1b) recombinant hepatitis C virus in Japan
+  JOURNAL   Arch. Virol. 156 (9), 1591-1601 (2011)
+   PUBMED   21643787
+REFERENCE   2  (bases 1 to 1469)
+  AUTHORS   Okamoto,H. and Yokoyama,K.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (29-MAR-2011) Contact:Hiroaki Okamoto Jichi Medical
+            University School of Medicine, Division of Virology, Department of
+            Infection and Immunity; 3311-1 Yakushiji, Shimotsuke, Tochigi
+            329-0498, Japan
+FEATURES             Location/Qualifiers
+     source          1..1469
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="HC10-0245"
+                     /isolation_source="human serum"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:11103"
+                     /clone="HC10-0245_F6"
+                     /country="Japan:Ibaraki"
+                     /collection_date="03-Apr-2009"
+                     /note="A natural inter-genotypic (2b/1b) recombinant"
+     CDS             <1..>1469
+                     /note="3'-terminal NS2 and 5'-terminal NS3 regions"
+                     /codon_start=2
+                     /product="nonstructural protein"
+                     /protein_id="BAK78912.1"
+                     /db_xref="GI:346223286"
+                     /translation="YLYGLTPAITRYIVKWEWVVLLFLLLADARVCACLWMLIILGQA
+                     EAALEKLIILHSASAASANGPLWFFIFFIAAWYLKGRVVPMATYSXLGLWSFFLLVLA
+                     LPQQAYALDATEQGELGLVILVIISIFTLTPAYKILLSRSVWWLSYMLVLAEAQIQQW
+                     VPPLEARGGRDGIIWVAVILHPRLVFEITKWLLAILGPAYFLKMSLLRVPYFVRAHAL
+                     LRMCALVRHLAGARYIQMLLITMGRWTGTYIYDHLSPLSTWAAQGLRDLAVAVEPVVF
+                     SPMEKKVIVWGAETVACGDILHGLPVSARLGEEVLLGPADSYTSKGWKLLAPITAYXQ
+                     QTRGLLGCIITSLTGRDKNQVEGEVQVVSTATQSFLATCVNGACWTVYHGAGSKTLAG
+                     XHGPIXQMYTNVDLDLVGWQAPPGSRSLTPCTCGSSDLYLVTRHADVIPVRRRGDSRG
+                     SLLSPRPVSYLKGSSGGPLLCPSGHLVGIFRAAVCTRGV"
+ORIGIN      
+        1 gtacctctat ggacttactc cggccattac aagatacatc gtgaagtggg aatgggtggt
+       61 cctccttttc ttgttattgg cagacgccag ggtctgtgcg tgcctttgga tgctcatcat
+      121 actgggccaa gccgaggcag cgcttgagaa gctcatcatc ttgcactccg ctagcgctgc
+      181 tagtgccaac ggaccgctgt ggtttttcat cttctttata gcggcttggt acttaaaggg
+      241 cagggtggtc cccatggcca cgtactctrt cctcggtttg tggtcctttt tcctcctagt
+      301 cctggcycta ccacagcagg cttatgccct ggacgctaca gaacaagggg aactagggct
+      361 ggtcatatta gtgatcatat ccatcttcac tcttacccca gcatacaaga tyctcctgag
+      421 ccgttcagtg tggtggctgt cctacatgct ggtcttggcc gaggcccaga tccagcaatg
+      481 ggttcccccc ctggaggccc ggggagggcg tgatgggatc atctgggtgg ccgtcatcct
+      541 acacccgcgt cttgtgtttg agatcacaaa atggttgttg gcaattctgg ggcctgccta
+      601 cttccttaag atgtctctgc tacgggtrcc atattttgtg agggctcacg ctctgctacg
+      661 gatgtgtgcc ttggtragac acctcgcagg agctaggtac atccagatgc tgttgatcac
+      721 catgggcagg tggaccggca cttacatcta tgaccacctc tcccctctgt caacttgggc
+      781 agcccagggt ctccgggacc tggcagtcgc cgtggaacct gtggtcttca gccccatgga
+      841 gaagaaggtc attgtgtggg gggctgagac agtggcgtgt ggagacatcc tgcatggcct
+      901 cccggtttcc gcgaggctag gtgaggargt tctgctcggc cctgccgata gctacacctc
+      961 aaaggggtgg aagctcctag cccccatcac ggcctacycc caacaaacgc ggggcctact
+     1021 tggctgcatc atcactagcc tcacaggccg ggacaagaac caagtcgagg gagaggttca
+     1081 agtggtttcg accgcaacgc aatctttcct ggcgacctgc gtcaacggcg catgttggac
+     1141 tgtctaccat ggcgctggct caaagacctt agccggccma cayggtccga tcrtccaaat
+     1201 gtacaccaat gtagacctgg acctcgtcgg ctggcaagca ccccctgggt cgcgttcctt
+     1261 gacgccatgc acctgcggca gctcggacct ttacttggtc acgagacatg ctgatgtcat
+     1321 tccggtgcgc cggcggggcg acagtagggg gagcctactt tctcccaggc ctgtctccta
+     1381 cctgaagggc tcttcgggtg gcccgctgct ctgcccttcg gggcaccttg taggcatctt
+     1441 ccgggctgct gtatgcaccc ggggggttg
+//
+

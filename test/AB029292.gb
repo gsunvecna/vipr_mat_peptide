@@ -1,0 +1,42 @@
+LOCUS       AB029292                 286 bp    RNA     linear   VRL 30-JUN-1999
+DEFINITION  Japanese encephalitis virus gene for envelope protein, partial cds,
+            clone:PB-3092.
+ACCESSION   AB029292
+VERSION     AB029292.1  GI:5280936
+KEYWORDS    envelope protein.
+SOURCE      Japanese encephalitis virus
+  ORGANISM  Japanese encephalitis virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Japanese encephalitis virus group.
+REFERENCE   1
+  AUTHORS   Kimura,T., Yumisashi,T. and Okuno,Y.
+  TITLE     Japanese encephalitis virus envelope protein, partial cds
+  JOURNAL   Published Only in Database (1999)
+REFERENCE   2  (bases 1 to 286)
+  AUTHORS   Kimura,T., Yumisashi,T. and Okuno,Y.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (22-JUN-1999) Tomoaki Kimura, Osaka Prefectural Institute
+            of Public Health, Division of Virology; 3-69,Nakamichi 1-chome
+            Higashinari-ku, Osaka, Osaka 537-0025, Japan
+            (E-mail:tmkimura@iph.pref.osaka.jp, Tel:06-6972-1321,
+            Fax:06-6972-2393)
+FEATURES             Location/Qualifiers
+     source          1..286
+                     /organism="Japanese encephalitis virus"
+                     /mol_type="genomic RNA"
+                     /db_xref="taxon:11072"
+                     /clone="PB-3092"
+     CDS             <1..>286
+                     /codon_start=2
+                     /product="envelope protein"
+                     /protein_id="BAA81824.1"
+                     /db_xref="GI:5280937"
+                     /translation="KQINHHWHKAGSTLGKAFSTTLKGAQRLAALGDTAWDFGSIGGV
+                     FNSIGKAVHQVFGGAFRTLFGGMSWITQGLMGALLLWMGVNARDRSIALAF"
+ORIGIN      
+        1 caagcagatc aaccaccatt ggcacaaagc tggaagcacg ctgggcaaag ccttttcaac
+       61 aactttgaag ggagctcaga gactggcagc gttgggtgac acagcctggg actttggctc
+      121 cattggaggg gtcttcaact ccataggaaa agccgttcac caagtgtttg gtggtgcctt
+      181 cagaacactc tttgggggaa tgtcttggat cacacaaggg ctaatgggtg ccctactact
+      241 ctggatgggc gtcaacgcac gagaccgatc aattgctttg gccttc
+//

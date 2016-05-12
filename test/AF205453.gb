@@ -1,0 +1,79 @@
+LOCUS       AF205453                1617 bp    RNA     linear   VRL 01-MAR-2002
+DEFINITION  St. Louis encephalitis virus strain E22924 polyprotein gene,
+            partial cds.
+ACCESSION   AF205453
+VERSION     AF205453.1  GI:11640614
+KEYWORDS    .
+SOURCE      St. Louis encephalitis virus
+  ORGANISM  St. Louis encephalitis virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Japanese encephalitis virus group.
+REFERENCE   1  (bases 1 to 1617)
+  AUTHORS   Kramer,L.D. and Chandler,L.J.
+  TITLE     Phylogenetic analysis of the envelope gene of St. Louis
+            encephalitis virus
+  JOURNAL   Arch. Virol. 146 (12), 2341-2355 (2001)
+   PUBMED   11811684
+REFERENCE   2  (bases 1 to 1617)
+  AUTHORS   Kramer,L.D. and Chandler,L.J.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (16-NOV-1999) Center for Vector-borne Disease Research,
+            School of Veterinary Medicine, University of California, Old Davis
+            Road, Davis, CA 95616, USA
+FEATURES             Location/Qualifiers
+     source          1..1617
+                     /organism="St. Louis encephalitis virus"
+                     /mol_type="genomic RNA"
+                     /strain="E22924"
+                     /db_xref="taxon:11080"
+     CDS             <1..>1617
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="AAG39302.1"
+                     /db_xref="GI:11640615"
+                     /translation="FVIMLMLIAPAYSFNCLGTSNRDFVEGASGATWIDLVLEGGSCV
+                     TVMAPEKPTLDFKVMKMEATELATVREYCYEATLDTLSTVARCPTTGEAHNTKRSDPT
+                     FVCKRDVVDRGWGNGCGLFGKGSIDTCAKFTCKNKAIGKTILRENIKYEVAIFVHGST
+                     DSTSHGNYSEQIGKNQAARFTISPQAPSYTANMGEYGTVTIDCEARSGINTEDYYVFT
+                     VKEKSWLVNRDWFHDLNLPWTSPATTDWRNRETLVEFEEPHATKQTVVALGSQEGALH
+                     TALAGAIPATVSSSTLTLQSGHLKCRAKLNKVKIKGTTYGMCDSAFTFSKNPADTGHG
+                     TVIVELQYTGSNGPCRVPISVTANLMDLTPVGRLVTVNPFISTGGANNKVMIEVEPPF
+                     GDSYIVVGRGTTQINYHWHKEGSSIGKALATTWKGAQRLAVLGDTAWDFGSIGGVFNS
+                     IGKAVHQVFGGAFRTLFGGMSWITQGLLGALLLWMGLQARDRSISLTLLAVGGILIFL
+                     ATSVQADSGCAIDLQRRELKCGGGIFVYNDV"
+     mat_peptide     <1..39
+                     /product="M protein"
+     mat_peptide     40..1542
+                     /product="envelope protein"
+     mat_peptide     1543..>1617
+                     /product="nonstructural protein NS1"
+ORIGIN      
+        1 tttgtgatca tgctgatgct gattgctccg gcatacagct ttaactgtct gggaacatcg
+       61 aacagagact tcgtcgaagg ggccagcggg gcaacatgga tcgacttggt acttgagggg
+      121 ggaagctgtg tcacagtgat ggcaccagag aaaccaacac tggactttaa agtcatgaag
+      181 atggaggcca cggagttagc taccgtgcgt gagtactgct acgaagcaac cttggacacg
+      241 ctgtcaacag tggcgaggtg ccctacaaca ggggaagctc acaacaccaa aaggagtgac
+      301 ccaacgtttg tctgcaaaag agatgttgtg gaccgcggat ggggtaacgg atgcggtctg
+      361 tttggaaaag gaagcattga cacatgcgca aagtttacat gcaagaacaa ggcaataggg
+      421 aagacaatcc tgagagaaaa catcaagtac gaggttgcaa tttttgtgca tggttcaacg
+      481 gattccacgt cacatggcaa ttattctgag caaattggga aaaaccaagc ggctagattc
+      541 actataagcc cgcaagcacc gtcttatacg gctaacatgg gcgagtatgg aacagttacc
+      601 attgattgtg aagcaagatc aggaatcaac acagaggatt attatgtttt cacagtcaag
+      661 gagaagtcgt ggctagtaaa tagggattgg tttcacgact tgaaccttcc atggacgagc
+      721 cctgccacaa ctgattggcg caacagagaa acactggtgg aatttgaaga accgcatgcc
+      781 accaagcaaa ctgtagtcgc cctaggctcg caagaaggcg ccctgcacac agcattggcc
+      841 ggagccattc cagccactgt tagcagctct accttaacct tgcaatcagg gcacttgaag
+      901 tgcagagcca agcttaataa ggttaaaatt aagggaacga catatggtat gtgtgactcc
+      961 gccttcacct tcagcaagaa cccagctgac acagggcatg ggacagtgat cgtggaactg
+     1021 cagtacactg gaagcaacgg accctgtcgg gtccccattt ccgtgactgc gaacctaatg
+     1081 gacttgacac cggttggaag attggtcacg gtcaatccct tcataagcac agggggagcg
+     1141 aacaacaagg tcatgattga agttgaacca cccttcggcg attcttacat cgtcgtcgga
+     1201 agaggcacca cccaaatcaa ctaccactgg cacaaagagg gaagcagcat tgggaaggct
+     1261 ctggcgacca catggaaagg agcccaacgg ctagctgtct tgggagacac agcgtgggac
+     1321 tttggatcca ttggaggagt tttcaattca atcggcaaag cagtccatca agtttttgga
+     1381 ggagcgttta ggactctgtt cgggggaatg tcctggatca cacagggact gcttggagcc
+     1441 cttctcctgt ggatggggtt gcaggcccgc gacaggagca tctcgctgac tctactggcc
+     1501 gttggaggga ttctcatttt tctggcgacc agcgtgcaag ctgattcggg atgtgcaatt
+     1561 gacctacaac gacgtgaatt gaaatgtgga ggaggcatct tcgtgtacaa cgacgtt
+//
+

@@ -1,0 +1,48 @@
+LOCUS       AF056857                 341 bp    RNA     linear   VRL 27-MAY-1998
+DEFINITION  Hepatitis C virus 69_cl1 genome polyprotein gene, partial cds.
+ACCESSION   AF056857
+VERSION     AF056857.1  GI:3153666
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 341)
+  AUTHORS   McAllister,J., Casino,C., Davidson,F., Power,J., Lawlor,E.,
+            Yap,P.L., Simmonds,P. and Smith,D.B.
+  TITLE     Long-term evolution of the hypervariable region of hepatitis C
+            virus in a common-source-infected cohort
+  JOURNAL   J. Virol. 72 (6), 4893-4905 (1998)
+   PUBMED   9573256
+REFERENCE   2  (bases 1 to 341)
+  AUTHORS   McAllister,J., Casino,C., Davidson,F., Power,J., Lawlor,E.,
+            Yap,P.-L., Simmonds,P. and Smith,D.B.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (02-APR-1998) Department of Medical Microbiology,
+            University of Edinburgh, Teviot Place, Edinburgh, Scotland EH8 9AG,
+            UK
+FEATURES             Location/Qualifiers
+     source          1..341
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /isolate="anti-D Recipient 69"
+                     /db_xref="taxon:11103"
+                     /clone="69_cl1"
+     CDS             <1..>341
+                     /note="E1 and E2 regions"
+                     /codon_start=3
+                     /product="genome polyprotein"
+                     /protein_id="AAC17353.1"
+                     /db_xref="GI:3153667"
+                     /translation="VMLLFAGVDGATYTTGGTQAYTTRNFVSLFSPGPSQNIQLVNTN
+                     GSWHINRTALNCNDSLNTGFLAALFCARKFNASGCPERMASCRPIDKFAQGWGPITHA
+                     TPPSLDQKPYC"
+ORIGIN      
+        1 ttgtgatgct actttttgcc ggcgtcgacg gggcgactta cacgacgggg gggacgcagg
+       61 cctataccac ccgcaacttt gtgagcctct tttcgcctgg gccgtcccaa aacatccagc
+      121 ttgtaaacac caacggcagc tggcacatca acaggactgc cctgaactgc aatgactccc
+      181 tcaacactgg gttccttgcc gcgctgttct gcgcccggaa attcaacgcg tcnggatgcc
+      241 cggagcgcat ggccagttgc cgccccattg acaagttcgc tcaggggtgg ggtcccatca
+      301 ctcacgccac gccgcccagc ttggaccaga agccctattg t
+//
+

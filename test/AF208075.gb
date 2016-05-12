@@ -1,0 +1,57 @@
+LOCUS       AF208075                 571 bp    RNA     linear   VRL 06-AUG-2001
+DEFINITION  Hepatitis C virus type 1b polyprotein gene, partial cds.
+ACCESSION   AF208075
+VERSION     AF208075.1  GI:7110221
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 1b
+  ORGANISM  Hepatitis C virus subtype 1b
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 571)
+  AUTHORS   Zhang,S., Hui,Z., Li,H., Qi,Z. and Widell,A.
+  TITLE     Dynamic changes in hepatitis C virus genotypes and sequence
+            patterns in plasma donors exposed to reinfection
+  JOURNAL   J. Med. Virol. 63 (3), 228-236 (2001)
+   PUBMED   11170062
+REFERENCE   2  (bases 1 to 571)
+  AUTHORS   Shumin,Z., Hui,Z., Hemin,L. and Zibai,Q.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (24-NOV-1999) Department of Hepatitis, National Institute
+            for the Control of Pharmaceutical and Biological Products, TianTan
+            Xili No.2, Temple of Heaven, Beijing 100050, P.R.China
+REFERENCE   3  (bases 1 to 571)
+  AUTHORS   Widell,A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (24-NOV-1999) Department of Medical Microbiology, Malmo
+            General Hospital, Lund University, Sweden
+FEATURES             Location/Qualifiers
+     source          1..571
+                     /organism="Hepatitis C virus subtype 1b"
+                     /mol_type="genomic RNA"
+                     /strain="B960210,C"
+                     /db_xref="taxon:31647"
+                     /country="China"
+                     /note="genotype: 1b"
+     CDS             <1..>571
+                     /note="contains E1 and E2 glycoprotein sequences"
+                     /codon_start=3
+                     /product="polyprotein"
+                     /protein_id="AAF36833.1"
+                     /db_xref="GI:7110222"
+                     /translation="DMMMNWSPTAALVVSQLLRIPQAVVDMVAGAHWGVLAGLAYYSM
+                     VGNWAKVLIVMLLFAGVDGSTHVTGAVQGRSLQSFTSFLSPGPSQKIQLVNTNGSWHV
+                     NRTALNCNDSLQTGFLAALFYANRFNSSGCPKRLASCRPIDKFAQGWGPITYAEPGSS
+                     DQRPYCWHYAPRPCGIVPASEVCGQCTAS"
+ORIGIN      
+        1 gggatatgat gatgaactgg tcacctacag cagccctagt ggtgtcgcag ttactccgga
+       61 tcccacaagc tgtcgtggat atggtggcgg gggcccactg gggagtcctg gcgggccttg
+      121 cctactattc tatggtgggg aactgggcta aggttctgat tgtgatgctg ctctttgcag
+      181 gcgttgacgg gagtacccat gtgacggggg cggtgcaagg ccgttccctc cagagcttca
+      241 cgtccttcct ttcacctggg ccgtctcaga aaatccagct tgtaaacacc aatggcagct
+      301 ggcacgtcaa taggactgcc ttgaactgca acgattccct ccaaactgga ttccttgccg
+      361 cgctgttcta cgcaaacagg ttcaactcat ctggatgccc aaagcgcttg gccagctgcc
+      421 gccccattga taagttcgct cagggatggg gtcccatcac ttatgctgag cctggcagct
+      481 cggaccagag gccttattgc tggcactacg caccccggcc ctgcggtatc gtacccgcgt
+      541 cggaggtgtg tggccagtgt actgcttcac a
+//
+

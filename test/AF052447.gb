@@ -1,0 +1,93 @@
+LOCUS       AF052447                2452 bp    RNA     linear   VRL 17-SEP-1998
+DEFINITION  Yellow fever virus clone HONG11 polyprotein gene, partial cds.
+ACCESSION   AF052447
+VERSION     AF052447.1  GI:3288909
+KEYWORDS    .
+SOURCE      Yellow fever virus
+  ORGANISM  Yellow fever virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Yellow fever virus group.
+REFERENCE   1  (bases 1 to 2452)
+  AUTHORS   Xie,H., Cass,A.R. and Barrett,A.D.
+  TITLE     Yellow fever 17D vaccine virus isolated from healthy vaccinees
+            accumulates very few mutations
+  JOURNAL   Virus Res. 55 (1), 93-99 (1998)
+   PUBMED   9712515
+REFERENCE   2  (bases 1 to 2452)
+  AUTHORS   Xie,H., Cass,A.R. and Barrett,A.D.T.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (07-MAR-1998) The University of Texas Medical Branch,
+            Pathology, 301 University Blvd, Galveston, TX 77555, USA
+FEATURES             Location/Qualifiers
+     source          1..2452
+                     /organism="Yellow fever virus"
+                     /mol_type="genomic RNA"
+                     /strain="17D-204-USA vaccine"
+                     /isolate="6"
+                     /db_xref="taxon:11089"
+                     /clone="HONG11"
+                     /note="isolated from human vaccinee"
+     5'UTR           1..118
+     CDS             119..>2452
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="AAC35909.1"
+                     /db_xref="GI:3288910"
+                     /translation="MSGRKAQGKTLGVNMVRRGVRSLSNKIKQKTKQIGNRPGPSRGV
+                     QGFIFFFLFNILTGKKITAHLKRLWKMLDPRQGLAVLRKVKRVVASLMRGLSSRKRRS
+                     HDVLTVQFLILGMLLMTGGVTLVRKNRWLLLNVTSEDLGKTFSVGTGNCTTNILEAKY
+                     WCPDSMEYNCPNLSPREEPDDIDCWCYGVENVRVAYGKCDSAGRSRRSRRAIDLPTHE
+                     NHGLKTRQEKWMTGRMGERQLQKIERWFVRNPFFAVTALTIAYLVGSNMTQRVVIALL
+                     VLAVGPAYSAHCIGITDRDFIEGVHGGTWVSATLEQDKCVTVMAPDKPSLDISLETVA
+                     IDRPAEVRKVCYNAVLTHVKINDKCPSTGEAHLAEENEGDNACKRTYSDRGWGNGCGL
+                     FGKGSIVACAKFTCAKSMSLFEVDQTKIQYVIRAQLHVGAKQENWTTDIKTLKFDALS
+                     GSQEVEFIGYGKATLECQVQTAVDFGNSYIAEMETESWIVDRQWAQDLTLPWQSGSGG
+                     VWREMHHLVEFEPPHAATIRVLALGNQEGSLKTALTGAMRVTKDTNDNNLYKLHGGHV
+                     SCRVKLSALTLKGTSYKICTDKMFFVKNPTDTGHGTVVMQVKVSKGAPCRIPVIVADD
+                     LTAAINKGILVTVNPIASTNDDEVLIEVNPPFGDSYIIVGRGDSRLTYQWHKEGSSIG
+                     KLFTQTMKGVERLAVMGDTAWDFSSAGGFFTSVGKGIHTVFGSAFQGLFGGLNWITKV
+                     IMGAVLIWVGINTRNMTMSMSMILVGVIMMFLSLGVGA"
+ORIGIN      
+        1 agtaaatcct gtgtgctaat tgaggtgcat tggtctgcaa atcgagttgc taggcaataa
+       61 acacatttgg attaatttta atcgttcgtt gagcgattag cagagaactg accagaacat
+      121 gtctggtcgt aaagctcagg gaaaaaccct gggcgtcaat atggtacgac gaggagttcg
+      181 ctccttgtca aacaaaataa aacaaaaaac aaaacaaatt ggaaacagac ctggaccttc
+      241 aagaggtgtt caaggattta tctttttctt tttgttcaac attttgactg gaaaaaagat
+      301 cacagcccac ctaaagaggt tgtggaaaat gctggaccca agacaaggct tggctgttct
+      361 aaggaaagtc aagagagtgg tggccagttt gatgagagga ttgtcctcaa ggaaacgccg
+      421 ttcccatgat gttctgactg tgcaattcct aattttggga atgctgttga tgacgggtgg
+      481 agtgaccttg gtgcggaaaa acagatggtt gctcctaaat gtgacatctg aggacctcgg
+      541 gaaaacattc tctgtgggca caggcaactg cacaacaaac attttggaag ccaagtactg
+      601 gtgcccagac tcaatggaat acaactgtcc caatctcagt ccaagagagg agccagatga
+      661 cattgattgc tggtgctatg gggtggaaaa cgttagagtc gcatatggta agtgtgactc
+      721 agcaggcagg tctaggaggt caagaagggc cattgacttg cctacgcatg aaaaccatgg
+      781 tttgaagacc cggcaagaaa aatggatgac tggaagaatg ggtgaaaggc aactccaaaa
+      841 gattgagaga tggttcgtga ggaacccctt ttttgcagtg acggctctga ccattgccta
+      901 ccttgtggga agcaacatga cgcaacgagt cgtgattgcc ctactggtct tggctgttgg
+      961 tccggcctac tcagctcact gcattggaat tactgacagg gatttcattg agggggtgca
+     1021 tggaggaact tgggtttcag ctaccctgga gcaagacaag tgtgtcactg ttatggcccc
+     1081 tgacaagcct tcattggaca tctcactaga gacagtagcc attgatagac ctgctgaggt
+     1141 gaggaaagtg tgttacaatg cagttctcac tcatgtgaag attaatgaca agtgccccag
+     1201 cactggagag gcccacctag ctgaagagaa cgaaggggac aatgcgtgca agcgcactta
+     1261 ttctgataga ggctggggca atggctgtgg cctatttggg aaagggagca ttgtggcatg
+     1321 cgccaaattc acttgtgcca aatccatgag tttgtttgag gttgatcaga ccaaaattca
+     1381 gtatgtcatc agagcacaat tgcatgtagg ggccaagcag gaaaattgga ctaccgacat
+     1441 taagactctc aagtttgatg ccctgtcagg ctcccaggaa gtcgagttca ttgggtatgg
+     1501 aaaagctaca ctggaatgcc aggtgcaaac tgcggtggac tttggtaaca gttacatcgc
+     1561 tgagatggaa acagagagct ggatagtgga cagacagtgg gcccaggact tgaccctgcc
+     1621 atggcagagt ggaagtggcg gggtgtggag agagatgcat catcttgtcg aatttgaacc
+     1681 tccgcatgcc gccactatca gagtactggc cctgggaaac caggaaggct ccttgaaaac
+     1741 agctcttact ggcgcaatga gggttacaaa ggacacaaat gacaacaacc tttacaaact
+     1801 acatggtgga catgtttctt gcagagtgaa attgtcagct ttgacactca aggggacatc
+     1861 ctacaaaata tgcactgaca aaatgttttt tgtcaagaac ccaactgaca ctggccatgg
+     1921 cactgttgtg atgcaggtga aagtgtcaaa aggagccccc tgcaggattc cagtgatagt
+     1981 agctgatgat cttacagcgg caatcaataa aggcattttg gttacagtta accccatcgc
+     2041 ctcaaccaat gatgatgaag tgctgattga ggtgaaccca ccttttggag acagctacat
+     2101 tatcgttggg agaggagatt cacgtctcac ttaccagtgg cacaaagagg gaagctcaat
+     2161 aggaaagttg ttcactcaga ccatgaaagg cgtggaacgc ctggccgtca tgggagacac
+     2221 cgcctgggat ttcagctccg ctggagggtt cttcacttcg gttgggaaag gaattcatac
+     2281 ggtgtttggc tctgcctttc aggggctatt tggcggcttg aactggataa caaaggtcat
+     2341 catgggggcg gtacttatat gggttggcat caacacaaga aacatgacaa tgtccatgag
+     2401 catgatcttg gtaggagtga tcatgatgtt tttgtctcta ggagttgggg cg
+//
+

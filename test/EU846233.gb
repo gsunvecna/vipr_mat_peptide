@@ -1,0 +1,58 @@
+LOCUS       EU846233                 441 bp    RNA     linear   VRL 14-JAN-2009
+DEFINITION  Dengue virus 1 isolate D1/2CprM/Del01 polyprotein gene, partial
+            cds.
+ACCESSION   EU846233
+VERSION     EU846233.1  GI:194338303
+KEYWORDS    .
+SOURCE      Dengue virus 1
+  ORGANISM  Dengue virus 1
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Dengue virus group.
+REFERENCE   1  (bases 1 to 441)
+  AUTHORS   Kukreti,H., Dash,P.K., Parida,M., Chaudhary,A., Saxena,P.,
+            Rautela,R.S., Mittal,V., Chhabra,M., Bhattacharya,D., Lal,S.,
+            Rao,P.V. and Rai,A.
+  TITLE     Phylogenetic studies reveal existence of multiple lineages of a
+            single genotype of DENV-1 (genotype III) in India during 1956-2007
+  JOURNAL   Virol. J. 6, 1 (2009)
+   PUBMED   19126194
+  REMARK    Publication Status: Online-Only
+REFERENCE   2  (bases 1 to 441)
+  AUTHORS   Kukreti,H., Chaudhary,A., Kumari,M., Mittal,V., Lal,S. and Rai,A.
+  TITLE     Genetic evolution of DEN-1 viruses In India during the last 5
+            decades
+  JOURNAL   Unpublished
+REFERENCE   3  (bases 1 to 441)
+  AUTHORS   Kukreti,H., Chaudhary,A., Kumari,M., Mittal,V., Lal,S. and Rai,A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (22-JUN-2008) Division of Biochemisty and Biotechnology,
+            National Institute of Communicable Diseases, 22 Shamnath Marg,
+            Delhi, Delhi 110054, India
+FEATURES             Location/Qualifiers
+     source          1..441
+                     /organism="Dengue virus 1"
+                     /mol_type="genomic RNA"
+                     /serotype="1"
+                     /isolate="D1/2CprM/Del01"
+                     /db_xref="taxon:11053"
+                     /country="India"
+                     /collection_date="2001"
+     CDS             <1..>441
+                     /note="capsid/premembrane protein junction"
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="ACF49231.1"
+                     /db_xref="GI:194338304"
+                     /translation="STGSQLAKRFSKGLLSGQGPMKLVMAFIAFLRFLAIPPTAGILA
+                     RWSSFKKNGAIKVLRGFKKEISSMLNIMNRRKRSVTMLLMLLPTALTFHLTTRGGEPH
+                     MIVSKQERGKSLLFKTSVGVNMCTLIAMDLGELCEDTMTYKCPR"
+ORIGIN      
+        1 gtcaactggt tcacagttgg cgaagagatt ctcaaaagga ttgctttcag gccaaggacc
+       61 catgaaattg gtgatggctt tcatagcatt cctaaggttt ctagccatac ctccaacagc
+      121 aggaattttg gctagatgga gctcattcaa gaagaatgga gcgatcaaag tgttacgggg
+      181 tttcaaaaaa gagatctcaa gcatgttgaa cataatgaac aggaggaaaa gatccgtgac
+      241 tatgctcctc atgctgctgc ccactgccct gacattccat ttgaccacac gagggggaga
+      301 gccacacatg atagttagca agcaggaaag aggaaagtca ctcttgttta agacctctgt
+      361 aggtgtcaat atgtgcactc tcattgcgat ggatttggga gagttatgtg aggacacaat
+      421 gacctacaaa tgcccccgga t
+//

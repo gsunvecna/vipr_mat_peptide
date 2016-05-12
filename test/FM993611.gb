@@ -1,0 +1,60 @@
+LOCUS       FM993611                 309 bp    RNA     linear   VRL 04-FEB-2009
+DEFINITION  Hepatitis C virus partial polyprotein gene, E1 and E2 peptide
+            region, clone P9-55, genomic RNA.
+ACCESSION   FM993611
+VERSION     FM993611.1  GI:222531077
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Babik,J.M., Beisheim,L.V., Penin,F., Foung,S.K. and Holodniy,M.
+  TITLE     Characterization and evolution of insertions in the Hepatitis C
+            Virus hypervariable region-1 in patients co-infected with Human
+            Immunodeficiency Virus
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 309)
+  AUTHORS   Beisheim,L.A.V.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (09-JAN-2009) Beisheim L.A.V., AIDS Research Centre, Palo
+            Alto Research Institute, 3801 Miranda Ave,, Palo Alto, California,
+            94028, USA
+FEATURES             Location/Qualifiers
+     source          1..309
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic RNA"
+                     /db_xref="taxon:11103"
+                     /clone="P9-55"
+                     /tissue_type="plasma"
+                     /country="USA"
+                     /collection_date="03-Aug-2006"
+     CDS             <1..>309
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="CAX33314.1"
+                     /db_xref="GI:222531078"
+                     /db_xref="GOA:B9WNS2"
+                     /db_xref="InterPro:IPR002519"
+                     /db_xref="InterPro:IPR002531"
+                     /db_xref="UniProtKB/TrEMBL:B9WNS2"
+                     /translation="MNWSPTTALVVSQLLRIPQAVVDMVAGAHWGVLAGLAYYSMVGN
+                     WAKVLIVLLLFVGVDASHSLGTRTVGGEAGRNLGSFTSLFQSGASQKIQLVNTNGSWH
+                     I"
+     mat_peptide     <1..180
+                     /product="E1 protein"
+     mat_peptide     193..>309
+                     /product="E2 protein"
+     variation       181..192
+                     /compare=D10750.1
+                     /replace=""
+     misc_feature    193..273
+                     /note="hypervariable region 1, HVR1"
+ORIGIN      
+        1 atgaactggt cacctacaac agccttagtg gtatcgcagt tactccggat cccacaagcc
+       61 gtcgtggaca tggtggcggg ggcccactgg ggagtcctgg cgggcctcgc ctactactcc
+      121 atggtgggga actgggctaa ggtcttgatt gtgttgctgc tctttgtcgg cgtcgacgcg
+      181 tcccattcgt tgggcactcg cacggtgggg ggggaggcag gcagaaatct cggcagcttt
+      241 acgtccctct tccaaagtgg ggcgtctcag aaaatccagc ttgtgaatac caatggcagt
+      301 tggcacata
+//

@@ -1,0 +1,52 @@
+LOCUS       AF042791                 580 bp ss-RNA     linear   VRL 28-JAN-1998
+DEFINITION  Hepatitis C virus type 3g non-structural protein (NS4) gene,
+            partial cds.
+ACCESSION   AF042791
+VERSION     AF042791.1  GI:2811249
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 3g
+  ORGANISM  Hepatitis C virus subtype 3g
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 580)
+  AUTHORS   Panigrahi,A.K. and Panda,S.K.
+  TITLE     Hepatitis C virus infection in India
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 580)
+  AUTHORS   Panigrahi,A.K. and Panda,S.K.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (14-JAN-1998) Department of Pathology, All India
+            Institute of Medical Sciences, Ansari Nagar, New Delhi 110 029,
+            India
+FEATURES             Location/Qualifiers
+     source          1..580
+                     /organism="Hepatitis C virus subtype 3g"
+                     /mol_type="genomic RNA"
+                     /strain="type 3g"
+                     /isolate="IND1751"
+                     /db_xref="taxon:42792"
+     gene            <1..>580
+                     /gene="NS4"
+     CDS             <1..>580
+                     /gene="NS4"
+                     /codon_start=2
+                     /product="non-structural protein"
+                     /protein_id="AAB97852.1"
+                     /db_xref="GI:2811250"
+                     /translation="LSQTKQQGLNFPYLVAYQATACALAQAPPPSWDEMWKCLIRLKP
+                     TLHGQTPLLYRLGAVQNEICTTHPVTKYIMACMSADLEVTTSTWVILGGVLAALAAYC
+                     LSVGCVVIIGHIELGVKPALIPDKQVLYQQFDEMEECSQAAPYIEQAQAIAQQFKEKI
+                     SGLLQRASQQQAEIQPVVVSHWQKLEAFWHKHM"
+ORIGIN      
+        1 cttgtcgcag acaaaacagc agggtcttaa cttcccatac ttagtagcat atcaagctac
+       61 cgcctgcgcc ctcgcgcaag cacctccacc gagttgggat gaaatgtgga aatgcctcat
+      121 acggctaaag ccgaccctgc acgggcagac ccccctcctg tacaggttgg gggcggtcca
+      181 aaatgagatc tgcacaacac atcctgtcac caaatacatc atggcctgca tgtccgccga
+      241 cttagaggtc accacaagca cctgggtgat actcgggggc gtcttggcgg ctcttgcggc
+      301 ttattgcttg tcagttggct gcgtcgtcat aattgggcat atagagttgg gggtcaagcc
+      361 agcgctcatc cccgacaaac aggtactata ccaacaattt gacgagatgg aagaatgctc
+      421 ccaagccgct ccctacattg agcaagcaca ggccatagct caacaattca aggagaaaat
+      481 ctctggccta ctccagcgag cgagtcagca gcaagcagag attcagcccg tggtagtgtc
+      541 tcactggcag aagctggaag ccttctggca caagcatatg
+//
+

@@ -1,0 +1,40 @@
+LOCUS       AF089826                 282 bp    mRNA    linear   VRL 08-OCT-1998
+DEFINITION  Dengue virus type 3 isolate D88-097 polyprotein mRNA, partial cds.
+ACCESSION   AF089826
+VERSION     AF089826.1  GI:3719368
+KEYWORDS    .
+SOURCE      Dengue virus 3
+  ORGANISM  Dengue virus 3
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Dengue virus group.
+REFERENCE   1  (bases 1 to 282)
+  AUTHORS   Attatippaholkun,W.H., Attatippaholkun,M.K., Nisalak,A., Vaughn,D.W.
+            and Innis,B.L.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (03-SEP-1998) Clinical Chemistry, Mahidol University,
+            Prannok, Bangkok-noi, BKK 10700, Thailand
+FEATURES             Location/Qualifiers
+     source          1..282
+                     /organism="Dengue virus 3"
+                     /mol_type="mRNA"
+                     /isolate="D88-097"
+                     /host="human"
+                     /db_xref="taxon:11069"
+                     /country="Thailand:Bangkok"
+     CDS             <1..>282
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="AAC63335.1"
+                     /db_xref="GI:3719369"
+                     /translation="NSEHTGREIVDLMCHATFTMRLLSPVRVPNYNLIIMDEAHFTDP
+                     ASIAARGYTSTRVGMGEAAAIFMTATPPGTAEAFPQSNAPIQDEERDIP"
+     mat_peptide     <1..>282
+                     /product="nonstructural protein NS3"
+ORIGIN      
+        1 aaattctgaa cacacaggaa gggagattgt tgatctaatg tgccacgcaa cgttcacaat
+       61 gcgtttgcta tcaccagtca gggttccaaa ttacaatttg ataataatgg atgaggccca
+      121 tttcacagat ccagccagta tagcggctag agggtacaca tcaactcgtg taggaatggg
+      181 agaggcagct gcaattttca tgacagcaac accccctgga acagccgaag cctttcctca
+      241 gagcaacgct ccaattcaag atgaagaaag ggatattccg ga
+//
+

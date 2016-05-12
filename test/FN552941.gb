@@ -1,0 +1,67 @@
+LOCUS       FN552941                 576 bp    RNA     linear   VRL 25-MAR-2011
+DEFINITION  Hepatitis C virus subtype 5a partial gene for polyprotein, E1
+            protein region, genomic RNA, isolate FrCF128.
+ACCESSION   FN552941
+VERSION     FN552941.1  GI:262035784
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 5a
+  ORGANISM  Hepatitis C virus subtype 5a
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Henquell,C., Guglielmini,J., Verbeeck,J., Mahul,A., Thibault,V.,
+            Lebray,P., Laperche,S., Trimoulet,P., Foucher,J., Le
+            Guillou-Guillemette,H., Fouchard-Hubert,I., Legrand-Abravanel,F.,
+            Metivier,S., Gaudy,C., D'Alteroche,L., Rosenberg,A.R., Podevin,P.,
+            Plantier,J.C., Riachi,G., Saoudin,H., Coppere,H., Andre,E.,
+            Gournay,J., Feray,C., Vallet,S., Nousbaum,J.B., Baazia,Y.,
+            Roulot,D., Alain,S., Loustaud-Ratti,V., Schvoerer,E.,
+            Habersetzer,F., Perez-Serra,R.J., Gourari,S., Mirand,A.,
+            Odent-Malaure,H., Garraud,O., Izopet,J., Bommelaer,G.,
+            Peigue-Lafeuille,H., van Ranst,M., Abergel,A. and Bailly,J.L.
+  CONSRTM   Groupe HCV de l'Action Coordonnee no 11 de l'ANRS
+  TITLE     Evolutionary history of hepatitis C virus genotype 5a in France, a
+            multicenter ANRS study
+  JOURNAL   Infect. Genet. Evol. 11 (2), 496-503 (2011)
+   PUBMED   21251997
+REFERENCE   2  (bases 1 to 576)
+  AUTHORS   Henquell,C.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (22-SEP-2009) Henquell C., Chru Clermont-ferrand,
+            Laboratoire De Virologie, Centre De Biologie 58, rue Montalembert,
+            63003 Clermont-Ferrand CEDEX, FRANCE
+FEATURES             Location/Qualifiers
+     source          1..576
+                     /organism="Hepatitis C virus subtype 5a"
+                     /mol_type="genomic RNA"
+                     /isolate="FrCF128"
+                     /isolation_source="blood serum"
+                     /db_xref="taxon:31654"
+                     /country="France:Clermont-Ferrand region"
+                     /collection_date="2003"
+     CDS             <1..>576
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="CBF58631.1"
+                     /db_xref="GI:262035785"
+                     /db_xref="GOA:D0R9I8"
+                     /db_xref="InterPro:IPR002519"
+                     /db_xref="UniProtKB/TrEMBL:D0R9I8"
+                     /translation="VPYRNASGIYHVTNDCPNSSIVYEADNLILHAPGCVPCVRETNV
+                     SRCWVQITPTLSAPSFGAVTAPLRRAVDFLAGGAALCSALYVGDACGALFLVGQMFTY
+                     RPRQYNTVQDCNCSIYSGHVTGHRMAWDMMMNWSPTTALVMAQLLRIPQVVIDIIAGG
+                     HWGVLFAAAYFASAASWAKVVLVLFLFAGVDA"
+     mat_peptide     1..576
+                     /product="E1 protein"
+ORIGIN      
+        1 gttccctacc gaaatgcctc tggaatttac catgtcacca atgattgccc aaactcttcc
+       61 atagtttatg aggctgataa cctgatctta cacgcacctg gttgtgtgcc ctgtgtcagg
+      121 gaaactaatg taagtaggtg ctgggtccaa attaccccca cactgtcagc cccgagcttc
+      181 ggagcggtca cggctcctct tcggagagcc gttgacttct tagcgggagg ggctgccctt
+      241 tgctccgcgt tatacgtcgg agacgcgtgc ggggcattgt ttttggtagg ccagatgttc
+      301 acctataggc ctcgccagta taatacggtc caggactgca actgttccat ctacagtggc
+      361 catgttaccg gccatcggat ggcatgggat atgatgatga attggtcacc cacgacagcc
+      421 ttggtgatgg cccagctcct gcggattccc caggtggtca ttgacatcat tgccgggggc
+      481 cactgggggg tcctgttcgc cgccgcatac ttcgcgtcag cggccagctg ggctaaggtt
+      541 gtgctggtcc tgtttctgtt tgcgggggtt gatgcc
+//

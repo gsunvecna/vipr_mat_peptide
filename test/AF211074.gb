@@ -1,0 +1,39 @@
+LOCUS       AF211074                 118 bp    DNA     linear   VRL 14-NOV-2002
+DEFINITION  Hepatitis C virus HC41, clone S8 polyprotein gene, partial cds.
+ACCESSION   AF211074
+VERSION     AF211074.1  GI:6856874
+KEYWORDS    .
+SOURCE      Hepatitis C virus
+  ORGANISM  Hepatitis C virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1  (bases 1 to 118)
+  AUTHORS   Fan,X. and Di Bisceglie,A.M.
+  TITLE     Genetic complexity and serum reactivity of HVR1 quasispecies of
+            hepatitis C virus in patients with cirrhosis
+  JOURNAL   Am. J. Gastroenterol. 97 (6), 1489-1495 (2002)
+   PUBMED   12094871
+REFERENCE   2  (bases 1 to 118)
+  AUTHORS   Fan,X. and DiBisceglie,A.M.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (03-DEC-1999) Internal Medicine, Saint Louis University
+            School of Medicine, 1402 South Grand Blvd., St. Louis, MO 63104,
+            USA
+FEATURES             Location/Qualifiers
+     source          1..118
+                     /organism="Hepatitis C virus"
+                     /mol_type="genomic DNA"
+                     /strain="HC41"
+                     /db_xref="taxon:11103"
+                     /clone="S8"
+     CDS             complement(<1..>118)
+                     /note="E2 region"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="AAF30134.1"
+                     /db_xref="GI:6856875"
+                     /translation="VGNWAKVLIVMLLFAGVDGSTHVTGGAPAHTTRQVASLF"
+ORIGIN      
+        1 aaaagaggct ggctacttgg cgggtggtgt gggctggcgc accccccgtc acgtgggtgc
+       61 tcccgtcgac accagcaaag agcagcatca caatcaaaac cttagcccag ttccccac
+//

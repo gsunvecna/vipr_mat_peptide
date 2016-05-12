@@ -1,0 +1,56 @@
+LOCUS       DQ085359                 939 bp    RNA     linear   VRL 06-JUL-2006
+DEFINITION  Rubella virus isolate AGU_CALIFORNIA_USA_1998 nonstructural
+            protease protein gene, partial cds.
+ACCESSION   DQ085359
+VERSION     DQ085359.1  GI:69146914
+KEYWORDS    .
+SOURCE      Rubella virus
+  ORGANISM  Rubella virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Togaviridae;
+            Rubivirus.
+REFERENCE   1  (bases 1 to 939)
+  AUTHORS   Zhou,Y., Zheng,D., Zhao,H., Suppiah,S., Ushijima,H. and Frey,T.K.
+  TITLE     Genomic Analysis of Diverse Rubella Virus Isolates
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 939)
+  AUTHORS   Zhou,Y., Zheng,D., Zhao,H., Suppiah,S., Ushijima,H. and Frey,T.K.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (03-JUN-2005) Biology, Georgia State University, 24
+            Peachtree Center Ave, Atlanta, GA 30303, USA
+FEATURES             Location/Qualifiers
+     source          1..939
+                     /organism="Rubella virus"
+                     /mol_type="genomic RNA"
+                     /isolate="AGU_CALIFORNIA_USA_1998"
+                     /db_xref="taxon:11041"
+     CDS             <1..>939
+                     /note="NPS"
+                     /codon_start=1
+                     /product="nonstructural protease protein"
+                     /protein_id="AAZ03628.1"
+                     /db_xref="GI:69146915"
+                     /translation="PPAPCPAGDPSRPAQRSASPPASPPGDATAPEPRGCQGCELCRY
+                     TRVTNDRAYVNLWLERDRGATSWAMRIPEVVVYGPEHLATHFPLNHYSVLKPAEVRPP
+                     RGMCGSDMWRCRGWQGMPQVRCTPSNAHAALCRTGVPPRVSTRGGELDPNTCWLRAAA
+                     NVAQAARACGAYTSAGCPRCAYGRALSEARTHEDFAALSQRWSASHADASPDGTGDPL
+                     DPLMETVGCTCSRVWVGSEHEAPPDHLLVSLHRAPNGPWGVVLEVRARPEGGNPTGHF
+                     VCAVGGGPRRVSDRPHLWLAVPLSRGGGTCAATDEGL"
+ORIGIN      
+        1 ccccccgcac cttgccccgc cggcgacccg agccgaccgg ctcagcgcag cgcgtcgccc
+       61 ccagcgtccc cccctgggga cgctaccgcc cccgagcccc gcggatgcca ggggtgcgaa
+      121 ctctgccggt acacgcgcgt caccaatgac cgcgcctatg tcaacttgtg gctcgagcgc
+      181 gatcgcggcg ccaccagctg ggccatgcgc atccccgagg tggttgtcta cgggccggag
+      241 cacctcgcca cgcattttcc attaaaccac tacagcgtgc tcaagcccgc ggaggtcagg
+      301 cccccgcgag gcatgtgcgg gagcgacatg tggcgctgtc gcggctggca gggcatgccg
+      361 caggtgcggt gcaccccctc caatgctcac gccgccctgt gccgcacagg cgtgccccct
+      421 cgggtgagca cgcgaggcgg cgagctagac ccaaacacct gctggctccg cgccgccgcc
+      481 aacgttgcgc aggctgcgcg cgcctgcggc gcctacacga gcgccgggtg ccccaggtgc
+      541 gcctacggcc gcgccctgag cgaagcccgc acgcatgagg acttcgccgc gctgagccag
+      601 cggtggagcg cgagccacgc cgatgcctcc cctgatggca ccggggaccc cctcgacccc
+      661 ctgatggaga ccgtgggatg cacctgttcg cgcgtgtggg tcggctccga gcatgaggcc
+      721 ccgcctgacc acctcctggt gtccctccac cgcgccccca acggtccgtg gggcgtagtg
+      781 ctcgaggtgc gagcgcgccc cgaggggggc aacccaaccg gacacttcgt ctgcgcagtc
+      841 ggcggcggcc cacgccgcgt ctcggaccgc ccccaccttt ggctcgcggt ccccctgtct
+      901 cggggcggcg gcacctgtgc cgccaccgac gaggggctg
+//
+

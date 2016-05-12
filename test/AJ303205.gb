@@ -1,0 +1,56 @@
+LOCUS       AJ303205                 212 bp    mRNA    linear   VRL 05-DEC-2001
+DEFINITION  Hepatitis C virus type 1b partial mRNA for p7/NS2 protein
+            (e2(p7)-NS2 gene), clone B211a1.
+ACCESSION   AJ303205
+VERSION     AJ303205.1  GI:17384699
+KEYWORDS    E2(p7)-NS2 gene; p7/NS2 protein; protease.
+SOURCE      Hepatitis C virus subtype 1b
+  ORGANISM  Hepatitis C virus subtype 1b
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Cabot,B., Martell,M., Esteban,J.I., Piron,M., Otero,T., Esteban,R.,
+            Guardia,J. and Gomez,J.
+  TITLE     Longitudinal evaluation of the structure of replicating and
+            circulating hepatitis C virus quasispecies in nonprogressive
+            chronic hepatitis C patients
+  JOURNAL   J. Virol. 75 (24), 12005-12013 (2001)
+   PUBMED   11711591
+REFERENCE   2  (bases 1 to 212)
+  AUTHORS   Cabot,B.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (13-DEC-2000) Cabot B., Liver Unit, Hospital General Vall
+            d'Hebron, Passeig Vall d'Hebron 119-129, 08035, SPAIN
+FEATURES             Location/Qualifiers
+     source          1..212
+                     /organism="Hepatitis C virus subtype 1b"
+                     /mol_type="mRNA"
+                     /isolate="patient F"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:31647"
+                     /map="E2(p7)-NS2"
+                     /clone="B211a1"
+                     /cell_type="hepatocyte"
+                     /tissue_type="liver"
+                     /lab_host="Escherichia Coli"
+                     /country="Spain: Catalonia"
+                     /note="genotype 1b"
+     gene            <1..>212
+                     /gene="e2(p7)-NS2"
+     CDS             <1..>212
+                     /gene="e2(p7)-NS2"
+                     /function="protease"
+                     /codon_start=3
+                     /product="p7/NS2 protein"
+                     /protein_id="CAC83164.1"
+                     /db_xref="GI:17384700"
+                     /db_xref="GOA:Q8UXA5"
+                     /db_xref="UniProtKB/TrEMBL:Q8UXA5"
+                     /translation="AAWYIKGRLVPGAAYALYGVWPLLLLLLTLPPRAYAMDREMAAS
+                     CGGVVFAGLILLTLSPHYKVLLAKLI"
+ORIGIN      
+        1 gcgctgcctg gtacatcaag ggcaggctgg tccctggggc ggcatatgct ctctatggcg
+       61 tatggccgct gctcctgctc ctgttaacgt taccaccacg agcatacgcc atggaccggg
+      121 agatggctgc atcgtgcggg ggtgtggttt tcgcaggtct gatcctcctg accttgtcac
+      181 cacactacaa ggtgctcctc gccaagctca ta
+//

@@ -1,0 +1,61 @@
+LOCUS       AB488523                 283 bp    RNA     linear   VRL 14-AUG-2009
+DEFINITION  Hepatitis C virus subtype 1b gene for polyprotein, partial cds,
+            isolate: HC-P12_01.
+ACCESSION   AB488523
+VERSION     AB488523.1  GI:241988805
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 1b
+  ORGANISM  Hepatitis C virus subtype 1b
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Toda,T., Mitsui,T., Tsukamoto,Y., Ebara,T., Hirose,A., Masuko,K.,
+            Nagashima,S., Takahashi,M. and Okamoto,H.
+  TITLE     Molecular analysis of transmission of hepatitis C virus in a nurse
+            who acquired acute hepatitis C after caring for a viremic patient
+            with epistaxis
+  JOURNAL   J. Med. Virol. 81 (8), 1363-1370 (2009)
+   PUBMED   19551839
+REFERENCE   2  (bases 1 to 283)
+  AUTHORS   Okamoto,H.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (26-FEB-2009) Contact:Hiroaki Okamoto Jichi Medical
+            University School of Medicine, Division of Virology, Department of
+            Infection and Immunity; 3311-1 Yakushiji, Shimotsuke-Shi, Tochigi
+            329-0498, Japan
+FEATURES             Location/Qualifiers
+     source          1..283
+                     /organism="Hepatitis C virus subtype 1b"
+                     /mol_type="genomic RNA"
+                     /strain="HC-P12"
+                     /isolate="HC-P12_01"
+                     /isolation_source="human serum"
+                     /host="Homo sapiens"
+                     /db_xref="taxon:31647"
+                     /country="Japan"
+                     /note="genotype 1b"
+     CDS             <1..>283
+                     /codon_start=2
+                     /product="polyprotein"
+                     /protein_id="BAH79765.1"
+                     /db_xref="GI:241988806"
+                     /translation="SPTTALVVSQLLRIPQAIVDMVVGAHWGVLAGLAYYSMVGNWAK
+                     VLIVMLLFSGVDGATRTGGTITMGGSQARTTGGVVSFFTRGAAQNIQLVN"
+     mat_peptide     <1..172
+                     /gene="E1"
+                     /product="envelope protein 1"
+     mat_peptide     173..>283
+                     /gene="E2"
+                     /product="envelope protein 2"
+     gene            <1..172
+                     /gene="E1"
+     gene            173..>283
+                     /gene="E2"
+ORIGIN      
+        1 gtcgcccaca acagccctag tggtgtcgca gttgctccgg atcccacaag ctatcgtgga
+       61 tatggtggtg ggggcccatt ggggagtcct ggcgggcctt gcctactatt ccatggtggg
+      121 gaactgggct aaggtgctga ttgtgatgct gcttttctcc ggcgttgacg gggccacgag
+      181 gacggggggg accatcacga tgggggggtc gcaagcccgc accaccggtg gggttgtgag
+      241 cttcttcaca cggggggccg ctcagaatat ccagctcgtg aac
+//
+

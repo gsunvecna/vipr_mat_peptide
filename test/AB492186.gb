@@ -1,0 +1,76 @@
+LOCUS       AB492186                1577 bp    RNA     linear   VRL 17-JUN-2009
+DEFINITION  Hepatitis C virus subtype 1b gene for polyprotein, partial cds,
+            strain: T5S-2.
+ACCESSION   AB492186
+VERSION     AB492186.1  GI:226235357
+KEYWORDS    .
+SOURCE      Hepatitis C virus subtype 1b
+  ORGANISM  Hepatitis C virus subtype 1b
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Hepacivirus.
+REFERENCE   1
+  AUTHORS   Sugiyama,K., Suzuki,K., Nakazawa,T., Funami,K., Hishiki,T.,
+            Ogawa,K., Saito,S., Shimotohno,K.W., Suzuki,T., Shimizu,Y.,
+            Tobita,R., Hijikata,M., Takaku,H. and Shimotohno,K.
+  TITLE     Genetic analysis of hepatitis C virus with defective genome and its
+            infectivity in vitro
+  JOURNAL   J. Virol. 83 (13), 6922-6928 (2009)
+   PUBMED   19369330
+REFERENCE   2  (bases 1 to 1577)
+  AUTHORS   Sugiyama,K.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (26-MAR-2009) Contact:Kazuo Sugiyama Keio University,
+            Center for Integrated Medical Research; Shinanomachi 35,
+            Shinjuku-ku, Tokyo 160-8582, Japan
+FEATURES             Location/Qualifiers
+     source          1..1577
+                     /organism="Hepatitis C virus subtype 1b"
+                     /mol_type="genomic RNA"
+                     /strain="T5S-2"
+                     /db_xref="taxon:31647"
+                     /note="deletion mutant of hepatitis C virus"
+     CDS             300..>1577
+                     /note="contains C, E1 partial protein, NS2 partial
+                     protein, NS3 partial protein"
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="BAH47647.1"
+                     /db_xref="GI:226235358"
+                     /translation="MSTNPKPQRKTKRNTNRRPQDVKFPGGGQIVGGVYLLPRRGPRL
+                     GVRATRKTSERSQPRGRRQPIPKARRPEGRTWAQPGYPWPLYGNEGLGWAGWLLSPRG
+                     SRPSWGPTDPRRRSRNLGKVIDTLTCGFADLMGYIPLVGAPLGGAARALAHGVRVLED
+                     SVNYATGNLPGCSFSIFLLALLSCLTIPASAYGVRNVSGVYHATSDCSNLSIFDITKL
+                     LLAIFSPVLVLQAGLVRVPYFVRAQGLIRACMLARKVAGGHYVQMALLKLAALTGTYV
+                     YNHLTPLRDWAHEGLRDLAVAVEPVVFSDMETKIITWGADTAACGDIISGLPVSARRG
+                     REILLGPADSLQGQGWRLLAPITAYSQQTRGLLGCIITSLTGRDKNQVEGEVQVVSTA
+                     TQSFLATCINGVCWTVYHGAGSKTLAGPKGPITQ"
+ORIGIN      
+        1 ccctgtgagg aactactgtc ttcacgcaga aagcgtctag ccatggcgtt agtatgagtg
+       61 tcgtgcagcc tccaggaccc cccctcccgg gagagccata gtggtctgcg gaaccggtga
+      121 gtacactgga attgccagga cgaccgggtc ctttcttgga tcaacccgct caatgcctgg
+      181 agatttgggc gtgcccccgc gagactgcta gccgagtagt gttgggtcgc gaaaggcctt
+      241 gtggtactgc ctgatagggt gcttgcgagt gccccgggag gtctcgtaga ccgtgcacca
+      301 tgagcacgaa tcctaaacct caaagaaaaa ccaaacgtaa caccaaccgc cgcccacagg
+      361 acgtcaagtt cccgggcggt ggtcagatcg ttggtggagt ttacctgttg ccgcgcaggg
+      421 gccccaggtt gggtgtgcgc gcgactagga agacttccga gcggtcgcaa cctcgcggaa
+      481 ggcgacaacc tatccccaag gctcgccgac ccgagggcag gacctgggct cagcccgggt
+      541 acccttggcc cctctatggc aatgagggct tggggtgggc aggatggctc ctgtcacccc
+      601 gcggctcccg gcctagttgg ggccccactg acccccggcg taggtcgcgt aatttgggta
+      661 aggtcatcga taccctcaca tgcggcttcg ccgatctcat ggggtatatt ccgcttgtcg
+      721 gcgcccccct agggggcgct gccagggccc tggcacatgg tgtccgggtt ctggaggaca
+      781 gcgtgaatta tgcaacaggg aatttgcccg gttgctcttt ctctatcttc ctcttggctc
+      841 tgctatcctg tttgaccatc ccagcttccg cttacggagt gcgcaacgtg tccggggtct
+      901 accatgccac gagcgactgc tccaacttaa gcatctttga catcaccaaa ctcttgctcg
+      961 ccatattcag cccggtcttg gtgctccagg ctggcttagt gagagtgccg tacttcgtac
+     1021 gcgctcaagg cctcattcgt gcatgcatgt tggcgcggaa agtcgctggg ggtcattatg
+     1081 tccaaatggc cctcttgaag ctggccgcgc tgacgggcac gtacgtttac aaccatctta
+     1141 ctccactgcg ggactgggcc catgagggcc tacgagacct tgcggtggca gtagagcccg
+     1201 tcgtcttctc tgacatggag accaagatca ttacctgggg ggcagacacc gcggcctgcg
+     1261 gagacatcat ctcgggttta cccgtctccg cccgaagggg gagggagata cttttgggac
+     1321 cggccgatag ccttcaaggg caggggtggc gactcctcgc gcccatcacg gcctactccc
+     1381 aacagacgcg gggcctactc ggttgcatca tcactagcct cacaggccgg gacaagaacc
+     1441 aggtcgaggg ggaggttcaa gtggtctcca ccgcaacgca atctttcctg gcgacctgta
+     1501 tcaacggcgt gtgttggact gtctaccacg gcgctggctc aaagacccta gccggcccaa
+     1561 aaggtccgat cacccaa
+//
+

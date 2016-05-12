@@ -73,23 +73,21 @@ sub check_old_annotation {
             $debug && print STDERR "$subname: accession=$acc\n";
 #            if ($faa1 && $faa3 && $faa1 eq $faa3) {
             if ($faa1 && $faa3 && !$diff_fasta) {
-#                print STDOUT "$subname: accession=$acc \$faa1 == \$faa3 identical\n";
-                print STDERR "$subname: accession=$acc \$faa1 == \$faa3 identical\n";
+                $debug && print STDERR "$subname: accession=$acc \$faa1 == \$faa3 identical\n";
             } elsif ($faa1 && $faa3) {
-                print STDERR "$subname: \$faa3=\n".Dumper($faa3)."End of \$faa3\n";
-#                print STDOUT "$subname: accession=$acc \$faa1 != \$faa3 different\n";
-                print STDERR "$subname: accession=$acc \$faa1 != \$faa3 different\n";
-                print STDERR "$subname: diff = '".Annotate_Verify::diff_2str( $faa1, $faa3)."'\n";
-                print STDERR "$subname: diff shown above\n";
-                print STDERR "$subname: diff EOF\n";
+                $debug && print STDERR "$subname: \$faa3=\n".Dumper($faa3)."End of \$faa3\n";
+                $debug && print STDERR "$subname: accession=$acc \$faa1 != \$faa3 different\n";
+                $debug && print STDERR "$subname: diff = '".Annotate_Verify::diff_2str( $faa1, $faa3)."'\n";
+                $debug && print STDERR "$subname: diff shown above\n";
+                $debug && print STDERR "$subname: diff EOF\n";
             } elsif (!$faa1 && !$faa3) {
-                print STDERR "$subname: accession=$acc \$faa1 & \$faa3 are empty\n" if (!$faa3);
-                print STDERR "$subname: Couldn't find earlier annotation for accession=$acc $fn\n";
+                $debug && print STDERR "$subname: accession=$acc \$faa1 & \$faa3 are empty\n" if (!$faa3);
+                $debug && print STDERR "$subname: Couldn't find earlier annotation for accession=$acc $fn\n";
             } elsif (!$faa1) {
-#                print STDOUT "$subname: accession=$acc \$faa1 is empty\n" if (!$faa1);
+                $debug && print STDOUT "$subname: accession=$acc \$faa1 is empty\n" if (!$faa1);
             } elsif (!$faa3) {
-                print STDERR "$subname: accession=$acc \$faa3 is empty\n" if (!$faa3);
-                print STDERR "$subname: Couldn't find earlier annotation for accession=$acc $fn\n";
+                $debug && print STDERR "$subname: accession=$acc \$faa3 is empty\n" if (!$faa3);
+                $debug && print STDERR "$subname: Couldn't find earlier annotation for accession=$acc $fn\n";
             }
 
 
@@ -180,8 +178,9 @@ sub check_ranges {
     my @str = ('');
 #    print STDERR "check_ranges: \$feats is a ".$feats."\n";
     $debug && print STDERR "$subname: \$cds = \n".Dumper($cds)."\n";
-    $feats = [sort {$a->location->start <=> $b->location->start} @{$feats}];
-#    print STDERR "check_ranges: \$feats is a ".$feats."\n";
+    $debug && print STDERR "check_ranges: \$feats is a ".Dumper($feats)."\n";
+#    $feats = [sort {$a->location->start <=> $b->location->start} @{$feats}];
+    $debug && print STDERR "check_ranges: \$feats is a ".Dumper($feats)."\n";
     my $head_tail = '';
     my $head_tail_print_length = 5;
     for (my $i=0; $i<=$#{@$feats}; $i++) {
@@ -483,7 +482,7 @@ sub check_alignment {
 sub diff_2str {
     my ($str1, $str2) = @_;
 
-    my $debug = 1 && $debug_all;
+    my $debug = 0 && $debug_all;
     my $diff;
 
     my (@a1, @a2);

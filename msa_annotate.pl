@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.1.2'); # Oct 13, 2010
+use version; our $VERSION = qv('1.1.3'); # Sep 26, 2011
 use Getopt::Long;
 use Data::Dumper;
 use English;
@@ -13,13 +13,13 @@ use Bio::Seq;
 use Bio::Tools::Run::Alignment::Muscle;
 use IO::String;
 
-## Path to the MUSCLE binaries. You need to configure this, if muscle is not in the path already
+## Path to the MUSCLE binaries. You need to configure this, if muscle is not already in the path
 #	BEGIN {$ENV{MUSCLEDIR} = '/net/home/gsun/prog/muscle/mus37'}
 #use lib qw(/net/home/gsun/northrop/matpeptide/msa_annotate-1.1.2/);
-use Annotate_gbk;		# for annotation from genbank
-use Annotate_Muscle;
-use Annotate_Util;
-use Annotate_Verify;
+#use Annotate_gbk;		# for annotation from genbank
+#use Annotate_Muscle;
+#use Annotate_Util;
+#use Annotate_Verify;
 use Annotate_misc;
 
 my $debug = 0;
@@ -29,7 +29,7 @@ my $debug = 0;
 # msa_annotate.pl
 #
 # This script takes a viral genome in genbank format, uses a refseq to annotate any polyproptein within.
-# It outputs a file named as <accession>_matpeptide.faa with the annotated mat_peptides in fasta format.
+# It outputs a file named as <accession>_matpept_msagbk.faa with the annotated mat_peptides in fasta format.
 #
 # INPUT: directory of input file, genome file name
 #
@@ -40,19 +40,19 @@ my $debug = 0;
 # Specify the MUSCLE executable location in your environment as directed above!
 #
 # USAGE:
-# ./msa_annotate.pl -d [dir_path] -i [inputFile.fasta]
+# For single genome
+# ./msa_annotate.pl -d [dir_path] -i [inputFile.gb]
+# For multiple input genomes within a directory
+# ./msa_annotate.pl -d [dir_path] -l [directory]
 # e.g.
 # ./msa_annotate.pl -d ./ -i NC_001477_test.gb >> out.txt 2>> err.txt
+# ./msa_annotate.pl -d ./ -l test >> test/out.txt 2>> test/err.txt
 #
 #    Authors: Chris Larsen, clarsen@vecna.com; Guangyu Sun, gsun@vecna.com;
-#    September 2010
+#    September 2011
 #
 #################
 
-## //OPTIONS// ##
-# (-d [dir_path] -i [inputFile.gb])
-
-##################
 
 ## //EXECUTE// ##
 
@@ -63,7 +63,7 @@ my $dir_path = './';
 my $useropts = GetOptions(
                  "d=s"  => \ $dir_path,    # Path to directory
                  "i=s"  => \ $infile,      # [inputFile.gbk]
-                 "l=s"  => \ $list_fn,     # directory with the gbk file
+                 "l=s"  => \ $list_fn,     # list of the gbk file
                  );
 $dir_path =~ s/[\/]$//;
 $list_fn =~ s/[\/]$//;
@@ -109,7 +109,7 @@ if ($infile) {
         my $ptn = '^\s*([^\s]+)(\.(gb|gbk|genbank))\s*$';
         $accs = Annotate_misc::list_dir_files( "$dir_path", $ptn);
         my $n = $#{@$accs}+1;
-        print STDERR "$exe_name: from directory: $dir_path/$list_fn, found $n gbk files.\n";
+        print STDERR "$exe_name: from directory: $dir_path, found $n gbk files.\n";
         for my $j (0 .. $#{@$accs}) {
             print STDERR "$exe_name: \$acc[$j]=$accs->[$j]->[1]\n";
         }

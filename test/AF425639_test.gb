@@ -1,0 +1,76 @@
+LOCUS       AF425639                1485 bp    RNA     linear   VRL 19-JUN-2003
+DEFINITION  Dengue virus type 1 strain CAREC 86471 envelope protein (E) gene,
+            partial cds.
+ACCESSION   AF425639
+VERSION     AF425639.1  GI:23451628
+KEYWORDS    .
+SOURCE      Dengue virus 1
+  ORGANISM  Dengue virus 1
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Dengue virus group.
+REFERENCE   1  (bases 1 to 1485)
+  AUTHORS   Goncalvez,A.P., Escalante,A.A., Pujol,F.H., Ludert,J.E., Tovar,D.,
+            Salas,R.A. and Liprandi,F.
+  TITLE     Diversity and evolution of the envelope gene of dengue virus type 1
+  JOURNAL   Virology 303 (1), 110-119 (2002)
+   PUBMED   12482662
+REFERENCE   2  (bases 1 to 1485)
+  AUTHORS   Goncalvez,A.P., Escalante,A.A., Pujol,F.H., Ludert,J.E., Tovar,D.,
+            Salas,R. and Liprandi,F.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (28-SEP-2001) CMBC, IVIC, Km 11 Carretera Panamericana,
+            Caracas 1020A, Venezuela
+FEATURES             Location/Qualifiers
+     source          1..1485
+                     /organism="Dengue virus 1"
+                     /mol_type="genomic RNA"
+                     /strain="CAREC 86471"
+                     /host="human"
+                     /db_xref="taxon:11053"
+                     /country="Trinidad and Tobago"
+                     /note="year of isolation: 1986"
+     gene            1..1485
+                     /gene="E"
+     CDS             1..>1485
+                     /gene="E"
+                     /codon_start=1
+                     /product="envelope protein"
+                     /protein_id="AAN32793.1"
+                     /db_xref="GI:23451629"
+                     /translation="MRCVGIGNRDFVEGLSGATWVDVVLEHGSCVTTMAKNKPTLDIE
+                     LLKTEVTNPAVLRKLCIEAKISNTTTDSRCPTQGEATLVEEQDANFVCRRTFVDRGWG
+                     NGCGLFGKGSLLTCAKFKCVTKLEGKIVQYENLKYSVIVTVHTGDQHQVGNETTEHGT
+                     IATITPQAPTSEIQLTDYGALTLDCSPRTGLDFNEMVLLTMKEKSWLVHKQWFLDLPL
+                     PWTSGASTSQETWNRQDLLVTFKTAHAKKQEVVVLGSQEGAMHTALTGATEIQTSGTT
+                     TIFAGHLKCRLKMDKLTLKGMSYVMCTGSFKLEKEVAETQHGTVLVQVKYEGTDAPCK
+                     IPFSTQDEKGVTQNGRLITANPIVTDKEKPVNIETEPPFGESYIVVGAGEKALKLSWF
+                     KKGSSIGKMFEATARGARRMAILGDTAWDFGSIGGVFTSVGKLVHQVFGTAYGVLFSG
+                     VSWTMKIGIGILLTWLGLNSRSTSLSMTCIAVGMVTLYLGVMVQA"
+ORIGIN      
+        1 atgcgatgcg tgggaatagg caacagagac ttcgttgaag gactgtcagg agcaacgtgg
+       61 gtggacgtgg tattggagca tggaagctgc gtcaccacca tggcaaaaaa taaaccaaca
+      121 ttggacattg aactcttgaa gacggaggtc acgaaccctg ccgtcttgcg taaactgtgc
+      181 attgaagcta aaatatcaaa caccaccacc gattcaagat gtccaacaca aggagaggct
+      241 acgctggtgg aagaacaaga cgcgaacttt gtgtgtcgac gaacgtttgt ggacagaggc
+      301 tggggtaatg gctgcggact atttggaaaa ggaagcctac tgacgtgtgc taagttcaag
+      361 tgtgtgacaa aactagaagg aaagatagtt caatatgaaa acttaaaata ttcagtgata
+      421 gtcactgtcc acactgggga ccagcaccag gtgggaaacg agactacaga acatggaaca
+      481 attgcaacca taacacctca agctcctacg tcggaaatac agctgaccga ctacggagcc
+      541 ctcacattgg actgctcacc tagaacaggg ctggacttta atgagatggt gctattgaca
+      601 atgaaagaaa aatcatggct tgtccacaaa caatggtttc tagacttacc actgccttgg
+      661 acttcggggg cttcaacatc ccaagagact tggaacagac aagatttgct ggtcacattc
+      721 aagacagctc atgcaaagaa acaggaagta gtcgtactgg gatcacagga aggagcaatg
+      781 cacactgcgt tgactggggc gacagaaatc cagacgtcag gaacgacaac aatctttgca
+      841 ggacacctga aatgcagact aaaaatggat aaactgactt taaaagggat gtcatatgtg
+      901 atgtgcacag gctcatttaa gctagagaag gaagtggctg agacccagca tggaactgtt
+      961 ctagtgcagg ttaaatacga aggaacagat gcgccatgca agatcccctt ttcgacccaa
+     1021 gatgagaaag gagtgactca gaatgggaga ttgataacag ccaatcccat agttactgac
+     1081 aaagaaaaac cagtcaacat tgagacagaa ccaccttttg gtgagagcta catcgtggta
+     1141 ggggcaggtg aaaaagcttt gaaactaagc tggttcaaga aaggaagcag catagggaaa
+     1201 atgttcgaag caaccgcccg gggagcacga aggatggcta tcctgggaga caccgcatgg
+     1261 gacttcggct ctataggagg agtgttcacg tctgtgggaa aattggtaca ccaggttttt
+     1321 ggaaccgcat atggggttct gttcagcggt gtttcttgga ccatgaaaat aggaataggg
+     1381 attctgctga catggttggg attaaattca aggagcacgt cactttcgat gacgtgcatt
+     1441 gcagttggca tggtcacact gtacctagga gtcatggttc aagcg
+//
+

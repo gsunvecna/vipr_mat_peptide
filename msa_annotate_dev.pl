@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.1.2'); # Dec 06, 2010
+use version; our $VERSION = qv('1.1.3'); # Sep 26, 2011
 use File::Temp qw/ tempfile tempdir /;
 use Getopt::Long;
 use English;
@@ -16,7 +16,7 @@ use Bio::Tools::Run::StandAloneBlast;
 use Bio::Tools::Run::Alignment::Muscle;
 use IO::String;
 
-use lib qw(/net/home/gsun/northrop/matpeptide/msa_annotate-1.1.2/);
+use lib qw(/net/home/gsun/northrop/matpeptide/msa_annotate-1.1.3/);
 use GBKUpdate::Configuration;
 use GBKUpdate::Database;
 
@@ -55,21 +55,25 @@ my $test1      = 0;
 # Specify the blast executable location in your environment as directly below!
 #
 # USAGE:
+# For single input genome
+# ./msa_annotate.pl -r [refseq] -d [dir_path] -i [inputFile.gb]
+# For multiple input genomes within a directory
+# ./msa_annotate.pl -d [dir_path] -l [directory]
+# For multiple input genomes whose accession is in a list, and gbk files are in MySQL database
+# ./msa_annotate.pl -d [dir_path] -l [list_file.txt]
+# e.g.
+# ./msa_annotate.pl -d ./ -i NC_001477_test.gb >> out.txt 2>> err.txt
+# ./msa_annotate.pl -d ./ -l test >> test/out.txt 2>> test/err.txt
+# ./msa_annotate.pl -d test -l nuccore_result.txt >> test/out.txt 2>> test/err.txt
 #
-# ./msa_annotate.pl -r [refseq] -d [dir_path] -i [inputFile.fasta]
-# e.g. 
-#./msa_annotate.pl -r NC_001477.gb -d /home/gsun/northrop/matpeptide -i NC_001477_test.gb > out.txt 2> err.txt
 #	Authors Chris Larsen, clarsen@vecna.com; Guangyu Sun, gsun@vecna.com
-#	May 2010
+#	September 2011
 #
 #################
 
 ## Path to the BLAST binaries. You must configure this!
 my $blast_path = '/home/gsun/prog/blast/blast-2.2.20/bin';
 my $td = tempdir( CLEANUP => 1 );  # temp dir (threadsafe)
-
-## //OPTIONS// ##
-# (-r [refseq] -d [dir_path] -i [inputFile.fasta])
 
 # Get user-defined options
 my $refseq_required = 0;
@@ -79,6 +83,15 @@ my $list_fn   = '';
 my $dir_path  = './';
 my @aln_fn    = ();
 my $aln_fn    = \@aln_fn;
+
+my $exe_dir  = './';
+my $exe_name = $0;
+if ($exe_name =~ /^(.*[\/])([^\/]+[.]pl)$/i) {
+    $exe_dir  = $1;
+    $exe_name = $2;
+}
+print STDERR "$exe_name: $0 executing...\n";
+print STDERR "$exe_name: command='$0 @ARGV'\n";
 my $useropts = GetOptions(
                  "d=s"  => \ $dir_path,    # Path to directory
                  "i=s"  => \ $infile,      # [inputFile.gbk]
@@ -90,13 +103,6 @@ my $useropts = GetOptions(
 $dir_path =~ s/[\/]$//;
 $list_fn =~ s/[\/]$//;
 
-my $exe_dir  = './';
-my $exe_name = $0;
-if ($exe_name =~ /^(.*[\/])([^\/]+[.]pl)$/i) {
-    $exe_dir  = $1;
-    $exe_name = $2;
-}
-print STDERR "$exe_name: $0 executing...\n\n";
 print STDERR "$exe_name: Directory=$dir_path \talignment file='@$aln_fn'\n";
 
 # Either a genbank file or a folder/list of genbank files is required
@@ -136,7 +142,7 @@ if ("$infile") {
 
 } elsif ("$dir_path/$list_fn") {
 
-    print STDERR "$exe_name: Input accession numbers are in file/dir '$dir_path/$list_fn'\n";
+    print STDERR "$exe_name: Input accession numbers are in dir/file '$dir_path/$list_fn'\n";
     my $accs = [];
     if (-d "$dir_path/$list_fn") {
         $dir_path = "$dir_path/$list_fn";
@@ -208,9 +214,13 @@ if ("$infile") {
 
     if ( 1 ) {
         # MSA for each genome
+        $debug && print STDERR "$exe_name: sub Annotate_misc::process_list1 called\n";
         Annotate_misc::process_list1( $accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path);
     } else {
         # Giant MSA. For large set, requires long time, run out of time/memory, and possibly give wrong result b/c of gaps
+        if ( !$debug ) {
+            croak("$exe_name: sub Annotate_misc::process_list3 is for debug only. Quit.\n");
+        }
         Annotate_misc::process_list3( $accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path);
     }
 }

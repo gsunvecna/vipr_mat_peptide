@@ -6,7 +6,7 @@ use English;
 use Carp;
 use Data::Dumper;
 
-use version; our $VERSION = qv('1.1.2'); # February 09 2011
+use version; our $VERSION = qv('1.1.3'); # February 09 2011
 use File::Temp qw/ tempfile tempdir /;
 use Bio::SeqIO;
 use Bio::Seq;
@@ -31,49 +31,13 @@ my $debug_all = 1;
 ## //EXECUTE// ##
 
 my $taxon = {
-               loaded => 0,
-#               fn     => "../msa_annotate/Annotate_taxon_records.txt",
-               fn     => "Annotate_taxon_records.txt",
+               taxon_loaded => 0,
+               taxon_fn     => "Annotate_taxon_records.txt",
             };
-
-
-=head2 msa_get_gaps
-
-Takes an alignment, and an id, return the gaps within the alignment with such id
-
-=cut
-
-sub msa_get_gaps {
-    my ($aln, $id) = @_;
-
-    my $debug = 0 && $debug_all;
-    my $subname = 'msa_get_gaps';
-
-    my $seq = &msa_get_aln($aln, $id);
-    $debug && print "$subname: \$refaln = ".$seq->display_id()."\n";
-    $debug && print "$subname: \$refaln = ".$seq->start()."\n";
-    $debug && print "$subname: \$refaln = ".$seq->end()."\n";
-    $debug && print "$subname: \$refaln = ".$seq->alphabet()."\n";
-    $debug && print "$subname: \$refaln = ".$seq->length."\n";
-    $debug && print "$subname: \$refaln = ".$seq->seq."\n";
-
-    my @gaps = (''); # we don't need element 0, but need it to suppress error from print
-    for (my $i = 1; $i<= $seq->length; $i++) {
-        my $j;
-        $j = ($i==1) ? 1+ index($seq->seq,$aln->gap_char) : 1+ index($seq->seq,$aln->gap_char,$gaps[$#gaps]);
-        if ( $j>0 ) {
-            push @gaps, $j;
-            $i = $j;
-        } elsif ( $j==0 ) {
-            $i = $seq->length;
-            last;
-        }
-#        $gaps[1] && print "annotate_msa: i=$i j=$j\n";
-    }
-    $debug && print "$subname: \@gaps($#gaps)='@gaps'\n";
-
-    return (\@gaps);
-} # sub msa_get_gaps
+my $gene_symbol2 = {
+               symbol_loaded => 0,
+               symbol_fn     => "Annotate_symbol_records.txt",
+            };
 
 
 =head2 msa_get_aln
@@ -128,20 +92,14 @@ sub get_refpolyprots {
     my @ann = $inseq->annotation->get_Annotations('date_changed');
     $debug && print STDERR "$subname: accession=".$inseq->accession_number."\tdate=$ann[0]->{'value'}\n";
 
-#    $debug && print STDERR "$subname: \$debug=$debug\n";
-#    $debug && print STDERR "$subname: \$refseq=".ref($refseq)."\n";
-#    $debug && print STDERR "$subname: \$refseq->isa=".$refseq->isa('Bio::Seq::RichSeq')."\n" if ($refseq);
-#    $debug && print STDERR "$subname: \$refseq_fit=".Annotate_Util::check_refseq($refseq, $inseq)."\n";
-#    $debug && print STDERR "$subname: \$refseq_required=$refseq_required\n";
     if (!$refseq || !$refseq->isa('Bio::Seq::RichSeq') || !check_refseq($refseq, $inseq)) {
 
         $refseq = Annotate_Util::get_refseq( $inseq, $exe_dir);
         if (!$refseq) {
             my $acc = $inseq->accession;
             my $id  = $inseq->species->ncbi_taxid;
-            print STDERR "$subname: ERROR genome=".$acc." w/ taxid=".$id." is not covered in V$VERSION.\n";
-#            print STDOUT "$subname: ERROR genome=".$acc." w/ taxid=".$id." is not covered in V$VERSION.\n";
-            print STDERR "$subname: Please contact script author for any update.\n";
+            print STDERR "$subname: ERROR genome=".$acc." w/ taxid=".$id." is not covered in V$VERSION.";
+            print STDERR " Please contact script author for any update.\n";
             return undef;
         } else {
 #            print "$subname: \$refseq=$refseq\n\n";
@@ -155,16 +113,17 @@ sub get_refpolyprots {
         return $refseqs->{$refseq->accession_number};
     }
 
-    # going through all features in refseq, look for polyproptein CDS
+    # For a new refseq, go through all features in refseq, look for polyproptein CDS
     my $reffeats = [ $refseq->get_SeqFeatures ];
 
     for (my $refct = 0; $refct<=$#{@$reffeats}; $refct++) {
         my $reffeat = $reffeats->[$refct];
         $debug && print STDERR "$subname: \$refct=$refct \$reffeat=".$reffeat->primary_tag."\n";
-        next if ($reffeat->primary_tag ne 'CDS');
+        next if ($reffeat->primary_tag ne 'CDS'); # Looking for the first CDS
 
+        my $acc = $reffeat->seq->accession_number;
         my $is_poly = 0;
-        $is_poly = Annotate_Util::is_polyprotein( $reffeat, ['product', 'note']);
+        $is_poly = Annotate_Util::is_polyprotein( $reffeat, ['product', 'note'], $reffeats->[$refct+1]);
         if (!$is_poly) {
             $debug && print STDERR "$subname: \$refct=$refct \$is_poly=$is_poly is not a polyprotein, skipping\n";
             next; # only run for CDS labeled as polyprotein in refseq
@@ -177,9 +136,30 @@ sub get_refpolyprots {
 
         # Found a polyprotein CDS, now collect all mat_peptide and sig_peptide following it
         my $refmatps = [];
-        my %allowed_tags = ( 'mat_peptide' => 1, 'sig_peptide' => 1, );
+        my %allowed_tags = (
+                             'mat_peptide' => 1,
+                             'sig_peptide' => 1,
+                           );
         while ($refct<$#{@$reffeats} && $allowed_tags{$reffeats->[$refct+1]->primary_tag}) {
+
+            my $reffeat = $reffeats->[$refct+1];
+            # Special cases to correct refseq location of preM of NC_001809
+            if ($acc eq "NC_001809" && $reffeat->location->to_FTstring eq "466..972") {
+                $reffeat->location->end(969); # The annotation in gbk has 1 extra codon at the end
+                print STDERR "$subname: \$reffeat=\n".Dumper($reffeat)."End of $reffeat\n";
+            }
+            # Special cases to correct refseq location of preM of NC_003635
+            if ($acc eq "NC_003635" && $reffeat->location->to_FTstring eq "<440..>700") {
+                $reffeat->location->end(925); # The annotation stops at the pre part
+                print STDERR "$subname: \$reffeat=\n".Dumper($reffeat)."End of $reffeat\n";
+            }
+            
             $debug && print STDERR "$subname: \$refct=$refct \$reffeat=".$reffeats->[$refct+1]->primary_tag.' '.$reffeats->[$refct+1]->location->to_FTstring."\n";
+            if ($reffeats->[$refct+1]->primary_tag eq 'sig_peptide') {
+                ++$refct;
+                next;
+            };
+            
             push @$refmatps, $reffeats->[++$refct];
         }
 
@@ -201,12 +181,51 @@ sub get_refpolyprots {
         }
         $cds_id = 'unknown' if (!$cds_id);
 
-        push @$refpolyprots, [
+
+        # check if this is a new CDS, e.g. NC_001547.1 has a 2nd CDS that's part of 1st one
+        # If so, choose the longer CDS, and combine the list of mat_peptides
+        my $seen=0;
+#        foreach my $j (keys %$polyprots) {
+        foreach my $k (0 .. $#{@$refpolyprots}) {
+            my $old_cds = $refpolyprots->[$k]->[1];
+            $debug && print STDERR "$subname: \$k=$k \$old_cds=\n".Dumper($old_cds)."end of \$old_cds\n\n";
+            $debug && print STDERR "$subname: \$k=$k \$refcds=\n".Dumper($refcds)."end of \$refcds\n\n";
+            my $s1 = Annotate_Util::get_new_translation( $old_cds, $old_cds);
+            my $s2 = Annotate_Util::get_new_translation( $refcds, $refcds);
+            $debug && print STDERR "$subname: \$s1=$s1\n";
+            $debug && print STDERR "$subname: \$s2=$s2\n";
+            if ($s1 =~ /$s2/i || $s2 =~ /$s1/i) { # $s1 is related to $s2
+              $seen=1;
+              printf STDERR "$subname: old CDS=%d..%d is related to CDS=%d..%d, skip the shorter one\n", $old_cds->location->start, $old_cds->location->end, $refcds->location->start, $refcds->location->end;
+              $old_cds = $refcds if ($s2 =~ /$s1/i);
+              # See if each mat_peptide is a duplicate, leave out duplicates. E.g. NC_003899
+              foreach my $refmatp (@$refmatps) {
+                my $seen1 = 0;
+                for my $n (2 .. $#{$refpolyprots->[$k]}) {
+                  my $refpolyprot = $refpolyprots->[$k]->[$n]->location;
+                  if ($refmatp->location->start == $refpolyprot->start || $refmatp->location->end == $refpolyprot->end) {
+                     $seen1 = 1;
+                  }
+                }
+                push @{$refpolyprots->[$k]}, $refmatp if (!$seen1);
+              }
+              last;
+            } else {
+              # if $s1 is not related to $s2
+              $debug && print STDERR "$subname: \$s1 is not related to \$s2\n";
+            }
+        }
+#        }
+
+        if (!$seen && $#{@$refmatps}>=0) {
+            $debug && print STDERR "$subname: $#{@$refmatps}+1 mat_peptides in ".$refseq->accession_number."|$cds_id\n";
+            push @$refpolyprots, [
                                $cds_id,
                                $refcds,
                                @$refmatps,
-                             ];
-        $debug && print STDERR "$subname: \$#refpolyprots=$#{@$refpolyprots}\n";
+                                 ];
+        }
+        $debug && print STDERR "$subname: \$#refpolyprots=$#{@$refpolyprots}+1\n";
         $debug && print STDERR "$subname: \$refpolyprots=\n".Dumper($refpolyprots)."end of \$refpolyprots\n\n";
     }
 
@@ -215,24 +234,35 @@ sub get_refpolyprots {
 
 
 sub is_polyprotein {
-    my ($feat, $allowed_tags) = @_;
+    my ($feat, $allowed_tags, $feat2) = @_;
+#        $is_poly = Annotate_Util::is_polyprotein( $reffeat, ['product', 'note']);
 
     my $debug = 0 && $debug_all;
+    my $subname = 'is_polyprotein';
 
     my $is_poly = 0;
     foreach my $tag (@$allowed_tags) {
-#        $debug && print STDERR "is_polyprotein: \$refct=$refct \$tag=$tag\n";
+#        $debug && print STDERR "$subname: \$refct=$refct \$tag=$tag\n";
         next if (!$feat->has_tag($tag));
-#        $debug && print STDERR "is_polyprotein: \$refct=$refct Found \$tag=$tag\n";
+#        $debug && print STDERR "$subname: \$refct=$refct Found \$tag=$tag\n";
         my @tag = $feat->get_tag_values($tag);
         foreach my $t (@tag) {
-#            $debug && print STDERR "is_polyprotein: \$refct=$refct \$t=$t\n";
+#            $debug && print STDERR "$subname: \$refct=$refct \$t=$t\n";
             if ($t =~ /polyprotein/i) {
                 $is_poly = 1;
                 last;
             }
         }
+        last if $is_poly;
     }
+
+    if (!$is_poly && $feat2) { {
+        $debug && print STDERR "$subname: \$is_poly=$is_poly \$feat2=$feat2\n";
+        last if ($feat2->primary_tag ne 'mat_peptide');
+        last if ($feat2->location->start < $feat->location->start);
+        last if ($feat->location->end   < $feat2->location->end);
+        $is_poly = 1;
+    } }
 
     return $is_poly;
 } # sub is_polyprotein
@@ -270,6 +300,7 @@ sub get_polyprots {
         }
         my $refcds = $reffeat;
         my $feats = [ $inseq->get_SeqFeatures ];
+        my $found_polyprot = 0;
         for (my $ct = 0; $ct<=$#{@$feats}; $ct++) {
             my $feat = $feats->[$ct];
 #            $debug && print STDERR "$subname: \$ct=$ct \$feat=".$feat->primary_tag."\n";
@@ -297,10 +328,11 @@ sub get_polyprots {
             my $match_refcds = 0;
             $match_refcds = &match_cds_bl2seq($cds, $refcds);
             if (!$match_refcds) {
-                print STDERR "$subname: \$ct=$ct \$feat=".$feat->primary_tag." doesn't match refcds\n";
+                $debug && print STDERR "$subname: \$ct=$ct \$feat=".$feat->location->to_FTstring." doesn't match refcds".$refcds->location->to_FTstring."\n";
                 $comment = "CDS sequence doesn't match refseq";
                 next;
             }
+            $found_polyprot = 1;
 
             # Found a polyprotein CDS, now collect all mat_peptide and sig_peptide following it
             my $matps = [];
@@ -322,18 +354,20 @@ sub get_polyprots {
                 my $old_cds = $polyprots->{$j}->[$k]->[0];
                 $debug && print STDERR "$subname: \$j=$j \$k=$k \$old_cds=\n".Dumper($old_cds)."end of \$old_cds\n\n";
                 $debug && print STDERR "$subname: \$j=$j \$k=$k \$cds=\n".Dumper($cds)."end of \$cds\n\n";
-                my $s1 = Annotate_Util::get_new_translation($old_cds, $old_cds);
-                my $s2 = Annotate_Util::get_new_translation($cds, $cds);
+                my $s1 = Annotate_Util::get_new_translation( $old_cds, $old_cds);
+                my $s2 = Annotate_Util::get_new_translation( $cds, $cds);
                 $debug && print STDERR "$subname: \$s1=$s1\n";
                 $debug && print STDERR "$subname: \$s2=$s2\n";
+                my $loc = $cds->location;
+                my $old_loc = $old_cds->location;
                 if ($s1 =~ /$s2/i) { # $s1 is same to or longer than $s2
-                    $debug && print STDERR "$subname: \$s1 is same to or longer than \$s2\n";
+                    printf STDERR "$subname: CDS=%d..%d is same to or longer than CDS=%d..%d, skip 2nd CDS\n", $old_loc->start, $old_loc->end, $loc->start, $loc->end;
                     $seen=1;
                     push @{$polyprots->{$j}->[$k]}, @$matps;
                     last;
                 } elsif ($s2 =~ /$s1/i) {
                     # if $s1 is shorter than $s2, need to update $old_cds, and append any mat_peptide to list
-                    $debug && print STDERR "$subname: \$s2 is same to or longer than \$s1\n";
+                    printf STDERR "$subname: CDS=%d..%d is shorter than CDS=%d..%d, skip 1st CDS\n", $old_loc->start, $old_loc->end, $loc->start, $loc->end;
                     $seen=1;
                     $old_cds = $cds;
                     push @{$polyprots->{$j}->[$k]}, @$matps;
@@ -344,7 +378,6 @@ sub get_polyprots {
                 }
               }
             }
-
             if (!$seen) {
                 push @{$polyprots->{$refset->[0]}}, [$cds, @$matps]; # $refset->[0] is CDS_id of refseq
                 $num_cds++;
@@ -354,21 +387,17 @@ sub get_polyprots {
             $debug && print STDERR "$subname: \$polyprots=\n".Dumper($polyprots)."end of \$polyprots\n\n";
 
         }
-
-        print STDERR "$subname: \$refseq=".$reffeat->seq->accession_number."   \$inseq=".$acc;
-        print STDERR "  \$num_cds=$num_cds\n";
+        if (!$found_polyprot) {
+            print STDERR "$subname: No corresponding polyprotein for \$refseq=".$reffeat->seq->accession_number."|CDS=".$reffeat->location->to_FTstring." in \$inseq=$acc\n";
+        }
+        print STDERR "$subname: Found polyprotein for \$refseq=".$reffeat->seq->accession_number." \$i=$i in  \$inseq=$acc  \$num_cds=$num_cds\n";
 
     } #     for (my $i = 0; $i<=$#{@$refpolyprots}; $i++)
 
     my $n = [keys %$polyprots];
     $debug && print STDERR "$subname: polyprotein CDS for acc=$acc \$n=$#{@$n}\n";
     $debug && print STDERR "$subname: \$polyprots=\n".Dumper($polyprots)."end of \$polyprots\n\n";
-    if ($#{@$n} <0) {
-        print STDERR "$subname: ERROR: Can't find any polyprotein CDS for acc=$acc \$n=$#{@$n}.\n";
-#        print STDOUT "$subname: ERROR: Can't find any polyprotein CDS for acc=$acc \$n=$#{@$n}.\n";
-    } else {
-    	$comment = "Found $#{@$n} CDS suitable for annotation"
-    }
+    $comment = "Found $#{@$n} CDS for acc=$acc suitable for annotation";
 
     return ($polyprots, $num_cds, $comment);
 } # sub get_polyprots
@@ -388,6 +417,7 @@ sub match_cds_bl2seq {
     my $subname = 'match_cds_bl2seq';
 
     my $match_cds = 0;
+    my $emsgs = '';
 
     my @values = $refcds->get_tag_values('translation');
     my $s1 = $values[0];
@@ -403,28 +433,33 @@ sub match_cds_bl2seq {
     # Look at the hit
     my $hit_cds = $bl2seq_result->next_hit;
     $debug && print STDERR "$subname: \$hit_cds=\n".Dumper($hit_cds)."end of \$hit_cds\n\n";
+    return $match_cds if (!defined($hit_cds));
     while (my $hsp_cds = $hit_cds->next_hsp) {
         $debug && print STDERR "$subname: \$hsp_cds=\n".Dumper($hsp_cds)."end of \$hsp_cds\n\n";
 
         $s1 = $s1<$s2 ? $s1 : $s2;
-        $debug && print STDERR "$subname: \$s1=$s1 length of conserved=".$hsp_cds->{'CONSERVED'}."\n";
+        my $hsp_cds_conserved = (exists($hsp_cds->{'CONSERVED'})) ? $hsp_cds->{'CONSERVED'} : $hsp_cds->{'num_conserved'};
+        $debug && print STDERR "$subname: \$s1=$s1 length of conserved=$hsp_cds_conserved\n";
         my $conserved_residues_required = 0.66667; # The target must have 66.667% residues conserved wrt refseq
         $conserved_residues_required = 0.5 if ($debug);
-        if ($hsp_cds->{'CONSERVED'} >= $s1 * $conserved_residues_required) {
+        if ($hsp_cds_conserved >= $s1 * $conserved_residues_required) {
             $match_cds = 1;
-            $debug && print STDERR "$subname: CDS length=$s1 conserved=".$hsp_cds->{'CONSERVED'}.".";
+            $debug && print STDERR "$subname: CDS length=$s1 conserved=$hsp_cds_conserved.";
             $debug && print STDERR " Length of conserved meets required $conserved_residues_required\n";
             $debug && print STDERR "$subname: \$match_cds=$match_cds\n";
             last;
         } else {
-            print STDERR "$subname: CDS length=$s1 conserved=".$hsp_cds->{'CONSERVED'}.".";
-            print STDERR " Length of conserved doesn't meet required $conserved_residues_required\n";
-            print STDERR "$subname: \$match_cds=$match_cds\n";
-            print STDERR "$subname: QUERY_SEQ='".$hsp_cds->query_string."'\n";
-            print STDERR "$subname:           '".$hsp_cds->homology_string."'\n";
-            print STDERR "$subname:   HIT_SEQ='".$hsp_cds->hit_string."'\n";
+            my $cs = $cds->location->start;
+            my $rs = $refcds->location->start;
+            $emsgs .= "$subname: CDS=$cs refcds=$rs length=$s1 conserved=$hsp_cds_conserved.";
+            $emsgs .= " Length of conserved doesn't meet required $conserved_residues_required\n";
+            $emsgs .= "$subname: \$match_cds=$match_cds\n";
+            $emsgs .= "$subname: QUERY_SEQ='".$hsp_cds->query_string."'\n";
+            $emsgs .= "$subname:           '".$hsp_cds->homology_string."'\n";
+            $emsgs .= "$subname:   HIT_SEQ='".$hsp_cds->hit_string."'\n";
         }
     }
+    $debug && (!$match_cds) && print STDERR "$emsgs";
 
     return $match_cds;
 } # sub match_cds_bl2seq
@@ -452,13 +487,20 @@ sub get_refseq {
             my $refacc = undef;
             $refacc = Annotate_Util::get_refseq_acc( $inseq, $exe_dir);
             return undef if (!$refacc);
-            $refseq_fn = $refacc.'_matpeptide.gb';
-            $debug && print STDERR "get_refseq: \$exe_dir=${exe_dir}refseq/$refseq_fn\n";
-            $debug && print STDERR "get_refseq: REFSEQ is $refseq_fn\n";
-            if (!-e "${exe_dir}refseq/$refseq_fn") {
+            if (-e "${exe_dir}refseq/${refacc}_matpeptide.gb") {
+                $refseq_fn = $refacc.'_matpeptide.gb';
+            } elsif (-e "${exe_dir}refseq/${refacc}_msaa.gb") {
+                $refseq_fn = $refacc.'_msaa.gb';
+            } elsif (-e "${exe_dir}refseq/${refacc}.gb") {
+                $refseq_fn = $refacc.'.gb';
+            } elsif (-e "${exe_dir}refseq/${refacc}.gbk") {
+                $refseq_fn = $refacc.'.gbk';
+            } elsif (-e "${exe_dir}refseq/${refacc}.genbank") {
+                $refseq_fn = $refacc.'.genbank';
+            } else {
                 $refseq_fn = $refacc.'.gb';
             }
-        $debug && print STDERR "get_refseq: REFSEQ is $refseq_fn\n";
+            print STDERR "get_refseq: REFSEQ is ${exe_dir}refseq/$refseq_fn\n";
 
     } elsif ($inseq) {
         $refseq_fn = $inseq;
@@ -476,7 +518,7 @@ sub get_refseq {
         } elsif (-e "./$refseq_fn") {
             $refseq = Bio::SeqIO->new( -file => "./$refseq_fn")->next_seq();
         } else {
-            print STDERR "get_refseq: Can't find refseq gb file: $refseq_fn\n";
+            print STDERR "get_refseq: ERROR: Can't find refseq gb file: $refseq_fn\n";
         }
     }
 
@@ -504,7 +546,7 @@ sub get_refseq_acc {
         # list of refseqs
         my $refseq_list = {
            # Flavivirus
-##           11079 => 'NC_000943', # Murray Valley encephalitis virus
+           11079 => 'NC_000943', # Murray Valley encephalitis virus; Ver1.1.3
            11072 => 'NC_001437', # Japanese encephalitis virus
 ##           11073 => 'NC_001437', # Japanese encephalitis virus. Refseq has 13 mat_peptides, w/ fuzzy ranges
 ##           11076 => 'NC_001437', # Japanese encephalitis virus. Refseq has 13 mat_peptides, w/ fuzzy ranges
@@ -513,19 +555,19 @@ sub get_refseq_acc {
            11053 => 'NC_001477', # Dengue virus 1
            12637 => 'NC_001477', # Dengue virus
            11082 => 'NC_001563', # West Nile virus (lineage II strain 956)
-##           31658 => 'NC_001564', # Cell fusing agent virus
+           31658 => 'NC_001564', # Cell fusing agent virus; Ver1.1.3
            11084 => 'NC_001672', # Tick-borne encephalitis virus. Refseq has 13 mat_peptides, w/ fuzzy ranges
 ##           11092 => 'NC_001672', # Tick-borne encephalitis virus. Refseq has 13 mat_peptides, w/ fuzzy ranges
 ##           11094 => 'NC_001672', # Tick-borne encephalitis virus. Refseq has 13 mat_peptides, w/ fuzzy ranges
 ##           47300 => 'NC_001672', # Tick-borne encephalitis virus. Refseq has 13 mat_peptides, w/ fuzzy ranges
 ##          638787 => 'NC_001672', # Tick-borne encephalitis virus. Refseq has 13 mat_peptides, w/ fuzzy ranges
-##           11086 => 'NC_001809', # Louping ill virus
+           11086 => 'NC_001809', # Louping ill virus; Ver1.1.3; Special treatment to correct end point of preM
            11089 => 'NC_002031', # Yellow fever virus (YFV). This refseq has 13 mat_peptides, w/ fuzzy ranges
            11070 => 'NC_002640', # Dengue virus 4
-##           64300 => 'NC_003635', # Modoc virus
-##           64285 => 'NC_003675', # Rio Bravo virus
-##           64280 => 'NC_003676', # Apoi virus
-##           11083 => 'NC_003687', # Powassan virus
+           64300 => 'NC_003635', # Modoc virus; Ver1.1.3
+           64285 => 'NC_003675', # Rio Bravo virus; Ver1.1.3
+           64280 => 'NC_003676', # Apoi virus; Ver1.1.3
+           11083 => 'NC_003687', # Powassan virus; Ver1.1.3
 ##           11085 => 'NC_003690', # Langat virus
 ##          161675 => 'NC_003996', # Tamana bat virus
            11103 => 'NC_004102', # Hepatitis C virus genotype 1
@@ -535,12 +577,12 @@ sub get_refseq_acc {
            31650 => 'NC_004102', # Hepatitis C virus genotype 2b
            31655 => 'NC_004102', # Hepatitis C virus genotype 6a
           356426 => 'NC_004102', # Hepatitis C virus genotype 3a
-##           64312 => 'NC_004119', # Montana myotis leukoencephalitis virus
-##          172148 => 'NC_004355', # Alkhurma hemorrhagic fever virus
+           64312 => 'NC_004119', # Montana myotis leukoencephalitis virus; Ver1.1.3
+          172148 => 'NC_004355', # Alkhurma hemorrhagic fever virus; Ver1.1.3
 ##           64294 => 'NC_005039', # Yokose virus
 ##           12542 => 'NC_005062', # Omsk hemorrhagic fever virus
 ##          218849 => 'NC_005064', # Kamiti River virus
-##           64286 => 'NC_006551', # Usutu virus
+           64286 => 'NC_006551', # Usutu virus; Ver1.1.3
 ##           64287 => 'NC_006947', # Karshi virus
            11080 => 'NC_007580', # St. Louis encephalitis virus
 ##           11080 => 'NC_001563', # St. Louis encephalitis => West Nile virus (lineage II strain 956)
@@ -557,24 +599,57 @@ sub get_refseq_acc {
 #           42182 => 'NC_009827', # Hepatitis C virus genotype 6
 #           11082 => 'NC_009942', # West Nile virus (lineage I strain NY99), missing 2k
 
-           # SARS coronavirus
-##          694009 => 'NC_004718', # SARS coronavirus
+           # Coronaviridae
+#  11128 => 'NC_003045', #     11128 | Bovine coronavirus
+#  11142 => 'NC_001846', #     11138 | Murine hepatitis virus
+#  11144 => 'NC_006852', #     11138 | Murine hepatitis virus
+#  28295 => 'NC_003436', #     28295 | Porcine epidemic diarrhea virus
+# 290028 => 'NC_006577', #    290028 | Human coronavirus HKU1
+# 694009 => 'NC_004718', #    694009 | Severe acute respiratory syndrome-related coronavirus
+#  11152 => 'NC_010800', #    694014 | Avian coronavirus
+#  11120 => 'NC_001451', #    694014 | Avian coronavirus
+
            # Caliciviridae
            11983 => 'NC_001959', # Norwalk virus
            95340 => 'NC_001959', # Norwalk virus
 #          150080 => 'NC_001959', # Norwalk virus
+
+           # Togaviridae
+           # strain_id => 'accession_refseq',
+           # Alphavirus
+           11036 => 'NC_001449', # 11036 |     11036 | Venezuelan equine encephalitis virus; Ver1.1.3
+           11027 => 'NC_001512', # 11027 |     11027 | O'nyong-nyong virus; Ver1.1.3
+           11029 => 'NC_001544', # 11029 |     11029 | Ross River virus; Ver1.1.3
+           11034 => 'NC_001547', # 11034 |     11034 | Sindbis virus; Ver1.1.3
+           11020 => 'NC_001786', # 11020 |     11020 | Barmah Forest virus; Ver1.1.3
+           11033 => 'NC_003215', # 11033 |     11033 | Semliki forest virus; Ver1.1.3
+           59301 => 'NC_003417', # 59301 |     59301 | Mayaro virus; Ver1.1.3
+           78540 => 'NC_003433', # 78540 |     84589 | Salmon pancreas disease virus; Ver1.1.3
+           11021 => 'NC_003899', # 11021 |     11021 | Eastern equine encephalitis virus; Ver1.1.3
+           44158 => 'NC_003900', # 44158 |     44158 | Aura virus; Ver1.1.3
+           11039 => 'NC_003908', # 11039 |     11039 | Western equine encephalomyelitis virus; Ver1.1.3
+           84589 => 'NC_003930', # 84589 |     84589 | Salmon pancreas disease virus; Ver1.1.3
+#           37124 => 'NC_001512', # 37124 |     37124 | Chikungunya virus, refseq=O'nyong-nyong virus
+           37124 => 'NC_004162', # 37124 |     37124 | Chikungunya virus; Ver1.1.3
+#           59300 => 'NC_001544', # 59300 |     59300 | Getah virus, refseq=Ross River virus
+           59300 => 'NC_006558', # 59300 |     59300 | Getah virus; Ver1.1.3
+           11024 => 'NC_012561', # 11024 |     11024 | Highlands J virus; Ver1.1.3
+           48544 => 'NC_013528', # 48544 |     48544 | Fort Morgan virus; Ver1.1.3
+           # Rubivirus
+           11041 => 'NC_001545', # 11041 |     11041 | Rubella virus; Ver1.1.3
            };
         $debug && print STDERR "$subname: \$refseq_list=\n".Dumper($refseq_list)."end of \$refseq_list\n\n";
 
-    my $refseq_acc = undef;
+#    my $refseq_acc = undef;
+    my $refseq_acc = '';
     return $refseq_list if (!$inseq);
 
-        $debug && print STDERR "$subname: Taxon=$taxon->{loaded}\n";
-        if (!$taxon->{loaded} && -f "$exe_dir/$taxon->{fn}" ) {
-            $debug && print STDERR "$subname: found taxon_fn=$exe_dir/$taxon->{fn}\n";
+        $debug && print STDERR "$subname: Taxon=$taxon->{taxon_loaded}\n";
+        if (!$taxon->{taxon_loaded} && -f "$exe_dir/$taxon->{taxon_fn}" ) {
+            $debug && print STDERR "$subname: found taxon_fn=$exe_dir/$taxon->{taxon_fn}\n";
 
-            open my $taxon_file, '<', "$exe_dir/$taxon->{fn}"
-               or croak("$subname: '$exe_dir/$taxon->{fn}', but couldn't open: $OS_ERROR");
+            open my $taxon_file, '<', "$exe_dir/$taxon->{taxon_fn}"
+               or croak("$subname: '$exe_dir/$taxon->{taxon_fn}', but couldn't open: $OS_ERROR");
             while (<$taxon_file>) {
                 s/(^[|]*\s+|\s+$)//x;
                 my $words = [split(/\s*\|\s*/x)];
@@ -589,16 +664,16 @@ sub get_refseq_acc {
                     $taxon->{speciesid}->{$speciesid}->{$strainid} = 1;
                 }
             }
-            close $taxon_file or croak "$subname: Couldn't close $exe_dir/$taxon->{fn}: $OS_ERROR";
+            close $taxon_file or croak "$subname: Couldn't close $exe_dir/$taxon->{taxon_fn}: $OS_ERROR";
             my @keys = keys %{$taxon->{speciesid}};
-            $taxon->{loaded} = 1 if ($#keys>1);
+            $taxon->{taxon_loaded} = 1 if ($#keys>1);
 
-            $debug && print STDERR "$subname: finished reading list file: '$exe_dir/$taxon->{fn}'.\n";
+            $debug && print STDERR "$subname: finished reading list file: '$exe_dir/$taxon->{taxon_fn}'.\n";
             $debug && print STDERR "$subname: \$taxon = \n".Dumper($taxon)."End of \$taxon\n\n";
 
 
         }
-        $debug && print STDERR "$subname: \$taxon->{loaded}=$taxon->{loaded}\n";
+        $debug && print STDERR "$subname: \$taxon->{taxon_loaded}=$taxon->{taxon_loaded}\n";
 
         my $taxid = $inseq->species->ncbi_taxid;
         $debug && print STDERR "$subname: \$taxid=$taxid \$inseq=$inseq is a ".ref($inseq)."\n";
@@ -607,7 +682,7 @@ sub get_refseq_acc {
         # Determine the refseq by a 2-step process
         if (exists($refseq_list->{$taxid})) {
             $refseq_acc = $refseq_list->{$taxid};
-        } elsif($taxon->{loaded}) {
+        } elsif($taxon->{taxon_loaded}) {
             my @speciesids = keys %{$taxon->{'speciesid'}};
             foreach my $speciesid (@speciesids) {
                 next if (!exists($taxon->{'speciesid'}->{$speciesid}->{$taxid}));
@@ -641,190 +716,61 @@ sub get_gene_symbol {
     my ($reffeat,$exe_dir) = @_;
 
     my $debug = 0 && $debug_all;
+    my $subname = 'get_gene_symbol';
 #    print STDERR "get_gene_symbol: \$reffeat=\n".Dumper($reffeat)."end of \$reffeat\n\n";
 
     # These gene symbols are defined by CLarsen, after considering refseqs, e.g. NC_001477 & NC_009942
     my $gene_symbols;
-    $gene_symbols = {
-        # Dengue virus 1
-        'NC_001477' => {
-               '95..436' => 'ancC',
-               '95..394' => 'C',
-              '437..934' => 'preM',
-              '710..934' => 'M',
-             '935..2419' => 'E',
-            '2420..3475' => 'NS1',
-            '3476..4129' => 'NS2a',
-            '4130..4519' => 'NS2b',
-            '4520..6376' => 'NS3',
-            '6377..6757' => 'NS4a',
-            '6758..6826' => '2k',
-            '6827..7573' => 'NS4b',
-           '7574..10270' => 'NS5',
-        },
-        # Dengue virus 2
-        'NC_001474' => {
-               '97..438' => 'ancC',
-               '97..396' => 'C',
-              '439..936' => 'preM',
-              '712..936' => 'M',
-             '937..2421' => 'E',
-            '2422..3477' => 'NS1',
-            '3478..4131' => 'NS2a',
-            '4132..4521' => 'NS2b',
-            '4522..6375' => 'NS3',
-            '6376..6756' => 'NS4a',
-            '6757..6825' => '2k',
-            '6826..7569' => 'NS4b',
-           '7570..10269' => 'NS5',
-        },
-        # Dengue virus 3
-        'NC_001475' => {
-               '95..436' => 'ancC',
-               '95..394' => 'C',
-              '437..934' => 'preM',
-              '710..934' => 'M',
-             '935..2413' => 'E',
-            '2414..3469' => 'NS1',
-            '3470..4123' => 'NS2a',
-            '4124..4513' => 'NS2b',
-            '4514..6370' => 'NS3',
-            '6371..6751' => 'NS4a',
-            '6752..6820' => '2k',
-            '6821..7564' => 'NS4b',
-           '7565..10264' => 'NS5',
-        },
-        # Dengue virus 4
-        'NC_002640' => {
-              '102..440' => 'ancC',
-              '102..398' => 'C',
-              '441..938' => 'preM',
-              '714..938' => 'M',
-             '939..2423' => 'E',
-            '2424..3479' => 'NS1',
-            '3480..4133' => 'NS2a',
-            '4134..4523' => 'NS2b',
-            '4524..6377' => 'NS3',
-            '6378..6758' => 'NS4a',
-            '6759..6827' => '2k',
-            '6828..7562' => 'NS4b',
-           '7563..10262' => 'NS5',
-        },
 
-        # Japanese encephalitis virus
-        'NC_001437' => {
-              '96..>476' => 'ancC',
-              '96..>410' => 'C',
-            '<477..>977' => 'preM',
-            '<753..>977' => 'M',
-           '<978..>2477' => 'E',
-          '<2478..>3533' => 'NS1',
-          '<3534..>4214' => 'NS2a',
-          '<4215..>4607' => 'NS2b',
-          '<4608..>6464' => 'NS3',
-          '<6465..>6842' => 'NS4a',
-          '<6843..>6911' => '2k',
-          '<6912..>7676' => 'NS4b',
-           '7677..10391' => 'NS5',
-        },
+#my $gene_symbol2 = {
+#               symbol_loaded => 0,
+#               symbol_fn     => "Annotate_symbol_records.txt",
+#            };
+    $debug && print STDERR "$subname: \$exe_dir=$exe_dir\n";
+    $debug && print STDERR "$subname: \$gene_symbol2->{symbol_fn}=$gene_symbol2->{symbol_fn}\n";
+    if (!$gene_symbol2->{symbol_loaded} && -f "$exe_dir/$gene_symbol2->{symbol_fn}" ) {
+        $debug && print STDERR "$subname: \$gene_symbol2->{symbol_loaded}=$gene_symbol2->{symbol_loaded}\n";
+        $debug && print STDERR "$subname: found symbol_fn=$exe_dir/$gene_symbol2->{symbol_fn}\n";
 
-        # West Nile virus
-        'NC_001563' => {
-              '97..>465' => 'ancC',
-              '97..>411' => 'C',
-            '<466..>966' => 'preM',
-            '<742..>966' => 'M',
-           '<967..>2457' => 'E',
-          '<2458..>3513' => 'NS1',
-          '<3514..>4206' => 'NS2a',
-          '<4207..>4599' => 'NS2b',
-          '<4600..>6456' => 'NS3',
-          '<6457..>6834' => 'NS4a',
-          '<6835..>6903' => '2k',
-          '<6904..>7671' => 'NS4b',
-           '7672..10386' => 'NS5',
-        },
+        open my $symbol_file, '<', "$exe_dir/$gene_symbol2->{symbol_fn}"
+           or croak("$subname: found '$exe_dir/$gene_symbol2->{symbol_fn}', but couldn't open: $OS_ERROR");
+        while (<$symbol_file>) {
+                chomp;
+                $debug && print STDERR "$subname: \$_=$_\n";
+                next if (m/^[#]/x);  # Skip the comment
+                next if (m/^\s*$/x); # Skip empty lines
+                s/'//g; # Remove single quotes
+                my $words = [split(/\s*;\s*/)];
+                $debug && print STDERR "$subname: \$_='$_'\n";
+                $debug && print STDERR "$subname: \$words($#{@$words})='@$words'\n";
+                if ($#{@$words}<2) { # skip the lines without enough fields
+                    $debug && print STDERR "$subname: not enough data in gene_symbol: '@$words'\n";
+                    next;
+                }
 
-        # Tick-borne encephalitis virus
-        'NC_001672' => {
-             '133..>468' => 'ancC',
-             '133..>420' => 'C',
-            '<469..>972' => 'preM',
-            '<748..>972' => 'M',
-           '<973..>2460' => 'E',
-          '<2461..>3516' => 'NS1',
-          '<3517..>4206' => 'NS2a',
-          '<4207..>4599' => 'NS2b',
-          '<4600..>6462' => 'NS3',
-          '<6463..>6840' => 'NS4a',
-          '<6841..>6909' => '2k',
-          '<6910..>7665' => 'NS4b',
-           '7666..10374' => 'NS5',
-        },
+                my ($acc, $loc, $sym) = @{$words}[0..3];
+                $loc = '0..0' if (!$loc);
+                $debug && print STDERR "$subname: \$acc=$acc \$loc=$loc \$sym=$sym\n";
+                if (exists($gene_symbol2->{$acc}->{$loc}) && $sym != $gene_symbol2->{$acc}->{$loc}) {
+                  print STDERR "$subname: conflicting data, \$gene_symbol2->{$acc}->{$loc}=$gene_symbol2->{$acc}->{$loc}\n";
+                  print STDERR "$subname: conflicting data, new \$sym=$sym\n";
+                } else {
+                    $gene_symbol2->{$acc}->{$loc} = $sym;
+                }
+        }
+        close $symbol_file or croak "$subname: Couldn't close $exe_dir/$gene_symbol2->{symbol_fn}: $OS_ERROR";
+        $gene_symbol2->{symbol_loaded} = 1;
 
-        # Yellow fever virus (YFV)
-        'NC_002031' => {
-             '119..>481' => 'ancC',
-             '119..>421' => 'C',
-            '<482..>973' => 'preM',
-            '<749..>973' => 'M',
-           '<974..>2452' => 'E',
-          '<2453..>3508' => 'NS1',
-          '<3509..>4180' => 'NS2a',
-          '<4181..>4570' => 'NS2b',
-          '<4571..>6439' => 'NS3',
-          '<6440..>6817' => 'NS4a',
-          '<6818..>6886' => '2k',
-          '<6887..>7636' => 'NS4b',
-           '7637..10351' => 'NS5',
-        },
+        $debug && print STDERR "$subname: finished reading list file: '$exe_dir/$gene_symbol2->{symbol_fn}'.\n";
+        $debug && print STDERR "$subname: \$gene_symbol2->{symbol_loaded}=$gene_symbol2->{symbol_loaded}\n";
+        $debug && print STDERR "$subname: \$gene_symbol2 = \n".Dumper($gene_symbol2)."End of \$gene_symbol2\n\n";
+    }
 
-        # St. Louis encephalitis virus
-        'NC_007580' => {
-              '99..>461' => 'ancC',
-              '99..>407' => 'C',
-            '<462..>962' => 'preM',
-            '<738..>962' => 'M',
-           '<963..>2465' => 'E',
-          '<2466..>3521' => 'NS1',
-          '<3522..>4202' => 'NS2a',
-          '<4203..>4595' => 'NS2b',
-          '<4596..>6449' => 'NS3',
-          '<6450..>6827' => 'NS4a',
-          '<6828..>6896' => '2k',
-          '<6897..>7670' => 'NS4b',
-           '7671..10388' => 'NS5',
-        },
-
-        # Hepatitis C virus genotype 1, used for all genotypes of Hepatitis C
-        'NC_004102' => {
-             '342..914' => 'C',
-            '915..1490' => 'E1',
-           '1491..2579' => 'E2',
-           '2580..2768' => 'p7',
-           '2769..3419' => 'NS2',
-           '3420..5312' => 'NS3',
-           '5313..5474' => 'NS4a',
-           '5475..6257' => 'NS4b',
-           '6258..7601' => 'NS5a',
-           '7602..9374' => 'NS5b',
-        },
-
-        # Norwalk virus
-        'NC_001959' => {
-              '5..1198' => 'Nterm',
-           '1199..2287' => 'NTPase',
-           '2288..2890' => 'p22',
-           '2891..3304' => 'VPg',
-           '3305..3847' => 'Pro',
-           '3848..5371' => 'Pol',
-        },
-
-    };
-
+    $gene_symbols = $gene_symbol2;
     my $gene_symbol = 'unk';
     my $acc = $reffeat->seq->accession_number;
     my $loc = $reffeat->location->to_FTstring;
+    $loc = $reffeat->location->start .'..'. $reffeat->location->end;
     $gene_symbol = $gene_symbols->{$acc}->{$loc} ? $gene_symbols->{$acc}->{$loc} : $gene_symbol;
     $debug && print "get_gene_symbol: primary_tag=".($reffeat->seq->accession_number);
     $debug && print "\tlocation=".($reffeat->location->to_FTstring);
@@ -836,7 +782,7 @@ sub get_gene_symbol {
 
 =head2 check_refseq
 
-Takes 1 refseq and 1 target genome. Check is the taxid for both are same
+Takes 1 refseq and 1 target genome. Check if their taxids are same
 
 =cut
 
@@ -855,34 +801,6 @@ sub check_refseq {
 
     return $refseq_fit;
 } # sub check_refseq
-
-
-
-=head2 get_aln_seq
-
-Takes an alignment object and accession, search for the alignment seq that contains the accession
- return id of the seq in alignment
-
-=cut
-
-sub get_aln_seq {
-    my ($aln, $acc) = @_;
-
-    my $debug = 0 && $debug_all;
-    my $id;
-    my $seqs = [ $aln->each_seq() ];
-    foreach my $seq (@$seqs) {
-        if ($seq->id =~ /$acc/i) {
-            $id = $seq->id;
-            last;
-        }
-    }
-#    $refid = 'gi|22129792|ref|NC_004102';
-    $debug && print "annotate_msa: \$id=$id.\n";
-    my $refaln = [ $aln->each_seq_with_id($id) ];
-
-    return ($id);
-} # sub get_aln_seq
 
 
 =head2 get_new_translation
@@ -922,6 +840,9 @@ sub get_new_translation {
     $f->revcom() if ($feat->strand() == -1);
 
     $s = $f->translate()->seq;
+    $s =~ s/[*]$// if ($s =~ /[*]$/);
+    $s =~ s/[*]/./g if ($s =~ /[*]/);
+    $s =~ s/[X]/./ig if ($s =~ /[X]/i);
     $debug && print STDERR "$subname: \$s  ='$s'\n";
     $debug && print STDERR "$subname: \$s  =".length($s)."\n";
 
@@ -930,13 +851,16 @@ sub get_new_translation {
     $debug && print STDERR "$subname: \$cds  =$parent_cds_seq[0]\n";
     $debug && print STDERR "$subname: \$cds  =".length($parent_cds_seq[0])."\n";
 
-    if ($parent_cds_seq[0] =~ /$s/i) {
-        $translation = $s;
+    if ($parent_cds_seq[0] =~ /($s)/i) {
+        $translation = $1;
+        $debug && print STDERR "$subname: \$s  ='$s'\n";
+        $debug && print STDERR "$subname: \$cds='".$parent_cds_seq[0]."'\n";
+        $debug && print STDERR "$subname: diff='".Annotate_Verify::diff_2str( $s, $parent_cds_seq[0])."'\n";
     } else {
-        print STDERR "$subname: ERROR: \$acc=$acc translation for feature doesn't match CDS.\n";
+        print STDERR "$subname: ERROR: \$acc=$acc translation for feature=".$feat->location->to_FTstring." doesn't match CDS.\n";
         print STDERR "$subname: \$s  ='$s'\n";
         print STDERR "$subname: \$cds='".$parent_cds_seq[0]."'\n";
-        print STDERR "$subname: diff=".Annotate_Verify::diff_2str( $s, $parent_cds_seq[0])."\n";
+        print STDERR "$subname: diff='".Annotate_Verify::diff_2str( $s, $parent_cds_seq[0])."'\n";
 #        return undef;
     }
 
@@ -1112,15 +1036,8 @@ sub get_feature_id_desc {
         $debug && print STDERR "$subname: \$refseq=\n".Dumper($refcds->entire_seq)."End of \$refseq\n\n";
         $id .= $desc .'|';
     }
+
     # add the range of mat_peptide
-=head2
-    my $allow_fuzzy_location = 0;
-    if ($allow_fuzzy_location) {
-        $id .= 'Loc='. $feat->location->to_FTstring .'|';
-    } else {
-        $id .= 'Loc='. $feat->location->start .'..'. $feat->location->end .'|';
-    }
-=cut
     $id .= 'Loc='. &get_DNA_loc($feat) .'|';
 
     # Add range in polyprotein. This is simply calculated from existing DNA coordinates.
@@ -1181,15 +1098,18 @@ sub get_DNA_loc {
     my $subname = 'get_DNA_loc';
 
     # get the range of mat_peptide
+    my $location_allow_split = 1;
+    my $location_allow_fuzzy = 0;
     my $s;
-    my $allow_fuzzy_location = 0;
-    if ($allow_fuzzy_location) {
+    if ($location_allow_split) {
         $s = $feat->location->to_FTstring;
         $debug && print STDERR "$subname: may contain '<>' in \$s=$s.\n";
     } else {
         $s = $feat->location->start .'..'. $feat->location->end;
         $debug && print STDERR "$subname: no '<>' in \$s=$s.\n";
     }
+
+    $s =~ s/[<>]//g if (!$location_allow_fuzzy);
 
     return $s;
 } # sub get_DNA_loc
@@ -1206,12 +1126,27 @@ sub get_AA_loc {
     my ($feat, $cds) = @_;
 
     my $debug = 0 && $debug_all;
-    my $subname = 'get_AA_loc';
+    my $subname = 'Annotate_Util::get_AA_loc';
 
-    # Add range in polyprotein. This is simply calculated from existing DNA coordinates.
-    # One caveat is, in some cases, the last AA of polyprotein may have 2 coden, need special handling.
-    my $s = '';
-    {
+    # Add range in polyprotein. This is simply calculated by comparing the sequence of mat_peptide with
+    # that of the CDS, and finding the index.
+    my $s = '0..0';
+    if (1) {
+        $debug && print STDERR "$subname: \$feat=".$feat->location->to_FTstring." \$cds=".$cds->location->to_FTstring."\n";
+        my $s_temp = -1;
+        my $s1 = Annotate_Util::get_new_translation( $feat, $cds);
+        $s1 = '' if (!$s1);
+        my $s0 = '';
+        $s0 = [ $cds->get_tag_values('translation') ]->[0];
+        $s_temp = $feat->location->start - $cds->location->start;
+        $s_temp = $s_temp / 3 - 10;
+        $s_temp = index($s0, $s1, $s_temp)+1;
+        $debug && print STDERR "$subname: \$s_temp=$s_temp \$s1=$s1\n";
+        $debug && print STDERR "$subname: \$s_temp=$s_temp \$s0=$s0\n";
+        $s = sprintf("%d..%d", $s_temp, $s_temp+length($s1)-1) if ($s_temp>0);
+        $debug && print STDERR "$subname: \$s=$s \$s1=$s1\n";
+        $debug && print STDERR "$subname: \$s=$s \$s0=$s0\n";
+    } else {
         my $codon_start_feat = 0;
         $codon_start_feat = [$feat->get_tag_values('codon_start')]->[0] -1 if ($feat->has_tag('codon_start'));
         my $codon_start_cds = 0;
@@ -1229,7 +1164,19 @@ sub get_AA_loc {
         $e0 = ($e0 % 3 ==0) ? $e0 /3 : 0;
         $debug && print STDERR "$subname: \$e0=$e0\n";
         $debug && print STDERR "$subname: \$b0=$b0 \$e0=$e0\n";
-        $s = $e0 - $b0 +1;
+        $s = $e0 - $b0 +1; # This is the length calculated from the DNA location
+
+        # For split locations, any gap between sublocations needs to be accounted for
+        if ($feat->location->isa('Bio::Location::Split')) {
+            my $locs = [ $feat->location->sub_Location ];
+            my $gap = 0;
+            for my $i (1 .. $#{$locs}) {
+               $gap = $locs->[$i]->start - $locs->[$i-1]->end -1; 
+               $debug && print STDERR "$subname: \$gap=$gap\n";
+            }
+            $debug && print STDERR "$subname: \$s=$s \$gap=$gap\n";
+            $s -= $gap/3 if (($gap%3)==0);
+        }
 
         my $b = $b0;
         my $e = $e0;
@@ -1277,12 +1224,15 @@ sub project_matpept {
         # First get CDS from refseq & target
         my $reffeat = $refset->[$ct];
         $debug && print STDERR "$subname: #$ct is ".$reffeat->primary_tag." \t$reffeat\n";
-        next if ($reffeat->primary_tag ne "CDS");
+        if ($reffeat->primary_tag ne "CDS") {
+            $debug && print STDERR "$subname: ERROR: refset($ct) is not CDS\n";
+            next;
+        }
         my @prod = $reffeat->get_tag_values('product');
 #        $debug && print STDERR "project_matpept: ct=$ct \$reffeat is ".$reffeat->primary_tag." prod=$prod[0]\n";
         # Skip any CDS not labeled as "polyprotein". Potential problem as some polyproteins are not so labeled
 #        next if ($prod[0] !~ /polyprotein/i);
-        next if (!Annotate_Util::is_polyprotein( $reffeat, ['product', 'note']));
+        next if (!Annotate_Util::is_polyprotein( $reffeat, ['product', 'note'], $refset->[$ct+1]));
         $debug && print STDERR "$subname: \$reffeat = \n".Dumper($reffeat)."End of \$reffeat\n\n";
 
         my $refcds = $reffeat;
@@ -1291,7 +1241,7 @@ sub project_matpept {
         my %allowed_feats = ('mat_peptide' => 1, 'sig_peptide' => 1);
         while (($refset->[$ct+1]) && ($allowed_feats{$refset->[$ct+1]->primary_tag})) {
             $reffeat = $refset->[++$ct];
-            $debug && print STDERR "$subname: #$ct is ".$reffeat->primary_tag."=\n".Dumper($reffeat)."End of \$reffeat\n\n";
+            $debug && print STDERR "$subname: \$reffeat #$ct is ".$reffeat->primary_tag."=\n".Dumper($reffeat)."End of \$reffeat\n\n";
 
             $debug && print STDERR "$subname: \$refcds_id=$refcds_id \$cds_id=$cds_id\n";
 
@@ -1330,7 +1280,7 @@ sub project_matpept {
                     }
                 }
             } elsif($feat_gbk) {
-            	# add source GBK and other identifiers (GI) to description
+                # add source GBK and other identifiers (GI) to description
                 my $id_gbk = '';
                 for my $tag ('db_xref', 'protein_id', 'product') { # per Chris request
                     if ($feat_gbk->has_tag($tag)) {
@@ -1340,25 +1290,11 @@ sub project_matpept {
                     }
                 }
 
-=head1
-                my @tags = $feat->get_tag_values('note');
-                $feat->remove_tag('note');
-                for (my $i = 0; $i<=$#tags; $i++) {
-                    $debug && print STDERR "$subname: \$tags[$i] = $tags[$i]\n";
-                    if ($tags[$i] =~ /^Desc:/i) {
-                        $tags[$i] = $tags[$i] . "|matp=$id_gbk";
-                        $tags[$i] =~ s/src=MSA/src=MSA,GBK/;
-                        $feat->add_tag_value('note', $tags[$i]);
-                        $debug && print STDERR "$subname: \$tags[$i] = $tags[$i]\n";
-                    } else {
-                        $feat->add_tag_value('note', $tags[$i]);
-                    }
-                }
-=cut
             }
 
             push @$feats_all, $feat;
             $debug && print STDERR "$subname: \$feat = \n".Dumper($feat)."End of \$feat\n\n";
+            $debug && print STDERR "$subname: \$feats_all = \n".Dumper($feats_all)."End of \$feats_all\n\n";
         }
         unshift @$feats_all, $cds; # prepend CDS to the array
 

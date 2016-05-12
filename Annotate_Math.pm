@@ -37,6 +37,11 @@ sub adjust_start {
     my $debug = 0 && $debug_all;
     my $subname = 'adjust_start';
 
+        # Get any potential gap caused by split locations in refseq CDS
+        my $qstart_gap = Annotate_Math::get_split_gap( $qstart, $refcds_loc);
+        $debug && print STDERR "$subname: \$qstart_gap=$qstart_gap\n";
+        $qstart -= $qstart_gap if ($qstart_gap % 3 ==0);
+
     my $cds_loc = $cds->location;
     # Convert to protain from DNA
     $qstart = ($qstart - $refcds_loc->start)/3 +1;
@@ -74,6 +79,11 @@ sub adjust_start {
     # Convert back to DNA
     $hstart = $cds_loc->start + ($hstart-1)*3;
 
+        # Get any potential gap caused by split locations in CDS
+        $qstart_gap = Annotate_Math::get_split_gap( $hstart, $cds->location);
+        $debug && print STDERR "$subname: \$qstart_gap=$qstart_gap\n";
+        $hstart += $qstart_gap if ($qstart_gap % 3 ==0);
+
     return $hstart;
 } # sub adjust_start
 
@@ -83,6 +93,11 @@ sub adjust_end {
     return undef if (!$qend);
     my $debug = 0 && $debug_all;
     my $subname = 'adjust_end';
+
+        # Get any potential gap caused by split locations in CDS
+        my $qend_gap = Annotate_Math::get_split_gap( $qend, $refcds_loc);
+        $debug && print STDERR "$subname: \$qend_gap=$qend_gap\n";
+        $qend -= $qend_gap if ($qend_gap % 3 ==0);
 
     my $last_mat_peptide = 0;
     $last_mat_peptide = 1 if ($qend == $refcds_loc->end || $qend == $refcds_loc->end-3);
@@ -155,10 +170,49 @@ sub adjust_end {
             $hend-- if (exists($good_tail{$tail}) && $good_tail{$tail});
     }
 
+        # Get any potential gap caused by split locations in CDS
+        $qend_gap = Annotate_Math::get_split_gap( $hend, $cds->location);
+        $debug && print STDERR "$subname: \$qend_gap=$qend_gap\n";
+        $hend += $qend_gap if ($qend_gap % 3 ==0);
+
     $debug && print STDERR "$subname: \$qend=$hend\n";
     return $hend;
 
 } # sub adjust_end
+
+
+=head2 get_split_gap
+
+Takes a position in the DNA sequence, and count how many gaps (U34999:join(44..5695,5699..7540)) prior to it
+ Return the number of gaps in DNA unit
+
+=cut
+
+sub get_split_gap {
+    my ($pos, $cds_loc) = @_;
+
+    my $debug = 0 && $debug_all;
+    my $subname = 'get_split_gap';
+
+        # For split locations, count the gap between sublocations prior to the requested position
+        my $split = 0;
+        if ($cds_loc->isa('Bio::Location::Split')) {
+            my $locs = [ $cds_loc->sub_Location ];
+            for my $i (1 .. $#{$locs}) {
+               $debug && print STDERR "$subname: \$pos=$pos \$locs->[$i]->start=".$locs->[$i]->start." \$split=$split\n";
+               if ($pos < $locs->[$i]->start) {
+                 $debug && print STDERR "$subname: 1\n";
+                 next;
+               } else {
+                 $debug && print STDERR "$subname: 2\n";
+                 $split = $locs->[$i]->start - $locs->[$i-1]->end -1;
+               }
+               $debug && print STDERR "$subname: \$pos=$pos \$locs->[$i]->start=".$locs->[$i]->start." \$split=$split\n";
+            }
+        }
+
+    return $split;
+} # sub get_split_gap
 
 =head2 msa_get_feature_loc
 
@@ -181,7 +235,7 @@ sub msa_get_feature_loc {
     my $errcode = {};
 
     $debug && print STDERR "$subname:\n";
-    if ($reffeat_loc->isa('Bio::Location::Simple') ) {
+    if ($reffeat_loc->isa('Bio::Location::Simple') || $reffeat_loc->isa('Bio::Location::Split')) {
         my $qstart = $reffeat_loc->start;
         my $qend = $reffeat_loc->end;
         $debug && print STDERR "$subname: \$qstart=$qstart \$qend=$qend\n";
@@ -197,16 +251,63 @@ sub msa_get_feature_loc {
         $qstart = $qstart + $codon_start -1;
         $qend = $qend + $codon_start -1;
 
+        # Get any potential gap caused by split locations in CDS
+#        my $qstart_gap = Annotate_Math::get_split_gap( $qstart, $cds->location);
+#        my $qend_gap = Annotate_Math::get_split_gap( $qend, $cds->location);
+#        $debug && print STDERR "$subname: \$qstart_gap=$qstart_gap \$qend_gap=$qend_gap\n";
+#        $qstart += $qstart_gap if ($qstart_gap % 3 ==0);
+#        $qend += $qend_gap if ($qend_gap % 3 ==0);
+
         $debug && print STDERR "$subname: \$qstart=$qstart \$qend=$qend\n";
 
         if ($qstart<=$qend) {
+          if ($cds_loc->isa('Bio::Location::Simple') || $cds_loc->isa('Bio::Location::Fuzzy')) {
             $loc2 = Bio::Location::Simple->new();
             $loc2->start($qstart);
             $loc2->end  ($qend);
+          } elsif ( $cds_loc->isa('Bio::Location::Split')) {
+            my $locs = [ $cds->location->sub_Location ];
+            $debug && print STDERR "$subname: \$locs=\n".Dumper($cds->location)."end of \$locs\n\n";
+            $debug && print STDERR "$subname: \$locs=\n".Dumper($locs)."end of \$locs\n\n";
+            for (my $i=0; $i<=$#{$locs}; $i++ ) {
+              my $loc = $locs->[$i];
+              $debug && print STDERR "$subname: \$i=$i \$qstart=$qstart, \$loc->start=".$loc->start."\n";
+              $debug && print STDERR "$subname: \$i=$i   \$qend=$qend,   \$loc->end=".$loc->end."\n";
+              next if ($qstart>$loc->end || $qend<$loc->start); # Skip if the sublocation is outside of the mat_peptide
+              if ($loc->start<=$qstart && $qend<=$loc->end) {
+                $loc2 = Bio::Location::Simple->new();
+                $loc2->start($qstart);
+                $loc2->end  ($qend);
+              } elsif ($loc->start<=$qstart && $loc->end < $qend) {
+                $loc2 = Bio::Location::Split->new();
+                my $qs1 = $qstart;
+                my $qe1 = $loc->end;
+                my $subloc = Bio::Location::Simple->new();
+                $subloc->start($qs1);
+                $subloc->end  ($qe1);
+                $loc2->add_sub_Location($subloc);
+              
+                $loc = $locs->[++$i];
+                $debug && print STDERR "$subname: \$loc=\n".Dumper($loc)."end of \$loc\n\n";
+                while ($i<=$#{$locs} && $loc->start < $qend) {
+                  $qs1 = $loc->start;
+                  $qe1 = ($loc->end < $qend) ? $loc->end : $qend;
+                
+                  $subloc = Bio::Location::Simple->new();
+                  $subloc->start($qs1);
+                  $subloc->end  ($qe1);
+                  $loc2->add_sub_Location($subloc);
+              
+                  $loc = $locs->[++$i];
+                }
+                $debug && print STDERR "$subname: \$loc2=\n".Dumper($loc2)."end of \$loc2\n\n";
+                last;
+              }
+            }
+          }
         }
 
     } elsif ($reffeat_loc->isa('Bio::Location::Fuzzy')) {
-
 
         my $codon_start = 1;
         if ($cds->has_tag('codon_start')) {
@@ -549,7 +650,7 @@ Takes a CDS, and an array of gaps from alignment,
 sub convert_range_protein2dna {
     my ($f, $gaps) = @_;
 
-    my $debug = 1 && $debug_all;
+    my $debug = 0 && $debug_all;
     my $subname = 'convert_range_protein2dna';
     my @gaps2;
     my $f_start = $f->location->start;

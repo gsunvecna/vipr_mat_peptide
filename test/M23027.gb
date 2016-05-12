@@ -1,0 +1,145 @@
+LOCUS       DEN1EMCNS               3745 bp ss-RNA     linear   VRL 20-JUL-1994
+DEFINITION  Dengue virus type 1 polyprotein encoding capsid (C), membrane
+            proteins (prM and M), envelope protein (E), and nostructural
+            protein (NS1) RNA, 5' end.
+ACCESSION   M23027
+VERSION     M23027.1  GI:511850
+KEYWORDS    capsid protein; envelope protein; membrane protein; nonstructural
+            protein; structural protein.
+SOURCE      Dengue virus 1
+  ORGANISM  Dengue virus 1
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Flaviviridae;
+            Flavivirus; Dengue virus group.
+REFERENCE   1  (bases 1 to 3745)
+  AUTHORS   Mason,P.W., McAda,P.C., Mason,T.L. and Fournier,M.J.
+  TITLE     Sequence of the dengue-1 virus genome in the region encoding the
+            three structural proteins and the major nonstructural protein NS1
+  JOURNAL   Virology 161 (1), 262-267 (1987)
+   PUBMED   3672932
+COMMENT     On Jul 21, 1994 this sequence version replaced gi:340792.
+            Original source text: Dengue virus type 1 (individual_isolate Nauru
+            Island, Western Pacific) RNA.
+FEATURES             Location/Qualifiers
+     source          1..3745
+                     /organism="Dengue virus 1"
+                     /mol_type="genomic RNA"
+                     /isolate="Nauru Island, Western Pacific"
+                     /db_xref="taxon:11053"
+     CDS             68..>3745
+                     /codon_start=1
+                     /product="polyprotein"
+                     /protein_id="AAA42940.1"
+                     /db_xref="GI:511851"
+                     /translation="MNNQRKKTGRPSFNMLKRARNRVSTVSQLAKRFSKGLLSGQGPM
+                     KLVMAFIAFLRFLAIPPTAGILARWGSFKKNGAIKVLRGFKKEISNMLNIMNRRKRSV
+                     TMLLMLLPTALAFHLTTRGGEPHMIVSKQERGKSLLFKTSAGVNMCTLIAMDLGELCE
+                     DTMTYKCPRITETEPDDVDCWCNATETWVTYGTCSQTGEHRRDKRSVALAPHVGLGLE
+                     TRTETWMSSEGAWKQIQKVETWALRHPGFTVIALFLAHAIGTSITQKGIIFILLMLVT
+                     PSMAMRCVGIGNRDFVEGLSGATWVDVVLEHGSCVTTMAKDKPTLDIELLKTEVTNPA
+                     VLRKLCIEAKISNTTTDSRCPTQGEATLVEEQDTNFVCRRTFVDRGWGNGCGLFGKGS
+                     LITCAKFKCVTKLEGKIVQYENLKYSVIVTVHTGDQHQVGNETTEHGTTATITPQAPT
+                     SEIQLTDYGALTLDCSPRTGLDFNEMVLLTMEKKSWLVHKQWFLDLPLPWTSGASTSQ
+                     ETWNRQDLLVTFKTAHAKKQEVVVLGSQEGAMHTALTGATEIQTSGTTTIFAGHLKCR
+                     LKMDKLTLKGMSYVMCTGSFKLEKEVAETQHGTVLVQVKYEGTDAPCKIPFSSQDEKG
+                     VTQNGRLITANPIVTDKEKPVNIEAEPPFGESYIVVGAGEKALKLSWFKKGSSIGKMF
+                     EATARGARRMAILGDTAWDFGSIGGVFTSVGKLIHQIFGTAYGVLFSGVSWTMKIGIG
+                     ILLTWLGLNSRSTSLSMTCIAVGMVTLYLGVMVQADSGCVINWKGRELKCGSGIFVTN
+                     EVHTWTEQYKFQADSPKRLSAAIGKAWEEGVCGIRSATRLENIMWKQISNELNHILLE
+                     NDMKFTVVVGDVSGILAQGKKMIRPQPMEHKYSWKSWGKAKIIGADVQNTTFIIDGPN
+                     TPECPDNQRAWNIWEVEDYGFGIFTTNIWLKLRDSYTQVCDHRLMSAAIKDSKAVHAD
+                     MGYWIESEKNETWKLARASFIEVKTCIWPKSHTLWSNGVLESEMIIPKIYGGPISQHN
+                     YRPGYFTQTAGPWHLGKLELDFDLCEGTTVVVDEHCGNRGPSLRTTTVTGKTIHEWCC
+                     RSCTLPPLRFKGEDGCWYGMEIRPVKEKEENLVKSMVSAGSGEVDSFSLGLLCISIMI
+                     EEVMRSRWSRKMLMTGTLAVFLLLTMGQLTWNDLIRLCIMVGANASDKMGMGTTYLAL
+                     MATFRMRPMFAVGLLFRRLTSR"
+     mat_peptide     71..409
+                     /gene="C"
+                     /product="capsid protein"
+     mat_peptide     410..682
+                     /gene="prM"
+                     /product="matrix protein"
+     mat_peptide     683..787
+                     /gene="M"
+                     /product="matrix protein"
+     mat_peptide     788..2392
+                     /gene="E"
+                     /product="envelope protein"
+     mat_peptide     2393..>3745
+                     /gene="NS1"
+                     /product="nonstructural protein"
+     gene            71..409
+                     /gene="C"
+     gene            410..682
+                     /gene="prM"
+     gene            683..787
+                     /gene="M"
+     gene            788..2392
+                     /gene="E"
+     gene            2393..3745
+                     /gene="NS1"
+ORIGIN      
+        1 aacagtttcg aatcggaagc ttgcttaacg tagttctaac agttttttat tagagagcag
+       61 atctctgatg aacaaccaac ggaaaaagac gggtcgaccg tctttcaata tgctgaaacg
+      121 cgcgagaaac cgcgtgtcaa ctgtttcaca gttggcgaag agattctcaa aaggattgct
+      181 ttcaggccaa ggacccatga aattggtgat ggcttttata gcattcctaa gatttctagc
+      241 catacctcca acagcaggaa ttttggctag atggggctca ttcaagaaga atggagcgat
+      301 caaagtgtta cggggtttca agaaagaaat ctcaaacatg ttgaacataa tgaacaggag
+      361 gaaaagatct gtgaccatgc tcctcatgct gctgcccaca gccctggcgt tccatctgac
+      421 cacccgaggg ggagagccgc acatgatagt tagcaagcag gaaagaggaa aatcactttt
+      481 gtttaagacc tctgcaggtg tcaacatgtg cacccttatt gcaatggatt tgggagagtt
+      541 atgtgaggac acaatgacct acaaatgccc ccggatcact gagacggaac cagatgacgt
+      601 tgactgttgg tgcaatgcca cggagacatg ggtgacctat ggaacatgtt ctcaaactgg
+      661 tgaacaccga cgagacaaac gttccgtcgc actggcacca cacgtagggc ttggtctaga
+      721 aacaagaacc gaaacgtgga tgtcctctga aggcgcttgg aaacaaatac aaaaagtgga
+      781 gacctgggct ctgagacacc caggattcac ggtgatagcc ctttttctag cacatgccat
+      841 aggaacatcc atcacccaga aagggatcat ttttattttg ctgatgctgg taactccatc
+      901 catggccatg cggtgcgtgg gaataggcaa cagagacttc gtggaaggac tgtcaggagc
+      961 tacgtgggtg gatgtggtac tggagcatgg aagttgcgtc actaccatgg caaaagacaa
+     1021 accaacactg gacattgaac tcttgaagac ggaggtcaca aaccctgccg tcctgcgcaa
+     1081 actgtgcatt gaagctaaaa tatcaaacac caccaccgat tcgagatgtc caacacaagg
+     1141 agaagccacg ctggtggaag aacaggacac gaactttgtg tgtcgacgaa cgttcgtgga
+     1201 cagaggctgg ggcaatggtt gtgggctatt cggaaaaggt agcttaataa cgtgtgctaa
+     1261 gtttaagtgt gtgacaaaac tggaaggaaa gatagtccaa tatgaaaact taaaatattc
+     1321 agtgatagtc accgtacaca ctggagacca gcaccaagtt ggaaatgaga ccacagaaca
+     1381 tggaacaact gcaaccataa cacctcaagc tcccacgtcg gaaatacagc tgacagacta
+     1441 cggagctcta acattggatt gttcacctag aacagggcta gactttaatg agatggtgtt
+     1501 gttgacaatg gaaaaaaaat catggctcgt ccacaaacaa tggtttctag acttaccact
+     1561 gccttggacc tcgggggctt caacatccca agagacttgg aatagacaag acttgctggt
+     1621 cacatttaag acagctcatg caaaaaagca ggaagtagtc gtactaggat cacaagaagg
+     1681 agcaatgcac actgcgttga ctggagcgac agaaatccaa acgtctggaa cgacaacaat
+     1741 ttttgcagga cacctgaaat gcagactaaa aatggataaa ctgactttaa aagggatgtc
+     1801 atatgtaatg tgcacagggt cattcaagtt agagaaggaa gtggctgaga cccagcatgg
+     1861 aactgttcta gtgcaggtta aatacgaagg aacagatgca ccatgcaaga tccccttctc
+     1921 gtcccaagat gagaagggag taacccagaa tgggagattg ataacagcca accccatagt
+     1981 cactgacaaa gaaaaaccag tcaacattga agcggagcca ccttttggtg agagctacat
+     2041 tgtggtagga gcaggtgaaa aagctttgaa actaagctgg ttcaagaagg gaagcagtat
+     2101 agggaaaatg tttgaagcaa ctgcccgtgg agcacgaagg atggccatcc tgggagacac
+     2161 tgcatgggac ttcggttcta taggaggggt gttcacgtct gtgggaaaac tgatacacca
+     2221 gatttttggg actgcgtatg gagttttgtt cagcggtgtt tcttggacca tgaagatagg
+     2281 aatagggatt ctgctgacat ggctaggatt aaactcaagg agcacgtccc tttcaatgac
+     2341 gtgtatcgca gttggcatgg tcacgctgta cctaggagtc atggttcagg cggactcggg
+     2401 atgtgtaatc aactggaaag gcagagaact caaatgtgga agcggcattt ttgtcaccaa
+     2461 tgaagtccac acctggacag agcaatataa attccaggcc gactccccta agagactatc
+     2521 agcggccatt gggaaggcat gggaggaggg tgtgtgtgga attcgatcag ccactcgtct
+     2581 cgagaacatc atgtggaagc aaatatcaaa tgaattaaac cacatcttac ttgaaaatga
+     2641 catgaaattt acagtggtcg taggagacgt tagtggaatc ttggcccaag gaaagaaaat
+     2701 gattaggcca caacccatgg aacacaaata ctcgtggaaa agctggggaa aagccaaaat
+     2761 cataggagca gatgtacaga ataccacctt catcatcgac ggcccaaaca ccccagaatg
+     2821 ccctgataac caaagagcat ggaacatttg ggaagttgaa gactatggat ttggaatttt
+     2881 cacgacaaac atatggttga aattgcgtga ctcctacact caagtgtgtg accaccggct
+     2941 aatgtcagct gccatcaagg atagcaaagc agtccatgct gacatggggt actggataga
+     3001 aagtgaaaag aacgagactt ggaagttggc aagagcctcc ttcatagaag ttaagacatg
+     3061 catctggcca aaatcccaca ctctatggag caatggagtc ctggaaagtg agatgataat
+     3121 cccaaagata tatggaggac caatatctca gcacaactac agaccaggat atttcacaca
+     3181 aacagcaggg ccgtggcact tgggcaagtt agaactagat tttgatttat gtgaaggtac
+     3241 cactgttgtt gtggatgaac attgtggaaa tcgaggacca tctcttagaa ccacaacagt
+     3301 cacaggaaag acaatccatg aatggtgctg tagatcttgc acgttacccc ccctacgttt
+     3361 caaaggagaa gacgggtgct ggtacggcat ggaaatcaga ccagtcaagg agaaggaaga
+     3421 gaacctagtt aagtcaatgg tctctgcagg gtcaggagaa gtggacagtt tttcactagg
+     3481 actgctatgc atatcaataa tgatcgaaga ggtaatgaga tccagatgga gcagaaaaat
+     3541 gctgatgact ggaacattgg ctgtgttcct ccttctcaca atgggacaat tgacatggaa
+     3601 tgatctgatc aggctatgta tcatggttgg agccaacgct tcagacaaga tggggatggg
+     3661 aacaacgtac ctagctttga tggccacttt cagaatgaga ccaatgttcg cagtcgggct
+     3721 actgtttcgc agattaacat ctaga
+//
+

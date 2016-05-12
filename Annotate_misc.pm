@@ -14,6 +14,8 @@ use IO::String;
 
 use Annotate_Math;
 use Annotate_Verify;
+use Annotate_Muscle;
+use Annotate_gbk;		# for annotation from genbank
 
 my $debug_all = 1;
 
@@ -21,7 +23,7 @@ my $debug_all = 1;
 #
 # Annotate_misc contains the misc subroutine
 #
-#    Authors Chris Larsen, clarsen@vecna.com; Guangyu Sun, gsun@vecna.com
+#    Authors Guangyu Sun, gsun@vecna.com; Chris Larsen, clarsen@vecna.com
 #    February 2010
 #
 ##################
@@ -41,6 +43,7 @@ sub generate_fasta {
     my ($feats_all) = @_;
 
     my $debug = 0 && $debug_all;
+    my $subname = 'generate_fasta';
 
     my $seq_out;
     my $faa1 = '';
@@ -49,9 +52,11 @@ sub generate_fasta {
                   '-fh'     => $vfile,
                   '-format' => 'fasta'
                               );
-
+    # Following sort causes wrong ordering in AF126284
+#    foreach my $feat (sort {$a->location->start <=> $b->location->start} @$feats_all) {
     foreach my $feat (@$feats_all) {
 
+        $debug && print STDERR "$subname: \$feat=\n". Dumper($feat) . "End of \$feat\n";
         next if ($feat->primary_tag eq 'CDS'); # Exclude CDS
         my @values = $feat->get_tag_values('translation');
         my $s = $values[0];
@@ -97,18 +102,19 @@ sub process_list1 {
 
    my $msgs = [];
    my $count = {
-         MSA=>{Success=>0, Fail=>0},
-         GBK=>{Success=>0, Fail=>0},
+         MSA=>{Success=>0, Fail=>0, Empty=>0},
+         GBK=>{Success=>0, Fail=>0, Empty=>0},
    };
    for (my $ct = 0; $ct<=$#{@$accs}; $ct++) {
-        my $msg = '';
+        my $msg_msa = '';
+        my $msg_gbk = '';
         my $faa = '';
         my $number = $accs->[$ct]->[0];
         my $acc = $accs->[$ct]->[1];
 
         # get genbank file from MySQL database
         my $result;
-        $debug && print STDERR "$subname: \$acc='$acc'\n";
+        print STDERR "$subname: \$acc='$acc'\n";
         if ($dbh_ref && $dbh_ref->isa('GBKUpdate::Database')) {
             # get genome gbk from MySQL database
             $result = $dbh_ref->get_genbank($acc);
@@ -122,14 +128,16 @@ sub process_list1 {
         if (!$result) {
             print STDERR "$subname: #$number:$acc result is empty\n";
 #            print STDOUT "$subname: #$number:$acc result is empty\n";
-            $msg = "$acc \tsrc=MSA \tstatus=Fail \tcomment=Empty genome file";
+            my $msg = "$acc \tsrc=MSA \tstatus=Fail \tcomment=Empty genome file";
             print STDERR "$subname: \$msg=$msg\n";
             push @$msgs, $msg;
             $msg = "$acc \tsrc=GBK \tstatus=Fail \tcomment=Empty genome file";
             print STDERR "$subname: \$msg=$msg\n";
             push @$msgs, $msg;
-            $count->{MSA}->{Fail}++;
-            $count->{GBK}->{Fail}++;
+#            $count->{MSA}->{Fail}++;
+            $count->{MSA}->{Empty}++;
+#            $count->{GBK}->{Fail}++;
+            $count->{GBK}->{Empty}++;
             next;
         } else {
             print STDERR "$subname: \$result='".substr($result,0,79)."'\n";
@@ -147,7 +155,7 @@ sub process_list1 {
         $outfile = "$dir_path/$acc" . '_matpept_msagbk.faa' if (!$debug);
         print STDERR "$subname: accession='$acc' \$outfile=$outfile.\n";
         
-        my ($feats_msa, $comment_msa) = Annotate_Muscle::annotate_1gbk( $gbk, $exe_dir, $aln_fn);
+        my ($feats_msa, $comment_msa) = Annotate_Muscle::annotate_1gbk( $gbk, $exe_dir, $aln_fn, $dir_path);
         my $status_msa = $feats_msa ? 'Success' : ($comment_msa eq 'Refseq with mat_peptide annotation from NCBI, skip') ? 'Skip   ' : 'Fail   ';
         if (!$feats_msa) {
             $count->{MSA}->{Fail}++;
@@ -156,18 +164,44 @@ sub process_list1 {
             $count->{MSA}->{Success}++;
             $debug && print STDERR "$subname: \$feats_msa='\n". Dumper($feats_msa) . "End of \$feats_msa\n\n";
         }
-        $msg = "$acc \tsrc=MSA \tstatus=$status_msa \tcomment=$comment_msa";
-        push @$msgs, $msg;
-        print STDERR "$subname: \$msg=$msg\n";
+        $msg_msa = "$acc \tsrc=MSA \tstatus=$status_msa \tcomment=$comment_msa";
+        push @$msgs, $msg_msa;
+        print STDERR "$subname: \$msg=$msg_msa\n";
 
         my $faa1 = '';
-        for (my $i=0; $i<=$#{@$feats_msa}; $i++) {
-            my $feats = $feats_msa->[$i];
-#            $debug && print STDERR "$subname: \$feats=\n". Dumper($feats) . "End of \$feats\n\n";
+        # Order the resulting mat_peptides according to the start positions in the CDS
+        my $refcds_ids = [ keys %$feats_msa ];
+        $debug && print STDERR "$subname: \$refcds_ids='@$refcds_ids'\n";
+        for my $i (0 .. $#{$refcds_ids}) {
+            my $feats = $feats_msa->{$refcds_ids->[$i]};
+            if (!$feats->[0]) {
+                print STDERR "$subname: ERROR: NULL feature found for \$id=$refcds_ids->[$i]\n";
+                next;
+            }
+            my $start1 = $feats->[0]->location->start;
+            for my $j ($i+1 .. $#{$refcds_ids}) {
+              $debug && print STDERR "$subname: \$feats_msa='\n". Dumper($feats_msa) . "End of \$feats_msa\n\n";
+              my $feats = $feats_msa->{$refcds_ids->[$j]};
+              my $start2 = $feats->[0]->location->start;
+              $debug && print STDERR "$subname: \$start1=$start1 \$start2=$start2\n";
+              if ($start1 > $start2) {
+                my $temp = $refcds_ids->[$i];
+                $refcds_ids->[$i] = $refcds_ids->[$j];
+                $temp = $refcds_ids->[$j] = $temp;
+              }
+            }
+        }
+        $debug && print STDERR "$subname: \$refcds_ids='@$refcds_ids'\n";
+        for my $id (@$refcds_ids) {
+            my $feats = $feats_msa->{$id};
+            if (!$feats->[0]) {
+                print STDERR "$subname: ERROR: NULL feature found for \$id=$id\n";
+                next;
+            }
+            $debug && print STDERR "$subname: \$feats=\n". Dumper($feats) . "End of \$feats\n\n";
 
             my $inseq = $feats->[0]->seq;
             # either print to STDERR or fasta file
-#            my $acc = $inseq->accession_number;
             $faa1 .= Annotate_misc::generate_fasta( $feats);
             print STDERR "$subname: accession='$acc' CDS=".$feats->[0]->location->to_FTstring."\n";
 #            $debug && print STDERR "$subname: \$faa1 = '\n$faa1'\n";
@@ -187,16 +221,19 @@ sub process_list1 {
             $count->{GBK}->{Success}++;
             $debug && print STDERR "$subname: \$feats_gbk='\n$feats_gbk'\nEnd of \$feats_gbk\n\n";
         }
-        $msg = "$acc \tsrc=GBK \tstatus=$status_gbk \tcomment=$comment_gbk";
-        print STDERR "$subname: \$msg=$msg\n";
-        push @$msgs, $msg;
+        $msg_gbk = "$acc \tsrc=GBK \tstatus=$status_gbk \tcomment=$comment_gbk";
+        if ($feats_gbk && $faa1 && $acc !~ /^NC_/i) {
+            $msg_gbk .= ". Not refseq, take MSA instead";
+        }
+        print STDERR "$subname: \$msg_gbk=$msg_gbk\n";
+        push @$msgs, $msg_gbk;
         $debug && print STDERR "$subname: \$msgs=\n". Dumper($msgs) . "End of \$msgs\n\n";
 
         # $faa1 vs. $feats_gbk,
-        # same: only print $faa1
-        # different: print both
-        # print either if the other is null
-        $faa = Annotate_gbk::combine_msa_gbk( $faa1, $feats_gbk);
+        # Take gbk if the genome is refseq,
+        # Take $faa1 if exists
+        # otherwise take gbk.
+        $faa = Annotate_gbk::combine_msa_gbk( $acc, $faa1, $feats_gbk);
         print STDERR "$subname: \$acc=$acc \$faa=\n". Dumper($faa) . "End of \$faa\n\n";
 
         if ( 1 && $faa && $outfile) {
@@ -223,7 +260,7 @@ sub process_list1 {
     $summary .= "Total input genomes: ". ($#{@$accs}+1) ."\n";
     for my $key ('MSA','GBK') {
         $summary .= "$key: \t";
-        for my $key2 ('Success','Fail') {
+        for my $key2 ('Success','Fail','Empty') {
             $summary .= "$key2 \t$count->{$key}->{$key2}\t";
         }
         $summary .= "\n";
@@ -444,7 +481,7 @@ sub Usage {
     my $usages = {};
     $usages = {
                 'msa_annotate.pl' =>
-"$source Ver$VERSION
+	"$source Ver$VERSION
 Usage:  -d directory to find the input genome file
         -i name of the input genbank file
         -l name of input folder",

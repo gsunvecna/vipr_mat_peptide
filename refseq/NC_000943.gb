@@ -2,7 +2,7 @@ LOCUS       NC_000943              11014 bp ss-RNA     linear   VRL 08-DEC-2008
 DEFINITION  Murray Valley encephalitis virus, complete genome.
 ACCESSION   NC_000943
 VERSION     NC_000943.1  GI:9633622
-DBLINK      Project:15430
+DBLINK      Project: 15430
 KEYWORDS    .
 SOURCE      Murray Valley encephalitis virus
   ORGANISM  Murray Valley encephalitis virus

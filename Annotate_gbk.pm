@@ -53,44 +53,36 @@ my $debug_all = 1;
 =cut
 
 sub combine_msa_gbk {
-    my ($faa1, $faa3) = @_;
+    my ($acc, $faa1, $faa3) = @_;
 
     my $debug = 0 && $debug_all;
     my $subname = 'combine_msa_gbk';
 
     my $faa = '';
 
-    # If either $faa1 or $faa3 is empty, or both, return the other 
-    # If $faa1 and $faa3 are different, return both 
-    if ($faa1 && $faa3 && !Annotate_Verify::diff_fasta( $faa1, $faa3)) {
-        print STDERR "$subname: \$faa1 & \$faa3 have same annotation. Output only \$faa1.\n";
-    	$faa = $faa1;
+        # $faa1 vs. $feats_gbk,
+        # Take $faa1 if exists and not refseq
+        # Tame gbk if the genome is refseq, or no $faa1
+    if (!$faa1) {
+        $debug && print STDERR "$subname: \$acc=$acc has no MSA annotation, take \$faa3.\n";
+        $faa = $faa3;
+    } elsif ($acc =~ /^NC_\d+$/i) {
+        $debug && print STDERR "$subname: \$acc=$acc is a refseq, take \$faa3.\n";
+        $faa = ($faa3) ? $faa3 : $faa1;
     } else {
-        if (!$faa1 && !$faa3) {
-            print STDERR "$subname: \$faa1 & \$faa3 Both are empty.\n";
-            $faa = $faa1 . $faa3;
-        } elsif (!$faa1) {
-            print STDERR "$subname: \$faa1 is empty. Output \$faa3.\n";
-            $faa = $faa1 . $faa3;
-        } elsif (!$faa3) {
-            print STDERR "$subname: \$faa3 is empty. Output \$faa1.\n";
-            $faa = $faa1 . $faa3;
-        } else {
-            print STDERR "$subname: \$faa1 & \$faa3 have different annotation. Output both.\n";
-            $faa = $faa1 . $faa3;
-        }
+        $debug && print STDERR "$subname: \$acc=$acc is not a refseq, and has MSA annotation, take \$faa1.\n";
+    	$faa = $faa1;
     }
-
 
    return ($faa);
 } # sub combine_msa_gbk
 
 
-## sub extract_mature_peptides searches a Bio::Seq::RichSeq object for features
+## sub extract_mature_peptides searches a Bio::Seq::RichSeq object for features that are
 ## named mat_peptide, adds the translation tag to the feature if not present,
 ## and returns an array of Bio::PrimarySeq containing only id, alphabet, and seq.
 sub extract_mature_peptides {
-    my ($seq_obj, $feats_msa) = @_;
+    my ($seq_obj, $feats_msa,$exe_dir) = @_;
 
     my $debug = 0 && $debug_all;
     my $subname = 'extract_mature_peptides';
@@ -114,11 +106,23 @@ sub extract_mature_peptides {
         next if ($feat_obj->primary_tag ne "mat_peptide");
         # Accession AM408911 has a mat_peptide before CDS. Simply ignore it for now
         if (!$parent_cds) {
-        	$count_err->{total}++;
-        	$count_err->{null_CDS}++;
+            $count_err->{total}++;
+            $count_err->{null_CDS}++;
             print STDERR "$subname: Found feat_obj #$i is '". $feat_obj->primary_tag ."' without parent CDS, ignored\n";
-        	next;
+            next;
         }
+        # See if this is a new mat_peptide, some genomes have duplicates, see NC_003899
+        my $seen = 0;
+        for my $j (0 .. $i-1) {
+            my $f = $feat_objs[$j];
+            if ($feat_obj->location->start==$f->location->start
+                && $feat_obj->location->end==$f->location->end
+                && $feat_obj->primary_tag eq $f->primary_tag) {
+                $seen = 1;
+                last;
+            }
+        }
+        next if ($seen);
         # following process prints the literal DNA sequence, w/o consideration of backups
 #	print '$feat_obj->seq='.$feat_obj->seq->seq ."\n";
 	# for the join(12332..12358,12358..15117) in DQ848678, this produceds garbage
@@ -170,15 +174,23 @@ sub extract_mature_peptides {
         $id .= 'AA='. $s .'|';
 
         # add gene_symbol
-        my $gene_symbol = Annotate_Util::get_gene_symbol( $feat_obj);
+        my $gene_symbol = Annotate_Util::get_gene_symbol( $feat_obj,$exe_dir);
         $id .= 'gene_symbol='. $gene_symbol ."|";
 
         # add the id of mat_peptide
-        my @tags = ('db_xref', 'protein_id', 'product'); # per Client request
+        my @tags = ('db_xref', 'protein_id'); # per Client request
         for my $tag (@tags) {
              if ($feat_obj->has_tag($tag)) {
                    @id = $feat_obj->get_tag_values($tag);
                    $id .= 'mat_pept='.$id[0];
+                   last;
+             }
+        }
+        @tags = ('product'); # per Client request
+        for my $tag (@tags) {
+             if ($feat_obj->has_tag($tag)) {
+                   @id = $feat_obj->get_tag_values($tag);
+                   $id .= '|product='.$id[0];
                    last;
              }
         }
@@ -208,25 +220,36 @@ sub extract_mature_peptides {
         my @parent_cds_seq = $parent_cds->get_tag_values('translation');
         if ($translation =~ /[*]/) {
 #            $count_err->{total}++;
-        	$count_err->{stop_in_seq}++;
+#            $count_err->{stop_in_seq}++;
+=head1
             print STDERR "$subname: ERROR: Found stop* in $acc #$i mat_peptide AA seq=".$feat_obj->location->to_FTstring."\n";
             print STDERR "$subname: ERROR: indicating problem in GBK file, such as AM408911\n";
             print STDERR "$subname: feat_obj #$i \n\$translation      =$translation\n";
-        	print STDERR "$subname: feat_obj #$i \n\$parent_cds_seq[0]=$parent_cds_seq[0]\n";
+            print STDERR "$subname: feat_obj #$i \n\$parent_cds_seq[0]=$parent_cds_seq[0]\n";
+=cut
             if (0) {
-               	next;
+                next;
             } else {
-                $translation = '';
+                # This section changes * to ., so that the translation from CDS can be taken as that of the new mat_peptide
+                my $t = $translation;
+                $t =~ s/[*]/./g;
+                $translation = $t;
+                $debug && print STDERR "$subname: feat_obj #$i \$t=$t\n";
+                $debug && print STDERR "$subname: feat_obj #$i \$parent_cds_seq[0]=$parent_cds_seq[0]\n";
+                if ($parent_cds_seq[0] =~ /($t)/) {
+                    $debug && print STDERR "$subname: \$1=$1\n";
+                    $translation = $1;
+                }
             }
         }
-        if ($translation && $parent_cds_seq[0] !~ /$translation/i) {
-                $count_err->{total}++;
-                $count_err->{mismatched_seq}++;
-                print STDERR "$subname: WARNING: $acc translation for mat_peptide doesn't match CDS.\n";
-                print STDOUT "$subname: WARNING: $acc translation for mat_peptide doesn't match CDS.\n";
-                print STDERR "$subname: \$parent_cds & mat_peitide: $id\n";
-                print STDERR "$subname: \$translation=$translation\n";
-                next;
+        if ($translation && ($parent_cds_seq[0] !~ /$translation/i)) {
+            $count_err->{total}++;
+            $count_err->{mismatched_seq}++;
+            print STDERR "$subname: WARNING: $acc translation for mat_peptide=".$feat_obj->location->to_FTstring." doesn't match CDS=".$parent_cds->location->to_FTstring.".\n";
+            $debug && print STDOUT "$subname: WARNING: $acc translation for mat_peptide=".$feat_obj->location->to_FTstring." doesn't match CDS=".$parent_cds->location->to_FTstring.".\n";
+            print STDERR "$subname: \$parent_cds & mat_peitide: $id\n";
+            print STDERR "$subname: \$translation=$translation\n";
+            next;
         }
         $count_err->{total}++;
 
@@ -235,11 +258,17 @@ sub extract_mature_peptides {
         my $str1 = $parent_cds->location->start .'..'. $parent_cds->location->end;
         $debug && print STDERR "$subname: \$str1=$str1\n";
         # each CDS and corresponding mat_peptides
-        CDS: for (my $i=0; $i<=$#{@$feats_msa}; $i++) {
-            my $feats = $feats_msa->[$i];
-            $debug && print STDERR "$subname: $acc \$feats=\n". Dumper($feats) . "End of \$feats\n\n";
+#        CDS: for (my $i=0; $i<=$#{@$feats_msa}; $i++) {
+#            my $feats = $feats_msa->[$i];
+        CDS: for my $i (keys %$feats_msa) {
+            my $feats = $feats_msa->{$i};
+            $debug && print STDERR "$subname: \$acc=$acc \$feats=\n". Dumper($feats) . "End of \$feats\n\n";
 
             my $cds = $feats->[0];
+            if (!$cds) {
+                print STDERR "$subname: ERROR: \$acc=$acc NULL feature found at \$i=$i\n";
+                next;
+            }
             my $str2 = $cds->location->start .'..'. $cds->location->end;
             $debug && print STDERR "$subname: $acc \$str1=$str1 \$str2=$str2\n";
             next if ($str1 ne $str2);
@@ -253,7 +282,7 @@ sub extract_mature_peptides {
                 if ($s eq $translation) {
                     $source = 'src=MSA,GBK';
                     $debug && print STDERR "$subname: $acc \$source=$source\n";
-                  	last CDS;
+                    last CDS;
                 }
             }
         }
@@ -272,14 +301,21 @@ sub extract_mature_peptides {
     for my $key (keys %$count_err) {
     	$n -= $count_err->{$key} if ($key ne "total");
     }
-    $comment = "In GBK, $count_err->{total} total";
-    $comment .= "; $n good" if ($n);
+    if ($count_err->{total}) {
+        $comment = "In GBK, $count_err->{total} total";
+        $comment .= "; $n good" if ($n);
+    } else {
+        $comment = "No mat_peptides in gbk";
+    }
     if ($count_err->{mismatched_seq} || $count_err->{stop_in_seq} ||$count_err-> {null_CDS}) {
 #        my $count_err = { total=>0, mismatched_seq=>0, stop_in_seq=>0, null_CDS=>0};
-        $comment .= "; problem:";
+        my $comm = '';
         for my $k ('mismatched_seq','stop_in_seq','null_CDS') {
-            $comment .= " $count_err->{$k} $k," if ($count_err->{$k});
+            next if (!$count_err->{$k});
+            $comm .= ", " if ($comm);
+            $comm .= "$count_err->{$k} $k" ;
         }
+        $comment .= "; problem: $comm";
     }
     $debug && print STDERR "$subname: \@records=\n".Dumper(@records)."end of \@records\n\n";
 
@@ -528,8 +564,8 @@ sub get_matpeptide {
        $debug && print STDERR "$subname: \$faa_gbk=\n". Dumper($faa_gbk) . "End of \$faa_gbk\n\n";
 
    if ($seq_obj->accession_number !~ /^NC_/i) {
-      $faa_gbk = '';
-      $comment = "Not refseq, skip";
+#      $faa_gbk = '';
+#      $comment = "Not refseq, skip";
    }
 
    return ($faa_gbk, $comment);

@@ -1,0 +1,94 @@
+LOCUS       EU708314                2076 bp    RNA     linear   VRL 15-SEP-2008
+DEFINITION  Buggy Creek virus isolate 88-20-98 structural protein gene, partial
+            cds.
+ACCESSION   EU708314
+VERSION     EU708314.1  GI:197695103
+KEYWORDS    .
+SOURCE      Buggy Creek virus
+  ORGANISM  Buggy Creek virus
+            Viruses; ssRNA positive-strand viruses, no DNA stage; Togaviridae;
+            Alphavirus; WEEV complex.
+REFERENCE   1  (bases 1 to 2076)
+  AUTHORS   Padhi,A., Moore,A.T., Brown,M.B., Foster,J.E., Pfeffer,M.,
+            Gaines,K.P., O'Brien,V.A., Strickler,S.A., Johnson,A.E. and
+            Brown,C.R.
+  TITLE     Phylogeographical structure and evolutionary history of two Buggy
+            Creek virus lineages in the western Great Plains of North America
+  JOURNAL   J. Gen. Virol. 89 (PT 9), 2122-2131 (2008)
+   PUBMED   18753221
+REFERENCE   2  (bases 1 to 2076)
+  AUTHORS   Padhi,A., Moore,A.T., Brown,M.B., Foster,J.E., Pfeffer,M.,
+            Gaines,K.P., O'Brien,V.A., Strickler,S.A., Johnson,A.E. and
+            Brown,C.R.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (08-MAY-2008) Biological Science, University of Tulsa,
+            800 S. Tucker Dr., Tulsa, OK 74104, USA
+FEATURES             Location/Qualifiers
+     source          1..2076
+                     /organism="Buggy Creek virus"
+                     /mol_type="genomic RNA"
+                     /isolate="88-20-98"
+                     /host="Oeciacus vicarius"
+                     /db_xref="taxon:48541"
+                     /country="USA"
+                     /collection_date="1998"
+                     /collected_by="Charles Brown"
+                     /note="group: A"
+     CDS             <1..>2076
+                     /note="contains C, E3, E2, 6K and E1 regions of the
+                     structural protein"
+                     /codon_start=1
+                     /product="structural protein"
+                     /protein_id="ACH72045.1"
+                     /db_xref="GI:197695104"
+                     /translation="GRFSVPRGVGGKGDSGRPILDNKGRVVAIVLGGVNEGSRTALSV
+                     VTWNQKGVTIKITPEGTEPWSLIPVMCALANITFPCNQPPVCYARNPELALDILEENA
+                     DSPAYDELLQNIVRCTARRAKRSVTDTYSMTEPYLGRCPVCRHSEPCYSPVKIEHVWD
+                     ESDDGTLRIQTSALFGSDSSDKADAQKYRYMTNKPTLEVAEGIMEEIKVSTSGPCRLI
+                     NYSGYFLLVHCPPGDSITVSIVKGGVLHSCTVEKRVQRKFVGREQYQFPPLHGKSVPC
+                     NVYNSWKESSAGYITMHRQGPYAYSTFLEEQQGKVYVNPPSGKTVTYECNCSGHRIGT
+                     TAQRVEIMLCKKTKQCIAYLSNQTKWVFNSPDLMRSTDHSVKGKLHIPFNLTPTTCLV
+                     PLAHAPTVTSWFKGITLHLTSRNPTLLTTRKLGADADSTAEWITGTTTRNFSVGREGL
+                     EYVWGNLDPVRVWAQESAPGDPHGWPHEIIQHYYHRHPVYTIAVLTGIATFALIGLSA
+                     SLHCLCRARRDCITPYALAPNATVPTIIALFCCVRPSHAETVGETLTYLWSHNQPFLW
+                     AQLCIPVAALVILLRCASCCLPFLLVAGVCLGKVDAYEHATTVPNVPGVPYKALVERS
+                     GYAPLNLEVMVVSSELVPTVNKEYITCKFHTVIPSPKIKCCGILECSAQQRADYACRV
+                     FGGVYPFMWG"
+ORIGIN      
+        1 ggcaggttct ccgttcccag gggggtcggc ggaaaagggg acagtggcag gccgatccta
+       61 gataacaaag ggcgtgtggt ggctatagtt ctgggagggg ttaacgaggg ctcccggaca
+      121 gctttatctg tagttacttg gaatcaaaaa ggggtaacca taaagattac cccagagggt
+      181 accgaaccgt ggtctctcat accagtgatg tgcgctttgg cgaacattac attcccatgc
+      241 aatcagccac ctgtttgcta cgctcgcaac ccagagctcg cgttggacat cctggaagaa
+      301 aatgccgata gcccagcata tgatgagtta ctgcagaata tcgtgaggtg tacagccagg
+      361 agagccaaac gcagtgtcac agacacctac tcaatgactg aaccgtatct tggtagatgc
+      421 ccggtgtgta gacattcgga accctgttac agccctgtta aaatagagca tgtttgggac
+      481 gagtccgatg acggcacgct gagaatccag acctctgccc tgttcggttc tgactcgtcg
+      541 gataaggccg atgcccagaa ataccgttac atgaccaata aacccacact ggaagtggca
+      601 gaaggtataa tggaagaaat caaggtgagt acatccggcc cctgtaggtt gatcaactat
+      661 tcagggtact tcctcttagt gcactgtccc ccgggggaca gcattacagt cagcatcgta
+      721 aaagggggcg tgttgcactc ctgtacggtt gaaaagaggg tgcagcgcaa gttcgttggc
+      781 cgagagcagt atcaattccc accattgcac ggcaagagtg taccctgtaa tgtgtacaac
+      841 agctggaaag agtcgagtgc cggatacatc actatgcacc gccagggacc ctatgcgtat
+      901 tcaacattcc tggaagaaca acaagggaaa gtgtacgtta atccaccgtc tggaaaaaca
+      961 gttacctatg agtgtaactg cagcgggcat aggatcggca ctacagctca gagagtcgag
+     1021 ataatgttgt gtaaaaagac aaagcaatgt attgcttact tgagcaacca gaccaagtgg
+     1081 gtttttaatt cgcccgatct tatgcgtagc acagatcaca gtgtgaaagg aaaactccac
+     1141 atcccattta acctgacccc gacaacatgc ctggtaccgc tggcacatgc accaacggtc
+     1201 acaagttggt ttaaaggcat cactttacac ctcacatcta gaaacccaac acttctgaca
+     1261 accagaaaac tgggggcaga cgctgattct actgcggagt ggatcaccgg aaccaccacg
+     1321 cgtaacttct cagtgggaag ggaaggactg gagtacgtgt ggggtaacct agatcccgtc
+     1381 agagtgtggg cccaggaatc cgcacctggt gatcctcacg gctggcccca tgaaatcatc
+     1441 cagcactact atcaccggca tcccgtttac actattgctg ttttaaccgg catagccacg
+     1501 tttgcactaa taggcttgtc ggcttcacta cattgtctct gcagggctcg cagagattgt
+     1561 attacccctt atgcgttggc gccaaatgcg actgtgccca ccatcatagc cttattctgc
+     1621 tgcgtgaggc cgtcacatgc tgagacagtt ggcgagactc ttacatacct ttggagtcat
+     1681 aatcagccat tcctttgggc ccagttgtgc attccagtgg cggcgctggt gatacttctc
+     1741 agatgtgcgt catgctgcct gcctttttta ttggttgccg gcgtctgcct ggggaaggta
+     1801 gacgcctacg aacatgcgac cactgtgcca aatgtaccgg gagtgccgta taaggccctg
+     1861 gtggagaggt caggttatgc cccgttgaac ctggaggtga tggtggtctc atctgagttg
+     1921 gtgccaactg taaataagga gtacatcacc tgtaaatttc atactgtcat tccgtcacca
+     1981 aagatcaagt gctgcgggat tctggagtgt tcggctcaac agcgagccga ctatgcctgt
+     2041 agagttttcg ggggtgtata tccgtttatg tgggga
+//
+

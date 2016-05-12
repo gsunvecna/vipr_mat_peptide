@@ -6,7 +6,7 @@ use English;
 use Carp;
 use Data::Dumper;
 
-use version; our $VERSION = qv('1.0.0');
+use version; our $VERSION = qv('1.1.1');
 use Bio::SeqIO;
 use Bio::Seq;
 use Bio::AlignIO;
@@ -38,10 +38,11 @@ Checks the new annotations against the CDS to see if all features (in an array) 
 =cut
 
 sub check_ranges {
-    my ($cds, $feats) = @_;
+    my ($feats) = @_;
 
     my $debug = 0 && $debug_all;
     my $has_gap = 0;
+    my $cds = $feats->[0];
     my @str = ('');
 #    print "check_ranges: \$feats is a ".$feats."\n";
     $debug && print "check_ranges: \$cds = \n".Dumper($cds)."\n";

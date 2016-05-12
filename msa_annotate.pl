@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use version; our $VERSION = qv('1.1.0');
+use version; our $VERSION = qv('1.1.1'); # Oct 13, 2010
 use Getopt::Long;
 use Data::Dumper;
 use English;
@@ -68,8 +68,8 @@ if ($exe_name =~ /^(.*[\/])([^\/]+[.]pl)$/i) {
     $exe_name = $2;
 }
 
-print "$exe_name: $0 V$VERSION executing with infile=$infile.\n";
-$debug && print STDERR "$exe_name: $0 V$VERSION executing with infile=$infile.\n";
+print STDOUT "$exe_name: $0 V$VERSION executing with infile=$infile.\n";
+print STDERR "\n$exe_name: $0 V$VERSION executing with infile=$infile.\n";
 $debug && print STDERR "$exe_name: \$exe_dir    = $exe_dir\n";
 $debug && print STDERR "$exe_name: input path   = $dir_path\n";
 $debug && print STDERR "\n";
@@ -92,23 +92,31 @@ if ($infile) {
 
     my $feats_new = Annotate_Muscle::annotate_1gbk( $gbk, $exe_dir);
 
+    $debug && print STDERR "$exe_name: \$feats_new=\n". Dumper($feats_new) . "End of \$feats_new\n";
+    if (!$feats_new) {
+        print STDERR "$exe_name: ERROR: Annotate_Muscle::annotate_1gbk returned empty result.\n";
+        print STDERR "$exe_name: ERROR: Exit.\n";
+        exit(1);
+    }
+
+    print STDERR "\n";
+    my $faa1;
+    my $outfile = undef;
     for (my $i=0; $i<=$#{@$feats_new}; $i++) {
         my $feats = $feats_new->[$i];
 
         # following sub call returns the fasta file in a string, for debug
-        my $faa1;
-        $faa1 = Annotate_Util::generate_fasta( $feats);
-
-        # Use following to write fasta file to disk
-        my $outfile = undef;
+        $faa1 .= Annotate_Util::generate_fasta( $feats);
         $outfile = $dir_path .'/'. $feats->[0]->seq->accession_number . '_matpept.faa' if (!$debug);
-        open my $OUTFH, '>', $outfile or croak "Can't open '$outfile': $OS_ERROR";
-        print {$OUTFH} $faa1 or croak "Can't write to '$outfile': $OS_ERROR";
-        close $OUTFH or croak "Can't close '$outfile': $OS_ERROR";
-
-        print STDERR "\n$exe_name: accession=".$feats->[0]->seq->accession_number."\n";
-        print STDERR "$exe_name: \$faa1 = '\n".$faa1."'End of \$faa1\n";
+        print STDERR "$exe_name: accession=".$feats->[0]->seq->accession_number." CDS=".$feats->[0]->location->to_FTstring."\n";
     }
+
+    # Use following to write fasta file to disk
+    open my $OUTFH, '>', $outfile or croak "Can't open '$outfile': $OS_ERROR";
+    print {$OUTFH} $faa1 or croak "Can't write to '$outfile': $OS_ERROR";
+    close $OUTFH or croak "Can't close '$outfile': $OS_ERROR";
+
+    print STDERR "$exe_name: \$faa1 = '\n".$faa1."'End of \$faa1\n";
 }
 
 print "$exe_name: finished.\n";

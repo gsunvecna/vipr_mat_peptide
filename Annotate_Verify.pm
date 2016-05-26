@@ -43,10 +43,10 @@ sub check_old_annotation {
 
         my $faa3 = '';
             my $old_dirs = [
-                            '/net/home/gsun/northrop/matpeptide/msa_annotate-1.1.1/t1234',
-                            '/net/home/gsun/northrop/matpeptide/msa_annotate-1.0.0',
-                            '/net/home/gsun/northrop/matpeptide/msa_annotate-1.0.2',
-                            '/net/home/gsun/northrop/matpeptide/msa_annotate_profile',
+#                            '/net/home/gsun/northrop/matpeptide/vipr_mat_peptide-1.1.1/t1234',
+#                            '/net/home/gsun/northrop/matpeptide/vipr_mat_peptide-1.0.0',
+#                            '/net/home/gsun/northrop/matpeptide/vipr_mat_peptide-1.0.2',
+#                            '/net/home/gsun/northrop/matpeptide/vipr_mat_peptide_profile',
                             '/net/home/gsun/northrop/matpeptide/t1234',
                            ];
             my $fn = $acc.'_matpept.faa';

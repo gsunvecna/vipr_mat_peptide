@@ -37,7 +37,7 @@ my $debug = 0;
 
 ##//README//##
 #
-# msa_annotate.pl
+# vipr_mat_peptide.pl
 #
 # This script takes a viral genome in genbank format, uses a refseq to annotate any polyproptein within.
 # It outputs a file named as <accession>_matpept_msa.faa with the annotated mat_peptides in fasta format
@@ -54,13 +54,13 @@ my $debug = 0;
 #
 # USAGE:
 # For single genome
-# ./msa_annotate.pl -d [dir_path] -i [inputFile.gb]
+# ./vipr_mat_peptide.pl -d [dir_path] -i [inputFile.gb]
 # For multiple input genomes within a directory
-# ./msa_annotate.pl -d [dir_path] -l [directory]
+# ./vipr_mat_peptide.pl -d [dir_path] -l [directory]
 # e.g.
-# ./msa_annotate.pl -d ./ -i NC_001477_test.gb >> out.txt 2>> err.txt
-# ./msa_annotate.pl -d ./ -l test >> test/out.txt 2>> test/err.txt
-# ./msa_annotate.pl -checkrefseq=1 -update >out1.txt 2>err1.txt
+# ./vipr_mat_peptide.pl -d ./ -i NC_001477_test.gb >> out.txt 2>> err.txt
+# ./vipr_mat_peptide.pl -d ./ -l test >> test/out.txt 2>> test/err.txt
+# ./vipr_mat_peptide.pl -checkrefseq=1 -update >out1.txt 2>err1.txt
 #
 #    Authors: Guangyu Sun, gsun@vecna.com; Chris Larsen, clarsen@vecna.com;
 #    September 2011

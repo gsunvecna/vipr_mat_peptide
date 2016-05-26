@@ -23,7 +23,7 @@ my $debug_all = 0;
 
 ####//README//####
 #
-# Annotate_Def contains reference data used in the msa_annotate.pl script
+# Annotate_Def contains reference data used in the vipr_mat_peptide.pl script
 #
 #    Authors Chris Larsen, clarsen@vecna.com; Guangyu Sun, gsun@vecna.com
 #    November 2012
@@ -1563,7 +1563,7 @@ sub saveSymbolText {
     my $subn = 'saveSymbolText';
 
     my $txt = '';
-    $txt .= "# Saved from msa_annotate.pl V$VERSION at ". POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime) ."\n";
+    $txt .= "# Saved from vipr_mat_peptide.pl V$VERSION at ". POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime) ."\n";
     $debug && print STDERR "$subn: \$acc \$GENE_SYM=\n".Dumper($GENE_SYM)."End of \$GENE_SYM\n";
     $debug && print STDERR "$subn: \$txt=\n$txt\n";
 
@@ -1645,7 +1645,7 @@ sub updateGeneSymbol {
                 print STDERR "$subn: $acc: Found new mat_peptide, need gene symbol \$featId='$featId'\n";
                 $newSym = 1;
                 $gene_symbol = Annotate_Def::newSymbol( $feat, $acc);
-                $comm = "#msa_annotate.pl, V$VERSION, via script";
+                $comm = "#vipr_mat_peptide.pl, V$VERSION, via script";
                 $updatedSymbol = 1;
                 $debug && print STDERR "$subn: Got new gene symbol: $acc \$featId=$featId \$gene_symbol='$gene_symbol' \$comm='$comm'\n";
             }
@@ -1662,7 +1662,7 @@ sub updateGeneSymbol {
         }
     }
     if ($updatedSymbol) {
-        unshift @$m0, "# Updated via msa_annotate.pl V$VERSION at ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime);
+        unshift @$m0, "# Updated via vipr_mat_peptide.pl V$VERSION at ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime);
     }
     $GENE_SYM->{meta}->{$acc} = $m0;
     $GENE_SYM->{meta1}->{$acc} = $m1;

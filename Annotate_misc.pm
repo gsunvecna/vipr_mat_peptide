@@ -583,8 +583,8 @@ sub list_dir_files {
 =head2 Usage
 
 Print the useage according to calling sub
- msa_annotate.pl:     for deployment
- msa_annotate_dev.pl: for testing
+ vipr_mat_peptide.pl:     for deployment
+ vipr_mat_peptide_dev.pl: for testing
 
 =cut
 
@@ -596,12 +596,12 @@ sub Usage {
 
     my $usages = {};
     $usages = {
-                'msa_annotate.pl' =>
+                'vipr_mat_peptide.pl' =>
 	"$source Ver$Annotate_Def::VERSION
 Usage:  -d directory to find the input genome file
         -i name of the input genbank file
         -l name of input folder",
-                'msa_annotate_dev.pl' =>
+                'vipr_mat_peptide_dev.pl' =>
 "$source Ver$VERSION
 Usage:  -d directory to find the input genome file
         -i name of the input genbank file

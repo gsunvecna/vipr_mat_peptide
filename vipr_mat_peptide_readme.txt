@@ -1,7 +1,7 @@
 
 ##//README//##
 #
-# msa_annotate.pl
+# vipr_mat_peptide.pl
 #
 # This script takes a viral genome in genbank format, uses a refseq to annotate any polyproptein within.
 # It outputs a file named as <accession>_matpept_msa.faa with the annotated mat_peptides in fasta format
@@ -20,12 +20,12 @@
 #
 # USAGE:
 # For single genome
-# ./msa_annotate.pl -d [dir_path] -i [inputFile.gb]
+# ./vipr_mat_peptide.pl -d [dir_path] -i [inputFile.gb]
 # For multiple input genomes within a directory
-# ./msa_annotate.pl -d [dir_path] -l [directory]
+# ./vipr_mat_peptide.pl -d [dir_path] -l [directory]
 # e.g.
-# ./msa_annotate.pl -d ./ -i NC_001477_test.gb >> out.txt 2>> err.txt
-# ./msa_annotate.pl -d ./ -l test >> test/out.txt 2>> test/err.txt
+# ./vipr_mat_peptide.pl -d ./ -i NC_001477_test.gb >> out.txt 2>> err.txt
+# ./vipr_mat_peptide.pl -d ./ -l test >> test/out.txt 2>> test/err.txt
 #
 #    Authors: Chris Larsen, clarsen@vecna.com;
 #             Guangyu Sun, gsun@vecna.com;
@@ -41,6 +41,7 @@ Changes
 V1.3.1, Jan 2016
 1. Added Zika virus (64320), Bagaza virus (64290), and Kedougou virus (64311). The reference mat_peptide
 annotation was obtain from Arch Virol 2007, 152, 687-696.
+2. Changed name to vipr_mat_peptide, so that it makes more sense.
 
 V1.3.0
 1. Re-structured the program.
@@ -222,8 +223,8 @@ also covers other species within the Coronaviridae family.
 2. Code change mostly aimed at finding out and handling the duplicate mat_peptides
 resulted from >1 CDS from input genome.
 
-Features of msa_annovate.pl V1.1.3
-Perl script: msa_annotate.pl, 
+Features of vipr_mat_peptide.pl V1.1.3
+Perl script: vipr_mat_peptide.pl, 
 Modular design: functions grouped into 6 modules for easy upkeep
   Easy input/output
   Takes genbank file as input, output mat_peptides in fasta file with name <accession>_matpept_msagbk.faa. Also writes messages to stdout and stderr for monitoring/debugging. 
@@ -354,7 +355,7 @@ available refseqs should improve the quality of mat_peptide annotation.
 Further direction
 
 Question:
-  With the current design/implementation of msa_annotate.pl script, it's relatively easy to add new species. However, much time has been spent in checking if the refseq is valid, and if the refseq works with all genomes in the given species. Though some minor problem has been observed, such as GT3 of hepacivirus as compared with GT1, most refseqs are used as-is without much change. Is it necessary to do extensive checking going forward?
+  With the current design/implementation of vipr_mat_peptide.pl script, it's relatively easy to add new species. However, much time has been spent in checking if the refseq is valid, and if the refseq works with all genomes in the given species. Though some minor problem has been observed, such as GT3 of hepacivirus as compared with GT1, most refseqs are used as-is without much change. Is it necessary to do extensive checking going forward?
 Answer:
   There were quite a few problems found duing update for Coronaviridae (Version 1.1.4). So, at least
 for now, careful review is needed.

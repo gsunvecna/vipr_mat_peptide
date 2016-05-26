@@ -1,9 +1,9 @@
-msa_annotate.pl Ver1.3.1
+vipr_mat_peptide.pl Ver1.3.1
 Usage:  -d directory to find the input genome file
         -i name of the input genbank file
         -l name of input folder
-    E.g.: msa_annotate.pl -d ./ -i NC_001477.gb
-    E.g.: msa_annotate.pl -d ./ -l all_genomes/ 
+    E.g.: vipr_mat_peptide.pl -d ./ -i NC_001477.gb
+    E.g.: vipr_mat_peptide.pl -d ./ -l all_genomes/ 
 
 Viral families and species covered in Ver1.3.1 are:
 Families: 14, species: 117, strains: 169

@@ -7,19 +7,19 @@ use Getopt::Long;
 use Data::Dumper;
 use English;
 use Carp;
-use Parallel::ForkManager; # To install this module: 1)perl -MCPAN -e shell; 2)force install Parallel::ForkManager
 
 use Annotate_misc;
 use Annotate_Def;
+use Annotate_Test;
 
 my $debug = 0;
 
 ##################//README//#####################################################
 #                                                                               #
-# msa_annotate_test.pl                                                          #
+# vipr_mat_peptide_test.pl                                                          #
 #                                                                               #
 # This script looks for the test/ directory, and find all genbank files in it.  #
-# For each genbank file, this script runs the msa_annotate.pl script, and       #
+# For each genbank file, this script runs the vipr_mat_peptide.pl script, and       #
 # compares the result with result stored in test/output/.                       #
 # Output for each file Success/Fail status, and the summary in the end.         #
 #                                                                               #
@@ -27,13 +27,13 @@ my $debug = 0;
 # OUTPUT: for each genbank file, Success/Fail status, and summary when done     #
 #                                                                               #
 # DEPENDENCIES:                                                                 #
-# This script needs msa_annotate.pl package correctly installed                 #
+# This script needs vipr_mat_peptide.pl package correctly installed                 #
 #                                                                               #
 # USAGE:                                                                        #
-# ./msa_annotate_test.pl                                                        #
-# ./msa_annotate_test.pl -f Togaviridae                                         #
-# ./msa_annotate_test.pl -f Togaviridae -debug                                  #
-# ./msa_annotate_test.pl -i DQ241304.gb (the file needs to be in ./test)        #
+# ./vipr_mat_peptide_test.pl                                                        #
+# ./vipr_mat_peptide_test.pl -f Togaviridae                                         #
+# ./vipr_mat_peptide_test.pl -f Togaviridae -debug                                  #
+# ./vipr_mat_peptide_test.pl -i DQ241304.gb (the file needs to be in ./test)        #
 #                                                                               #
 # Author: Guangyu Sun, Vecna Technologies, Inc, gsun@vecna.com;                 #
 # October 2012                                                                  #
@@ -62,14 +62,12 @@ my $debug = 0;
 print STDERR "command='$0 @ARGV'\n";
 print STDERR "$0 V$VERSION executing ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime)."\n";
 print STDOUT "$0 V$VERSION executing ".POSIX::strftime("%m/%d/%Y %H:%M:%S", localtime)."\n";
-my $nproc         = 1;
 my $infile = '';
 my $FAMILY = '';
 my $useropts = GetOptions(
                  "i=s"  => \ $infile,      # [inputFile.gb]
                  "f=s"  => \ $FAMILY,      # viral family to test
                  "debug"=> \ $debug,       # debug
-                 "nproc=s"  => \$nproc,         # number of processes, for parallel processing
                  );
 my $exe_dir  = './';
 my $exe_name = $0;
@@ -83,8 +81,6 @@ if ($FAMILY && !exists($families->{$FAMILY})) {
     $FAMILY = '';
 }
 print STDERR "$exe_name: requested \$FAMILY='$FAMILY'\n";
-$nproc = ($nproc<0) ? 0 : ($nproc>20) ? 20 : $nproc;
-print STDERR "$exe_name: \$nproc=$nproc\n";
 
 $debug && print STDERR "$exe_name: \$exe_dir    = '$exe_dir'\n";
 $debug && print STDERR "\n";
@@ -176,49 +172,24 @@ for my $fam ( sort keys %$families) {
     my $accs = $families->{$fam};
     my $msg1 = sprintf (" Testing %-15s %d", "$fam,", scalar @$accs);
 
-    # Set up parallel process, each input gbk/fasta file is one fork
-    # Set $max_procs = 0; for debugging, ie. not forking
-    # Set $max_procs to (intended number of process)-1 for processing
-    my $max_procs = ($nproc>0) ? $nproc : 0;
-    my $pm =  Parallel::ForkManager->new( $max_procs);
-    $debug && print STDERR "$exe_name: ForkManager started with \$max_procs=$max_procs\n";
-    $pm->run_on_start(
-        sub { my ($pid, $ident) = @_;
-#            print STDERR "** $ident started, pid: $pid\n";
-        }
-    );
-    $pm->run_on_finish(
-        sub { my ($pid, $exit_code, $ident) = @_;
-          if (!$exit_code) {
-#            print STDERR "** $ident finished PID $pid and exit_code: $exit_code\n";
-          } else {
-#            print STDERR "** $ident ERROR: finished PID $pid and exit_code: $exit_code\n";
-#            print STDERR "** $ident ERROR: needs checking\n";
-          }
-        }
-    );
-
     print STDERR "$msg1\n";
     print STDOUT "$msg1\n";
     my ($timeStart, $timeEnd);
     for my $j (0 .. $#{$accs}) {
         $count++;
-        # starts the fork in child, and returns to for loop in main
-        my $pid = $pm->start("$j:$accs->[$j]->[1]") and next;
-
         $timeStart = time();
         my $acc = $accs->[$j]->[1];
         my $result = '';
         my $err = '';
         my $msg1 = sprintf (" Testing #%-4s %-15s %-13s", "$count,", "$fam,", $acc);
         if (!$FAMILY || $fam eq $FAMILY) {
-            ($result, $err) = &run_msa_annotate( $acc, $dirIn, $removeAnnotationResult);
+            ($result, $err) = Annotate_Test::run_vipr_mat_peptide( $acc, $dirIn, $exe_dir, $removeAnnotationResult);
         } else {
             $err = "Family not requested. Skip";
         }
 
         if (!$err) {
-            ($result, $err) = &cmp_msa_annotate( $acc, $result, $dirIn, $dirOut);
+            ($result, $err) = Annotate_Test::cmp_vipr_mat_peptide( $acc, $result, $dirIn, $dirOut);
         }
         $debug && print STDERR "$exe_name: \$acc='$acc' New:OLd \$result='$result' \$err='$err'\n";
 
@@ -256,9 +227,7 @@ for my $fam ( sort keys %$families) {
         my $t = time() - $timeStart;
         printf STDOUT ("%3d sec\t$msg", $t);
         print STDERR "$msg";
-        $pm->finish($acc); # do the exit in the child process, pass an exit code to finish
     } # acc
-    $pm->wait_all_children; # Wait for all child processes to finish
 
 } # family
     print STDERR "\n";
@@ -274,130 +243,4 @@ print STDERR "\n$exe_name: finished.\n\n";
 
 exit(0);
 
-
-#### Subroutines ####
-
-# Run msa_annotate.pl script for the genome
-
-sub run_msa_annotate {
-    my ($acc, $dirIn, $removeFile) = @_;
-
-    my $debug = 0;
-    my $subName = 'run_msa_annotate';
-
-    my $fmatpept = '';
-    my $err = '';
-
-    if (!-e "$dirIn/$acc" && ($acc ne 'usage')) {
-        $err = "ERROR: Input file '$dirIn/$acc' doesn't exist";
-        return ($fmatpept, $err);
-    }
-
-    my $dir_path = $dirIn;
-    my $result = '';
-
-    # Run msa_annotate.pl
-    my $ferr = "$acc.err";
-    my $fout = "$acc.out";
-    $debug && print STDERR "$subName: \$fout=$fout \$ferr=$ferr\n";
-    $debug && print STDERR "$subName: \$fout=$dir_path/$fout exists, will be overwritten\n" if (-e "$dir_path/$fout");
-    $debug && print STDERR "$subName: \$ferr=$dir_path/$ferr exists, will be overwritten\n" if (-e "$dir_path/$ferr");
-    my $cmd = '';
-    $cmd = "$exe_dir/msa_annotate.pl"; # Program
-#    $cmd = "$exe_dir/msa_annotate_dev.pl"; # Program
-    if ($acc eq 'usage') {
-#        $cmd .= " -d $dir_path -i $acc "; # input parameters
-        $cmd .= " >$dir_path/$fout 2>$dir_path/$ferr"; # Redicting stdout and stderr to files
-    } else {
-        $cmd .= " -d $dir_path -i $acc "; # input parameters
-        $cmd .= " >$dir_path/$fout 2>$dir_path/$ferr"; # Redicting stdout and stderr to files
-    }
-    $result = `$cmd`; # run the msa_annotate.pl script
-    $debug && print STDERR "$subName: \$cmd=$cmd\n";
-    $debug && print STDERR "$subName: \$result=\n".Dumper($result)."End of \$result\n";
-
-    if (!-e "$dir_path/$ferr") {
-        $err = "ERROR: After running msa_annotate.pl, can't find STDERR file '$dirIn/$ferr'";
-        return ($fmatpept, $err);
-    }
-
-    # find the name of new outfile from the $ferr
-    open my $in, '<', "$dir_path/$ferr" or croak "$0: Couldn't open $dir_path/$ferr: $OS_ERROR";
-    while ( <$in> ) {
-        if ($_ =~ /outfile=.*[\/]([^\/]+)[.]$/) {
-            $fmatpept = $1;
-            $debug && print STDERR "$subName: \$fmatpept='$fmatpept'\n";
-        } elsif ($_ =~ /.+MSA.+Fail.+comment=(.+)$/) {
-            $err = $1;
-            last;
-        }
-    }
-    close $in or croak "$0: Couldn't close $dir_path/$ferr: $OS_ERROR";
-    $debug && print STDERR "$subName: \$fmatpept='$fmatpept' \$err='$err'\n";
-    `rm $dir_path/$fout $dir_path/$ferr` if ($removeFile);
-
-    return ($fmatpept, $err);
-} # sub run_msa_annotate
-
-
-# Compares the new output with eixsting output
-
-sub cmp_msa_annotate {
-    my ($acc, $fmatpept, $dirIn, $dirOut) = @_;
-
-    my $debug = 0;
-    my $subName = 'cmp_msa_annotate';
-
-    $debug && print STDERR "$subName: \$acc=$acc \$fmatpept='$fmatpept' \$dirIn='$dirIn'\n";
-    my $result = '';
-    my $err = '';
-
-  if ($acc eq 'usage') {
-    $fmatpept = "usage.out";
-  } else {
-    $acc = $1 if ($acc =~ m/^([^.]+)[.](gb|gbk|genbank)/);
-    if (!$acc) {
-        $err = "ERROR: Genome '$acc' is invalid";
-        return ($result, $err);
-    }
-    my $list = '';
-    $list = `ls $dirOut/${acc}_matpept_???.faa `;
-    $debug && print STDERR "$subName: \$list='$list'\n";
-    if (!$list) {
-            $err = "No standard output for $acc in $dirOut/";
-            return ($result, $err);
-    }
-    if (!$fmatpept) {
-            $err = "ERROR: output file '$fmatpept' is invalid";
-            return ($result, $err);
-    }
-    if (!-e "$dirIn/$fmatpept") {
-            $err = "ERROR: new output file '$dirIn/$fmatpept' doesn't exist";
-            return ($result, $err);
-    }
-    if (!-e "$dirOut/$fmatpept") {
-            $err = "ERROR: standard output file '$dirOut/$fmatpept' doesn't exist";
-            return ($result, $err);
-    }
-  }
-
-    # Compare new <acc>_matpept_msa.faa with standard result
-    $result = "";
-    my $cmd = "diff $dirOut/$fmatpept $dirIn/$fmatpept";
-    if ( 1 ) {
-        $result = `$cmd`;
-    } else {
-        # Place holder for detailed comparison of mat_peptide sequences
-        # in case if the defline in fasta file has changed, or others
-        
-    }
-    if ($result) {
-        $result = "$cmd\n" . $result;
-        $err = "ERROR: Difference with old result";
-    }
-    return ($result, $err);
-} # sub cmp_msa_annotate
-
-
-1;
 

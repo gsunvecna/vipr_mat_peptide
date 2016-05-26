@@ -23,7 +23,7 @@ my $debug_all = 0;
 
 ####//README//####
 #
-# Annotate_Def contains reference data used in the msa_annotate.pl script
+# Annotate_Def contains reference data used in the vipr_mat_peptide.pl script
 #
 #    Authors Chris Larsen, clarsen@vecna.com; Guangyu Sun, gsun@vecna.com
 #    November 2012

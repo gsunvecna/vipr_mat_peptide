@@ -645,4 +645,5 @@ sub get_matpeptide {
    return ($faa_gbk, $comment);
 } # sub get_matpeptide
 
+
 1;

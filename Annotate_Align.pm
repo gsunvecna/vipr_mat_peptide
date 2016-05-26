@@ -766,4 +766,5 @@ sub MSA_annotate_1cds {
     return $feats_all;
 } # sub MSA_annotate_1cds
 
+
 1;

@@ -628,6 +628,4 @@ Usage:  -d directory to find the input genome file
     return $usage . "\n";
 } # sub Usage
 
-
 1;
-

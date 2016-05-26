@@ -1834,5 +1834,4 @@ sub conservedAA {
     return $conserved;
 } # sub conservedAA
 
-
 1;

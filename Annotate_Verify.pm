@@ -699,5 +699,4 @@ sub diff_2str {
     return $diff;
 } # sub diff_2str
 
-
 1;

@@ -6,21 +6,21 @@
 
 Sequence format is Pearson
 Sequence 1: ref=NC_012532|CDS=107..10366  3419 aa
-Sequence 2: ACC=KU686218|CDS=99..1275      392 aa
+Sequence 2: ACC=KU509998|CDS=106..10377   3423 aa
 Start of Pairwise alignments
 Aligning...
 
-Sequences (1:2) Aligned. Score:  93
-Guide tree file created:   [/tmp/ZvBgsgIYJy/glqfZeimYN.dnd]
+Sequences (1:2) Aligned. Score:  96
+Guide tree file created:   [/tmp/Ii1nxBGcwD/WHvsXkbBH7.dnd]
 
 There are 1 groups
 Start of Multiple Alignment
 
 Aligning...
-Group 1: Sequences:   2      Score:8303
-Alignment Score 2299
+Group 1: Sequences:   2      Score:73569
+Alignment Score 21024
 
-GCG-Alignment file created      [/net/home/gsun/northrop/matpeptide/vipr_mat_peptide-1.3.1//KU686218_0_cds1_Util.msf]
+GCG-Alignment file created      [/net/home/gsun/northrop/matpeptide/vipr_mat_peptide-1.3.1//KU509998_0_cds2_Util.msf]
 
 
 
@@ -30,25 +30,25 @@ GCG-Alignment file created      [/net/home/gsun/northrop/matpeptide/vipr_mat_pep
 
 Sequence format is Pearson
 Sequence 1: ref=NC_012532|CDS=107..10366  3419 aa
-Sequence 2: ACC=KU686218|CDS=99..1275      392 aa
+Sequence 2: ACC=KU509998|CDS=106..10377   3423 aa
 Start of Pairwise alignments
 Aligning...
 
-Sequences (1:2) Aligned. Score:  93
-Guide tree file created:   [/tmp/sgAJ8pyJ2b/i1nuW3J4XJ.dnd]
+Sequences (1:2) Aligned. Score:  96
+Guide tree file created:   [/tmp/pBhrZmH75M/k6eLmNsQqC.dnd]
 
 There are 1 groups
 Start of Multiple Alignment
 
 Aligning...
-Group 1: Sequences:   2      Score:8303
-Alignment Score 2299
+Group 1: Sequences:   2      Score:73569
+Alignment Score 21024
 
-GCG-Alignment file created      [/net/home/gsun/northrop/matpeptide/vipr_mat_peptide-1.3.1//KU686218_i0_j0_Align.msf]
+GCG-Alignment file created      [/net/home/gsun/northrop/matpeptide/vipr_mat_peptide-1.3.1//KU509998_i0_j0_Align.msf]
 
 accession 	taxonomy 	source 	status 	comment
-KU686218 	taxid=64320 	src=MSA 	status=Success 	comment=MSA returned 6/14 mat_peptides vs refseq
-KU686218 	taxid=64320 	src=GBK 	status=Success 	comment=In GBK, 3 total; 3 good. Not refseq, take MSA instead
+KU509998 	taxid=64320 	src=MSA 	status=Success 	comment=MSA returned 14/14 mat_peptides vs refseq
+KU509998 	taxid=64320 	src=GBK 	status=Success 	comment=In GBK, 10 total; 10 good. Not refseq, take MSA instead
 
 Statistics of this run:
 Total input genomes: 1

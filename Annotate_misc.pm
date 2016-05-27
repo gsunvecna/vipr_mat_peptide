@@ -146,10 +146,12 @@ sub readGenbank {
 
 
 sub process_list1 {
-    my ($accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $progs, $inFormat, $inTaxon, $outFormat) = @_;
+    my ($accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $inFormat, $inTaxon, $outFormat) = @_;
 
     my $debug = 0 || $debug_all;
     my $subname = 'process_list1';
+
+    my $progs = Annotate_Def::getProgs();
 
 #    my $refseqs = {};
 
@@ -628,4 +630,6 @@ Usage:  -d directory to find the input genome file
     return $usage . "\n";
 } # sub Usage
 
+
 1;
+

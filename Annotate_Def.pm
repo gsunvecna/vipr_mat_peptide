@@ -39,6 +39,31 @@ my $debug_all = 0;
     $MSA_ANNOTATE_HOME = abs_path($MSA_ANNOTATE_HOME) . '/';
     $debug_all && print STDERR "Genotyp_Def: \$MSA_ANNOTATE_HOME='$MSA_ANNOTATE_HOME'\n";
 
+# Program locations, may leave blank if the programs are accessible from the prompt
+# MUSCLE is replaced by clustalw, since its alignment tends to have gaps at the ends of partial sequences
+my $PROGS = { # default is for front-end analysis servers
+#    muscle  => '', # Location of MUSCLE, eg /net/home/gsun/prog/muscle/mus37/muscle
+    clustalw=> '', # Location of clustalw, eg /net/home/gsun/prog/phylip/phylip-3.69/exe/clustalw
+};
+my $username = $ENV{LOGNAME} || $ENV{USER} || getpwuid($<);
+    $debug_all && print STDERR "Genotyp_Def: \$username='$username'\n";
+if ($username eq 'dbadmin' || `hostname` =~ m/^brc-?(dev|prod)-?d/i) {
+# Following is for the convenience of Northrop backend processing, or AWS
+#    $PROGS->{muscle} = '/home/dbadmin/loader/ext/muscle3.7/muscle',
+    $PROGS->{clustalw}= '',
+#    $PROGS->{fastme} = '/home/dbadmin/loader/ext/FastME_2.07/fastme_linux64',
+} elsif ($username eq 'tomcat' || `hostname` =~ m/^brc-?(dev|prod)-?ana/i) {
+    # Following is for the convenience of front-end analysis, or ASW
+#    $PROGS->{muscle} = '/usr/bin/muscle';
+    $PROGS->{clustalw}= '';
+} else {
+#    $PROGS->{muscle} = (-x '/home/dbadmin/loader/ext/muscle3.7/muscle') ? '/home/dbadmin/loader/ext/muscle3.7/muscle'
+#                     : (-x '/usr/bin/muscle') ? '/usr/bin/muscle'
+#                     : '';
+    $PROGS->{clustalw}= (-x 'clustalw') ? 'clustalw'
+                     : '';
+}
+
 #loadTaxonTable: $TAXON=
 #$VAR1 = {
 #          'taxon_fn' => 'Annotate_taxon_records.txt',
@@ -99,6 +124,14 @@ sub setDebugAll {
     my ($debug) = @_;
     $debug_all = $debug;
 } # sub setDebugAll
+
+
+=head2
+ sub getProgs returns the location of all required programs
+=cut
+sub getProgs {
+    return $PROGS;
+} # sub getProgs
 
 
 =head2
@@ -1833,5 +1866,6 @@ sub conservedAA {
 
     return $conserved;
 } # sub conservedAA
+
 
 1;

@@ -14,9 +14,6 @@
 #
 # DEPENDENCIES:
 # This script calls perl and uses BioPerl modules.
-## Path to the MUSCLE binaries. You need to configure this, if muscle is not already in the path
-#       BEGIN {$ENV{MUSCLEDIR} = '/net/home/gsun/prog/muscle/mus37'}
-# Specify the MUSCLE executable location in your environment as directed above!
 #
 # USAGE:
 # For single genome
@@ -27,8 +24,8 @@
 # ./vipr_mat_peptide.pl -d ./ -i NC_001477_test.gb >> out.txt 2>> err.txt
 # ./vipr_mat_peptide.pl -d ./ -l test >> test/out.txt 2>> test/err.txt
 #
+#    Authors: Guangyu Sun, gsun@vecna.com;
 #    Authors: Chris Larsen, clarsen@vecna.com;
-#             Guangyu Sun, gsun@vecna.com;
 #    September 2011
 #
 #################
@@ -41,7 +38,7 @@ Changes
 V1.3.1, Jan 2016
 1. Added Zika virus (64320), Bagaza virus (64290), and Kedougou virus (64311). The reference mat_peptide
 annotation was obtain from Arch Virol 2007, 152, 687-696.
-2. Changed name to vipr_mat_peptide, so that it makes more sense.
+2. Changed name to vipr_mat_peptide.
 
 V1.3.0
 1. Re-structured the program.
@@ -285,7 +282,7 @@ SS+ RNA
  (x) Coronaviridae
  (x) Flaviviridae
  (*) Hepeviridae (problems with the 2 available refseqs)
- ( ) Picornaviridae
+ (x) Picornaviridae
  (x) Togaviridae
 SS- RNA
  (x) Arenaviridae
@@ -299,7 +296,7 @@ DS DNA
  ( ) Herpesviridae
  ( ) Poxviridae
 
-Validated species
+Validated species (Most up-to-date numbers are available from the script)
 So far, validated species include:
 Flaviviridae: 
   Flavivirus, 27 strain/species

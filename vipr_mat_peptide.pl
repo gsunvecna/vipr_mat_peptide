@@ -19,17 +19,10 @@ use lib ("$libPath");
 
 use Bio::SeqIO;
 use Bio::Seq;
-#use Bio::Tools::Run::Alignment::Muscle;
 use IO::String;
 
-## Path to the CLUSTALW binaries. You need to configure this, if clustalw is not in the path already
-#	BEGIN {$ENV{MUSCLEDIR} = '/net/home/gsun/prog/clustalw/clustalw-2.0.12'}
-#Check for CLUSTALW installation on start:
-#$ENV{CLUSTALDIR} or croak 'CLUSTALDIR must be defined in your environment';
-#(-e $ENV{CLUSTALDIR}) or croak "CLUSTALDIR ($ENV{CLUSTALDIR}) does not exist";
+## Path to the CLUSTALW binaries. Change the CLUSTALW location in Annotate_Def.pm
 
-## Path to the MUSCLE binaries. You need to configure this, if muscle is not already in the path
-#	BEGIN {$ENV{MUSCLEDIR} = '/net/home/gsun/prog/muscle/mus37'}
 use Annotate_Download;
 use Annotate_misc;
 
@@ -50,7 +43,6 @@ my $debug = 0;
 #
 # DEPENDENCIES:
 # This script calls perl and uses BioPerl modules.
-# Specify the MUSCLE executable location in your environment as directed above!
 #
 # USAGE:
 # For single genome
@@ -69,14 +61,6 @@ my $debug = 0;
 
 
 ## //EXECUTE// ##
-
-# Program locations, may leave blank if the programs are accessible from the prompt
-my $progs = {
-    # Location of MUSCLE executible, such as /net/home/gsun/prog/muscle/mus37/muscle
-#    muscle  => '/home/peptide/loader/ext/muscle3.7/muscle',
-    # Location of CLUSTALW executible, such as /net/home/gsun/prog/clustalw/clustalw-2.0.12/clustalw2
-#    clustalw  => '/home/peptide/loader/ext/autoCuration/clustalw';
-};
 
 # Get user-defined options
 my $inTaxon = ''; # taxonomy of input sequence, required for fasta input. For gbk input, taxon is read from "source"
@@ -172,7 +156,7 @@ if ($infile) {
     push @$accs, [$#{$accs}+1, "$dir_path/$infile"];
 
     $dbh_ref = undef;
-    Annotate_misc::process_list1( $accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $progs, $inFormat, $inTaxon, $outFormat);
+    Annotate_misc::process_list1( $accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $inFormat, $inTaxon, $outFormat);
 
 } elsif ("$dir_path/$list_fn") {
 
@@ -196,7 +180,7 @@ if ($infile) {
 
     if ( 1 ) {
         # MSA for each genome
-        Annotate_misc::process_list1( $accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $progs, $inFormat, $inTaxon, $outFormat);
+        Annotate_misc::process_list1( $accs, $aln_fn, $dbh_ref, $exe_dir, $exe_name, $dir_path, $inFormat, $inTaxon, $outFormat);
     }
 
 }
